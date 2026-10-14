@@ -1,0 +1,3101 @@
+{
+  "task": "T09",
+  "date": "2026-10-14",
+  "status": "passed",
+  "design": "docs/architecture.md sections 2, 7-9",
+  "scope": "Deployment/recovery smoke checks with synthetic sources, not a retrieval-quality benchmark; no holdout access or tuning.",
+  "host": {
+    "gpu": "RTX 4060 8 GiB",
+    "driver": "616.92",
+    "docker": "29.6.2",
+    "platform": "Windows host / Linux Docker",
+    "observed_idle_loaded_gpu_mib": 6182,
+    "memory_note": "One snapshot, not a peak measurement."
+  },
+  "checks": {
+    "rust_all_targets": 89,
+    "rust_deployment_on_disk": 6,
+    "python_existing_worker_answer_scheduler": 18,
+    "python_service_transport": 4,
+    "linux_fmt": "passed",
+    "linux_clippy_warnings_denied": "passed",
+    "compose_config": "passed"
+  },
+  "final_images": {
+    "vectornext-app:t09": "sha256:c028e234095c825a092ec48cfecedb40b206a2bfe5d444f568fd14084fb21f38",
+    "vectornext-app-processor:t09": "sha256:b9ea3f351c1fdd05393a270a7556f5bf528e5543078c76f87606c7d8de7fc08b",
+    "vectornext-app-llm:t09": "sha256:080b7d3d21d4291c1bd775dce2127a82e6c85d885b25d3cd6a217b72e78f3344",
+    "vectornext-core:latest": "sha256:7ca5920ffcede9503b255eaf2243a0b48745e8359c2e2acff2e90961732461f6"
+  },
+  "api_binary_sha256": {
+    "sha256:97900cb1cbc071530b7370a6819e812896a89f9beff714a0860dd97b7a875380": "f4fe07566192d6efe9733d3cd9b1630488fad475c44583e6ba8961320f51631c",
+    "vectornext-app:t09": "f4fe07566192d6efe9733d3cd9b1630488fad475c44583e6ba8961320f51631c"
+  },
+  "services_during_drill": {
+    "llm": {
+      "image_during_drill": "sha256:080b7d3d21d4291c1bd775dce2127a82e6c85d885b25d3cd6a217b72e78f3344",
+      "gpu_requests": [
+        {
+          "Driver": "",
+          "Count": -1,
+          "DeviceIDs": null,
+          "Capabilities": [
+            [
+              "gpu"
+            ]
+          ],
+          "Options": null
+        }
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "C:\\Users\\Usuario\\VectorNext\\models",
+          "Destination": "/models",
+          "RW": false
+        }
+      ],
+      "published_ports": {},
+      "networks": [
+        "vectornext-t09_local"
+      ]
+    },
+    "processor": {
+      "image_during_drill": "sha256:73482fe0b3d4fc1ed70d8fc814c363baba3c0b17028efa51794b05b7aed5cdfa",
+      "gpu_requests": null,
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "C:\\Users\\Usuario\\VectorNext\\models",
+          "Destination": "/models",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/vectornext-t09_cache/_data",
+          "Destination": "/cache",
+          "RW": true
+        }
+      ],
+      "published_ports": {},
+      "networks": [
+        "vectornext-t09_local"
+      ]
+    },
+    "vectornext": {
+      "image_during_drill": "sha256:97900cb1cbc071530b7370a6819e812896a89f9beff714a0860dd97b7a875380",
+      "gpu_requests": null,
+      "mounts": [
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/vectornext-t09_data/_data",
+          "Destination": "/storage",
+          "RW": true
+        }
+      ],
+      "published_ports": {
+        "8088/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8088"
+          }
+        ]
+      },
+      "networks": [
+        "vectornext-t09_ingress",
+        "vectornext-t09_local"
+      ]
+    }
+  },
+  "internal_network": true,
+  "sources": {
+    "Cargo.toml": "56f0069be1992690d31f9534d94d3a5a8ae0750ddc7f29d24aea6395323508e5",
+    "Cargo.lock": "c0bc516f3b5d7011fdef60b329df5996699bff85738b2d01fd49a57737eb9d5f",
+    "compose.app.yaml": "85b7357caf5e22cd6c036e4dfb710acff7d47a38c49720c96defc3c5e8fba021",
+    "src/lib.rs": "6880c0d9a44d7ecc623b78fc69654d2401ee3cff1da6b40a516fff9dc4774ad1",
+    "src/storage.rs": "1be15719f0d2a8723e6f92fc66f0bed7449c76c1ebb18eb6e15152324386656d",
+    "src/ingestion/jobs.rs": "7c1ee0cf4bb81b6e2384137859db6ccd2a85b5eeef1af60594327b6768ac6f37",
+    "src/backup.rs": "d382e1d96f97b4c14c016a90ba3ab18d8cc0bd8043a6223140e0a893824835b7",
+    "src/bin/vectornext.rs": "f3499d8e83dfcd51e87652074098c691a437bb9849a4852ebafbd33383d6c0c6",
+    "tests/deployment.rs": "300f0d27762f7526dfc989d6e1f07db443ddadff426b427311acdbeeb4aae429",
+    "src/service/http.rs": "f891a02ffe95a6574648c417d24fe39593c53e7fcfb3a588dcc444c960483361",
+    "src/service/mod.rs": "e48c5359b8fc0156f025ea1971ca46679ad2feae3c9a063dfd8bdf48cd3fe06a",
+    "src/service/remote.rs": "b8e8f913178c3e09900eaa6c7e3872f3f90ff5dc19d5d1a95cf8c0203321a090",
+    "deployment/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "deployment/client.py": "8bd7d81c741a687c9f4127ac14615ae63f2e7bdb5c0c4e6365dde5fa46a0c05e",
+    "deployment/processor_server.py": "2250e24bd6f63d8414d008544c69a200815c04d181a5fb7fb6cd8bd60422a61b",
+    "deployment/test_processor_server.py": "108729a1abab33281a6d837c6f69d5230c5254759fa7f189c2ceeb5d85c27cf0",
+    "deployment/verify.py": "b9e1107f7ce41dbc65068a45aeae2106f0d36a54c6b692ce6b8ae5a9c291d538",
+    "docker/app-llm.Dockerfile": "782d0fb63aa1085e58cb8a5ff0a33e0146dbed05e88b148722bfbfebc6943a83",
+    "docker/app-processor.Dockerfile": "ead607b03fc295ef734d54a55263fa573ad71812c38377aa2ed93075a784cfba",
+    "docker/app.Dockerfile": "e8eee9b04e8b49666b5801c7557beda60ae8e394dcd185bc84d1d14ecfa311f6"
+  },
+  "model_locks": {
+    "experiments/t02/models.lock.json": {
+      "version": 1,
+      "models": {
+        "generator": {
+          "repo": "google/gemma-4-E2B-it-qat-q4_0-gguf",
+          "revision": "675cff42a74c774d6cb76f76d8eacb49b48c9b93",
+          "directory": "generator",
+          "files": [
+            {
+              "remote_path": "gemma-4-E2B_q4_0-it.gguf",
+              "path": "gemma-4-E2B_q4_0-it.gguf",
+              "size": 3349516256,
+              "sha256": "fa401b55b07ee70a54c6dae3903c783a6e65064312529ea57175cb5f8dec6634"
+            },
+            {
+              "remote_path": "README.md",
+              "path": "README.md",
+              "size": 29260,
+              "sha256": "942e93b96c2f7f2b5fdd8d5578f0f1215e4a354f12e202999b4fbc864bb02ef5"
+            }
+          ]
+        },
+        "embedding": {
+          "repo": "sentence-transformers/all-MiniLM-L6-v2",
+          "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+          "directory": "embedding",
+          "files": [
+            {
+              "remote_path": "onnx/model.onnx",
+              "path": "onnx/model.onnx",
+              "size": 90405214,
+              "sha256": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452"
+            },
+            {
+              "remote_path": "tokenizer.json",
+              "path": "tokenizer.json",
+              "size": 466247,
+              "sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+            },
+            {
+              "remote_path": "config.json",
+              "path": "config.json",
+              "size": 612,
+              "sha256": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41"
+            },
+            {
+              "remote_path": "tokenizer_config.json",
+              "path": "tokenizer_config.json",
+              "size": 350,
+              "sha256": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b"
+            },
+            {
+              "remote_path": "sentence_bert_config.json",
+              "path": "sentence_bert_config.json",
+              "size": 53,
+              "sha256": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7"
+            },
+            {
+              "remote_path": "1_Pooling/config.json",
+              "path": "1_Pooling/config.json",
+              "size": 190,
+              "sha256": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23"
+            },
+            {
+              "remote_path": "README.md",
+              "path": "README.md",
+              "size": 10502,
+              "sha256": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0"
+            }
+          ]
+        },
+        "reranker": {
+          "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+          "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+          "directory": "reranker",
+          "files": [
+            {
+              "remote_path": "onnx/model.onnx",
+              "path": "onnx/model.onnx",
+              "size": 91011230,
+              "sha256": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a"
+            },
+            {
+              "remote_path": "tokenizer.json",
+              "path": "tokenizer.json",
+              "size": 711396,
+              "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            {
+              "remote_path": "config.json",
+              "path": "config.json",
+              "size": 794,
+              "sha256": "380e02c93f431831be65d99a4e7e5f67c133985bf2e77d9d4eba46847190bacc"
+            },
+            {
+              "remote_path": "tokenizer_config.json",
+              "path": "tokenizer_config.json",
+              "size": 1330,
+              "sha256": "a5c2e5a7b1a29a0702cd28c08a399b5ecc110c263009d17f7e3b415f25905fd8"
+            },
+            {
+              "remote_path": "README.md",
+              "path": "README.md",
+              "size": 3673,
+              "sha256": "7c0ec39941d0d1d766ccde671f592971d82fe45b7eea550a80d1ea864ebc3baa"
+            }
+          ]
+        }
+      }
+    },
+    "experiments/t02/models.26b.lock.json": {
+      "version": 1,
+      "models": {
+        "generator": {
+          "repo": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+          "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+          "directory": "generator-26b",
+          "files": [
+            {
+              "remote_path": "gemma-4-26B_q4_0-it.gguf",
+              "path": "gemma-4-26B_q4_0-it.gguf",
+              "size": 14439363584,
+              "sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d"
+            },
+            {
+              "remote_path": "README.md",
+              "path": "README.md",
+              "size": 29288,
+              "sha256": "f9e8c5e65c069adf1ea0e212f5c20303e68e78469bf549d10e631fe9c3612873"
+            }
+          ]
+        },
+        "embedding": {
+          "repo": "sentence-transformers/all-MiniLM-L6-v2",
+          "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+          "directory": "embedding",
+          "files": [
+            {
+              "remote_path": "onnx/model.onnx",
+              "path": "onnx/model.onnx",
+              "size": 90405214,
+              "sha256": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452"
+            },
+            {
+              "remote_path": "tokenizer.json",
+              "path": "tokenizer.json",
+              "size": 466247,
+              "sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+            },
+            {
+              "remote_path": "config.json",
+              "path": "config.json",
+              "size": 612,
+              "sha256": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41"
+            },
+            {
+              "remote_path": "tokenizer_config.json",
+              "path": "tokenizer_config.json",
+              "size": 350,
+              "sha256": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b"
+            },
+            {
+              "remote_path": "sentence_bert_config.json",
+              "path": "sentence_bert_config.json",
+              "size": 53,
+              "sha256": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7"
+            },
+            {
+              "remote_path": "1_Pooling/config.json",
+              "path": "1_Pooling/config.json",
+              "size": 190,
+              "sha256": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23"
+            },
+            {
+              "remote_path": "README.md",
+              "path": "README.md",
+              "size": 10502,
+              "sha256": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0"
+            }
+          ]
+        },
+        "reranker": {
+          "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+          "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+          "directory": "reranker",
+          "files": [
+            {
+              "remote_path": "onnx/model.onnx",
+              "path": "onnx/model.onnx",
+              "size": 91011230,
+              "sha256": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a"
+            },
+            {
+              "remote_path": "tokenizer.json",
+              "path": "tokenizer.json",
+              "size": 711396,
+              "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            {
+              "remote_path": "config.json",
+              "path": "config.json",
+              "size": 794,
+              "sha256": "380e02c93f431831be65d99a4e7e5f67c133985bf2e77d9d4eba46847190bacc"
+            },
+            {
+              "remote_path": "tokenizer_config.json",
+              "path": "tokenizer_config.json",
+              "size": 1330,
+              "sha256": "a5c2e5a7b1a29a0702cd28c08a399b5ecc110c263009d17f7e3b415f25905fd8"
+            },
+            {
+              "remote_path": "README.md",
+              "path": "README.md",
+              "size": 3673,
+              "sha256": "7c0ec39941d0d1d766ccde671f592971d82fe45b7eea550a80d1ea864ebc3baa"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "embedding_spaces": [
+    {
+      "id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+      "space": {
+        "artifact_sha256": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+        "dimensions": 384,
+        "document_prefix": "",
+        "max_tokens": 256,
+        "model": "sentence-transformers/all-MiniLM-L6-v2",
+        "normalization": "L2",
+        "preprocessing": "minilm-mask-mean-l2-v1;onnxruntime=1.31.0;numpy=2.5.4;cpu-fp32",
+        "query_prefix": "",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "tokenizer": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037;tokenizers=0.23.3;specials;no-truncation"
+      }
+    }
+  ],
+  "seed": {
+    "documents": [
+      {
+        "chunks": 2,
+        "document_id": "array_matches",
+        "media_type": "Json",
+        "original": {
+          "bytes": 283,
+          "sha256": "303e836ae1368355ff7fac3bf812dd06f68998d5aacd17c47d64f949c421741f"
+        },
+        "revision": "74d8a01aa015c9b19a2270f0bffba7928460bb2b3cd42ca4b75c9b1d44fd58b6"
+      },
+      {
+        "chunks": 14,
+        "document_id": "equipment_guide",
+        "media_type": "Pdf",
+        "original": {
+          "bytes": 3141,
+          "sha256": "dc8c41c6cb312efe2d1dfe168ba371739e2c4e3d31a3d694751f5d537fbfa41a"
+        },
+        "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+      },
+      {
+        "chunks": 1,
+        "document_id": "fictional_matches",
+        "media_type": "Txt",
+        "original": {
+          "bytes": 538,
+          "sha256": "5fd3d6e6c7cf412b3cd35af78277c87f8d265078dbcf38a1cb86c732f2f71686"
+        },
+        "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688"
+      },
+      {
+        "chunks": 7,
+        "document_id": "nested_matches",
+        "media_type": "Json",
+        "original": {
+          "bytes": 1044,
+          "sha256": "90d7eb77293d035d8762fb97ef8e317d1e0db986f59aae7885c7be6a4ca26677"
+        },
+        "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+      },
+      {
+        "chunks": 4,
+        "document_id": "scanned_note",
+        "media_type": "Pdf",
+        "original": {
+          "bytes": 50808,
+          "sha256": "ee6db1cbdb579d8df3b2c60bcd1c5adc8a9f7674094e2ff14d15a69a440d30a6"
+        },
+        "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+      }
+    ],
+    "generation": 5,
+    "chunks": 28,
+    "events": [
+      {
+        "path": "/v1/documents",
+        "status": 200,
+        "seconds": 0.016
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 0.015
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 0.016
+      },
+      {
+        "document": "fictional_matches",
+        "source_sha256": "5fd3d6e6c7cf412b3cd35af78277c87f8d265078dbcf38a1cb86c732f2f71686",
+        "seconds": 0.547
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 0.015
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 0.0
+      },
+      {
+        "document": "array_matches",
+        "source_sha256": "303e836ae1368355ff7fac3bf812dd06f68998d5aacd17c47d64f949c421741f",
+        "seconds": 0.531
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 0.016
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 0.016
+      },
+      {
+        "document": "nested_matches",
+        "source_sha256": "90d7eb77293d035d8762fb97ef8e317d1e0db986f59aae7885c7be6a4ca26677",
+        "seconds": 0.547
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 13.859
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 0.0
+      },
+      {
+        "document": "equipment_guide",
+        "source_sha256": "dc8c41c6cb312efe2d1dfe168ba371739e2c4e3d31a3d694751f5d537fbfa41a",
+        "seconds": 14.375
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 10.64
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 0.016
+      },
+      {
+        "document": "scanned_note",
+        "source_sha256": "ee6db1cbdb579d8df3b2c60bcd1c5adc8a9f7674094e2ff14d15a69a440d30a6",
+        "seconds": 11.172
+      },
+      {
+        "path": "/v1/documents",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/documents",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/jobs",
+        "status": 200,
+        "seconds": 0.015
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      }
+    ]
+  },
+  "answers": {
+    "pele-answer": {
+      "answer": {
+        "fields": {
+          "goals": {
+            "evidence_id": "E1",
+            "pointer": null,
+            "quote": "Pelé scored 3 goals against Argentina in 1954.",
+            "value": 3
+          },
+          "opponent": {
+            "evidence_id": "E1",
+            "pointer": null,
+            "quote": "Pelé scored 3 goals against Argentina in 1954.",
+            "value": "Argentina"
+          },
+          "year": {
+            "evidence_id": "E1",
+            "pointer": null,
+            "quote": "Pelé scored 3 goals against Argentina in 1954.",
+            "value": 1954
+          }
+        },
+        "status": "supported"
+      },
+      "audit": {
+        "assessment": {
+          "reason": "Fictional match F-001 in E1 provides 3 goals, Argentina as opponent, and 1954 as the year.",
+          "status": "supported"
+        },
+        "assessment_audit": {
+          "context_window": 4096,
+          "elapsed_seconds": 9.151505317997362,
+          "input_tokens": 972,
+          "model": {
+            "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+            "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+            "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+            "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+          },
+          "output_limit": 192,
+          "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+          "request_sha256": "dc9db0d9c03177d7dd5e103bea906eee5001a64058d5439d69c2f5c57567c76a",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "supported",
+                  "ambiguous",
+                  "insufficient_evidence"
+                ]
+              }
+            },
+            "required": [
+              "status",
+              "reason"
+            ],
+            "type": "object"
+          },
+          "schema_sha256": "10e2ac3da0c80d51c9a69ea6d05c095fe587869e946aeac876249b3d102d3b39",
+          "schema_validation": "passed",
+          "seed": 42,
+          "temperature": 0,
+          "usage": {
+            "completion_tokens": 48,
+            "prompt_tokens": 972,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "total_tokens": 1020
+          },
+          "wire_schema_order": "status-first-v1"
+        },
+        "context_window": 4096,
+        "elapsed_seconds": 13.87626409999939,
+        "input_tokens": 1107,
+        "model": {
+          "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+          "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+          "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+          "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+        },
+        "output_limit": 768,
+        "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+        "request_sha256": "6c2020cfd7066ce95ea7fe95d70311609b757566ebbe4b5917b3781c2ae6bb71",
+        "schema": {
+          "oneOf": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "fields": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "goals": {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "evidence_id": {
+                              "enum": [
+                                "E1",
+                                "E4"
+                              ]
+                            },
+                            "pointer": {
+                              "type": "null"
+                            },
+                            "quote": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "evidence_id",
+                            "value",
+                            "quote",
+                            "pointer"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "evidence_id": {
+                              "enum": [
+                                "E2",
+                                "E3",
+                                "E5"
+                              ]
+                            },
+                            "pointer": {
+                              "type": "string"
+                            },
+                            "quote": {
+                              "const": ""
+                            },
+                            "value": {
+                              "type": "null"
+                            }
+                          },
+                          "required": [
+                            "evidence_id",
+                            "value",
+                            "quote",
+                            "pointer"
+                          ],
+                          "type": "object"
+                        }
+                      ]
+                    },
+                    "opponent": {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "evidence_id": {
+                              "enum": [
+                                "E1",
+                                "E4"
+                              ]
+                            },
+                            "pointer": {
+                              "type": "null"
+                            },
+                            "quote": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "evidence_id",
+                            "value",
+                            "quote",
+                            "pointer"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "evidence_id": {
+                              "enum": [
+                                "E2",
+                                "E3",
+                                "E5"
+                              ]
+                            },
+                            "pointer": {
+                              "type": "string"
+                            },
+                            "quote": {
+                              "const": ""
+                            },
+                            "value": {
+                              "type": "null"
+                            }
+                          },
+                          "required": [
+                            "evidence_id",
+                            "value",
+                            "quote",
+                            "pointer"
+                          ],
+                          "type": "object"
+                        }
+                      ]
+                    },
+                    "year": {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "evidence_id": {
+                              "enum": [
+                                "E1",
+                                "E4"
+                              ]
+                            },
+                            "pointer": {
+                              "type": "null"
+                            },
+                            "quote": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "evidence_id",
+                            "value",
+                            "quote",
+                            "pointer"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "evidence_id": {
+                              "enum": [
+                                "E2",
+                                "E3",
+                                "E5"
+                              ]
+                            },
+                            "pointer": {
+                              "type": "string"
+                            },
+                            "quote": {
+                              "const": ""
+                            },
+                            "value": {
+                              "type": "null"
+                            }
+                          },
+                          "required": [
+                            "evidence_id",
+                            "value",
+                            "quote",
+                            "pointer"
+                          ],
+                          "type": "object"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "goals",
+                    "opponent",
+                    "year"
+                  ],
+                  "type": "object"
+                },
+                "status": {
+                  "const": "supported"
+                }
+              },
+              "required": [
+                "status",
+                "fields"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "fields": {
+                  "additionalProperties": false,
+                  "properties": {},
+                  "required": [],
+                  "type": "object"
+                },
+                "status": {
+                  "const": "ambiguous"
+                }
+              },
+              "required": [
+                "status",
+                "fields"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "fields": {
+                  "additionalProperties": false,
+                  "properties": {},
+                  "required": [],
+                  "type": "object"
+                },
+                "status": {
+                  "const": "insufficient_evidence"
+                }
+              },
+              "required": [
+                "status",
+                "fields"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "schema_sha256": "b9f7ad394109abae8f7a5fd0660bef23fee661c26deccfd14a55b745769cb320",
+        "schema_validation": "passed",
+        "seed": 42,
+        "temperature": 0,
+        "usage": {
+          "completion_tokens": 144,
+          "prompt_tokens": 1107,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "total_tokens": 1251
+        },
+        "wire_schema_order": "status-first-v1"
+      },
+      "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+      "evidence": [
+        {
+          "id": "E1",
+          "key": {
+            "chunk_id": "c0",
+            "document_id": "fictional_matches",
+            "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688"
+          },
+          "labels": [],
+          "record": null,
+          "sources": [
+            {
+              "locator": {
+                "Text": {
+                  "bytes": {
+                    "end": 122,
+                    "start": 0
+                  },
+                  "encoding": "UTF-8",
+                  "line_end": 2,
+                  "line_start": 1,
+                  "mappings": [
+                    {
+                      "normalized": {
+                        "end": 122,
+                        "start": 0
+                      },
+                      "original": {
+                        "end": 122,
+                        "start": 0
+                      }
+                    }
+                  ]
+                }
+              },
+              "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688"
+            },
+            {
+              "locator": {
+                "Text": {
+                  "bytes": {
+                    "end": 193,
+                    "start": 124
+                  },
+                  "encoding": "UTF-8",
+                  "line_end": 5,
+                  "line_start": 4,
+                  "mappings": [
+                    {
+                      "normalized": {
+                        "end": 193,
+                        "start": 124
+                      },
+                      "original": {
+                        "end": 193,
+                        "start": 124
+                      }
+                    }
+                  ]
+                }
+              },
+              "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688"
+            },
+            {
+              "locator": {
+                "Text": {
+                  "bytes": {
+                    "end": 263,
+                    "start": 195
+                  },
+                  "encoding": "UTF-8",
+                  "line_end": 8,
+                  "line_start": 7,
+                  "mappings": [
+                    {
+                      "normalized": {
+                        "end": 263,
+                        "start": 195
+                      },
+                      "original": {
+                        "end": 263,
+                        "start": 195
+                      }
+                    }
+                  ]
+                }
+              },
+              "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688"
+            },
+            {
+              "locator": {
+                "Text": {
+                  "bytes": {
+                    "end": 332,
+                    "start": 265
+                  },
+                  "encoding": "UTF-8",
+                  "line_end": 11,
+                  "line_start": 10,
+                  "mappings": [
+                    {
+                      "normalized": {
+                        "end": 332,
+                        "start": 265
+                      },
+                      "original": {
+                        "end": 332,
+                        "start": 265
+                      }
+                    }
+                  ]
+                }
+              },
+              "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688"
+            },
+            {
+              "locator": {
+                "Text": {
+                  "bytes": {
+                    "end": 462,
+                    "start": 334
+                  },
+                  "encoding": "UTF-8",
+                  "line_end": 15,
+                  "line_start": 13,
+                  "mappings": [
+                    {
+                      "normalized": {
+                        "end": 462,
+                        "start": 334
+                      },
+                      "original": {
+                        "end": 462,
+                        "start": 334
+                      }
+                    }
+                  ]
+                }
+              },
+              "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688"
+            },
+            {
+              "locator": {
+                "Text": {
+                  "bytes": {
+                    "end": 537,
+                    "start": 464
+                  },
+                  "encoding": "UTF-8",
+                  "line_end": 17,
+                  "line_start": 17,
+                  "mappings": [
+                    {
+                      "normalized": {
+                        "end": 537,
+                        "start": 464
+                      },
+                      "original": {
+                        "end": 537,
+                        "start": 464
+                      }
+                    }
+                  ]
+                }
+              },
+              "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688"
+            }
+          ],
+          "spans": [
+            {
+              "block_id": "b0",
+              "bytes": {
+                "end": 122,
+                "start": 0
+              }
+            },
+            {
+              "block_id": "b1",
+              "bytes": {
+                "end": 69,
+                "start": 0
+              }
+            },
+            {
+              "block_id": "b2",
+              "bytes": {
+                "end": 68,
+                "start": 0
+              }
+            },
+            {
+              "block_id": "b3",
+              "bytes": {
+                "end": 67,
+                "start": 0
+              }
+            },
+            {
+              "block_id": "b4",
+              "bytes": {
+                "end": 128,
+                "start": 0
+              }
+            },
+            {
+              "block_id": "b5",
+              "bytes": {
+                "end": 73,
+                "start": 0
+              }
+            }
+          ],
+          "text": "SYNTHETIC TEST DATA - all matches below are invented.\nThe Pelé/1954 example is hypothetical, not verified sports history.\n\nFictional match F-001\nPelé scored 3 goals against Argentina in 1954.\n\nFictional match F-002\nPelé scored 1 goal against Argentina in 1955.\n\nFictional match F-003\nPelé scored 2 goals against Uruguay in 1954.\n\nFictional match F-004\nIn the invented 1960 match against Chile, Mira Costa scored\n4 goals. The match was played at Harbor Field.\n\nThese four records are the complete contents of this fictional match log."
+        },
+        {
+          "id": "E2",
+          "key": {
+            "chunk_id": "c0",
+            "document_id": "array_matches",
+            "revision": "74d8a01aa015c9b19a2270f0bffba7928460bb2b3cd42ca4b75c9b1d44fd58b6"
+          },
+          "labels": [],
+          "record": {
+            "goals": 4,
+            "id": "a-001",
+            "opponent": "Riverside",
+            "player": "Sol Marin",
+            "synthetic": true,
+            "year": 2023
+          },
+          "sources": [
+            {
+              "locator": {
+                "Json": {
+                  "pointer": "/0",
+                  "record_id": "a-001"
+                }
+              },
+              "revision": "74d8a01aa015c9b19a2270f0bffba7928460bb2b3cd42ca4b75c9b1d44fd58b6"
+            }
+          ],
+          "spans": [],
+          "text": "{\"goals\":4,\"id\":\"a-001\",\"opponent\":\"Riverside\",\"player\":\"Sol Marin\",\"synthetic\":true,\"year\":2023}"
+        },
+        {
+          "id": "E3",
+          "key": {
+            "chunk_id": "c0",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "labels": [],
+          "record": {
+            "id": "m-001",
+            "match": {
+              "opponent": "Lakeside",
+              "year": 2021
+            },
+            "notes": "Goals are recorded as zero; assists were not recorded.",
+            "player": {
+              "id": "007",
+              "name": "Iris Vega"
+            },
+            "stats": {
+              "assists": null,
+              "goals": 0
+            }
+          },
+          "sources": [
+            {
+              "locator": {
+                "Json": {
+                  "pointer": "/matches/0",
+                  "record_id": "m-001"
+                }
+              },
+              "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+            }
+          ],
+          "spans": [],
+          "text": "{\"id\":\"m-001\",\"match\":{\"opponent\":\"Lakeside\",\"year\":2021},\"notes\":\"Goals are recorded as zero; assists were not recorded.\",\"player\":{\"id\":\"007\",\"name\":\"Iris Vega\"},\"stats\":{\"assists\":null,\"goals\":0}}"
+        },
+        {
+          "id": "E4",
+          "key": {
+            "chunk_id": "c6",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "labels": [],
+          "record": null,
+          "sources": [
+            {
+              "locator": {
+                "Json": {
+                  "pointer": "/synthetic",
+                  "record_id": null
+                }
+              },
+              "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+            }
+          ],
+          "spans": [
+            {
+              "block_id": "b6",
+              "bytes": {
+                "end": 4,
+                "start": 0
+              }
+            }
+          ],
+          "text": "true"
+        },
+        {
+          "id": "E5",
+          "key": {
+            "chunk_id": "c2",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "labels": [],
+          "record": {
+            "id": "m-003",
+            "match": {
+              "opponent": "Hilltown",
+              "year": 2021
+            },
+            "player": {
+              "id": "007",
+              "name": "Iris Vega"
+            },
+            "stats": {
+              "goals": 5
+            }
+          },
+          "sources": [
+            {
+              "locator": {
+                "Json": {
+                  "pointer": "/matches/2",
+                  "record_id": "m-003"
+                }
+              },
+              "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+            }
+          ],
+          "spans": [],
+          "text": "{\"id\":\"m-003\",\"match\":{\"opponent\":\"Hilltown\",\"year\":2021},\"player\":{\"id\":\"007\",\"name\":\"Iris Vega\"},\"stats\":{\"goals\":5}}"
+        }
+      ],
+      "formatted": "Match year 1954, Pele goals: 3, rival: Argentina",
+      "generation": 5,
+      "input_limit": 3328,
+      "output_limit": 768,
+      "presentation_draft": null,
+      "prompt_tokens": 1107,
+      "ranked": [
+        {
+          "key": {
+            "chunk_id": "c0",
+            "document_id": "fictional_matches",
+            "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688"
+          },
+          "pair_tokens": 127,
+          "score": 9.593782424926758
+        },
+        {
+          "key": {
+            "chunk_id": "c0",
+            "document_id": "array_matches",
+            "revision": "74d8a01aa015c9b19a2270f0bffba7928460bb2b3cd42ca4b75c9b1d44fd58b6"
+          },
+          "pair_tokens": 62,
+          "score": -8.656362533569336
+        },
+        {
+          "key": {
+            "chunk_id": "c0",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "pair_tokens": 106,
+          "score": -9.4769287109375
+        },
+        {
+          "key": {
+            "chunk_id": "c6",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "pair_tokens": 16,
+          "score": -9.821054458618164
+        },
+        {
+          "key": {
+            "chunk_id": "c2",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "pair_tokens": 84,
+          "score": -9.905184745788574
+        },
+        {
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "array_matches",
+            "revision": "74d8a01aa015c9b19a2270f0bffba7928460bb2b3cd42ca4b75c9b1d44fd58b6"
+          },
+          "pair_tokens": 63,
+          "score": -10.066274642944336
+        },
+        {
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "pair_tokens": 84,
+          "score": -10.388750076293945
+        },
+        {
+          "key": {
+            "chunk_id": "c2",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "pair_tokens": 22,
+          "score": -10.55789566040039
+        },
+        {
+          "key": {
+            "chunk_id": "c5",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "pair_tokens": 31,
+          "score": -10.605055809020996
+        },
+        {
+          "key": {
+            "chunk_id": "c12",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "pair_tokens": 16,
+          "score": -10.855470657348633
+        },
+        {
+          "key": {
+            "chunk_id": "c3",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "pair_tokens": 23,
+          "score": -11.065622329711914
+        },
+        {
+          "key": {
+            "chunk_id": "c2",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "pair_tokens": 22,
+          "score": -11.130331993103027
+        },
+        {
+          "key": {
+            "chunk_id": "c7",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "pair_tokens": 38,
+          "score": -11.173215866088867
+        },
+        {
+          "key": {
+            "chunk_id": "c4",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "pair_tokens": 36,
+          "score": -11.195768356323242
+        },
+        {
+          "key": {
+            "chunk_id": "c3",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "pair_tokens": 35,
+          "score": -11.223877906799316
+        },
+        {
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "pair_tokens": 28,
+          "score": -11.256834983825684
+        },
+        {
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "pair_tokens": 28,
+          "score": -11.257079124450684
+        },
+        {
+          "key": {
+            "chunk_id": "c6",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "pair_tokens": 41,
+          "score": -11.275003433227539
+        },
+        {
+          "key": {
+            "chunk_id": "c5",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "pair_tokens": 41,
+          "score": -11.277384757995605
+        },
+        {
+          "key": {
+            "chunk_id": "c4",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "pair_tokens": 41,
+          "score": -11.278101921081543
+        }
+      ],
+      "request": {
+        "fields": {
+          "goals": {
+            "description": "",
+            "kind": "integer",
+            "nullable": false,
+            "pointer": null
+          },
+          "opponent": {
+            "description": "",
+            "kind": "string",
+            "nullable": false,
+            "pointer": null
+          },
+          "year": {
+            "description": "",
+            "kind": "integer",
+            "nullable": false,
+            "pointer": null
+          }
+        },
+        "filter": {
+          "All": []
+        },
+        "history": [],
+        "prose": false,
+        "question": "How many goals did Pele score against Argentina in 1954?",
+        "scope": "passage",
+        "template": "Match year {year}, Pele goals: {goals}, rival: {opponent}"
+      },
+      "reranker": {
+        "artifact_sha256": {
+          "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+          "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+        },
+        "dimensions": 1,
+        "document_prefix": "",
+        "dtype": "float32",
+        "format": "publisher_fp32_onnx",
+        "max_batch": 32,
+        "max_tokens_including_special": 512,
+        "onnxruntime_version": "1.31.0",
+        "pooling": "none; raw relevance logit, higher is better, not a probability",
+        "preprocessing_version": "minilm-pair-raw-logit-v1",
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "query_prefix": "",
+        "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+        "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+        "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+        "truncation": "reject"
+      },
+      "search_text": "How many goals did Pele score against Argentina in 1954?",
+      "skipped": [
+        {
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "array_matches",
+            "revision": "74d8a01aa015c9b19a2270f0bffba7928460bb2b3cd42ca4b75c9b1d44fd58b6"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c2",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c5",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c12",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c3",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c2",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c7",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c4",
+            "document_id": "nested_matches",
+            "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c3",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c6",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c5",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "reason": "primary limit"
+        },
+        {
+          "key": {
+            "chunk_id": "c4",
+            "document_id": "equipment_guide",
+            "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+          },
+          "reason": "primary limit"
+        }
+      ],
+      "validation": {
+        "mechanical_support": "passed",
+        "schema": "passed",
+        "semantic_correctness": "not_automatically_established",
+        "source_references": "passed"
+      },
+      "version": "answers-v1"
+    },
+    "scan-answer": {
+      "answer": {
+        "fields": {
+          "torque": {
+            "evidence_id": "E1",
+            "pointer": null,
+            "quote": "6 N m",
+            "value": 6
+          },
+          "unit": {
+            "evidence_id": "E1",
+            "pointer": null,
+            "quote": "6 N m",
+            "value": "N m"
+          }
+        },
+        "status": "supported"
+      },
+      "audit": {
+        "assessment": {
+          "reason": "E1 specifies the torque for J2 as 6 N m.",
+          "status": "supported"
+        },
+        "assessment_audit": {
+          "context_window": 4096,
+          "elapsed_seconds": 6.051322131999768,
+          "input_tokens": 655,
+          "model": {
+            "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+            "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+            "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+            "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+          },
+          "output_limit": 192,
+          "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+          "request_sha256": "16c16a1061e53364ff6640bf1e3be65d0773dab2305238a5ee8575b2c429978f",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "supported",
+                  "ambiguous",
+                  "insufficient_evidence"
+                ]
+              }
+            },
+            "required": [
+              "status",
+              "reason"
+            ],
+            "type": "object"
+          },
+          "schema_sha256": "10e2ac3da0c80d51c9a69ea6d05c095fe587869e946aeac876249b3d102d3b39",
+          "schema_validation": "passed",
+          "seed": 42,
+          "temperature": 0,
+          "usage": {
+            "completion_tokens": 31,
+            "prompt_tokens": 655,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "total_tokens": 686
+          },
+          "wire_schema_order": "status-first-v1"
+        },
+        "context_window": 4096,
+        "elapsed_seconds": 8.435675208002067,
+        "input_tokens": 790,
+        "model": {
+          "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+          "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+          "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+          "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+        },
+        "output_limit": 768,
+        "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+        "request_sha256": "ad1ff726d4cd7d716623e1a98f2877f9724818c4afdff3d36a2b532b6b4edd16",
+        "schema": {
+          "oneOf": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "fields": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "torque": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "evidence_id": {
+                          "enum": [
+                            "E1",
+                            "E2",
+                            "E3",
+                            "E4"
+                          ]
+                        },
+                        "pointer": {
+                          "type": "null"
+                        },
+                        "quote": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "evidence_id",
+                        "value",
+                        "quote",
+                        "pointer"
+                      ],
+                      "type": "object"
+                    },
+                    "unit": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "evidence_id": {
+                          "enum": [
+                            "E1",
+                            "E2",
+                            "E3",
+                            "E4"
+                          ]
+                        },
+                        "pointer": {
+                          "type": "null"
+                        },
+                        "quote": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "evidence_id",
+                        "value",
+                        "quote",
+                        "pointer"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "torque",
+                    "unit"
+                  ],
+                  "type": "object"
+                },
+                "status": {
+                  "const": "supported"
+                }
+              },
+              "required": [
+                "status",
+                "fields"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "fields": {
+                  "additionalProperties": false,
+                  "properties": {},
+                  "required": [],
+                  "type": "object"
+                },
+                "status": {
+                  "const": "ambiguous"
+                }
+              },
+              "required": [
+                "status",
+                "fields"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "fields": {
+                  "additionalProperties": false,
+                  "properties": {},
+                  "required": [],
+                  "type": "object"
+                },
+                "status": {
+                  "const": "insufficient_evidence"
+                }
+              },
+              "required": [
+                "status",
+                "fields"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "schema_sha256": "3da83a7b58813814e868754ea219d4eede13eb3cc76f57aebaed360d5fddfca9",
+        "schema_validation": "passed",
+        "seed": 42,
+        "temperature": 0,
+        "usage": {
+          "completion_tokens": 78,
+          "prompt_tokens": 790,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "total_tokens": 868
+        },
+        "wire_schema_order": "status-first-v1"
+      },
+      "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+      "evidence": [
+        {
+          "id": "E1",
+          "key": {
+            "chunk_id": "c3",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "labels": [
+            "Inspection record: SCAN-004"
+          ],
+          "record": null,
+          "sources": [
+            {
+              "locator": {
+                "Pdf": {
+                  "bbox": [
+                    49.0,
+                    143.33333333333337,
+                    241.33333333333334,
+                    156.33333333333337
+                  ],
+                  "diagnostics": {
+                    "ocr_confidence": 0.9075919299999999
+                  },
+                  "extraction": "Ocr",
+                  "page": 1
+                }
+              },
+              "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+            },
+            {
+              "locator": {
+                "Pdf": {
+                  "bbox": [
+                    48.333333333333336,
+                    190.0,
+                    358.3333333333333,
+                    200.33333333333337
+                  ],
+                  "diagnostics": {
+                    "ocr_confidence": 0.90839615
+                  },
+                  "extraction": "Ocr",
+                  "page": 1
+                }
+              },
+              "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+            },
+            {
+              "locator": {
+                "Pdf": {
+                  "bbox": [
+                    48.333333333333336,
+                    221.66666666666663,
+                    358.3333333333333,
+                    232.33333333333337
+                  ],
+                  "diagnostics": {
+                    "ocr_confidence": 0.9163490299999999
+                  },
+                  "extraction": "Ocr",
+                  "page": 1
+                }
+              },
+              "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+            },
+            {
+              "locator": {
+                "Pdf": {
+                  "bbox": [
+                    48.666666666666664,
+                    281.6666666666667,
+                    279.0,
+                    292.3333333333333
+                  ],
+                  "diagnostics": {
+                    "ocr_confidence": 0.9572319
+                  },
+                  "extraction": "Ocr",
+                  "page": 1
+                }
+              },
+              "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+            }
+          ],
+          "spans": [
+            {
+              "block_id": "#/texts/4",
+              "bytes": {
+                "end": 63,
+                "start": 0
+              }
+            },
+            {
+              "block_id": "#/texts/5",
+              "bytes": {
+                "end": 63,
+                "start": 0
+              }
+            },
+            {
+              "block_id": "#/texts/6",
+              "bytes": {
+                "end": 47,
+                "start": 0
+              }
+            }
+          ],
+          "text": "Inspection record: SCAN-004\n\nConnector J2 on cable B4 requires a tightening torque of 6 N m.\n\nConnector J3 on cable B4 requires a tightening torque of 9 N m.\n\nRecorded by the fictional Harbor test workshop."
+        },
+        {
+          "id": "E2",
+          "key": {
+            "chunk_id": "c2",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "labels": [],
+          "record": null,
+          "sources": [
+            {
+              "locator": {
+                "Pdf": {
+                  "bbox": [
+                    49.0,
+                    143.33333333333337,
+                    241.33333333333334,
+                    156.33333333333337
+                  ],
+                  "diagnostics": {
+                    "ocr_confidence": 0.9075919299999999
+                  },
+                  "extraction": "Ocr",
+                  "page": 1
+                }
+              },
+              "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+            }
+          ],
+          "spans": [
+            {
+              "block_id": "#/texts/3",
+              "bytes": {
+                "end": 27,
+                "start": 0
+              }
+            }
+          ],
+          "text": "Inspection record: SCAN-004"
+        },
+        {
+          "id": "E3",
+          "key": {
+            "chunk_id": "c0",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "labels": [],
+          "record": null,
+          "sources": [
+            {
+              "locator": {
+                "Pdf": {
+                  "bbox": [
+                    49.0,
+                    57.33333333333337,
+                    300.6666666666667,
+                    76.0
+                  ],
+                  "diagnostics": {
+                    "ocr_confidence": 0.9546228000000001
+                  },
+                  "extraction": "Ocr",
+                  "page": 1
+                }
+              },
+              "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+            }
+          ],
+          "spans": [
+            {
+              "block_id": "#/texts/1",
+              "bytes": {
+                "end": 25,
+                "start": 0
+              }
+            }
+          ],
+          "text": "Connector inspection note"
+        },
+        {
+          "id": "E4",
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "labels": [
+            "Connector inspection note"
+          ],
+          "record": null,
+          "sources": [
+            {
+              "locator": {
+                "Pdf": {
+                  "bbox": [
+                    49.0,
+                    57.33333333333337,
+                    300.6666666666667,
+                    76.0
+                  ],
+                  "diagnostics": {
+                    "ocr_confidence": 0.9546228000000001
+                  },
+                  "extraction": "Ocr",
+                  "page": 1
+                }
+              },
+              "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+            },
+            {
+              "locator": {
+                "Pdf": {
+                  "bbox": [
+                    48.666666666666664,
+                    88.66666666666663,
+                    330.6666666666667,
+                    98.33333333333337
+                  ],
+                  "diagnostics": {
+                    "ocr_confidence": 0.96287796
+                  },
+                  "extraction": "Ocr",
+                  "page": 1
+                }
+              },
+              "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+            }
+          ],
+          "spans": [
+            {
+              "block_id": "#/texts/2",
+              "bytes": {
+                "end": 66,
+                "start": 0
+              }
+            }
+          ],
+          "text": "Connector inspection note\n\nFictional equipment. Not operating instructions for real products."
+        }
+      ],
+      "formatted": "torque: 6, unit: N m",
+      "generation": 5,
+      "input_limit": 3328,
+      "output_limit": 768,
+      "presentation_draft": null,
+      "prompt_tokens": 790,
+      "ranked": [
+        {
+          "key": {
+            "chunk_id": "c3",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "pair_tokens": 59,
+          "score": 7.200681686401367
+        },
+        {
+          "key": {
+            "chunk_id": "c2",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "pair_tokens": 19,
+          "score": -11.138567924499512
+        },
+        {
+          "key": {
+            "chunk_id": "c0",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "pair_tokens": 15,
+          "score": -11.165348052978516
+        },
+        {
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "pair_tokens": 25,
+          "score": -11.360267639160156
+        }
+      ],
+      "request": {
+        "fields": {
+          "torque": {
+            "description": "",
+            "kind": "integer",
+            "nullable": false,
+            "pointer": null
+          },
+          "unit": {
+            "description": "",
+            "kind": "string",
+            "nullable": false,
+            "pointer": null
+          }
+        },
+        "filter": {
+          "DocumentIds": [
+            "scanned_note"
+          ]
+        },
+        "history": [],
+        "prose": false,
+        "question": "What is the required torque for J2?",
+        "scope": "passage",
+        "template": null
+      },
+      "reranker": {
+        "artifact_sha256": {
+          "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+          "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+        },
+        "dimensions": 1,
+        "document_prefix": "",
+        "dtype": "float32",
+        "format": "publisher_fp32_onnx",
+        "max_batch": 32,
+        "max_tokens_including_special": 512,
+        "onnxruntime_version": "1.31.0",
+        "pooling": "none; raw relevance logit, higher is better, not a probability",
+        "preprocessing_version": "minilm-pair-raw-logit-v1",
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "query_prefix": "",
+        "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+        "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+        "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+        "truncation": "reject"
+      },
+      "search_text": "What is the required torque for J2?",
+      "skipped": [
+        {
+          "key": {
+            "chunk_id": "c1",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "reason": "duplicate evidence"
+        },
+        {
+          "key": {
+            "chunk_id": "c2",
+            "document_id": "scanned_note",
+            "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+          },
+          "reason": "duplicate evidence"
+        }
+      ],
+      "validation": {
+        "mechanical_support": "passed",
+        "schema": "passed",
+        "semantic_correctness": "not_automatically_established",
+        "source_references": "passed"
+      },
+      "version": "answers-v1"
+    }
+  },
+  "answer_and_search_timings": [
+    {
+      "path": "/v1/search",
+      "status": 200,
+      "seconds": 0.016
+    },
+    {
+      "path": "/v1/search",
+      "status": 200,
+      "seconds": 0.015
+    },
+    {
+      "path": "/v1/ask",
+      "status": 200,
+      "seconds": 24.25
+    },
+    {
+      "path": "/v1/ask",
+      "status": 200,
+      "seconds": 14.86
+    }
+  ],
+  "recovery": {
+    "generation_outage": {
+      "independent_operations": [
+        "document inspection",
+        "job inspection",
+        "keyword search",
+        "structured lookup without prose"
+      ],
+      "processor": {
+        "capabilities": {
+          "embedding": true,
+          "generation": false,
+          "pdf": true,
+          "reranking": true
+        },
+        "generation": {
+          "error": "URLError",
+          "ready": false
+        },
+        "gpu_access": false,
+        "lanes": {
+          "background": {
+            "busy": false,
+            "last_transport_error": null,
+            "ready": true
+          },
+          "interactive": {
+            "busy": false,
+            "last_transport_error": null,
+            "ready": true
+          }
+        },
+        "pdf_error": null,
+        "service": "processor"
+      },
+      "ready": false,
+      "storage": {
+        "active_job": null,
+        "generation": 5,
+        "live": true,
+        "stopping": false,
+        "storage_ready": true
+      }
+    },
+    "failed_job": {
+      "document_id": "recovery",
+      "failure_count": 1,
+      "job_id": "recovery-v1",
+      "last_failure": {
+        "message": "capability unavailable: model operation: \"URLError: <urlopen error [Errno -3] Temporary failure in name resolution>\"",
+        "stage": "Chunked"
+      },
+      "receipt": null,
+      "revision": "d68d68fb63290f473bf02eb4df6a613bd2b7f2a341408f7a7aa426f302e7dd6a",
+      "stage": "Chunked",
+      "successful_stages": 2
+    },
+    "before_recreate": {
+      "jobs": [
+        {
+          "document_id": "array_matches",
+          "failure_count": 0,
+          "job_id": "array_matches-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 2,
+            "request_sha256": "59666709c20abd01e6aca95f06dc66cdea735dd773241f42e03881fa862bc431"
+          },
+          "revision": "74d8a01aa015c9b19a2270f0bffba7928460bb2b3cd42ca4b75c9b1d44fd58b6",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "equipment_guide",
+          "failure_count": 0,
+          "job_id": "equipment_guide-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 4,
+            "request_sha256": "bca6750d8ee6e527ce482c495dea74dac2d430d7730bf1a7fa44b810ae39705b"
+          },
+          "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "fictional_matches",
+          "failure_count": 0,
+          "job_id": "fictional_matches-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 1,
+            "request_sha256": "0566138c54c6e89f5296391c32f23fd78351fb76d40b6e99e4cbb1fb1e2ce43f"
+          },
+          "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "nested_matches",
+          "failure_count": 0,
+          "job_id": "nested_matches-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 3,
+            "request_sha256": "4b6d5ce8e3a74df4418fc5032faaace7e9a5307b1649404c99a856b08ae20c46"
+          },
+          "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "recovery",
+          "failure_count": 1,
+          "job_id": "recovery-v1",
+          "last_failure": {
+            "message": "capability unavailable: model operation: \"URLError: <urlopen error [Errno -3] Temporary failure in name resolution>\"",
+            "stage": "Chunked"
+          },
+          "receipt": null,
+          "revision": "d68d68fb63290f473bf02eb4df6a613bd2b7f2a341408f7a7aa426f302e7dd6a",
+          "stage": "Chunked",
+          "successful_stages": 2
+        },
+        {
+          "document_id": "scanned_note",
+          "failure_count": 0,
+          "job_id": "scanned_note-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 5,
+            "request_sha256": "457a936e83f4ca536c5bc3bbf5922137645d2dc6f5ca6a1e97ed4254060ddcc2"
+          },
+          "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601",
+          "stage": "Committed",
+          "successful_stages": 4
+        }
+      ]
+    },
+    "after_recreate": {
+      "jobs": [
+        {
+          "document_id": "array_matches",
+          "failure_count": 0,
+          "job_id": "array_matches-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 2,
+            "request_sha256": "59666709c20abd01e6aca95f06dc66cdea735dd773241f42e03881fa862bc431"
+          },
+          "revision": "74d8a01aa015c9b19a2270f0bffba7928460bb2b3cd42ca4b75c9b1d44fd58b6",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "equipment_guide",
+          "failure_count": 0,
+          "job_id": "equipment_guide-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 4,
+            "request_sha256": "bca6750d8ee6e527ce482c495dea74dac2d430d7730bf1a7fa44b810ae39705b"
+          },
+          "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "fictional_matches",
+          "failure_count": 0,
+          "job_id": "fictional_matches-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 1,
+            "request_sha256": "0566138c54c6e89f5296391c32f23fd78351fb76d40b6e99e4cbb1fb1e2ce43f"
+          },
+          "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "nested_matches",
+          "failure_count": 0,
+          "job_id": "nested_matches-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 3,
+            "request_sha256": "4b6d5ce8e3a74df4418fc5032faaace7e9a5307b1649404c99a856b08ae20c46"
+          },
+          "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "recovery",
+          "failure_count": 1,
+          "job_id": "recovery-v1",
+          "last_failure": {
+            "message": "capability unavailable: model operation: \"URLError: <urlopen error [Errno -3] Temporary failure in name resolution>\"",
+            "stage": "Chunked"
+          },
+          "receipt": null,
+          "revision": "d68d68fb63290f473bf02eb4df6a613bd2b7f2a341408f7a7aa426f302e7dd6a",
+          "stage": "Chunked",
+          "successful_stages": 2
+        },
+        {
+          "document_id": "scanned_note",
+          "failure_count": 0,
+          "job_id": "scanned_note-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 5,
+            "request_sha256": "457a936e83f4ca536c5bc3bbf5922137645d2dc6f5ca6a1e97ed4254060ddcc2"
+          },
+          "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601",
+          "stage": "Committed",
+          "successful_stages": 4
+        }
+      ]
+    },
+    "concurrent_keyword_seconds": [
+      0.014999999999417923,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.01600000000325963,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "timing_note": "Host timer granularity is about 15-16 ms; zero samples mean below resolution, not zero cost.",
+    "committed_after_interruption": {
+      "document_id": "recovery",
+      "failure_count": 1,
+      "job_id": "recovery-v1",
+      "last_failure": null,
+      "receipt": {
+        "generation": 6,
+        "request_sha256": "423f1375a91253d11a76681da2069019507f28cb2a026b95237041f6c50149e8"
+      },
+      "revision": "d68d68fb63290f473bf02eb4df6a613bd2b7f2a341408f7a7aa426f302e7dd6a",
+      "stage": "Committed",
+      "successful_stages": 4
+    },
+    "events": [
+      {
+        "path": "/readyz",
+        "status": 503,
+        "seconds": 0.016
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/ask",
+        "status": 200,
+        "seconds": 0.016
+      },
+      {
+        "path": "/v1/ask",
+        "status": 503,
+        "seconds": 0.015
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 0.032
+      },
+      {
+        "path": "/v1/documents",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/jobs",
+        "status": 200,
+        "seconds": 0.016
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.015
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/documents",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/jobs",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.015
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.015
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/retry",
+        "status": 202,
+        "seconds": 0.016
+      },
+      {
+        "path": "/healthz",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/healthz",
+        "status": 200,
+        "seconds": 0.016
+      },
+      {
+        "path": "/healthz",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/healthz",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/healthz",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/healthz",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/healthz",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/healthz",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.015
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.016
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/search",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/ingest",
+        "status": 202,
+        "seconds": 0.016
+      },
+      {
+        "path": "/v1/documents",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/jobs",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.016
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.0
+      },
+      {
+        "path": "/v1/document",
+        "status": 200,
+        "seconds": 0.016
+      }
+    ]
+  },
+  "backup": {
+    "manifest": {
+      "format": 1,
+      "generation": 6,
+      "jobs": 6,
+      "files": {
+        "FORMAT": {
+          "bytes": 10,
+          "sha256": "7b864dfcfcb00a91937428cf08612136fef1e30be4cd5547be2b80b63898ffd4"
+        },
+        "blobs/0a516837eefd05a1cd64559e2b7a566552e9b9411e72a53f88faefbe5b3ef149": {
+          "bytes": 108,
+          "sha256": "0a516837eefd05a1cd64559e2b7a566552e9b9411e72a53f88faefbe5b3ef149"
+        },
+        "blobs/2f7aa7e8b4ff4b42e5f98fd233980afaee7e83a584cbbb47e028e81753dedc02": {
+          "bytes": 4240,
+          "sha256": "2f7aa7e8b4ff4b42e5f98fd233980afaee7e83a584cbbb47e028e81753dedc02"
+        },
+        "blobs/303e836ae1368355ff7fac3bf812dd06f68998d5aacd17c47d64f949c421741f": {
+          "bytes": 283,
+          "sha256": "303e836ae1368355ff7fac3bf812dd06f68998d5aacd17c47d64f949c421741f"
+        },
+        "blobs/5fd3d6e6c7cf412b3cd35af78277c87f8d265078dbcf38a1cb86c732f2f71686": {
+          "bytes": 538,
+          "sha256": "5fd3d6e6c7cf412b3cd35af78277c87f8d265078dbcf38a1cb86c732f2f71686"
+        },
+        "blobs/90d7eb77293d035d8762fb97ef8e317d1e0db986f59aae7885c7be6a4ca26677": {
+          "bytes": 1044,
+          "sha256": "90d7eb77293d035d8762fb97ef8e317d1e0db986f59aae7885c7be6a4ca26677"
+        },
+        "blobs/c84b27496ef8a5b088535017dcbc498dc9494ef3a7a4ba2bc5630fe5636e2e3f": {
+          "bytes": 19108,
+          "sha256": "c84b27496ef8a5b088535017dcbc498dc9494ef3a7a4ba2bc5630fe5636e2e3f"
+        },
+        "blobs/dc8c41c6cb312efe2d1dfe168ba371739e2c4e3d31a3d694751f5d537fbfa41a": {
+          "bytes": 3141,
+          "sha256": "dc8c41c6cb312efe2d1dfe168ba371739e2c4e3d31a3d694751f5d537fbfa41a"
+        },
+        "blobs/ee6db1cbdb579d8df3b2c60bcd1c5adc8a9f7674094e2ff14d15a69a440d30a6": {
+          "bytes": 50808,
+          "sha256": "ee6db1cbdb579d8df3b2c60bcd1c5adc8a9f7674094e2ff14d15a69a440d30a6"
+        },
+        "jobs/12b47ebe7d04d18edae70b9bb18062390ccb872ae188b25ba09eb1e3199bb32d.job": {
+          "bytes": 117306,
+          "sha256": "9ed0fc9271ed503bd03b3568231544cdad4c5f4fd24a62b02dc8e273272e3fc2"
+        },
+        "jobs/50d8da7e611f53be196d45b2aa9c0ef26f8d78e07d656929af4370a04ea28e01.job": {
+          "bytes": 46359,
+          "sha256": "8429b518c9c72f5fcdbea7e5f31f557e027f4e6f986f6983822139997dc237bf"
+        },
+        "jobs/66afc3ffcb6bf8f36cc5a711cfc3cabbd90a67d850b8ba9312ba6189c4514f6e.job": {
+          "bytes": 19298,
+          "sha256": "6ea1ce4afb4e78c16a1ef6f43fb88a3c8b55dd425ff4e73b3d1d25a265bd5642"
+        },
+        "jobs/967d89c4b6ca042c4ee8a3e352ad021c0f3d8c662468622afe8e342a0236931c.job": {
+          "bytes": 32539,
+          "sha256": "4fcea71dee32f71a3b6f7861f28d6dd648bc5f4fcae325b8071f5c033fbff25c"
+        },
+        "jobs/b6fcd1c2c278439322f199f071d29406cf7779f46812f427471ca44f7d3cad5d.job": {
+          "bytes": 15483,
+          "sha256": "a8c8767c53d2def8064c97fd2d6953b868bf2fc43fe19c4a599c78b4e312cde0"
+        },
+        "jobs/bbeef50de4ea7208b1d45700f518dc93ea5d089946486b9f486e779ad56d0919.job": {
+          "bytes": 12914,
+          "sha256": "35b89e5c4b5d9f06d9820b7c828283966703315eda5dc4f93aa4d8be4661ad06"
+        },
+        "journal.bin": {
+          "bytes": 214606,
+          "sha256": "1576dd7a64a6a3483f8c0d9d7fab81cedee2440c1a631d2035f700be6593863c"
+        },
+        "snapshot.bin": {
+          "bytes": 212044,
+          "sha256": "2fa8ed83b68c57178cdd367a9462d34b0ddd184fada8b0cda7477e2e2be60e9a"
+        }
+      }
+    },
+    "file_count": 17,
+    "bytes": 749829,
+    "original_inspection_sha256": "e6784386dfab6d4871680e82f76a774801b537d4206f83baa446cea60a917c8a",
+    "restored_inspection_sha256": "e6784386dfab6d4871680e82f76a774801b537d4206f83baa446cea60a917c8a",
+    "live_export_rejection": " Container vectornext-t09-admin-run-7ae6fe7a3f32 Creating \n Container vectornext-t09-admin-run-7ae6fe7a3f32 Created \nanother writer holds this database\n\n",
+    "overwrite_rejection": " Container vectornext-t09-admin-run-38f08ed0439e Creating \n Container vectornext-t09-admin-run-38f08ed0439e Created \ninvalid record: destination already exists; restore never overwrites\n\n",
+    "final_documents": {
+      "documents": [
+        {
+          "chunks": 1,
+          "document_id": "after-restore",
+          "media_type": "Json",
+          "original": {
+            "bytes": 81,
+            "sha256": "ef8e90885b65ea377e6598c6e9f314d056a45529cb54e22158af9991ff356368"
+          },
+          "revision": "f8238da3512a3f9a9ec977f7b65e9b90c7d3307d45c5e953f42da464153262cc"
+        },
+        {
+          "chunks": 2,
+          "document_id": "array_matches",
+          "media_type": "Json",
+          "original": {
+            "bytes": 283,
+            "sha256": "303e836ae1368355ff7fac3bf812dd06f68998d5aacd17c47d64f949c421741f"
+          },
+          "revision": "74d8a01aa015c9b19a2270f0bffba7928460bb2b3cd42ca4b75c9b1d44fd58b6"
+        },
+        {
+          "chunks": 14,
+          "document_id": "equipment_guide",
+          "media_type": "Pdf",
+          "original": {
+            "bytes": 3141,
+            "sha256": "dc8c41c6cb312efe2d1dfe168ba371739e2c4e3d31a3d694751f5d537fbfa41a"
+          },
+          "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f"
+        },
+        {
+          "chunks": 1,
+          "document_id": "fictional_matches",
+          "media_type": "Txt",
+          "original": {
+            "bytes": 538,
+            "sha256": "5fd3d6e6c7cf412b3cd35af78277c87f8d265078dbcf38a1cb86c732f2f71686"
+          },
+          "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688"
+        },
+        {
+          "chunks": 7,
+          "document_id": "nested_matches",
+          "media_type": "Json",
+          "original": {
+            "bytes": 1044,
+            "sha256": "90d7eb77293d035d8762fb97ef8e317d1e0db986f59aae7885c7be6a4ca26677"
+          },
+          "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc"
+        },
+        {
+          "chunks": 2,
+          "document_id": "recovery",
+          "media_type": "Txt",
+          "original": {
+            "bytes": 108,
+            "sha256": "0a516837eefd05a1cd64559e2b7a566552e9b9411e72a53f88faefbe5b3ef149"
+          },
+          "revision": "d68d68fb63290f473bf02eb4df6a613bd2b7f2a341408f7a7aa426f302e7dd6a"
+        },
+        {
+          "chunks": 4,
+          "document_id": "scanned_note",
+          "media_type": "Pdf",
+          "original": {
+            "bytes": 50808,
+            "sha256": "ee6db1cbdb579d8df3b2c60bcd1c5adc8a9f7674094e2ff14d15a69a440d30a6"
+          },
+          "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601"
+        }
+      ],
+      "generation": 7,
+      "spaces": [
+        {
+          "id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "space": {
+            "artifact_sha256": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+            "dimensions": 384,
+            "document_prefix": "",
+            "max_tokens": 256,
+            "model": "sentence-transformers/all-MiniLM-L6-v2",
+            "normalization": "L2",
+            "preprocessing": "minilm-mask-mean-l2-v1;onnxruntime=1.31.0;numpy=2.5.4;cpu-fp32",
+            "query_prefix": "",
+            "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+            "tokenizer": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037;tokenizers=0.23.3;specials;no-truncation"
+          }
+        }
+      ]
+    },
+    "final_jobs": {
+      "jobs": [
+        {
+          "document_id": "after-restore",
+          "failure_count": 0,
+          "job_id": "after-restore-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 7,
+            "request_sha256": "06a09ac89f7f7a38128ee7701a5123b11afb4b8065cb5364807a5a86d4ec0971"
+          },
+          "revision": "f8238da3512a3f9a9ec977f7b65e9b90c7d3307d45c5e953f42da464153262cc",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "array_matches",
+          "failure_count": 0,
+          "job_id": "array_matches-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 2,
+            "request_sha256": "59666709c20abd01e6aca95f06dc66cdea735dd773241f42e03881fa862bc431"
+          },
+          "revision": "74d8a01aa015c9b19a2270f0bffba7928460bb2b3cd42ca4b75c9b1d44fd58b6",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "equipment_guide",
+          "failure_count": 0,
+          "job_id": "equipment_guide-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 4,
+            "request_sha256": "bca6750d8ee6e527ce482c495dea74dac2d430d7730bf1a7fa44b810ae39705b"
+          },
+          "revision": "afba55b0a3960af0836972ce6adcc43b0fe22f0c0ac7e1ff85ce79132ce2e19f",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "fictional_matches",
+          "failure_count": 0,
+          "job_id": "fictional_matches-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 1,
+            "request_sha256": "0566138c54c6e89f5296391c32f23fd78351fb76d40b6e99e4cbb1fb1e2ce43f"
+          },
+          "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "nested_matches",
+          "failure_count": 0,
+          "job_id": "nested_matches-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 3,
+            "request_sha256": "4b6d5ce8e3a74df4418fc5032faaace7e9a5307b1649404c99a856b08ae20c46"
+          },
+          "revision": "f1c4b52ea29bef2e2566d26f68ddf1d6f78ec2c230ac13c2625783cfe60ffacc",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "recovery",
+          "failure_count": 1,
+          "job_id": "recovery-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 6,
+            "request_sha256": "423f1375a91253d11a76681da2069019507f28cb2a026b95237041f6c50149e8"
+          },
+          "revision": "d68d68fb63290f473bf02eb4df6a613bd2b7f2a341408f7a7aa426f302e7dd6a",
+          "stage": "Committed",
+          "successful_stages": 4
+        },
+        {
+          "document_id": "scanned_note",
+          "failure_count": 0,
+          "job_id": "scanned_note-v1",
+          "last_failure": null,
+          "receipt": {
+            "generation": 5,
+            "request_sha256": "457a936e83f4ca536c5bc3bbf5922137645d2dc6f5ca6a1e97ed4254060ddcc2"
+          },
+          "revision": "8f3bc53327b64687ad87da4d1afa5a505a3410b191415c7042f37d9d158b9601",
+          "stage": "Committed",
+          "successful_stages": 4
+        }
+      ]
+    }
+  },
+  "all_models_offline": {
+    "readiness": {
+      "independent_operations": [
+        "document inspection",
+        "job inspection",
+        "keyword search",
+        "structured lookup without prose"
+      ],
+      "processor": {
+        "capabilities": {},
+        "error": "capability unavailable: processor /health: http://processor:8090/health: Dns Failed: resolve dns name 'processor:8090': failed to lookup address information: Name or service not known"
+      },
+      "ready": false,
+      "storage": {
+        "active_job": null,
+        "generation": 7,
+        "live": true,
+        "stopping": false,
+        "storage_ready": true
+      }
+    },
+    "hybrid_error": {
+      "error": {
+        "code": "capability_unavailable",
+        "message": "capability unavailable: processor /rpc/interactive: http://processor:8090/rpc/interactive: Dns Failed: resolve dns name 'processor:8090': failed to lookup address information: Name or service not known"
+      }
+    },
+    "exact_number_response_raw": "{\"answer\":{\"fields\":{\"number\":{\"evidence_id\":\"E1\",\"pointer\":\"/number\",\"quote\":\"\",\"value\":9007199254740993.00000000000001}},\"status\":\"supported\"},\"audit\":{\"aggregation\":false,\"eligible_records\":1,\"operation\":\"complete_filtered_record_scan_v1\"},\"embedding_space_id\":\"6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996\",\"evidence\":[{\"id\":\"E1\",\"key\":{\"chunk_id\":\"c0\",\"document_id\":\"after-restore\",\"revision\":\"f8238da3512a3f9a9ec977f7b65e9b90c7d3307d45c5e953f42da464153262cc\"},\"labels\":[],\"record\":{\"id\":\"exact\",\"number\":9007199254740993.00000000000001,\"unknown\":null,\"zero\":0},\"sources\":[{\"locator\":{\"Json\":{\"pointer\":\"/0\",\"record_id\":\"exact\"}},\"revision\":\"f8238da3512a3f9a9ec977f7b65e9b90c7d3307d45c5e953f42da464153262cc\"}],\"spans\":[],\"text\":\"{\\\"id\\\":\\\"exact\\\",\\\"number\\\":9007199254740993.00000000000001,\\\"unknown\\\":null,\\\"zero\\\":0}\"}],\"formatted\":\"number: 9007199254740993.00000000000001\",\"generation\":7,\"input_limit\":3328,\"output_limit\":768,\"presentation_draft\":null,\"prompt_tokens\":null,\"ranked\":[],\"request\":{\"fields\":{\"number\":{\"description\":\"\",\"kind\":\"number\",\"nullable\":false,\"pointer\":\"/number\"}},\"filter\":{\"DocumentIds\":[\"after-restore\"]},\"history\":[],\"prose\":false,\"question\":\"Read the exact number.\",\"scope\":\"structured_lookup\",\"template\":null},\"reranker\":null,\"retrieval\":null,\"search_text\":\"Read the exact number.\",\"skipped\":[],\"validation\":{\"mechanical_support\":\"passed\",\"schema\":\"passed\",\"semantic_correctness\":\"not_automatically_established\",\"source_references\":\"passed\"},\"version\":\"answers-v1\"}"
+  },
+  "final_api_checks": {
+    "missing-client": {
+      "status": 400,
+      "body": {
+        "error": {
+          "code": "invalid_request",
+          "message": "invalid record: X-VectorNext-Client: 1 is required"
+        }
+      }
+    },
+    "browser-origin": {
+      "status": 400,
+      "body": {
+        "error": {
+          "code": "invalid_request",
+          "message": "invalid record: browser origins are unsupported; use the local client"
+        }
+      }
+    },
+    "offline-identical-upload": {
+      "status": 202,
+      "body": {
+        "document_id": "fictional_matches",
+        "failure_count": 0,
+        "job_id": "fictional_matches-v1",
+        "last_failure": null,
+        "receipt": {
+          "generation": 1,
+          "request_sha256": "0566138c54c6e89f5296391c32f23fd78351fb76d40b6e99e4cbb1fb1e2ce43f"
+        },
+        "revision": "7d1030340fd9a456b1775a671471dc3611da80c07aea4f8fd2d30dfb59c02688",
+        "stage": "Committed",
+        "successful_stages": 4
+      }
+    },
+    "changed-upload-rejected": {
+      "status": 400,
+      "body": {
+        "error": {
+          "code": "invalid_request",
+          "message": "invalid record: job ID already has different input/options"
+        }
+      }
+    },
+    "final-image-reopened": {
+      "status": 200,
+      "body": {
+        "active_job": null,
+        "generation": 7,
+        "live": true,
+        "stopping": false,
+        "storage_ready": true
+      }
+    }
+  },
+  "retained": {
+    "project": "vectornext-t09",
+    "volume": "vectornext-t09_data",
+    "original": "/storage/db generation 6",
+    "restored": "/storage/restored generation 7",
+    "cache": "vectornext-t09_cache",
+    "backup": "backups/20261014-t09",
+    "raw": "data/t09/20261014-t09",
+    "services": "stopped; models and existing T07 volumes retained"
+  },
+  "development_corrections": [
+    "A Docker internal-only API network did not publish its requested localhost port. Added an ingress bridge only to the API; model/processor network stays internal.",
+    "An initial existing Python suite invocation lacked the model bind mount. Re-ran with checksum-verified local weights; all 18 passed.",
+    "Client document/search output originally parsed and re-encoded numbers. Changed CLI output to exact server bytes; arbitrary-precision decimal verified after restore."
+  ],
+  "limits": [
+    "Single-user localhost API; no public authentication or complete slow-client connection deadline.",
+    "One interactive CPU lane and one background lane; overload fails for explicit retry. GPU active work is non-preemptive.",
+    "PDF conversion precedes durable upload acknowledgment; retained canonical artifact supports subsequent stage recovery.",
+    "Export requires API downtime; initial limits 8 GiB / 100000 files. No compaction or garbage collection.",
+    "Pinned base/model/Cargo/Python artifacts; Debian package repositories are not frozen snapshots.",
+    "Two smoke answers and a small corpus do not establish quality, throughput or memory peaks. T10 remains pending."
+  ]
+}

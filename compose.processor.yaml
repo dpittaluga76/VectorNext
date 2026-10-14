@@ -1,0 +1,36 @@
+# T06 CPU adapter tooling. The production API/scheduler remains T09.
+services:
+  processor:
+    image: vectornext-processor
+    build:
+      context: .
+      dockerfile: docker/processor.Dockerfile
+    network_mode: none
+    read_only: true
+    cpus: 2
+    mem_limit: 4g
+    pids_limit: 128
+    environment:
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+    tmpfs:
+      - /tmp:size=536870912
+    volumes:
+      - ./models:/models:ro
+      - ./tmp/pdf:/output
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+  pdf-setup:
+    image: vectornext-processor
+    profiles: [setup]
+    read_only: true
+    cpus: 2
+    mem_limit: 2g
+    pids_limit: 64
+    tmpfs:
+      - /tmp:size=536870912
+    volumes:
+      - ./models:/models
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    command: [python, -m, processor.assets, download, /models]

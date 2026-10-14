@@ -1,0 +1,18 @@
+[
+  {
+    "synthetic": true,
+    "id": "a-001",
+    "player": "Sol Marin",
+    "opponent": "Riverside",
+    "year": 2023,
+    "goals": 4
+  },
+  {
+    "synthetic": true,
+    "id": "a-002",
+    "player": "Sol Marin",
+    "opponent": "Riverside",
+    "year": 2024,
+    "goals": 1
+  }
+]

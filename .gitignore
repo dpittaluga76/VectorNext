@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# VectorNext local artifacts
+/tmp/
+/models/
+/data/
+# Local export directories contain source documents and database state.
+/backups/

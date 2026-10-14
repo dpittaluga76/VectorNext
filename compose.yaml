@@ -1,0 +1,27 @@
+services:
+  core:
+    build:
+      context: .
+      dockerfile: docker/core.Dockerfile
+    network_mode: none
+    read_only: true
+    environment:
+      CARGO_TARGET_DIR: /tmp/target
+    tmpfs:
+      - /tmp:exec
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+  evals:
+    build:
+      context: .
+      dockerfile: docker/evals.Dockerfile
+    network_mode: none
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true

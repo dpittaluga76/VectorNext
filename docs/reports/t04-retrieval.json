@@ -1,0 +1,4076 @@
+{
+  "architecture": "x86_64",
+  "case_definitions_sha256": "f9366d0f4faf7c6f4ace2c29dace9f60f3dd6a7799bda1d4dce4b0e8da763973",
+  "cases": [
+    {
+      "coverage": {
+        "deduplicated": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 128,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "dense": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [],
+          "evidence_bytes": 64,
+          "first_complete_rank": null,
+          "recall": 0.0
+        },
+        "eligible": {
+          "candidates": 8,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 430,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "fused": {
+          "candidates": 3,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 192,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "keyword": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 128,
+          "first_complete_rank": 1,
+          "recall": 1.0
+        },
+        "results": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 128,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        }
+      },
+      "expected_outcome": "supported",
+      "gold_sources": [
+        {
+          "document_id": "b-target",
+          "end": 64,
+          "id": "target-match",
+          "revision": "r1",
+          "start": 0
+        }
+      ],
+      "id": "keyword-rescues-dense-cutoff",
+      "search": {
+        "corpus_chunks": 8,
+        "deduplicated": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          }
+        ],
+        "dense": [
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "score": 1.0
+          }
+        ],
+        "dense_scored": 8,
+        "eligibility": [
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            }
+          }
+        ],
+        "eligible_chunks": 8,
+        "fused": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.016129032258064516
+          }
+        ],
+        "generation": 6,
+        "keyword": [
+          {
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 1.3869745906835835,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "1954"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 1.3869745906835835,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "1954"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          }
+        ],
+        "keyword_config": {
+          "b": 0.75,
+          "evidence_weight": 1.0,
+          "generated_weight": 0.0,
+          "k1": 1.2,
+          "structural_weight": 1.0
+        },
+        "keyword_matched": 6,
+        "query_terms": [
+          "1954",
+          "argentina",
+          "pele"
+        ],
+        "request": {
+          "deduplication": "ExactEvidence",
+          "dense_k": 1,
+          "dense_weight": 1.0,
+          "filter": {
+            "All": []
+          },
+          "keyword_k": 2,
+          "keyword_weight": 1.0,
+          "limit": 3,
+          "rrf_k": 60.0,
+          "text": "Pele Argentina 1954",
+          "trace_eligibility": true,
+          "vector": {
+            "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+            "values": [
+              1.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "results": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          }
+        ],
+        "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+        "suppressed": [
+          {
+            "kept": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "removed": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          }
+        ],
+        "tokenizer": "nfkd-lower-alnum-v1",
+        "unknown_filter_chunks": 0
+      }
+    },
+    {
+      "coverage": {
+        "deduplicated": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 128,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "dense": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [],
+          "evidence_bytes": 64,
+          "first_complete_rank": null,
+          "recall": 0.0
+        },
+        "eligible": {
+          "candidates": 8,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 430,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "fused": {
+          "candidates": 3,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 192,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "keyword": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 128,
+          "first_complete_rank": 1,
+          "recall": 1.0
+        },
+        "results": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [],
+          "evidence_bytes": 64,
+          "first_complete_rank": null,
+          "recall": 0.0
+        }
+      },
+      "expected_outcome": "supported",
+      "gold_sources": [
+        {
+          "document_id": "b-target",
+          "end": 64,
+          "id": "target-match",
+          "revision": "r1",
+          "start": 0
+        }
+      ],
+      "id": "final-limit-loses-rescued-evidence",
+      "search": {
+        "corpus_chunks": 8,
+        "deduplicated": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          }
+        ],
+        "dense": [
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "score": 1.0
+          }
+        ],
+        "dense_scored": 8,
+        "eligibility": [
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            }
+          }
+        ],
+        "eligible_chunks": 8,
+        "fused": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.016129032258064516
+          }
+        ],
+        "generation": 6,
+        "keyword": [
+          {
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 1.3869745906835835,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "1954"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 1.3869745906835835,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "1954"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          }
+        ],
+        "keyword_config": {
+          "b": 0.75,
+          "evidence_weight": 1.0,
+          "generated_weight": 0.0,
+          "k1": 1.2,
+          "structural_weight": 1.0
+        },
+        "keyword_matched": 6,
+        "query_terms": [
+          "1954",
+          "argentina",
+          "pele"
+        ],
+        "request": {
+          "deduplication": "ExactEvidence",
+          "dense_k": 1,
+          "dense_weight": 1.0,
+          "filter": {
+            "All": []
+          },
+          "keyword_k": 2,
+          "keyword_weight": 1.0,
+          "limit": 1,
+          "rrf_k": 60.0,
+          "text": "Pele Argentina 1954",
+          "trace_eligibility": true,
+          "vector": {
+            "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+            "values": [
+              1.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "results": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.01639344262295082
+          }
+        ],
+        "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+        "suppressed": [
+          {
+            "kept": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "removed": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          }
+        ],
+        "tokenizer": "nfkd-lower-alnum-v1",
+        "unknown_filter_chunks": 0
+      }
+    },
+    {
+      "coverage": {
+        "deduplicated": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 128,
+          "first_complete_rank": 1,
+          "recall": 1.0
+        },
+        "dense": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [],
+          "evidence_bytes": 64,
+          "first_complete_rank": null,
+          "recall": 0.0
+        },
+        "eligible": {
+          "candidates": 5,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 316,
+          "first_complete_rank": 1,
+          "recall": 1.0
+        },
+        "fused": {
+          "candidates": 3,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 192,
+          "first_complete_rank": 1,
+          "recall": 1.0
+        },
+        "keyword": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 128,
+          "first_complete_rank": 1,
+          "recall": 1.0
+        },
+        "results": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "target-match"
+          ],
+          "evidence_bytes": 128,
+          "first_complete_rank": 1,
+          "recall": 1.0
+        }
+      },
+      "expected_outcome": "supported",
+      "gold_sources": [
+        {
+          "document_id": "b-target",
+          "end": 64,
+          "id": "target-match",
+          "revision": "r1",
+          "start": 0
+        }
+      ],
+      "id": "explicit-year-filter",
+      "search": {
+        "corpus_chunks": 8,
+        "deduplicated": [
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.01639344262295082
+          }
+        ],
+        "dense": [
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "score": 0.8082903719329807
+          }
+        ],
+        "dense_scored": 5,
+        "eligibility": [
+          {
+            "decision": "False",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "Unknown",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "Unknown",
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            }
+          }
+        ],
+        "eligible_chunks": 5,
+        "fused": [
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.016129032258064516
+          }
+        ],
+        "generation": 6,
+        "keyword": [
+          {
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 1.3869745906835835,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "1954"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 1.3869745906835835,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "1954"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          }
+        ],
+        "keyword_config": {
+          "b": 0.75,
+          "evidence_weight": 1.0,
+          "generated_weight": 0.0,
+          "k1": 1.2,
+          "structural_weight": 1.0
+        },
+        "keyword_matched": 5,
+        "query_terms": [
+          "1954",
+          "argentina",
+          "pele"
+        ],
+        "request": {
+          "deduplication": "ExactEvidence",
+          "dense_k": 1,
+          "dense_weight": 1.0,
+          "filter": {
+            "Attribute": {
+              "key": "match.year",
+              "pointer": "",
+              "predicate": {
+                "Eq": 1954
+              },
+              "trust": "SourceOrDeterministic"
+            }
+          },
+          "keyword_k": 2,
+          "keyword_weight": 1.0,
+          "limit": 3,
+          "rrf_k": 60.0,
+          "text": "Pele Argentina 1954",
+          "trace_eligibility": true,
+          "vector": {
+            "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+            "values": [
+              1.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "results": [
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.01639344262295082
+          }
+        ],
+        "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+        "suppressed": [
+          {
+            "kept": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "removed": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          }
+        ],
+        "tokenizer": "nfkd-lower-alnum-v1",
+        "unknown_filter_chunks": 2
+      }
+    },
+    {
+      "coverage": {
+        "deduplicated": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [],
+          "evidence_bytes": 64,
+          "first_complete_rank": null,
+          "recall": 0.0
+        },
+        "dense": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [],
+          "evidence_bytes": 64,
+          "first_complete_rank": null,
+          "recall": 0.0
+        },
+        "eligible": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [],
+          "evidence_bytes": 64,
+          "first_complete_rank": null,
+          "recall": 0.0
+        },
+        "fused": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [],
+          "evidence_bytes": 64,
+          "first_complete_rank": null,
+          "recall": 0.0
+        },
+        "keyword": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [],
+          "evidence_bytes": 64,
+          "first_complete_rank": null,
+          "recall": 0.0
+        },
+        "results": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [],
+          "evidence_bytes": 64,
+          "first_complete_rank": null,
+          "recall": 0.0
+        }
+      },
+      "expected_outcome": "supported",
+      "gold_sources": [
+        {
+          "document_id": "b-target",
+          "end": 64,
+          "id": "target-match",
+          "revision": "r1",
+          "start": 0
+        }
+      ],
+      "id": "incorrect-explicit-filter-loses-evidence",
+      "search": {
+        "corpus_chunks": 8,
+        "deduplicated": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03278688524590164
+          }
+        ],
+        "dense": [
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "score": 1.0
+          }
+        ],
+        "dense_scored": 1,
+        "eligibility": [
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "False",
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "False",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "False",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "Unknown",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "Unknown",
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "False",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "False",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            }
+          }
+        ],
+        "eligible_chunks": 1,
+        "fused": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03278688524590164
+          }
+        ],
+        "generation": 6,
+        "keyword": [
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "score": 0.924649727122389,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          }
+        ],
+        "keyword_config": {
+          "b": 0.75,
+          "evidence_weight": 1.0,
+          "generated_weight": 0.0,
+          "k1": 1.2,
+          "structural_weight": 1.0
+        },
+        "keyword_matched": 1,
+        "query_terms": [
+          "1954",
+          "argentina",
+          "pele"
+        ],
+        "request": {
+          "deduplication": "ExactEvidence",
+          "dense_k": 1,
+          "dense_weight": 1.0,
+          "filter": {
+            "Attribute": {
+              "key": "match.year",
+              "pointer": "",
+              "predicate": {
+                "Eq": 1955
+              },
+              "trust": "SourceOrDeterministic"
+            }
+          },
+          "keyword_k": 2,
+          "keyword_weight": 1.0,
+          "limit": 3,
+          "rrf_k": 60.0,
+          "text": "Pele Argentina 1954",
+          "trace_eligibility": true,
+          "vector": {
+            "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+            "values": [
+              1.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "results": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03278688524590164
+          }
+        ],
+        "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+        "suppressed": [],
+        "tokenizer": "nfkd-lower-alnum-v1",
+        "unknown_filter_chunks": 2
+      }
+    },
+    {
+      "coverage": {
+        "deduplicated": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 50,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "dense": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 50,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "eligible": {
+          "candidates": 8,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 430,
+          "first_complete_rank": 6,
+          "recall": 1.0
+        },
+        "fused": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 50,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "keyword": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 50,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "results": {
+          "candidates": 1,
+          "complete": false,
+          "covered": [
+            "torque-unit"
+          ],
+          "evidence_bytes": 17,
+          "first_complete_rank": null,
+          "recall": 0.5
+        }
+      },
+      "expected_outcome": "supported",
+      "gold_sources": [
+        {
+          "document_id": "d-maintenance",
+          "end": 17,
+          "id": "torque-unit",
+          "revision": "r1",
+          "start": 0
+        },
+        {
+          "document_id": "d-maintenance",
+          "end": 51,
+          "id": "torque-value",
+          "revision": "r1",
+          "start": 18
+        }
+      ],
+      "id": "unit-and-value-budget-loss",
+      "search": {
+        "corpus_chunks": 8,
+        "deduplicated": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.03252247488101534
+          },
+          {
+            "dense_contribution": 0.016129032258064516,
+            "dense_rank": 2,
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03252247488101534
+          }
+        ],
+        "dense": [
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "score": 1.0
+          },
+          {
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "score": 0.9949371889695597
+          }
+        ],
+        "dense_scored": 8,
+        "eligibility": [
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            }
+          }
+        ],
+        "eligible_chunks": 8,
+        "fused": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.03252247488101534
+          },
+          {
+            "dense_contribution": 0.016129032258064516,
+            "dense_rank": 2,
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03252247488101534
+          }
+        ],
+        "generation": 6,
+        "keyword": [
+          {
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "score": 4.327590889877785,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 1,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 1.791759469228055,
+                "length": 5,
+                "score": 2.1637954449388923,
+                "term": "j2"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 1,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 1.791759469228055,
+                "length": 5,
+                "score": 2.1637954449388923,
+                "term": "tightening"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "score": 2.2952665605807487,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 1,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 1.791759469228055,
+                "length": 4,
+                "score": 2.2952665605807487,
+                "term": "torque"
+              }
+            ]
+          }
+        ],
+        "keyword_config": {
+          "b": 0.75,
+          "evidence_weight": 1.0,
+          "generated_weight": 0.0,
+          "k1": 1.2,
+          "structural_weight": 1.0
+        },
+        "keyword_matched": 2,
+        "query_terms": [
+          "j2",
+          "tightening",
+          "torque"
+        ],
+        "request": {
+          "deduplication": "ExactEvidence",
+          "dense_k": 2,
+          "dense_weight": 1.0,
+          "filter": {
+            "All": []
+          },
+          "keyword_k": 2,
+          "keyword_weight": 1.0,
+          "limit": 1,
+          "rrf_k": 60.0,
+          "text": "J2 torque tightening",
+          "trace_eligibility": true,
+          "vector": {
+            "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+            "values": [
+              0.0,
+              0.0,
+              1.0
+            ]
+          }
+        },
+        "results": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.03252247488101534
+          }
+        ],
+        "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+        "suppressed": [],
+        "tokenizer": "nfkd-lower-alnum-v1",
+        "unknown_filter_chunks": 0
+      }
+    },
+    {
+      "coverage": {
+        "deduplicated": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 50,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "dense": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 50,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "eligible": {
+          "candidates": 8,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 430,
+          "first_complete_rank": 6,
+          "recall": 1.0
+        },
+        "fused": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 50,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "keyword": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 50,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "results": {
+          "candidates": 2,
+          "complete": true,
+          "covered": [
+            "torque-unit",
+            "torque-value"
+          ],
+          "evidence_bytes": 50,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        }
+      },
+      "expected_outcome": "supported",
+      "gold_sources": [
+        {
+          "document_id": "d-maintenance",
+          "end": 17,
+          "id": "torque-unit",
+          "revision": "r1",
+          "start": 0
+        },
+        {
+          "document_id": "d-maintenance",
+          "end": 51,
+          "id": "torque-value",
+          "revision": "r1",
+          "start": 18
+        }
+      ],
+      "id": "unit-and-value-retained",
+      "search": {
+        "corpus_chunks": 8,
+        "deduplicated": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.03252247488101534
+          },
+          {
+            "dense_contribution": 0.016129032258064516,
+            "dense_rank": 2,
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03252247488101534
+          }
+        ],
+        "dense": [
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "score": 1.0
+          },
+          {
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "score": 0.9949371889695597
+          }
+        ],
+        "dense_scored": 8,
+        "eligibility": [
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            }
+          }
+        ],
+        "eligible_chunks": 8,
+        "fused": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.03252247488101534
+          },
+          {
+            "dense_contribution": 0.016129032258064516,
+            "dense_rank": 2,
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03252247488101534
+          }
+        ],
+        "generation": 6,
+        "keyword": [
+          {
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "score": 4.327590889877785,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 1,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 1.791759469228055,
+                "length": 5,
+                "score": 2.1637954449388923,
+                "term": "j2"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 1,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 1.791759469228055,
+                "length": 5,
+                "score": 2.1637954449388923,
+                "term": "tightening"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "score": 2.2952665605807487,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 1,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 1.791759469228055,
+                "length": 4,
+                "score": 2.2952665605807487,
+                "term": "torque"
+              }
+            ]
+          }
+        ],
+        "keyword_config": {
+          "b": 0.75,
+          "evidence_weight": 1.0,
+          "generated_weight": 0.0,
+          "k1": 1.2,
+          "structural_weight": 1.0
+        },
+        "keyword_matched": 2,
+        "query_terms": [
+          "j2",
+          "tightening",
+          "torque"
+        ],
+        "request": {
+          "deduplication": "ExactEvidence",
+          "dense_k": 2,
+          "dense_weight": 1.0,
+          "filter": {
+            "All": []
+          },
+          "keyword_k": 2,
+          "keyword_weight": 1.0,
+          "limit": 2,
+          "rrf_k": 60.0,
+          "text": "J2 torque tightening",
+          "trace_eligibility": true,
+          "vector": {
+            "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+            "values": [
+              0.0,
+              0.0,
+              1.0
+            ]
+          }
+        },
+        "results": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.03252247488101534
+          },
+          {
+            "dense_contribution": 0.016129032258064516,
+            "dense_rank": 2,
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03252247488101534
+          }
+        ],
+        "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+        "suppressed": [],
+        "tokenizer": "nfkd-lower-alnum-v1",
+        "unknown_filter_chunks": 0
+      }
+    },
+    {
+      "coverage": {
+        "deduplicated": {
+          "candidates": 5,
+          "complete": true,
+          "covered": [
+            "different-year",
+            "target-match"
+          ],
+          "evidence_bytes": 316,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "dense": {
+          "candidates": 5,
+          "complete": true,
+          "covered": [
+            "different-year",
+            "target-match"
+          ],
+          "evidence_bytes": 318,
+          "first_complete_rank": 3,
+          "recall": 1.0
+        },
+        "eligible": {
+          "candidates": 8,
+          "complete": true,
+          "covered": [
+            "different-year",
+            "target-match"
+          ],
+          "evidence_bytes": 430,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "fused": {
+          "candidates": 6,
+          "complete": true,
+          "covered": [
+            "different-year",
+            "target-match"
+          ],
+          "evidence_bytes": 380,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "keyword": {
+          "candidates": 5,
+          "complete": true,
+          "covered": [
+            "different-year",
+            "target-match"
+          ],
+          "evidence_bytes": 318,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        },
+        "results": {
+          "candidates": 5,
+          "complete": true,
+          "covered": [
+            "different-year",
+            "target-match"
+          ],
+          "evidence_bytes": 316,
+          "first_complete_rank": 2,
+          "recall": 1.0
+        }
+      },
+      "expected_outcome": "ambiguous",
+      "gold_sources": [
+        {
+          "document_id": "a-near",
+          "end": 64,
+          "id": "different-year",
+          "revision": "r1",
+          "start": 0
+        },
+        {
+          "document_id": "b-target",
+          "end": 64,
+          "id": "target-match",
+          "revision": "r1",
+          "start": 0
+        }
+      ],
+      "id": "ambiguous-year-alternatives",
+      "search": {
+        "corpus_chunks": 8,
+        "deduplicated": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03278688524590164
+          },
+          {
+            "dense_contribution": 0.015873015873015872,
+            "dense_rank": 3,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.03200204813108039
+          },
+          {
+            "dense_contribution": 0.016129032258064516,
+            "dense_rank": 2,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015625,
+            "keyword_rank": 4,
+            "score": 0.031754032258064516
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015384615384615385,
+            "keyword_rank": 5,
+            "score": 0.015384615384615385
+          },
+          {
+            "dense_contribution": 0.015384615384615385,
+            "dense_rank": 5,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.015384615384615385
+          }
+        ],
+        "dense": [
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "score": 1.0
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "score": 0.8082903719329807
+          },
+          {
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 0.7999999928474427
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 0.7999999928474427
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            },
+            "score": 0.6804138166887379
+          }
+        ],
+        "dense_scored": 8,
+        "eligibility": [
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            }
+          }
+        ],
+        "eligible_chunks": 8,
+        "fused": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03278688524590164
+          },
+          {
+            "dense_contribution": 0.015873015873015872,
+            "dense_rank": 3,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.03200204813108039
+          },
+          {
+            "dense_contribution": 0.016129032258064516,
+            "dense_rank": 2,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015625,
+            "keyword_rank": 4,
+            "score": 0.031754032258064516
+          },
+          {
+            "dense_contribution": 0.015625,
+            "dense_rank": 4,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015873015873015872,
+            "keyword_rank": 3,
+            "score": 0.03149801587301587
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015384615384615385,
+            "keyword_rank": 5,
+            "score": 0.015384615384615385
+          },
+          {
+            "dense_contribution": 0.015384615384615385,
+            "dense_rank": 5,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.015384615384615385
+          }
+        ],
+        "generation": 6,
+        "keyword": [
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "score": 0.924649727122389,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 0.924649727122389,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 0.924649727122389,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "score": 0.924649727122389,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "argentina"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            },
+            "score": 0.4623248635611945,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 5,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.49247648509779407,
+                "length": 10,
+                "score": 0.4623248635611945,
+                "term": "pele"
+              }
+            ]
+          }
+        ],
+        "keyword_config": {
+          "b": 0.75,
+          "evidence_weight": 1.0,
+          "generated_weight": 0.0,
+          "k1": 1.2,
+          "structural_weight": 1.0
+        },
+        "keyword_matched": 6,
+        "query_terms": [
+          "argentina",
+          "pele"
+        ],
+        "request": {
+          "deduplication": "ExactEvidence",
+          "dense_k": 5,
+          "dense_weight": 1.0,
+          "filter": {
+            "All": []
+          },
+          "keyword_k": 5,
+          "keyword_weight": 1.0,
+          "limit": 5,
+          "rrf_k": 60.0,
+          "text": "Pele Argentina",
+          "trace_eligibility": true,
+          "vector": {
+            "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+            "values": [
+              1.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "results": [
+          {
+            "dense_contribution": 0.01639344262295082,
+            "dense_rank": 1,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.03278688524590164
+          },
+          {
+            "dense_contribution": 0.015873015873015872,
+            "dense_rank": 3,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.03200204813108039
+          },
+          {
+            "dense_contribution": 0.016129032258064516,
+            "dense_rank": 2,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015625,
+            "keyword_rank": 4,
+            "score": 0.031754032258064516
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015384615384615385,
+            "keyword_rank": 5,
+            "score": 0.015384615384615385
+          },
+          {
+            "dense_contribution": 0.015384615384615385,
+            "dense_rank": 5,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.0,
+            "keyword_rank": null,
+            "score": 0.015384615384615385
+          }
+        ],
+        "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+        "suppressed": [
+          {
+            "kept": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "removed": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          }
+        ],
+        "tokenizer": "nfkd-lower-alnum-v1",
+        "unknown_filter_chunks": 0
+      }
+    },
+    {
+      "coverage": {
+        "deduplicated": {
+          "candidates": 5,
+          "complete": null,
+          "covered": [],
+          "evidence_bytes": 316,
+          "first_complete_rank": null,
+          "recall": null
+        },
+        "dense": {
+          "candidates": 0,
+          "complete": null,
+          "covered": [],
+          "evidence_bytes": 0,
+          "first_complete_rank": null,
+          "recall": null
+        },
+        "eligible": {
+          "candidates": 8,
+          "complete": null,
+          "covered": [],
+          "evidence_bytes": 430,
+          "first_complete_rank": null,
+          "recall": null
+        },
+        "fused": {
+          "candidates": 6,
+          "complete": null,
+          "covered": [],
+          "evidence_bytes": 380,
+          "first_complete_rank": null,
+          "recall": null
+        },
+        "keyword": {
+          "candidates": 6,
+          "complete": null,
+          "covered": [],
+          "evidence_bytes": 380,
+          "first_complete_rank": null,
+          "recall": null
+        },
+        "results": {
+          "candidates": 5,
+          "complete": null,
+          "covered": [],
+          "evidence_bytes": 316,
+          "first_complete_rank": null,
+          "recall": null
+        }
+      },
+      "expected_outcome": "insufficient_evidence",
+      "gold_sources": [],
+      "id": "no-support-defined",
+      "search": {
+        "corpus_chunks": 8,
+        "deduplicated": [
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.016129032258064516
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015625,
+            "keyword_rank": 4,
+            "score": 0.015625
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015384615384615385,
+            "keyword_rank": 5,
+            "score": 0.015384615384615385
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015151515151515152,
+            "keyword_rank": 6,
+            "score": 0.015151515151515152
+          }
+        ],
+        "dense": [],
+        "dense_scored": 0,
+        "eligibility": [
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c1",
+              "document_id": "d-maintenance",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            }
+          },
+          {
+            "decision": "True",
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            }
+          }
+        ],
+        "eligible_chunks": 8,
+        "fused": [
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.016129032258064516
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015873015873015872,
+            "keyword_rank": 3,
+            "score": 0.015873015873015872
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015625,
+            "keyword_rank": 4,
+            "score": 0.015625
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015384615384615385,
+            "keyword_rank": 5,
+            "score": 0.015384615384615385
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015151515151515152,
+            "keyword_rank": 6,
+            "score": 0.015151515151515152
+          }
+        ],
+        "generation": 6,
+        "keyword": [
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "score": 0.6109971599997097,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "against"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "goals"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 0.6109971599997097,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "against"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "goals"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "score": 0.6109971599997097,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "against"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "goals"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            },
+            "score": 0.6109971599997097,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "against"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "goals"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            },
+            "score": 0.6109971599997097,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "against"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "goals"
+              }
+            ]
+          },
+          {
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "score": 0.6109971599997097,
+            "terms": [
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "against"
+              },
+              {
+                "average_length": 8.625,
+                "corpus_chunks": 8,
+                "document_frequency": 6,
+                "field": "Evidence",
+                "frequency": 1,
+                "idf": 0.32542240043462795,
+                "length": 10,
+                "score": 0.30549857999985486,
+                "term": "goals"
+              }
+            ]
+          }
+        ],
+        "keyword_config": {
+          "b": 0.75,
+          "evidence_weight": 1.0,
+          "generated_weight": 0.0,
+          "k1": 1.2,
+          "structural_weight": 1.0
+        },
+        "keyword_matched": 6,
+        "query_terms": [
+          "8",
+          "against",
+          "goals",
+          "mars"
+        ],
+        "request": {
+          "deduplication": "ExactEvidence",
+          "dense_k": 0,
+          "dense_weight": 1.0,
+          "filter": {
+            "All": []
+          },
+          "keyword_k": 30,
+          "keyword_weight": 1.0,
+          "limit": 10,
+          "rrf_k": 60.0,
+          "text": "8 goals against Mars",
+          "trace_eligibility": true,
+          "vector": null
+        },
+        "results": [
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "a-near",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.01639344262295082,
+            "keyword_rank": 1,
+            "score": 0.01639344262295082
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.016129032258064516,
+            "keyword_rank": 2,
+            "score": 0.016129032258064516
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "c-rival",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015625,
+            "keyword_rank": 4,
+            "score": 0.015625
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "e-zero",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015384615384615385,
+            "keyword_rank": 5,
+            "score": 0.015384615384615385
+          },
+          {
+            "dense_contribution": 0.0,
+            "dense_rank": null,
+            "key": {
+              "chunk_id": "c0",
+              "document_id": "f-copy",
+              "revision": "r1"
+            },
+            "keyword_contribution": 0.015151515151515152,
+            "keyword_rank": 6,
+            "score": 0.015151515151515152
+          }
+        ],
+        "space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+        "suppressed": [
+          {
+            "kept": {
+              "chunk_id": "c-duplicate",
+              "document_id": "b-target",
+              "revision": "r1"
+            },
+            "removed": {
+              "chunk_id": "c0",
+              "document_id": "b-target",
+              "revision": "r1"
+            }
+          }
+        ],
+        "tokenizer": "nfkd-lower-alnum-v1",
+        "unknown_filter_chunks": 0
+      }
+    }
+  ],
+  "chunks": 8,
+  "contract": "t04-source-coverage-v1",
+  "corpus": [
+    {
+      "chunk": {
+        "attributes": {
+          "match.year": {
+            "derivation": "Source",
+            "sources": [
+              {
+                "locator": {
+                  "Text": {
+                    "bytes": {
+                      "end": 64,
+                      "start": 0
+                    },
+                    "encoding": "UTF-8",
+                    "line_end": 1,
+                    "line_start": 1,
+                    "mappings": [
+                      {
+                        "normalized": {
+                          "end": 64,
+                          "start": 0
+                        },
+                        "original": {
+                          "end": 64,
+                          "start": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "revision": "r1"
+              }
+            ],
+            "value": 1955
+          }
+        },
+        "evidence": "Synthetic match: Pelé scored 3 goals against Argentina in 1955.",
+        "generated_context": null,
+        "id": "c0",
+        "next": null,
+        "parent": null,
+        "previous": null,
+        "representation": "NormalizedText",
+        "sources": [
+          {
+            "locator": {
+              "Text": {
+                "bytes": {
+                  "end": 64,
+                  "start": 0
+                },
+                "encoding": "UTF-8",
+                "line_end": 1,
+                "line_start": 1,
+                "mappings": [
+                  {
+                    "normalized": {
+                      "end": 64,
+                      "start": 0
+                    },
+                    "original": {
+                      "end": 64,
+                      "start": 0
+                    }
+                  }
+                ]
+              }
+            },
+            "revision": "r1"
+          }
+        ],
+        "spans": [
+          {
+            "block_id": "b0",
+            "bytes": {
+              "end": 64,
+              "start": 0
+            }
+          }
+        ],
+        "structural_context": "",
+        "vectors": {
+          "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "key": {
+        "chunk_id": "c0",
+        "document_id": "a-near",
+        "revision": "r1"
+      },
+      "original": {
+        "bytes": 64,
+        "sha256": "c703d0de511c42c40897b13e3f0954d55706ef0a48513dbeec416152490fff90"
+      }
+    },
+    {
+      "chunk": {
+        "attributes": {
+          "match.year": {
+            "derivation": "Source",
+            "sources": [
+              {
+                "locator": {
+                  "Text": {
+                    "bytes": {
+                      "end": 64,
+                      "start": 0
+                    },
+                    "encoding": "UTF-8",
+                    "line_end": 1,
+                    "line_start": 1,
+                    "mappings": [
+                      {
+                        "normalized": {
+                          "end": 64,
+                          "start": 0
+                        },
+                        "original": {
+                          "end": 64,
+                          "start": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "revision": "r1"
+              }
+            ],
+            "value": 1954
+          }
+        },
+        "evidence": "Synthetic match: Pelé scored 3 goals against Argentina in 1954.",
+        "generated_context": null,
+        "id": "c-duplicate",
+        "next": null,
+        "parent": null,
+        "previous": null,
+        "representation": "NormalizedText",
+        "sources": [
+          {
+            "locator": {
+              "Text": {
+                "bytes": {
+                  "end": 64,
+                  "start": 0
+                },
+                "encoding": "UTF-8",
+                "line_end": 1,
+                "line_start": 1,
+                "mappings": [
+                  {
+                    "normalized": {
+                      "end": 64,
+                      "start": 0
+                    },
+                    "original": {
+                      "end": 64,
+                      "start": 0
+                    }
+                  }
+                ]
+              }
+            },
+            "revision": "r1"
+          }
+        ],
+        "spans": [
+          {
+            "block_id": "b0",
+            "bytes": {
+              "end": 64,
+              "start": 0
+            }
+          }
+        ],
+        "structural_context": "",
+        "vectors": {
+          "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5": [
+            0.8,
+            0.6,
+            0.0
+          ]
+        }
+      },
+      "key": {
+        "chunk_id": "c-duplicate",
+        "document_id": "b-target",
+        "revision": "r1"
+      },
+      "original": {
+        "bytes": 64,
+        "sha256": "3b0e540d51ec653d5d3526ed75453cd8f2714e50c8abf091210fae25a92f3396"
+      }
+    },
+    {
+      "chunk": {
+        "attributes": {
+          "match.year": {
+            "derivation": "Source",
+            "sources": [
+              {
+                "locator": {
+                  "Text": {
+                    "bytes": {
+                      "end": 64,
+                      "start": 0
+                    },
+                    "encoding": "UTF-8",
+                    "line_end": 1,
+                    "line_start": 1,
+                    "mappings": [
+                      {
+                        "normalized": {
+                          "end": 64,
+                          "start": 0
+                        },
+                        "original": {
+                          "end": 64,
+                          "start": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "revision": "r1"
+              }
+            ],
+            "value": 1954
+          }
+        },
+        "evidence": "Synthetic match: Pelé scored 3 goals against Argentina in 1954.",
+        "generated_context": null,
+        "id": "c0",
+        "next": null,
+        "parent": null,
+        "previous": null,
+        "representation": "NormalizedText",
+        "sources": [
+          {
+            "locator": {
+              "Text": {
+                "bytes": {
+                  "end": 64,
+                  "start": 0
+                },
+                "encoding": "UTF-8",
+                "line_end": 1,
+                "line_start": 1,
+                "mappings": [
+                  {
+                    "normalized": {
+                      "end": 64,
+                      "start": 0
+                    },
+                    "original": {
+                      "end": 64,
+                      "start": 0
+                    }
+                  }
+                ]
+              }
+            },
+            "revision": "r1"
+          }
+        ],
+        "spans": [
+          {
+            "block_id": "b0",
+            "bytes": {
+              "end": 64,
+              "start": 0
+            }
+          }
+        ],
+        "structural_context": "",
+        "vectors": {
+          "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5": [
+            0.8,
+            0.6,
+            0.0
+          ]
+        }
+      },
+      "key": {
+        "chunk_id": "c0",
+        "document_id": "b-target",
+        "revision": "r1"
+      },
+      "original": {
+        "bytes": 64,
+        "sha256": "3b0e540d51ec653d5d3526ed75453cd8f2714e50c8abf091210fae25a92f3396"
+      }
+    },
+    {
+      "chunk": {
+        "attributes": {
+          "match.year": {
+            "derivation": "Source",
+            "sources": [
+              {
+                "locator": {
+                  "Text": {
+                    "bytes": {
+                      "end": 62,
+                      "start": 0
+                    },
+                    "encoding": "UTF-8",
+                    "line_end": 1,
+                    "line_start": 1,
+                    "mappings": [
+                      {
+                        "normalized": {
+                          "end": 62,
+                          "start": 0
+                        },
+                        "original": {
+                          "end": 62,
+                          "start": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "revision": "r1"
+              }
+            ],
+            "value": 1954
+          }
+        },
+        "evidence": "Synthetic match: Pelé scored 2 goals against Uruguay in 1954.",
+        "generated_context": null,
+        "id": "c0",
+        "next": null,
+        "parent": null,
+        "previous": null,
+        "representation": "NormalizedText",
+        "sources": [
+          {
+            "locator": {
+              "Text": {
+                "bytes": {
+                  "end": 62,
+                  "start": 0
+                },
+                "encoding": "UTF-8",
+                "line_end": 1,
+                "line_start": 1,
+                "mappings": [
+                  {
+                    "normalized": {
+                      "end": 62,
+                      "start": 0
+                    },
+                    "original": {
+                      "end": 62,
+                      "start": 0
+                    }
+                  }
+                ]
+              }
+            },
+            "revision": "r1"
+          }
+        ],
+        "spans": [
+          {
+            "block_id": "b0",
+            "bytes": {
+              "end": 62,
+              "start": 0
+            }
+          }
+        ],
+        "structural_context": "",
+        "vectors": {
+          "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5": [
+            0.6,
+            0.8,
+            0.0
+          ]
+        }
+      },
+      "key": {
+        "chunk_id": "c0",
+        "document_id": "c-rival",
+        "revision": "r1"
+      },
+      "original": {
+        "bytes": 62,
+        "sha256": "fd8b3c75641588540a818da18383d212d54db26094936b2160f33835ff1fc0eb"
+      }
+    },
+    {
+      "chunk": {
+        "attributes": {},
+        "evidence": "Torque unit: N m.",
+        "generated_context": null,
+        "id": "c0",
+        "next": null,
+        "parent": null,
+        "previous": null,
+        "representation": "NormalizedText",
+        "sources": [
+          {
+            "locator": {
+              "Text": {
+                "bytes": {
+                  "end": 17,
+                  "start": 0
+                },
+                "encoding": "UTF-8",
+                "line_end": 1,
+                "line_start": 1,
+                "mappings": [
+                  {
+                    "normalized": {
+                      "end": 17,
+                      "start": 0
+                    },
+                    "original": {
+                      "end": 17,
+                      "start": 0
+                    }
+                  }
+                ]
+              }
+            },
+            "revision": "r1"
+          }
+        ],
+        "spans": [
+          {
+            "block_id": "b0",
+            "bytes": {
+              "end": 17,
+              "start": 0
+            }
+          }
+        ],
+        "structural_context": "",
+        "vectors": {
+          "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "key": {
+        "chunk_id": "c0",
+        "document_id": "d-maintenance",
+        "revision": "r1"
+      },
+      "original": {
+        "bytes": 51,
+        "sha256": "130d92770a988552e7bfd8c428eb0cce0beaa3f45ca025c260e31d7c8337b859"
+      }
+    },
+    {
+      "chunk": {
+        "attributes": {},
+        "evidence": "Connector J2 tightening value: 6.",
+        "generated_context": null,
+        "id": "c1",
+        "next": null,
+        "parent": null,
+        "previous": null,
+        "representation": "NormalizedText",
+        "sources": [
+          {
+            "locator": {
+              "Text": {
+                "bytes": {
+                  "end": 51,
+                  "start": 18
+                },
+                "encoding": "UTF-8",
+                "line_end": 2,
+                "line_start": 2,
+                "mappings": [
+                  {
+                    "normalized": {
+                      "end": 51,
+                      "start": 18
+                    },
+                    "original": {
+                      "end": 51,
+                      "start": 18
+                    }
+                  }
+                ]
+              }
+            },
+            "revision": "r1"
+          }
+        ],
+        "spans": [
+          {
+            "block_id": "b1",
+            "bytes": {
+              "end": 33,
+              "start": 0
+            }
+          }
+        ],
+        "structural_context": "",
+        "vectors": {
+          "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5": [
+            0.0,
+            0.1,
+            0.99
+          ]
+        }
+      },
+      "key": {
+        "chunk_id": "c1",
+        "document_id": "d-maintenance",
+        "revision": "r1"
+      },
+      "original": {
+        "bytes": 51,
+        "sha256": "130d92770a988552e7bfd8c428eb0cce0beaa3f45ca025c260e31d7c8337b859"
+      }
+    },
+    {
+      "chunk": {
+        "attributes": {
+          "goals": {
+            "derivation": "Source",
+            "sources": [
+              {
+                "locator": {
+                  "Text": {
+                    "bytes": {
+                      "end": 62,
+                      "start": 0
+                    },
+                    "encoding": "UTF-8",
+                    "line_end": 1,
+                    "line_start": 1,
+                    "mappings": [
+                      {
+                        "normalized": {
+                          "end": 62,
+                          "start": 0
+                        },
+                        "original": {
+                          "end": 62,
+                          "start": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "revision": "r1"
+              }
+            ],
+            "value": 0
+          },
+          "match.year": {
+            "derivation": "Source",
+            "sources": [
+              {
+                "locator": {
+                  "Text": {
+                    "bytes": {
+                      "end": 62,
+                      "start": 0
+                    },
+                    "encoding": "UTF-8",
+                    "line_end": 1,
+                    "line_start": 1,
+                    "mappings": [
+                      {
+                        "normalized": {
+                          "end": 62,
+                          "start": 0
+                        },
+                        "original": {
+                          "end": 62,
+                          "start": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "revision": "r1"
+              }
+            ],
+            "value": 1954
+          }
+        },
+        "evidence": "Synthetic match: Ivo scored 0 goals against Argentina in 1954.",
+        "generated_context": null,
+        "id": "c0",
+        "next": null,
+        "parent": null,
+        "previous": null,
+        "representation": "NormalizedText",
+        "sources": [
+          {
+            "locator": {
+              "Text": {
+                "bytes": {
+                  "end": 62,
+                  "start": 0
+                },
+                "encoding": "UTF-8",
+                "line_end": 1,
+                "line_start": 1,
+                "mappings": [
+                  {
+                    "normalized": {
+                      "end": 62,
+                      "start": 0
+                    },
+                    "original": {
+                      "end": 62,
+                      "start": 0
+                    }
+                  }
+                ]
+              }
+            },
+            "revision": "r1"
+          }
+        ],
+        "spans": [
+          {
+            "block_id": "b0",
+            "bytes": {
+              "end": 62,
+              "start": 0
+            }
+          }
+        ],
+        "structural_context": "",
+        "vectors": {
+          "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5": [
+            0.5,
+            0.5,
+            0.2
+          ]
+        }
+      },
+      "key": {
+        "chunk_id": "c0",
+        "document_id": "e-zero",
+        "revision": "r1"
+      },
+      "original": {
+        "bytes": 62,
+        "sha256": "a31b38e204db9680f7053e3ba54c0bd5093a6914eaba27fe434752bb3473c452"
+      }
+    },
+    {
+      "chunk": {
+        "attributes": {
+          "match.year": {
+            "derivation": "Source",
+            "sources": [
+              {
+                "locator": {
+                  "Text": {
+                    "bytes": {
+                      "end": 64,
+                      "start": 0
+                    },
+                    "encoding": "UTF-8",
+                    "line_end": 1,
+                    "line_start": 1,
+                    "mappings": [
+                      {
+                        "normalized": {
+                          "end": 64,
+                          "start": 0
+                        },
+                        "original": {
+                          "end": 64,
+                          "start": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "revision": "r1"
+              }
+            ],
+            "value": 1954
+          }
+        },
+        "evidence": "Synthetic match: Pelé scored 3 goals against Argentina in 1954.",
+        "generated_context": null,
+        "id": "c0",
+        "next": null,
+        "parent": null,
+        "previous": null,
+        "representation": "NormalizedText",
+        "sources": [
+          {
+            "locator": {
+              "Text": {
+                "bytes": {
+                  "end": 64,
+                  "start": 0
+                },
+                "encoding": "UTF-8",
+                "line_end": 1,
+                "line_start": 1,
+                "mappings": [
+                  {
+                    "normalized": {
+                      "end": 64,
+                      "start": 0
+                    },
+                    "original": {
+                      "end": 64,
+                      "start": 0
+                    }
+                  }
+                ]
+              }
+            },
+            "revision": "r1"
+          }
+        ],
+        "spans": [
+          {
+            "block_id": "b0",
+            "bytes": {
+              "end": 64,
+              "start": 0
+            }
+          }
+        ],
+        "structural_context": "",
+        "vectors": {
+          "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5": [
+            0.7,
+            0.5,
+            0.1
+          ]
+        }
+      },
+      "key": {
+        "chunk_id": "c0",
+        "document_id": "f-copy",
+        "revision": "r1"
+      },
+      "original": {
+        "bytes": 64,
+        "sha256": "3b0e540d51ec653d5d3526ed75453cd8f2714e50c8abf091210fae25a92f3396"
+      }
+    }
+  ],
+  "corpus_sha256": "8d3da9aa30316b2afc3274e63d9304faf92bad948c5dc5806b575b3feb718186",
+  "crate_version": "0.1.0",
+  "documents": 6,
+  "embedding_space": {
+    "artifact_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "dimensions": 3,
+    "document_prefix": "",
+    "max_tokens": 256,
+    "model": "synthetic/supplied-search-vectors",
+    "normalization": "None",
+    "preprocessing": "identity-v1",
+    "query_prefix": "",
+    "revision": "t04-v1",
+    "tokenizer": "none-supplied-vectors-v1"
+  },
+  "embedding_space_id": "62b1e935f1dd536cd9a81b378935e2ebc9aff9c16a37756d2404f47c911c16d5",
+  "git_revision": "171bf3a52ec20e6775d71eb0853a211b8ba2be35",
+  "image_id": "sha256:1fee548049054007b5e52edfe4631aecf25755abb0f41a17488c738ac166b90f",
+  "limitations": [
+    "Hand-prepared synthetic TXT records; no ingestion/PDF/OCR evaluation.",
+    "Vectors are deliberately supplied algorithm fixtures, not model embeddings or semantic-quality evidence.",
+    "Gold locations are scored after retrieval; this is not T01 dev/holdout or a tuned retrieval benchmark.",
+    "Eligible-stage ordering is key order, not relevance ranking.",
+    "Insufficient-evidence recall is null; T04 does not classify outcomes or generate answers.",
+    "Evidence bytes, not tokenizer tokens, are reported; no performance benchmark or timing claims."
+  ],
+  "models_invoked": false,
+  "os": "linux",
+  "source_sha256": {
+    "Cargo.lock": "90528cf7fb8ab997a87a7f65e0c03f8d9dca80797018b39369e6e7b8649f0103",
+    "examples/search_eval.rs": "5285cc7496be6f12046016a9ae4d5b19bfc5fd560c09331e4217cfb8488cbc98",
+    "src/search/filter.rs": "79a34c215a4fa126df9f65d4d5849d7f9d9ed15c6684bcc7f524461523e7c277",
+    "src/search/keyword.rs": "33a6a103c081a313e4950290cec3ba3dca005f466e5faebc2558bd2f2be0a500",
+    "src/search/mod.rs": "03b33e1d937e0901bfbaabe7955adb3740b9fa3be1b45c96ab1e514d1f12793c",
+    "tests/support/mod.rs": "9df6fb2ace48a16801ea8e2f964a9fdb7f9b3380e536ecb0a7aa60a697c3afad"
+  },
+  "split": "synthetic_algorithm_diagnostics",
+  "worktree_dirty": true
+}

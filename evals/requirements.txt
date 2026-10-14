@@ -1,0 +1,15 @@
+attrs==26.1.0
+cffi==2.1.1
+charset-normalizer==3.5.2
+cryptography==50.0.2
+jsonschema==4.25.1
+jsonschema-specifications==2025.9.1
+pdfminer.six==20251230
+pdfplumber==0.11.9
+pillow==12.3.0
+pycparser==3.11
+pypdfium2==5.14.0
+referencing==0.37.0
+reportlab==4.4.9
+rpds-py==2026.9.1
+typing_extensions==4.16.0

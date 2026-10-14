@@ -1,0 +1,19 @@
+# T10 uses only its own project/volumes. Apply after compose.app.yaml.
+services:
+  vectornext:
+    image: vectornext-app:t10
+    environment:
+      VECTORNEXT_DATA: ${T10_DATABASE:-/storage/plain}
+      VECTORNEXT_GENERATED_WEIGHT: ${T10_GENERATED_WEIGHT:-1}
+      VECTORNEXT_STRUCTURAL_WEIGHT: ${T10_STRUCTURAL_WEIGHT:-1}
+    ports: !override ["127.0.0.1:8089:8088"]
+  processor:
+    image: vectornext-app-processor:t10
+    environment:
+      VECTORNEXT_CACHE: ${T10_CACHE:-/cache/plain-ingestion}
+  llm:
+    image: vectornext-app-llm:t10
+  client:
+    image: vectornext-app:t10
+  admin:
+    image: vectornext-app:t10

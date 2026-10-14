@@ -1,0 +1,58 @@
+{
+  "synthetic": true,
+  "description": "Invented records; not historical match results.",
+  "publication": {
+    "year": 2026,
+    "edition": "01"
+  },
+  "matches": [
+    {
+      "id": "m-001",
+      "player": {
+        "id": "007",
+        "name": "Iris Vega"
+      },
+      "match": {
+        "year": 2021,
+        "opponent": "Lakeside"
+      },
+      "stats": {
+        "goals": 0,
+        "assists": null
+      },
+      "notes": "Goals are recorded as zero; assists were not recorded."
+    },
+    {
+      "id": "m-002",
+      "player": {
+        "id": "007",
+        "name": "Iris Vega"
+      },
+      "match": {
+        "year": 2022,
+        "opponent": "Lakeside"
+      },
+      "stats": {
+        "goals": 2
+      }
+    },
+    {
+      "id": "m-003",
+      "player": {
+        "id": "007",
+        "name": "Iris Vega"
+      },
+      "match": {
+        "year": 2021,
+        "opponent": "Hilltown"
+      },
+      "stats": {
+        "goals": 5
+      }
+    }
+  ],
+  "labels": {
+    "home/away": "away",
+    "review~state": "checked"
+  }
+}
