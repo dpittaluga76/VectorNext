@@ -1,0 +1,184 @@
+{
+  "schema": "pdf-v1",
+  "source_sha256": "aaebf525fb2fc5d1bab54154e2a78d71dfc97a13c93700cc83569b257354ae32",
+  "profile_sha256": "eba773878b43b30647ae9cc447b45a591401a226ca0757e6902b3ebe49fdd19d",
+  "status": "complete",
+  "pages": [
+    {
+      "page": 1,
+      "width": 612.0,
+      "height": 792.0,
+      "native_cells": 3,
+      "ocr_cells": 11,
+      "ocr_mean_confidence": 0.95684453
+    }
+  ],
+  "items": [
+    {
+      "id": "#/texts/0",
+      "kind": "Heading",
+      "role": "body",
+      "parent": null,
+      "text": "Synthetic mixed inspection",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 26
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            44.07600000000002,
+            281.06399999999996,
+            60.726
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": null,
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/1",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Native record: valve V8 opens at 24 kPa.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 40
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            93.38400000000001,
+            265.44,
+            104.48400000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Synthetic mixed inspection",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 26
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            44.07600000000002,
+            281.06399999999996,
+            60.726
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/0",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/2",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Scanned record: valve V9 opens at 31 kPa. Inspection batch: MIX-007.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 68
+          },
+          "page": 1,
+          "bbox": [
+            60.0,
+            340.6666666666667,
+            342.3333333333333,
+            377.0
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.91617241
+        }
+      ],
+      "context": "Synthetic mixed inspection",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 26
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            44.07600000000002,
+            281.06399999999996,
+            60.726
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/0",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/3",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Native closing note: inspect again in 14 days.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 46
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            483.384,
+            288.1200000000001,
+            494.484
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Synthetic mixed inspection",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 26
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            44.07600000000002,
+            281.06399999999996,
+            60.726
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/0",
+      "table": null,
+      "indexed": true
+    }
+  ],
+  "warnings": [],
+  "tables": []
+}

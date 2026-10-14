@@ -1,0 +1,859 @@
+{
+  "schema_version": "1.0",
+  "provenance": {
+    "synthetic": true,
+    "description": "All source content and gold labels were authored for VectorNext. Matches (including Pelé/1954) are hypothetical, never verified sports history. Equipment and workshop are fictional. See README.md for source and review limitations."
+  },
+  "documents": [
+    {
+      "id": "matches_txt",
+      "path": "fixtures/fictional_matches.txt",
+      "media_type": "text/plain",
+      "sha256": "5fd3d6e6c7cf412b3cd35af78277c87f8d265078dbcf38a1cb86c732f2f71686"
+    },
+    {
+      "id": "matches_json",
+      "path": "fixtures/nested_matches.json",
+      "media_type": "application/json",
+      "sha256": "90d7eb77293d035d8762fb97ef8e317d1e0db986f59aae7885c7be6a4ca26677"
+    },
+    {
+      "id": "array_json",
+      "path": "fixtures/array_matches.json",
+      "media_type": "application/json",
+      "sha256": "303e836ae1368355ff7fac3bf812dd06f68998d5aacd17c47d64f949c421741f"
+    },
+    {
+      "id": "guide_pdf",
+      "path": "fixtures/equipment_guide.pdf",
+      "media_type": "application/pdf",
+      "sha256": "dc8c41c6cb312efe2d1dfe168ba371739e2c4e3d31a3d694751f5d537fbfa41a"
+    },
+    {
+      "id": "scan_pdf",
+      "path": "fixtures/scanned_note.pdf",
+      "media_type": "application/pdf",
+      "sha256": "ee6db1cbdb579d8df3b2c60bcd1c5adc8a9f7674094e2ff14d15a69a440d30a6"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "pele_1954_argentina",
+      "document_id": "matches_txt",
+      "locator": {
+        "kind": "text",
+        "byte_start": 146,
+        "byte_end": 193,
+        "line_start": 5,
+        "line_end": 5
+      },
+      "expected": "Pelé scored 3 goals against Argentina in 1954."
+    },
+    {
+      "id": "pele_1955_argentina",
+      "document_id": "matches_txt",
+      "locator": {
+        "kind": "text",
+        "byte_start": 217,
+        "byte_end": 263,
+        "line_start": 8,
+        "line_end": 8
+      },
+      "expected": "Pelé scored 1 goal against Argentina in 1955."
+    },
+    {
+      "id": "pele_1954_uruguay",
+      "document_id": "matches_txt",
+      "locator": {
+        "kind": "text",
+        "byte_start": 287,
+        "byte_end": 332,
+        "line_start": 11,
+        "line_end": 11
+      },
+      "expected": "Pelé scored 2 goals against Uruguay in 1954."
+    },
+    {
+      "id": "mira_wrapped",
+      "document_id": "matches_txt",
+      "locator": {
+        "kind": "text",
+        "byte_start": 356,
+        "byte_end": 462,
+        "line_start": 14,
+        "line_end": 15
+      },
+      "expected": "In the invented 1960 match against Chile, Mira Costa scored\n4 goals. The match was played at Harbor Field."
+    },
+    {
+      "id": "json_match_1",
+      "document_id": "matches_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/matches/0"
+      },
+      "expected": {
+        "id": "m-001",
+        "player": {
+          "id": "007",
+          "name": "Iris Vega"
+        },
+        "match": {
+          "year": 2021,
+          "opponent": "Lakeside"
+        },
+        "stats": {
+          "goals": 0,
+          "assists": null
+        },
+        "notes": "Goals are recorded as zero; assists were not recorded."
+      }
+    },
+    {
+      "id": "json_match_2",
+      "document_id": "matches_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/matches/1"
+      },
+      "expected": {
+        "id": "m-002",
+        "player": {
+          "id": "007",
+          "name": "Iris Vega"
+        },
+        "match": {
+          "year": 2022,
+          "opponent": "Lakeside"
+        },
+        "stats": {
+          "goals": 2
+        }
+      }
+    },
+    {
+      "id": "json_match_3",
+      "document_id": "matches_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/matches/2"
+      },
+      "expected": {
+        "id": "m-003",
+        "player": {
+          "id": "007",
+          "name": "Iris Vega"
+        },
+        "match": {
+          "year": 2021,
+          "opponent": "Hilltown"
+        },
+        "stats": {
+          "goals": 5
+        }
+      }
+    },
+    {
+      "id": "json_zero",
+      "document_id": "matches_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/matches/0/stats/goals"
+      },
+      "expected": 0
+    },
+    {
+      "id": "json_null",
+      "document_id": "matches_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/matches/0/stats/assists"
+      },
+      "expected": null
+    },
+    {
+      "id": "json_player_id",
+      "document_id": "matches_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/matches/0/player/id"
+      },
+      "expected": "007"
+    },
+    {
+      "id": "json_publication_year",
+      "document_id": "matches_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/publication/year"
+      },
+      "expected": 2026
+    },
+    {
+      "id": "json_slash_key",
+      "document_id": "matches_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/labels/home~1away"
+      },
+      "expected": "away"
+    },
+    {
+      "id": "json_tilde_key",
+      "document_id": "matches_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/labels/review~0state"
+      },
+      "expected": "checked"
+    },
+    {
+      "id": "array_record",
+      "document_id": "array_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/0"
+      },
+      "expected": {
+        "synthetic": true,
+        "id": "a-001",
+        "player": "Sol Marin",
+        "opponent": "Riverside",
+        "year": 2023,
+        "goals": 4
+      }
+    },
+    {
+      "id": "table_heading",
+      "document_id": "guide_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 1,
+        "bbox": [
+          48,
+          134,
+          550,
+          156
+        ],
+        "method": "native"
+      },
+      "expected": "Nominal flow at water temperature 20 C"
+    },
+    {
+      "id": "table_columns",
+      "document_id": "guide_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 1,
+        "bbox": [
+          48,
+          200,
+          564,
+          230
+        ],
+        "method": "native"
+      },
+      "expected": "Model Flow (L/min) Water (C)"
+    },
+    {
+      "id": "table_h2",
+      "document_id": "guide_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 1,
+        "bbox": [
+          48,
+          264,
+          564,
+          294
+        ],
+        "method": "native"
+      },
+      "expected": "H2 12 20"
+    },
+    {
+      "id": "table_exception",
+      "document_id": "guide_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 1,
+        "bbox": [
+          48,
+          338,
+          564,
+          362
+        ],
+        "method": "native"
+      },
+      "expected": "H2 exception: above 35 C, maximum flow is 8 L/min."
+    },
+    {
+      "id": "c7_start",
+      "document_id": "guide_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 1,
+        "bbox": [
+          48,
+          688,
+          564,
+          714
+        ],
+        "method": "native"
+      },
+      "expected": "When the Harbor H2 pump reports code C7, stop the motor and"
+    },
+    {
+      "id": "c7_end",
+      "document_id": "guide_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 2,
+        "bbox": [
+          48,
+          134,
+          564,
+          160
+        ],
+        "method": "native"
+      },
+      "expected": "wait 8 minutes before restarting it. This delay applies only to code C7."
+    },
+    {
+      "id": "filter_h2",
+      "document_id": "guide_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 2,
+        "bbox": [
+          48,
+          226,
+          564,
+          250
+        ],
+        "method": "native"
+      },
+      "expected": "Replace the H2 inlet filter every 90 operating days."
+    },
+    {
+      "id": "scan_j2",
+      "document_id": "scan_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 1,
+        "bbox": [
+          48,
+          180,
+          564,
+          210
+        ],
+        "method": "ocr"
+      },
+      "expected": "Connector J2 on cable B4 requires a tightening torque of 6 N m."
+    }
+  ],
+  "cases": [
+    {
+      "id": "q_pele_exact",
+      "split": "dev",
+      "question": "In the fictional log, how many goals did Pelé score against Argentina in 1954?",
+      "tags": [
+        "exact_constraints",
+        "formatting"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "year": 1954,
+          "goals": 3,
+          "opponent": "Argentina"
+        },
+        "field_sources": {
+          "year": [
+            "pele_1954_argentina"
+          ],
+          "goals": [
+            "pele_1954_argentina"
+          ],
+          "opponent": [
+            "pele_1954_argentina"
+          ]
+        },
+        "support_sets": [
+          [
+            "pele_1954_argentina"
+          ]
+        ]
+      },
+      "presentation": {
+        "template": "Match year: {year}, Pelé goals: {goals}, rival: {opponent}",
+        "expected_text": "Match year: 1954, Pelé goals: 3, rival: Argentina"
+      }
+    },
+    {
+      "id": "q_pele_year",
+      "split": "holdout",
+      "question": "In the fictional log, how many goals did Pelé score against Argentina in 1955?",
+      "tags": [
+        "year_distractor"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "goals": 1
+        },
+        "field_sources": {
+          "goals": [
+            "pele_1955_argentina"
+          ]
+        },
+        "support_sets": [
+          [
+            "pele_1955_argentina"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_pele_opponent",
+      "split": "holdout",
+      "question": "In the fictional log, how many goals did Pelé score against Uruguay in 1954?",
+      "tags": [
+        "opponent_distractor"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "goals": 2
+        },
+        "field_sources": {
+          "goals": [
+            "pele_1954_uruguay"
+          ]
+        },
+        "support_sets": [
+          [
+            "pele_1954_uruguay"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_wrapped",
+      "split": "dev",
+      "question": "How many goals did Mira Costa score against Chile in the invented 1960 match?",
+      "tags": [
+        "wrapped_paragraph"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "goals": 4
+        },
+        "field_sources": {
+          "goals": [
+            "mira_wrapped"
+          ]
+        },
+        "support_sets": [
+          [
+            "mira_wrapped"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_followup",
+      "split": "dev",
+      "question": "Then I wondered, how many goals did Pelé score in that match?",
+      "tags": [
+        "conversational_reference"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "year": 1954,
+          "goals": 3,
+          "opponent": "Argentina"
+        },
+        "field_sources": {
+          "year": [
+            "pele_1954_argentina"
+          ],
+          "goals": [
+            "pele_1954_argentina"
+          ],
+          "opponent": [
+            "pele_1954_argentina"
+          ]
+        },
+        "support_sets": [
+          [
+            "pele_1954_argentina"
+          ]
+        ]
+      },
+      "history": [
+        {
+          "role": "user",
+          "content": "Use the fictional match log. I am asking about Pelé against Argentina in 1954."
+        }
+      ]
+    },
+    {
+      "id": "q_ambiguous",
+      "split": "dev",
+      "question": "In the fictional log, how many goals did Pelé score against Argentina in the match?",
+      "tags": [
+        "ambiguity"
+      ],
+      "expected": {
+        "status": "ambiguous",
+        "clarification_fields": [
+          "year"
+        ],
+        "alternatives": [
+          {
+            "fields": {
+              "year": 1954,
+              "goals": 3
+            },
+            "support_set": [
+              "pele_1954_argentina"
+            ]
+          },
+          {
+            "fields": {
+              "year": 1955,
+              "goals": 1
+            },
+            "support_set": [
+              "pele_1955_argentina"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "q_missing_match",
+      "split": "dev",
+      "question": "In the fictional log, how many goals did Pelé score against Brazil in 1954?",
+      "tags": [
+        "missing_evidence"
+      ],
+      "expected": {
+        "status": "insufficient_evidence",
+        "reason": "No matching opponent and year occur in the source corpus."
+      }
+    },
+    {
+      "id": "q_missing_json_field",
+      "split": "holdout",
+      "question": "How many assists did Iris Vega make against Lakeside in 2022?",
+      "tags": [
+        "missing_evidence"
+      ],
+      "expected": {
+        "status": "insufficient_evidence",
+        "reason": "The matching record omits assists. Missing does not mean zero."
+      }
+    },
+    {
+      "id": "q_null_unknown",
+      "split": "dev",
+      "question": "How many assists did Iris Vega make against Lakeside in 2021?",
+      "tags": [
+        "missing_evidence"
+      ],
+      "expected": {
+        "status": "insufficient_evidence",
+        "reason": "The assists value is null and the note says it was not recorded. No numeric answer is supported."
+      }
+    },
+    {
+      "id": "q_zero",
+      "split": "dev",
+      "question": "How many goals did Iris Vega score against Lakeside in 2021?",
+      "tags": [
+        "nested_json",
+        "zero",
+        "publication_year_distractor"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "goals": 0
+        },
+        "field_sources": {
+          "goals": [
+            "json_match_1",
+            "json_zero"
+          ]
+        },
+        "support_sets": [
+          [
+            "json_match_1",
+            "json_zero"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_raw_null",
+      "split": "dev",
+      "question": "What is the raw JSON assists value in record m-001?",
+      "tags": [
+        "null_value"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "assists": null
+        },
+        "field_sources": {
+          "assists": [
+            "json_match_1",
+            "json_null"
+          ]
+        },
+        "support_sets": [
+          [
+            "json_match_1",
+            "json_null"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_player_id",
+      "split": "dev",
+      "question": "What is Iris Vega's player ID in record m-001? Preserve its JSON type.",
+      "tags": [
+        "string_identity"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "player_id": "007"
+        },
+        "field_sources": {
+          "player_id": [
+            "json_match_1",
+            "json_player_id"
+          ]
+        },
+        "support_sets": [
+          [
+            "json_match_1",
+            "json_player_id"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_nested_opponent",
+      "split": "holdout",
+      "question": "How many goals did Iris Vega score against Hilltown in 2021?",
+      "tags": [
+        "nested_json",
+        "opponent_distractor"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "goals": 5
+        },
+        "field_sources": {
+          "goals": [
+            "json_match_3"
+          ]
+        },
+        "support_sets": [
+          [
+            "json_match_3"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_array",
+      "split": "dev",
+      "question": "How many goals did Sol Marin score against Riverside in 2023?",
+      "tags": [
+        "root_array"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "goals": 4
+        },
+        "field_sources": {
+          "goals": [
+            "array_record"
+          ]
+        },
+        "support_sets": [
+          [
+            "array_record"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_table",
+      "split": "dev",
+      "question": "What is the nominal flow of Harbor H2 at water temperature 20 C?",
+      "tags": [
+        "table_headers_units"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "flow": 12,
+          "unit": "L/min",
+          "water_temperature_c": 20
+        },
+        "field_sources": {
+          "flow": [
+            "table_heading",
+            "table_columns",
+            "table_h2"
+          ],
+          "unit": [
+            "table_heading",
+            "table_columns",
+            "table_h2"
+          ],
+          "water_temperature_c": [
+            "table_heading",
+            "table_columns",
+            "table_h2"
+          ]
+        },
+        "support_sets": [
+          [
+            "table_heading",
+            "table_columns",
+            "table_h2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_table_exception",
+      "split": "holdout",
+      "question": "What is the maximum flow of Harbor H2 above 35 C?",
+      "tags": [
+        "table_exception"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "flow": 8,
+          "unit": "L/min"
+        },
+        "field_sources": {
+          "flow": [
+            "table_exception"
+          ],
+          "unit": [
+            "table_exception"
+          ]
+        },
+        "support_sets": [
+          [
+            "table_exception"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_cross_page",
+      "split": "dev",
+      "question": "How long must I wait before restarting Harbor H2 after code C7?",
+      "tags": [
+        "cross_page"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "wait": 8,
+          "unit": "minutes"
+        },
+        "field_sources": {
+          "wait": [
+            "c7_start",
+            "c7_end"
+          ],
+          "unit": [
+            "c7_start",
+            "c7_end"
+          ]
+        },
+        "support_sets": [
+          [
+            "c7_start",
+            "c7_end"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_native_pdf",
+      "split": "holdout",
+      "question": "How often should the Harbor H2 inlet filter be replaced?",
+      "tags": [
+        "native_pdf"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "interval": 90,
+          "unit": "operating days"
+        },
+        "field_sources": {
+          "interval": [
+            "filter_h2"
+          ],
+          "unit": [
+            "filter_h2"
+          ]
+        },
+        "support_sets": [
+          [
+            "filter_h2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q_scan",
+      "split": "dev",
+      "question": "What tightening torque does connector J2 on cable B4 require?",
+      "tags": [
+        "scanned_page",
+        "ocr_digit"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "torque": 6,
+          "unit": "N m"
+        },
+        "field_sources": {
+          "torque": [
+            "scan_j2"
+          ],
+          "unit": [
+            "scan_j2"
+          ]
+        },
+        "support_sets": [
+          [
+            "scan_j2"
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+# T09 integrated local deployment
+
+Implemented and exercised on 2026-10-14. Design reference: architecture sections 2, 7–9 and T09 in the build plan. See [T09 results](reports/t09-deployment.md).
+
+The deployment has three long-running services. `vectornext` is the only database owner and exposes a localhost JSON API. It snapshots under a short mutex, then performs retrieval, deterministic parsing/chunking and model calls outside that mutex. A single ingestion coordinator advances durable stages and publishes complete revisions. Interrupted stages resume at startup; recorded failures require an explicit retry. Queries retain their original committed snapshot during concurrent ingestion.
+
+`processor` has no database mount or GPU access. Two bounded model-process lanes reserve capacity for interactive work and background enrichment. PDF conversion shares background admission and runs in a killable CPU subprocess. T06 PDF dependencies and T07 model dependencies use separate Python environments inside this service, preserving both pinned runtimes and existing artifact identities. Overload fails explicitly; the GPU service retains T08's bounded priority queue and non-preemptive active inference. Cache/model mounts are separate from durable data.
+
+The API provides uploads, document/job inspection, explicit job retry, keyword/hybrid search, typed answers, liveness and capability readiness. A small Python client is the initial inspection interface; no web UI is implied. Only the API is published, on `127.0.0.1` by default. It joins an ingress bridge to support Docker port publishing and the internal service network. Processor/model services have only the internal network, no published ports, and no external network route. Normal operation makes no external calls. This is a local single-user deployment, not a public authenticated service.
+
+An upload accepts source bytes plus explicit document/job identity, media type, context policy, record pointer and expected revision. PDF conversion precedes durable upload acknowledgment because the existing job contract binds the exact artifact identity. Its canonical artifact is retained as a content-addressed blob for restart. A lost response can be retried with the same job ID and identical input/options; changed input is rejected. Original bytes and source values never round-trip through Python as parsed JSON records.
+
+Backups use an exclusive database lock and a checkpoint, copying the versioned store, original/artifact blobs and durable jobs into a new export directory with a complete size/hash manifest. Export is an offline maintenance command: stop the API owner first. Restoration verifies paths, sizes/hashes and storage/job integrity in a new staging directory, then publishes a new destination. It never merges into or overwrites an existing database. Disposable caches and downloadable model weights are excluded; model lock files identify the required setup. A Docker volume alone is not a backup.
+
+Verification covered a fresh volume, all three source formats, actual GPU answering, capability outages, concurrent snapshots/background work, restart/rebuild with an unfinished job, and export/restore with identical records and retry receipts. Existing T07 volumes are retained separately. No quality tuning or holdout use is part of T09.
+
+## Local interface
+
+Use `compose.app.yaml` and `python -m deployment.client` (standard library only), either through the containerized `client` tool or on the host. See the README for setup and commands. This is an initial versioned API, not a stable public compatibility promise. Responses preserve exact Rust JSON numeric literals; the client prints server bytes without converting them through Python floats.
+
+| Method/path | Request/result |
+| --- | --- |
+| `GET /healthz` | Process liveness, storage readiness, generation, active job |
+| `GET /readyz` | 200 when storage, embeddings, reranking, PDF assets and generation are ready; otherwise 503 with individual capabilities |
+| `GET /v1/metrics` | Process-lifetime ingestion stage totals plus CPU operation and GPU queue/backend counters; see timing scopes below |
+| `GET /v1/documents` | Committed document summaries and embedding spaces |
+| `GET /v1/jobs` | Durable job summaries, failures and publication receipts |
+| `POST /v1/document` | `{"document_id":"name"}` returns a complete committed revision with source locations, attributes and vectors |
+| `POST /v1/job`, `/v1/retry` | `{"job_id":"name-v1"}` inspects or explicitly retries a failed job |
+| `POST /v1/ingest` | Base64 original bytes, document/job identity, media type, context policy and optional revision/pointer/partial-extraction options; 202 after durable acknowledgment |
+| `POST /v1/search` | Text, keyword/hybrid mode, optional typed filter, space ID and limit; includes source hits and ranking trace |
+| `POST /v1/ask` | `{"request": AskRequest, "space_id": optional, "options": optional AnswerOptions}` using the [answer contract](answers.md) |
+
+POST requires `Content-Type: application/json`, `X-VectorNext-Client: 1`, a Content-Length, and no Origin header. Errors include a machine-readable code and message. Unavailable/busy capabilities return 503; malformed requests 400; revision conflicts 409. Readiness can be false while keyword search, document/job inspection, and structured lookup without prose remain usable. A structured lookup must explicitly select the intended records; no model invents a hard filter.
+
+Upload media types are `Txt`, `Json`, `Pdf`; context policies are `plain`, `structural` (default), `generated`. JSON record pointers are explicit, for example `/matches` for the nested fixture. Original files require 1–16 MiB, IDs 1–128 UTF-8 bytes, pointers at most 4,096 bytes, and at most 64 unfinished jobs. Jobs retain the exact configuration and model identity used at submission. New document IDs require no expected revision; replacements must provide the current revision. Identical job retries return the saved job/receipt even when the processor is offline. Changed input/options under the same job ID are rejected.
+
+Each database stage uses a committed snapshot/durable draft. Slow operations release the database mutex. The immutable search-index cache retains at most four spaces and refreshes by generation. Search defaults to keyword at the API, hybrid in the CLI, and ten results; limits are 1–100. Structural and generated BM25 weights default to 1, matching T08's CLI. `VECTORNEXT_STRUCTURAL_WEIGHT` and `VECTORNEXT_GENERATED_WEIGHT` each accept a finite value from 0 through 10 at process startup. Library defaults remain unchanged. These keyword weights apply independently of the stored embedding policy; plain embeddings alone do not disable structural keyword search.
+
+T10 metrics are diagnostic cumulative counters, reset by process recreation. Rust stages report call counts and milliseconds (including failed completed attempts); CPU lanes report operation counts and seconds, including transport/backend wait within a lane. The model-service scheduler reports queue seconds for jobs that started and backend seconds including failed calls; these totals include template/tokenizer calls as well as generation, not GPU compute alone. Expired/rejected queued jobs are not included in started-job queue duration; failures remain visible in caller responses rather than a separate rejection counter. Use before/after deltas, with no unrelated work, to attribute costs. CPU answer duration includes GPU work and is not additive to it. Upload preparation includes PDF conversion before acknowledgment. These metrics do not provide streaming time-to-first-token or durable historical monitoring.
+
+## Admission and recovery
+
+One background operation and one interactive model operation can run in the API at once. Busy callers receive 503 and may retry. The processor independently enforces one operation in each lane. PDF conversion occupies the background lane; source-only reads use neither lane. The GPU wrapper gives waiting interactive generation priority, but cannot preempt an active request. No answer cache is introduced.
+
+HTTP dispatch admits 16 handlers; JSON bodies are limited to 64 KiB, or 23 MiB for base64 uploads. Internal model frames/replies are capped at 4 MiB, PDF input/artifacts at 16 MiB. CPU worker calls have a 420-second deadline (720 seconds for the multi-call answer operation); a timed-out or broken child is killed before reuse. PDF work has a 185-second outer deadline and kills its process group, including OCR descendants. Container CPU, RAM, process and temporary-disk limits bound individual services. The API's small HTTP library does not provide a complete slow-client connection deadline; do not expose this local endpoint as a public service.
+
+On restart, unfinished jobs without a recorded failure resume from their last saved stage. Interrupted work may be recomputed; publication remains idempotent. A saved failure remains visible until `retry`. A startup race with unavailable processors can record a failure; first wait for the relevant capabilities, then retry. Cache loss does not remove committed vectors/evidence. A poisoned database or GPU admission state requires a service restart; readiness reports the unavailable capability. Docker liveness checks do not automatically restart an otherwise running but unready dependency.
+
+## Persistence and backup
+
+The `data` volume contains `/storage/db` by default; the `cache` volume is disposable. Models come from the read-only host `models/` directory. `VECTORNEXT_MODELS_DIR`, `VECTORNEXT_PORT`, `VECTORNEXT_BACKUPS_DIR` and `VECTORNEXT_DATA` configure the corresponding paths/port. Only the GPU service requests NVIDIA access. The processor never mounts `/storage`, and the API never mounts model weights. Core deterministic parsing still runs inside the API process, outside the database mutex.
+
+Stop the API before `admin export DB NEW_BACKUP`. The exclusive writer lock rejects a live export. Export creates an explicit checkpoint and a version-1 manifest containing every durable file's byte length/SHA-256, generation and job count. It includes original and canonical PDF artifact blobs, exact committed records/vectors, the journal/checkpoint, and durable jobs/receipts. It excludes lock files, disposable caches and downloadable models. Exports are limited to 100,000 files/8 GiB for this initial workload.
+
+`admin restore BACKUP NEW_DB` rejects missing, extra, corrupt, traversal or symlink entries, validates reopened storage/jobs in a sibling staging directory, then uses Linux atomic no-replace publication. An existing destination is always refused. A failed export may leave an incomplete directory; choose a new export path rather than overwriting it. A process killed during restore may leave an unpublished staging directory. Keep the original database and a separate backup until the restored copy has been checked. Copying a changing Docker volume is not this backup procedure; retaining a backup on the same physical disk is not protection from disk failure.
+
+## Reproduction
+
+The explicit smoke drill is `python -m deployment.verify --phase PHASE`, using a dedicated `vectornext-t09` project, localhost API and ignored `data/t09/20261014-t09` captures. Run `seed`, `answers`, `recovery`, `backup`, `isolation` in order after starting that project with a fresh volume. It stops/recreates only that project's services, uses synthetic source fixtures without evaluation labels, retains its data/backups, and refuses a non-T09 project. `seed` requires generation zero; backup needs a new destination. Use distinct `--project`, `--run` and port/URL for another full drill. The backup phase leaves the API on `/storage/restored`; preserve `VECTORNEXT_DATA=/storage/restored` when recreating it, or explicitly return to `/storage/db`.

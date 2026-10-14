@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VectorNext synthetic evaluation dataset v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "provenance", "documents", "evidence", "cases"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["synthetic", "description"],
+      "properties": {"synthetic": {"const": true}, "description": {"type": "string", "minLength": 1}}
+    },
+    "documents": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/document"}},
+    "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
+    "cases": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/case"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*$"},
+    "supportSet": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+    "supportSets": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/supportSet"}},
+    "fields": {"type": "object", "minProperties": 1},
+    "document": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "path", "media_type", "sha256"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "path": {"type": "string", "pattern": "^fixtures/"},
+        "media_type": {"enum": ["text/plain", "application/json", "application/pdf"]},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "locator": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "byte_start", "byte_end", "line_start", "line_end"],
+          "properties": {
+            "kind": {"const": "text"},
+            "byte_start": {"type": "integer", "minimum": 0}, "byte_end": {"type": "integer", "minimum": 1},
+            "line_start": {"type": "integer", "minimum": 1}, "line_end": {"type": "integer", "minimum": 1}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "pointer"],
+          "properties": {"kind": {"const": "json"}, "pointer": {"type": "string", "pattern": "^(|/.*)$"}}
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "page", "bbox", "method"],
+          "properties": {
+            "kind": {"const": "pdf"}, "page": {"type": "integer", "minimum": 1},
+            "bbox": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number", "minimum": 0}},
+            "method": {"enum": ["native", "ocr"]}
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "document_id", "locator", "expected"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "document_id": {"$ref": "#/$defs/id"},
+        "locator": {"$ref": "#/$defs/locator"}, "expected": {}
+      }
+    },
+    "expectedAnswer": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["status", "fields", "field_sources", "support_sets"],
+          "properties": {
+            "status": {"const": "supported"}, "fields": {"$ref": "#/$defs/fields"},
+            "field_sources": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/supportSet"}},
+            "support_sets": {"$ref": "#/$defs/supportSets"}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["status", "clarification_fields", "alternatives"],
+          "properties": {
+            "status": {"const": "ambiguous"},
+            "clarification_fields": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+            "alternatives": {
+              "type": "array", "minItems": 2, "items": {
+                "type": "object", "additionalProperties": false, "required": ["fields", "support_set"],
+                "properties": {"fields": {"$ref": "#/$defs/fields"}, "support_set": {"$ref": "#/$defs/supportSet"}}
+              }
+            }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["status", "reason"],
+          "properties": {"status": {"const": "insufficient_evidence"}, "reason": {"type": "string", "minLength": 1}}
+        }
+      ]
+    },
+    "case": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "split", "question", "tags", "expected"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "split": {"enum": ["dev", "holdout"]},
+        "question": {"type": "string", "minLength": 1},
+        "tags": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "history": {
+          "type": "array", "minItems": 1, "items": {
+            "type": "object", "additionalProperties": false, "required": ["role", "content"],
+            "properties": {"role": {"enum": ["user", "assistant"]}, "content": {"type": "string", "minLength": 1}}
+          }
+        },
+        "expected": {"$ref": "#/$defs/expectedAnswer"},
+        "presentation": {
+          "type": "object", "additionalProperties": false, "required": ["template", "expected_text"],
+          "properties": {"template": {"type": "string"}, "expected_text": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

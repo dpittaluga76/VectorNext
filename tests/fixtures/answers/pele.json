@@ -1,0 +1,9 @@
+{
+  "question": "How many goals did Pele score against Argentina in 1954?",
+  "fields": {
+    "year": {"kind": "integer"},
+    "goals": {"kind": "integer"},
+    "opponent": {"kind": "string"}
+  },
+  "template": "Match year {year}, Pele goals: {goals}, rival: {opponent}"
+}

@@ -1,0 +1,24 @@
+[package]
+name = "vectornext"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.87"
+license-file = "LICENSE"
+description = "VectorNext's local document and vector storage core"
+
+[dependencies]
+base64 = "=0.22.1"
+crc32fast = "=1.5.0"
+fs2 = "=0.4.3"
+libc = "=0.2.190"
+num-bigint = "=0.4.6"
+serde = { version = "=1.0.228", features = ["derive", "rc"] }
+serde_json = { version = "=1.0.145", features = ["arbitrary_precision", "float_roundtrip"] }
+sha2 = "=0.10.9"
+thiserror = "=2.0.17"
+tiny_http = "=0.12.0"
+ureq = { version = "=2.12.1", default-features = false }
+unicode-normalization = "=0.1.24"
+
+[dev-dependencies]
+tempfile = "=3.20.0"

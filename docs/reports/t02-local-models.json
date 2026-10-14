@@ -1,0 +1,2230 @@
+{
+  "report_version": 1,
+  "selected_run": "20261014T135900Z",
+  "measured_source_sha256": {
+    "compose.models.yaml": "405f327c60fd1464b215e07f3d191b4e666773b7b5928f8ddfa112c9a1285765",
+    "docker/llama.Dockerfile": "d88e7fdcea63047e2c9c830778d039d8635cc59739fdd4af0081ecdb39b2bf50",
+    "docker/model-check.Dockerfile": "1da70717c47cc2ffc7faa6bbcb00a10c2c9f8bf178cc056724a158a3ed6225a5",
+    "experiments/t02/models.lock.json": "fc2d934f297997cdf423a4a4d7b6b76af2fd278743b0ef9fcd906382a05eb1ee",
+    "experiments/t02/requirements.txt": "877fb15452d890485681f82c3cc8e1a670eace680f3bf4d7909d5042afd8e426",
+    "experiments/t02/benchmark.py": "998133a93acc3e7be5ff83c997fc1e17d0126f64a67dd4ee4d163082048622c2",
+    "experiments/t02/run.py": "93cf338889095ef6fb7c37b65f45ceedfbb2b6bc0af8d6470e5a932f7393975b",
+    "experiments/t02/encoders.py": "92ed0a3ff5c065c6cb9cce90da3b0b48dc53d53debc69e3dbeeae7c0b90abb8e",
+    "experiments/t02/fetch_models.py": "398a84594883ea6e310780c68f93ece56c3fcbd660b48b2255a88d293e168fca",
+    "experiments/t02/test_contracts.py": "a3bffeb62cfc1f4626d156e8278417529da6e25198714021486f8749710ee233"
+  },
+  "host": {
+    "run_id": "20261014T135900Z",
+    "scope": "process-cold startup; OS file cache not flushed; images/models already acquired",
+    "gpu_sampling_requested_ms": 200,
+    "git_revision": "171bf3a52ec20e6775d71eb0853a211b8ba2be35",
+    "git_dirty": true,
+    "docker_version": "29.6.2",
+    "gpu_container_probe": "name, memory.total [MiB], memory.used [MiB], driver_version\nNVIDIA GeForce RTX 4060, 8188 MiB, 1303 MiB, 616.92",
+    "artifact_verification": "VERIFIED generator/gemma-4-E2B_q4_0-it.gguf\nVERIFIED generator/README.md\nVERIFIED embedding/onnx/model.onnx\nVERIFIED embedding/tokenizer.json\nVERIFIED embedding/config.json\nVERIFIED embedding/tokenizer_config.json\nVERIFIED embedding/sentence_bert_config.json\nVERIFIED embedding/1_Pooling/config.json\nVERIFIED embedding/README.md\nVERIFIED reranker/onnx/model.onnx\nVERIFIED reranker/tokenizer.json\nVERIFIED reranker/config.json\nVERIFIED reranker/tokenizer_config.json\nVERIFIED reranker/README.md",
+    "gpu_before": "NVIDIA GeForce RTX 4060, 8188, 1302, 616.92",
+    "container_start_to_healthy_seconds": 19.615649300001678,
+    "readiness_observation": "Docker healthcheck every 2s plus host polling every 0.5s; includes creation and runtime warmup",
+    "llm_image_id": "sha256:8914c051f40e983d699a03d2b6114ba668f3d8679f9f20018ce11509ba7039e0",
+    "llm_command": [
+      "--model",
+      "/models/generator/gemma-4-E2B_q4_0-it.gguf",
+      "--alias",
+      "vectornext-gemma4-e2b",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8080",
+      "--ctx-size",
+      "4096",
+      "--n-gpu-layers",
+      "99",
+      "--parallel",
+      "1",
+      "--n-predict",
+      "256",
+      "--batch-size",
+      "512",
+      "--ubatch-size",
+      "128",
+      "--threads",
+      "4",
+      "--flash-attn",
+      "on",
+      "--jinja",
+      "--reasoning",
+      "off",
+      "--no-context-shift",
+      "--no-ui",
+      "--offline",
+      "--verbosity",
+      "4"
+    ],
+    "llm_mounts": [
+      {
+        "destination": "/models",
+        "type": "bind",
+        "rw": false
+      }
+    ],
+    "networks": [
+      {
+        "name": "vectornext-t02_models-internal",
+        "internal": true
+      }
+    ],
+    "gpu_layers_offloaded": 36,
+    "gpu_layers_total": 36,
+    "check_exit_code": 0,
+    "cpu_image_id": "sha256:28bc3b7e67f48d7ab4f583d69d61f92af0f7d936b879fc39af17d00087f9a01a",
+    "llm_cgroup_memory_peak_bytes": 4128186368,
+    "cuda_log_evidence": [
+      "llm-1  | 0.00.346.361 I cmn  common_param:   - CUDA0   : NVIDIA GeForce RTX 4060 (8187 MiB, 7096 MiB free)",
+      "llm-1  | 0.00.346.522 I cmn  common_param: system_info: n_threads = 4 (n_threads_batch = 4) / 12 | CUDA : ARCHS = 500,610,700,750,800,860,890,900,1200 | USE_GRAPHS = 1 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | ",
+      "llm-1  | 0.01.426.469 I common_memory_breakdown_print: |   - CUDA0 (RTX 4060)   |  8187 = 7096 + (1405 =  1341 +      33 +      30) +        -314 |",
+      "llm-1  | 0.02.106.515 I llama_prepare_model_devices: using device CUDA0 (NVIDIA GeForce RTX 4060) (0000:01:00.0) - 7096 MiB free",
+      "llm-1  | 0.16.419.204 I load_tensors: offloaded 36/36 layers to GPU",
+      "llm-1  | 0.16.419.209 I load_tensors:   CPU_Mapped model buffer size =  1837.50 MiB",
+      "llm-1  | 0.16.419.210 I load_tensors:   CPU_Mapped model buffer size =   315.00 MiB",
+      "llm-1  | 0.16.419.211 I load_tensors:        CUDA0 model buffer size =  1341.78 MiB",
+      "llm-1  | 0.16.808.639 I llama_kv_cache:      CUDA0 KV buffer size =    24.00 MiB",
+      "llm-1  | 0.16.809.968 I llama_kv_cache:      CUDA0 KV buffer size =     9.00 MiB",
+      "llm-1  | 0.16.823.151 I sched_reserve:      CUDA0 compute buffer size =    30.94 MiB",
+      "llm-1  | 0.16.930.036 I srv  llama_server: model loaded"
+    ],
+    "gpu_samples": 165,
+    "gpu_sampling_errors": [],
+    "gpu_sample_interval_max_seconds": 0.3339704000027268,
+    "whole_device_peak_used_mib": 2857,
+    "whole_device_peak_utilization_percent": 89,
+    "gpu_after": "NVIDIA GeForce RTX 4060, 8188, 1298, 616.92",
+    "service_left_running": false
+  },
+  "model_checks": {
+    "created_utc": "2026-10-14T13:59:38.250144+00:00",
+    "kind": "T02 supplied-excerpt model feasibility; not end-to-end retrieval",
+    "dataset_sha256": "69452ab10e1197d9d3a3a844d4ba596b48d91d462908dd3c6868780f212b0138",
+    "models_lock_sha256": "fc2d934f297997cdf423a4a4d7b6b76af2fd278743b0ef9fcd906382a05eb1ee",
+    "split": "dev",
+    "holdout_used": false,
+    "packages": {
+      "numpy": "2.5.4",
+      "onnxruntime": "1.31.0",
+      "tokenizers": "0.23.3",
+      "jsonschema": "4.25.1"
+    },
+    "settings": {
+      "context_tokens": 4096,
+      "output_tokens": 256,
+      "parallel_generation": 1,
+      "thinking": false,
+      "temperature": 0,
+      "seed": 42,
+      "cache_prompt": false,
+      "cpu_threads": 4
+    },
+    "server_properties": {
+      "default_generation_settings": {
+        "params": {
+          "seed": 4294967295,
+          "temperature": 1.0,
+          "dynatemp_range": 0.0,
+          "dynatemp_exponent": 1.0,
+          "top_k": 64,
+          "top_p": 0.949999988079071,
+          "min_p": 0.05000000074505806,
+          "top_n_sigma": -1.0,
+          "xtc_probability": 0.0,
+          "xtc_threshold": 0.10000000149011612,
+          "typical_p": 1.0,
+          "repeat_last_n": 64,
+          "repeat_penalty": 1.0,
+          "presence_penalty": 0.0,
+          "frequency_penalty": 0.0,
+          "dry_multiplier": 0.0,
+          "dry_base": 1.75,
+          "dry_allowed_length": 2,
+          "dry_penalty_last_n": 64,
+          "mirostat": 0,
+          "mirostat_tau": 5.0,
+          "mirostat_eta": 0.10000000149011612,
+          "adaptive_target": -1.0,
+          "adaptive_decay": 0.8999999761581421,
+          "max_tokens": -1,
+          "n_predict": -1,
+          "n_keep": 0,
+          "n_discard": 0,
+          "ignore_eos": false,
+          "stream": false,
+          "n_probs": 0,
+          "min_keep": 0,
+          "chat_format": "Content-only",
+          "reasoning_format": "none",
+          "reasoning_in_content": false,
+          "generation_prompt": "",
+          "samplers": [
+            "penalties",
+            "dry",
+            "top_n_sigma",
+            "top_k",
+            "typ_p",
+            "top_p",
+            "min_p",
+            "xtc",
+            "temperature"
+          ],
+          "speculative.types": "none",
+          "timings_per_token": false,
+          "post_sampling_probs": false,
+          "backend_sampling": false,
+          "lora": []
+        },
+        "n_ctx": 4096
+      },
+      "total_slots": 1,
+      "model_alias": "vectornext-gemma4-e2b",
+      "model_ftype": "Q4_0",
+      "model_path": "/models/generator/gemma-4-E2B_q4_0-it.gguf",
+      "modalities": {
+        "vision": false,
+        "video": false,
+        "audio": false
+      },
+      "media_marker": "<__media_Fa9XDbhebhHgCKqKwSKmFo9WyIGImidH__>",
+      "endpoint_slots": true,
+      "endpoint_props": false,
+      "endpoint_metrics": false,
+      "ui": false,
+      "ui_settings": {},
+      "chat_template": "{#\n  Template: Google Gemma 4 Canonical Chat Template\n  Author: Google Gemma Engineering Team\n  Published: 2026-07-09\n  Context: Fixed tool-calling loops, turn closures, and thinking content-ordering.\n#}\n{%- macro format_parameters(properties, required, filter_keys=false) -%}\n    {%- set standard_keys = ['description', 'type', 'properties', 'required', 'nullable'] -%}\n    {%- set ns = namespace(found_first=false) -%}\n    {%- for key, value in properties | dictsort -%}\n        {%- set add_comma = false -%}\n        {%- if not filter_keys or key not in standard_keys -%}\n            {%- if ns.found_first %},{% endif -%}\n            {%- set ns.found_first = true -%}\n            {{ key }}:{\n            {%- if value['description'] -%}\n                description:<|\"|>{{ value['description'] }}<|\"|>\n                {%- set add_comma = true -%}\n            {%- endif -%}\n            {%- if value['type'] | upper == 'STRING' -%}\n                {%- if value['enum'] -%}\n                    {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}\n                    enum:{{ format_argument(value['enum']) }}\n                {%- endif -%}\n            {%- elif value['type'] | upper == 'ARRAY' -%}\n                {%- if value['items'] is mapping and value['items'] -%}\n                    {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}\n                    items:{\n                    {%- set ns_items = namespace(found_first=false) -%}\n                    {%- for item_key, item_value in value['items'] | dictsort -%}\n                        {%- if item_value is not none -%}\n                            {%- if ns_items.found_first %},{% endif -%}\n                            {%- set ns_items.found_first = true -%}\n                            {%- if item_key == 'properties' -%}\n                                properties:{\n                                {%- if item_value is mapping -%}\n                                    {{- format_parameters(item_value, value['items']['required'] | default([])) -}}\n                                {%- endif -%}\n                                }\n                            {%- elif item_key == 'required' -%}\n                                required:[\n                                {%- for req_item in item_value -%}\n                                    <|\"|>{{- req_item -}}<|\"|>\n                                    {%- if not loop.last %},{% endif -%}\n                                {%- endfor -%}\n                                ]\n                            {%- elif item_key == 'type' -%}\n                                {%- if item_value is string -%}\n                                    type:{{ format_argument(item_value | upper) }}\n                                {%- else -%}\n                                    type:{{ format_argument(item_value | map('upper') | list) }}\n                                {%- endif -%}\n                            {%- else -%}\n                                {{ item_key }}:{{ format_argument(item_value) }}\n                            {%- endif -%}\n                        {%- endif -%}\n                    {%- endfor -%}\n                    }\n                {%- endif -%}\n            {%- endif -%}\n            {%- if value['nullable'] %}\n                {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}\n                nullable:true\n            {%- endif -%}\n            {%- if value['type'] | upper == 'OBJECT' -%}\n                {%- if value['properties'] is defined and value['properties'] is mapping -%}\n                    {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}\n                    properties:{\n                    {{- format_parameters(value['properties'], value['required'] | default([])) -}}\n                    }\n                {%- elif value is mapping -%}\n                    {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}\n                    properties:{\n                    {{- format_parameters(value, value['required'] | default([]), filter_keys=true) -}}\n                    }\n                {%- endif -%}\n                {%- if value['required'] -%}\n                    {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}\n                    required:[\n                    {%- for item in value['required'] | default([]) -%}\n                        <|\"|>{{- item -}}<|\"|>\n                        {%- if not loop.last %},{% endif -%}\n                    {%- endfor -%}\n                    ]\n                {%- endif -%}\n            {%- endif -%}\n            {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}\n            type:<|\"|>{{ value['type'] | upper }}<|\"|>}\n        {%- endif -%}\n    {%- endfor -%}\n{%- endmacro -%}\n{%- macro format_function_declaration(tool_data) -%}\n    declaration:{{- tool_data['function']['name'] -}}{description:<|\"|>{{- tool_data['function']['description'] -}}<|\"|>\n    {%- set params = tool_data['function']['parameters'] -%}\n    {%- if params -%}\n        ,parameters:{\n        {%- if params['properties'] -%}\n            properties:{ {{- format_parameters(params['properties'], params['required']) -}} },\n        {%- endif -%}\n        {%- if params['required'] -%}\n            required:[\n            {%- for item in params['required'] -%}\n                <|\"|>{{- item -}}<|\"|>\n                {{- ',' if not loop.last -}}\n            {%- endfor -%}\n            ],\n        {%- endif -%}\n        {%- if params['type'] -%}\n            type:<|\"|>{{- params['type'] | upper -}}<|\"|>}\n        {%- endif -%}\n    {%- endif -%}\n    {%- if 'response' in tool_data['function'] -%}\n        {%- set response_declaration = tool_data['function']['response'] -%}\n        ,response:{\n        {%- if response_declaration['description'] -%}\n            description:<|\"|>{{- response_declaration['description'] -}}<|\"|>,\n        {%- endif -%}\n        {%- if response_declaration['type'] | upper == 'OBJECT' -%}\n            type:<|\"|>{{- response_declaration['type'] | upper -}}<|\"|>}\n        {%- endif -%}\n    {%- endif -%}\n    }\n{%- endmacro -%}\n{%- macro format_argument(argument, escape_keys=True) -%}\n    {%- if argument is none -%}\n        {{- 'null' -}}\n    {%- elif argument is string -%}\n        {{- '<|\"|>' + argument + '<|\"|>' -}}\n    {%- elif argument is boolean -%}\n        {{- 'true' if argument else 'false' -}}\n    {%- elif argument is mapping -%}\n        {{- '{' -}}\n        {%- set ns = namespace(found_first=false) -%}\n        {%- for key, value in argument | dictsort -%}\n            {%- if ns.found_first %},{% endif -%}\n            {%- set ns.found_first = true -%}\n            {%- if escape_keys -%}\n                {{- '<|\"|>' + key + '<|\"|>' -}}\n            {%- else -%}\n                {{- key -}}\n            {%- endif -%}\n            :{{- format_argument(value, escape_keys=escape_keys) -}}\n        {%- endfor -%}\n        {{- '}' -}}\n    {%- elif argument is sequence -%}\n        {{- '[' -}}\n        {%- for item in argument -%}\n            {{- format_argument(item, escape_keys=escape_keys) -}}\n            {%- if not loop.last %},{% endif -%}\n        {%- endfor -%}\n        {{- ']' -}}\n    {%- else -%}\n        {{- argument -}}\n    {%- endif -%}\n{%- endmacro -%}\n{%- macro strip_thinking(text) -%}\n    {%- set ns = namespace(result='') -%}\n    {%- for part in text.split('<channel|>') -%}\n        {%- if '<|channel>' in part -%}\n            {%- set ns.result = ns.result + part.split('<|channel>')[0] -%}\n        {%- else -%}\n            {%- set ns.result = ns.result + part -%}\n        {%- endif -%}\n    {%- endfor -%}\n    {{- ns.result | trim -}}\n{%- endmacro -%}\n\n{%- macro format_tool_response_block(tool_name, response) -%}\n    {{- '<|tool_response>' -}}\n    {%- if response is mapping -%}\n        {{- 'response:' + tool_name + '{' -}}\n        {%- for key, value in response | dictsort -%}\n            {{- key -}}:{{- format_argument(value, escape_keys=False) -}}\n            {%- if not loop.last %},{% endif -%}\n        {%- endfor -%}\n        {{- '}' -}}\n    {%- else -%}\n        {{- 'response:' + tool_name + '{value:' + format_argument(response, escape_keys=False) + '}' -}}\n    {%- endif -%}\n    {{- '<tool_response|>' -}}\n{%- endmacro -%}\n\n{#- ===== SETUP ===== -#}\n{%- set ns = namespace(prev_message_type=None, prev_non_tool_role=None) -%}\n{%- set loop_messages = messages -%}\n{%- set enable_thinking = enable_thinking | default(false) -%}\n{%- set preserve_thinking = preserve_thinking | default(false) -%}\n{{- bos_token -}}\n{#- Handle System/Tool Definitions Block -#}\n{%- if enable_thinking or tools or (messages and messages[0]['role'] in ['system', 'developer']) -%}\n    {{- '<|turn>system\\n' -}}\n    {#- Inject Thinking token at the very top of the FIRST system turn -#}\n    {%- if enable_thinking -%}\n        {{- '<|think|>\\n' -}}\n        {%- set ns.prev_message_type = 'think' -%}\n    {%- endif -%}\n    {%- if messages and messages[0]['role'] in ['system', 'developer'] -%}\n        {%- if messages[0]['content'] is string -%}\n            {{- messages[0]['content'] | trim -}}\n        {%- elif messages[0]['content'] is sequence -%}\n            {%- for item in messages[0]['content'] -%}\n                {{- item['text'] | trim + ' '-}}\n            {%- endfor -%}\n        {%- endif -%}\n        {%- set loop_messages = messages[1:] -%}\n    {%- endif -%}\n    {%- if tools -%}\n        {%- for tool in tools %}\n            {{- '<|tool>' -}}\n            {{- format_function_declaration(tool) | trim -}}\n            {{- '<tool|>' -}}\n        {%- endfor %}\n        {%- set ns.prev_message_type = 'tool' -%}\n    {%- endif -%}\n    {{- '<turn|>\\n' -}}\n{%- endif %}\n\n{#- Pre-scan: find last user message index for reasoning guard -#}\n{%- set ns_turn = namespace(last_user_idx=-1) -%}\n{%- for i in range(loop_messages | length) -%}\n    {%- if loop_messages[i]['role'] == 'user' -%}\n        {%- set ns_turn.last_user_idx = i -%}\n    {%- endif -%}\n{%- endfor -%}\n\n{#- Loop through messages -#}\n{%- for message in loop_messages -%}\n    {%- if message['role'] != 'tool' -%}\n    {%- set ns.prev_message_type = None -%}\n    {%- set role = 'model' if message['role'] == 'assistant' else message['role'] -%}\n    {#- Detect continuation using tracked state â€” O(1) instead of O(n) backward scan -#}\n    {%- set continue_same_model_turn = (role == 'model' and ns.prev_non_tool_role == 'assistant') -%}\n    {%- if not continue_same_model_turn -%}\n        {{- '<|turn>' + role + '\\n' }}\n    {%- endif -%}\n\n    {#- Render reasoning/reasoning_content as thinking channel -#}\n    {%- set thinking_text = message.get('reasoning') or message.get('reasoning_content') -%}\n    {%- set thinking_gate = (loop.index0 > ns_turn.last_user_idx) or (preserve_thinking and message.get('tool_calls')) -%}\n    {%- if thinking_text and thinking_gate -%}\n        {{- '<|channel>thought\\n' + thinking_text + '\\n<channel|>' -}}\n    {%- endif -%}\n\n            {%- if message.get('tool_calls') -%}\n                {%- for tool_call in message.get('tool_calls') -%}\n                    {%- set function = tool_call['function'] -%}\n                    {{- '<|tool_call>call:' + function['name'] + '{' -}}\n                    {%- if function['arguments'] is mapping -%}\n                        {%- set ns_args = namespace(found_first=false) -%}\n                        {%- for key, value in function['arguments'] | dictsort -%}\n                            {%- if ns_args.found_first %},{% endif -%}\n                            {%- set ns_args.found_first = true -%}\n                            {{- key -}}:{{- format_argument(value, escape_keys=False) -}}\n                        {%- endfor -%}\n                    {%- elif function['arguments'] is none -%}\n                    {%- else -%}\n                        {{- raise_exception(\n                            \"chat_template: tool_calls[].function.arguments must be a \"\n                            \"JSON object (mapping), not a string. Deserialize arguments \"\n                            \"before passing to the template.\"\n                        ) -}}\n                    {%- endif -%}\n                    {{- '}<tool_call|>' -}}\n                {%- endfor -%}\n                {%- set ns.prev_message_type = 'tool_call' -%}\n            {%- endif -%}\n\n            {%- set ns_tr_out = namespace(flag=false) -%}\n            {%- if message.get('tool_responses') -%}\n                {#- Legacy: tool_responses embedded on the assistant message (Google/Gemma native) -#}\n                {%- for tool_response in message.get('tool_responses') -%}\n                    {{- format_tool_response_block(tool_response['name'] | default('unknown', true), tool_response['response']) -}}\n                    {%- set ns_tr_out.flag = true -%}\n                    {%- set ns.prev_message_type = 'tool_response' -%}\n                {%- endfor -%}\n            {%- elif message.get('tool_calls') -%}\n                {#- OpenAI Chat Completions: forward-scan consecutive role:tool messages -#}\n                {%- set ns_tool_scan = namespace(stopped=false) -%}\n                {%- for k in range(loop.index0 + 1, loop_messages | length) -%}\n                    {%- if ns_tool_scan.stopped -%}\n                    {%- elif loop_messages[k]['role'] != 'tool' -%}\n                        {%- set ns_tool_scan.stopped = true -%}\n                    {%- else -%}\n                        {%- set follow = loop_messages[k] -%}\n                        {#- Resolve tool_call_id to function name -#}\n                        {%- set ns_tname = namespace(name=follow.get('name') or 'unknown') -%}\n                        {%- for tc in message.get('tool_calls') -%}\n                            {%- if tc.get('id') == follow.get('tool_call_id') -%}\n                                {%- set ns_tname.name = tc['function']['name'] -%}\n                            {%- endif -%}\n                        {%- endfor -%}\n                        {#- Handle content as string or content-parts array -#}\n                        {%- set tool_body = follow.get('content') -%}\n                        {%- if tool_body is string -%}\n                            {{- format_tool_response_block(ns_tname.name, tool_body) -}}\n                        {%- elif tool_body is sequence and tool_body is not string -%}\n                            {%- set ns_txt = namespace(s='') -%}\n                            {%- for part in tool_body -%}\n                                {%- if part.get('type') == 'text' -%}\n                                    {%- set ns_txt.s = ns_txt.s + (part.get('text') | default('')) -%}\n                                {%- endif -%}\n                            {%- endfor -%}\n                            {{- format_tool_response_block(ns_tname.name, ns_txt.s) -}}\n                            {%- for part in tool_body -%}\n                                {%- if part.get('type') in ['image', 'image_url'] -%}\n                                    {{- '<|image|>' -}}\n                                {%- elif part.get('type') in ['audio', 'input_audio'] -%}\n                                    {{- '<|audio|>' -}}\n                                {%- elif part.get('type') == 'video' -%}\n                                    {{- '<|video|>' -}}\n                                {%- endif -%}\n                            {%- endfor -%}\n                        {%- else -%}\n                            {{- format_tool_response_block(ns_tname.name, tool_body) -}}\n                        {%- endif -%}\n                        {%- set ns_tr_out.flag = true -%}\n                        {%- set ns.prev_message_type = 'tool_response' -%}\n                    {%- endif -%}\n                {%- endfor -%}\n            {%- endif -%}\n\n            {%- set captured_content -%}\n            {%- if message.get('content') is string -%}\n                {%- if role == 'model' -%}\n                    {{- strip_thinking(message['content']) -}}\n                {%- else -%}\n                    {{- message['content'] | trim -}}\n                {%- endif -%}\n            {%- elif message.get('content') is sequence -%}\n                {%- for item in message['content'] -%}\n                    {%- if item.get('type') == 'text' -%}\n                        {%- if role == 'model' -%}\n                            {{- strip_thinking(item['text']) -}}\n                        {%- else -%}\n                            {{- item['text'] | trim -}}\n                        {%- endif -%}\n                    {%- elif item.get('type') in ['image', 'image_url'] -%}\n                        {{- '<|image|>' -}}\n                    {%- elif item.get('type') in ['audio', 'input_audio'] -%}\n                        {{- '<|audio|>' -}}\n                    {%- elif item.get('type') == 'video' -%}\n                        {{- '<|video|>' -}}\n                    {%- endif -%}\n                {%- endfor -%}\n            {%- endif -%}\n            {%- endset -%}\n\n            {{- captured_content -}}\n            {%- set has_content = captured_content | trim | length > 0 -%}\n\n        {#- Forward-scan: find next non-tool message role for continuation detection -#}\n        {%- set next_nt = namespace(role=None, found=false) -%}\n        {%- for j in range(loop.index0 + 1, loop_messages | length) -%}\n            {%- if not next_nt.found -%}\n                {%- if loop_messages[j]['role'] != 'tool' -%}\n                    {%- set next_nt.role = loop_messages[j]['role'] -%}\n                    {%- set next_nt.found = true -%}\n                {%- endif -%}\n            {%- endif -%}\n        {%- endfor -%}\n\n        {%- set continues_into_next = (\n            role == 'model'\n            and next_nt.role == 'assistant'\n            and (not message.get('tool_calls') or ns_tr_out.flag)\n        ) -%}\n\n        {%- if ns.prev_message_type == 'tool_call' and not ns_tr_out.flag -%}\n            {{- '<|tool_response>' -}}\n        {%- elif continues_into_next -%}\n        {%- elif not (ns_tr_out.flag and not has_content and not next_nt.found) -%}\n            {{- '<turn|>\\n' -}}\n        {%- endif -%}\n\n    {#- Track previous non-tool role for next iteration (avoids O(n) backward scan) -#}\n    {%- set ns.prev_non_tool_role = message['role'] -%}\n    {%- endif -%}\n{%- endfor -%}\n\n{%- if add_generation_prompt -%}\n    {%- if ns.prev_message_type != 'tool_response' and ns.prev_message_type != 'tool_call' -%}\n        {{- '<|turn>model\\n' -}}\n    {%- elif ns.prev_message_type == 'tool_response' and enable_thinking -%}\n        {{- '<|channel>thought\\n' -}}\n    {%- endif -%}\n{%- endif -%}",
+      "chat_template_caps": {
+        "supports_object_arguments": true,
+        "supports_parallel_tool_calls": true,
+        "supports_preserve_reasoning": false,
+        "supports_reasoning_effort": false,
+        "supports_string_content": true,
+        "supports_system_role": true,
+        "supports_tool_calls": true,
+        "supports_tools": true,
+        "supports_typed_content": true
+      },
+      "bos_token": "<bos>",
+      "eos_token": "<eos>",
+      "build_info": "b11617-14310190c",
+      "is_sleeping": false,
+      "cors_proxy_enabled": false
+    },
+    "generation": [
+      {
+        "case_id": "q_pele_exact",
+        "run": "first_pass",
+        "wall_seconds": 1.1470616159999736,
+        "input_tokens_preflight": 363,
+        "usage": {
+          "completion_tokens": 78,
+          "prompt_tokens": 363,
+          "total_tokens": 441,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 363,
+          "prompt_ms": 366.589,
+          "prompt_per_token_ms": 1.0098870523415977,
+          "prompt_per_second": 990.2097444276834,
+          "predicted_n": 78,
+          "predicted_ms": 776.559,
+          "predicted_per_token_ms": 10.085181818181818,
+          "predicted_per_second": 99.15537647493623
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "year": 1954,
+            "goals": 3,
+            "opponent": "Argentina"
+          },
+          "source_ids": [
+            "pele_1954_argentina"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"year\": 1954,\n    \"goals\": 3,\n    \"opponent\": \"Argentina\"\n  },\n  \"source_ids\": [\n    \"pele_1954_argentina\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "6793138439efa0b9252dd731b68c13027070fae7ab58ef4fea2f5c7882b2756d"
+      },
+      {
+        "case_id": "q_wrapped",
+        "run": "first_pass",
+        "wall_seconds": 0.5851942589997634,
+        "input_tokens_preflight": 355,
+        "usage": {
+          "completion_tokens": 52,
+          "prompt_tokens": 355,
+          "total_tokens": 407,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 355,
+          "prompt_ms": 93.327,
+          "prompt_per_token_ms": 0.26289295774647886,
+          "prompt_per_second": 3803.829545576307,
+          "predicted_n": 52,
+          "predicted_ms": 488.482,
+          "predicted_per_token_ms": 9.57807843137255,
+          "predicted_per_second": 104.40507531495531
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "goals": 4
+          },
+          "source_ids": [
+            "mira_wrapped"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"goals\": 4\n  },\n  \"source_ids\": [\n    \"mira_wrapped\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "79d5f2cc6f1eba2cfe40f36434ed070e9ad94ab08fa5ce6425bba083bf72f5df"
+      },
+      {
+        "case_id": "q_followup",
+        "run": "first_pass",
+        "wall_seconds": 0.828059741999823,
+        "input_tokens_preflight": 388,
+        "usage": {
+          "completion_tokens": 78,
+          "prompt_tokens": 388,
+          "total_tokens": 466,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 388,
+          "prompt_ms": 98.076,
+          "prompt_per_token_ms": 0.25277319587628866,
+          "prompt_per_second": 3956.115665402341,
+          "predicted_n": 78,
+          "predicted_ms": 726.202,
+          "predicted_per_token_ms": 9.431194805194805,
+          "predicted_per_second": 106.0311042932958
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "year": 1954,
+            "goals": 3,
+            "opponent": "Argentina"
+          },
+          "source_ids": [
+            "pele_1954_argentina"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"year\": 1954,\n    \"goals\": 3,\n    \"opponent\": \"Argentina\"\n  },\n  \"source_ids\": [\n    \"pele_1954_argentina\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "6bb33c12abb686b3e50dd47d864b96346bdb9aebc6cf4eb8eab47ecc4ae40c52"
+      },
+      {
+        "case_id": "q_ambiguous",
+        "run": "first_pass",
+        "wall_seconds": 0.6005043770001066,
+        "input_tokens_preflight": 354,
+        "usage": {
+          "completion_tokens": 57,
+          "prompt_tokens": 354,
+          "total_tokens": 411,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 354,
+          "prompt_ms": 92.353,
+          "prompt_per_token_ms": 0.26088418079096043,
+          "prompt_per_second": 3833.118577631479,
+          "predicted_n": 57,
+          "predicted_ms": 504.876,
+          "predicted_per_token_ms": 9.015642857142856,
+          "predicted_per_second": 110.91832449948106
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "goals": 3
+          },
+          "source_ids": [
+            "pele_1954_argentina"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"goals\": 3\n  },\n  \"source_ids\": [\n    \"pele_1954_argentina\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": false,
+        "fields_correct": false,
+        "references_valid": true,
+        "gold_support_complete": false,
+        "prompt_sha256": "3250827966d5cce737fc06f84e56f3a850eee0862e2b28ca5164c992f92db18b"
+      },
+      {
+        "case_id": "q_missing_match",
+        "run": "first_pass",
+        "wall_seconds": 0.5052654780001831,
+        "input_tokens_preflight": 357,
+        "usage": {
+          "completion_tokens": 44,
+          "prompt_tokens": 357,
+          "total_tokens": 401,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 357,
+          "prompt_ms": 92.515,
+          "prompt_per_token_ms": 0.2591456582633053,
+          "prompt_per_second": 3858.833702642815,
+          "predicted_n": 44,
+          "predicted_ms": 409.637,
+          "predicted_per_token_ms": 9.526441860465116,
+          "predicted_per_second": 104.97098650756645
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "insufficient_evidence",
+          "fields": {
+            "goals": null
+          },
+          "source_ids": []
+        },
+        "raw_content": "{\n  \"status\": \"insufficient_evidence\",\n  \"fields\": {\n    \"goals\": null\n  },\n  \"source_ids\": []\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": false,
+        "references_valid": true,
+        "gold_support_complete": null,
+        "prompt_sha256": "3be5f89f312ffaafe0355f4c22bd419f82b75acb7f3b4b248b1c308f409fcb2d"
+      },
+      {
+        "case_id": "q_null_unknown",
+        "run": "first_pass",
+        "wall_seconds": 0.7886280809998425,
+        "input_tokens_preflight": 661,
+        "usage": {
+          "completion_tokens": 64,
+          "prompt_tokens": 661,
+          "total_tokens": 725,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 661,
+          "prompt_ms": 145.562,
+          "prompt_per_token_ms": 0.22021482602118006,
+          "prompt_per_second": 4541.0203212376855,
+          "predicted_n": 64,
+          "predicted_ms": 636.879,
+          "predicted_per_token_ms": 10.109190476190477,
+          "predicted_per_second": 98.91988902130547
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "insufficient_evidence",
+          "fields": {
+            "assists": null
+          },
+          "source_ids": [
+            "json_match_1",
+            "json_null"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"insufficient_evidence\",\n  \"fields\": {\n    \"assists\": null\n  },\n  \"source_ids\": [\n    \"json_match_1\",\n    \"json_null\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": false,
+        "references_valid": true,
+        "gold_support_complete": null,
+        "prompt_sha256": "60d9e1c6a0b81fbd216894e96f2e08a9c13e24e1c34d6749ed45c76c33375781"
+      },
+      {
+        "case_id": "q_zero",
+        "run": "first_pass",
+        "wall_seconds": 0.8903252990003239,
+        "input_tokens_preflight": 660,
+        "usage": {
+          "completion_tokens": 74,
+          "prompt_tokens": 660,
+          "total_tokens": 734,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 660,
+          "prompt_ms": 151.734,
+          "prompt_per_token_ms": 0.22990000000000002,
+          "prompt_per_second": 4349.717268377555,
+          "predicted_n": 74,
+          "predicted_ms": 733.932,
+          "predicted_per_token_ms": 10.05386301369863,
+          "predicted_per_second": 99.46425554411036
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "insufficient_evidence",
+          "fields": {
+            "goals": null
+          },
+          "source_ids": [
+            "json_match_1",
+            "json_match_2",
+            "json_match_3"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"insufficient_evidence\",\n  \"fields\": {\n    \"goals\": null\n  },\n  \"source_ids\": [\n    \"json_match_1\",\n    \"json_match_2\",\n    \"json_match_3\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": false,
+        "fields_correct": false,
+        "references_valid": true,
+        "gold_support_complete": false,
+        "prompt_sha256": "033cdf323a79b72a4ff3aac6354c617c685a85be1c83777164da1f8ab046f96e"
+      },
+      {
+        "case_id": "q_raw_null",
+        "run": "first_pass",
+        "wall_seconds": 0.8354258849999496,
+        "input_tokens_preflight": 660,
+        "usage": {
+          "completion_tokens": 65,
+          "prompt_tokens": 660,
+          "total_tokens": 725,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 660,
+          "prompt_ms": 149.471,
+          "prompt_per_token_ms": 0.22647121212121213,
+          "prompt_per_second": 4415.57225147353,
+          "predicted_n": 65,
+          "predicted_ms": 681.825,
+          "predicted_per_token_ms": 10.653515625,
+          "predicted_per_second": 93.86572800938657
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "insufficient_evidence",
+          "fields": {
+            "assists": null
+          },
+          "source_ids": [
+            "json_match_1",
+            "json_null"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"insufficient_evidence\",\n  \"fields\": {\n    \"assists\": null\n  },\n  \"source_ids\": [\n    \"json_match_1\",\n    \"json_null\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": false,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "15f197614e52e415a13489e563446659e2b3b51aa783e6bd69c3da023d0c591f"
+      },
+      {
+        "case_id": "q_player_id",
+        "run": "first_pass",
+        "wall_seconds": 0.8557793509999101,
+        "input_tokens_preflight": 667,
+        "usage": {
+          "completion_tokens": 68,
+          "prompt_tokens": 667,
+          "total_tokens": 735,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 667,
+          "prompt_ms": 142.505,
+          "prompt_per_token_ms": 0.21365067466266865,
+          "prompt_per_second": 4680.537524999123,
+          "predicted_n": 68,
+          "predicted_ms": 709.261,
+          "predicted_per_token_ms": 10.585985074626866,
+          "predicted_per_second": 94.46452011318824
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "player_id": "007"
+          },
+          "source_ids": [
+            "json_match_1",
+            "json_player_id"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"player_id\": \"007\"\n  },\n  \"source_ids\": [\n    \"json_match_1\",\n    \"json_player_id\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "8f7a6096b0eceb95be0dce72537472b5549c416bda8c3cccc06d9bd2e67f2d79"
+      },
+      {
+        "case_id": "q_array",
+        "run": "first_pass",
+        "wall_seconds": 0.6017094789999646,
+        "input_tokens_preflight": 267,
+        "usage": {
+          "completion_tokens": 51,
+          "prompt_tokens": 267,
+          "total_tokens": 318,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 267,
+          "prompt_ms": 86.71,
+          "prompt_per_token_ms": 0.3247565543071161,
+          "prompt_per_second": 3079.22961596125,
+          "predicted_n": 51,
+          "predicted_ms": 497.965,
+          "predicted_per_token_ms": 9.959299999999999,
+          "predicted_per_second": 100.40866325946602
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "goals": 4
+          },
+          "source_ids": [
+            "array_record"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"goals\": 4\n  },\n  \"source_ids\": [\n    \"array_record\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "6024ee78c697e88808d4c4948aba1a114f048a239b3fe95b48fe6ec1d085e1fe"
+      },
+      {
+        "case_id": "q_table",
+        "run": "first_pass",
+        "wall_seconds": 0.8899311499999385,
+        "input_tokens_preflight": 413,
+        "usage": {
+          "completion_tokens": 77,
+          "prompt_tokens": 413,
+          "total_tokens": 490,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 413,
+          "prompt_ms": 99.44,
+          "prompt_per_token_ms": 0.24077481840193704,
+          "prompt_per_second": 4153.2582461786005,
+          "predicted_n": 77,
+          "predicted_ms": 786.463,
+          "predicted_per_token_ms": 10.348197368421053,
+          "predicted_per_second": 96.63518817795625
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "flow": 12,
+            "unit": "L/min",
+            "water_temperature_c": 20
+          },
+          "source_ids": [
+            "table_h2"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"flow\": 12,\n    \"unit\": \"L/min\",\n    \"water_temperature_c\": 20\n  },\n  \"source_ids\": [\n    \"table_h2\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": false,
+        "prompt_sha256": "72106f8306c806392e85afe1ab1313780e3403f5097b03b207757e03ef41e72a"
+      },
+      {
+        "case_id": "q_cross_page",
+        "run": "first_pass",
+        "wall_seconds": 0.7150688110000374,
+        "input_tokens_preflight": 404,
+        "usage": {
+          "completion_tokens": 61,
+          "prompt_tokens": 404,
+          "total_tokens": 465,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 404,
+          "prompt_ms": 98.161,
+          "prompt_per_token_ms": 0.24297277227722772,
+          "prompt_per_second": 4115.6874929962005,
+          "predicted_n": 61,
+          "predicted_ms": 613.38,
+          "predicted_per_token_ms": 10.223,
+          "predicted_per_second": 97.81864423359092
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "wait": 8,
+            "unit": "minutes"
+          },
+          "source_ids": [
+            "c7_end"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"wait\": 8,\n    \"unit\": \"minutes\"\n  },\n  \"source_ids\": [\n    \"c7_end\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": false,
+        "prompt_sha256": "6d06a57d772a6616a399357976b21ee4fb46a8ad92ad7822a0f6b7f413b5380e"
+      },
+      {
+        "case_id": "q_scan",
+        "run": "first_pass",
+        "wall_seconds": 0.7121398139997837,
+        "input_tokens_preflight": 235,
+        "usage": {
+          "completion_tokens": 62,
+          "prompt_tokens": 235,
+          "total_tokens": 297,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 235,
+          "prompt_ms": 73.986,
+          "prompt_per_token_ms": 0.31483404255319153,
+          "prompt_per_second": 3176.276592868921,
+          "predicted_n": 62,
+          "predicted_ms": 631.285,
+          "predicted_per_token_ms": 10.348934426229508,
+          "predicted_per_second": 96.62830575730456
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "torque": 6,
+            "unit": "N m"
+          },
+          "source_ids": [
+            "scan_j2"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"torque\": 6,\n    \"unit\": \"N m\"\n  },\n  \"source_ids\": [\n    \"scan_j2\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "c0e70076f71ffb67b8a82c4ce44b036aa2ed85d99f4e4c225c5bd28f73d614fa"
+      },
+      {
+        "case_id": "q_pele_exact",
+        "run": "warm_repeat",
+        "wall_seconds": 0.8174414019999858,
+        "input_tokens_preflight": 363,
+        "usage": {
+          "completion_tokens": 78,
+          "prompt_tokens": 363,
+          "total_tokens": 441,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 363,
+          "prompt_ms": 94.662,
+          "prompt_per_token_ms": 0.26077685950413226,
+          "prompt_per_second": 3834.6960765671543,
+          "predicted_n": 78,
+          "predicted_ms": 719.345,
+          "predicted_per_token_ms": 9.342142857142857,
+          "predicted_per_second": 107.04182276932487
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "year": 1954,
+            "goals": 3,
+            "opponent": "Argentina"
+          },
+          "source_ids": [
+            "pele_1954_argentina"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"year\": 1954,\n    \"goals\": 3,\n    \"opponent\": \"Argentina\"\n  },\n  \"source_ids\": [\n    \"pele_1954_argentina\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "6793138439efa0b9252dd731b68c13027070fae7ab58ef4fea2f5c7882b2756d"
+      },
+      {
+        "case_id": "q_wrapped",
+        "run": "warm_repeat",
+        "wall_seconds": 0.6312297699996634,
+        "input_tokens_preflight": 355,
+        "usage": {
+          "completion_tokens": 52,
+          "prompt_tokens": 355,
+          "total_tokens": 407,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 355,
+          "prompt_ms": 100.301,
+          "prompt_per_token_ms": 0.2825380281690141,
+          "prompt_per_second": 3539.3465668338304,
+          "predicted_n": 52,
+          "predicted_ms": 527.386,
+          "predicted_per_token_ms": 10.340901960784313,
+          "predicted_per_second": 96.70336338090128
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "goals": 4
+          },
+          "source_ids": [
+            "mira_wrapped"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"goals\": 4\n  },\n  \"source_ids\": [\n    \"mira_wrapped\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "79d5f2cc6f1eba2cfe40f36434ed070e9ad94ab08fa5ce6425bba083bf72f5df"
+      },
+      {
+        "case_id": "q_followup",
+        "run": "warm_repeat",
+        "wall_seconds": 0.900389408999672,
+        "input_tokens_preflight": 388,
+        "usage": {
+          "completion_tokens": 78,
+          "prompt_tokens": 388,
+          "total_tokens": 466,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 388,
+          "prompt_ms": 103.24,
+          "prompt_per_token_ms": 0.2660824742268041,
+          "prompt_per_second": 3758.2332429290977,
+          "predicted_n": 78,
+          "predicted_ms": 793.477,
+          "predicted_per_token_ms": 10.304896103896104,
+          "predicted_per_second": 97.04125009294536
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "year": 1954,
+            "goals": 3,
+            "opponent": "Argentina"
+          },
+          "source_ids": [
+            "pele_1954_argentina"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"year\": 1954,\n    \"goals\": 3,\n    \"opponent\": \"Argentina\"\n  },\n  \"source_ids\": [\n    \"pele_1954_argentina\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "6bb33c12abb686b3e50dd47d864b96346bdb9aebc6cf4eb8eab47ecc4ae40c52"
+      },
+      {
+        "case_id": "q_ambiguous",
+        "run": "warm_repeat",
+        "wall_seconds": 0.6452870589996564,
+        "input_tokens_preflight": 354,
+        "usage": {
+          "completion_tokens": 57,
+          "prompt_tokens": 354,
+          "total_tokens": 411,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 354,
+          "prompt_ms": 94.512,
+          "prompt_per_token_ms": 0.2669830508474576,
+          "prompt_per_second": 3745.5561198577957,
+          "predicted_n": 57,
+          "predicted_ms": 547.941,
+          "predicted_per_token_ms": 9.784660714285716,
+          "predicted_per_second": 102.20078439102019
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "goals": 3
+          },
+          "source_ids": [
+            "pele_1954_argentina"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"goals\": 3\n  },\n  \"source_ids\": [\n    \"pele_1954_argentina\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": false,
+        "fields_correct": false,
+        "references_valid": true,
+        "gold_support_complete": false,
+        "prompt_sha256": "3250827966d5cce737fc06f84e56f3a850eee0862e2b28ca5164c992f92db18b"
+      },
+      {
+        "case_id": "q_missing_match",
+        "run": "warm_repeat",
+        "wall_seconds": 0.5600300300002345,
+        "input_tokens_preflight": 357,
+        "usage": {
+          "completion_tokens": 44,
+          "prompt_tokens": 357,
+          "total_tokens": 401,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 357,
+          "prompt_ms": 92.337,
+          "prompt_per_token_ms": 0.2586470588235294,
+          "prompt_per_second": 3866.272458494428,
+          "predicted_n": 44,
+          "predicted_ms": 464.424,
+          "predicted_per_token_ms": 10.800558139534884,
+          "predicted_per_second": 92.58780769297022
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "insufficient_evidence",
+          "fields": {
+            "goals": null
+          },
+          "source_ids": []
+        },
+        "raw_content": "{\n  \"status\": \"insufficient_evidence\",\n  \"fields\": {\n    \"goals\": null\n  },\n  \"source_ids\": []\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": false,
+        "references_valid": true,
+        "gold_support_complete": null,
+        "prompt_sha256": "3be5f89f312ffaafe0355f4c22bd419f82b75acb7f3b4b248b1c308f409fcb2d"
+      },
+      {
+        "case_id": "q_null_unknown",
+        "run": "warm_repeat",
+        "wall_seconds": 0.7218017600002895,
+        "input_tokens_preflight": 661,
+        "usage": {
+          "completion_tokens": 64,
+          "prompt_tokens": 661,
+          "total_tokens": 725,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 661,
+          "prompt_ms": 140.802,
+          "prompt_per_token_ms": 0.21301361573373676,
+          "prompt_per_second": 4694.535588983111,
+          "predicted_n": 64,
+          "predicted_ms": 574.865,
+          "predicted_per_token_ms": 9.12484126984127,
+          "predicted_per_second": 109.5909474398337
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "insufficient_evidence",
+          "fields": {
+            "assists": null
+          },
+          "source_ids": [
+            "json_match_1",
+            "json_null"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"insufficient_evidence\",\n  \"fields\": {\n    \"assists\": null\n  },\n  \"source_ids\": [\n    \"json_match_1\",\n    \"json_null\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": false,
+        "references_valid": true,
+        "gold_support_complete": null,
+        "prompt_sha256": "60d9e1c6a0b81fbd216894e96f2e08a9c13e24e1c34d6749ed45c76c33375781"
+      },
+      {
+        "case_id": "q_zero",
+        "run": "warm_repeat",
+        "wall_seconds": 0.8724726850000479,
+        "input_tokens_preflight": 660,
+        "usage": {
+          "completion_tokens": 74,
+          "prompt_tokens": 660,
+          "total_tokens": 734,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 660,
+          "prompt_ms": 148.378,
+          "prompt_per_token_ms": 0.2248151515151515,
+          "prompt_per_second": 4448.098774750974,
+          "predicted_n": 74,
+          "predicted_ms": 720.292,
+          "predicted_per_token_ms": 9.867013698630137,
+          "predicted_per_second": 101.34778673093689
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "insufficient_evidence",
+          "fields": {
+            "goals": null
+          },
+          "source_ids": [
+            "json_match_1",
+            "json_match_2",
+            "json_match_3"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"insufficient_evidence\",\n  \"fields\": {\n    \"goals\": null\n  },\n  \"source_ids\": [\n    \"json_match_1\",\n    \"json_match_2\",\n    \"json_match_3\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": false,
+        "fields_correct": false,
+        "references_valid": true,
+        "gold_support_complete": false,
+        "prompt_sha256": "033cdf323a79b72a4ff3aac6354c617c685a85be1c83777164da1f8ab046f96e"
+      },
+      {
+        "case_id": "q_raw_null",
+        "run": "warm_repeat",
+        "wall_seconds": 0.7914376389999234,
+        "input_tokens_preflight": 660,
+        "usage": {
+          "completion_tokens": 65,
+          "prompt_tokens": 660,
+          "total_tokens": 725,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 660,
+          "prompt_ms": 152.524,
+          "prompt_per_token_ms": 0.2310969696969697,
+          "prompt_per_second": 4327.1878524035565,
+          "predicted_n": 65,
+          "predicted_ms": 635.065,
+          "predicted_per_token_ms": 9.922890625,
+          "predicted_per_second": 100.77708581011392
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "insufficient_evidence",
+          "fields": {
+            "assists": null
+          },
+          "source_ids": [
+            "json_match_1",
+            "json_null"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"insufficient_evidence\",\n  \"fields\": {\n    \"assists\": null\n  },\n  \"source_ids\": [\n    \"json_match_1\",\n    \"json_null\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": false,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "15f197614e52e415a13489e563446659e2b3b51aa783e6bd69c3da023d0c591f"
+      },
+      {
+        "case_id": "q_player_id",
+        "run": "warm_repeat",
+        "wall_seconds": 0.7840022899999894,
+        "input_tokens_preflight": 667,
+        "usage": {
+          "completion_tokens": 68,
+          "prompt_tokens": 667,
+          "total_tokens": 735,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 667,
+          "prompt_ms": 144.147,
+          "prompt_per_token_ms": 0.21611244377811092,
+          "prompt_per_second": 4627.220823187441,
+          "predicted_n": 68,
+          "predicted_ms": 635.588,
+          "predicted_per_token_ms": 9.486388059701492,
+          "predicted_per_second": 105.4141991352889
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "player_id": "007"
+          },
+          "source_ids": [
+            "json_match_1",
+            "json_player_id"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"player_id\": \"007\"\n  },\n  \"source_ids\": [\n    \"json_match_1\",\n    \"json_player_id\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "8f7a6096b0eceb95be0dce72537472b5549c416bda8c3cccc06d9bd2e67f2d79"
+      },
+      {
+        "case_id": "q_array",
+        "run": "warm_repeat",
+        "wall_seconds": 0.5972549540001637,
+        "input_tokens_preflight": 267,
+        "usage": {
+          "completion_tokens": 51,
+          "prompt_tokens": 267,
+          "total_tokens": 318,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 267,
+          "prompt_ms": 86.519,
+          "prompt_per_token_ms": 0.3240411985018727,
+          "prompt_per_second": 3086.027346594389,
+          "predicted_n": 51,
+          "predicted_ms": 503.307,
+          "predicted_per_token_ms": 10.06614,
+          "predicted_per_second": 99.34294575676475
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "goals": 4
+          },
+          "source_ids": [
+            "array_record"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"goals\": 4\n  },\n  \"source_ids\": [\n    \"array_record\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "6024ee78c697e88808d4c4948aba1a114f048a239b3fe95b48fe6ec1d085e1fe"
+      },
+      {
+        "case_id": "q_table",
+        "run": "warm_repeat",
+        "wall_seconds": 0.9093221740004083,
+        "input_tokens_preflight": 413,
+        "usage": {
+          "completion_tokens": 77,
+          "prompt_tokens": 413,
+          "total_tokens": 490,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 413,
+          "prompt_ms": 101.801,
+          "prompt_per_token_ms": 0.24649152542372882,
+          "prompt_per_second": 4056.934607715052,
+          "predicted_n": 77,
+          "predicted_ms": 803.142,
+          "predicted_per_token_ms": 10.567657894736843,
+          "predicted_per_second": 94.62834716650356
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "flow": 12,
+            "unit": "L/min",
+            "water_temperature_c": 20
+          },
+          "source_ids": [
+            "table_h2"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"flow\": 12,\n    \"unit\": \"L/min\",\n    \"water_temperature_c\": 20\n  },\n  \"source_ids\": [\n    \"table_h2\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": false,
+        "prompt_sha256": "72106f8306c806392e85afe1ab1313780e3403f5097b03b207757e03ef41e72a"
+      },
+      {
+        "case_id": "q_cross_page",
+        "run": "warm_repeat",
+        "wall_seconds": 0.7641011290002098,
+        "input_tokens_preflight": 404,
+        "usage": {
+          "completion_tokens": 61,
+          "prompt_tokens": 404,
+          "total_tokens": 465,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 404,
+          "prompt_ms": 104.839,
+          "prompt_per_token_ms": 0.25950247524752473,
+          "prompt_per_second": 3853.527790230735,
+          "predicted_n": 61,
+          "predicted_ms": 655.473,
+          "predicted_per_token_ms": 10.92455,
+          "predicted_per_second": 91.5369511787671
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "wait": 8,
+            "unit": "minutes"
+          },
+          "source_ids": [
+            "c7_end"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"wait\": 8,\n    \"unit\": \"minutes\"\n  },\n  \"source_ids\": [\n    \"c7_end\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": false,
+        "prompt_sha256": "6d06a57d772a6616a399357976b21ee4fb46a8ad92ad7822a0f6b7f413b5380e"
+      },
+      {
+        "case_id": "q_scan",
+        "run": "warm_repeat",
+        "wall_seconds": 0.7209671820000949,
+        "input_tokens_preflight": 235,
+        "usage": {
+          "completion_tokens": 62,
+          "prompt_tokens": 235,
+          "total_tokens": 297,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 235,
+          "prompt_ms": 73.174,
+          "prompt_per_token_ms": 0.3113787234042553,
+          "prompt_per_second": 3211.5232186295675,
+          "predicted_n": 62,
+          "predicted_ms": 644.498,
+          "predicted_per_token_ms": 10.565540983606558,
+          "predicted_per_second": 94.64730689622
+        },
+        "finish_reason": "stop",
+        "answer": {
+          "status": "supported",
+          "fields": {
+            "torque": 6,
+            "unit": "N m"
+          },
+          "source_ids": [
+            "scan_j2"
+          ]
+        },
+        "raw_content": "{\n  \"status\": \"supported\",\n  \"fields\": {\n    \"torque\": 6,\n    \"unit\": \"N m\"\n  },\n  \"source_ids\": [\n    \"scan_j2\"\n  ]\n}",
+        "schema_errors": [],
+        "status_correct": true,
+        "fields_correct": true,
+        "references_valid": true,
+        "gold_support_complete": true,
+        "prompt_sha256": "c0e70076f71ffb67b8a82c4ce44b036aa2ed85d99f4e4c225c5bd28f73d614fa"
+      }
+    ],
+    "cpu_models": {
+      "embedding": {
+        "repo": "sentence-transformers/all-MiniLM-L6-v2",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "artifact_sha256": {
+          "onnx/model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+          "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+        },
+        "format": "publisher_fp32_onnx",
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "preprocessing_version": "minilm-mask-mean-l2-v1",
+        "onnxruntime_version": "1.31.0",
+        "max_tokens_including_special": 256,
+        "query_prefix": "",
+        "document_prefix": "",
+        "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+        "pooling": "attention-mask mean then L2 normalization",
+        "dimensions": 384,
+        "dtype": "float32",
+        "truncation": "reject",
+        "max_batch": 32
+      },
+      "reranker": {
+        "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+        "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+        "artifact_sha256": {
+          "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+          "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+        },
+        "format": "publisher_fp32_onnx",
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "preprocessing_version": "minilm-pair-raw-logit-v1",
+        "onnxruntime_version": "1.31.0",
+        "max_tokens_including_special": 512,
+        "query_prefix": "",
+        "document_prefix": "",
+        "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+        "pooling": "none; raw relevance logit, higher is better, not a probability",
+        "dimensions": 1,
+        "dtype": "float32",
+        "truncation": "reject",
+        "max_batch": 32
+      },
+      "embedding_load_with_checksum_seconds": 0.9987649169997894,
+      "reranker_load_with_checksum_seconds": 0.8950447929996699,
+      "documents": 22,
+      "max_document_tokens": 101,
+      "embedding_first_batch_seconds": 0.14716213000019707,
+      "embedding_warm_batch_seconds": [
+        0.13867786300033913,
+        0.1363654960000531,
+        0.10461218599994027
+      ],
+      "repeat_max_abs_delta": 0.0,
+      "norm_min": 0.9999999403953552,
+      "norm_max": 1.0,
+      "limit_checks": {
+        "embedding": "rejected without truncation",
+        "reranker": "rejected without truncation"
+      },
+      "ranking_probes": [
+        {
+          "case_id": "q_pele_exact",
+          "query_seconds": 0.0033091130003413127,
+          "rerank_seconds": 0.1877562049999142,
+          "query_tokens": 19,
+          "max_pair_tokens": 119,
+          "dense": [
+            {
+              "id": "pele_1954_argentina",
+              "score": 0.8383526802062988
+            },
+            {
+              "id": "pele_1954_uruguay",
+              "score": 0.799627423286438
+            },
+            {
+              "id": "pele_1955_argentina",
+              "score": 0.7971541881561279
+            },
+            {
+              "id": "mira_wrapped",
+              "score": 0.5107560157775879
+            },
+            {
+              "id": "json_zero",
+              "score": 0.26882562041282654
+            },
+            {
+              "id": "json_match_1",
+              "score": 0.2686675488948822
+            },
+            {
+              "id": "array_record",
+              "score": 0.23266063630580902
+            },
+            {
+              "id": "json_match_2",
+              "score": 0.22057700157165527
+            },
+            {
+              "id": "json_match_3",
+              "score": 0.21051082015037537
+            },
+            {
+              "id": "json_player_id",
+              "score": 0.15766021609306335
+            },
+            {
+              "id": "json_null",
+              "score": 0.15094801783561707
+            },
+            {
+              "id": "table_h2",
+              "score": 0.07397577166557312
+            },
+            {
+              "id": "table_heading",
+              "score": 0.07068945467472076
+            },
+            {
+              "id": "json_publication_year",
+              "score": 0.03940200433135033
+            },
+            {
+              "id": "table_columns",
+              "score": 0.03680405020713806
+            },
+            {
+              "id": "filter_h2",
+              "score": 0.020277690142393112
+            },
+            {
+              "id": "c7_start",
+              "score": 0.01414349116384983
+            },
+            {
+              "id": "table_exception",
+              "score": 0.005937834270298481
+            },
+            {
+              "id": "json_tilde_key",
+              "score": -0.007972128689289093
+            },
+            {
+              "id": "scan_j2",
+              "score": -0.029040005058050156
+            },
+            {
+              "id": "json_slash_key",
+              "score": -0.047151971608400345
+            },
+            {
+              "id": "c7_end",
+              "score": -0.053558964282274246
+            }
+          ],
+          "reranked": [
+            {
+              "id": "pele_1954_argentina",
+              "logit": 7.916585445404053
+            },
+            {
+              "id": "pele_1954_uruguay",
+              "logit": 5.709877014160156
+            },
+            {
+              "id": "pele_1955_argentina",
+              "logit": 5.672854423522949
+            },
+            {
+              "id": "mira_wrapped",
+              "logit": -3.6474146842956543
+            },
+            {
+              "id": "array_record",
+              "logit": -8.581975936889648
+            },
+            {
+              "id": "table_h2",
+              "logit": -9.01613712310791
+            },
+            {
+              "id": "json_zero",
+              "logit": -9.241005897521973
+            },
+            {
+              "id": "json_match_3",
+              "logit": -9.540210723876953
+            },
+            {
+              "id": "json_match_1",
+              "logit": -9.852744102478027
+            },
+            {
+              "id": "json_match_2",
+              "logit": -10.053781509399414
+            },
+            {
+              "id": "json_publication_year",
+              "logit": -10.84720516204834
+            },
+            {
+              "id": "table_heading",
+              "logit": -10.867637634277344
+            },
+            {
+              "id": "table_exception",
+              "logit": -10.89891242980957
+            },
+            {
+              "id": "json_null",
+              "logit": -10.900932312011719
+            },
+            {
+              "id": "json_player_id",
+              "logit": -10.911255836486816
+            },
+            {
+              "id": "c7_end",
+              "logit": -11.057503700256348
+            },
+            {
+              "id": "json_tilde_key",
+              "logit": -11.070076942443848
+            },
+            {
+              "id": "table_columns",
+              "logit": -11.080657958984375
+            },
+            {
+              "id": "filter_h2",
+              "logit": -11.16756820678711
+            },
+            {
+              "id": "json_slash_key",
+              "logit": -11.185324668884277
+            },
+            {
+              "id": "scan_j2",
+              "logit": -11.225655555725098
+            },
+            {
+              "id": "c7_start",
+              "logit": -11.290441513061523
+            }
+          ]
+        },
+        {
+          "case_id": "q_zero",
+          "query_seconds": 0.0027360610001778696,
+          "rerank_seconds": 0.19560727399993993,
+          "query_tokens": 14,
+          "max_pair_tokens": 114,
+          "dense": [
+            {
+              "id": "pele_1954_argentina",
+              "score": 0.3255951702594757
+            },
+            {
+              "id": "pele_1954_uruguay",
+              "score": 0.31354182958602905
+            },
+            {
+              "id": "json_match_1",
+              "score": 0.3105342388153076
+            },
+            {
+              "id": "pele_1955_argentina",
+              "score": 0.30383560061454773
+            },
+            {
+              "id": "mira_wrapped",
+              "score": 0.2973201870918274
+            },
+            {
+              "id": "json_match_2",
+              "score": 0.2706572115421295
+            },
+            {
+              "id": "json_zero",
+              "score": 0.20763561129570007
+            },
+            {
+              "id": "json_match_3",
+              "score": 0.20427647233009338
+            },
+            {
+              "id": "array_record",
+              "score": 0.19550681114196777
+            },
+            {
+              "id": "table_h2",
+              "score": 0.17530328035354614
+            },
+            {
+              "id": "table_heading",
+              "score": 0.12987136840820312
+            },
+            {
+              "id": "json_null",
+              "score": 0.12257085740566254
+            },
+            {
+              "id": "table_exception",
+              "score": 0.08078479766845703
+            },
+            {
+              "id": "json_player_id",
+              "score": 0.0753483846783638
+            },
+            {
+              "id": "table_columns",
+              "score": 0.0672585666179657
+            },
+            {
+              "id": "json_publication_year",
+              "score": 0.0652306005358696
+            },
+            {
+              "id": "filter_h2",
+              "score": 0.06062300503253937
+            },
+            {
+              "id": "json_slash_key",
+              "score": -0.004201923497021198
+            },
+            {
+              "id": "c7_start",
+              "score": -0.006256110966205597
+            },
+            {
+              "id": "scan_j2",
+              "score": -0.027872517704963684
+            },
+            {
+              "id": "json_tilde_key",
+              "score": -0.029919611290097237
+            },
+            {
+              "id": "c7_end",
+              "score": -0.05799688398838043
+            }
+          ],
+          "reranked": [
+            {
+              "id": "json_match_1",
+              "logit": 5.4286417961120605
+            },
+            {
+              "id": "json_match_2",
+              "logit": 3.4188642501831055
+            },
+            {
+              "id": "json_match_3",
+              "logit": 3.319340467453003
+            },
+            {
+              "id": "pele_1954_argentina",
+              "logit": -4.389519691467285
+            },
+            {
+              "id": "pele_1954_uruguay",
+              "logit": -4.664236068725586
+            },
+            {
+              "id": "mira_wrapped",
+              "logit": -4.824092864990234
+            },
+            {
+              "id": "pele_1955_argentina",
+              "logit": -4.851959228515625
+            },
+            {
+              "id": "array_record",
+              "logit": -8.083911895751953
+            },
+            {
+              "id": "table_h2",
+              "logit": -10.089386940002441
+            },
+            {
+              "id": "json_zero",
+              "logit": -10.140825271606445
+            },
+            {
+              "id": "json_publication_year",
+              "logit": -10.690922737121582
+            },
+            {
+              "id": "json_null",
+              "logit": -11.170036315917969
+            },
+            {
+              "id": "table_heading",
+              "logit": -11.18751335144043
+            },
+            {
+              "id": "table_exception",
+              "logit": -11.214437484741211
+            },
+            {
+              "id": "json_player_id",
+              "logit": -11.224836349487305
+            },
+            {
+              "id": "filter_h2",
+              "logit": -11.25141429901123
+            },
+            {
+              "id": "json_tilde_key",
+              "logit": -11.252378463745117
+            },
+            {
+              "id": "c7_end",
+              "logit": -11.265155792236328
+            },
+            {
+              "id": "table_columns",
+              "logit": -11.294096946716309
+            },
+            {
+              "id": "scan_j2",
+              "logit": -11.325872421264648
+            },
+            {
+              "id": "json_slash_key",
+              "logit": -11.335302352905273
+            },
+            {
+              "id": "c7_start",
+              "logit": -11.37191104888916
+            }
+          ]
+        },
+        {
+          "case_id": "q_table",
+          "query_seconds": 0.0028517639998426603,
+          "rerank_seconds": 0.16304424899999503,
+          "query_tokens": 17,
+          "max_pair_tokens": 117,
+          "dense": [
+            {
+              "id": "table_heading",
+              "score": 0.7308059930801392
+            },
+            {
+              "id": "table_exception",
+              "score": 0.5657801628112793
+            },
+            {
+              "id": "table_columns",
+              "score": 0.4913290739059448
+            },
+            {
+              "id": "table_h2",
+              "score": 0.4800903797149658
+            },
+            {
+              "id": "c7_start",
+              "score": 0.4535329341888428
+            },
+            {
+              "id": "filter_h2",
+              "score": 0.28309357166290283
+            },
+            {
+              "id": "scan_j2",
+              "score": 0.10227613151073456
+            },
+            {
+              "id": "array_record",
+              "score": 0.09058518707752228
+            },
+            {
+              "id": "json_zero",
+              "score": 0.07529360055923462
+            },
+            {
+              "id": "mira_wrapped",
+              "score": 0.06699515134096146
+            },
+            {
+              "id": "json_publication_year",
+              "score": 0.05819394811987877
+            },
+            {
+              "id": "json_slash_key",
+              "score": 0.05758786201477051
+            },
+            {
+              "id": "json_player_id",
+              "score": 0.056907057762145996
+            },
+            {
+              "id": "json_tilde_key",
+              "score": 0.05560022220015526
+            },
+            {
+              "id": "json_match_2",
+              "score": 0.054671209305524826
+            },
+            {
+              "id": "json_match_3",
+              "score": 0.04125206544995308
+            },
+            {
+              "id": "json_match_1",
+              "score": 0.03705551102757454
+            },
+            {
+              "id": "c7_end",
+              "score": 0.03270608186721802
+            },
+            {
+              "id": "json_null",
+              "score": 0.029909756034612656
+            },
+            {
+              "id": "pele_1954_uruguay",
+              "score": 0.0031552650034427643
+            },
+            {
+              "id": "pele_1955_argentina",
+              "score": -0.004572996869683266
+            },
+            {
+              "id": "pele_1954_argentina",
+              "score": -0.014061619527637959
+            }
+          ],
+          "reranked": [
+            {
+              "id": "table_heading",
+              "logit": 4.910777568817139
+            },
+            {
+              "id": "table_exception",
+              "logit": 0.8243592381477356
+            },
+            {
+              "id": "c7_start",
+              "logit": -3.4552063941955566
+            },
+            {
+              "id": "table_h2",
+              "logit": -5.157240867614746
+            },
+            {
+              "id": "table_columns",
+              "logit": -7.787963390350342
+            },
+            {
+              "id": "filter_h2",
+              "logit": -8.992691040039062
+            },
+            {
+              "id": "json_publication_year",
+              "logit": -11.269417762756348
+            },
+            {
+              "id": "mira_wrapped",
+              "logit": -11.288822174072266
+            },
+            {
+              "id": "json_zero",
+              "logit": -11.29126262664795
+            },
+            {
+              "id": "json_tilde_key",
+              "logit": -11.310990333557129
+            },
+            {
+              "id": "c7_end",
+              "logit": -11.312517166137695
+            },
+            {
+              "id": "json_null",
+              "logit": -11.3189697265625
+            },
+            {
+              "id": "pele_1954_uruguay",
+              "logit": -11.375310897827148
+            },
+            {
+              "id": "json_player_id",
+              "logit": -11.377885818481445
+            },
+            {
+              "id": "pele_1954_argentina",
+              "logit": -11.38010025024414
+            },
+            {
+              "id": "pele_1955_argentina",
+              "logit": -11.386688232421875
+            },
+            {
+              "id": "scan_j2",
+              "logit": -11.388071060180664
+            },
+            {
+              "id": "json_match_1",
+              "logit": -11.41697883605957
+            },
+            {
+              "id": "json_slash_key",
+              "logit": -11.427045822143555
+            },
+            {
+              "id": "json_match_3",
+              "logit": -11.427343368530273
+            },
+            {
+              "id": "array_record",
+              "logit": -11.427915573120117
+            },
+            {
+              "id": "json_match_2",
+              "logit": -11.442998886108398
+            }
+          ]
+        },
+        {
+          "case_id": "q_cross_page",
+          "query_seconds": 0.002310618000137765,
+          "rerank_seconds": 0.19970307499988849,
+          "query_tokens": 18,
+          "max_pair_tokens": 118,
+          "dense": [
+            {
+              "id": "c7_start",
+              "score": 0.6694596409797668
+            },
+            {
+              "id": "c7_end",
+              "score": 0.6499080061912537
+            },
+            {
+              "id": "filter_h2",
+              "score": 0.44154781103134155
+            },
+            {
+              "id": "table_exception",
+              "score": 0.3433120846748352
+            },
+            {
+              "id": "table_h2",
+              "score": 0.30903884768486023
+            },
+            {
+              "id": "scan_j2",
+              "score": 0.15668419003486633
+            },
+            {
+              "id": "table_columns",
+              "score": 0.15433761477470398
+            },
+            {
+              "id": "json_publication_year",
+              "score": 0.07298998534679413
+            },
+            {
+              "id": "json_tilde_key",
+              "score": 0.07121522724628448
+            },
+            {
+              "id": "json_slash_key",
+              "score": 0.0551106259226799
+            },
+            {
+              "id": "mira_wrapped",
+              "score": 0.033837493509054184
+            },
+            {
+              "id": "json_player_id",
+              "score": 0.02998468093574047
+            },
+            {
+              "id": "table_heading",
+              "score": 0.025538863614201546
+            },
+            {
+              "id": "json_null",
+              "score": -0.021000612527132034
+            },
+            {
+              "id": "json_zero",
+              "score": -0.030215486884117126
+            },
+            {
+              "id": "array_record",
+              "score": -0.03157094866037369
+            },
+            {
+              "id": "json_match_2",
+              "score": -0.06005905568599701
+            },
+            {
+              "id": "json_match_3",
+              "score": -0.077755406498909
+            },
+            {
+              "id": "json_match_1",
+              "score": -0.07903550565242767
+            },
+            {
+              "id": "pele_1954_uruguay",
+              "score": -0.11123491078615189
+            },
+            {
+              "id": "pele_1954_argentina",
+              "score": -0.11528114974498749
+            },
+            {
+              "id": "pele_1955_argentina",
+              "score": -0.12196653336286545
+            }
+          ],
+          "reranked": [
+            {
+              "id": "c7_end",
+              "logit": 6.623134613037109
+            },
+            {
+              "id": "c7_start",
+              "logit": 0.1784214973449707
+            },
+            {
+              "id": "filter_h2",
+              "logit": -3.533320903778076
+            },
+            {
+              "id": "table_exception",
+              "logit": -5.52160120010376
+            },
+            {
+              "id": "table_h2",
+              "logit": -6.725185871124268
+            },
+            {
+              "id": "table_heading",
+              "logit": -10.1085205078125
+            },
+            {
+              "id": "table_columns",
+              "logit": -10.523731231689453
+            },
+            {
+              "id": "json_player_id",
+              "logit": -10.66124153137207
+            },
+            {
+              "id": "json_publication_year",
+              "logit": -10.981739044189453
+            },
+            {
+              "id": "scan_j2",
+              "logit": -11.008649826049805
+            },
+            {
+              "id": "json_null",
+              "logit": -11.092775344848633
+            },
+            {
+              "id": "json_tilde_key",
+              "logit": -11.109968185424805
+            },
+            {
+              "id": "json_zero",
+              "logit": -11.114108085632324
+            },
+            {
+              "id": "mira_wrapped",
+              "logit": -11.124739646911621
+            },
+            {
+              "id": "json_match_2",
+              "logit": -11.19761848449707
+            },
+            {
+              "id": "json_slash_key",
+              "logit": -11.230192184448242
+            },
+            {
+              "id": "json_match_3",
+              "logit": -11.256680488586426
+            },
+            {
+              "id": "pele_1955_argentina",
+              "logit": -11.266197204589844
+            },
+            {
+              "id": "pele_1954_argentina",
+              "logit": -11.268110275268555
+            },
+            {
+              "id": "pele_1954_uruguay",
+              "logit": -11.271974563598633
+            },
+            {
+              "id": "array_record",
+              "logit": -11.28740119934082
+            },
+            {
+              "id": "json_match_1",
+              "logit": -11.287483215332031
+            }
+          ]
+        }
+      ]
+    },
+    "long_context_probe": {
+      "case_id": "q_pele_exact",
+      "run": "long_context",
+      "wall_seconds": 1.3339905850002651,
+      "input_tokens_preflight": 3723,
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 3723,
+        "total_tokens": 3782,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 3723,
+        "prompt_ms": 683.025,
+        "prompt_per_token_ms": 0.18346091861402095,
+        "prompt_per_second": 5450.75216866147,
+        "predicted_n": 59,
+        "predicted_ms": 640.86,
+        "predicted_per_token_ms": 11.049310344827587,
+        "predicted_per_second": 90.50338607496177
+      },
+      "finish_reason": "stop",
+      "answer": {
+        "status": "insufficient_evidence",
+        "fields": {
+          "year": null,
+          "goals": null,
+          "opponent": null
+        },
+        "source_ids": []
+      },
+      "raw_content": "{\n  \"status\": \"insufficient_evidence\",\n  \"fields\": {\n    \"year\": null,\n    \"goals\": null,\n    \"opponent\": null\n  },\n  \"source_ids\": []\n}",
+      "schema_errors": [],
+      "status_correct": false,
+      "fields_correct": false,
+      "references_valid": true,
+      "gold_support_complete": false,
+      "prompt_sha256": "57d195b5c6aa71ba8b5eeeaa8c15f50ca017ac1a741a4e0c1c081341fa932749"
+    },
+    "server_overflow": {
+      "http_status": 400,
+      "body": "{\"error\":{\"code\":400,\"message\":\"request (5009 tokens) exceeds the available context size (4096 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":5009,\"n_ctx\":4096}}"
+    },
+    "technical_pass": true,
+    "cpu_process_peak_rss_kib": 449748,
+    "summary": {
+      "requests": 27,
+      "schema_valid": 27,
+      "status_and_fields_correct": 16,
+      "support_complete": 14,
+      "support_applicable": 23,
+      "wall_median_seconds": 0.7740517095000996
+    }
+  },
+  "prior_runs": [
+    {
+      "run_id": "20261014T135149Z",
+      "check_exit_code": 0,
+      "summary": {
+        "requests": 27,
+        "schema_valid": 27,
+        "status_and_fields_correct": 16,
+        "support_complete": 15,
+        "support_applicable": 23,
+        "wall_median_seconds": 0.7428953654999759
+      },
+      "error": null,
+      "completed_standard_requests": 26,
+      "notes": "Initial run used deprecated thinking flag and buffered GPU monitor."
+    },
+    {
+      "run_id": "20261014T135546Z",
+      "check_exit_code": 1,
+      "summary": null,
+      "error": "ValueError: Request exceeds input/output budget: 3863 + 256 > 4096",
+      "completed_standard_requests": 26,
+      "notes": "Larger-prompt preflight correctly rejected 3863 input + 256 reserved output tokens. Final probe reduced to 3723 input tokens."
+    }
+  ]
+}

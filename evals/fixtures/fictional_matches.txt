@@ -1,0 +1,17 @@
+SYNTHETIC TEST DATA - all matches below are invented.
+The Pelé/1954 example is hypothetical, not verified sports history.
+
+Fictional match F-001
+Pelé scored 3 goals against Argentina in 1954.
+
+Fictional match F-002
+Pelé scored 1 goal against Argentina in 1955.
+
+Fictional match F-003
+Pelé scored 2 goals against Uruguay in 1954.
+
+Fictional match F-004
+In the invented 1960 match against Chile, Mira Costa scored
+4 goals. The match was played at Harbor Field.
+
+These four records are the complete contents of this fictional match log.

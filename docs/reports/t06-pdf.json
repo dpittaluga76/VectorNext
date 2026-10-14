@@ -1,0 +1,199 @@
+{
+  "task": "T06",
+  "date": "2026-10-14",
+  "processor_image": "sha256:e16c8229c11353560b8eaae14cab6c651fd22180d3b16d4b5725c74b7be0dee8",
+  "core_image": "sha256:efbcc6931ca4c2a7fcc72a7cd40c66e76ea97960f4ebb6edb28f68d5ae817f6b",
+  "resources": {
+    "peak_rss_kib": 1314572,
+    "profile": "eba773878b43b30647ae9cc447b45a591401a226ca0757e6902b3ebe49fdd19d",
+    "cpus": 2,
+    "memory_limit_gib": 4
+  },
+  "conversion_seconds": {
+    "equipment_guide": 15.045,
+    "scanned_note": 7.188,
+    "mixed_overlay": 4.545,
+    "mixed_regions": 5.265,
+    "uninterpreted_graphic": 4.679
+  },
+  "verification": {
+    "core_tests": 66,
+    "processor_tests": 13,
+    "pdf_disk_tests": 8,
+    "clippy_warnings_denied": true,
+    "rustfmt": true,
+    "offline": true,
+    "gpu_used": false
+  },
+  "documents": [
+    {
+      "name": "equipment_guide",
+      "artifact_file": "tests/fixtures/pdf/equipment_guide.json",
+      "artifact_file_sha256": "9a709d8e35c2011542292405037d1d03ef04e6ce1d1798cee7c2f4bf1718eaab",
+      "source_sha256": "dc8c41c6cb312efe2d1dfe168ba371739e2c4e3d31a3d694751f5d537fbfa41a",
+      "status": "complete",
+      "items": 25,
+      "indexed_items": 17,
+      "pages": [
+        {
+          "page": 1,
+          "width": 612.0,
+          "height": 792.0,
+          "native_cells": 24,
+          "ocr_cells": 0,
+          "ocr_mean_confidence": null
+        },
+        {
+          "page": 2,
+          "width": 612.0,
+          "height": 792.0,
+          "native_cells": 8,
+          "ocr_cells": 0,
+          "ocr_mean_confidence": null
+        }
+      ],
+      "warnings": [],
+      "tables": [
+        {
+          "id": "#/tables/0",
+          "page": 1,
+          "num_rows": 4,
+          "num_cols": 3,
+          "captions": [],
+          "footnotes": []
+        }
+      ]
+    },
+    {
+      "name": "scanned_note",
+      "artifact_file": "tests/fixtures/pdf/scanned_note.json",
+      "artifact_file_sha256": "317a2df26d86eeca3708dcf7e06b2ab5bf50e82682d1e39f0f2305abd1910340",
+      "source_sha256": "ee6db1cbdb579d8df3b2c60bcd1c5adc8a9f7674094e2ff14d15a69a440d30a6",
+      "status": "complete",
+      "items": 8,
+      "indexed_items": 6,
+      "pages": [
+        {
+          "page": 1,
+          "width": 612.0,
+          "height": 792.0,
+          "native_cells": 0,
+          "ocr_cells": 57,
+          "ocr_mean_confidence": 0.9506436715789475
+        }
+      ],
+      "warnings": [],
+      "tables": []
+    },
+    {
+      "name": "mixed_overlay",
+      "artifact_file": "tests/fixtures/pdf/mixed_overlay.json",
+      "artifact_file_sha256": "21051f9f6abf5f81f0648072c409c9e3a88f55929498c76b29af6873395ec4e6",
+      "source_sha256": "700da103be9f7b54022cd92472906e84922d0f00c5cbacc8a4b7f63232d6a2f5",
+      "status": "complete",
+      "items": 2,
+      "indexed_items": 2,
+      "pages": [
+        {
+          "page": 1,
+          "width": 612.0,
+          "height": 792.0,
+          "native_cells": 1,
+          "ocr_cells": 8,
+          "ocr_mean_confidence": 0.96007541625
+        }
+      ],
+      "warnings": [],
+      "tables": []
+    },
+    {
+      "name": "mixed_regions",
+      "artifact_file": "tests/fixtures/pdf/mixed_regions.json",
+      "artifact_file_sha256": "c6b43e5baf5cbbf2f6c7a4a38c763d2b5c1d5edc3050ae5b94fcc5f9bf040bff",
+      "source_sha256": "aaebf525fb2fc5d1bab54154e2a78d71dfc97a13c93700cc83569b257354ae32",
+      "status": "complete",
+      "items": 4,
+      "indexed_items": 4,
+      "pages": [
+        {
+          "page": 1,
+          "width": 612.0,
+          "height": 792.0,
+          "native_cells": 3,
+          "ocr_cells": 11,
+          "ocr_mean_confidence": 0.95684453
+        }
+      ],
+      "warnings": [],
+      "tables": []
+    },
+    {
+      "name": "uninterpreted_graphic",
+      "artifact_file": "tests/fixtures/pdf/uninterpreted_graphic.json",
+      "artifact_file_sha256": "bec16fcc15582d009c1f5f4e585b96f69b7012e12a9d28d5ba01a3f51e847461",
+      "source_sha256": "a258953aaf6f41df878fa2e6febfc53c9f4fbfcc13c0ce583b893db64566b214",
+      "status": "partial",
+      "items": 2,
+      "indexed_items": 2,
+      "pages": [
+        {
+          "page": 1,
+          "width": 612.0,
+          "height": 792.0,
+          "native_cells": 2,
+          "ocr_cells": 0,
+          "ocr_mean_confidence": null
+        }
+      ],
+      "warnings": [
+        {
+          "code": "uninterpreted_picture",
+          "page": 1,
+          "message": "Picture/diagram semantics are not extracted",
+          "bbox": [
+            87.99700164794922,
+            282.9961242675781,
+            523.9951171875,
+            439.814453125
+          ]
+        }
+      ],
+      "tables": []
+    }
+  ],
+  "demo": {
+    "volume": "vectornext-pdf-demo",
+    "job_id": "equipment-v1",
+    "blocks": 25,
+    "chunks": 14,
+    "generation": 1,
+    "retry_generation": 1,
+    "receipt_sha256": "63685c499cf92b03b15adbc276d6390940add18ce4add3cf0757a0552105c536",
+    "canonical_artifact_sha256": "c84b27496ef8a5b088535017dcbc498dc9494ef3a7a4ba2bc5630fe5636e2e3f"
+  },
+  "code_sha256": {
+    "src/ingestion/mod.rs": "eb3cc2946290d8b7c5471c966039962f7f6d7c9cdfc7d8cac8db215b2acf90a9",
+    "src/ingestion/jobs.rs": "04f4df136f3e0590e7d655374d8c4447ec6c87c3986246e5bf5c3a90ce164d7b",
+    "src/ingestion/prepare.rs": "876e4924262f6f760955c7788fc68d1d52d942aa3b8d81f8132370c685ae4b2d",
+    "src/ingestion/pdf.rs": "f9be86150da0578d828e970004691d0ef70b7fa8cf1c865d91a2eedbff4e4f1a",
+    "examples/ingest_pdf.rs": "138241f748755a8f65aebc0cea44124e3fcdbf229a1207f32f65f7e032802e41",
+    "tests/pdf_ingestion.rs": "ba1146dbc127fab201a7becc9ef15d2c55d87203ee5fb1d624478d0bc62f6abc",
+    "processor/pdf.py": "bdf3e552a8ff554d1daa10facf500f2ce981dbeafa4ffe1235a515ce1ec44a73",
+    "processor/assets.py": "4ec8e204ba70109962f34d1cdf0da6fd04ab1b12415743228923380ed22d8216",
+    "processor/settings.json": "2c426393fd2ca3a0fbeda1404f6c1d5c8399d09d8e9a22d4877bc158f23b44ca",
+    "processor/requirements.lock": "47ef2c4da72b4588cac2f406c1063310ff4668d30d1b0b102aae444ea5638023",
+    "processor/runtime.lock.json": "a85805e229c3ed175f87754bf1e2d7b29712b0791fc7810490010e174a6b1cb5",
+    "processor/models.lock.json": "a1cd60b714696fdb98d367734df7c9a91e9b16864dfbba5f6f862bdea0708558",
+    "processor/tests/test_pdf.py": "6df0ce2dcdef72956e8162bab4ace060da93226df9edf555facb9a7baa5f2ce3",
+    "docker/processor.Dockerfile": "59a442f1d7b35570132a582080598c91905c21cec221f9c42928500d9340429d",
+    "docker/core.Dockerfile": "c8070492cb5bb5e3b0655991ba2632109d47403959f0f03886e187b1740e4077",
+    "compose.processor.yaml": "4316ff4592c86b25b8f97503282a190bf5302c00b057478eb282bf8a73980a60"
+  },
+  "limitations": [
+    "Synthetic fixtures; no broad PDF accuracy claim.",
+    "Timings are single sequential conversions with reused engine; first includes lazy model initialization.",
+    "Peak RSS is the Python process high-water mark, not container-wide memory or host RAM.",
+    "Confidence/missing-page tests inject failures; live scans are clean synthetic text.",
+    "No holdout answer tuning, semantic model integration, GPU work, chart interpretation, server or production scheduler."
+  ]
+}

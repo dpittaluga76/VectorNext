@@ -1,0 +1,94 @@
+{
+  "schema": "pdf-v1",
+  "source_sha256": "700da103be9f7b54022cd92472906e84922d0f00c5cbacc8a4b7f63232d6a2f5",
+  "profile_sha256": "eba773878b43b30647ae9cc447b45a591401a226ca0757e6902b3ebe49fdd19d",
+  "status": "complete",
+  "pages": [
+    {
+      "page": 1,
+      "width": 612.0,
+      "height": 792.0,
+      "native_cells": 1,
+      "ocr_cells": 8,
+      "ocr_mean_confidence": 0.96007541625
+    }
+  ],
+  "items": [
+    {
+      "id": "#/texts/0",
+      "kind": "Heading",
+      "role": "body",
+      "parent": null,
+      "text": "Synthetic searchable scan",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 25
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            44.07600000000002,
+            274.098,
+            60.726
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": null,
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/1",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Overlay record: valve V5 opens at 19 kPa.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 41
+          },
+          "page": 1,
+          "bbox": [
+            59.666666666666664,
+            220.66666666666663,
+            336.6666666666667,
+            233.0
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.9500153400000001
+        }
+      ],
+      "context": "Synthetic searchable scan",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 25
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            44.07600000000002,
+            274.098,
+            60.726
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/0",
+      "table": null,
+      "indexed": true
+    }
+  ],
+  "warnings": [],
+  "tables": []
+}

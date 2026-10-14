@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "models": {
+    "generator": {
+      "repo": "google/gemma-4-E2B-it-qat-q4_0-gguf",
+      "revision": "675cff42a74c774d6cb76f76d8eacb49b48c9b93",
+      "directory": "generator",
+      "files": [
+        {
+          "remote_path": "gemma-4-E2B_q4_0-it.gguf",
+          "path": "gemma-4-E2B_q4_0-it.gguf",
+          "size": 3349516256,
+          "sha256": "fa401b55b07ee70a54c6dae3903c783a6e65064312529ea57175cb5f8dec6634"
+        },
+        {
+          "remote_path": "README.md",
+          "path": "README.md",
+          "size": 29260,
+          "sha256": "942e93b96c2f7f2b5fdd8d5578f0f1215e4a354f12e202999b4fbc864bb02ef5"
+        }
+      ]
+    },
+    "embedding": {
+      "repo": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "directory": "embedding",
+      "files": [
+        {
+          "remote_path": "onnx/model.onnx",
+          "path": "onnx/model.onnx",
+          "size": 90405214,
+          "sha256": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452"
+        },
+        {
+          "remote_path": "tokenizer.json",
+          "path": "tokenizer.json",
+          "size": 466247,
+          "sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+        },
+        {
+          "remote_path": "config.json",
+          "path": "config.json",
+          "size": 612,
+          "sha256": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41"
+        },
+        {
+          "remote_path": "tokenizer_config.json",
+          "path": "tokenizer_config.json",
+          "size": 350,
+          "sha256": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b"
+        },
+        {
+          "remote_path": "sentence_bert_config.json",
+          "path": "sentence_bert_config.json",
+          "size": 53,
+          "sha256": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7"
+        },
+        {
+          "remote_path": "1_Pooling/config.json",
+          "path": "1_Pooling/config.json",
+          "size": 190,
+          "sha256": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23"
+        },
+        {
+          "remote_path": "README.md",
+          "path": "README.md",
+          "size": 10502,
+          "sha256": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0"
+        }
+      ]
+    },
+    "reranker": {
+      "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+      "directory": "reranker",
+      "files": [
+        {
+          "remote_path": "onnx/model.onnx",
+          "path": "onnx/model.onnx",
+          "size": 91011230,
+          "sha256": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a"
+        },
+        {
+          "remote_path": "tokenizer.json",
+          "path": "tokenizer.json",
+          "size": 711396,
+          "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+        },
+        {
+          "remote_path": "config.json",
+          "path": "config.json",
+          "size": 794,
+          "sha256": "380e02c93f431831be65d99a4e7e5f67c133985bf2e77d9d4eba46847190bacc"
+        },
+        {
+          "remote_path": "tokenizer_config.json",
+          "path": "tokenizer_config.json",
+          "size": 1330,
+          "sha256": "a5c2e5a7b1a29a0702cd28c08a399b5ecc110c263009d17f7e3b415f25905fd8"
+        },
+        {
+          "remote_path": "README.md",
+          "path": "README.md",
+          "size": 3673,
+          "sha256": "7c0ec39941d0d1d766ccde671f592971d82fe45b7eea550a80d1ea864ebc3baa"
+        }
+      ]
+    }
+  }
+}

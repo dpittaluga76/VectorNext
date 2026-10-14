@@ -1,0 +1,106 @@
+{
+  "schema": "pdf-v1",
+  "source_sha256": "a258953aaf6f41df878fa2e6febfc53c9f4fbfcc13c0ce583b893db64566b214",
+  "profile_sha256": "eba773878b43b30647ae9cc447b45a591401a226ca0757e6902b3ebe49fdd19d",
+  "status": "partial",
+  "pages": [
+    {
+      "page": 1,
+      "width": 612.0,
+      "height": 792.0,
+      "native_cells": 2,
+      "ocr_cells": 0,
+      "ocr_mean_confidence": null
+    }
+  ],
+  "items": [
+    {
+      "id": "#/texts/0",
+      "kind": "Heading",
+      "role": "body",
+      "parent": null,
+      "text": "Synthetic diagram record",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 24
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            44.07600000000002,
+            265.062,
+            60.726
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": null,
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/1",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "The diagram below has no machine-readable explanation.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 54
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            93.38400000000001,
+            356.8080000000003,
+            104.48400000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Synthetic diagram record",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 24
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            44.07600000000002,
+            265.062,
+            60.726
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/0",
+      "table": null,
+      "indexed": true
+    }
+  ],
+  "warnings": [
+    {
+      "code": "uninterpreted_picture",
+      "page": 1,
+      "message": "Picture/diagram semantics are not extracted",
+      "bbox": [
+        87.99700164794922,
+        282.9961242675781,
+        523.9951171875,
+        439.814453125
+      ]
+    }
+  ],
+  "tables": []
+}

@@ -1,0 +1,10 @@
+{
+  "tesseract": "tesseract 5.5.0",
+  "files": {
+    "/usr/bin/tesseract": "74b76a5b994adcc18be362bf64ed5118082b2401d5d9a35242e92fc4c62e2b4b",
+    "/usr/share/tesseract-ocr/5/tessdata/eng.traineddata": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2",
+    "/usr/share/tesseract-ocr/5/tessdata/osd.traineddata": "9cf5d576fcc47564f11265841e5ca839001e7e6f38ff7f7aacf46d15a96b00ff",
+    "/lib/x86_64-linux-gnu/libtesseract.so.5": "66b27d857aa90bb7a31059c65bb624e918e96a7c276699bd5ac5dca4cf1ba322",
+    "/lib/x86_64-linux-gnu/libleptonica.so.6": "3d56e8982393abbae4e5ba8717e73b347cf78fd4f24070c9970ff08ec0e01822"
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "schema": "pdf-v1",
+  "source_sha256": "ee6db1cbdb579d8df3b2c60bcd1c5adc8a9f7674094e2ff14d15a69a440d30a6",
+  "profile_sha256": "eba773878b43b30647ae9cc447b45a591401a226ca0757e6902b3ebe49fdd19d",
+  "status": "complete",
+  "pages": [
+    {
+      "page": 1,
+      "width": 612.0,
+      "height": 792.0,
+      "native_cells": 0,
+      "ocr_cells": 57,
+      "ocr_mean_confidence": 0.9506436715789475
+    }
+  ],
+  "items": [
+    {
+      "id": "#/texts/0",
+      "kind": "Paragraph",
+      "role": "furniture",
+      "parent": null,
+      "text": "VECTORNEXT / SYNTHETIC TEST DATA",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            30.0,
+            220.0,
+            41.66666666666663
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.90308594
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": null,
+      "table": null,
+      "indexed": false
+    },
+    {
+      "id": "#/texts/1",
+      "kind": "Heading",
+      "role": "body",
+      "parent": null,
+      "text": "Connector inspection note",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 25
+          },
+          "page": 1,
+          "bbox": [
+            49.0,
+            57.33333333333337,
+            300.6666666666667,
+            76.0
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.9546228000000001
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": null,
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/2",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Fictional equipment. Not operating instructions for real products.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 66
+          },
+          "page": 1,
+          "bbox": [
+            48.666666666666664,
+            88.66666666666663,
+            330.6666666666667,
+            98.33333333333337
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.96287796
+        }
+      ],
+      "context": "Connector inspection note",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 25
+          },
+          "page": 1,
+          "bbox": [
+            49.0,
+            57.33333333333337,
+            300.6666666666667,
+            76.0
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.9546228000000001
+        }
+      ],
+      "section": "#/texts/1",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/3",
+      "kind": "Heading",
+      "role": "body",
+      "parent": null,
+      "text": "Inspection record: SCAN-004",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 27
+          },
+          "page": 1,
+          "bbox": [
+            49.0,
+            143.33333333333337,
+            241.33333333333334,
+            156.33333333333337
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.9075919299999999
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": "#/texts/1",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/4",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Connector J2 on cable B4 requires a tightening torque of 6 N m.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 63
+          },
+          "page": 1,
+          "bbox": [
+            48.333333333333336,
+            190.0,
+            358.3333333333333,
+            200.33333333333337
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.90839615
+        }
+      ],
+      "context": "Inspection record: SCAN-004",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 27
+          },
+          "page": 1,
+          "bbox": [
+            49.0,
+            143.33333333333337,
+            241.33333333333334,
+            156.33333333333337
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.9075919299999999
+        }
+      ],
+      "section": "#/texts/3",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/5",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Connector J3 on cable B4 requires a tightening torque of 9 N m.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 63
+          },
+          "page": 1,
+          "bbox": [
+            48.333333333333336,
+            221.66666666666663,
+            358.3333333333333,
+            232.33333333333337
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.9163490299999999
+        }
+      ],
+      "context": "Inspection record: SCAN-004",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 27
+          },
+          "page": 1,
+          "bbox": [
+            49.0,
+            143.33333333333337,
+            241.33333333333334,
+            156.33333333333337
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.9075919299999999
+        }
+      ],
+      "section": "#/texts/3",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/6",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Recorded by the fictional Harbor test workshop.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 47
+          },
+          "page": 1,
+          "bbox": [
+            48.666666666666664,
+            281.6666666666667,
+            279.0,
+            292.3333333333333
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.9572319
+        }
+      ],
+      "context": "Inspection record: SCAN-004",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 27
+          },
+          "page": 1,
+          "bbox": [
+            49.0,
+            143.33333333333337,
+            241.33333333333334,
+            156.33333333333337
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.9075919299999999
+        }
+      ],
+      "section": "#/texts/3",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/7",
+      "kind": "Paragraph",
+      "role": "furniture",
+      "parent": null,
+      "text": "Synthetic fixture | Page 1",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 26
+          },
+          "page": 1,
+          "bbox": [
+            48.333333333333336,
+            757.0,
+            146.33333333333331,
+            765.6666666666666
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.96341995
+        }
+      ],
+      "context": "Inspection record: SCAN-004",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 27
+          },
+          "page": 1,
+          "bbox": [
+            49.0,
+            143.33333333333337,
+            241.33333333333334,
+            156.33333333333337
+          ],
+          "extraction": "Ocr",
+          "confidence": 0.9075919299999999
+        }
+      ],
+      "section": "#/texts/3",
+      "table": null,
+      "indexed": false
+    }
+  ],
+  "warnings": [],
+  "tables": []
+}

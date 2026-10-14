@@ -1,0 +1,15 @@
+{
+  "schema": "pdf-v1",
+  "threads": 2,
+  "max_bytes": 16777216,
+  "max_pages": 32,
+  "max_page_points": 1440,
+  "max_output_bytes": 16777216,
+  "max_items": 10000,
+  "timeout_seconds": 180,
+  "ocr_languages": ["eng"],
+  "ocr_scale": 3.0,
+  "ocr_mode": "pdf_aware_layout_regions",
+  "low_ocr_confidence": 0.6,
+  "layout_revision": "8f39ad3c0b4c58e9c2d2c84a38465abf757272d8"
+}

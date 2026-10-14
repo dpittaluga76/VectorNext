@@ -1,0 +1,1610 @@
+{
+  "schema": "pdf-v1",
+  "source_sha256": "dc8c41c6cb312efe2d1dfe168ba371739e2c4e3d31a3d694751f5d537fbfa41a",
+  "profile_sha256": "eba773878b43b30647ae9cc447b45a591401a226ca0757e6902b3ebe49fdd19d",
+  "status": "complete",
+  "pages": [
+    {
+      "page": 1,
+      "width": 612.0,
+      "height": 792.0,
+      "native_cells": 24,
+      "ocr_cells": 0,
+      "ocr_mean_confidence": null
+    },
+    {
+      "page": 2,
+      "width": 612.0,
+      "height": 792.0,
+      "native_cells": 8,
+      "ocr_cells": 0,
+      "ocr_mean_confidence": null
+    }
+  ],
+  "items": [
+    {
+      "id": "#/texts/0",
+      "kind": "Paragraph",
+      "role": "furniture",
+      "parent": null,
+      "text": "VECTORNEXT / SYNTHETIC TEST DATA",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            31.53800000000001,
+            220.02599999999995,
+            39.863000000000056
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": null,
+      "table": null,
+      "indexed": false
+    },
+    {
+      "id": "#/texts/1",
+      "kind": "Heading",
+      "role": "body",
+      "parent": null,
+      "text": "Harbor pump guide",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 17
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            57.639999999999986,
+            232.46,
+            76.13999999999999
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": null,
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/2",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Fictional equipment. Not operating instructions for real products.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 66
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            88.82000000000005,
+            331.44999999999993,
+            98.07000000000005
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Harbor pump guide",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 17
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            57.639999999999986,
+            232.46,
+            76.13999999999999
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/1",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/3",
+      "kind": "Heading",
+      "role": "body",
+      "parent": null,
+      "text": "Nominal flow at water temperature 20 C",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 38
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            139.94799999999998,
+            310.17799999999994,
+            152.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": "#/texts/1",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/4",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "The table gives nominal flow, not the high-temperature limit.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 61
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            168.10199999999998,
+            339.00500000000017,
+            178.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Nominal flow at water temperature 20 C",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 38
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            139.94799999999998,
+            310.17799999999994,
+            152.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/3",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/tables/0",
+      "kind": "Table",
+      "role": "table_container",
+      "parent": null,
+      "text": "Model | Flow (L/min) | Water (C)\nH1 | 10 | 20\nH2 | 12 | 20\nH3 | 15 | 20",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 71
+          },
+          "page": 1,
+          "bbox": [
+            47.028038024902344,
+            196.6556854248047,
+            564.5448608398438,
+            326.36541748046875
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Nominal flow at water temperature 20 C",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 38
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            139.94799999999998,
+            310.17799999999994,
+            152.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/3",
+      "table": null,
+      "indexed": false
+    },
+    {
+      "id": "#/tables/0/row/0",
+      "kind": "Table",
+      "role": "table_row",
+      "parent": "#/tables/0",
+      "text": "Model | Flow (L/min) | Water (C)",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 5
+          },
+          "page": 1,
+          "bbox": [
+            60.0,
+            211.10199999999998,
+            91.77900000000001,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 8,
+            "end": 20
+          },
+          "page": 1,
+          "bbox": [
+            202.0,
+            211.10199999999998,
+            266.779,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 23,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            402.0,
+            211.10199999999998,
+            450.884,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Nominal flow at water temperature 20 C\nModel | Flow (L/min) | Water (C)",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 38
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            139.94799999999998,
+            310.17799999999994,
+            152.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            60.0,
+            211.10199999999998,
+            91.77900000000001,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            202.0,
+            211.10199999999998,
+            266.779,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            402.0,
+            211.10199999999998,
+            450.884,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/3",
+      "table": {
+        "id": "#/tables/0",
+        "row": 0,
+        "cells": [
+          {
+            "bbox": {
+              "l": 60.0,
+              "t": 211.10199999999998,
+              "r": 91.77900000000001,
+              "b": 221.27700000000004,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 0,
+            "end_row_offset_idx": 1,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "text": "Model",
+            "column_header": true,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          },
+          {
+            "bbox": {
+              "l": 202.0,
+              "t": 211.10199999999998,
+              "r": 266.779,
+              "b": 221.27700000000004,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 0,
+            "end_row_offset_idx": 1,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "text": "Flow (L/min)",
+            "column_header": true,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          },
+          {
+            "bbox": {
+              "l": 402.0,
+              "t": 211.10199999999998,
+              "r": 450.884,
+              "b": 221.27700000000004,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 0,
+            "end_row_offset_idx": 1,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "text": "Water (C)",
+            "column_header": true,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          }
+        ]
+      },
+      "indexed": false
+    },
+    {
+      "id": "#/tables/0/row/1",
+      "kind": "Table",
+      "role": "table_row",
+      "parent": "#/tables/0",
+      "text": "H1 | 10 | 20",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 2
+          },
+          "page": 1,
+          "bbox": [
+            60.0,
+            243.10199999999998,
+            74.058,
+            253.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 5,
+            "end": 7
+          },
+          "page": 1,
+          "bbox": [
+            202.0,
+            243.10199999999998,
+            214.23200000000003,
+            253.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 10,
+            "end": 12
+          },
+          "page": 1,
+          "bbox": [
+            402.0,
+            243.10199999999998,
+            414.23199999999997,
+            253.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Nominal flow at water temperature 20 C\nModel | Flow (L/min) | Water (C)",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 38
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            139.94799999999998,
+            310.17799999999994,
+            152.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            60.0,
+            211.10199999999998,
+            91.77900000000001,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            202.0,
+            211.10199999999998,
+            266.779,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            402.0,
+            211.10199999999998,
+            450.884,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/3",
+      "table": {
+        "id": "#/tables/0",
+        "row": 1,
+        "cells": [
+          {
+            "bbox": {
+              "l": 60.0,
+              "t": 243.10199999999998,
+              "r": 74.058,
+              "b": 253.27700000000004,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 1,
+            "end_row_offset_idx": 2,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "text": "H1",
+            "column_header": false,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          },
+          {
+            "bbox": {
+              "l": 202.0,
+              "t": 243.10199999999998,
+              "r": 214.23200000000003,
+              "b": 253.27700000000004,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 1,
+            "end_row_offset_idx": 2,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "text": "10",
+            "column_header": false,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          },
+          {
+            "bbox": {
+              "l": 402.0,
+              "t": 243.10199999999998,
+              "r": 414.23199999999997,
+              "b": 253.27700000000004,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 1,
+            "end_row_offset_idx": 2,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "text": "20",
+            "column_header": false,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          }
+        ]
+      },
+      "indexed": true
+    },
+    {
+      "id": "#/tables/0/row/2",
+      "kind": "Table",
+      "role": "table_row",
+      "parent": "#/tables/0",
+      "text": "H2 | 12 | 20",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 2
+          },
+          "page": 1,
+          "bbox": [
+            60.0,
+            275.102,
+            74.058,
+            285.277
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 5,
+            "end": 7
+          },
+          "page": 1,
+          "bbox": [
+            202.0,
+            275.102,
+            214.23200000000003,
+            285.277
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 10,
+            "end": 12
+          },
+          "page": 1,
+          "bbox": [
+            402.0,
+            275.102,
+            414.23199999999997,
+            285.277
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Nominal flow at water temperature 20 C\nModel | Flow (L/min) | Water (C)",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 38
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            139.94799999999998,
+            310.17799999999994,
+            152.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            60.0,
+            211.10199999999998,
+            91.77900000000001,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            202.0,
+            211.10199999999998,
+            266.779,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            402.0,
+            211.10199999999998,
+            450.884,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/3",
+      "table": {
+        "id": "#/tables/0",
+        "row": 2,
+        "cells": [
+          {
+            "bbox": {
+              "l": 60.0,
+              "t": 275.102,
+              "r": 74.058,
+              "b": 285.277,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 2,
+            "end_row_offset_idx": 3,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "text": "H2",
+            "column_header": false,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          },
+          {
+            "bbox": {
+              "l": 202.0,
+              "t": 275.102,
+              "r": 214.23200000000003,
+              "b": 285.277,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 2,
+            "end_row_offset_idx": 3,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "text": "12",
+            "column_header": false,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          },
+          {
+            "bbox": {
+              "l": 402.0,
+              "t": 275.102,
+              "r": 414.23199999999997,
+              "b": 285.277,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 2,
+            "end_row_offset_idx": 3,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "text": "20",
+            "column_header": false,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          }
+        ]
+      },
+      "indexed": true
+    },
+    {
+      "id": "#/tables/0/row/3",
+      "kind": "Table",
+      "role": "table_row",
+      "parent": "#/tables/0",
+      "text": "H3 | 15 | 20",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 2
+          },
+          "page": 1,
+          "bbox": [
+            60.0,
+            307.102,
+            74.058,
+            317.277
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 5,
+            "end": 7
+          },
+          "page": 1,
+          "bbox": [
+            202.0,
+            307.102,
+            214.23200000000003,
+            317.277
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 10,
+            "end": 12
+          },
+          "page": 1,
+          "bbox": [
+            402.0,
+            307.102,
+            414.23199999999997,
+            317.277
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Nominal flow at water temperature 20 C\nModel | Flow (L/min) | Water (C)",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 38
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            139.94799999999998,
+            310.17799999999994,
+            152.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            60.0,
+            211.10199999999998,
+            91.77900000000001,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            202.0,
+            211.10199999999998,
+            266.779,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        },
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 1,
+          "bbox": [
+            402.0,
+            211.10199999999998,
+            450.884,
+            221.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/3",
+      "table": {
+        "id": "#/tables/0",
+        "row": 3,
+        "cells": [
+          {
+            "bbox": {
+              "l": 60.0,
+              "t": 307.102,
+              "r": 74.058,
+              "b": 317.277,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 3,
+            "end_row_offset_idx": 4,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "text": "H3",
+            "column_header": false,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          },
+          {
+            "bbox": {
+              "l": 202.0,
+              "t": 307.102,
+              "r": 214.23200000000003,
+              "b": 317.277,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 3,
+            "end_row_offset_idx": 4,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "text": "15",
+            "column_header": false,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          },
+          {
+            "bbox": {
+              "l": 402.0,
+              "t": 307.102,
+              "r": 414.23199999999997,
+              "b": 317.277,
+              "coord_origin": "TOPLEFT"
+            },
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 3,
+            "end_row_offset_idx": 4,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "text": "20",
+            "column_header": false,
+            "row_header": false,
+            "row_section": false,
+            "fillable": false
+          }
+        ]
+      },
+      "indexed": true
+    },
+    {
+      "id": "#/texts/5",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "H2 exception: above 35 C, maximum flow is 8 L/min.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 50
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            346.102,
+            304.1460000000001,
+            356.277
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Nominal flow at water temperature 20 C",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 38
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            139.94799999999998,
+            310.17799999999994,
+            152.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/3",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/6",
+      "kind": "Heading",
+      "role": "body",
+      "parent": null,
+      "text": "Service conditions",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 18
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            405.948,
+            172.488,
+            418.898
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": "#/texts/3",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/7",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Code C3 requires checking the inlet filter before restarting.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 61
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            434.102,
+            332.28400000000005,
+            444.277
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Service conditions",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 18
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            405.948,
+            172.488,
+            418.898
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/6",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/8",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Code C7 uses a timed restart procedure that continues on page 2.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 64
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            458.102,
+            370.22299999999996,
+            468.277
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Service conditions",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 18
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            405.948,
+            172.488,
+            418.898
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/6",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/9",
+      "kind": "Heading",
+      "role": "body",
+      "parent": null,
+      "text": "C7 restart procedure",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 20
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            663.948,
+            185.704,
+            676.898
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": "#/texts/6",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/10",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "When the Harbor H2 pump reports code C7, stop the motor and",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 59
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            696.102,
+            358.585,
+            706.277
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "C7 restart procedure",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 20
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            663.948,
+            185.704,
+            676.898
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/9",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/11",
+      "kind": "Paragraph",
+      "role": "furniture",
+      "parent": null,
+      "text": "Synthetic fixture | Page 1",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 26
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            757.538,
+            147.891,
+            765.863
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "C7 restart procedure",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 20
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            663.948,
+            185.704,
+            676.898
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/9",
+      "table": null,
+      "indexed": false
+    },
+    {
+      "id": "#/texts/12",
+      "kind": "Paragraph",
+      "role": "furniture",
+      "parent": null,
+      "text": "VECTORNEXT / SYNTHETIC TEST DATA",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 32
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            31.53800000000001,
+            220.02599999999995,
+            39.863000000000056
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "C7 restart procedure",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 20
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            663.948,
+            185.704,
+            676.898
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/9",
+      "table": null,
+      "indexed": false
+    },
+    {
+      "id": "#/texts/13",
+      "kind": "Heading",
+      "role": "furniture",
+      "parent": null,
+      "text": "Harbor pump guide - continued",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 29
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            57.639999999999986,
+            345.8000000000002,
+            76.13999999999999
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": "#/texts/9",
+      "table": null,
+      "indexed": false
+    },
+    {
+      "id": "#/texts/14",
+      "kind": "Paragraph",
+      "role": "furniture",
+      "parent": null,
+      "text": "Fictional equipment. Not operating instructions for real products.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 66
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            88.82000000000005,
+            331.44999999999993,
+            98.07000000000005
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "C7 restart procedure",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 20
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            663.948,
+            185.704,
+            676.898
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/9",
+      "table": null,
+      "indexed": false
+    },
+    {
+      "id": "#/texts/15",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "wait 8 minutes before restarting it. This delay applies only to code C7.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 72
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            142.10199999999998,
+            386.70099999999996,
+            152.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "C7 restart procedure",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 20
+          },
+          "page": 1,
+          "bbox": [
+            48.0,
+            663.948,
+            185.704,
+            676.898
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/9",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/16",
+      "kind": "Heading",
+      "role": "body",
+      "parent": null,
+      "text": "Maintenance",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 11
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            203.94799999999998,
+            132.79800000000003,
+            216.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "",
+      "context_sources": [],
+      "section": "#/texts/9",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/17",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "Replace the H2 inlet filter every 90 operating days.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 52
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            234.10199999999998,
+            294.3890000000001,
+            244.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Maintenance",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 11
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            203.94799999999998,
+            132.79800000000003,
+            216.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/16",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/18",
+      "kind": "Paragraph",
+      "role": "body",
+      "parent": null,
+      "text": "The H1 filter interval is 60 operating days.",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 44
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            258.102,
+            250.9720000000002,
+            268.27700000000004
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Maintenance",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 11
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            203.94799999999998,
+            132.79800000000003,
+            216.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/16",
+      "table": null,
+      "indexed": true
+    },
+    {
+      "id": "#/texts/19",
+      "kind": "Paragraph",
+      "role": "furniture",
+      "parent": null,
+      "text": "Synthetic fixture | Page 2",
+      "sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 26
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            757.538,
+            147.891,
+            765.863
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "context": "Maintenance",
+      "context_sources": [
+        {
+          "bytes": {
+            "start": 0,
+            "end": 11
+          },
+          "page": 2,
+          "bbox": [
+            48.0,
+            203.94799999999998,
+            132.79800000000003,
+            216.89800000000002
+          ],
+          "extraction": "Native",
+          "confidence": null
+        }
+      ],
+      "section": "#/texts/16",
+      "table": null,
+      "indexed": false
+    }
+  ],
+  "warnings": [],
+  "tables": [
+    {
+      "id": "#/tables/0",
+      "page": 1,
+      "num_rows": 4,
+      "num_cols": 3,
+      "captions": [],
+      "footnotes": []
+    }
+  ]
+}
