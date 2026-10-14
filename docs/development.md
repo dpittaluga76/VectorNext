@@ -73,7 +73,7 @@ docker compose run --rm core cargo clippy --locked --offline --all-targets -- -D
 
 The first build acquires a digest-pinned Rust 1.87.0 image and locked Cargo dependencies. Checks then run offline with no GPU, ports, or model files. The container filesystem is read-only; Cargo and test databases use disposable `/tmp` space, which permits execution of compiled tests. Rebuild after code changes. The ignored `child_process` test is a helper invoked automatically by the forced-termination test, not skipped recovery coverage.
 
-T07 adds seven context-policy/recovery tests, T08 adds ten answer tests, T09 adds six service/backup tests, and T10 adds one answer-options check to the previous 66 checks, for 90 passing Rust checks. Two ignored test functions are subprocess helpers invoked by the termination tests. The default core command includes all targets, so the example's source-coverage tests run too.
+T07 adds seven context-policy/recovery tests, T08 adds ten answer tests, T09 adds six service/backup tests, T10 adds one answer-options check, and T11 adds one UTF-8 source-mapping regression to the previous 66 checks, for 91 passing Rust checks. Two ignored test functions are subprocess helpers invoked by the termination tests. The default core command includes all targets, so the example's source-coverage tests run too.
 
 The public library exposes `Database::open`, `put_original`, `commit(Batch)`, `snapshot`, and `checkpoint`. A `ReadSnapshot` exposes committed documents and embedding spaces. Supply complete prepared records and vectors to a batch; retries keep the same operation ID. See [the contracts](../src/contracts.rs) and [storage specification](storage.md). Native Windows durable storage is deliberately unsupported; run it on Linux in Docker with a data volume. This is a library verification service, not an HTTP application.
 
@@ -230,6 +230,8 @@ The runner's `--run` selects fresh captures/caches; use a fresh `--database-root
 
 On the 13-question development seed, two primaries preserved all answers in both cache passes and reduced median response time from about 18 seconds to 12 seconds; one primary missed the table answer. Five remain the general default. Generated context added ingestion cost without final answer improvement. Exact hybrid search over 12,800 supplied vectors took about 10 ms median; this capacity probe does not establish quality on 400 real documents.
 
+T11 adds a separate [public-source dataset and reproduction guide](../evals/independent/README.md), using an isolated project on port 8091. All 112 requests completed across four blocks: five scored 16/28 and two 15/28 in each cache pass. Two reduced median latency by 46–50% but lost required evidence. Both PDF admission failures remain in the denominator; read [the report](reports/t11-independent.md) for failures, source-review exceptions, the retained pre-query UTF-8 repair and verification commands. Do not overwrite its frozen inputs or reuse its captures for a new run. Services are stopped; volumes and caches remain available.
+
 ## Resuming with Codex
 
 Open this repository and describe the work you want to do. For example:
@@ -240,4 +242,4 @@ When ready to build:
 
 > Read the project instructions and design, then implement the next ready task in docs/plan.md. Verify its acceptance criteria and update the handoff with the results.
 
-The T01–T10 queue is complete. The next useful step is to scope an independent corpus and explicit quality/latency targets, including questions needing several distant passages, realistic distractors and harder tables/OCR. Read [T10 results](reports/t10-evaluation.md) before changing defaults. Preserve the six existing holdout questions; development results do not establish broad retrieval quality.
+The T01–T11 queue is complete. The next proposed step is T12 ingestion recovery and failure diagnostics, followed by T13 question-aware evidence coverage on new frozen data. Read [T11 results](reports/t11-independent.md) before changing defaults. Preserve the six existing holdout questions and retain T11 as observed regression evidence; these results do not establish broad retrieval quality.

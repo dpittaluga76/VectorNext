@@ -1,0 +1,102 @@
+{
+  "run": "20261014-independent",
+  "status": "interrupted_before_comparison",
+  "successful_ingestions": 2,
+  "planned_documents": 20,
+  "answer_queries": 0,
+  "failed_job": "pioneer10-v1",
+  "failure": "Rust worker panic: byte index 8907 is not a char boundary, inside ellipsis at bytes 8905..8908; src/ingestion/prepare.rs:122",
+  "job_state_at_interruption": {
+    "jobs": [
+      {
+        "document_id": "pioneer10",
+        "failure_count": 0,
+        "job_id": "pioneer10-v1",
+        "last_failure": null,
+        "receipt": null,
+        "revision": "fb6e92fcbbefcf5add5d42b54d9bf0f2a5399c3d8fb90bd618b6e98ed7bdf0b2",
+        "stage": "Uploaded",
+        "successful_stages": 0
+      },
+      {
+        "document_id": "voyager1",
+        "failure_count": 0,
+        "job_id": "voyager1-v1",
+        "last_failure": null,
+        "receipt": {
+          "generation": 1,
+          "request_sha256": "e1695292ed8661f81c1f8c5d48319215798fa635a021cc8096f1f5512ec967d1"
+        },
+        "revision": "5eea74736f5dac92d2de5b5756d6011276f1b7e5f416e72a4df77cb3326f0b7e",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      {
+        "document_id": "voyager2",
+        "failure_count": 0,
+        "job_id": "voyager2-v1",
+        "last_failure": null,
+        "receipt": {
+          "generation": 2,
+          "request_sha256": "ebdec12b87cad2c88feffbcdcc265243964a4457d829cbc2aca80592278b7c60"
+        },
+        "revision": "b043d9feb9bfe4709e85cf552b4505f2e668485e5ba1dbcb1211336637cb6f7b",
+        "stage": "Committed",
+        "successful_stages": 4
+      }
+    ]
+  },
+  "metadata": {
+    "utc": "2026-10-14T22:18:38.312989+00:00",
+    "freeze_sha256": "0cf52ff5026bc401246d60c41510e883317d7051a23831e78cbf4086716006c2",
+    "database": "/storage/20261014-independent",
+    "cache": "/cache/20261014-independent/ingest",
+    "images": {
+      "llm": "sha256:7c17888aac221414f8373c7bff0fadd5f6ee458ffa7b025255e3fefe65fb1949",
+      "processor": "sha256:136c1f9ec9afda3cce8d742c794e3b6298448a8cb9d97abd84d767298e5d14d9",
+      "vectornext": "sha256:cce49896de450d538a7d911e298ddafb0789f1fb52b379618d486f36fb7c1e2f"
+    },
+    "model_locks": {
+      "experiments/t02/models.lock.json": "fc2d934f297997cdf423a4a4d7b6b76af2fd278743b0ef9fcd906382a05eb1ee",
+      "experiments/t02/models.26b.lock.json": "2859eb837fdefb4e2e4bba0873e8ac55ca7baf9aa6ef12edf50c89d4ca9353a9",
+      "processor/models.lock.json": "a1cd60b714696fdb98d367734df7c9a91e9b16864dfbba5f6f862bdea0708558"
+    },
+    "running_image_scope": "Unchanged T10 image IDs; source tree identities separately frozen. No Rust/model implementation changes for T11.",
+    "cases": [
+      "voyager_timeline",
+      "golden_record_counts",
+      "titan_nitrogen",
+      "ice_giant_years",
+      "pioneer_mass",
+      "new_horizons_mass",
+      "pathfinder_timeline",
+      "galileo_orbits",
+      "three_launch_years",
+      "three_spacecraft_masses",
+      "four_launch_years",
+      "three_launch_pads",
+      "perseverance_mass",
+      "perseverance_dimensions",
+      "moxie_gases",
+      "perseverance_cross_page",
+      "apollo_sample_and_module",
+      "apollo_reflector",
+      "tohoku_json_magnitude_depth",
+      "maule_json_magnitude_depth",
+      "raw_timezone_null",
+      "raw_tsunami_flag",
+      "unknown_station_distance",
+      "ambiguous_voyager",
+      "conflicting_instruments",
+      "missing_computer_serial",
+      "missing_tsunami_height",
+      "voyager_followup"
+    ],
+    "holdout_run": false
+  },
+  "initial_freeze": "evals/independent/freeze.pre-parser-fix.json",
+  "amendment": "docs/t11-protocol-amendment-01.md",
+  "source_question_label_change": false,
+  "repair": "Count newline bytes without slicing a UTF-8 string at end - 1; both paragraph and forced-chunk mapping.",
+  "verification": "New Unicode regression failed on the old image and passed after repair; full checks recorded with final report."
+}

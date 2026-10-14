@@ -1,0 +1,1564 @@
+{
+  "schema_version": "1.0",
+  "provenance": {
+    "synthetic": false,
+    "description": "T11 NASA mission and USGS earthquake source snapshots. Provenance in sources.json/README.md. Codex-authored questions and labels prepared before inference, independent of T01 synthetic data; not independently administered. No T01 sources or labels reused."
+  },
+  "documents": [
+    {
+      "id": "voyager1",
+      "path": "fixtures/voyager1.txt",
+      "media_type": "text/plain",
+      "sha256": "dd9e81582fba0b43b3964b3954a335a53348b8734e2753515b85575ec0e19f87"
+    },
+    {
+      "id": "voyager2",
+      "path": "fixtures/voyager2.txt",
+      "media_type": "text/plain",
+      "sha256": "183509136f71d7ec462edc8f76989b85a705b160d761d7ace4fba23a2a4504cb"
+    },
+    {
+      "id": "pioneer10",
+      "path": "fixtures/pioneer10.txt",
+      "media_type": "text/plain",
+      "sha256": "72063d36d394f05228776c42e9e1e016d3599877ad29ee7e5836a7c02df9b88b"
+    },
+    {
+      "id": "pioneer11",
+      "path": "fixtures/pioneer11.txt",
+      "media_type": "text/plain",
+      "sha256": "a40c1c49fb581b6c37c70d265057ff242bb8bed05041f1727295c3f0656fac1e"
+    },
+    {
+      "id": "galileo",
+      "path": "fixtures/galileo.txt",
+      "media_type": "text/plain",
+      "sha256": "1c307141449737273b1650add839f86a8adde8565a82c1ef2b07bd38a2cfae30"
+    },
+    {
+      "id": "cassini",
+      "path": "fixtures/cassini.txt",
+      "media_type": "text/plain",
+      "sha256": "321de97cf29a2b4cf2c0c540b787b2828ab4b4614483ba3b228993f96ef237cf"
+    },
+    {
+      "id": "new_horizons",
+      "path": "fixtures/new_horizons.txt",
+      "media_type": "text/plain",
+      "sha256": "1285773ece5f8fce6830b68953776c79bfacdf31f8f02cdcf39372f9cb8c5064"
+    },
+    {
+      "id": "juno",
+      "path": "fixtures/juno.txt",
+      "media_type": "text/plain",
+      "sha256": "503182b8fd5e2be5f2ce111eeb432943be048ca5d3c86b601ce5689c87dcd155"
+    },
+    {
+      "id": "messenger",
+      "path": "fixtures/messenger.txt",
+      "media_type": "text/plain",
+      "sha256": "3bb183b811dbe5c7f69f7d93ab04441dea78c52701c6910eba28b5d836a50f7a"
+    },
+    {
+      "id": "dawn",
+      "path": "fixtures/dawn.txt",
+      "media_type": "text/plain",
+      "sha256": "6f1d7fe891a3c329cc1e062f98cf8433349605bef8d3364b20c1c79ce1953ae2"
+    },
+    {
+      "id": "kepler",
+      "path": "fixtures/kepler.txt",
+      "media_type": "text/plain",
+      "sha256": "458c4d968117f9b9e6a336c5105d863e0e87688f4f9946ad434366a3293c25b0"
+    },
+    {
+      "id": "stardust",
+      "path": "fixtures/stardust.txt",
+      "media_type": "text/plain",
+      "sha256": "922791eece1ebfa2d929797696476674c93b683cd86922e7a0e9bd0d93efac24"
+    },
+    {
+      "id": "deep_impact",
+      "path": "fixtures/deep_impact.txt",
+      "media_type": "text/plain",
+      "sha256": "f6d2b146588bbd757a0b6b7d83f58cfaf6ef84c2780feef5fce82582b82cce1c"
+    },
+    {
+      "id": "mars_pathfinder",
+      "path": "fixtures/mars_pathfinder.txt",
+      "media_type": "text/plain",
+      "sha256": "128fe1c6cf8ea4715b78bf185b7777075a78e1386887414e07226ea3cd539277"
+    },
+    {
+      "id": "mars_odyssey",
+      "path": "fixtures/mars_odyssey.txt",
+      "media_type": "text/plain",
+      "sha256": "5ca36d1a1c96b314c72e6eba56963e900d3dc711a69968eb820b9ca2e33de7b3"
+    },
+    {
+      "id": "viking1",
+      "path": "fixtures/viking1.txt",
+      "media_type": "text/plain",
+      "sha256": "5b22c71a0ded93b43e86bb973dc15c94b67223504e988fd3a1f17ee0725f3f30"
+    },
+    {
+      "id": "apollo11_pdf",
+      "path": "fixtures/apollo11_pdf.pdf",
+      "media_type": "application/pdf",
+      "sha256": "71c6bb4ce84deb06caceabbb6953ff37c7751064153c15b619e02c8db99af799"
+    },
+    {
+      "id": "perseverance_pdf",
+      "path": "fixtures/perseverance_pdf.pdf",
+      "media_type": "application/pdf",
+      "sha256": "14ddeea4fb8e04dbee9a95bdba27471f5cccc9d6bd10692ed287b2274f3664fb"
+    },
+    {
+      "id": "tohoku_json",
+      "path": "fixtures/tohoku_json.json",
+      "media_type": "application/json",
+      "sha256": "d44321f24c6a79c18c518bf3182b8b56284d71e3a259f91f65f6bcc675eb2e51"
+    },
+    {
+      "id": "maule_json",
+      "path": "fixtures/maule_json.json",
+      "media_type": "application/json",
+      "sha256": "26c9cb5a51d738c1e5527925166debfc185d729e8b19d9296d6e45b341ca4b3f"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "voyager1_launch",
+      "document_id": "voyager1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 2501,
+        "byte_end": 2551,
+        "line_start": 79,
+        "line_end": 79
+      },
+      "expected": "Launch Date and Time | Sept. 5, 1977 / 12:56:01 UT"
+    },
+    {
+      "id": "voyager2_launch",
+      "document_id": "voyager2",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1623,
+        "byte_end": 1673,
+        "line_start": 75,
+        "line_end": 75
+      },
+      "expected": "Launch Date and Time | Aug. 20, 1977 / 14:29:44 UT"
+    },
+    {
+      "id": "pioneer10_launch",
+      "document_id": "pioneer10",
+      "locator": {
+        "kind": "text",
+        "byte_start": 854,
+        "byte_end": 904,
+        "line_start": 43,
+        "line_end": 43
+      },
+      "expected": "Launch Date and Time | March 2, 1972 / 01:49:04 UT"
+    },
+    {
+      "id": "pioneer11_launch",
+      "document_id": "pioneer11",
+      "locator": {
+        "kind": "text",
+        "byte_start": 951,
+        "byte_end": 998,
+        "line_start": 43,
+        "line_end": 43
+      },
+      "expected": "Launch Date and Time | April 6, 1973 / 02:11 UT"
+    },
+    {
+      "id": "new_horizons_launch",
+      "document_id": "new_horizons",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1372,
+        "byte_end": 1422,
+        "line_start": 43,
+        "line_end": 43
+      },
+      "expected": "Launch Date and Time | Jan. 19, 2006 / 19:00:00 UT"
+    },
+    {
+      "id": "stardust_launch",
+      "document_id": "stardust",
+      "locator": {
+        "kind": "text",
+        "byte_start": 739,
+        "byte_end": 788,
+        "line_start": 39,
+        "line_end": 39
+      },
+      "expected": "Launch Date and Time | Feb. 7, 1999 / 21:04:15 UT"
+    },
+    {
+      "id": "deep_impact_launch",
+      "document_id": "deep_impact",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1303,
+        "byte_end": 1353,
+        "line_start": 47,
+        "line_end": 47
+      },
+      "expected": "Launch Date and Time | Jan. 12, 2005 / 18:47:08 UT"
+    },
+    {
+      "id": "viking1_launch",
+      "document_id": "viking1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1908,
+        "byte_end": 1958,
+        "line_start": 52,
+        "line_end": 52
+      },
+      "expected": "Launch Date and Time | Aug. 20, 1975 / 21:22:00 UT"
+    },
+    {
+      "id": "juno_launch",
+      "document_id": "juno",
+      "locator": {
+        "kind": "text",
+        "byte_start": 462,
+        "byte_end": 482,
+        "line_start": 25,
+        "line_end": 27
+      },
+      "expected": "Launch\n\nAug. 5, 2011"
+    },
+    {
+      "id": "cassini_launch",
+      "document_id": "cassini",
+      "locator": {
+        "kind": "text",
+        "byte_start": 403,
+        "byte_end": 424,
+        "line_start": 13,
+        "line_end": 15
+      },
+      "expected": "Launch\n\nOct. 15, 1997"
+    },
+    {
+      "id": "dawn_launch",
+      "document_id": "dawn",
+      "locator": {
+        "kind": "text",
+        "byte_start": 343,
+        "byte_end": 365,
+        "line_start": 13,
+        "line_end": 15
+      },
+      "expected": "Launch\n\nSept. 27, 2007"
+    },
+    {
+      "id": "voyager1_jupiter",
+      "document_id": "voyager1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 2553,
+        "byte_end": 2612,
+        "line_start": 81,
+        "line_end": 81
+      },
+      "expected": "Key Dates | March 5, 1979: Jupiter flyby - closest approach"
+    },
+    {
+      "id": "voyager1_saturn",
+      "document_id": "voyager1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 2613,
+        "byte_end": 2659,
+        "line_start": 82,
+        "line_end": 82
+      },
+      "expected": "Nov. 12, 1980: Saturn flyby - closest approach"
+    },
+    {
+      "id": "voyager1_jupiter_prose",
+      "document_id": "voyager1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 4118,
+        "byte_end": 4243,
+        "line_start": 112,
+        "line_end": 112
+      },
+      "expected": "The spacecraft’s closest encounter with Jupiter was at 12:05 UT on March 5, 1979, at a range of 174,000 miles (280,000 km),"
+    },
+    {
+      "id": "voyager1_saturn_prose",
+      "document_id": "voyager1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 4512,
+        "byte_end": 4633,
+        "line_start": 114,
+        "line_end": 114
+      },
+      "expected": "Voyager 1’s closest approach to Saturn was at 23:46 UT on Nov. 12, 1980, at a range of about 78,000 miles (126,000 km)."
+    },
+    {
+      "id": "voyager1_launch_intro",
+      "document_id": "voyager1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 183,
+        "byte_end": 371,
+        "line_start": 21,
+        "line_end": 21
+      },
+      "expected": "No spacecraft has gone farther than NASA's Voyager 1. Launched in 1977 to fly by Jupiter and Saturn, Voyager 1 crossed into interstellar space in August 2012 and continues to collect data."
+    },
+    {
+      "id": "golden_record",
+      "document_id": "voyager1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 7164,
+        "byte_end": 7539,
+        "line_start": 138,
+        "line_end": 138
+      },
+      "expected": "Audio on the disc includes greetings in 55 languages, 35 sounds from life on Earth (such as whale songs, laughter, etc.), 90 minutes of music including everything from Mozart and Bach to Chuck Berry and Blind Willie Johnson. It also includes 115 images of life on Earth and recorded greetings from then U.S. President Jimmy Carter and then-UN Secretary-General Kurt Waldheim."
+    },
+    {
+      "id": "titan_nitrogen",
+      "document_id": "voyager1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 5009,
+        "byte_end": 5280,
+        "line_start": 116,
+        "line_end": 116
+      },
+      "expected": "Images of Titan showed a thick atmosphere that completely hid the surface. The spacecraft found that the Titan’s atmosphere was composed of 90% nitrogen. Nitrogen, methane, and more complex hydrocarbons indicated prebiotic chemical reactions might be possible on Titan."
+    },
+    {
+      "id": "voyager2_uranus",
+      "document_id": "voyager2",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1742,
+        "byte_end": 1768,
+        "line_start": 79,
+        "line_end": 79
+      },
+      "expected": "Jan 24, 1986: Uranus Flyby"
+    },
+    {
+      "id": "voyager2_neptune",
+      "document_id": "voyager2",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1769,
+        "byte_end": 1796,
+        "line_start": 80,
+        "line_end": 80
+      },
+      "expected": "Aug 25, 1989: Neptune Flyby"
+    },
+    {
+      "id": "pioneer11_mass",
+      "document_id": "pioneer11",
+      "locator": {
+        "kind": "text",
+        "byte_start": 783,
+        "byte_end": 829,
+        "line_start": 37,
+        "line_end": 37
+      },
+      "expected": "Spacecraft Mass | 570 pounds (258.5 kilograms)"
+    },
+    {
+      "id": "new_horizons_mass",
+      "document_id": "new_horizons",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1134,
+        "byte_end": 1180,
+        "line_start": 35,
+        "line_end": 35
+      },
+      "expected": "Spacecraft Mass | 1,054 pounds (478 kilograms)"
+    },
+    {
+      "id": "stardust_mass",
+      "document_id": "stardust",
+      "locator": {
+        "kind": "text",
+        "byte_start": 583,
+        "byte_end": 627,
+        "line_start": 33,
+        "line_end": 33
+      },
+      "expected": "Spacecraft Mass | 849 pounds (385 kilograms)"
+    },
+    {
+      "id": "deep_impact_mass",
+      "document_id": "deep_impact",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1167,
+        "byte_end": 1213,
+        "line_start": 41,
+        "line_end": 41
+      },
+      "expected": "Spacecraft Mass | 1,430 pounds (650 kilograms)"
+    },
+    {
+      "id": "viking1_mass",
+      "document_id": "viking1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1551,
+        "byte_end": 1599,
+        "line_start": 44,
+        "line_end": 44
+      },
+      "expected": "Spacecraft Mass | 7,776 pounds (3,527 kilograms)"
+    },
+    {
+      "id": "pathfinder_launch",
+      "document_id": "mars_pathfinder",
+      "locator": {
+        "kind": "text",
+        "byte_start": 924,
+        "byte_end": 949,
+        "line_start": 29,
+        "line_end": 29
+      },
+      "expected": "Launch | Dec. 4, 1996 UTC"
+    },
+    {
+      "id": "pathfinder_land",
+      "document_id": "mars_pathfinder",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1036,
+        "byte_end": 1063,
+        "line_start": 35,
+        "line_end": 35
+      },
+      "expected": "Mars Landing | July 4, 1997"
+    },
+    {
+      "id": "pathfinder_rover",
+      "document_id": "mars_pathfinder",
+      "locator": {
+        "kind": "text",
+        "byte_start": 42,
+        "byte_end": 212,
+        "line_start": 5,
+        "line_end": 5
+      },
+      "expected": "NASA’s Mars Pathfinder successfully demonstrated a new way to safely land on the Red Planet and deliver the first-ever robotic rover, Sojourner, to the Martian surface."
+    },
+    {
+      "id": "galileo_shuttle",
+      "document_id": "galileo",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1271,
+        "byte_end": 1384,
+        "line_start": 51,
+        "line_end": 51
+      },
+      "expected": "Launched into Earth orbit from the Space Shuttle Atlantis in 1989, the mission went on to orbit Jupiter 34 times."
+    },
+    {
+      "id": "pioneer10_pad",
+      "document_id": "pioneer10",
+      "locator": {
+        "kind": "text",
+        "byte_start": 906,
+        "byte_end": 964,
+        "line_start": 45,
+        "line_end": 45
+      },
+      "expected": "Launch Site | Cape Canaveral, Florida / Launch Complex 36A"
+    },
+    {
+      "id": "pioneer11_pad",
+      "document_id": "pioneer11",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1000,
+        "byte_end": 1055,
+        "line_start": 45,
+        "line_end": 45
+      },
+      "expected": "Launch Site | Cape Canaveral, Fla. / Launch Complex 36B"
+    },
+    {
+      "id": "stardust_pad",
+      "document_id": "stardust",
+      "locator": {
+        "kind": "text",
+        "byte_start": 790,
+        "byte_end": 845,
+        "line_start": 41,
+        "line_end": 41
+      },
+      "expected": "Launch Site | Cape Canaveral, Fla. / Launch Complex 17A"
+    },
+    {
+      "id": "perseverance_dimensions",
+      "document_id": "perseverance_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 2,
+        "bbox": [
+          310,
+          76,
+          570,
+          184
+        ],
+        "method": "native"
+      },
+      "expected": "Perseverance’s body and other major hardware (such as the\ncruise stage, descent stage, and aeroshell/heat shield) build\nupon the success of NASA’s Curiosity rover and include many\nheritage components. The car-sized Perseverance rover has\nroughly the same dimensions as Curiosity: it’s about 10 feet\nlong (not including the arm), 9 feet wide, and 7 feet tall (about\n3 meters long, 2.7 meters wide, and 2.2 meters tall). But at\n2,260 pounds (1,025 kilograms), Perseverance is about 278\npounds (126 kilograms) heavier than Curiosity."
+    },
+    {
+      "id": "perseverance_timeline",
+      "document_id": "perseverance_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 1,
+        "bbox": [
+          44,
+          623,
+          250,
+          691
+        ],
+        "method": "native"
+      },
+      "expected": "• Launch July 30, 2020 from Cape Canaveral Air\nForce Station, Florida\n• Land on Mars on February 18, 2021 at the site\nof an ancient river delta in a lake that once filled\nJezero Crater"
+    },
+    {
+      "id": "perseverance_moxie",
+      "document_id": "perseverance_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 2,
+        "bbox": [
+          43,
+          386,
+          292,
+          482
+        ],
+        "method": "native"
+      },
+      "expected": "• The Mars Oxygen In-Situ Resource Utilization Experiment\n(MOXIE), a technology demonstration that will produce\noxygen from Martian atmospheric carbon dioxide. If\nsuccessful, MOXIE’s technology could be used by future\nastronauts on Mars to burn rocket fuel for returning\nto Earth. The principal investigator is Michael Hecht,\nMassachusetts Institute of Technology, Cambridge,\nMassachusetts."
+    },
+    {
+      "id": "apollo_samples",
+      "document_id": "apollo11_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 2,
+        "bbox": [
+          35,
+          444,
+          272,
+          469
+        ],
+        "method": "native"
+      },
+      "expected": "The astronauts collected 21.7 kilograms (47.8 pounds) of\nsamples which later revealed a wealth of information."
+    },
+    {
+      "id": "apollo_module",
+      "document_id": "apollo11_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 2,
+        "bbox": [
+          35,
+          141,
+          273,
+          279
+        ],
+        "method": "native"
+      },
+      "expected": "When Neil Armstrong, Buzz Aldrin, and Michael Collins\nfirst embarked on their journey to the Moon on July 16,\n1969, no human had ever set foot on another celestial\nbody. Armstrong and Aldrin made the first human\nfootprints on the Moon on July 20, landing safely in Mare\nTranquillitatis (Sea of Tranquility) on the side of the\nMoon that we see from Earth. The two astronauts\nremained within about 100 meters (around 300 feet) of\nthe lunar module Eagle and spent approximately two and\na half hours outside Eagle, collecting rock and soil\nsamples and setting up science experiments while\nCollins orbited above in the command module Columbia."
+    },
+    {
+      "id": "apollo_reflector",
+      "document_id": "apollo11_pdf",
+      "locator": {
+        "kind": "pdf",
+        "page": 2,
+        "bbox": [
+          531,
+          144,
+          760,
+          201
+        ],
+        "method": "native"
+      },
+      "expected": "• Lunar Ranging Retroreflector: cube-shaped mirrors\nthat reflect laser pulses directly back to Earth; the\nlight travel time measures the Moon’s distance with\nhigh accuracy and helps calibrate the scale of the\nsolar system. This experiment is still in use today."
+    },
+    {
+      "id": "tohoku_json_mag",
+      "document_id": "tohoku_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/features/0/properties/mag"
+      },
+      "expected": 9.1
+    },
+    {
+      "id": "tohoku_json_depth",
+      "document_id": "tohoku_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/features/0/geometry/coordinates/2"
+      },
+      "expected": 29
+    },
+    {
+      "id": "maule_json_mag",
+      "document_id": "maule_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/features/0/properties/mag"
+      },
+      "expected": 8.8
+    },
+    {
+      "id": "maule_json_depth",
+      "document_id": "maule_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/features/0/geometry/coordinates/2"
+      },
+      "expected": 22.9
+    },
+    {
+      "id": "tohoku_timezone",
+      "document_id": "tohoku_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/features/0/properties/tz"
+      },
+      "expected": null
+    },
+    {
+      "id": "tohoku_tsunami",
+      "document_id": "tohoku_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/features/0/properties/tsunami"
+      },
+      "expected": 0
+    },
+    {
+      "id": "tohoku_dmin",
+      "document_id": "tohoku_json",
+      "locator": {
+        "kind": "json",
+        "pointer": "/features/0/properties/dmin"
+      },
+      "expected": null
+    },
+    {
+      "id": "voyager_two_instruments",
+      "document_id": "voyager1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 1404,
+        "byte_end": 1884,
+        "line_start": 55,
+        "line_end": 55
+      },
+      "expected": "On April 17, engineers at NASA’s Jet Propulsion Laboratory (JPL) in Southern California shut down an instrument aboard Voyager 1, to save power and keep humanity’s first interstellar explorer going. Voyager 1 still has two science instruments operating, nearly 50 years into its mission; years ago Voyager scientists and engineers agreed on the order to shut off parts of the spacecraft, to preserve power while ensuring the mission can continue to conduct its unique science."
+    },
+    {
+      "id": "voyager_four_instruments",
+      "document_id": "voyager1",
+      "locator": {
+        "kind": "text",
+        "byte_start": 6434,
+        "byte_end": 6686,
+        "line_start": 130,
+        "line_end": 130
+      },
+      "expected": "Voyager 1 continues to communicate with NASA’s Deep Space Network and send data back from four still-functioning instruments — the cosmic ray telescope, the low-energy charged particles experiment, the magnetometer, and the plasma waves experiment."
+    }
+  ],
+  "cases": [
+    {
+      "id": "voyager_timeline",
+      "split": "comparison",
+      "question": "In which year was Voyager 1 launched, and in which years did it fly past Jupiter and Saturn?",
+      "tags": [
+        "txt",
+        "timeline",
+        "readme"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "launch_year": 1977,
+          "jupiter_year": 1979,
+          "saturn_year": 1980
+        },
+        "field_sources": {
+          "launch_year": [
+            "voyager1_launch",
+            "voyager1_launch_intro"
+          ],
+          "jupiter_year": [
+            "voyager1_jupiter",
+            "voyager1_jupiter_prose"
+          ],
+          "saturn_year": [
+            "voyager1_saturn",
+            "voyager1_saturn_prose"
+          ]
+        },
+        "support_sets": [
+          [
+            "voyager1_jupiter",
+            "voyager1_launch",
+            "voyager1_saturn"
+          ],
+          [
+            "voyager1_jupiter",
+            "voyager1_launch",
+            "voyager1_saturn_prose"
+          ],
+          [
+            "voyager1_jupiter_prose",
+            "voyager1_launch",
+            "voyager1_saturn"
+          ],
+          [
+            "voyager1_jupiter_prose",
+            "voyager1_launch",
+            "voyager1_saturn_prose"
+          ],
+          [
+            "voyager1_jupiter",
+            "voyager1_launch_intro",
+            "voyager1_saturn"
+          ],
+          [
+            "voyager1_jupiter",
+            "voyager1_launch_intro",
+            "voyager1_saturn_prose"
+          ],
+          [
+            "voyager1_jupiter_prose",
+            "voyager1_launch_intro",
+            "voyager1_saturn"
+          ],
+          [
+            "voyager1_jupiter_prose",
+            "voyager1_launch_intro",
+            "voyager1_saturn_prose"
+          ]
+        ]
+      },
+      "presentation": {
+        "template": "Voyager 1 | Launch: {launch_year} | Jupiter: {jupiter_year} | Saturn: {saturn_year}",
+        "expected_text": "Voyager 1 | Launch: 1977 | Jupiter: 1979 | Saturn: 1980"
+      }
+    },
+    {
+      "id": "golden_record_counts",
+      "split": "comparison",
+      "question": "According to the Voyager 1 page, how many languages, sounds from life on Earth, and images are included on the Golden Record?",
+      "tags": [
+        "txt",
+        "close_numeric_distractors"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "languages": 55,
+          "sounds": 35,
+          "images": 115
+        },
+        "field_sources": {
+          "languages": [
+            "golden_record"
+          ],
+          "sounds": [
+            "golden_record"
+          ],
+          "images": [
+            "golden_record"
+          ]
+        },
+        "support_sets": [
+          [
+            "golden_record"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "titan_nitrogen",
+      "split": "comparison",
+      "question": "What nitrogen percentage did Voyager 1 report for Titan's atmosphere?",
+      "tags": [
+        "txt",
+        "units"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "nitrogen_percent": 90
+        },
+        "field_sources": {
+          "nitrogen_percent": [
+            "titan_nitrogen"
+          ]
+        },
+        "support_sets": [
+          [
+            "titan_nitrogen"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ice_giant_years",
+      "split": "comparison",
+      "question": "In which years did Voyager 2 fly past Uranus and Neptune?",
+      "tags": [
+        "txt",
+        "timeline"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "uranus_year": 1986,
+          "neptune_year": 1989
+        },
+        "field_sources": {
+          "uranus_year": [
+            "voyager2_uranus"
+          ],
+          "neptune_year": [
+            "voyager2_neptune"
+          ]
+        },
+        "support_sets": [
+          [
+            "voyager2_neptune",
+            "voyager2_uranus"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "pioneer_mass",
+      "split": "comparison",
+      "question": "What spacecraft mass in kilograms is listed for Pioneer 11?",
+      "tags": [
+        "txt",
+        "table",
+        "decimal",
+        "similar_mission"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "mass_kg": 258.5
+        },
+        "field_sources": {
+          "mass_kg": [
+            "pioneer11_mass"
+          ]
+        },
+        "support_sets": [
+          [
+            "pioneer11_mass"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "new_horizons_mass",
+      "split": "comparison",
+      "question": "What spacecraft mass in kilograms is listed for New Horizons?",
+      "tags": [
+        "txt",
+        "table",
+        "units"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "mass_kg": 478
+        },
+        "field_sources": {
+          "mass_kg": [
+            "new_horizons_mass"
+          ]
+        },
+        "support_sets": [
+          [
+            "new_horizons_mass"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "pathfinder_timeline",
+      "split": "comparison",
+      "question": "Which year did Mars Pathfinder launch, which year did it land on Mars, and what was its rover called?",
+      "tags": [
+        "txt",
+        "distant_passages"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "launch_year": 1996,
+          "landing_year": 1997,
+          "rover": "Sojourner"
+        },
+        "field_sources": {
+          "launch_year": [
+            "pathfinder_launch"
+          ],
+          "landing_year": [
+            "pathfinder_land"
+          ],
+          "rover": [
+            "pathfinder_rover"
+          ]
+        },
+        "support_sets": [
+          [
+            "pathfinder_land",
+            "pathfinder_launch",
+            "pathfinder_rover"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "galileo_orbits",
+      "split": "comparison",
+      "question": "Which space shuttle carried Galileo into Earth orbit, and how many times did the mission orbit Jupiter?",
+      "tags": [
+        "txt",
+        "distractors"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "shuttle": "Atlantis",
+          "orbits": 34
+        },
+        "field_sources": {
+          "shuttle": [
+            "galileo_shuttle"
+          ],
+          "orbits": [
+            "galileo_shuttle"
+          ]
+        },
+        "support_sets": [
+          [
+            "galileo_shuttle"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "three_launch_years",
+      "split": "comparison",
+      "question": "Give the individual launch years of Juno, Cassini and Dawn.",
+      "tags": [
+        "txt",
+        "multi_document",
+        "three_sources"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "juno_year": 2011,
+          "cassini_year": 1997,
+          "dawn_year": 2007
+        },
+        "field_sources": {
+          "juno_year": [
+            "juno_launch"
+          ],
+          "cassini_year": [
+            "cassini_launch"
+          ],
+          "dawn_year": [
+            "dawn_launch"
+          ]
+        },
+        "support_sets": [
+          [
+            "cassini_launch",
+            "dawn_launch",
+            "juno_launch"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "three_spacecraft_masses",
+      "split": "comparison",
+      "question": "Give the listed spacecraft masses in kilograms for Stardust, Deep Impact and New Horizons separately.",
+      "tags": [
+        "txt",
+        "multi_document",
+        "three_sources",
+        "units"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "stardust_kg": 385,
+          "deep_impact_kg": 650,
+          "new_horizons_kg": 478
+        },
+        "field_sources": {
+          "stardust_kg": [
+            "stardust_mass"
+          ],
+          "deep_impact_kg": [
+            "deep_impact_mass"
+          ],
+          "new_horizons_kg": [
+            "new_horizons_mass"
+          ]
+        },
+        "support_sets": [
+          [
+            "deep_impact_mass",
+            "new_horizons_mass",
+            "stardust_mass"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "four_launch_years",
+      "split": "comparison",
+      "question": "Give the launch years of Pioneer 10, Pioneer 11, Voyager 1 and Voyager 2 separately.",
+      "tags": [
+        "txt",
+        "multi_document",
+        "four_sources",
+        "similar_mission"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "pioneer10_year": 1972,
+          "pioneer11_year": 1973,
+          "voyager1_year": 1977,
+          "voyager2_year": 1977
+        },
+        "field_sources": {
+          "pioneer10_year": [
+            "pioneer10_launch"
+          ],
+          "pioneer11_year": [
+            "pioneer11_launch"
+          ],
+          "voyager1_year": [
+            "voyager1_launch"
+          ],
+          "voyager2_year": [
+            "voyager2_launch"
+          ]
+        },
+        "support_sets": [
+          [
+            "pioneer10_launch",
+            "pioneer11_launch",
+            "voyager1_launch",
+            "voyager2_launch"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "three_launch_pads",
+      "split": "comparison",
+      "question": "Give only the launch-complex identifiers for Pioneer 10, Pioneer 11 and Stardust, retaining each letter suffix.",
+      "tags": [
+        "txt",
+        "multi_document",
+        "three_sources",
+        "exact_string"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "pioneer10_pad": "36A",
+          "pioneer11_pad": "36B",
+          "stardust_pad": "17A"
+        },
+        "field_sources": {
+          "pioneer10_pad": [
+            "pioneer10_pad"
+          ],
+          "pioneer11_pad": [
+            "pioneer11_pad"
+          ],
+          "stardust_pad": [
+            "stardust_pad"
+          ]
+        },
+        "support_sets": [
+          [
+            "pioneer10_pad",
+            "pioneer11_pad",
+            "stardust_pad"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "perseverance_mass",
+      "split": "comparison",
+      "question": "In the December 2020 Perseverance fact sheet, what is the rover mass in kilograms? Return the printed numeric text with its comma.",
+      "tags": [
+        "pdf",
+        "units",
+        "exact_string"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "mass_kg_text": "1,025"
+        },
+        "field_sources": {
+          "mass_kg_text": [
+            "perseverance_dimensions"
+          ]
+        },
+        "support_sets": [
+          [
+            "perseverance_dimensions"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "perseverance_dimensions",
+      "split": "comparison",
+      "question": "What length, width and height in meters does the December 2020 fact sheet give for Perseverance, excluding its arm?",
+      "tags": [
+        "pdf",
+        "units",
+        "multi_column"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "length_m": 3,
+          "width_m": 2.7,
+          "height_m": 2.2
+        },
+        "field_sources": {
+          "length_m": [
+            "perseverance_dimensions"
+          ],
+          "width_m": [
+            "perseverance_dimensions"
+          ],
+          "height_m": [
+            "perseverance_dimensions"
+          ]
+        },
+        "support_sets": [
+          [
+            "perseverance_dimensions"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "moxie_gases",
+      "split": "comparison",
+      "question": "According to the Perseverance fact sheet, which atmospheric gas does MOXIE use, and which gas does it produce?",
+      "tags": [
+        "pdf",
+        "technical_terms"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "input_gas": "carbon dioxide",
+          "output_gas": "oxygen"
+        },
+        "field_sources": {
+          "input_gas": [
+            "perseverance_moxie"
+          ],
+          "output_gas": [
+            "perseverance_moxie"
+          ]
+        },
+        "support_sets": [
+          [
+            "perseverance_moxie"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "perseverance_cross_page",
+      "split": "comparison",
+      "question": "Using the December 2020 Perseverance fact sheet, give the planned landing year and rover mass in kilograms as printed, including the comma in the mass.",
+      "tags": [
+        "pdf",
+        "cross_page"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "planned_landing_year": 2021,
+          "mass_kg_text": "1,025"
+        },
+        "field_sources": {
+          "planned_landing_year": [
+            "perseverance_timeline"
+          ],
+          "mass_kg_text": [
+            "perseverance_dimensions"
+          ]
+        },
+        "support_sets": [
+          [
+            "perseverance_dimensions",
+            "perseverance_timeline"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "apollo_sample_and_module",
+      "split": "comparison",
+      "question": "According to the Apollo 11 anniversary sheet, how many kilograms of samples were collected, and what was the command module called?",
+      "tags": [
+        "pdf",
+        "distant_passages",
+        "units"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "sample_mass_kg": 21.7,
+          "command_module": "Columbia"
+        },
+        "field_sources": {
+          "sample_mass_kg": [
+            "apollo_samples"
+          ],
+          "command_module": [
+            "apollo_module"
+          ]
+        },
+        "support_sets": [
+          [
+            "apollo_module",
+            "apollo_samples"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "apollo_reflector",
+      "split": "comparison",
+      "question": "Which Apollo 11 experiment used cube-shaped mirrors to reflect laser pulses directly back to Earth?",
+      "tags": [
+        "pdf",
+        "technical_terms"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "experiment": "Lunar Ranging Retroreflector"
+        },
+        "field_sources": {
+          "experiment": [
+            "apollo_reflector"
+          ]
+        },
+        "support_sets": [
+          [
+            "apollo_reflector"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "tohoku_json_magnitude_depth",
+      "split": "comparison",
+      "question": "In the USGS snapshot for 2011 Great Tohoku Earthquake, Japan, what are the magnitude and hypocentral depth in kilometers?",
+      "tags": [
+        "json",
+        "typed_numbers",
+        "similar_record"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "magnitude": 9.1,
+          "depth_km": 29
+        },
+        "field_sources": {
+          "magnitude": [
+            "tohoku_json_mag"
+          ],
+          "depth_km": [
+            "tohoku_json_depth"
+          ]
+        },
+        "support_sets": [
+          [
+            "tohoku_json_depth",
+            "tohoku_json_mag"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "maule_json_magnitude_depth",
+      "split": "comparison",
+      "question": "In the USGS snapshot for 2010 Maule, Chile Earthquake, what are the magnitude and hypocentral depth in kilometers?",
+      "tags": [
+        "json",
+        "typed_numbers",
+        "similar_record"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "magnitude": 8.8,
+          "depth_km": 22.9
+        },
+        "field_sources": {
+          "magnitude": [
+            "maule_json_mag"
+          ],
+          "depth_km": [
+            "maule_json_depth"
+          ]
+        },
+        "support_sets": [
+          [
+            "maule_json_depth",
+            "maule_json_mag"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "raw_timezone_null",
+      "split": "comparison",
+      "question": "What is the raw tz property in the supplied USGS Tohoku event record? Return its stored value, including null.",
+      "tags": [
+        "json",
+        "raw_null"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "tz": null
+        },
+        "field_sources": {
+          "tz": [
+            "tohoku_timezone"
+          ]
+        },
+        "support_sets": [
+          [
+            "tohoku_timezone"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "raw_tsunami_flag",
+      "split": "comparison",
+      "question": "What is the raw integer tsunami property in the supplied USGS Tohoku event record? This asks for the stored flag, not whether a tsunami occurred.",
+      "tags": [
+        "json",
+        "zero",
+        "raw_field_semantics"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "tsunami_flag": 0
+        },
+        "field_sources": {
+          "tsunami_flag": [
+            "tohoku_tsunami"
+          ]
+        },
+        "support_sets": [
+          [
+            "tohoku_tsunami"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "unknown_station_distance",
+      "split": "comparison",
+      "question": "What is the numeric distance to the nearest station, dmin, in the supplied USGS Tohoku event record?",
+      "tags": [
+        "json",
+        "unknown_value"
+      ],
+      "expected": {
+        "status": "insufficient_evidence",
+        "reason": "The source dmin is null; an unknown distance is not numeric zero."
+      }
+    },
+    {
+      "id": "ambiguous_voyager",
+      "split": "comparison",
+      "question": "On what date did Voyager launch?",
+      "tags": [
+        "txt",
+        "ambiguous",
+        "similar_mission"
+      ],
+      "expected": {
+        "status": "ambiguous",
+        "clarification_fields": [
+          "mission"
+        ],
+        "alternatives": [
+          {
+            "fields": {
+              "mission": "Voyager 1",
+              "launch_date": "Sept. 5, 1977"
+            },
+            "support_set": [
+              "voyager1_launch"
+            ]
+          },
+          {
+            "fields": {
+              "mission": "Voyager 2",
+              "launch_date": "Aug. 20, 1977"
+            },
+            "support_set": [
+              "voyager2_launch"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "conflicting_instruments",
+      "split": "comparison",
+      "question": "How many science instruments are still operating on Voyager 1 according to the supplied page? Resolve any conflicting statements before giving a count.",
+      "tags": [
+        "txt",
+        "conflicting_source",
+        "distant_passages"
+      ],
+      "expected": {
+        "status": "ambiguous",
+        "clarification_fields": [
+          "operating_instruments"
+        ],
+        "alternatives": [
+          {
+            "fields": {
+              "operating_instruments": 2
+            },
+            "support_set": [
+              "voyager_two_instruments"
+            ]
+          },
+          {
+            "fields": {
+              "operating_instruments": 4
+            },
+            "support_set": [
+              "voyager_four_instruments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "missing_computer_serial",
+      "split": "comparison",
+      "question": "What serial number is printed on Voyager 1's onboard flight computer?",
+      "tags": [
+        "txt",
+        "missing_evidence"
+      ],
+      "expected": {
+        "status": "insufficient_evidence",
+        "reason": "No supplied source records the flight computer serial number."
+      }
+    },
+    {
+      "id": "missing_tsunami_height",
+      "split": "comparison",
+      "question": "According to the supplied USGS Tohoku event record, what was the maximum tsunami run-up height in meters?",
+      "tags": [
+        "json",
+        "missing_evidence",
+        "zero_distractor"
+      ],
+      "expected": {
+        "status": "insufficient_evidence",
+        "reason": "The raw tsunami flag is not a run-up measurement; no run-up height is supplied."
+      }
+    },
+    {
+      "id": "voyager_followup",
+      "split": "comparison",
+      "question": "In which year did that encounter take place?",
+      "tags": [
+        "txt",
+        "conversation"
+      ],
+      "expected": {
+        "status": "supported",
+        "fields": {
+          "encounter_year": 1986
+        },
+        "field_sources": {
+          "encounter_year": [
+            "voyager2_uranus"
+          ]
+        },
+        "support_sets": [
+          [
+            "voyager2_uranus"
+          ]
+        ]
+      },
+      "history": [
+        {
+          "role": "user",
+          "content": "I am asking about Voyager 2's flyby of Uranus."
+        }
+      ]
+    }
+  ]
+}

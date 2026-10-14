@@ -10,6 +10,7 @@ WORKDIR /app
 COPY --from=build /app/target/release/vectornext /usr/local/bin/vectornext
 COPY deployment/ deployment/
 COPY evals/fixtures/ evals/fixtures/
+COPY evals/independent/fixtures/voyager1.txt evals/independent/fixtures/voyager1.txt
 COPY tests/fixtures/answers/ tests/fixtures/answers/
 ENTRYPOINT ["vectornext"]
 CMD ["serve"]

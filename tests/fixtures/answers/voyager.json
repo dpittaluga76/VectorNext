@@ -1,0 +1,15 @@
+{
+  "question": "In which year was Voyager 1 launched, and in which years did it fly past Jupiter and Saturn?",
+  "fields": {
+    "launch_year": {
+      "kind": "integer"
+    },
+    "jupiter_year": {
+      "kind": "integer"
+    },
+    "saturn_year": {
+      "kind": "integer"
+    }
+  },
+  "template": "Voyager 1 | Launch: {launch_year} | Jupiter: {jupiter_year} | Saturn: {saturn_year}"
+}

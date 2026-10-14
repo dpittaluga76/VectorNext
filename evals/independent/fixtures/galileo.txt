@@ -1,0 +1,349 @@
+# Galileo
+
+Occurred 23 years ago
+
+Galileo changed the way we look at our solar system. When the spacecraft plunged into Jupiter's crushing atmosphere on Sept. 21, 2003, it was being deliberately destroyed to protect one of its own discoveries—a possible ocean beneath the icy crust of the moon Europa.
+
+Mission Type
+
+Orbiter and Atmospheric Probe
+
+launch vehicle
+
+Space Shuttle Atlantis (STS-34)
+
+Launch
+
+Oct. 18, 1989
+
+STATUS
+
+Successful
+
+Unable to render the provided source
+
+Experience the entire Galileo mission with this 3D simulation that uses real spacecraft data to recreate the mission's historic flight path.
+
+NASA/VTAD
+
+Mission Overview
+
+Quick Facts
+
+Top 10 Science Results
+
+End of Mission
+
+## Galileo Mission Overview
+
+NASA's Galileo spacecraft orbited Jupiter for almost eight years, and made close passes by its major moons.
+
+The spacecraft was launched from the cargo bay of space shuttle Atlantis on Oct. 18, 1989. It started orbiting Jupiter in December 1995. The primary mission was completed in December 1997, and then was extended three times. The mission ended when the spacecraft deliberately impacted Jupiter on Sept. 21, 2003.
+
+Read More
+
+An illustration of NASA's Galileo spacecraft at Jupiter and one its moons.
+
+NASA
+
+## Galileo Quick Facts
+
+Launched into Earth orbit from the Space Shuttle Atlantis in 1989, the mission went on to orbit Jupiter 34 times.
+
+The orbiter weighed 2 1/2 tons (223 kilograms) at launch and measured 17 feet (5 .3 meters) from the top of the low-gain antenna to the bottom of the probe.
+
+Read More
+
+This photo from Nov. 1, 1984 shows the Galileo orbiter under construction at NASA's Jet Propulsion Laboratory.
+
+NASA / JPL-Caltech
+
+## Top 10 Science Results
+
+Four spacecraft had previously flown by the Jupiter system, but Galileo was the first to enter orbit around the planet.
+
+Like the famed astronomer for which it was named, Galileo would study the King of Planets over an extended period, in finer detail than was ever possible before.
+
+Read More
+
+These images of Jupiter show the luminous night-side impact of fragment W of Comet Shoemaker-Levy 9. The images were taken by the Galileo spacecraft on July 22, 1994. NASA/JPL-Caltech/Galileo Imaging Team
+
+## Galileo End of Mission
+
+Galileo was deliberately destroyed to protect one of its own discoveries—a possible ocean beneath the icy crust of the moon Europa.
+
+On the day of impact, it took Galileo's radio signals about 52 minutes to travel between the spacecraft and Earth.
+
+Read More
+
+An artist's impression of the Galileo orbiter beginning to burn up in Jupiter's atmosphere. Galileo's 14-year mission to explore the Jovian system ended on 21 Sept. 2003 when the spacecraft was deliberately sent into Jupiter's atmosphere.
+
+## Quick Facts
+
+### Firsts
+
+Galileo was the first spacecraft to orbit an outer planet.
+
+It was the first spacecraft to deploy an entry probe into an outer planet's atmosphere.
+
+It completed the first flyby and imaging of an asteroid (Gaspra, and later, Ida).
+
+It made the first, and so far only, direct observation of a comet colliding with a planet’s atmosphere (Shoemaker-Levy 9).
+
+It was the first spacecraft to operate in a giant planet magnetosphere long enough to identify its global structure and to investigate its dynamics.
+
+### Spacecraft
+
+This photo from Nov. 1, 1984 shows the Galileo orbiter under construction at NASA's Jet Propulsion Laboratory.
+
+NASA / JPL-Caltech
+
+Dimensions: 5.3 meters (17 feet) high; magnetometer boom extends 11 meters (36 feet) to one side
+
+Weight: 2,223 kilograms (2½ tons, or 4,902 pounds), including 118 kilograms (260 pounds) of science instruments and 925 kilograms (2040 pounds) of propellant
+
+Power: 570 watts (at launch) from radioisotope thermoelectric generators
+
+Science instruments: Solid-state imaging camera, near-infrared mapping spectrometer, ultraviolet spectrometer, photopolarimeter radiometer, magnetometer, energetic particles detector, plasma investigation, plasma wave subsystem, dust detector, heavy ion counter
+
+### Atmospheric Probe
+
+Size: 127 centimeters (50 inches) diameter, 91 centimeters (36 inches) high
+
+Weight: 339 kilograms (750 pounds)
+
+Science instruments: Atmospheric structure, neutral mass spectrometer, helium abundance, nephelometer, net flux radiometer, lightning/energetic particles, doppler wind experiment
+
+### Mission
+
+Launch: Oct. 18, 1989 from Kennedy Space Center, Florida, on space shuttle Atlantis (STS-34)
+
+Primary mission: October 1989 to December 1997
+
+Extended missions: Three, from 1997 to 2003
+
+Venus flyby: Feb. 10, 1990, at altitude of 16,000 km (10,000 mi)
+
+Earth flybys: Dec. 8, 1990, at altitude of 960 km (597 mi); Dec. 8, 1992 at altitude of 303 km (188 mi)
+
+Asteroid Gaspra flyby: Oct. 29, 1991, at 1,601 km (1,000 mi)
+
+Comet Shoemaker-Levy 9: Impacts of comet fragments into Jupiter observed while en route in July 1994
+
+Asteroid Ida flyby: Aug. 28, 1993, at 2,400 km (1,400 mi)
+
+Atmospheric probe release: July 12, 1995
+
+Probe speed into Jupiter's atmosphere: 47.6 km per second (106,000 mi per hour)
+
+Jupiter arrival and orbit insertion: Dec. 7, 1995
+
+Probe atmospheric entry and relay: Dec. 7, 1995
+
+Number of Jupiter orbits during entire mission: 34
+
+Number of flybys of Jupiter moons: Io 7, Callisto 8, Ganymede 8, Europa 11, Amalthea 1
+
+Total distance traveled from launch to final impact: 4,631,778,000 kilometers (approx. 2.8 billion miles)
+
+Speed of spacecraft at time of impact: 48.2 kilometers per second (nearly 108,000 miles per hour)
+
+### Program
+
+Cost: Total from start of planning through end of mission is $1.39 billion. International contribution estimated at an additional $110 million
+
+Partners: More than 100 scientists from United States, Great Britain, Germany, France, Canada and Sweden carried out Galileo's experiments. NASA's Ames Research Center, Mountain View, Calif., responsible for atmosphere probe, built by Hughes Aircraft Company, El Segundo, Calif. Radioisotope thermoelectric generators designed and built by General Electric Co. for the U.S. Department of Energy
+
+Approximate number of people who worked on some portion of the Galileo mission: 800
+
+The Galileo project was managed by the Jet Propulsion Laboratory, Pasadena, a division of the California Institute of Technology. JPL designed and built the Galileo orbiter, and operated the mission.
+
+At NASA Headquarters, Dr. Barry Geldzahler was Galileo program manager and Dr. Denis Bogan was the program scientist. At JPL, the position of project manager has been held successively by John Casani, Richard Spehalski, Bill O'Neil, Bob Mitchell, Jim Erickson, Eilene Theilig, and Dr. Claudia J. Alexander. Dr. Torrence V. Johnson was project scientist.
+
+NASA's Ames Research Center, Moffett Field, Calif., managed the descent probe, which was built by Hughes Aircraft Co, El Segundo, Calif. The position of probe manager was held successively by Joel Sperans, Benny Chinn and Marcie Smith. The probe scientist was Dr. Richard E. Young.
+
+## Media
+
+10 Images
+
+## Top 10 Science Results
+
+The descent probe measured atmospheric elements and found that their relative abundances were different than on the Sun, indicating Jupiter's evolution since the planet formed out of the solar nebula.
+
+Galileo made a first observation of ammonia clouds in another planet's atmosphere.The atmosphere seems to create ammonia ice particles of material from lower depths, but only in "fresh" clouds.
+
+Io's extensive volcanic activity may be 100 times greater than that found on Earth's.The heat and frequency of eruption are reminiscent of early Earth.
+
+Io's complex plasma interactions in Io's atmosphere include support for currents and coupling to Jupiter's atmosphere.
+
+Evidence supports a theory that liquid oceans exist under Europa's icy surface.
+
+Ganymede is the first satellite known to possess a magnetic field.
+
+Galileo magnetic data provide evidence that Europa, Ganymede and Callisto have a liquid-saltwater layer.
+
+Europa, Ganymede, and Callisto all provide evidence of a thin atmospheric layer known as a 'surface-bound exosphere'.
+
+Jupiter's ring system is formed by dust kicked up as interplanetary meteoroids smash into the planet's four small inner moons. The outermost ring is actually two rings, one embedded with the other.
+
+Galileo was the first spacecraft to dwell in a giant planet magnetosphere long enough to identify its global structure and to investigate its dynamics.
+
+## Mission Overview
+
+Galileo's journey to Jupiter.
+
+NASA/JPL-Caltech
+
+NASA's Galileo spacecraft was designed to study the large, gaseous planet Jupiter, its moons and its surrounding magnetosphere, which is a magnetic bubble surrounding the planet. The craft was named for the Italian Renaissance scientist who discovered Jupiter's major moons in 1610.
+
+The primary mission at Jupiter began when the spacecraft entered orbit in December 1995 and its descent probe, which had been released five months earlier, dove into the giant planet's atmosphere. The primary mission included a 23-month, 11-orbit tour of the Jovian system, including 10 close encounters of Jupiter's major moons.
+
+Although the primary mission was completed in December 1997, the mission was extended three times. Galileo had 35 encounters of Jupiter's major moons – 11 with Europa, eight with Callisto, eight with Ganymede, seven with Io and one with Amalthea. The mission ended when the spacecraft impacted Jupiter on Sept. 21, 2003.
+
+Deployment of NASA Galileo and the IUS from the cargo bay of STS-34 Atlantis at 7:15 p.m. EDT on October 18, 1989. P-35213
+
+NASA
+
+### Launch
+
+The Galileo spacecraft and its two-stage Inertial Upper Stage were carried into Earth orbit on October 18, 1989 by space shuttle Atlantis on mission STS-34. The two-stage Inertial Upper Stage solid rocket then accelerated the spacecraft out of Earth orbit toward the planet Venus for the first of three planetary "gravity assists" designed to boost Galileo toward Jupiter. In a gravity assist, the spacecraft flies close enough to a planet to be propelled by its gravity, creating a "slingshot" effect for the spacecraft. The Galileo mission had originally been designed for a direct flight of about three and a half years to Jupiter, using a three-stage Inertial Upper Stage. When that booster was canceled, plans were changed to a Centaur upper stage, and ultimately to the twostage Inertial Upper Stage, which precluded a direct trajectory. To save the project, Galileo engineers designed a flight path using planetary gravity assists.
+
+### Venus and Earth Flybys
+
+After flying past Venus at an altitude of 16,000 kilometers (nearly 10,000 miles) on
+
+February 10, 1990, the spacecraft swung past Earth at an altitude of 960 kilometers (597 miles) on December 8, 1990. That flyby increased Galileo's speed enough to send it on a two-year elliptical orbit around the Sun. The spacecraft returned for a second Earth swingby on December 8, 1992, at an altitude of 303 kilometers (188 miles). With this, Galileo left Earth for the third and final time and headed toward Jupiter.
+
+The flight path provided opportunities for scientific observations. Scientists obtained the first views of mid-level clouds on Venus and confirmed the presence of lightning on that planet. They also made many Earth observations, mapped the surface of Earth's Moon, and observed its north polar regions.
+
+Because of the modification in Galileo's trajectory, the spacecraft was exposed to a hotter environment than originally planned. To protect it from the Sun, project engineers devised a set of sunshades and pointed the top of the spacecraft toward the Sun, with the umbrella-like high-gain antenna furled until well after the first Earth flyby in December 1990. Flight controllers stayed in touch with the spacecraft through a pair of low-gain antennas, which send and receive data at a much slower rate.
+
+### High-Gain Antenna
+
+The spacecraft was scheduled to deploy its 4.8-meter-diameter (16-foot) high-gain antenna in April 1991 as Galileo moved away from the Sun and the risk of overheating ended. The antenna, however, failed to deploy fully.
+
+A special team performed extensive tests and determined that a few (probably three) of the antenna's 18 ribs were held by friction in the closed position. Despite exhaustive efforts to free the ribs, the antenna would not deploy. From 1993 to 1996, extensive new flight and ground software was developed, and ground stations of NASA's Deep Space Network were enhanced in order to perform the mission using the spacecraft's low-gain antennas.
+
+This color picture is made from images taken by Galileo about 14 minutes before its closest approach to asteroid 243 Ida and its moon, Dactyl, on August 28, 1993. The images used are from the sequence in which Ida's moon was originally discovered;
+
+NASA/JPL-Caltech
+
+### Asteroid Flybys
+
+Galileo became the first spacecraft ever to encounter an asteroid when it passed Gaspra on October 29, 1991. It flew within just 1,601 kilometers (1,000 miles) of the stony asteroid's center at a relative speed of about 8 kilometers per second (18,000 miles per hour). Pictures and other data revealed a cratered, complex, irregular body about 20 by 12 by 11 kilometers (12.4 by 7.4 by 6.8 miles), with a thin covering of dust and rubble.
+
+On August 28, 1993, Galileo carried out a second asteroid encounter, this time with a larger, more distant asteroid named Ida. Ida is about 55 kilometers (34 miles) long and 24 kilometers (15 miles) wide. Observations indicated that both Ida and Gaspra have magnetic fields, although Ida is older and its surface is covered with craters. Scientists discovered that Ida boasts its own moon, making it the first asteroid known to have a natural satellite. The tiny moon, named Dactyl, has a diameter of only about 1.5 kilometers (less than a mile). By determining Dactyl's orbit, scientists estimated Ida's density.
+
+Eight impacts from Comet Shoemaker-Levy 9 are visible in this Hubble Space Telescope image from Jupiter taken in 1994. The smallest features in this image are 124 miles (200 kilometers) across.
+
+NASA/Hubble Space Telescope Comet Team
+
+### Comet Shoemaker-Levy 9 Impact into Jupiter
+
+The discovery of Comet Shoemaker-Levy 9 in March 1993 provided an exciting opportunity for Galileo's science teams and other astronomers. The comet was breaking up as it orbited Jupiter, and was headed to dive into the giant planet's atmosphere in July 1994.
+
+The Galileo spacecraft, approaching Jupiter, was the only observation platform with a direct view of the comet’s impact area on Jupiter's far side. Despite the uncertainty of the predicted impact times, Galileo team members pre-programmed the spacecraft's science instruments to collect data and were able to obtain spectacular images of the comet impacts.
+
+### Jupiter Arrival
+
+On July 13, 1995, Galileo's descent probe, which had been carried aboard the parent spacecraft, was released and began a five-month freefall toward Jupiter. The probe had no engine or thrusters, so its flight path was established by pointing of the Galileo orbiter before the probe was released. Two weeks later, Galileo used its main rocket engine for the first time as it readjusted its flight path to arrive at the proper point at Jupiter.
+
+Arrival day on December 7, 1995, turned out to be an extremely busy 24-hour period. When Galileo first reached Jupiter and while the probe was still approaching the planet, the orbiter flew by two of Jupiter's major moons – Europa and Io. Galileo passed Europa at an altitude of about 33,000 kilometers (20,000 miles), while the Io approach was at an altitude of about 900 kilometers (600 miles).
+
+About four hours after leaving Io, the orbiter made its closest approach to Jupiter, encountering 25 times more radiation than the level considered deadly for humans.
+
+### Descent Probe
+
+Eight minutes later, the orbiter started receiving data from the descent probe, which slammed into the top of the Jovian atmosphere at a comet-like speed of 170,000 kilometers per hour (106,000 miles per hour). In the process, the probe withstood temperatures twice as hot as the Sun's surface. The probe slowed by aerodynamic braking for about two minutes before deploying its parachute and dropping a heat shield.
+
+The wok-shaped probe floated down about 200 kilometers (125 miles) through the clouds, transmitting data to the orbiter on sunlight and heat flux, pressure, temperature, winds, lightning and atmospheric composition. Fifty-eight minutes into its descent, high temperatures silenced the probe's transmitters. The probe sent data from a depth with a pressure 23 times that of the average on Earth's surface, more than twice the mission requirement.
+
+An hour after receiving the last transmission from the probe, at a point about 200,000 kilometers (130,000 miles) above the planet, the Galileo spacecraft fired its main engine to brake into orbit around Jupiter.
+
+This first orbit lasted about seven months. Galileo fired its thrusters at its farthest point in the orbit to keep it from coming so close to the giant planet on later orbits. This adjustment helped mitigate possible damage to spacecraft sensors and computer chips from Jupiter's intense radiation environment.
+
+During this first orbit, new software was installed which gave the orbiter extensive new onboard data processing capabilities. It permitted data compression, enabling the spacecraft to transmit up to 10 times the number of pictures and other measurements that would have been possible otherwise.
+
+In addition, hardware changes on the ground and adjustments to the spacecraft-toEarth communication system increased the average telemetry rate tenfold. Although the problem with the high-gain antenna prevented some of the mission's original objectives from being met, the great majority were. So many new objectives were achieved that scientists feel Galileo has produced considerably more science than ever envisioned at the project's start 20 years ago.
+
+### Orbital Tour
+
+During its primary mission orbital tour, Galileo's itinerary included four flybys of Jupiter's moon Ganymede, three of Callisto and three of Europa. These encounters were about 100 to 1,000 times closer than those performed by NASA's Voyager 1 and 2 spacecraft during their Jupiter flybys in 1979. Galileo's instruments scanned and scrutinized the surface and features of each moon. After about a week of intensive observation, with its tape recorder full of data, the spacecraft spent the next one to two months-until the next encounter in orbital "cruise"-playing back the information in transmissions to Earth.
+
+### Extended Missions
+
+A two-year extension, the Galileo Europa Mission, began in December 1997 and included intensive study of Europa through eight consecutive close encounters. The flybys added to knowledge about Europa's frozen surface and the intriguing prospect that liquid oceans may lie underneath. The Galileo Europa Mission provided a valuable opportunity to make additional flybys' of the volcanic moon Io. The prime mission provided only one opportunity for close-up study of Io. Galileo had two encounters of Io during the Europa Mission, gathering new information on Io's volcanic activity. In addition, Galileo studied Callisto in four flybys. The Galileo Millennium Mission added another year of operations, including more flybys of Io and Ganymede, plus joint studies with the Cassini spacecraft as it passed Jupiter in December 2000 for a gravity assist toward Saturn.
+
+A line drawing of the Galileo orbiter.
+
+NASA/JPL-Caltech
+
+### How the Spacecraft Worked
+
+The Galileo orbiter weighed 2,223 kilograms at launch (2-1/2 tons) and measured 5.3 meters (17 feet) from the top of the low-gain antenna to the bottom of the probe. The orbiter features an innovative "dual-spin" design. Most spacecraft are stabilized in flight either by spinning around a major axis, or by maintaining a fixed orientation in space, referenced to the Sun and another star. As the first dual-spin planetary spacecraft, Galileo combines these techniques. A spinning section rotates at about 3 rpm, and a "despun" section is counter-rotated to provide a fixed orientation for cameras and other remote sensors. A star scanner on the spinning side determines orientation and spin rate; gyroscopes on the despun side provide the basis for measuring turns and pointing instruments.
+
+The power supply, propulsion module and most of the computers and control electronics are mounted on the spinning section. The spinning section also carries instruments to study magnetic fields and charged particles. These instruments include magnetometer sensors mounted on an 11-meter (36-foot) boom to minimize interference from the spacecraft's electronics; a plasma instrument to detect low-energy charged particles; and a plasma-wave detector to study electromagnetic waves generated by the particles. There is also a high-energy particle detector and a detector of cosmic and Jovian dust, an extreme ultraviolet detector associated with the ultraviolet spectrometer, and a heavy ion counter to assess potentially hazardous charged-particle environments the spacecraft flies through.
+
+Galileo's de-spun section carries instruments that need to be held steady. These instruments include the camera system; the near-infrared mapping spectrometer to make multispectral images for atmosphere and surface chemical analysis; the ultraviolet spectrometer to study gases; and the photopolarimeter-radiometer to measure radiant and reflected energy. The camera system obtains images of Jupiter's satellites at resolutions from 20 to 1,000 times better than the best possible from NASA's Voyager spacecraft; its charge-coupled-device (CCD) sensor is much more sensitive than previous spacecraft cameras and is able to detect a broader color band. Galileo's de-spun section also carries a dish antenna that picked up the descent probe's signals during its fall into Jupiter's atmosphere.
+
+The spacecraft's propulsion module consists of twelve 10-newton (2.25-pound-force) thrusters and a single 400-newton (90-pound-force) engine which use monomethylhydrazine fuel and nitrogen-tetroxide oxidizer. The propulsion system was developed and built by Messerschmitt-Bolkow-Blohm (MBB) and provided by the Federal Republic of Germany as NASA's major international partner on Galileo.
+
+Because radio signals take more than one hour to travel from Earth to Jupiter and back, the Galileo spacecraft was designed to operate from computer instructions sent to it in advance and stored in spacecraft memory. A single master sequence of com-
+
+mands can cover a period ranging from weeks to months of quiet operations between flybys of Jupiter's moons. During busy encounter operations, one sequence of commands covers only about a week.
+
+These sequences operate through flight software installed in the spacecraft computers, with built-in automatic fault protection software designed to put Galileo in a safe state in case of computer glitches or other unforeseen circumstance. Electrical power is provided by two radioisotope thermoelectric generators. Heat produced by natural radioactive decay of plutonium is converted to electricity (570 watts at launch, 485 at the end of the mission) to operate the orbiter spacecraft's equipment. This is the same type of power source used on other NASA missions including Viking to Mars, Voyager and Pioneer to the outer planets, Ulysses to study the Sun, and Cassini to Saturn.
+
+### Descent Probe
+
+Galileo's descent probe had a mass of 339 kilograms (750 pounds), and included a deceleration module to slow and protect the descent module. The deceleration module consisted of an aeroshell and an aft cover designed to block heat generated by friction during atmospheric entry. Inside the aeroshells were the descent module and its 2.5meter (8-foot) parachute. The descent module carried a radio transmitter and seven scientific instruments. These were devices to measure temperature, pressure and deceleration, atmospheric composition, clouds, particles, and light and radio emissions from lightning and energetic particles in Jupiter's radiation belts.
+
+### Orbiter Instruments
+
+The Galileo orbiter spacecraft carries 11 scientific instruments. Another seven were on the descent probe. One engineering instrument on the orbiter, originally for measurements to aid design of future spacecraft, also collects scientific information.
+
+## End of Mission
+
+An artist's impression of the Galileo orbiter beginning to burn up in Jupiter's atmosphere. Galileo's 14-year mission to explore the Jovian system ended on 21 Sept. 2003 when the spacecraft was deliberately sent into Jupiter's atmosphere.
+
+### Galileo Tasted Jupiter on Its Final Plunge
+
+In the end, the Galileo spacecraft got a taste of Jupiter before taking a final plunge into the planet's crushing atmosphere, ending the mission on Sunday, Sept. 21, 2003.
+
+The spacecraft was purposely put on a collision course with Jupiter to eliminate any chance of an unwanted impact between the spacecraft and Jupiter’s moon Europa, which Galileo discovered is likely to have a subsurface ocean. The long planned impact was necessary because the spacecraft's onboard propellant was depleted. Without propellant, the spacecraft would not be able to point its antenna toward Earth nor adjust its trajectory, so controlling the spacecraft would no longer be possible.
+
+"It has been a fabulous mission for planetary science, and it is hard to see it come to an end," Dr. Claudia Alexander, Galileo project manager at NASA's Jet Propulsion Laboratory, said in 2003.
+
+Launched in the cargo bay of Space Shuttle Atlantis in 1989, the mission produced a string of discoveries while circling the solar system's largest planet, Jupiter, 34 times. Galileo was the first mission to measure Jupiter's atmosphere directly with a descent probe and the first to conduct long-term observations of the jovian system from orbit. It found evidence of subsurface liquid layers of saltwater on Europa, Ganymede and Callisto and it examined a diversity of volcanic activity on Io. Galileo is the first spacecraft to fly by an asteroid and the first to discover a moon of an asteroid.
+
+NASA extended the mission three times to continue taking advantage of Galileo's unique capabilities for accomplishing valuable science. The mission was possible because it drew its power from two long-lasting radioisotope thermoelectric generators provided by the Department of Energy.
+
+From launch to impact, the spacecraft has traveled 4,631,778,000 kilometers (about 2.8 billion miles).
+
+Its entry point into the giant planet’s atmosphere was about 1/4 degree south of Jupiter's equator. If there were observers floating along at the cloud tops, they would see Galileo streaming in from a point about 22 degrees above the local horizon. Streaming in could also be described as screaming in, as the speed of the craft relative to those observers would be 48.2 kilometers per second (nearly 108,000 miles per hour). That is the equivalent of traveling from Los Angeles to New York City in 82 seconds. In comparison, the Galileo atmospheric probe, aerodynamically designed to slow down when entering, and parachute gently through the clouds, first reached the atmosphere at a slightly more modest 47.6 kilometers per second (106,500 miles per hour).
+
+"This is a very exciting time for us as we draw to a close on this historic mission and look back at its science discoveries," said Dr. Charles Elachi, who was director of JPL in 2003. "Galileo taught us so much about Jupiter but there is still much to be learned, and for that we look with promise to future missions."
+
+Keep Exploring
+
+## Discover More Topics From NASA
+
+###
+James Webb Space Telescope
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+###
+Perseverance Rover
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+###
+Parker Solar Probe
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+###
+Juno
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

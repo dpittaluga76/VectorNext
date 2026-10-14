@@ -1,0 +1,152 @@
+Explore This Section
+
+# Kepler / K2
+
+Occurred 8 years ago
+
+The Kepler space telescope was NASA’s first planet-hunting mission, assigned to search a portion of the Milky Way galaxy for Earth-sized planets orbiting stars outside our solar system. During nine years in deep space Kepler, and its second act, the extended mission dubbed K2, showed our galaxy contains billions of hidden "exoplanets," many of which could be promising places for life. They proved that our night sky is filled with more planets than even stars — knowledge that revolutionizes the understanding of our place in the cosmos.
+
+Mission Type
+
+Space Telescope
+
+Destination
+
+Heliocentric orbit
+
+Launch
+
+March 6, 2009
+
+Objective
+
+Search for exoplanets
+
+## Contents
+
+Overview
+
+‘Planets are Everywhere’
+
+K2
+
+Legacy
+
+This artist concept shows NASA's planet-hunting Kepler spacecraft operating in a new mission profile called K2. In 2013 the spacecraft lost its ability to precisely stare at its original target area, but a clever fix created a second life for the telescope that proved scientifically fruitful, showing K2 could still find exoplanets.
+
+NASA, ESA, CSA, and STScI
+
+## Overview
+
+Launched on March 6, 2009, the Kepler space telescope combined cutting-edge techniques in measuring stellar brightness with the largest digital camera outfitted for outer space observations at that time. Originally positioned to stare continuously at 150,000 stars in one star-studded patch of the sky in the constellation Cygnus, it took the first survey of planets in our galaxy and became the agency's first mission to detect Earth-size planets in the habitable zones of their stars.
+
+Kepler detected planets by observing transits, or tiny dips in the brightness of a star that occur when a planet crosses in front of the star.
+
+The spacecraft was basically a single instrument – a specially designed 3-foot (1-meter) diameter aperture telescope and image sensor array – with a spacecraft built around it. The diameter of the telescope’s mirror was 4 feet, 7 inches (1.4 meters), one of the largest mirrors beyond Earth orbit.
+
+Kepler was designed to monitor about 100,000 main-sequence stars over a period of three-and-a-half years. During its first six weeks of operation, Kepler discovered five exoplanets—named Kepler 4b, 5b, 6b, 7b and 8b (which NASA announced in January 2010).
+
+In April 2010, mission scientists published results that showed that Kepler had discovered the first confirmed planetary system with more than one planet transiting the same star, Kepler-9. That discovery was the result of surveying more than 156,000 stars over a period of seven months.
+
+The planetary system orbiting Kepler-11, a yellow dwarf star about 2,000 light years from Earth, included six planets. NASA announced in February 2011 that these planets were larger than Earth, with the largest ones comparable in size to Uranus and Neptune.
+
+The most common size of planet Kepler found doesn’t exist in our solar system – a world between the size of Earth and Neptune – and we have much to learn about these planets. Kepler also found nature often produces jam-packed planetary systems, in some cases with so many planets orbiting close to their parent stars that our own inner solar system looks sparse by comparison.
+
+## ‘Planets are Everywhere’
+
+"When we started conceiving this mission 35 years ago, we didn't know of a single planet outside our solar system," said the Kepler mission's founding principal investigator, William Borucki, now retired from NASA's Ames Research Center in California's Silicon Valley. "Now that we know planets are everywhere, Kepler has set us on a new course that's full of promise for future generations to explore our galaxy."
+
+In May 2013, the Kepler spacecraft lost the second of four gyroscope-like reaction wheels, which are used to precisely point the spacecraft, effectively ending new data collection for the original mission. The spacecraft required three functioning wheels to position the telescope, so the malfunction robbed Kepler of its ability to stay pointed at a target without drifting off course.
+
+That’s because the Sun, the very body that provides Kepler with its energy needs, also pushes the spacecraft around by the pressure exerted when the photons of sunlight strike the spacecraft. Without a third wheel to help counteract the solar pressure, the spacecraft's ultra-precise pointing capability could not be controlled in all directions.
+
+## K2
+
+So engineers came up with a clever scheme. They gave the spacecraft a new lease on life by using the pressure of sunlight to maintain its pointing, like a kayak steering into the current. The redesigned mission, “K2,” still hunted for planets, but it scanned a larger swath of sky than before, along the ecliptic plane.
+
+This extended mission required the spacecraft to shift its field of view to new portions of the sky roughly every three months in what the team referred to as a “campaign.” Initially, the Kepler team estimated that the K2 mission could conduct 10 campaigns with the remaining fuel; it reached 19.
+
+K2 lasted as long as the first mission and bumped Kepler's count of surveyed stars up to more than 500,000. The mission began new types of research as well, such as the study of objects within our solar system, exploded stars, and distant supermassive black holes at the hearts of galaxies.
+
+After nine years in deep space collecting data that revealed our night sky to be filled with billions of hidden planets, more planets even than stars, NASA’s Kepler space telescope ran out of fuel needed for further science operations. In October 2018, NASA decided to retire the spacecraft within its current, safe orbit, away from Earth. Kepler leaves a legacy of more than 2,600 planet discoveries from outside our solar system, many of which could be promising places for life. (Illustration depicting the Kepler spacecraft in a sky filled with exoplanets and planetary systems.)
+
+NASA/Ames Research Center/W. Stenzel/D. Rutter
+
+## Legacy
+
+The observation of so many stars has allowed scientists to better understand stellar behaviors and properties, which is critical information in studying the planets that orbit them. New research into stars with Kepler data also is furthering other areas of astronomy, such as the history of our Milky Way galaxy and the beginning stages of exploding stars called supernovae that are used to study how fast the universe is expanding. The data from the extended mission were also made available to the public and science community immediately, allowing discoveries to be made at an incredible pace and setting a high bar for other missions. Scientists are expected to spend a decade or more in search of new discoveries in the treasure trove of data Kepler provided.
+
+Before retiring the spacecraft on Oct. 30, 2018, scientists pushed Kepler to its full potential, successfully completing multiple observation campaigns and downloading valuable science data even after initial warnings of low fuel. The latest data, from Campaign 19, will complement the data from NASA's newest planet hunter, the Transiting Exoplanet Survey Satellite, launched in April 2018. TESS builds on Kepler's foundation with fresh batches of data in its search of planets orbiting some 200,000 of the brightest and nearest stars to the Earth, worlds that can later be explored for signs of life by missions such as NASA's James Webb Space Telescope, and other observatories to come.
+
+Kepler has opened our eyes to the diversity of planets that exist in our galaxy. Analysis of Kepler’s discoveries concludes that 20 to 50 percent of the stars visible in the night sky are likely to have small, possibly rocky, planets similar in size to Earth, and located within the habitable zone of their parent stars. That means they’re located at distances from their parent stars where liquid water — a vital ingredient to life as we know it — might pool on the planet's surface.
+
+##
+Learn More
+
+## 'Light Leads the Way'
+
+The father of the Kepler telescope describes how starlight can help reveal — not just the existence of an exoplanet — but even its mass and temperature.
+
+## Discoveries Dashboard
+
+The otherworldly findings by Kepler and its brethren: 6,000-plus exoplanets, and counting...
+
+## Kepler/K2
+
+46 Images
+
+Go To Gallery
+
+Go To Gallery
+
+## Kepler/K2 Stories
+
+Explore All Kepler/K2 Stories
+
+Article
+
+6 Min Read
+
+Starstruck: NASA Research Shows How Sun’s Ancient History Shaped Earth
+
+Article
+
+4 Min Read
+
+NASA AI Model That Found 370 Exoplanets Now Digs Into TESS Data
+
+Article
+
+6 Min Read
+
+NASA’s Pandora Satellite, CubeSats to Explore Exoplanets, Beyond
+
+Article
+
+6 Min Read
+
+NASA’s Roman Could Bring New Waves of Information on Galaxy’s Stars
+
+Keep Exploring
+
+## Discover More Topics From NASA
+
+###
+Perseverance Rover
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+###
+James Webb Space Telescope
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+###
+Parker Solar Probe
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+###
+Juno
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

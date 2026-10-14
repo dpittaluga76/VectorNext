@@ -1,0 +1,306 @@
+{
+  "voyager_timeline": {
+    "question": "In which year was Voyager 1 launched, and in which years did it fly past Jupiter and Saturn?",
+    "fields": {
+      "launch_year": {
+        "kind": "integer"
+      },
+      "jupiter_year": {
+        "kind": "integer"
+      },
+      "saturn_year": {
+        "kind": "integer"
+      }
+    },
+    "template": "Voyager 1 | Launch: {launch_year} | Jupiter: {jupiter_year} | Saturn: {saturn_year}"
+  },
+  "golden_record_counts": {
+    "question": "According to the Voyager 1 page, how many languages, sounds from life on Earth, and images are included on the Golden Record?",
+    "fields": {
+      "languages": {
+        "kind": "integer"
+      },
+      "sounds": {
+        "kind": "integer"
+      },
+      "images": {
+        "kind": "integer"
+      }
+    }
+  },
+  "titan_nitrogen": {
+    "question": "What nitrogen percentage did Voyager 1 report for Titan's atmosphere?",
+    "fields": {
+      "nitrogen_percent": {
+        "kind": "integer"
+      }
+    }
+  },
+  "ice_giant_years": {
+    "question": "In which years did Voyager 2 fly past Uranus and Neptune?",
+    "fields": {
+      "uranus_year": {
+        "kind": "integer"
+      },
+      "neptune_year": {
+        "kind": "integer"
+      }
+    }
+  },
+  "pioneer_mass": {
+    "question": "What spacecraft mass in kilograms is listed for Pioneer 11?",
+    "fields": {
+      "mass_kg": {
+        "kind": "number"
+      }
+    }
+  },
+  "new_horizons_mass": {
+    "question": "What spacecraft mass in kilograms is listed for New Horizons?",
+    "fields": {
+      "mass_kg": {
+        "kind": "integer"
+      }
+    }
+  },
+  "pathfinder_timeline": {
+    "question": "Which year did Mars Pathfinder launch, which year did it land on Mars, and what was its rover called?",
+    "fields": {
+      "launch_year": {
+        "kind": "integer"
+      },
+      "landing_year": {
+        "kind": "integer"
+      },
+      "rover": {
+        "kind": "string"
+      }
+    }
+  },
+  "galileo_orbits": {
+    "question": "Which space shuttle carried Galileo into Earth orbit, and how many times did the mission orbit Jupiter?",
+    "fields": {
+      "shuttle": {
+        "kind": "string"
+      },
+      "orbits": {
+        "kind": "integer"
+      }
+    }
+  },
+  "three_launch_years": {
+    "question": "Give the individual launch years of Juno, Cassini and Dawn.",
+    "fields": {
+      "juno_year": {
+        "kind": "integer"
+      },
+      "cassini_year": {
+        "kind": "integer"
+      },
+      "dawn_year": {
+        "kind": "integer"
+      }
+    }
+  },
+  "three_spacecraft_masses": {
+    "question": "Give the listed spacecraft masses in kilograms for Stardust, Deep Impact and New Horizons separately.",
+    "fields": {
+      "stardust_kg": {
+        "kind": "integer"
+      },
+      "deep_impact_kg": {
+        "kind": "integer"
+      },
+      "new_horizons_kg": {
+        "kind": "integer"
+      }
+    }
+  },
+  "four_launch_years": {
+    "question": "Give the launch years of Pioneer 10, Pioneer 11, Voyager 1 and Voyager 2 separately.",
+    "fields": {
+      "pioneer10_year": {
+        "kind": "integer"
+      },
+      "pioneer11_year": {
+        "kind": "integer"
+      },
+      "voyager1_year": {
+        "kind": "integer"
+      },
+      "voyager2_year": {
+        "kind": "integer"
+      }
+    }
+  },
+  "three_launch_pads": {
+    "question": "Give only the launch-complex identifiers for Pioneer 10, Pioneer 11 and Stardust, retaining each letter suffix.",
+    "fields": {
+      "pioneer10_pad": {
+        "kind": "string"
+      },
+      "pioneer11_pad": {
+        "kind": "string"
+      },
+      "stardust_pad": {
+        "kind": "string"
+      }
+    }
+  },
+  "perseverance_mass": {
+    "question": "In the December 2020 Perseverance fact sheet, what is the rover mass in kilograms? Return the printed numeric text with its comma.",
+    "fields": {
+      "mass_kg_text": {
+        "kind": "string"
+      }
+    }
+  },
+  "perseverance_dimensions": {
+    "question": "What length, width and height in meters does the December 2020 fact sheet give for Perseverance, excluding its arm?",
+    "fields": {
+      "length_m": {
+        "kind": "integer"
+      },
+      "width_m": {
+        "kind": "number"
+      },
+      "height_m": {
+        "kind": "number"
+      }
+    }
+  },
+  "moxie_gases": {
+    "question": "According to the Perseverance fact sheet, which atmospheric gas does MOXIE use, and which gas does it produce?",
+    "fields": {
+      "input_gas": {
+        "kind": "string"
+      },
+      "output_gas": {
+        "kind": "string"
+      }
+    }
+  },
+  "perseverance_cross_page": {
+    "question": "Using the December 2020 Perseverance fact sheet, give the planned landing year and rover mass in kilograms as printed, including the comma in the mass.",
+    "fields": {
+      "planned_landing_year": {
+        "kind": "integer"
+      },
+      "mass_kg_text": {
+        "kind": "string"
+      }
+    }
+  },
+  "apollo_sample_and_module": {
+    "question": "According to the Apollo 11 anniversary sheet, how many kilograms of samples were collected, and what was the command module called?",
+    "fields": {
+      "sample_mass_kg": {
+        "kind": "number"
+      },
+      "command_module": {
+        "kind": "string"
+      }
+    }
+  },
+  "apollo_reflector": {
+    "question": "Which Apollo 11 experiment used cube-shaped mirrors to reflect laser pulses directly back to Earth?",
+    "fields": {
+      "experiment": {
+        "kind": "string"
+      }
+    }
+  },
+  "tohoku_json_magnitude_depth": {
+    "question": "In the USGS snapshot for 2011 Great Tohoku Earthquake, Japan, what are the magnitude and hypocentral depth in kilometers?",
+    "fields": {
+      "magnitude": {
+        "kind": "number"
+      },
+      "depth_km": {
+        "kind": "integer"
+      }
+    }
+  },
+  "maule_json_magnitude_depth": {
+    "question": "In the USGS snapshot for 2010 Maule, Chile Earthquake, what are the magnitude and hypocentral depth in kilometers?",
+    "fields": {
+      "magnitude": {
+        "kind": "number"
+      },
+      "depth_km": {
+        "kind": "number"
+      }
+    }
+  },
+  "raw_timezone_null": {
+    "question": "What is the raw tz property in the supplied USGS Tohoku event record? Return its stored value, including null.",
+    "fields": {
+      "tz": {
+        "kind": "integer",
+        "nullable": true
+      }
+    }
+  },
+  "raw_tsunami_flag": {
+    "question": "What is the raw integer tsunami property in the supplied USGS Tohoku event record? This asks for the stored flag, not whether a tsunami occurred.",
+    "fields": {
+      "tsunami_flag": {
+        "kind": "integer"
+      }
+    }
+  },
+  "unknown_station_distance": {
+    "question": "What is the numeric distance to the nearest station, dmin, in the supplied USGS Tohoku event record?",
+    "fields": {
+      "dmin": {
+        "kind": "number"
+      }
+    }
+  },
+  "ambiguous_voyager": {
+    "question": "On what date did Voyager launch?",
+    "fields": {
+      "launch_date": {
+        "kind": "string"
+      }
+    }
+  },
+  "conflicting_instruments": {
+    "question": "How many science instruments are still operating on Voyager 1 according to the supplied page? Resolve any conflicting statements before giving a count.",
+    "fields": {
+      "operating_instruments": {
+        "kind": "integer"
+      }
+    }
+  },
+  "missing_computer_serial": {
+    "question": "What serial number is printed on Voyager 1's onboard flight computer?",
+    "fields": {
+      "serial_number": {
+        "kind": "string"
+      }
+    }
+  },
+  "missing_tsunami_height": {
+    "question": "According to the supplied USGS Tohoku event record, what was the maximum tsunami run-up height in meters?",
+    "fields": {
+      "runup_meters": {
+        "kind": "number"
+      }
+    }
+  },
+  "voyager_followup": {
+    "question": "In which year did that encounter take place?",
+    "fields": {
+      "encounter_year": {
+        "kind": "integer"
+      }
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "I am asking about Voyager 2's flyby of Uranus."
+      }
+    ]
+  }
+}

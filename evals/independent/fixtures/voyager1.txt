@@ -1,0 +1,185 @@
+Explore This Section
+
+# Voyager 1
+
+The most distant human-made object
+
+Active Mission
+
+Why
+
+Discover the Science Goals
+
+where
+
+Where are They Now?
+
+What
+
+What's on the Golden Record
+
+No spacecraft has gone farther than NASA's Voyager 1. Launched in 1977 to fly by Jupiter and Saturn, Voyager 1 crossed into interstellar space in August 2012 and continues to collect data.
+
+Mission Type
+
+Flyby
+
+launch
+
+Sept. 5, 1977
+
+Goals
+
+Outer Solar System, Interstellar Space
+
+Status
+
+Extended Mission
+
+## What is Voyager 1?
+
+Voyager 1 has been exploring our solar system since 1977. The probe is now in interstellar space, the region outside the heliopause, or the bubble of energetic particles and magnetic fields from the Sun. Voyager 1 was launched after Voyager 2, but because of a faster route it exited the asteroid belt earlier than its twin, and it overtook Voyager 2 on Dec. 15, 1977.
+
+Voyager 1 discovered a thin ring around Jupiter and two new Jovian moons: Thebe and Metis.
+
+At Saturn, Voyager 1 found five new moons and a new ring called the G-ring.
+
+Voyager 1 was the first spacecraft to cross the heliosphere, the boundary where the influences from outside our solar system are stronger than those from our Sun.
+
+Voyager 1 is the first human-made object to venture into interstellar space.
+
+Unable to render the provided source
+
+## NASA Shuts Off Instrument on Voyager 1 to Keep Spacecraft Operating
+
+On April 17, engineers at NASA’s Jet Propulsion Laboratory (JPL) in Southern California shut down an instrument aboard Voyager 1, to save power and keep humanity’s first interstellar explorer going. Voyager 1 still has two science instruments operating, nearly 50 years into its mission; years ago Voyager scientists and engineers agreed on the order to shut off parts of the spacecraft, to preserve power while ensuring the mission can continue to conduct its unique science.
+
+Read the Latest on Voyager 1
+
+An artist’s concept depicts one of NASA’s Voyager probes. The twin spacecraft launched in 1977.
+
+NASA/JPL-Caltech
+
+## In Depth: Voyager 1
+
+Nation | United States of America (USA)
+
+Objective(s) | Jupiter Flyby, Saturn Flyby
+
+Spacecraft | Voyager 1
+
+Spacecraft Mass | 1,592 pounds (721.9 kilograms)
+
+Spacecraft Power | 3 Multi-Hundred Watt Radioisotope Thermoelectric Generators (MHW-RTGs) stacked in a series on a boom, producing about 158 We each, at launch.
+
+Mission Design and Management | NASA / JPL
+
+Launch Vehicle | Titan IIIE-Centaur (TC-6 / Titan no. 23E-6 / Centaur D-1T)
+
+Launch Date and Time | Sept. 5, 1977 / 12:56:01 UT
+
+Key Dates | March 5, 1979: Jupiter flyby - closest approach
+Nov. 12, 1980: Saturn flyby - closest approach
+Feb.17, 1998: Became the most distant human-made object after overtaking NASA's Pioneer 10
+Jan. 1, 1990: Voyager Interstellar Mission (VIM) officially began
+Aug. 16, 2006: 100 astronomical units reached
+August 2012: Voyager 1 enters interstellar space
+
+Launch Site | Cape Canaveral, Florida / Launch Complex 41
+
+Scientific Instruments | 1. Imaging Science System (ISS)
+2. Ultraviolet Spectrometer (UVS)
+3. Infrared Interferometer Spectrometer (IRIS)
+4. Planetary Radio Astronomy Experiment (PRA)
+5. Photopolarimeter (PPS)
+6. Triaxial Fluxgate Magnetometer (MAG)
+7. Plasma Spectrometer (PLS)
+8. Low-Energy Charged Particles Experiment (LECP)
+9. Plasma Waves Experiment (PWS)
+10. Cosmic Ray Telescope (CRS)
+11. Radio Science System (RSS)
+
+## In Depth
+
+This is the original Voyager "Blue Movie," named for blue filter used to create the images. It shows the approach of Voyager 1 during a period of over 60 Jupiter days.
+
+Credit: NASA/JPL
+
+Voyager 1 launched after Voyager 2, but because of a faster route it exited the solar system earlier than its twin. Voyager 1 overtook Voyager 2 on Dec. 15, 1977.
+
+Voyager 1 began studying Jupiter in April 1978 at a range of 165 million miles (265 million km). Images showed Jupiter’s atmosphere to be more turbulent than during the Pioneer 10 and 11 flybys. Voyager 1 took a picture every 96 seconds to create a timelapse movie of the approach.
+
+In early 1979, Voyager 1 discovered a faint ring system around Jupiter. The spacecraft’s closest encounter with Jupiter was at 12:05 UT on March 5, 1979, at a range of 174,000 miles (280,000 km), It went on to encounter several of Jupiter’s moons, including Amalthea, Io, Europa, Ganymede, and Callisto. Spectacular close-up photos of the moons opened up completely new worlds for planetary scientists. The spacecraft discovered two new moons, Thebe and Metis.
+
+Voyager 1’s closest approach to Saturn was at 23:46 UT on Nov. 12, 1980, at a range of about 78,000 miles (126,000 km). Its flyby of the Saturn system was as spectacular as the Jupiter encounter. Voyager 1 found five new moons, a new ring, and complicated ring structures, including “shepherd moons” that keep some rings well-defined. The spacecraft photographed Saturn’s moons Titan, Mimas, Enceladus, Tethys, Dione, and Rhea. All the moons appeared to be composed largely of water ice.
+
+Images of Titan showed a thick atmosphere that completely hid the surface. The spacecraft found that the Titan’s atmosphere was composed of 90% nitrogen. Nitrogen, methane, and more complex hydrocarbons indicated prebiotic chemical reactions might be possible on Titan.
+
+After Saturn, Voyager 1 headed north out of the ecliptic plane at a speed of about 3.5 AU per year. Because of the specific requirements for the Titan flyby, the spacecraft was not directed to Uranus and Neptune.
+
+Voyager 1’s final 64 images were a mosaic taken at a distance of 40 Astronomical Units (AU) from the Sun. This solar system family portrait included six planets (Mercury and Mars were not visible). The image of Earth inspired the “Pale Blue Dot” made famous by Voyager science team member Carl Sagan (1934-1996). These were the last of a total of 67,000 images taken by the two Voyagers.
+
+The Voyager Interstellar Mission (VIM) began on Jan, 1, 1990. The goal was to extend exploration to the outer limits of the Sun’s sphere of influence and beyond.
+
+On Feb. 17, 1998, Voyager 1 became the most distant human-made object in existence when — at a distance of 69.4 AU from the Sun — it “overtook” Pioneer 10.
+
+On Dec. 16, 2004, Voyager 1 reached the termination shock and entered the heliosheath.
+
+On Aug. 25, 2012, the spacecraft became the first to exit the heliosphere and begin measuring the interstellar environment.
+
+Voyager 1 continues to communicate with NASA’s Deep Space Network and send data back from four still-functioning instruments — the cosmic ray telescope, the low-energy charged particles experiment, the magnetometer, and the plasma waves experiment.
+
+Engineers secure the cover over the Voyager 1 Golden Record in this archival image from 1977.
+
+NASA/JPL-Caltech
+
+Each of the Voyagers contain a message to potential extraterrestrials in the form of a 30-centimeter diameter gold-plated copper disc. Like the plaques on Pioneers 10 and 11, the Voyager Golden Record has inscribed symbols that show the location of Earth relative to several pulsars. The record includes instructions to play it similar to a vinyl record player.
+
+Audio on the disc includes greetings in 55 languages, 35 sounds from life on Earth (such as whale songs, laughter, etc.), 90 minutes of music including everything from Mozart and Bach to Chuck Berry and Blind Willie Johnson. It also includes 115 images of life on Earth and recorded greetings from then U.S. President Jimmy Carter and then-UN Secretary-General Kurt Waldheim.
+
+As of Aug. 21, 2024, Voyager 1 was 164.7 AU from Earth — the farthest object created by humans — moving at a velocity of 38,026.79 mph (17.0 km/second) relative to the Sun.
+
+## Latest News
+
+Blog
+
+2 Min Read
+
+NASA Engineers Help Prolong Voyager 2’s Science Mission
+
+Blog
+
+4 Min Read
+
+NASA Shuts Off Instrument on Voyager 1 to Keep Spacecraft Operating
+
+Blog
+
+4 Min Read
+
+Vintage NASA: See Voyager’s 1990 ‘Solar System Family Portrait’ Debut
+
+Article
+
+1 Min Read
+
+NASA’s Voyager Probe Speeds Through Space (Artist’s Concept)
+
+##
+Learn More
+
+## Beyond Earth: A Chronicle of Deep Space Exploration
+
+A comprehensive history of missions sent to explore beyond Earth.
+
+Keep Exploring
+
+## Discover More Topics From NASA
+
+Jupiter
+
+Saturn
+
+Our Solar System
+
+Universe
