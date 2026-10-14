@@ -119,8 +119,11 @@ fn text_source(
                 end: maps.last().unwrap().original.end,
             },
             line_start: normalized[..start].bytes().filter(|b| *b == b'\n').count() as u64 + 1,
-            line_end: normalized[..end - 1]
+            // Exclude the final byte for inclusive line numbering. It may be
+            // part of a multibyte character, so never slice the UTF-8 string there.
+            line_end: normalized
                 .bytes()
+                .take(end - 1)
                 .filter(|b| *b == b'\n')
                 .count() as u64
                 + 1,
@@ -577,8 +580,10 @@ pub(super) fn split<E: Encoder>(
                     line_start: line_start
                         + block.text[..start].bytes().filter(|b| *b == b'\n').count() as u64,
                     line_end: line_start
-                        + block.text[..end - 1]
+                        + block
+                            .text
                             .bytes()
+                            .take(end - 1)
                             .filter(|b| *b == b'\n')
                             .count() as u64,
                     mappings: maps,

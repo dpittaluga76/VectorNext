@@ -2,6 +2,8 @@
 
 T01 supplies five synthetic documents, 22 source references, and 19 questions. It is a correctness seed set, not a benchmark of real-world retrieval quality or the target 400-document workload. T10 adds the integrated local runner (`run.py`), public development request map (`requests.py`), source-coverage scorer (`score.py`), and cold/warm summary (`summarize.py`). The fixture validator still checks integrity only. Read the [evaluation protocol](../docs/evaluation.md) and [completed results](../docs/reports/t10-evaluation.md) before interpreting quality scores.
 
+T11 is a separate [public-source dataset and comparison](independent/README.md): 20 attributed NASA/USGS snapshots, 28 frozen questions, and two-versus-five passage runs. Its sources and gold labels must not be regenerated using the T01 fixture commands below. See its guide for the dedicated Docker project, failure denominators, source terms and reproduction commands.
+
 ## Run the checks
 
 From the repository root with Docker Desktop running Linux containers:

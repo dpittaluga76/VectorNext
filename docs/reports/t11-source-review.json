@@ -1,0 +1,638 @@
+{
+  "reviewer": "Codex inspection of original source text/JSON and surrounding question/entity/unit context; not independent human adjudication",
+  "posthoc_source_review": true,
+  "changes_frozen_labels_or_scores": false,
+  "supported_outputs_reviewed": 46,
+  "distinct_proof_groups": 17,
+  "all_supported_field_values_match_frozen_expectations": true,
+  "notes": {
+    "alternative_passages": "Ice-giant dates, the Uranus follow-up and one Pathfinder rover citation use valid original prose outside a predeclared gold location. Raw gold overlap remains unchanged.",
+    "whitespace_refs": "Juno, Cassini and Dawn launch references include a blank-line separator between mapped blocks; normalized text is present but strict continuous source coverage fails.",
+    "nonanswers": "Both variants correctly mark unspecified Voyager ambiguous and abstain for missing computer serial/run-up height and numeric dmin whose source is null. Galileo five-pass ambiguity confuses 34 orbits with 35 moon encounters; two excludes that distractor.",
+    "unavailable_pdfs": "Six PDF cases stay in the planned denominator. Their model abstentions are safe given the missing inputs, but the requested end-to-end answers were not delivered.",
+    "rejected_drafts": "Maule pointer and operating-instrument quote/value validation errors have no returned draft to adjudicate. They remain failures; no specific bad pointer/count is inferred."
+  },
+  "proof_groups": [
+    {
+      "signature": "88394649e773517313e3ff42982e95019697a19e80bff0db81308ae6115e6177",
+      "case": "voyager_timeline",
+      "proofs": {
+        "jupiter_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "March 5, 1979: Jupiter flyby - closest approach",
+          "value": 1979,
+          "document_id": "voyager1"
+        },
+        "launch_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Launched in 1977 to fly by Jupiter and Saturn",
+          "value": 1977,
+          "document_id": "voyager1"
+        },
+        "saturn_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Nov. 12, 1980: Saturn flyby - closest approach",
+          "value": 1980,
+          "document_id": "voyager1"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "voyager_timeline",
+          "response_sha256": "cd93a1fddb15a051a25603ac50eba133096352d9d3b844eb4ebb838af90a60ca"
+        },
+        {
+          "block": "five-warm",
+          "case": "voyager_timeline",
+          "response_sha256": "7effa6a6588c4502a87c7c3838b7ae8f8b8759c90d9d2cf0f6afe662df059906"
+        }
+      ]
+    },
+    {
+      "signature": "4da094cd0328338ced45fddbe9a5a500ed9c27f61a9e79a8eb3ae890b0dbed0b",
+      "case": "golden_record_counts",
+      "proofs": {
+        "images": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "It also includes 115 images of life on Earth",
+          "value": 115,
+          "document_id": "voyager1"
+        },
+        "languages": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "greetings in 55 languages",
+          "value": 55,
+          "document_id": "voyager1"
+        },
+        "sounds": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "35 sounds from life on Earth",
+          "value": 35,
+          "document_id": "voyager1"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "golden_record_counts",
+          "response_sha256": "b3040ab76d0b521fd4245b92662684b2abe89e9539225e4be6f77ad4b656f674"
+        },
+        {
+          "block": "five-warm",
+          "case": "golden_record_counts",
+          "response_sha256": "017e43e1bb8a791e8463e5e8bc6a6fd6af89c78d1451c1d50b8121e07c8c5ed1"
+        }
+      ]
+    },
+    {
+      "signature": "e990fe40a5cfcebd3775cb3c932dc2c256ee5e57f7560df12733fe74673c4c99",
+      "case": "titan_nitrogen",
+      "proofs": {
+        "nitrogen_percent": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "90%",
+          "value": 90,
+          "document_id": "voyager1"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "titan_nitrogen",
+          "response_sha256": "9fd135b89bfa10aaea4471dafd36f72d18d725ec898f955210260df629f9bfc2"
+        },
+        {
+          "block": "two-cold",
+          "case": "titan_nitrogen",
+          "response_sha256": "9872cbb9c3ff2dcf94b48559db5b7022f149f40003f6f08722b29cfb0b46273b"
+        },
+        {
+          "block": "two-warm",
+          "case": "titan_nitrogen",
+          "response_sha256": "c324f4b5d8a4a7f6434e59a7ceeeab729e2b7cb1587c2e0d7145d297aa8a72e9"
+        },
+        {
+          "block": "five-warm",
+          "case": "titan_nitrogen",
+          "response_sha256": "b3d4f86287d693d5b81682681bdc34d41bd0188064cacd0cb625ec96f7f1905e"
+        }
+      ]
+    },
+    {
+      "signature": "23c13f61bd7c841743a1e283c0e04e8ea3ff14d72d3c304a40489aca09cc0024",
+      "case": "ice_giant_years",
+      "proofs": {
+        "neptune_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "on Aug. 25, 1989, at 03:56 UT, it flew about 2,980 miles (4,800 kilometers) over the cloud tops of the giant planet",
+          "value": 1989,
+          "document_id": "voyager2"
+        },
+        "uranus_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Closest approach to Uranus took place at 17:59 UT Jan. 24, 1986",
+          "value": 1986,
+          "document_id": "voyager2"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "ice_giant_years",
+          "response_sha256": "9cdd97b0da32fe9a2b598a7738b8ed3e9065319e066b68d9d459e889dbd7d55d"
+        },
+        {
+          "block": "two-cold",
+          "case": "ice_giant_years",
+          "response_sha256": "41c3644115fd9d99879481a8b5972a202004534dae0b29ec4b85b2fba0068986"
+        },
+        {
+          "block": "two-warm",
+          "case": "ice_giant_years",
+          "response_sha256": "59d6cf853021cb7cc3ba98700eea24dbafc01174210ab35a65a732f59d588434"
+        },
+        {
+          "block": "five-warm",
+          "case": "ice_giant_years",
+          "response_sha256": "18464617fcbfbe0644e83488e11abaafc4a744713fac6c249d120f95a974e6cc"
+        }
+      ]
+    },
+    {
+      "signature": "246bda1a72739819555ca566fc2d08dd60604fc70c394f51e34fec4ecd625f63",
+      "case": "pioneer_mass",
+      "proofs": {
+        "mass_kg": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "258.5",
+          "value": 258.5,
+          "document_id": "pioneer11"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "pioneer_mass",
+          "response_sha256": "3e7938a104f6a4ac4353a3eb657d36bfcb1fcada44de587dd14e2bb9bde226f8"
+        },
+        {
+          "block": "five-warm",
+          "case": "pioneer_mass",
+          "response_sha256": "4f1fed0160874222f87be6d5d7465f32a9e52d1b2af8ef7dcf0ec09634fa5526"
+        }
+      ]
+    },
+    {
+      "signature": "e713e36cbc513214d877c3ffc6021fbfe40e148bfac7504b0f5b01f00f2df175",
+      "case": "new_horizons_mass",
+      "proofs": {
+        "mass_kg": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "478 kilograms",
+          "value": 478,
+          "document_id": "new_horizons"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "new_horizons_mass",
+          "response_sha256": "f9d3336aa5c2a7d0932549ce723a97fdf81d063ac301cef4bc60ee90a284aa61"
+        },
+        {
+          "block": "two-cold",
+          "case": "new_horizons_mass",
+          "response_sha256": "e01118d38ab86bc33e6d0508dcdbce844b606a0b81e789be2dbcd7fdba4b4698"
+        },
+        {
+          "block": "two-warm",
+          "case": "new_horizons_mass",
+          "response_sha256": "e2e0eb3cbbb556f466afa942b11e8966c823ddd3b3315e6b4db55ee3828f28f3"
+        },
+        {
+          "block": "five-warm",
+          "case": "new_horizons_mass",
+          "response_sha256": "9f05ffb7a55603760273d00a429b609126faa618936d6f7b95e8c3d11bd5a009"
+        }
+      ]
+    },
+    {
+      "signature": "12fae9ca563ba6e6f136ffc02c9215bc57635f0ac11e648fe4ee7d137d63f55e",
+      "case": "pathfinder_timeline",
+      "proofs": {
+        "landing_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Mars Landing | July 4, 1997",
+          "value": 1997,
+          "document_id": "mars_pathfinder"
+        },
+        "launch_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Launch | Dec. 4, 1996 UTC",
+          "value": 1996,
+          "document_id": "mars_pathfinder"
+        },
+        "rover": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "the rover, named Sojourner after American civil-rights crusader Sojourner Truth.",
+          "value": "Sojourner",
+          "document_id": "mars_pathfinder"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "pathfinder_timeline",
+          "response_sha256": "767ed5e07443077fec31539a27680b32dc17385ec3495060d213034cb58ad25d"
+        },
+        {
+          "block": "five-warm",
+          "case": "pathfinder_timeline",
+          "response_sha256": "98576139b28420f066f1cc95e38e1cb80e788350845203be06f9a7c63da88e95"
+        }
+      ]
+    },
+    {
+      "signature": "2e686165aa3ecb4aff07bb96a621abaa3cda2d7da3860abd4896d4b06b92cf2e",
+      "case": "three_spacecraft_masses",
+      "proofs": {
+        "deep_impact_kg": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "650 kilograms",
+          "value": 650,
+          "document_id": "deep_impact"
+        },
+        "new_horizons_kg": {
+          "evidence_id": "E3",
+          "pointer": null,
+          "quote": "478 kilograms",
+          "value": 478,
+          "document_id": "new_horizons"
+        },
+        "stardust_kg": {
+          "evidence_id": "E2",
+          "pointer": null,
+          "quote": "385 kilograms",
+          "value": 385,
+          "document_id": "stardust"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "three_spacecraft_masses",
+          "response_sha256": "df81334867927710163cb52af12faef2adc1d86a4467e95258acc8af37e1eca0"
+        },
+        {
+          "block": "five-warm",
+          "case": "three_spacecraft_masses",
+          "response_sha256": "9b2204cf8f52d631e6e5e2edacefdab716d967fc38d3c67d1a3bc1356311067a"
+        }
+      ]
+    },
+    {
+      "signature": "565f8da24bdf08f98d5ccbe24867b10d715cf93474a8a69e22909c9aa396fadf",
+      "case": "tohoku_json_magnitude_depth",
+      "proofs": {
+        "depth_km": {
+          "evidence_id": "E1",
+          "pointer": "/geometry/coordinates/2",
+          "quote": "",
+          "value": 29,
+          "document_id": "tohoku_json"
+        },
+        "magnitude": {
+          "evidence_id": "E1",
+          "pointer": "/properties/mag",
+          "quote": "",
+          "value": 9.1,
+          "document_id": "tohoku_json"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "tohoku_json_magnitude_depth",
+          "response_sha256": "222fa7ff3c2d9d77a0651ec587aa69ca33e63d1de2151ad66d173cd34c511220"
+        },
+        {
+          "block": "two-cold",
+          "case": "tohoku_json_magnitude_depth",
+          "response_sha256": "7db257dd5014f08488e9a778517a04e9a137a65ad6131a75044934d3fc5a47c5"
+        },
+        {
+          "block": "two-warm",
+          "case": "tohoku_json_magnitude_depth",
+          "response_sha256": "eb18b2672a4e42a85e49e027e03fd37d6bb5070814960d274256190c772f3335"
+        },
+        {
+          "block": "five-warm",
+          "case": "tohoku_json_magnitude_depth",
+          "response_sha256": "c164e4c184ad1309b0c1ba91af6df759518cf53949661d73e0279a4b8510afdc"
+        }
+      ]
+    },
+    {
+      "signature": "8be4fe9cced720c3aa9445b25ec9f3d4ec9fe539a6e7a10d6a4f82594ed67b76",
+      "case": "raw_timezone_null",
+      "proofs": {
+        "tz": {
+          "evidence_id": "E1",
+          "pointer": "/properties/tz",
+          "quote": "",
+          "value": null,
+          "document_id": "tohoku_json"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "raw_timezone_null",
+          "response_sha256": "f55c95680b0c2d2c28603ff80b49d79051f45f00b03d400309f370dceddce2a9"
+        },
+        {
+          "block": "two-cold",
+          "case": "raw_timezone_null",
+          "response_sha256": "f90d5d460913c9dfbadcf177395f59f994f43cee66451134756823ef81f35ab4"
+        },
+        {
+          "block": "two-warm",
+          "case": "raw_timezone_null",
+          "response_sha256": "6c1e7ae5f7b05bbef51507b580c92bfa430838cf4954f32d88cd079cc0babe1d"
+        },
+        {
+          "block": "five-warm",
+          "case": "raw_timezone_null",
+          "response_sha256": "ace68c28fb5dbfff16ea34e7b9a44ce205c3f1244b32e014d4d91e89aa518c7a"
+        }
+      ]
+    },
+    {
+      "signature": "24ea1cb9edf051a7026c94c6970a8c4503d596390cc560728da762357883be68",
+      "case": "raw_tsunami_flag",
+      "proofs": {
+        "tsunami_flag": {
+          "evidence_id": "E1",
+          "pointer": "/properties/tsunami",
+          "quote": "",
+          "value": 0,
+          "document_id": "tohoku_json"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "raw_tsunami_flag",
+          "response_sha256": "7646100a6612666a0325031a324085eadad7291cc182a464550949750a5dc281"
+        },
+        {
+          "block": "two-cold",
+          "case": "raw_tsunami_flag",
+          "response_sha256": "710cb50be1da25883ea6f2f0dc844f55316d37fdc7db119f781c415ac7844eda"
+        },
+        {
+          "block": "two-warm",
+          "case": "raw_tsunami_flag",
+          "response_sha256": "42830920dfdaf8f43df88b31fc2201706ed9245a1e7241318490d3215b2d7572"
+        },
+        {
+          "block": "five-warm",
+          "case": "raw_tsunami_flag",
+          "response_sha256": "03f6f4e29d4b7ff1ba121ef3807ea8e2b16a627dde82a5f29f5dbae9e6b25fae"
+        }
+      ]
+    },
+    {
+      "signature": "595d2c01e32ac5500ff35d11a9aa309e7d3fa96d6ee25edb1d7a792014be1e1d",
+      "case": "voyager_followup",
+      "proofs": {
+        "encounter_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Jan. 24, 1986",
+          "value": 1986,
+          "document_id": "voyager2"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "five-cold",
+          "case": "voyager_followup",
+          "response_sha256": "bc7e50c13d214ca7387dd75bea26d17c0d16d1328612247a28cb17ef0dcfdc4c"
+        },
+        {
+          "block": "five-warm",
+          "case": "voyager_followup",
+          "response_sha256": "43601dd7c97c6a9c58d4265f10411afbd6c447b6e4af33c0dfb320e5b6bb942d"
+        }
+      ]
+    },
+    {
+      "signature": "f52f735f495022587185c6840e27050e5f7c185dbd8d5ec9c8f7de26e26387c4",
+      "case": "voyager_timeline",
+      "proofs": {
+        "jupiter_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "March 5, 1979: Jupiter flyby - closest approach",
+          "value": 1979,
+          "document_id": "voyager1"
+        },
+        "launch_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Sept. 5, 1977",
+          "value": 1977,
+          "document_id": "voyager1"
+        },
+        "saturn_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Nov. 12, 1980: Saturn flyby - closest approach",
+          "value": 1980,
+          "document_id": "voyager1"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "two-cold",
+          "case": "voyager_timeline",
+          "response_sha256": "7f08406b9e0453baf9feeb11ed0d6d6c658660f4fabd1b317732a9a6c947188c"
+        },
+        {
+          "block": "two-warm",
+          "case": "voyager_timeline",
+          "response_sha256": "728717231c9fdfbc31c59ffe19918b7f38e678c6d1df5bfdb594509a4ebfef84"
+        }
+      ]
+    },
+    {
+      "signature": "aac7207c4ac3a3cfe94137dc13998f1a63a0f70534d6afc9f0f1d9aa35733847",
+      "case": "golden_record_counts",
+      "proofs": {
+        "images": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "115 images of life on Earth",
+          "value": 115,
+          "document_id": "voyager1"
+        },
+        "languages": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "greetings in 55 languages",
+          "value": 55,
+          "document_id": "voyager1"
+        },
+        "sounds": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "35 sounds from life on Earth",
+          "value": 35,
+          "document_id": "voyager1"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "two-cold",
+          "case": "golden_record_counts",
+          "response_sha256": "58ad3f91bd0d05b73f422a704fd30de5ee408e1ca48979a9163e0115e2fd47f9"
+        },
+        {
+          "block": "two-warm",
+          "case": "golden_record_counts",
+          "response_sha256": "630f8079f632af3aee4b5d5910bc750214a8bbe292319a7f56f6694b33822a75"
+        }
+      ]
+    },
+    {
+      "signature": "5185761ddb99d663c549d4f7767b0db64fa07cd0be93bbc96f26be6976b65da1",
+      "case": "pioneer_mass",
+      "proofs": {
+        "mass_kg": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "258.5 kilograms",
+          "value": 258.5,
+          "document_id": "pioneer11"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "two-cold",
+          "case": "pioneer_mass",
+          "response_sha256": "ccbce70bdd9b437ad1dc8b0310a197b6c5f8197dea39f39afa98d6049ebeedba"
+        },
+        {
+          "block": "two-warm",
+          "case": "pioneer_mass",
+          "response_sha256": "13651e40daca8272a20e375503b306e98f5947c5bdd1b94eda75c340477a7edf"
+        }
+      ]
+    },
+    {
+      "signature": "1c9ab35beeaaade071b3fb7642668a0f7976dcce56390ef2457d38f512f9cf91",
+      "case": "pathfinder_timeline",
+      "proofs": {
+        "landing_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "July 4, 1997",
+          "value": 1997,
+          "document_id": "mars_pathfinder"
+        },
+        "launch_year": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Dec. 4, 1996",
+          "value": 1996,
+          "document_id": "mars_pathfinder"
+        },
+        "rover": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Sojourner",
+          "value": "Sojourner",
+          "document_id": "mars_pathfinder"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "two-cold",
+          "case": "pathfinder_timeline",
+          "response_sha256": "c1f43c19280553607bb2e5f4ba56b970f0637985fe02c9295dc113b3977ff7f2"
+        },
+        {
+          "block": "two-warm",
+          "case": "pathfinder_timeline",
+          "response_sha256": "4d26ed815f03d9976bea06b8a4b2744124f124ce48579f36473ac527972aca29"
+        }
+      ]
+    },
+    {
+      "signature": "a81cd4aba9d098b04b0d59ac964b69fb7b78ac97c83c64434a759d402798276f",
+      "case": "galileo_orbits",
+      "proofs": {
+        "orbits": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "orbit Jupiter 34 times",
+          "value": 34,
+          "document_id": "galileo"
+        },
+        "shuttle": {
+          "evidence_id": "E1",
+          "pointer": null,
+          "quote": "Space Shuttle Atlantis",
+          "value": "Atlantis",
+          "document_id": "galileo"
+        }
+      },
+      "reviewed_source_support": true,
+      "captures": [
+        {
+          "block": "two-cold",
+          "case": "galileo_orbits",
+          "response_sha256": "a2f1921f71fb9592b5ab88178d1697a94f7bd115bb6ef8cb0053ad24f77bb0c5"
+        },
+        {
+          "block": "two-warm",
+          "case": "galileo_orbits",
+          "response_sha256": "ffea9c5c10db9fe0930623dc8ce8d0334467cf2f0130b23463ac9782fe9d68cf"
+        }
+      ]
+    }
+  ]
+}

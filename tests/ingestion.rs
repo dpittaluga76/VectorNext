@@ -127,6 +127,52 @@ fn text_mapping_survives_bom_crlf_unicode_sections_lists_and_forced_splits() {
 }
 
 #[test]
+fn text_mapping_handles_multibyte_paragraph_and_forced_chunk_endings() {
+    let (_dir, mut db, p) = setup(74);
+    let text = format!(
+        "\u{feff}# Café…\r\n\r\n{}\r\n{}\r\n\r\nLast 😀",
+        "航".repeat(140),
+        "é".repeat(120)
+    );
+    db.submit_ingestion(request("unicode-ends", MediaType::Txt, &p), text.as_bytes())
+        .unwrap();
+    let doc = finish(&mut db, "unicode-ends", &p).draft.document;
+    assert_eq!(db.originals().get(&doc.original).unwrap(), text.as_bytes());
+    assert!(doc.chunks.len() > doc.blocks.len());
+    for source in doc
+        .blocks
+        .iter()
+        .flat_map(|b| &b.sources)
+        .chain(doc.chunks.iter().flat_map(|c| &c.sources))
+    {
+        let Locator::Text {
+            bytes,
+            line_start,
+            line_end,
+            ..
+        } = &source.locator
+        else {
+            panic!()
+        };
+        let lo = bytes.start as usize;
+        let hi = bytes.end as usize;
+        assert!(text.is_char_boundary(lo) && text.is_char_boundary(hi));
+        assert_eq!(*line_start, text[..lo].matches('\n').count() as u64 + 1);
+        assert_eq!(*line_end, text[..hi].lines().count() as u64);
+    }
+    for block in &doc.blocks {
+        let reconstructed: String = doc
+            .chunks
+            .iter()
+            .flat_map(|c| &c.spans)
+            .filter(|s| s.block_id == block.id)
+            .map(|s| &block.text[s.bytes.start as usize..s.bytes.end as usize])
+            .collect();
+        assert_eq!(reconstructed, block.text);
+    }
+}
+
+#[test]
 fn adjacent_paragraphs_merge_only_within_sections() {
     let (_dir, mut db, p) = setup(300);
     db.submit_ingestion(

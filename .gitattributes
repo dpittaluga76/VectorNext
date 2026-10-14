@@ -6,6 +6,7 @@
 *.md text eol=lf
 *.rs text eol=lf
 *.toml text eol=lf
+*.Dockerfile text eol=lf
 Cargo.lock text eol=lf
 processor/requirements.lock text eol=lf
 *.pdf binary

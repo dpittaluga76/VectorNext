@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-14",
+  "scope": "Separate one-source Docker CLI verification after the timed comparison; excluded from benchmark counts.",
+  "source": {
+    "url": "https://science.nasa.gov/mission/voyager/voyager-1/",
+    "snapshot": "evals/independent/fixtures/voyager1.txt",
+    "sha256": "dd9e81582fba0b43b3964b3954a335a53348b8734e2753515b85575ec0e19f87"
+  },
+  "verification": {
+    "database": "/storage/readme-voyager-20261014",
+    "documents": [
+      {
+        "chunks": 25,
+        "document_id": "voyager-demo",
+        "media_type": "Txt",
+        "original": {
+          "bytes": 8314,
+          "sha256": "dd9e81582fba0b43b3964b3954a335a53348b8734e2753515b85575ec0e19f87"
+        },
+        "revision": "798550e438db4b3222307653cd7b642ecb9964b4aafca40c27ba3477423cefcd"
+      }
+    ],
+    "formatted": "Voyager 1 | Launch: 1977 | Jupiter: 1979 | Saturn: 1980",
+    "separate_from_timed_comparison": true,
+    "commands": [
+      [
+        "ingest",
+        [
+          "ingest",
+          "/app/evals/independent/fixtures/voyager1.txt",
+          "--document",
+          "voyager-demo",
+          "--job",
+          "voyager-demo-v1",
+          "--wait"
+        ]
+      ],
+      [
+        "search",
+        [
+          "search",
+          "Voyager 1 launch Jupiter Saturn"
+        ]
+      ],
+      [
+        "ask",
+        [
+          "ask",
+          "/app/tests/fixtures/answers/voyager.json"
+        ]
+      ]
+    ]
+  },
+  "request": {
+    "question": "In which year was Voyager 1 launched, and in which years did it fly past Jupiter and Saturn?",
+    "fields": {
+      "launch_year": {
+        "kind": "integer"
+      },
+      "jupiter_year": {
+        "kind": "integer"
+      },
+      "saturn_year": {
+        "kind": "integer"
+      }
+    },
+    "template": "Voyager 1 | Launch: {launch_year} | Jupiter: {jupiter_year} | Saturn: {saturn_year}"
+  },
+  "options": {
+    "candidates": 30,
+    "primary_limit": 5,
+    "rerank": true,
+    "rerank_limit": 20
+  },
+  "answer": {
+    "fields": {
+      "jupiter_year": {
+        "evidence_id": "E1",
+        "pointer": null,
+        "quote": "March 5, 1979: Jupiter flyby - closest approach",
+        "value": 1979
+      },
+      "launch_year": {
+        "evidence_id": "E1",
+        "pointer": null,
+        "quote": "Launched in 1977 to fly by Jupiter and Saturn",
+        "value": 1977
+      },
+      "saturn_year": {
+        "evidence_id": "E1",
+        "pointer": null,
+        "quote": "Nov. 12, 1980: Saturn flyby - closest approach",
+        "value": 1980
+      }
+    },
+    "status": "supported"
+  },
+  "formatted": "Voyager 1 | Launch: 1977 | Jupiter: 1979 | Saturn: 1980",
+  "validation": {
+    "mechanical_support": "passed",
+    "schema": "passed",
+    "semantic_correctness": "not_automatically_established",
+    "source_references": "passed"
+  },
+  "field_source_review": {
+    "jupiter_year": {
+      "api_field": {
+        "evidence_id": "E1",
+        "pointer": null,
+        "quote": "March 5, 1979: Jupiter flyby - closest approach",
+        "value": 1979
+      },
+      "original_snapshot_quote_bytes": {
+        "start": 2565,
+        "end": 2612
+      },
+      "mapping_note": "Quote position checked against the frozen NASA TXT snapshot after the CLI run."
+    },
+    "launch_year": {
+      "api_field": {
+        "evidence_id": "E1",
+        "pointer": null,
+        "quote": "Launched in 1977 to fly by Jupiter and Saturn",
+        "value": 1977
+      },
+      "original_snapshot_quote_bytes": {
+        "start": 237,
+        "end": 282
+      },
+      "mapping_note": "Quote position checked against the frozen NASA TXT snapshot after the CLI run."
+    },
+    "saturn_year": {
+      "api_field": {
+        "evidence_id": "E1",
+        "pointer": null,
+        "quote": "Nov. 12, 1980: Saturn flyby - closest approach",
+        "value": 1980
+      },
+      "original_snapshot_quote_bytes": {
+        "start": 2613,
+        "end": 2659
+      },
+      "mapping_note": "Quote position checked against the frozen NASA TXT snapshot after the CLI run."
+    }
+  },
+  "generation": 1,
+  "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+  "application_timings_ms": {
+    "answer_model_calls": 31613.175137,
+    "answer_total": 32896.610448,
+    "application_total": 32898.005597,
+    "assembly_and_model_tokenization": 833.9614869999999,
+    "query_embedding_and_tokens": 10.019547,
+    "reranking_with_preparation": 439.324604,
+    "resolution_validation": 0.004615,
+    "search_dense": 0.024365,
+    "search_filter_tokenize": 0.018439999999999998,
+    "search_fusion_dedup": 0.02897,
+    "search_keyword": 0.025272000000000003,
+    "search_total": 0.09746,
+    "snapshot_index": 0.012132,
+    "validation_and_presentation": 0.011909999999999999
+  },
+  "raw_captures": {
+    "data\\t11\\readme-voyager-20261014\\ingest.json": "89758a63e69c52809efe42acd06339863299be0278edf439545c137c44369448",
+    "data\\t11\\readme-voyager-20261014\\search.json": "84907573faf3badeb18d6e2671dd6531de694a38cee302217ab1a7d710d05e59",
+    "data\\t11\\readme-voyager-20261014\\ask.json": "f238edf47d7e6647ffc0b2bc8bffcd825cbf391e5cc4960bfee95d1e45fc7acd",
+    "data\\t11\\readme-voyager-20261014\\verified.json": "43a26af2f61a7feeae91d5d38db84f95adeca98ee1ba6df69c47c4f8d9983dff"
+  }
+}

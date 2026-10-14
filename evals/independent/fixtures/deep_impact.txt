@@ -1,0 +1,194 @@
+# Deep Impact (EPOXI)
+
+Extrasolar Planet Observation and Deep Impact Extended Investigation
+
+Type
+
+Flyby, Impact
+
+Launch
+
+Jan. 12, 2005
+
+Target
+
+Comet 9P/Tempel 1
+
+Objective
+
+Probe beneath the surface of a comet
+
+This spectacular image of comet Tempel 1 was taken 67 seconds after it obliterated NASA's Deep Impact's impactor spacecraft on July 4, 2005. The image was taken by the high-resolution camera on the mission's flyby craft.
+
+NASA/JPL-Caltech/UMD
+
+## What was Deep Impact (EPOXI)?
+
+The primary mission of NASA's Deep Impact was to probe beneath the surface of a comet. The spacecraft delivered a special impactor into the path of Tempel 1 to reveal never-before-seen materials and provide clues about the internal composition and structure of a comet.
+
+Deep Impact spent almost nine years in space.
+
+The mission included an unprecedented 4th of July impact and subsequent flyby of a comet, an additional comet flyby, and the return of approximately 500,000 images of celestial objects.
+
+NASA's Deep Impact mission ended in September 2013.
+
+Nation | United States of America (USA)
+
+Objective(s) | Comet Flyby and Comet Impact
+
+Spacecraft | DIF + DI Impactor
+
+Spacecraft Mass | 1,430 pounds (650 kilograms)
+
+Mission Design and Management | NASA / JPL
+
+Launch Vehicle | Delta 7925-9.5 (no. D311)
+
+Launch Date and Time | Jan. 12, 2005 / 18:47:08 UT
+
+Launch Site | Cape Canaveral, Fla. / SLC-17B
+
+Scientific Instruments | Flyby Spacecraft:
+1. High-Resolution Instrument (HRI)
+2. Medium Resolution Instrument (MRI)
+
+Impactor:
+1. Impact or Targeting Sensor (ITS)
+
+## Firsts
+
+Deep Impact is history's most traveled deep-space comet hunter
+
+Determined that a comet's surface layer is very porous
+
+Discovered that hyperactive comets are driven by carbon dioxide
+
+## Key Dates
+
+Jan. 12, 2005: Launch
+
+July 1, 2005: Comet P/Tempel 1 rendezvous
+
+July 4, 2005: Comet impact
+
+Aug. 2005: End of the primary mission
+
+Nov. 4, 2010: Flyby of 103P/Hartley 2 comet
+
+Aug. 11-Aug. 14, 2013: Communications lost
+
+Sept. 20, 2013: NASA ends efforts to contact spacecraft
+
+## In Depth: Deep Impact (EPOXI)
+
+Unlike previous cometary flyby missions, such as Vega, Giotto, and Stardust, the Deep Impact spacecraft, the eighth mission in NASA’s Discovery program, was intended to study the interior composition of a comet by deploying an impact probe that would collide with its target.
+
+The spacecraft was comprised of two parts: the main flyby spacecraft and an impactor. The flyby spacecraft weighed 1,325 pounds (601 kilograms), was solar-powered, and carried two primary instruments.
+
+The high-resolution instrument (HRI), the main science camera for Deep Impact, was one of the largest space-based instruments ever built for planetary science. It combined a visible-light multi-spectral CCD camera (with a filter wheel) and an imaging infrared spectrometer called the spectral imaging module (SIM). The medium-resolution instrument (MRI) was the functional backup for the HRI, and like the HRI, it served as a navigation aid for Deep Impact.
+
+The impactor weighed 820 pounds (372 kilograms) and carried the impactor targeting sensor (ITS), nearly identical to the MRI, but without the filter wheel, which was designed to measure the impactor’s trajectory and to image the comet from close range before impact.
+
+One of the more unusual payloads onboard was a compact disc with the names of 625,000 people collected as part of a campaign to “Send Your Name to a Comet!”
+
+After launch, Deep Impact was put into low Earth orbit, then an elliptical orbit (about 100 x 2,600 miles or 163 × 4,170 kilometers), and after a third stage burn, the spacecraft and its PAM-D upper stage departed on an Earth escape trajectory.
+
+There were some initial moments of anxiety when it was discovered that the spacecraft had automatically entered safe mode shortly after entering heliocentric orbit. By Jan. 13, 2005, Deep Impact had returned to full operational mode following a program to tumble the vehicle using its thrusters.
+
+The spacecraft traveled 267 million miles (429 million kilometers) in six months (including course corrections on Feb. 11 and May 4, 2005) to reach Comet 9P/Tempel.
+
+As the spacecraft approached its target, it spotted two outbursts of activity from the comet on June 14 and June 22, 2005.
+
+On July 3, 2005, at 06:00 UT (or 06:07 UT Earth-receive time), Deep Impact released the impactor probe, which, using small thrusters, moved into the path of the comet, where it hit the following day, July 4, at 05:44:58 UT. The probe was traveling at a relative velocity of about 23,000 miles per hour (37,000 kilometers per hour) at the time of impact.
+
+The impact generated an explosion the equivalent of 4.7 tons of TNT and a crater estimated to be about 490 feet (150 meters) in diameter.
+
+Minutes after the impact, the flyby probe passed the nucleus at a range of about 310 miles (500 kilometers) and took images of the crater (although it was obscured by the dust cloud), ejecta plume, and the entire nucleus.
+
+Simultaneous observations of the impact were coordinated with ground-based observatories as well as space-based ones, including the European Rosetta (which was about 50 million miles or 80 million kilometers from the comet), Hubble, Spitzer, the Swift X-ray telescope, and XMM-Newton.
+
+The impactor also took images up to 3 seconds before impact that were transmitted via the flyby vehicle back to Earth.
+
+Controllers registered about 4,500 images from the three cameras over the next few days. Based on the results of Deep Impact’s investigations, scientists concluded that Comet Tempel 1 had probably originated in the Oort Cloud. The data also showed that the comet was about 75% empty space.
+
+Although Deep Impact’s primary mission was over, because the flyby vehicle still had plenty of propellant, on July 3, 2007, NASA approved a new supplemental mission for Deep Impact, known as EPOXI. The name was derived from the combination of the two components of this extended flight: Extrasolar Planet Observations (EPOCh) and Deep Impact Extended Investigation (DIXI).
+
+This so-called “mission of opportunity” was originally focused on Comet 85P/Boethin. On July 21, 2005, Deep Impact was set on a trajectory to conduct a flyby of Earth in anticipation of intercepting Boethin. Unfortunately, scientists lost track of Comet Boethin, possibly because the comet had broken up.
+
+Deep Impact was redirected toward Comet 103P/Hartley (or Hartley 2), starting with an engine burn on Nov. 1, 2007. EPOXI’s new plan set Deep Impact on three consecutive Earth flybys, spread over two years (December 2007, December 2008, and June 2010) before the final trek to meet Comet Hartley 2.
+
+These flybys essentially “stole some energy” from the spacecraft, thus dropping Deep Impact into a smaller orbit around the Sun.
+
+Before the second Earth flyby, Deep Impact performed its EPOCh mission using the HRI instrument to perform photometric investigations of extrasolar planets around eight distant stars, returning nearly 200,000 images.
+
+In the fall of 2010, Deep Impact began its investigations of Comet Hartley 2, conducting its flyby of the target at a range of about 430 miles (694 kilometers) at 15:00 UT Nov. 4, 2010. As with the encounter with Comet Tempel 1, Deep Impact used its three instruments to study Hartley 2 for three weeks.
+
+Some of the images were so clear that scientists were able to identify jets of dust with particular features on the comet’s nucleus. The data showed that the two lobes of Hartley 2 were different in composition.
+
+Once past this second cometary encounter, Deep Impact had little propellant for further cometary investigations, but there was a possibility that the spacecraft, if still in working condition, could be used for a flyby of Near Earth Asteroid 2002 GT in 2020.
+
+With that goal in mind, thrusters were fired in December 2011 and October 2012 for targeting purposes. In the meantime, the spacecraft was used for the remote study of faraway comets such as C/200P1 (Garradd) in early 2012 and C/2012 S1 (ISON) in early 2013.
+
+Communication with Deep Impact was lost sometime between Aug. 11 and Aug. 14, 2013, and after considerable effort to contact the spacecraft, NASA announced on Sept. 20, 2013, that it had officially abandoned efforts to contact Deep Impact.
+
+## Key Source
+
+Siddiqi, Asif A. Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016. NASA History Program Office, 2018.
+
+## Deep Impact (EPOXI) Stories
+
+More NASA News
+
+News Release
+
+5 Min Read
+
+NASA’s Deep Space Comet Hunter Mission Comes to an End
+
+Article
+
+1 Min Read
+
+NASA’S Deep Impact Spacecraft Images Comet ISON
+
+2 Min Read
+
+The Same Here as There
+
+Article
+
+1 Min Read
+
+Heavy and Light Just Right
+
+Article
+
+2 Min Read
+
+Changes to Smooth Terrain (Unannotated)
+
+Article
+
+Keep Exploring
+
+## Discover More Topics From NASA
+
+###
+James Webb Space Telescope
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+###
+Perseverance Rover
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+###
+Parker Solar Probe
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+###
+Juno
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

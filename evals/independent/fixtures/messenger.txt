@@ -1,0 +1,191 @@
+# MESSENGER
+
+MErcury Surface, Space ENvironment, GEochemistry, and Ranging
+
+Type
+
+Orbiter
+
+Launch
+
+Aug. 2, 2004
+
+Mission End
+
+April 30, 2015
+
+Objective
+
+Mapping and Science Discoveries
+
+An artist's rendering of the MESSENGER spacecraft at Mercury.
+
+### What was MESSENGER?
+
+NASA's MESSENGER spacecraft orbited Mercury for more than four years. Among its accomplishments, the mission determined Mercury’s surface composition, revealed its geological history, discovered details about its internal magnetic field, and verified its polar deposits are dominantly water-ice. The mission ended when MESSENGER slammed into Mercury’s surface.
+
+Nation | United States of America (USA)
+
+Objective(s) | Mercury Orbit
+
+Spacecraft | MESSENGER
+
+Spacecraft Mass | 2,443 pounds (1,107.9 kilograms)
+
+Mission Design and Management | NASA / APL
+
+Launch Vehicle | Delta 7925H (no. D307)
+
+Launch Date and Time | Aug. 3, 2004 / 06:15:57 UT
+
+Launch Site | Cape Canaveral, Florida / SLC-17B
+
+Scientific Instruments
+
+Mercury Dual Imaging System (MDIS)
+
+Gamma-ray Spectrometer (GRS)
+
+Neutron Spectrometer (NS)
+
+X-ray Spectrometer (XRS)
+
+Magnetometer (MAG)
+
+Mercury Laser Altimeter (MLA)
+
+Mercury Atmospheric and Surface Composition Spectrometer (MASCS)
+
+Energetic Particle and Plasma Spectrometer (EPPS)
+
+Radio Science Experiment (RS)
+
+## Key Dates
+
+Aug. 3, 2004: Launch
+
+Mar. 11, 2011: MESSENGER finally entered orbit around Mercury nearly seven years after launch
+
+Apr. 30, 2015: MESSENGER plunged into Mercury at end of is mission
+
+## In Depth: MESSENGER
+
+MESSENGER (Mercury Surface, Space Environment, Geochemistry and Ranging) was the seventh Discovery-class mission, and the first spacecraft to orbit Mercury. Its primary goal was to study the geology, magnetic field, and chemical composition of the planet. It was the first mission to Mercury after Mariner 10, more than 30 years before.
+
+MESSENGER was launched at 06:15:57 UT Aug. 3, 2004, into an initial parking orbit around Earth. After that, its PAM-D solid motor fired to put the spacecraft on an escape trajectory into heliocentric orbit at 0.92 × 1.08 AU and 6.4 degrees inclination to the ecliptic.
+
+Subtle colors appear on Mercury's surface in this mosaic image created by filters within MESSENGER;s wide-angle camera (WAC).
+
+NASA/Johns Hopkins University Applied Physics Laboratory/Carnegie
+
+The six-and-a-half-year road to Mercury was punctuated by several gravity-assist maneuvers through the inner solar system, including one flyby of Earth (Aug. 2, 2005), two flybys of Venus (Oct. 24, 2006, and June 5, 2007), and three flybys of Mercury (Jan. 14, 2008, Oct. 6, 2008, and Sept. 29, 2009).
+
+The gravity-assist maneuvers allowed the spacecraft to overcome the problem of massive acceleration that accompanies flight toward the Sun: the flybys helped to decelerate MESSENGER’s velocity relative to Mercury and also helped conserve propellant for its orbital mission (although it prolonged the length of the trip).
+
+The Earth flyby allowed mission controllers to properly calibrate all of the spacecraft’s instruments while also returning spectacular images of the Earth-Moon system.
+
+During the second Venusian flyby (at a range of only 210 miles or 338 kilometers), MESSENGER relayed back a vast amount of data, including visible and near-infrared imaging data on the upper atmosphere. Some of the investigations, especially its study of the particle and fields characteristics of the Venus, were coordinated with ESA’s Venus Express mission.
+
+The three Mercury flybys further slowed the spacecraft, although, during the last encounter in September 2009, MESSENGER entered a safe mode and, as a result, collected no data on Mercury. Fortunately, the spacecraft revived seven hours later.
+
+MESSENGER finally entered orbit around Mercury at 00:45 UT March 18, 2011, nearly seven years after launch. It started formal data collection April 4.
+
+The vehicle’s orbit was highly elliptical, approximately 5,800 x 125 miles (9,300 × 200 kilometers) with a 12-hour orbital period.
+
+One of MESSENGER’s most remarkable images was its mosaic of our solar system, obtained Feb. 18, 2011, with all the planets visible except Uranus and Neptune—a visual counterpart to the image of the solar system taken by Voyager 1 on Feb. 14, 1990.
+
+The spacecraft completed its primary yearlong mission March 17, 2012, having taken nearly 100,000 images of the surface of Mercury.
+
+Among its initial discoveries was finding high concentrations of magnesium and calcium on Mercury’s night side, identifying a significant northward offset of Mercury’s magnetic field from the planet’s center, finding large amounts of water in Mercury’s exosphere, and revealing evidence of past volcanic activity on the surface.
+
+In November 2011, NASA announced that MESSENGER’s mission would be extended by a year, allowing the spacecraft to monitor the solar maximum in 2012. The extended mission lasted from March 18, 2012, to March 17, 2013.
+
+By April 20, 2012, with the help of three engine firings, the orbital period was reduced to eight hours. It was also during this period, in early May 2012, that MESSENGER took its 100,000th photograph from orbit. By this time, the imaging instrument had globally mapped both in high-resolution monochrome and in color, the entire surface of the planet.
+
+It was also during this first extended mission that the spacecraft found evidence of water ice at Mercury’s poles, frozen at locations that never see the sunlight (made possible by the fact that the tilt of Mercury’s rotational axis is almost zero.)
+
+A second mission extension was soon granted that took the mission to March 2015.
+
+On Feb. 6, 2014, NASA reported that MESSENGER had taken its 200,000th orbital image, far exceeding the original expectation of at least 1,000 photographs.
+
+During the second extension, MESSENGER photographed two comets: Comet 2P/Encke and Comet C/2012 S1 (also known as Comet ISON).
+
+Beginning the summer of 2014, controllers began gradually moving MESSENGER to a very low orbit for a new research program.
+
+By Sept. 12, 2014, just after the 10th anniversary of its launch, the spacecraft’s orbit was down to a mere 15.5 miles (25 kilometers).
+
+Mission controllers implemented at least two orbital maneuvers (Sept. 12 and Oct. 24) to raise the spacecraft’s orbit to continue its latest extended mission.
+
+By Christmas Day 2014, it was clear that the spacecraft’s propellants were running out and that MESSENGER would impact the planet in late March 2015. On Jan. 21, 2015, mission controllers carried out one last maneuver to raise the spacecraft’s orbit enough to continue science activities into early spring.
+
+On April 16, 2015, NASA announced that the spacecraft would impact the surface of Mercury by April 30, 2015, after it ran out of propellant.
+
+As expected, on April 30, 2015, at 19:26 UT, MESSENGER slammed into the planet’s surface at about 8,750 miles per hour (14,080 kilometers per hour), creating a new crater on Mercury.
+
+Impact coordinates were probably close to 54.4 degrees north latitude and 149.9 degrees west longitude, near the Janácek crater in Suisei Planitia.
+
+## Key Source
+
+Siddiqi, Asif A. Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016. NASA History Program Office, 2018.
+
+## Resources
+
+MESSENGER site at the Johns Hopkins Applied Physics Laborarory
+
+## MESSENGER Stories
+
+Explore All MESSENGER Stories
+
+Article
+
+20 Min Read
+
+MESSENGER – From Setbacks to Success
+
+Article
+
+6 Min Read
+
+Mercury’s Strange Hollows
+
+5 Min Read
+
+The Moon and Mercury May Have Thick Ice Deposits
+
+Article
+
+4 Min Read
+
+NASA Team Studies Middle-aged Sun by Tracking Motion of Mercury
+
+Article
+
+4 Min Read
+
+Small Collisions Make Big Impact on Mercury’s Thin Atmosphere
+
+Article
+
+Keep Exploring
+
+## Discover More Topics From NASA
+
+###
+James Webb Space Telescope
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+###
+Perseverance Rover
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+###
+Parker Solar Probe
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+###
+Juno
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

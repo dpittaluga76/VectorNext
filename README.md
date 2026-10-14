@@ -10,31 +10,29 @@ VectorNext implements its own storage engine, exact vector search, BM25 keyword 
 
 ## From a document to an answer
 
-The repository includes this **fictional** soccer record:
+Start with real mission data from [NASA's Voyager 1 page](https://science.nasa.gov/mission/voyager/voyager-1/): launched in **1977**, Jupiter flyby in **1979**, Saturn flyby in **1980**. The repository includes an attributed text snapshot of that page.
 
-> Pelé scored 3 goals against Argentina in 1954.
-
-Ask **“How many goals did Pele score against Argentina in 1954?”** and specify the fields and presentation you need:
+Ask for the timeline and specify the fields and presentation you need:
 
 ```json
 {
-  "question": "How many goals did Pele score against Argentina in 1954?",
+  "question": "In which year was Voyager 1 launched, and in which years did it fly past Jupiter and Saturn?",
   "fields": {
-    "year": {"kind": "integer"},
-    "goals": {"kind": "integer"},
-    "opponent": {"kind": "string"}
+    "launch_year": {"kind": "integer"},
+    "jupiter_year": {"kind": "integer"},
+    "saturn_year": {"kind": "integer"}
   },
-  "template": "Match year {year}, Pele goals: {goals}, rival: {opponent}"
+  "template": "Voyager 1 | Launch: {launch_year} | Jupiter: {jupiter_year} | Saturn: {saturn_year}"
 }
 ```
 
 ```text
-Match year 1954, Pele goals: 3, rival: Argentina
+Voyager 1 | Launch: 1977 | Jupiter: 1979 | Saturn: 1980
 ```
 
 The response also includes retrieved passages, source locations, field proofs and processing timings. Answers distinguish supported facts, ambiguous questions and insufficient evidence. Optional prose drafts stay separate from validated fields and original sources.
 
-[Explore the source fixture](evals/fixtures/fictional_matches.txt) · [Inspect the answer contract](docs/answers.md)
+[Explore the NASA source snapshot](evals/independent/fixtures/voyager1.txt) · [Verified demo](docs/reports/t11-readme-demo.json) · [Source attribution](evals/independent/README.md) · [Inspect the answer contract](docs/answers.md)
 
 ## What is built
 
@@ -81,20 +79,24 @@ The default generation profile uses **Gemma 4 26B A4B QAT Q4_0**, with CPU exper
 
 Measured on an **RTX 4060 with 8 GB VRAM, Ryzen 5 7600 and approximately 64 GB system RAM**, using Docker on Windows/WSL 2.
 
-| Answer configuration | Median, cold cache | Median, warm cache | Correct development outcomes |
-| --- | --- | --- | --- |
-| Structural context, five primary passages — default | 18.08 s | 17.95 s | 13/13 in each pass |
-| Structural context, two primary passages — opt-in experiment | 12.58 s | 12.23 s | 13/13 in each pass |
+The latest comparison uses **20 public NASA/USGS documents and 28 new questions**, with the same corpus, models and retrieval settings for both passage limits.
 
-Reducing primary passages cut median answer latency by **30–32%** on this seed. One passage missed a required table row, so that failed trial is retained and five remain the general default. Generated context increased five-file ingestion from **24.76 s to 72.16 s** without improving final answers; structural context remains the default.
+| Answer configuration | Median, cold cache | Median, warm cache | Correct outcomes / planned |
+| --- | --- | --- | --- |
+| Structural context, five primary passages — default | 22.27 s | 21.17 s | 16/28 in each pass |
+| Structural context, two primary passages — opt-in experiment | 11.08 s | 11.51 s | 15/28 in each pass |
+
+Two passages reduced median response time by **46–50%**, but lost a three-document answer and a conversational follow-up that five handled. It improved one answer by removing a numeric distractor. **Five remain the default.** Latencies include errors and abstentions; faster responses do not necessarily mean successful answers.
+
+Only **18/20 documents were admitted, producing 658 chunks**. One PDF failed strict partial-extraction admission; the other hit a busy processing lane. Their six questions remain in the denominator. This exposes real ingestion and evidence-selection gaps, and does not establish PDF retrieval quality. The 112 requests repeat 28 questions across four blocks. Codex authored and reviewed this public-source set; it is independent of the old synthetic corpus, not an independently administered benchmark. The original six holdout questions remain unused.
 
 A separate **core-only capacity probe** searched **12,800 supplied 384-dimensional vectors across 400 synthetic documents** in **9.95 ms median**, with **79.3 MiB peak process RSS**. This measures hybrid search capacity; it excludes document parsing, embeddings and answer generation.
 
-The latest verification recorded **148 passing automated checks**: 90 Rust, 36 fixture/scorer and 22 worker/answer/scheduler/transport checks, plus formatting, lint and Compose validation. Deployment drills exercised interrupted ingestion, service outages, restart and exact export/restore.
+The latest verification recorded **167 passing automated checks**: 91 Rust, 54 fixture/scorer/protocol and 22 worker/answer/scheduler/transport checks, plus formatting, lint and Compose validation. These software checks are separate from the end-to-end answer scores above. T11 also found and fixed a UTF-8 ingestion panic; the earlier failed attempt is retained.
 
-These are **13 related synthetic development questions**, repeated under cold/warm processing caches with model weights loaded. Six holdout questions remain unused. The results establish a reproducible starting point; broader corpus quality and sustained-load performance remain open. All six configurations, including failures, are recorded in the reports.
+The earlier synthetic development comparison passed 13/13 questions with both limits. Generated context increased its five-file ingestion from **24.76 s to 72.16 s** without improving final answers, so structural context remains the default. Broader quality and sustained-load performance remain open.
 
-[Full evaluation and limitations](docs/reports/t10-evaluation.md) · [Machine-readable evidence](docs/reports/t10-evaluation.json) · [Deployment verification](docs/reports/t09-deployment.md)
+[Public-source evaluation and failures](docs/reports/t11-independent.md) · [Machine-readable evidence](docs/reports/t11-independent.json) · [Dataset and reproduction](evals/independent/README.md) · [Earlier development/capacity results](docs/reports/t10-evaluation.md)
 
 ## Quickstart
 
@@ -127,15 +129,15 @@ Repeat the readiness check until all capabilities are available. The measured mo
 ### 3. Ingest, search and ask
 
 ```sh
-docker compose -f compose.app.yaml run --rm client ingest /app/evals/fixtures/fictional_matches.txt --document soccer-demo --job soccer-demo-v1 --wait
-docker compose -f compose.app.yaml run --rm client search "Pele Argentina 1954"
-docker compose -f compose.app.yaml run --rm client ask /app/tests/fixtures/answers/pele.json
+docker compose -f compose.app.yaml run --rm client ingest /app/evals/independent/fixtures/voyager1.txt --document voyager-demo --job voyager-demo-v1 --wait
+docker compose -f compose.app.yaml run --rm client search "Voyager 1 launch Jupiter Saturn"
+docker compose -f compose.app.yaml run --rm client ask /app/tests/fixtures/answers/voyager.json
 ```
 
 The last command returns the full JSON answer report. In PowerShell, display just the formatted answer:
 
 ```powershell
-$result = docker compose -f compose.app.yaml run --rm client ask /app/tests/fixtures/answers/pele.json | ConvertFrom-Json
+$result = docker compose -f compose.app.yaml run --rm client ask /app/tests/fixtures/answers/voyager.json | ConvertFrom-Json
 $result.formatted
 ```
 
@@ -145,11 +147,13 @@ To try your own files, create a `documents` folder in the repository and place a
 docker compose -f compose.app.yaml run --rm -v "${PWD}/documents:/input:ro" client ingest /input/example.pdf --document my-document --job my-document-v1 --wait
 ```
 
-Use unique document/job names for different files. JSON arrays nested inside an object can use an explicit record pointer, such as `--record-pointer /matches`. For another question, copy the [request example](tests/fixtures/answers/pele.json) into that folder as `question.json`, edit its question/fields/template, then run:
+Use unique document/job names for different files. JSON arrays nested inside an object can use an explicit record pointer, such as `--record-pointer /features`. For another question, copy the [request example](tests/fixtures/answers/voyager.json) into that folder as `question.json`, edit its question/fields/template, then run:
 
 ```powershell
 docker compose -f compose.app.yaml run --rm -v "${PWD}/documents:/input:ro" client ask /input/question.json
 ```
+
+PDF ingestion is strict by default: unprocessed illustrations or uncertain OCR can cause rejection even when useful text was recovered. The ingest command supports `--allow-partial` when partial text extraction is acceptable for your document; extraction warnings remain attached to the stored document.
 
 Stop with `docker compose -f compose.app.yaml stop`. Documents and models persist; subsequent starts use `up -d`. See the [operations guide](docs/development.md) for job inspection, retry, document replacement and backup commands.
 
@@ -164,9 +168,10 @@ docker compose run --rm core cargo fmt --check
 docker compose run --rm core cargo clippy --locked --offline --all-targets -- -D warnings
 docker compose run --rm evals
 docker compose run --rm evals python -m unittest evals.test_validate evals.test_score -v
+docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest evals.independent.test_protocol evals.independent.test_summary -v
 ```
 
-These commands cover the 90 Rust checks and 36 fixture/scorer checks. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
+These commands cover the 91 Rust checks and 54 fixture/scorer/protocol checks. The last command mounts the repository read-only and works in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
 
 ## Explore the implementation
 
@@ -177,16 +182,16 @@ These commands cover the 90 Rust checks and 36 fixture/scorer checks. Model-work
 | [`src/ingestion/`](src/ingestion/) and [`processor/`](processor/) | Durable stages, format-aware chunking and source mappings |
 | [`src/answers.rs`](src/answers.rs) and [`model_worker/`](model_worker/) | Evidence assembly, local models, exact JSON reads and generation scheduling |
 | [`src/service/`](src/service/) and [`deployment/`](deployment/) | Shared database ownership, API, CPU admission and client |
-| [`evals/`](evals/) and [evaluation report](docs/reports/t10-evaluation.md) | Source-aware scoring, dev/holdout separation, timings and retained failures |
+| [`evals/`](evals/) and [public-source evaluation](docs/reports/t11-independent.md) | Frozen sources, paired comparisons, source-aware scoring, timings and retained failures |
 
 ## Project status and next steps
 
-The initial ten build milestones are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment and development evaluation. The app is ready for local experimentation. The public API is still evolving, and there is no web UI or multi-user authentication.
+T01–T11 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, development evaluation and the first public-source comparison. The app is ready for local experimentation. The public API is still evolving, and there is no web UI or multi-user authentication.
 
-The next priority is an independent corpus with realistic distractors, conflicting records, harder tables/OCR and questions needing several distant passages. Explicit quality and latency targets should guide further tuning. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
+The next proposed tasks address the failures this evaluation exposed: **T12** for ingestion recovery, PDF diagnostics and bounded busy retries; **T13** for evidence coverage, conversational retrieval and structured pointer selection, measured on new frozen data. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
 
 For contributions, start with the [architecture](docs/architecture.md), [build plan](docs/plan.md) and [working instructions](AGENTS.md). Reproducible retrieval failures with shareable source files are especially useful.
 
 ## License
 
-Repository code is licensed under the [GNU Affero General Public License v3.0](LICENSE). Downloaded model weights and third-party dependencies retain their respective licenses and terms.
+Repository code is licensed under the [GNU Affero General Public License v3.0](LICENSE). Downloaded model weights, third-party dependencies and [NASA/USGS source snapshots](evals/independent/README.md#source-attribution-and-reuse) retain their respective terms. Their inclusion does not imply agency endorsement.

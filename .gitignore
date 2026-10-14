@@ -225,3 +225,5 @@ __marimo__/
 /data/
 # Local export directories contain source documents and database state.
 /backups/
+# T11's final attributed source manifest is versioned; the acquisition draft is local.
+/evals/independent/sources-draft.json

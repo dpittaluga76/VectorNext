@@ -1,0 +1,149 @@
+Mars Secondary Navigation 2
+
+# Viking 1
+
+Occurred 50 years ago
+
+Type
+
+Orbiter, Lander
+
+Launch
+
+Aug. 20, 1975
+
+Target
+
+Mars
+
+Results
+
+Successful
+
+## Viking: 50 Years on Mars
+
+Throughout history, Mars had been in sight, but never within reach — until July 20, 1976, when NASA’s Viking 1 lander touched down safely and began transmitting the first images from the surface of the Red Planet. Viking 1 broke ground on Mars surface exploration, beginning an effort that continues through today. Mars missions ever since, and those yet to come, seek to uncover whether the planet’s once warm and wet climate was ever habitable to some form of life, as our discoveries help inform sustainability for human exploration in the future. These missions continue building on what the Vikings began.
+
+Join the Celebration: Stories, Images, Videos, Posters, and More
+about Viking: 50 Years on Mars
+
+### What was Viking 1?
+
+NASA's Viking 1 made the first truly successful landing on Mars. The Soviet Mars 3 lander claimed a technical first with a survivable landing in 1971, but contact was lost seconds after it touched down.
+
+Both NASA Viking missions used a combination of orbiter and lander to explore Mars in unprecedented detail.
+
+In total, the two Viking orbiters returned 52,663 images of Mars and mapped about 97 percent of the surface at a resolution of 984 feet (300 meters) resolution. The landers returned 4,500 photos of the two landing sites.
+
+Nation | United States of America (USA)
+
+Objective(s) | Mars Landing and Orbit
+
+Spacecraft | Viking-B
+
+Spacecraft Mass | 7,776 pounds (3,527 kilograms)
+
+Spacecraft Power | Each lander carried two SNAP-19 Radioisotope Thermoelectric Generators (RTGs); Orbiters were solar-powered
+
+Mission Design and Management | NASA / Langley Research Center (LaRC) / Jet Propulsion Laboratory (JPL)
+
+Launch Vehicle | Titan IIIE-Centaur (TC-4 / Titan no. E-4 / Centaur D-1T)
+
+Launch Date and Time | Aug. 20, 1975 / 21:22:00 UT
+
+Launch Site | Cape Canaveral, Fla. / Launch Complex 41
+
+Scientific Instruments | Orbiters
+1. Imaging System (2 Vidicon Cameras) (VIS)
+2. infrared Spectrometer for Water Vapor Mapping (MAWD)
+3. Infrared Radiometer for Thermal Mapping (IRTM)
+
+Landers
+1. Imaging System (2 facsimile cameras)
+2. Gas Chromatograph Mass Spectrometer (GCMS)
+3. Seismometer
+4. X-Ray Fluorescence Spectrometer
+5. Biological Laboratory
+6. Weather Instrument Package (Temperature, Pressure, Wind Velocity)
+7. Remote Sampler Arm
+
+Aeroshells
+1. Retarding Potential Analyzer
+2. Upper-Atmosphere Mass Spectrometer
+3. Pressure, Temperature, and Density Sensors
+
+### Key Dates
+
+Aug. 20, 1975: Launch
+
+June 19, 1976: Spacecraft entered orbit around Mars
+
+July 20, 1976: Lander touched down
+
+Aug. 7, 1980: Orbiter was shut down after running out of attitude-control propellant
+
+Nov. 11, 1982: Lander stopped operating after getting a faulty command
+
+### Results
+
+Viking 1 was the first of a pair of complex deep-space probes that were designed to reach Mars and collect evidence on the possibility on life on Mars.
+
+Each spacecraft was composed of two primary elements, an orbiter (5,157 pounds or 2,339 kilograms) and a lander (2,156 pounds or 978 kilograms). The orbiter design borrowed heavily from the Mariner spacecraft buses, or the main body and infrastructure, while the lander looked superficially like a much larger version of the Surveyor lunar lander.
+
+Credit: NASA
+
+Prior to launch, the batteries of the first spacecraft were discharged, prompting NASA to replace the original first spacecraft with the second, which was launched as Viking 1.
+
+After three course corrections (Aug. 27, 1975, June 10, 1976, and June 15, 1976), the spacecraft entered orbit around Mars June 19, 1976. Initial orbital parameters were 932 × 31,255 miles (1,500 × 50,300 kilometers). The following day, the orbiter moved into an operational orbit at 932 × 20,381 miles (1,500 × 32,800 kilometers).
+
+The same day, when the orbiter began transmitting back photos of the primary landing site in the Chryse region, scientists discovered that the area was rougher than expected. Using the new photos, scientists targeted the lander to a different site on the western slopes of Chryse Planitia (Golden Plain).
+
+Credit: NASA
+
+The lander separated from the orbiter at 08:32 UT July 20, 1976, and after a complicated atmospheric entry sequence during which the probe took air samples, Viking Lander 1 set down safely at 22.483 degrees north latitude and 47.94 degrees west longitude at 11:53:06 UT July 20, 1976. It landed about 17 miles (28 kilometers) from its planned target.
+
+Once down, the spacecraft began taking high-quality photographs (in three colors) of its surroundings. Besides high-resolution images, the lander also took a 300-degree panorama of its surroundings that showed not only parts of the spacecraft itself but also the gently rolling plains of the environs.
+
+Instruments recorded temperatures ranging from minus 123 degrees Fahrenheit (minus 86 degrees Celsius) before dawn to minus 27 degrees Fahrenheit (minus 33 degrees Celsius) in the afternoon. The seismometer on the lander was, however, inoperable.
+
+On July 28, 1976, the lander’s robot arm scooped up the first soil samples and deposited them into a special biological laboratory that included a gas chromatograph mass spectrometer.
+
+The cumulative data from the four samples collected could have been construed as indicating the presence of life (weak positive), but the major test for organic compounds using the gas chromatograph experiment (capable of detecting organic compounds that comprised more than 10-100 parts per billion in the soil) gave negative results.
+
+Data showed an abundance of sulfur, certainly different from any known material found on Earth or the Moon.
+
+While the primary mission for both Viking 1 and Viking 2 ended in November 1976, activities continued through the Extended Mission (November 1976 to May 1978) and the Continuation Mission (May 1978 to July 1979). Viking 1’s orbiter then continued a Survey Mission from July 1979 to July 1980.
+
+The lander continued to return daily (and then eventually weekly) weather reports as part of the Viking Monitor Mission. In January 1982, it was renamed the Thomas Mutch Memorial Station in honor of Thomas A. Mutch (1931-1980) the leader of the Viking imaging team who had died Oct. 6, 1980.
+
+The lander operated until Nov. 11, 1982, when a faulty command sent from Earth resulted in an interruption of communications. Further attempts to regain contact proved to be unsuccessful.
+
+The orbiter, after taking many more high-resolution images of the planet and its two moons, far superior than those from Mariner 9, was shut down Aug. 7, 1980, after it ran out of attitude control propellant on its 1,489th orbit around Mars.
+
+### Key Source
+
+Siddiqi, Asif A. Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016. NASA History Program Office, 2018.
+
+Keep Exploring
+
+## Discover More Topics From NASA
+
+###
+James Webb Space Telescope
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+###
+Perseverance Rover
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+###
+Parker Solar Probe
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+###
+Juno
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…
