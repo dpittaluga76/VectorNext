@@ -7,6 +7,9 @@ pub(crate) const PREPARE: u16 = 1;
 pub(crate) const COMMIT: u16 = 2;
 pub(crate) const SNAPSHOT: u16 = 3;
 pub(crate) const JOB: u16 = 4;
+pub(crate) const SNAPSHOT_HEADER: u16 = 5;
+pub(crate) const SNAPSHOT_DATA: u16 = 6;
+pub(crate) const SNAPSHOT_END: u16 = 7;
 
 pub(crate) enum ReadFrame {
     Complete { kind: u16, payload: Vec<u8> },
@@ -44,6 +47,14 @@ fn read_fully(input: &mut impl Read, bytes: &mut [u8]) -> std::io::Result<usize>
 }
 
 pub(crate) fn read(input: &mut impl Read) -> Result<ReadFrame> {
+    read_bounded(input, |_| MAX_PAYLOAD)
+}
+
+/// Apply a stream-specific bound before allocating an untrusted payload.
+pub(crate) fn read_bounded(
+    input: &mut impl Read,
+    limit: impl FnOnce(u16) -> u64,
+) -> Result<ReadFrame> {
     let mut header = [0_u8; HEADER];
     let count = read_fully(input, &mut header)?;
     if count == 0 {
@@ -59,11 +70,11 @@ pub(crate) fn read(input: &mut impl Read) -> Result<ReadFrame> {
         return Err(Error::Corrupt("frame header/version/checksum".into()));
     }
     let kind = u16::from_le_bytes(header[10..12].try_into().unwrap());
-    if !(PREPARE..=JOB).contains(&kind) {
+    if !(PREPARE..=SNAPSHOT_END).contains(&kind) {
         return Err(Error::Corrupt("unknown frame kind".into()));
     }
     let len = u64::from_le_bytes(header[12..20].try_into().unwrap());
-    if len > MAX_PAYLOAD {
+    if len > MAX_PAYLOAD.min(limit(kind)) {
         return Err(Error::Corrupt("oversized frame".into()));
     }
     let mut payload = vec![0_u8; len as usize];

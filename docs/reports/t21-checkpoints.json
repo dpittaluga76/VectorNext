@@ -1,0 +1,154 @@
+{
+  "task": "T21",
+  "date": "2026-10-15",
+  "base_commit": "9e3831f",
+  "source_hashes": {
+    "Cargo.toml": "e29c60a29ccf9136605787b811ab92461e45cf0dd9dd671655939d48305401a5",
+    "Cargo.lock": "d6178dbb48f1ca6b79e17d54b5dbb31e71738be51adf8dcfcfdb3b0b44d2ef6f",
+    "src/frame.rs": "1e00d7b0009308f2c2721ba320061465f2252dbd1128dd01aedfbb46ba103eb0",
+    "src/storage.rs": "8e23aee14c162b83d9bddbc8f759c21cfac21b8f116bcf276f7f74ea03e91952",
+    "src/storage/checkpoint.rs": "81dac8f4b0def86dbbf2fbd9df516f2db8fe24b219977761c1cd93022e6e22a9",
+    "src/storage/tests.rs": "52149ffbe9afe43213f6e19e152ed6b16886754d2fc2a0895ffc32585450684b",
+    "src/backup.rs": "d382e1d96f97b4c14c016a90ba3ab18d8cc0bd8043a6223140e0a893824835b7",
+    "examples/checkpoint_verify.rs": "9c3ca76ba35c73ba84b5b263d18f768b904e2bff8787bfaa15c2d0c0778b3fa4",
+    "docker/checkpoint-test.Dockerfile": "066dd3d1452155a6ee457fa7e6f3d957a7b5d9fca63b59fcd457678ddbba3804",
+    "docker/app.Dockerfile": "9c5062e9c3e99eb4a02b30137130e7f446a4fde05cefeecde0852ab35a91f219",
+    "experiments/t21/copy_data.py": "ba3941210801be1c18719a974345f4194eda5e943096a83a2e4cbdd7472651f3",
+    "experiments/t21/check_frames.py": "d556fc989582690f28a9e5104359547af8909eaaab0166c3aa969a0c45d5b05f"
+  },
+  "t20_archive": {
+    "archive": "backups\\t20-source-before-t21.zip",
+    "sha256": "32e41ca95f4a86f4bd4c5fcd6bd2150449cb16fb521a3348c40cd3550da9d1fc",
+    "verified_frozen_files": 39
+  },
+  "t20_manifest_sha256": "1f1dea41d620c1e09eba2ce5a5e4859926d6f472d413aef60912733d8f7b69c0",
+  "images": {
+    "drill": "sha256:51ad30026af57e130b8314c117aba5dc91e68edb3b5af02e782793c95402bc51",
+    "app": "sha256:ec10b62e5221051edc67b005ff8cf65f5714b6a5f57cc04a9d45f9df92308850",
+    "final_core": "sha256:3b262dc4d5e26bffe7483c405f3801600c1ea494739951a1656393a71703d583"
+  },
+  "verification": {
+    "rust_passed": 132,
+    "full_suite_passed": 131,
+    "subsequent_large_regression_passed": 1,
+    "new_regressions": 9,
+    "exact_query_checks": 768,
+    "original_volume_files_unchanged": 2013,
+    "format_and_clippy": true,
+    "legacy_export_restore_and_records_identical": true,
+    "old_reader_rejected_new_snapshot": true,
+    "new_app_smoke_routes": [
+      "/healthz",
+      "/",
+      "/docs",
+      "/openapi.json"
+    ],
+    "normal_app_upgraded": false
+  },
+  "measurements": {
+    "400": {
+      "documents_including_t20_sentinel": 401,
+      "chunks": 12832,
+      "checkpoint_ms": 455.863615,
+      "snapshot_before_suffix_bytes": 90483871,
+      "post_kill_open_ms": 1009.167771,
+      "export_ms": 2368.457107,
+      "restore_ms": 3070.686098,
+      "export_total_bytes": 188983337,
+      "export_files": 404,
+      "digests": {
+        "chunks": 12832,
+        "documents": 401,
+        "records_sha256": "0caaee604e93586f23d747e1298f853f140402242f67768908b77e6ea2306993",
+        "t20_digest": "7ddedb4f0ec5319649d4b243bcea37ba5d4650c5ab39967f95e080df47a8c951"
+      },
+      "frames": {
+        "file_bytes": 90483997,
+        "segments": 87,
+        "json_bytes": 90480654,
+        "max_frame_payload": 1048584,
+        "snapshot_sha256": "41c7740c2b05c5c6110658c4121bd34171a0017a8a316cb22fe68e4c964bd277"
+      },
+      "generation_after_suffix": 402,
+      "suffix_receipt": {
+        "generation": 402,
+        "request_sha256": "6bf76602abecedbb974063250f58ce434a3c20328461fbda5d9f9c1519a6893e"
+      },
+      "exact_queries_per_stage": 128,
+      "exact_stages_passed": 3,
+      "cgroup_peak_prepare_bytes": 294637568,
+      "cgroup_peak_recovery_export_restore_bytes": 718790656
+    },
+    "1600": {
+      "documents_including_t20_sentinel": 1601,
+      "chunks": 51232,
+      "checkpoint_ms": 1857.6560720000002,
+      "snapshot_before_suffix_bytes": 361257185,
+      "post_kill_open_ms": 4287.374359,
+      "export_ms": 9370.027586,
+      "restore_ms": 11267.205873,
+      "export_total_bytes": 754517678,
+      "export_files": 1604,
+      "digests": {
+        "chunks": 51232,
+        "documents": 1601,
+        "records_sha256": "035dec1641c77796b4e09cde51156be3738bdd85e51a9afc2bc2ea1f8be77d42",
+        "t20_digest": "729dee29696733df142acd16a535defe83c01a9b2af9ecab52facecfaabc5856"
+      },
+      "frames": {
+        "file_bytes": 361257312,
+        "segments": 345,
+        "json_bytes": 361244679,
+        "max_frame_payload": 1048584,
+        "snapshot_sha256": "45104be5f20c862fe627ab4438266a43d5a18890485d831ac7c59644984817bd"
+      },
+      "generation_after_suffix": 1602,
+      "suffix_receipt": {
+        "generation": 1602,
+        "request_sha256": "6bf76602abecedbb974063250f58ce434a3c20328461fbda5d9f9c1519a6893e"
+      },
+      "exact_queries_per_stage": 128,
+      "exact_stages_passed": 3,
+      "cgroup_peak_prepare_bytes": 846692352,
+      "cgroup_peak_recovery_export_restore_bytes": 2877030400
+    }
+  },
+  "capture_hashes": {
+    "1600-prepare.json": "0e501098e49059063cf6615635a7b4f35224583ff0eb067233351637119bcff7",
+    "1600-recover.json": "32ccf813e7391817e92fbbdaf1ef008efbfbc4cbb1ff9fdcc4cf6e42000b927a",
+    "1600-recover.log": "10574aedcb9c85874d4d78a22356e92eed09fb92cd18a107c005ac60942617d7",
+    "400-prepare.json": "64b8802e78509d9340397387170ac4493f610bf6eba6367546e910dd73ecdef5",
+    "400-recover.json": "022fbc7452e214ae819dde3cb19f19b79451a70530002d125e37191ae9d6a127",
+    "400-recover.log": "642914c5762e8bf7bd4946c3ea779fb53ce5fe3f8e35bac4233ad29a9d0fb54a",
+    "api-smoke-final.log": "295e502492a7ded542aa8182da7fae63b554f3c99aeb02736a3e66c96aea917a",
+    "api-smoke.log": "664e552a60b42e72a28a7db5da49356242841950402817aecebf2ecd0a2c1c6c",
+    "app-build.log": "1d3acf775efb858dc50428382cd08ec7a2dbda2f14d5388ebef3b574878517c4",
+    "core-build-complete.log": "2302ae45a3ed6f5c3242772b79f20d15aa4498a49c6d3dbc4c5d5a64c9d0487f",
+    "core-build-final.log": "55a7a35ee1b701051e44d1590fb7f89564bdd6cc5fdc574700f16d27c78daa4a",
+    "core-build-fixed.log": "11c6713592dee54501a3258d26e5050539c386aec902d3cbff2e86dcaf178378",
+    "core-build.log": "0af209bbb315443050e964e6a6c2887cbd0a7b45fe17220270cd7e875a887dd1",
+    "frame-verification.json": "341c8283532253e453fd8bc08a5abe442329f4f06766fb0f7af43e97be049d38",
+    "images.txt": "efa0030c4be01657a6a44835add4948dd0db79b5adceb97e484dfa4466e9de0b",
+    "large-regression.log": "5eb593915981c974a7b140522f2abe55998970712a310442b8ca73c354e98bf1",
+    "legacy-export.json": "7440a3a175f5f48a36eb3806f17920b21632aaec9b0365e0fc6361f889fed8a6",
+    "legacy-inspect.json": "afb53bd5f0560c2b9b932e9d50feeb1f85de1915cb4e7c0413c1855ccd6a009c",
+    "legacy-restore.json": "7440a3a175f5f48a36eb3806f17920b21632aaec9b0365e0fc6361f889fed8a6",
+    "old-reader-rejection.log": "e94ec31ef11035d7c6b70c0dbb61da0c1cad02d269bc0fe1ec2f90ed0a12c15d",
+    "release-build-fixed.log": "0b34c610c9f85cf19726e9a251331d22e6d54db39c3d0c9d4692c58ac8113719",
+    "release-build.log": "0cb54c377269997b51d3155dd8ce7fdb3dfbb365b53af51c2dad1417c1651824",
+    "rust-checks-final.log": "0a504c53b0d8600cb39207996847c1956c98e36af5d829bb52d8a34568a5597c",
+    "rust-tests.log": "3f3db568ce8c84102935bd931f693023c129a3b32979af50ffa502c92b8b31d8",
+    "source-volume-hashes.json": "261966d8c9a5a334e3c22e8f139de150da34b359a640791df89058fec302a1ae",
+    "t20-archive.json": "fc5a88617a43213cee5e5b1395d64026537f2e3d2fb7092ed2bfbaca717e5a2a",
+    "upgraded-export.json": "6416c5f2bbbd7f0dcee8f3fd81805fe4d1e77dd726995fd51e282b220941fc6d",
+    "upgraded-inspect.json": "afb53bd5f0560c2b9b932e9d50feeb1f85de1915cb4e7c0413c1855ccd6a009c"
+  },
+  "limitations": [
+    "Batch/job frames retain the 64 MiB cap; export retains the 8 GiB total cap.",
+    "The full database remains in memory and the journal is retained.",
+    "New checkpoints are not readable by old binaries; retain a pre-upgrade copy.",
+    "Durations are one operational pass with 2 CPU / 4 GiB limits, not a new benchmark or power-loss certification.",
+    "Cgroup peaks include page cache and multiple open states; they are not serialization-buffer measurements.",
+    "The normal application still runs t19; t21 was built and checked on isolated storage."
+  ]
+}

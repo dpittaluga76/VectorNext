@@ -576,6 +576,7 @@ fn actual_write_errors_poison_without_publishing() {
 #[test]
 fn snapshot_failures_recover_old_or_new_checkpoint_plus_journal() {
     for fault in [
+        Fault::SnapshotChunk,
         Fault::SnapshotWrite,
         Fault::SnapshotSync,
         Fault::SnapshotRename,
@@ -603,6 +604,126 @@ fn snapshot_failures_recover_old_or_new_checkpoint_plus_journal() {
             3
         );
     }
+}
+
+#[test]
+fn legacy_checkpoint_upgrades_with_suffix_receipts_and_tombstones() {
+    let (dir, mut db, first) = seed();
+    db.commit(delete("remove", "match", "r1")).unwrap();
+    let legacy = Checkpoint {
+        journal_offset: db.committed_offset,
+        journal_sha256: prefix_hash(&mut db.journal, db.committed_offset).unwrap(),
+        state: db.state.as_ref().clone(),
+    };
+    fs::write(
+        dir.path().join("snapshot.bin"),
+        frame::encode(frame::SNAPSHOT, &serde_json::to_vec(&legacy).unwrap()).unwrap(),
+    )
+    .unwrap();
+    let replacement = fixture(&mut db, "match", "r2", 384);
+    db.commit(batch("new-revision", replacement, None)).unwrap();
+    let expected = serde_json::to_vec(&db.state).unwrap();
+    drop(db);
+    let mut upgraded = Database::open(dir.path()).unwrap();
+    assert_eq!(serde_json::to_vec(&upgraded.state).unwrap(), expected);
+    assert_eq!(upgraded.commit(first.clone()).unwrap().generation, 1);
+    upgraded.checkpoint().unwrap();
+    let mut checkpoint_file = File::open(dir.path().join("snapshot.bin")).unwrap();
+    assert!(matches!(
+        frame::read(&mut checkpoint_file).unwrap(),
+        ReadFrame::Complete {
+            kind: frame::SNAPSHOT_HEADER,
+            ..
+        }
+    ));
+    drop(upgraded);
+    let mut reopened = Database::open(dir.path()).unwrap();
+    assert_eq!(serde_json::to_vec(&reopened.state).unwrap(), expected);
+    assert_eq!(reopened.commit(first).unwrap().generation, 1);
+    let reused = fixture(&mut reopened, "match", "r1", 384);
+    assert!(reopened.commit(batch("reuse", reused, Some("r2"))).is_err());
+}
+
+#[test]
+fn checkpoint_export_restore_above_legacy_frame_limit() {
+    let root = TempDir::new().unwrap();
+    let mut db = Database::open(root.path().join("db")).unwrap();
+    for i in 0..33 {
+        let id = format!("large-{i}");
+        let mut document = fixture(&mut db, &id, "r1", 3);
+        document
+            .processing
+            .insert("padding".into(), json!("x".repeat(2 * 1024 * 1024)));
+        document.processing.insert(
+            "exact".into(),
+            serde_json::from_str::<Value>(
+                r#"[9007199254740993.00000000000001,123456789012345678901234567890,null,0]"#,
+            )
+            .unwrap(),
+        );
+        db.commit(batch(&id, document, None)).unwrap();
+    }
+    let before = db.snapshot();
+    let destination = root.path().join("export");
+    let manifest = db.export(&destination).unwrap();
+    assert!(manifest.files["snapshot.bin"].bytes > frame::MAX_PAYLOAD);
+    let restored = root.path().join("restored");
+    crate::backup::restore(&destination, &restored).unwrap();
+    let mut recovered = Database::open(restored).unwrap();
+    assert_eq!(before.generation(), recovered.snapshot().generation());
+    for document in before.documents() {
+        assert_eq!(
+            recovered
+                .snapshot()
+                .document(&document.document_id)
+                .unwrap(),
+            document
+        );
+        assert_eq!(
+            recovered
+                .commit(batch(&document.document_id, document.clone(), None))
+                .unwrap(),
+            *before.receipt(&document.document_id).unwrap()
+        );
+    }
+}
+
+#[test]
+fn failed_segment_write_keeps_published_checkpoint_and_replays_suffix() {
+    let (dir, mut db, first) = seed();
+    db.checkpoint().unwrap();
+    let published = fs::read(dir.path().join("snapshot.bin")).unwrap();
+    let mut document = fixture(&mut db, "match", "r2", 384);
+    document
+        .processing
+        .insert("padding".into(), json!("雪".repeat(800_000)));
+    let second = batch("large-revision", document, Some("r1"));
+    db.commit(second.clone()).unwrap();
+    let expected = serde_json::to_vec(&db.state).unwrap();
+    db.fail_at = Some(Fault::SnapshotChunk);
+    assert!(db.checkpoint().is_err());
+    assert_eq!(
+        fs::read(dir.path().join("snapshot.bin")).unwrap(),
+        published
+    );
+    assert!(
+        fs::metadata(dir.path().join("snapshot.pending"))
+            .unwrap()
+            .len()
+            > 1024 * 1024
+    );
+    assert!(matches!(db.commit(second.clone()), Err(Error::Poisoned)));
+    drop(db);
+    let mut recovered = Database::open(dir.path()).unwrap();
+    assert_eq!(serde_json::to_vec(&recovered.state).unwrap(), expected);
+    assert_eq!(recovered.commit(first).unwrap().generation, 1);
+    assert_eq!(recovered.commit(second).unwrap().generation, 2);
+    recovered.checkpoint().unwrap();
+    drop(recovered);
+    assert_eq!(
+        serde_json::to_vec(&Database::open(dir.path()).unwrap().state).unwrap(),
+        expected
+    );
 }
 
 #[test]

@@ -16,6 +16,8 @@ use std::{
     sync::Arc,
 };
 
+mod checkpoint;
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Receipt {
     pub generation: u64,
@@ -118,6 +120,7 @@ enum Fault {
     PrepareSync,
     CommitWrite,
     CommitSync,
+    SnapshotChunk,
     SnapshotWrite,
     SnapshotSync,
     SnapshotRename,
@@ -312,25 +315,12 @@ impl Database {
         let checkpoint_path = root.join("snapshot.bin");
         if checkpoint_path.exists() {
             let mut file = File::open(checkpoint_path)?;
-            match frame::read(&mut file)? {
-                ReadFrame::Complete {
-                    kind: frame::SNAPSHOT,
-                    payload,
-                } => {
-                    if !matches!(frame::read(&mut file)?, ReadFrame::End) {
-                        return Err(Error::Corrupt("trailing checkpoint bytes".into()));
-                    }
-                    let checkpoint: Checkpoint = serde_json::from_slice(&payload)?;
-                    if prefix_hash(&mut journal, checkpoint.journal_offset)?
-                        != checkpoint.journal_sha256
-                    {
-                        return Err(Error::Corrupt("checkpoint journal prefix mismatch".into()));
-                    }
-                    offset = checkpoint.journal_offset;
-                    state = checkpoint.state;
-                }
-                _ => return Err(Error::Corrupt("incomplete/invalid checkpoint".into())),
+            let checkpoint = checkpoint::read(&mut file)?;
+            if prefix_hash(&mut journal, checkpoint.journal_offset)? != checkpoint.journal_sha256 {
+                return Err(Error::Corrupt("checkpoint journal prefix mismatch".into()));
             }
+            offset = checkpoint.journal_offset;
+            state = checkpoint.state;
         }
         journal.seek(SeekFrom::Start(offset))?;
         loop {
@@ -464,19 +454,20 @@ impl Database {
     pub fn checkpoint(&mut self) -> Result<u64> {
         self.writable()?;
         let result = (|| -> Result<()> {
-            let checkpoint = Checkpoint {
-                journal_offset: self.committed_offset,
-                journal_sha256: prefix_hash(&mut self.journal, self.committed_offset)?,
-                state: self.state.as_ref().clone(),
-            };
-            let bytes = frame::encode(frame::SNAPSHOT, &serde_json::to_vec(&checkpoint)?)?;
+            let journal_sha256 = prefix_hash(&mut self.journal, self.committed_offset)?;
             let pending = self.root.join("snapshot.pending");
             let mut file = OpenOptions::new()
                 .create(true)
                 .truncate(true)
                 .write(true)
                 .open(&pending)?;
-            file.write_all(&bytes)?;
+            checkpoint::write(
+                &mut file,
+                self.committed_offset,
+                &journal_sha256,
+                &self.state,
+                || self.fault(Fault::SnapshotChunk),
+            )?;
             self.fault(Fault::SnapshotWrite)?;
             file.sync_all()?;
             self.fault(Fault::SnapshotSync)?;

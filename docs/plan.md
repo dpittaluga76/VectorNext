@@ -5,7 +5,8 @@ Design reference: [architecture.md](architecture.md).
 
 ## Current state
 
-- Phase: T01 through T20 complete. T20's pgvector comparison exposes a checkpoint/export capacity limit; scope its repair next, followed by filter profiling. Candidate retrieval and ambiguity experiments remain separate quality work.
+- Phase: T01 through T21 complete. Next scope filter profiling; candidate retrieval and ambiguity experiments remain separate quality work.
+- T21 complete: bounded version-2 checkpoint stream with legacy reads, unchanged publication/journal/backup contracts and nine new regressions. Both formerly failing T20 states checkpoint/export/restore correctly on fresh copies; 132 Rust and 768 exact-query checks passed. Old-binary rollback requires a pre-upgrade copy; batch/job and total backup limits remain. [Results](reports/t21-checkpoints.md). T21 services stopped; original T20 data unchanged; normal app still running T19, with Compose selecting the built T21 API image for the next startup.
 - T20 complete: isolated CPU comparison at 12,800/51,200 supplied vectors, independent exact oracle, pgvector exact/HNSW, fixed filters, load/resource measurements and interruption recovery. All 4,096 timed requests completed; 2,048 exact requests and 512 recovery checks passed. PostgreSQL exact was faster in every warm group. VectorNext checkpoints failed at both sizes (64 MiB frame); journal recovery passed, but the dependent export path is blocked at those states. Verified 123 Rust/eight Python checks, format/Clippy, builds, smoke and manifests. [Results and limitations](reports/t20-pgvector.md). All benchmark services stopped; failed attempts, data and volumes retained; normal application unchanged.
 - T15 complete: exact English numeric grouping, named-month date-year boundaries and numeric-fragment checks in complete supplied evidence. Preserves quotes/typed values, JSON pointer/null semantics and API/storage contracts. Verified 108 Rust/90 Python checks, format/lint, the three-case probe, release image build/liveness and T14 archive integrity. [Results](reports/t15-numeric-proofs.md). No GPU benchmark rerun or revised T14 quality score.
 - T14 complete: opt-in field-focused selection and actual-record JSON pointer constraints, annotation v2 and a new eight-source/16-question frozen comparison. All 96 local requests completed: five 8/16, two 7/16, coverage 8/16 in each pass. Coverage cut median latency 43.5–44.4%; retain five by default. [Results](reports/t14-evidence-coverage.md), [workflow](reports/t14-coverage-workflow.md) and [source-review limitations](reports/t14-source-review.md). All T14 services stopped; volumes/captures retained. 101 Rust/116 Python checks passed; a separate probe exposed numeric proof-boundary defects for T15.
@@ -40,7 +41,7 @@ T02 subsequently demonstrated container GPU visibility and actual CUDA inference
 
 ## Next useful step
 
-Scope a crash-safe checkpoint/export design that removes the complete-snapshot 64 MiB frame limit found by T20, preserving existing journal, revision, retry and backup contracts. This repair is proposed, not implemented. Then profile filter eligibility/candidate selection using fresh measurements; keep candidate-retrieval and ambiguity quality experiments separate. Read [T20 results and retained evidence](reports/t20-pgvector.md). Keep structural context and ranked 30/20/5 defaults; `coverage_v1` stays experimental. Preserve historical captures, volumes, the pre-T15 source archive and the original unused holdout.
+Scope filter eligibility/candidate profiling using fresh measurements, informed by the T20 attribute/empty-filter gap. T21's checkpoint/export repair is complete; read [results and compatibility](reports/t21-checkpoints.md). Keep candidate-retrieval and ambiguity quality experiments separate, retain structural context and ranked 30/20/5 defaults, and leave `coverage_v1` experimental. Preserve historical captures/volumes, the pre-T15 and pre-T21 source archives and the original unused holdout.
 
 ## Work queue
 
@@ -451,9 +452,28 @@ Completion evidence:
 - Verified 123 Rust tests, eight benchmark Python tests, formatting/Clippy, release/runner builds, a separate two-document smoke test, 39 execution-source hashes, corpus hashes and all capture denominators. No GPU/model, semantic-quality or concurrent-load claim. Production code and historical evaluation artifacts remain unchanged.
 - Initial Decimal-report failure and the earlier completed small-corpus run/checkpoint failure remain under separate v1/v2 directories with matching source archives. All three attempts have identical input hashes. All benchmark services are stopped; isolated volumes, networks and captures remain. Normal application services remain healthy. Benchmark acceptance is complete; the storage defect is an explicit follow-up.
 
-### Later — Scalable checkpoint/export and filter profiling
+### T21 — Remove the checkpoint/export state-size bottleneck
 
-Scope this before candidate-retrieval experiments. T20 shows that one-frame snapshot serialization prevents checkpoint/export at both measured sizes; design bounded publication, format compatibility and crash recovery before changing storage. Then profile the observed attribute/empty-filter cost and consider candidate indexes with correctness checks. These are proposed follow-ups, not authorized implementation or a claim that ANN alone solves the measured gaps.
+Status: complete (2026-10-15). Depends on T20. Architecture and plan updated before implementation. [Verification](reports/t21-checkpoints.md), [format/compatibility](storage.md#t21-bounded-checkpoint-stream) and [reproduction](../experiments/t21/README.md). Matching T20 sources are preserved in `backups/t20-source-before-t21.zip` (SHA-256 `32e41ca95f4a86f4bd4c5fcd6bd2150449cb16fb521a3348c40cd3550da9d1fc`).
+
+- Preserve the matching pre-T21 T20 source tree and all benchmark evidence. Add a versioned, bounded checkpoint stream with 1 MiB data segments, sequence checks, per-frame CRCs and a terminal count/length/SHA-256 manifest. Stream JSON without a complete-state clone/serialized buffer; retain the existing in-memory database model.
+- Read legacy snapshots and emit new snapshots with the same complete state, journal offset/prefix digest, exact values, spaces, receipts and revision history. Keep document/job frame limits and the VNXSTORE1 journal marker; older readers must fail closed on new snapshot kinds. Document the rollback boundary and keep backup manifest compatibility.
+- Preserve temporary-file publication, file/directory fsync, atomic rename, sole-writer exclusion and poisoning after failed/uncertain checkpoint writes. Never silently fall back from a corrupt published checkpoint. Reject missing, duplicate, reordered, oversized, truncated, mismatched and trailing segments before returning a database.
+- Verify legacy migration, multi-segment boundaries, all publication faults, journal suffix replay, exact large numbers/null/zero, retries and tombstoned revisions, unfinished jobs, missing originals and malformed snapshots. Export/restore must retain checked file manifests, new-destination publication and the separate 8 GiB total backup bound.
+- Exercise checkpoints larger than 64 MiB and export/restore at the two T20 sizes on fresh copies/new volumes; verify complete record/vector digests and exact search against frozen references. Keep original volumes/captures untouched. No PostgreSQL timing rerun, GPU/model run or historical holdout use.
+- Run relevant Rust tests, formatting/Clippy, container builds and CPU operational checks. Record results, remaining limits and compatibility before marking complete. Normal services remain unchanged unless separately requested.
+- Acceptance: both former failing T20 sizes checkpoint and export/restore correctly; legacy and new recovery paths pass; corrupt/partial publication fails safely; bounded serialization is exercised; all exact data/retry/provenance contracts remain intact and reproducible evidence is retained.
+
+Completion evidence:
+
+- Replaced whole-state clone/serialization with numbered 1 MiB segments and strict header/footer integrity checks. Legacy snapshots remain readable; journal/job frames, sole-writer publication, exact values and backup envelope/limits remain unchanged.
+- Fresh copies of T20's 401/1,601-document post-sentinel states produced 86.29/344.52 MiB checkpoints, survived SIGKILL with an additional acknowledged transaction, and exported/restored successfully. Full records/receipts/space and T20 vector digests match; all 768 exact queries passed. Independent inspection confirmed 87/345 segments and identical source/export/restored snapshot hashes. All 2,013 original-volume file hashes remain unchanged.
+- Verified 132 Rust checks (full 131 plus the added >64 MiB regression), format/Clippy, core/release/app builds, actual T19 export migration with identical records and old-reader rejection, and four offline production API/UI/docs smoke routes. Existing future-compatibility notices remain; no GPU/model or historical-quality rerun.
+- Compose selects built API/client/admin `:t21`; processor/generator stay unchanged. Normal app remains healthy on T19 until the next Start/Rebuild. All T21 test containers are stopped; new data/export/restored volumes and `data/t21/` reports/logs are retained. Old releases need an untouched pre-upgrade copy after new checkpoint publication. Next: scope filter profiling.
+
+### Later — Filter profiling
+
+After T21, profile the observed attribute/empty-filter cost and consider candidate indexes with correctness checks on fresh measurements. This is a proposed follow-up, not an assertion that approximate indexing solves the measured gaps.
 
 ### Later — Candidate retrieval and ambiguity evaluation
 
@@ -462,6 +482,12 @@ Scope field-specific candidate retrieval and a clearly worded ambiguity evaluati
 ## Session handoff discipline
 
 Keep the Current state and Next useful step sections accurate. For each meaningful work session, add one concise entry below with changed files/capabilities, task IDs, verification actually performed, unresolved issues, and the next step. Do not paste full chat transcripts or command logs.
+
+### 2026-10-15 — T21 completed
+
+- Updated architecture/plan first, archived matching T20 execution sources, then implemented bounded checkpoint framing with legacy reads and unchanged journal/publication/backup contracts. Added format/upgrade documentation, regression tests, an isolated release drill, independent frame inspection and Markdown/JSON results.
+- Both formerly failing T20 states passed checkpoint, forced-restart recovery, export/restore and all 768 exact queries. Verified 132 Rust checks, format/Clippy, builds and real old/new binary compatibility; preserved original source-volume/input hashes and all historical results. Failed early harness builds/smoke attempts remain in logs; only final checks are counted.
+- New Compose API/client/admin image is `:t21`; the running normal app remains on T19, healthy and unchanged. All T21 containers stopped, data/reports retained. Preserve old store copies for rollback and the unchanged 8 GiB backup limit. Next: scope filter profiling before retrieval-quality experiments.
 
 ### 2026-10-15 — T20 completed
 

@@ -95,7 +95,7 @@ docker volume create vectornext-core-checks
 docker compose run --rm -e TMPDIR=/storage -v vectornext-core-checks:/storage core
 ```
 
-During T03, all 18 storage tests passed both in memory-backed temporary storage and on a Docker disk volume. The suite creates and removes its own temporary databases inside that volume. Full truncation testing is slower on disk because it performs thousands of durable flushes. The volume can be reused. These are crash/I/O simulations, not a host power-loss certification. Format 1 caps each batch/checkpoint frame at 64 MiB; the journal, old originals, and retry history are retained until future compaction work.
+During T03, all 18 storage tests passed both in memory-backed temporary storage and on a Docker disk volume. The suite creates and removes its own temporary databases inside that volume. Full truncation testing is slower on disk because it performs thousands of durable flushes. The volume can be reused. These are crash/I/O simulations, not a host power-loss certification. Journal/job frames still have a 64 MiB cap. T21 writes checkpoints as a [version-2 stream of bounded frames](storage.md#t21-bounded-checkpoint-stream), while accepting old snapshots. Export still has an 8 GiB total bound; the journal, old originals and retry history remain until future compaction work. Older binaries cannot read a new checkpoint: retain an untouched pre-upgrade copy for rollback. [Large-state verification commands](../experiments/t21/README.md).
 
 ## Ingest with real local models
 

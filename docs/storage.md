@@ -1,4 +1,4 @@
-# T03 storage contract (format 1)
+# Storage contract (journal format 1, checkpoint versions 1 and 2)
 
 Status: adopted implementation specification; verification results are recorded in the build plan.
 Design reference: [architecture.md](architecture.md), sections 3, 4, and 9.
@@ -21,7 +21,7 @@ Readers hold immutable shared snapshots. Committing swaps the current snapshot a
 
 `FORMAT` identifies the database version; a missing committed journal is an error. `writer.lock` holds an advisory exclusive lock for the database lifetime. `journal.bin` is append-only between recovery repairs. `snapshot.bin` is an optional checkpoint; `snapshot.pending` is disposable. `blobs/<sha256>` contains immutable originals. Temporary blob files are disposable and are never referenced by committed records. Interrupted first-time initialization may leave an invalid format marker and fails closed; no transactions are acknowledged before initialization finishes.
 
-All journal and snapshot frames use little-endian fields: magic `VNXFRAME` (8 bytes), format u16 (=1), kind u16 (1 prepare, 2 commit, 3 snapshot), payload length u64, CRC32 of the preceding 20 header bytes (4 bytes), payload, CRC32 of header plus payload (4 bytes). Payloads are UTF-8 JSON, capped at 64 MiB per frame. CRCs detect accidental corruption, not hostile tampering. Complete invalid headers, checksums, unexpected kinds, sequence gaps, or invalid recovered records are errors, including at EOF; never silently discard a complete corrupt frame.
+All frames use little-endian fields: magic `VNXFRAME` (8 bytes), frame format u16 (=1), kind u16, payload length u64, CRC32 of the preceding 20 header bytes (4 bytes), payload, CRC32 of header plus payload (4 bytes). Kinds 1 prepare, 2 commit, 3 legacy snapshot and 4 job have UTF-8 JSON payloads capped at 64 MiB per frame. T21 adds snapshot-only kinds 5/6/7 with tighter bounds below. CRCs detect accidental corruption, not hostile tampering. Complete invalid headers, checksums, unexpected kinds, sequence gaps, or invalid recovered records are errors, including at EOF; never silently discard a complete corrupt frame. A recognized kind is valid only in its designated stream.
 
 T05 adds kind 4 only for separate `jobs/<sha256-of-job-id>.job` files, with `jobs/stage.pending` as the disposable write candidate. Document journal/checkpoint payloads are unchanged; kind 4 is never valid in either stream. Job files share the sole database writer lock and use file sync, rename, and directory sync. Opening the database also validates saved jobs and their original blobs. Embedded jobs may have an existing publication receipt while awaiting their completion marker; retry resolves that receipt. See [ingestion.md](ingestion.md). Backups/resumption must retain `jobs/` alongside the database and blobs; a document checkpoint does not include job state.
 
@@ -37,6 +37,24 @@ Prepare contains the next generation and full batch. Commit contains that genera
 ## Checkpoints and recovery
 
 A checkpoint contains the complete state, receipt/revision history, journal byte offset, and SHA-256 of the journal prefix through that offset. Write `snapshot.pending`, fsync it, atomically rename over `snapshot.bin`, then fsync the database directory. Do not rotate or remove journal data in T03. Failure leaves the previous or new checkpoint; the journal covers both. Checkpoint errors also poison the writer to force recovery of uncertain publication.
+
+### T21 bounded checkpoint stream
+
+New checkpoints retain the same JSON state contract but stream its UTF-8 bytes across frames in one file. The checkpoint writer borrows the immutable state and uses a bounded segment buffer; it does not clone the complete state or serialize the whole checkpoint into a byte vector. Reads deserialize incrementally into the existing in-memory state model. Total state/record memory is not bounded by the segment size.
+
+| Kind | Payload | Maximum payload |
+| --- | --- | --- |
+| 5 — header | JSON `{"version":2,"segment_bytes":1048576}` | 4,096 bytes |
+| 6 — data | Zero-based contiguous u64 segment number, then raw JSON bytes | 8 + 1,048,576 bytes |
+| 7 — end | JSON `{"segments":N,"json_bytes":B,"json_sha256":"…"}` | 4,096 bytes |
+
+There must be at least one data frame. Every data frame contains 1–1,048,576 JSON bytes; only the final one may be short. A segment boundary may split a UTF-8 sequence or JSON token. The reader joins their logical byte stream before parsing. The terminal SHA-256 covers those JSON bytes in order, excluding sequence prefixes and frame envelopes. Counts and byte totals must match without overflow; footer CRC, aggregate hash and physical EOF are required. The reader enforces each kind's bound before payload allocation and rejects unknown stream versions/sizes, incorrect sequences, duplicate/gapped/reordered data, truncated frames, malformed/incomplete/extra JSON, missing or inconsistent footer, checksum errors and even one trailing byte. A corrupt published snapshot never triggers silent journal-only fallback.
+
+The `VNXSTORE1` marker, prepare/commit JSON, job format and their 64 MiB per-frame limits do not change. Legacy kind-3 snapshot files remain readable under their original 64 MiB bound. Opening an old database does not rewrite its checkpoint. Calling `checkpoint()` or export writes version 2 using the existing publication/fsync sequence. The total snapshot is no longer subject to a single 64 MiB frame limit; filesystem capacity and the in-memory state model still apply.
+
+Export remains lock-protected and creates a checked file manifest; restore validates both frame formats and publishes only into a new destination. Backup manifest `format:1` describes the unchanged file envelope, not the snapshot stream version. Keep its existing 8 GiB total-size, 16 MiB manifest-size and 100,000-file limits; T21 does not lift them or compact retained journals/blobs.
+
+Compatibility is forward-read: T21 reads old and new checkpoints/backups. Older binaries reject new frame kinds rather than returning partial state. Before upgrading a store that must remain usable by an older release, retain an untouched offline copy or an old-release export. After the first version-2 checkpoint, rollback requires that copy; deleting/replacing a snapshot is not a supported downgrade procedure. Historical T20 stores and exports stay untouched by verification.
 
 On open, lock first, validate a present checkpoint and its journal prefix, then replay committed pairs after the checkpoint offset. Verify published original files and reconstructed state before returning. A malformed checkpoint or missing/corrupt committed original fails closed. A stale temporary checkpoint is ignored. Prefix hashing reads the older journal but avoids deserializing it; snapshots are not yet a bounded-disk compaction mechanism. Old blobs, revision receipts, and old journal entries remain until a future safe reclamation design.
 

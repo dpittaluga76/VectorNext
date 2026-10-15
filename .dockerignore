@@ -42,5 +42,6 @@ frontend/playwright-report/
 !docker/ui-test.Dockerfile
 !docker/benchmark.Dockerfile
 !docker/benchmark-runner.Dockerfile
+!docker/checkpoint-test.Dockerfile
 
 frontend/test-results-live/
