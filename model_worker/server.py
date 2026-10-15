@@ -108,6 +108,9 @@ class Worker:
         if op == "stats":
             return {"inference": self.calls, "cache_hits": self.cache.hits, "cache_misses": self.cache.misses}
         value = request["input"]
+        if op == "plan_fields":
+            from .planning import handle
+            return handle(self, request["input"])
         if op in {"rerank", "answer_tokens", "answer", "rewrite"}:
             from .answers import handle
             return handle(self, op, value)

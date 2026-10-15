@@ -2,17 +2,21 @@
 
 **A Rust vector database for local, source-linked answers.**
 
-Turn TXT, PDF and JSON documents into searchable evidence. Combine semantic search with exact terms, retrieve the passages that matter, and ask a local LLM for structured answers you can inspect back to the source.
+Drop in TXT, PDF and JSON documents, type a question, and follow each answer back to its source. A local browser workspace brings the document library, conversation and original evidence together.
 
 VectorNext implements its own storage engine, exact vector search, BM25 keyword index and ranking fusion in Rust. A three-service Docker deployment connects that core to local document processing and Gemma 4 generation. After setup, document processing and inference run offline.
 
 [Try it](#quickstart) · [Architecture](#architecture) · [Measured results](#measured-results) · [Developer guide](docs/development.md) · [AGPL-3.0 license](LICENSE)
 
+![VectorNext answering an Apollo 11 question and follow-up with local Gemma and source passages](docs/assets/workspace.png)
+
 ## From a document to an answer
 
 Start with real mission data from [NASA's Voyager 1 page](https://science.nasa.gov/mission/voyager/voyager-1/): launched in **1977**, Jupiter flyby in **1979**, Saturn flyby in **1980**. The repository includes an attributed text snapshot of that page.
 
-Ask for the timeline and specify the fields and presentation you need:
+In the browser, select the document and ask: **“In which year was Voyager 1 launched?”** A local planning call proposes the answer fields automatically. Click the answer's citation to inspect the passage.
+
+Advanced users can specify fields and presentation through the interface or existing API:
 
 ```json
 {
@@ -38,6 +42,7 @@ The response also includes retrieved passages, source locations, field proofs an
 
 | Capability | Implementation |
 | --- | --- |
+| **A local browser workspace** | React + TypeScript + shadcn/ui, served by Rust. Drag-and-drop uploads, ordinary questions, clickable citations, document replacement/removal, themes and browser history. |
 | **An original database core** | Content-addressed originals, checksummed journal, atomic document revisions, immutable snapshots, checkpoints and recovery. |
 | **Hybrid retrieval** | Exact cosine similarity, per-field BM25, typed filters, reciprocal rank fusion and source-preserving deduplication. |
 | **Document-aware ingestion** | TXT passages with byte mappings; PDF text, tables and OCR with page coordinates; JSON records with exact types and pointers. |
@@ -54,7 +59,7 @@ For explicit JSON values, the model selects the record and pointer; Rust reads t
 
 ```mermaid
 flowchart LR
-    Client["CLI / local API client"] --> Core
+    Client["Browser workspace / CLI / local API"] --> Core
     Files["TXT / PDF / JSON"] --> Core
 
     subgraph Local["Local Docker deployment"]
@@ -72,7 +77,7 @@ flowchart LR
 
 The Rust API is the sole database writer. Parsing and model calls run outside write transactions. The CPU processor has no database mount; only the generation service receives GPU access. Interactive generation runs ahead of waiting background enrichment, while active inference finishes without interruption.
 
-**Query flow:** original question → embedding + keyword search → rank fusion → CPU reranking → source-context expansion → answerability assessment → typed extraction → validation and formatting.
+**Query flow:** original question → optional local field planning → embedding + keyword search → rank fusion → CPU reranking → source-context expansion → answerability assessment → typed extraction → validation and formatting. Field planning cannot invent answer values, filters, JSON pointers or a replacement search question.
 
 The default generation profile uses **Gemma 4 26B A4B QAT Q4_0**, with CPU expert offload to fit the tested RTX 4060. MiniLM embeddings and reranking run on CPU; Docling and Tesseract handle PDFs. Models, preprocessing identities and runtime configuration are pinned. Local volumes and bounded caches keep the deployment to three services.
 
@@ -115,9 +120,35 @@ The earlier synthetic development comparison passed 13/13 questions with both li
 
 ## Quickstart
 
-The current interface is a CLI and localhost JSON API. Use Docker with Linux containers and NVIDIA GPU support; the verified Windows setup uses Docker Desktop with WSL 2. The tested generation profile uses substantial system RAM as well as GPU memory: the generation container reached about **23 GiB including mapped model/file cache**. The model file alone is approximately **14.44 GB**, with additional space needed for CPU/PDF models and images.
+Use Docker Desktop with WSL 2, Linux containers and NVIDIA GPU support. The tested PC has an RTX 4060 (8 GB VRAM) and about 64 GB RAM. The generation container has reached about **23 GiB including mapped model/file cache**. The model file alone is approximately **14.44 GB**, plus CPU/PDF models and images.
 
-### 1. Get the repository and models
+### Windows: setup once, then double-click
+
+1. Clone or download this repository. Start Docker Desktop.
+2. Double-click **[VectorNext.cmd](VectorNext.cmd)** and choose **Setup**. This checks Docker/GPU access, downloads and verifies pinned models, builds the three services, and opens the app. Existing valid models are reused. First setup needs internet access and can take a while.
+3. On later visits, double-click **[Start VectorNext.cmd](Start%20VectorNext.cmd)**. It reuses the installed images and models, then opens **[localhost:8088](http://localhost:8088)**. The header shows each capability while models finish loading.
+
+Inside the app: **choose or drop files → select documents → type a question → click a citation**. Try [the Apollo 11 notes](tests/fixtures/ui/apollo11.txt) and ask “In which year did Apollo 11 launch?” TXT, PDF and JSON are accepted up to 16 MiB each. IDs and ordinary answer fields are automatic. Replace and Remove are in the library; removal asks for confirmation.
+
+Use **VectorNext.cmd → Stop** to stop only this application while keeping documents, models and caches. Choose **Rebuild** after pulling code changes. Routine Start never builds or downloads. The equivalent scripted actions are `powershell -File deployment/VectorNext.ps1 -Action Setup`, `Start`, `Rebuild`, `Stop` or `Status`.
+
+Conversations and captured evidence live in **IndexedDB in this browser**, not on the server. Use **Export** before clearing browser data or changing profiles. Different hostnames/ports have separate histories; use the same `localhost:8088` address consistently. Only the last four supported question/answer exchanges are sent as context. Changing document scope starts a new conversation. Historical passages stay captured after a document is replaced or removed. See [browser/API details and limits](docs/browser-api.md).
+
+### Troubleshooting
+
+- **Docker is unavailable:** start Docker Desktop and enable Linux containers/WSL 2. Setup checks GPU visibility inside Docker.
+- **Models are still loading:** browse documents while the capability indicators update. GPU contention or insufficient system RAM can slow generation. Stop other GPU experiments before launching this stack.
+- **Upload is busy or interrupted:** the interface retains its upload identity, reconciles saved work and offers Retry. Saved processing failures require explicit retry. A failed replacement must finish before that document can be removed.
+- **PDF was rejected:** inspect the failure; strict extraction is the default. Enable partial extraction in Upload options only when incomplete extraction is acceptable. Warnings remain available with evidence.
+- **Question planning fails:** rephrase the question or supply fields in Advanced. Corpus totals/aggregates remain unsupported. Supported results still require human semantic review.
+- **Browser storage failed:** keep the tab open and export conversations. Clear space or use a persistent browser profile; private mode/history deletion can remove saved conversations. Use one active tab to avoid competing workspace saves.
+- **Updated code is not visible:** choose Rebuild, then reload the browser. Start deliberately reuses installed images.
+
+### Command-line setup and automation
+
+The existing CLI and JSON API remain available. For manual setup:
+
+#### 1. Get the repository and models
 
 ```sh
 git clone https://github.com/dpittaluga76/VectorNext.git
@@ -131,17 +162,17 @@ docker compose -f compose.processor.yaml run --rm pdf-setup
 
 Initial setup needs network access. Model downloads are checksum-verified and reused when already present. Weights stay outside images in `models/`; normal operation uses local files.
 
-### 2. Start the application
+#### 2. Start the application
 
 ```sh
 docker compose -f compose.app.yaml build
-docker compose -f compose.app.yaml up -d
+docker compose -f compose.app.yaml up -d --no-build --pull never
 docker compose -f compose.app.yaml run --rm client ready
 ```
 
 Repeat the readiness check until all capabilities are available. The measured model restart took about **137 seconds** on the test PC; loading time varies. The API listens at `http://127.0.0.1:8088`. Keep other VectorNext GPU experiments stopped while using this stack.
 
-### 3. Ingest, search and ask
+#### 3. Ingest, search and ask
 
 ```sh
 docker compose -f compose.app.yaml run --rm client ingest /app/evals/independent/fixtures/voyager1.txt --document voyager-demo --job voyager-demo-v1 --wait
@@ -172,7 +203,7 @@ PDF ingestion is strict by default: unprocessed illustrations or uncertain OCR c
 
 Stop with `docker compose -f compose.app.yaml stop`. Documents and models persist; subsequent starts use `up -d`. See the [operations guide](docs/development.md) for job inspection, retry, document replacement and backup commands.
 
-### 4. See how the workflow ran
+#### 4. See how the workflow ran
 
 Append `--explain` for a readable account of the input, processing steps, selected source passages and answer:
 
@@ -197,7 +228,17 @@ docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest evals
 docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest deployment.test_workflow -v
 ```
 
-These commands cover the 108 Rust checks, 54 original fixture/scorer/protocol checks and 26 workflow/client checks. T14 adds `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. T15 passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
+These commands cover the 116 Rust checks, 54 original fixture/scorer/protocol checks and 26 workflow/client checks. T14 adds `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. T15 passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
+
+Browser verification runs entirely in Docker:
+
+```sh
+docker build -f docker/ui-test.Dockerfile -t vectornext-ui-test:t18 .
+docker run --rm --network none vectornext-ui-test:t18 npm test
+docker run --rm --network none --ipc=host vectornext-ui-test:t18 npm run e2e -- workspace.spec.ts
+```
+
+T16–T18 passed 116 Rust, 118 Python unit/regression checks, five live HTTP checks, five frontend component checks, nine offline browser scenarios and a production-browser scenario with real Gemma. [Results, retained failures and limitations](docs/reports/t16-t18-local-app.md). These are operational checks, not a new retrieval-quality benchmark.
 
 ## Explore the implementation
 
@@ -212,9 +253,9 @@ These commands cover the 108 Rust checks, 54 original fixture/scorer/protocol ch
 
 ## Project status and next steps
 
-T01–T15 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection and numeric proof validation. The app is ready for local experimentation. The public API is still evolving, and there is no web UI or multi-user authentication.
+T01–T18 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection and numeric proof validation. The app is ready for local experimentation. The browser workspace and Windows launcher are implemented. The public API is still evolving; multi-user authentication remains out of scope.
 
-T13 adds coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). After T15, the next work to scope is field-specific candidate retrieval and clearer ambiguity evaluation. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
+T13 adds coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). After the T16–T18 usability work, the next work to scope is field-specific candidate retrieval and clearer ambiguity evaluation. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
 
 For contributions, start with the [architecture](docs/architecture.md), [build plan](docs/plan.md) and [working instructions](AGENTS.md). Reproducible retrieval failures with shareable source files are especially useful.
 

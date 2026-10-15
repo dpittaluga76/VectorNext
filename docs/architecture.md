@@ -1,7 +1,7 @@
 # VectorNext architecture
 
 Status: implemented T01–T15 local application, evaluations, workflow reports, recovery, experimental field coverage and numeric proof support. Remaining proposals are identified below.
-Last updated: 2026-10-14.
+Last updated: 2026-10-15.
 
 This document condenses the project discussion into an implementation reference. It is not a claim that the system is implemented or that every proposed technology has been selected. Explicit user instructions can revise it.
 
@@ -24,11 +24,27 @@ T10 adds source/answer scoring, isolated cold/warm API comparisons, stage/queue/
 
 ## 2. Integrated deployment
 
+### Adopted browser workspace — T16–T18 (implemented 2026-10-15)
+
+The approved interface is React + TypeScript + Vite with shadcn/ui, compiled in Docker and served by the Rust API at the same local origin. Normal operation retains the API, CPU processor and GPU generator only. Assets/fonts are local; no cloud inference or frontend runtime service is introduced.
+
+T16 adds additive `/v1/ui/` endpoints for multipart ingestion with stable upload identities, compact library metadata, revision-checked replacement/removal and source reads, and simple questions. Existing CLI routes remain compatible. Browser requests require the configured local origin; arbitrary cross-origin access remains rejected. Optional source filenames are bound to new ingestion configurations and omitted from legacy serialization when absent. Replacement/removal cannot race unfinished ingestion. Deletion removes searchable documents, not historical jobs or unreclaimed blobs.
+
+Simple questions use one bounded, schema-constrained local planning call to propose fields from the original question/history. Planning cannot supply answers, pointers, hard filters or replacement queries. Explicit field requests bypass planning. The existing extraction, exact JSON reads, T15 proof checks and 30/20/5 ranked defaults remain authoritative. Browser answer values are text plus type so JavaScript cannot round them; raw diagnostic JSON is exported as opaque text.
+
+T17 presents a document library, conversation and evidence panel. Factual fields link to exact captured passages/locations; optional prose remains a labelled draft. PDF evidence uses extracted text/page references and opening the original, not coordinate overlays. Processing/readiness/error states are factual; live phase percentages are not invented. Advanced controls expose fields, templates, retrieval options, JSON record selection and explicit partial PDF extraction.
+
+Conversations and captured evidence persist only in this browser's IndexedDB, with export/clear controls. The last four complete validated question/answer exchanges form a visible context window; rejected drafts are excluded, oversized turns are refused, and changing document scope starts a new conversation. Replaced/deleted sources are marked historical rather than silently substituted. Removal requires user confirmation.
+
+T18 supplies Windows Setup, Start, Rebuild and Stop actions. Setup performs prerequisite checks and existing checksum-verified downloads/builds; routine Start reuses local images/models, opens the browser when the API is live and lets capability readiness finish visibly. Stop targets only the normal VectorNext project and preserves volumes.
+
+Acceptance passed with browser-only workflows, compatibility/integrity tests, Docker browser checks and focused local-Gemma smoke checks; see [T16–T18 verification](reports/t16-t18-local-app.md). Authentication, remote hosting, integrated PDF highlighting, token streaming and new retrieval-quality experiments remain separate follow-ups. Historical freezes/results and the unused holdout stay intact.
+
 Use Docker Compose with three long-running services:
 
 | Service | Implementation | Responsibility |
 | --- | --- | --- |
-| vectornext | Rust library and server | Database, API, query planning, durable jobs, scheduling, caches, and static web assets when a UI exists |
+| vectornext | Rust library and server | Database, API, query planning, durable jobs, scheduling, caches, and bundled React browser assets |
 | processor | Python service, CPU | PDF/OCR artifacts, dedicated embeddings, compact reranking, and model request orchestration; deterministic TXT/JSON stays in Rust |
 | llm | CUDA-enabled llama.cpp server | Local generation for contextual enrichment, fact extraction, and flexible rewriting |
 

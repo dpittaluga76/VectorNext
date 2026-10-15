@@ -239,7 +239,7 @@ impl Default for AnswerOptions {
     }
 }
 impl AnswerOptions {
-    fn validate(&self) -> Result<()> {
+    pub(crate) fn validate(&self) -> Result<()> {
         require(
             self.evidence_strategy != EvidenceStrategy::CoverageV1
                 || (self.rerank && self.rerank_limit <= 20),
@@ -259,7 +259,7 @@ fn elapsed(start: Instant) -> f64 {
     start.elapsed().as_secs_f64() * 1000.0
 }
 
-fn validate_request(r: &AskRequest) -> Result<()> {
+pub(crate) fn validate_request(r: &AskRequest) -> Result<()> {
     require(
         !r.question.trim().is_empty() && r.question.len() <= 8192,
         "invalid question length",

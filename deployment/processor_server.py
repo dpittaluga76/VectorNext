@@ -14,7 +14,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 MAX_RPC = 4 * 1024 * 1024
 MAX_PDF = 16 * 1024 * 1024
-OPS = {'profile', 'stats', 'count', 'embed', 'generate', 'rerank', 'answer_tokens', 'answer', 'rewrite'}
+OPS = {'profile', 'stats', 'count', 'embed', 'generate', 'rerank', 'answer_tokens', 'answer', 'rewrite', 'plan_fields'}
 
 
 class Busy(Exception): pass
