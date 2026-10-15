@@ -1,0 +1,98 @@
+[
+  [
+    "count",
+    [
+      "harbor.txt"
+    ],
+    "How many probes does the Harbor expedition have?",
+    [
+      "8"
+    ],
+    []
+  ],
+  [
+    "followup",
+    [
+      "harbor.txt"
+    ],
+    "Who directs it?",
+    [
+      "Inez Flores"
+    ],
+    [
+      {
+        "role": "user",
+        "text": "How many probes does the Harbor expedition have?"
+      },
+      {
+        "role": "assistant",
+        "text": "probes: 8 (integer)"
+      }
+    ]
+  ],
+  [
+    "separate_counts",
+    [
+      "harbor.txt",
+      "cedar.txt"
+    ],
+    "How many boats does Harbor expedition have, and how many gauges does Cedar weather post have?",
+    [
+      "2",
+      "21"
+    ],
+    []
+  ],
+  [
+    "pdf",
+    [
+      "nimbus.pdf"
+    ],
+    "How many receivers does the Nimbus tower have?",
+    [
+      "9"
+    ],
+    []
+  ],
+  [
+    "exact_json",
+    [
+      "precision.json"
+    ],
+    "What are the numeric amount, integer zero and raw nullable integer unknown stored in precision-spruce?",
+    [
+      "9007199254740995.00000000000009",
+      "0",
+      "null"
+    ],
+    []
+  ],
+  [
+    "missing",
+    [
+      "harbor.txt"
+    ],
+    "Who funded the Harbor expedition?",
+    null,
+    []
+  ],
+  [
+    "clarification",
+    [
+      "harbor.txt"
+    ],
+    "What is its capacity?",
+    "question needs clarification",
+    []
+  ],
+  [
+    "aggregation",
+    [
+      "harbor.txt",
+      "cedar.txt"
+    ],
+    "Compute the average gauge count across all weather post records.",
+    "does not support calculations across records",
+    []
+  ]
+]

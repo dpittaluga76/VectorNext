@@ -1,0 +1,2024 @@
+{
+  "task": "T26",
+  "date": "2026-10-15",
+  "status": "complete",
+  "scope": "Agent-authored synthetic planning/integration verification; not independent semantic-quality evidence",
+  "planner_runs": {
+    "baseline-v1": {
+      "cases": 15,
+      "passed": 6,
+      "median_seconds": 2.745853698001156,
+      "maximum_seconds": 4.5599724919993605,
+      "results": [
+        {
+          "id": "P01",
+          "input": {
+            "question": "How many sensors are installed at Quartz outpost?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 3.167276534000848,
+          "errors": [
+            "status"
+          ],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 242,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P02",
+          "input": {
+            "question": "In which year did Meridian observatory open?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 4.031390490999911,
+          "errors": [
+            {
+              "unmatched_field": {
+                "kind": "integer",
+                "nullable": false,
+                "terms": [
+                  [
+                    "meridian"
+                  ],
+                  [
+                    "year"
+                  ]
+                ]
+              }
+            }
+          ],
+          "plan": {
+            "fields": [
+              {
+                "description": "The year in which the Meridian observatory opened",
+                "kind": "integer",
+                "name": "opening_year",
+                "nullable": true
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 241,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P03",
+          "input": {
+            "question": "Who leads the Juniper expedition?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 2.745853698001156,
+          "errors": [
+            "status"
+          ],
+          "plan": {
+            "fields": [],
+            "status": "needs_clarification"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 239,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P04",
+          "input": {
+            "question": "What is the reported battery capacity of Lumen rover in watt-hours?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 4.5599724919993605,
+          "errors": [
+            {
+              "unmatched_field": {
+                "kind": "number",
+                "nullable": false,
+                "terms": [
+                  [
+                    "lumen"
+                  ],
+                  [
+                    "capacity"
+                  ],
+                  [
+                    "watt"
+                  ]
+                ]
+              }
+            }
+          ],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported battery capacity of the Lumen rover in watt-hours",
+                "kind": "number",
+                "name": "battery_capacity_watt_hours",
+                "nullable": true
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 247,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P05",
+          "input": {
+            "question": "How many cameras does Quartz outpost have, and how many radios does Meridian outpost have?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 2.7933562860016536,
+          "errors": [
+            "status"
+          ],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 250,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P06",
+          "input": {
+            "question": "Who leads that expedition?",
+            "history": [
+              {
+                "role": "user",
+                "text": "In which year did the Juniper expedition start?"
+              },
+              {
+                "role": "assistant",
+                "text": "start_year: 2022 (integer)"
+              }
+            ]
+          },
+          "http_status": 200,
+          "seconds": 3.204096084002231,
+          "errors": [
+            "status"
+          ],
+          "plan": {
+            "fields": [],
+            "status": "needs_clarification"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 273,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P07",
+          "input": {
+            "question": "How many does it have?",
+            "history": [
+              {
+                "role": "user",
+                "text": "What is the reported number of sensors at Quartz outpost?"
+              },
+              {
+                "role": "assistant",
+                "text": "sensor_count: 11 (integer)"
+              }
+            ]
+          },
+          "http_status": 200,
+          "seconds": 3.162986038998497,
+          "errors": [
+            "status"
+          ],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 274,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P08",
+          "input": {
+            "question": "Return the raw nullable integer maintenance_count stored for Lumen rover.",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 2.7090337310000905,
+          "errors": [
+            "status"
+          ],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 246,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P09",
+          "input": {
+            "question": "What is the reported launch year of fictional ship Vesper?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 4.2345915919977415,
+          "errors": [
+            {
+              "unmatched_field": {
+                "kind": "integer",
+                "nullable": false,
+                "terms": [
+                  [
+                    "vesper"
+                  ],
+                  [
+                    "launch"
+                  ],
+                  [
+                    "year"
+                  ]
+                ]
+              }
+            }
+          ],
+          "plan": {
+            "fields": [
+              {
+                "description": "The year the fictional ship Vesper was launched",
+                "kind": "integer",
+                "name": "launch_year",
+                "nullable": true
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 245,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N01",
+          "input": {
+            "question": "Who leads it?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 2.525293224000052,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "needs_clarification"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 237,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N02",
+          "input": {
+            "question": "How many?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 2.41647536399978,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "needs_clarification"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 236,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N03",
+          "input": {
+            "question": "Sum the sensor counts across all outpost records.",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 2.449603498000215,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 242,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N04",
+          "input": {
+            "question": "What is the average camera count across all records?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 2.460862015999737,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 243,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N05",
+          "input": {
+            "question": "How many records mention Quartz?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 2.7091269529992132,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 239,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N06",
+          "input": {
+            "question": "What is the total number of radios across all stations?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 2.4836490740017325,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "prompt_sha256": "5e1326808ccd39c8f0804fb5f5b86abbba434a742c284745d45ccd6d9dbf8874",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 244,
+            "output_limit": 768
+          }
+        }
+      ]
+    },
+    "candidate-v1": {
+      "cases": 15,
+      "passed": 15,
+      "median_seconds": 6.04364772199915,
+      "maximum_seconds": 20.20844196500184,
+      "results": [
+        {
+          "id": "P01",
+          "input": {
+            "question": "How many sensors are installed at Quartz outpost?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 7.397719110002072,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported number of sensors installed at Quartz outpost.",
+                "kind": "integer",
+                "name": "quartz_outpost_sensor_count",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "df9270dafda2b66db7f3c30f230d5e16abb8d9cc5deea2e27b401735b3b06e1c",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 461,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P02",
+          "input": {
+            "question": "In which year did Meridian observatory open?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 10.053950379002345,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The year in which the Meridian observatory opened.",
+                "kind": "integer",
+                "name": "meridian_observatory_opening_year",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "bcf0bf06e089b2331b1d3653fa1ef29a660efd9891677d5f4e5ea8f756ad4bdf",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 460,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P03",
+          "input": {
+            "question": "Who leads the Juniper expedition?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 11.396342502001062,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The name of the person leading the Juniper expedition",
+                "kind": "string",
+                "name": "juniper_expedition_leader",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "7827f485be893ba47820419619180f1524adb6e75043a40e2b3019985a8aed24",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 458,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P04",
+          "input": {
+            "question": "What is the reported battery capacity of Lumen rover in watt-hours?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 7.910659357999975,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported battery capacity of the Lumen rover in watt-hours.",
+                "kind": "number",
+                "name": "lumen_rover_battery_capacity_watt_hours",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "829b27f39e7cdc2b6ebf181ad29c6d027818d030ae2fb4ff0bd0b3d670d5dad0",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 466,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P05",
+          "input": {
+            "question": "How many cameras does Quartz outpost have, and how many radios does Meridian outpost have?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 20.20844196500184,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported number of cameras at Quartz outpost",
+                "kind": "integer",
+                "name": "quartz_outpost_camera_count",
+                "nullable": false
+              },
+              {
+                "description": "The reported number of radios at Meridian outpost",
+                "kind": "integer",
+                "name": "meridian_outpost_radio_count",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "8c84a57105916309dab41d92f8d99ac1705583c6e6cf1befacd436209cca97b8",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 469,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P06",
+          "input": {
+            "question": "Who leads that expedition?",
+            "history": [
+              {
+                "role": "user",
+                "text": "In which year did the Juniper expedition start?"
+              },
+              {
+                "role": "assistant",
+                "text": "start_year: 2022 (integer)"
+              }
+            ]
+          },
+          "http_status": 200,
+          "seconds": 6.5404995530007,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The name of the person who leads the Juniper expedition.",
+                "kind": "string",
+                "name": "juniper_expedition_leader_name",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "67241dc41689eb833766fe8e22d4faab41ae3cbb8cb186e18ac72fc37d93b96d",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 492,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P07",
+          "input": {
+            "question": "How many does it have?",
+            "history": [
+              {
+                "role": "user",
+                "text": "What is the reported number of sensors at Quartz outpost?"
+              },
+              {
+                "role": "assistant",
+                "text": "sensor_count: 11 (integer)"
+              }
+            ]
+          },
+          "http_status": 200,
+          "seconds": 6.030696515001182,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported number of sensors at Quartz outpost",
+                "kind": "integer",
+                "name": "sensor_count",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "a1326342a21275a87fa3c1d07ede3f6932ddc52dd30c0c177e31c14e0432a19d",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 493,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P08",
+          "input": {
+            "question": "Return the raw nullable integer maintenance_count stored for Lumen rover.",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 6.19248491899998,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The raw nullable integer maintenance count stored for the Lumen rover.",
+                "kind": "integer",
+                "name": "lumen_rover_maintenance_count",
+                "nullable": true
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "379f27a40867d07a02695662f967b11ad8bc6ff5c3c1b1b619ea0f27d41114b2",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 465,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "P09",
+          "input": {
+            "question": "What is the reported launch year of fictional ship Vesper?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 6.04364772199915,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported launch year of the fictional ship Vesper",
+                "kind": "integer",
+                "name": "vesper_launch_year",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "1a3f53887fd0896313ba5d0805862ac981f04bc952211ccf326b8a0c5ed21591",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 464,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N01",
+          "input": {
+            "question": "Who leads it?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 4.092511613998795,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "needs_clarification"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "1bbc5c7368189e6bc6d90b93b35bec979fc2cb2599cffc3d0b6de59a0e95f7b3",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 456,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N02",
+          "input": {
+            "question": "How many?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 3.825507755002036,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "needs_clarification"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "4e9dcc20d034bd660cced39a888f8b901ff79dc389710c18d1aa1501a41d8518",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 455,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N03",
+          "input": {
+            "question": "Sum the sensor counts across all outpost records.",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 4.110293191002711,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "583f94815ffe1bcb3662f6a47aa3495ff19f83f1aa8455496a2454e9a1b32f24",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 461,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N04",
+          "input": {
+            "question": "What is the average camera count across all records?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 4.167011498997454,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "8df1802df6a6f9279f13dceb41f59864a471991488a425f44733a2ffa6ccbf74",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 462,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N05",
+          "input": {
+            "question": "How many records mention Quartz?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 4.073077275999822,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "84bb834d9e58cfbf9b5fc77ce045c6c3d1540a88e7ad9dc781f107a24496759e",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 458,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "N06",
+          "input": {
+            "question": "What is the total number of radios across all stations?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 4.198035579000134,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v2",
+            "input_sha256": "56113b237910ee2543ce7a5a848e8d475f7c2e07ffe6e59a42202b3d1a7abd32",
+            "prompt_sha256": "28c6b45a1bf096e119ffb604c4912660006715792c5f9ddd5ad46a19ba55a688",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 463,
+            "output_limit": 768
+          }
+        }
+      ]
+    },
+    "candidate-v3": {
+      "cases": 12,
+      "passed": 12,
+      "median_seconds": 7.108013372500864,
+      "maximum_seconds": 10.268941731999803,
+      "results": [
+        {
+          "id": "V01",
+          "input": {
+            "question": "What is the numeric amount stored in precision-spruce?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 7.0168594749993645,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The numeric amount stored in precision-spruce",
+                "kind": "number",
+                "name": "precision_spruce_numeric_amount",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "2075365dac7fdee8e88ee3159d3a0ad6d1973d148bb6ecd261fb04c62ab75bb7",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 531,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V02",
+          "input": {
+            "question": "Give the integer retry_count and numeric balance stored for Beacon.",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 8.02413449100277,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported integer retry count for Beacon",
+                "kind": "integer",
+                "name": "retry_count",
+                "nullable": false
+              },
+              {
+                "description": "The reported numeric balance for Beacon",
+                "kind": "number",
+                "name": "balance",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "f281e8bd14ab25be7b333a080180287f42fcddf864c8297cb70ff3962f70d1b1",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 532,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V03",
+          "input": {
+            "question": "Give the decimal voltage and integer port_count of the Cinder instrument.",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 8.768369508998148,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The decimal voltage of the Cinder instrument",
+                "kind": "number",
+                "name": "cinder_instrument_voltage",
+                "nullable": false
+              },
+              {
+                "description": "The integer count of ports on the Cinder instrument",
+                "kind": "integer",
+                "name": "cinder_instrument_port_count",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "f86a8e50a2f1eb7344c6bb54b52881b2c7b61b1eb135a331c06f60b7ac49a145",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 534,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V04",
+          "input": {
+            "question": "What are the numeric amount, integer zero and raw nullable integer unknown stored in precision-spruce?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 10.268941731999803,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The numeric amount stored in precision-spruce",
+                "kind": "number",
+                "name": "numeric_amount",
+                "nullable": false
+              },
+              {
+                "description": "The integer zero stored in precision-spruce",
+                "kind": "integer",
+                "name": "integer_zero",
+                "nullable": false
+              },
+              {
+                "description": "The raw nullable integer unknown stored in precision-spruce",
+                "kind": "integer",
+                "name": "raw_nullable_integer_unknown",
+                "nullable": true
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "1377f7e4e169d4c18a828b4d523f1e71d72548e4611ce0cfb4af939cd7c1f179",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 539,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V05",
+          "input": {
+            "question": "How many probes does the Harbor expedition have?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 6.780769672997849,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported number of probes belonging to the Harbor expedition",
+                "kind": "integer",
+                "name": "harbor_expedition_probe_count",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "f68642842eec34e1b552e96681f97aa0bb16bc5b4437e62aa0f640f8f173cfbb",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 528,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V06",
+          "input": {
+            "question": "Who directs it?",
+            "history": [
+              {
+                "role": "user",
+                "text": "How many probes does the Harbor expedition have?"
+              },
+              {
+                "role": "assistant",
+                "text": "probes: 8 (integer)"
+              }
+            ]
+          },
+          "http_status": 200,
+          "seconds": 7.094600447999255,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The name of the person who directs the Harbor expedition",
+                "kind": "string",
+                "name": "harbor_expedition_director",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "10442e087835a1cc0252fa84f940ad04623c6856513ddce7c4763e4a903ee5e2",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 554,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V07",
+          "input": {
+            "question": "What was the reported temperature of Finch sensor on 2024-03-09 in degrees Celsius?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 7.121426297002472,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported temperature of the Finch sensor on 2024-03-09 in degrees Celsius",
+                "kind": "number",
+                "name": "finch_sensor_reported_temperature",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "bf1017e9f1e098a9343fbf7156de6f55ee35c7741590d232bec40168b52c1f9a",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 543,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V08",
+          "input": {
+            "question": "Return the stored boolean active and string owner for Ash buoy.",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 7.9121403280005325,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The stored active status of the Ash buoy",
+                "kind": "boolean",
+                "name": "ash_buoy_active",
+                "nullable": false
+              },
+              {
+                "description": "The stored owner of the Ash buoy",
+                "kind": "string",
+                "name": "ash_buoy_owner",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "630034557248cfb4e5f0f98d79c33acfba9101b9e577f49846176e73f0bb4da9",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 531,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V09",
+          "input": {
+            "question": "In which year did the Willow station open?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 6.254346205998445,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The year in which the Willow station opened",
+                "kind": "integer",
+                "name": "willow_station_opening_year",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "1b2ac383a30245ae386370bfedaeaf85827932802dcb7fe9ad4e1e2bce19cebc",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 528,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V10",
+          "input": {
+            "question": "How many boats does Harbor expedition have, and how many gauges does Cedar weather post have?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 8.395327409001766,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported number of boats owned or operated by Harbor expedition",
+                "kind": "integer",
+                "name": "harbor_expedition_boat_count",
+                "nullable": false
+              },
+              {
+                "description": "The reported number of gauges at Cedar weather post",
+                "kind": "integer",
+                "name": "cedar_weather_post_gauge_count",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "7b44834b3ceb5e9a1f940b1c1f85e06c86b7f5a29891a048ffaa24d1d257ac8a",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 537,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V11",
+          "input": {
+            "question": "Compute the average balance across every account record.",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 4.624123574998521,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "unsupported"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "498ac770e628ea8c843b6d47450352d1d062c8ba7be67bccde1232cd171ef0d7",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 528,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "V12",
+          "input": {
+            "question": "What is its capacity?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 4.68299935899995,
+          "errors": [],
+          "plan": {
+            "fields": [],
+            "status": "needs_clarification"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "637459feb0e57266e789356bed980dd26c6926a36f5403e37235a4611cf29c25",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 524,
+            "output_limit": 768
+          }
+        }
+      ]
+    },
+    "regressions-v3": {
+      "cases": 5,
+      "passed": 5,
+      "median_seconds": 7.1115778560015315,
+      "maximum_seconds": 10.521806179000123,
+      "results": [
+        {
+          "id": "R01",
+          "input": {
+            "question": "In which year did the Aster station open?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 7.1115778560015315,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The year in which the Aster station opened",
+                "kind": "integer",
+                "name": "aster_station_opening_year",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "eff5440d7c5148efe92f10a6eab24109690dedf70d98db191a38eea88ce17937",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 528,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "R02",
+          "input": {
+            "question": "Who directs that station?",
+            "history": [
+              {
+                "role": "user",
+                "text": "In which year did the Aster station open?"
+              },
+              {
+                "role": "assistant",
+                "text": "opening_year: 2017 (integer)"
+              }
+            ]
+          },
+          "http_status": 200,
+          "seconds": 6.926944399001513,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The name of the person who directs the Aster station.",
+                "kind": "string",
+                "name": "station_director_name",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "3ccb432773ff8b4fc33b55f8ff21ce4298a5136b1267c68a7e6dc8aa4a09803b",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 559,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "R03",
+          "input": {
+            "question": "How many solar panels does Aster station have, and how many antennas does Boreal station have?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 8.09418706499855,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported number of solar panels on Aster station",
+                "kind": "integer",
+                "name": "aster_station_solar_panel_count",
+                "nullable": false
+              },
+              {
+                "description": "The reported number of antennas on Boreal station",
+                "kind": "integer",
+                "name": "boreal_station_antenna_count",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "2235a573cf74931cb0485c71fd9ff48f490ec18c2745dd82bbc1d2b0a74f2c3c",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 538,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "R04",
+          "input": {
+            "question": "How many sensors does Cobalt station have?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 6.1383003250011825,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The reported number of sensors located at Cobalt station",
+                "kind": "integer",
+                "name": "cobalt_station_sensor_count",
+                "nullable": false
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "7d239488a26c3e0c8c3eae9c238f7065114a2376832c7ae62d628d0cb0439933",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 527,
+            "output_limit": 768
+          }
+        },
+        {
+          "id": "R05",
+          "input": {
+            "question": "What are the exact numeric amount, integer zero and raw nullable integer unknown stored in precision-lumen?",
+            "history": []
+          },
+          "http_status": 200,
+          "seconds": 10.521806179000123,
+          "errors": [],
+          "plan": {
+            "fields": [
+              {
+                "description": "The exact numeric amount stored in precision-lumen",
+                "kind": "number",
+                "name": "precision_lumen_exact_numeric_amount",
+                "nullable": false
+              },
+              {
+                "description": "The integer zero stored in precision-lumen",
+                "kind": "integer",
+                "name": "precision_lumen_integer_zero",
+                "nullable": false
+              },
+              {
+                "description": "The raw nullable integer unknown stored in precision-lumen",
+                "kind": "integer",
+                "name": "precision_lumen_raw_nullable_integer_unknown",
+                "nullable": true
+              }
+            ],
+            "status": "ready"
+          },
+          "audit_identity": {
+            "planning_version": "field-planning-v3",
+            "input_sha256": "f042130af4734a5c2308129ec46fe898799156868bd27f359e91d83b760bfda9",
+            "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+            "schema_sha256": "0fed3789e692fbe1623d86e24725a0876fe227b62e3f1b44ce6b81cc8e2930a3",
+            "temperature": 0,
+            "seed": 42,
+            "model": {
+              "artifact_sha256": "3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d",
+              "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+              "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "input_tokens": 540,
+            "output_limit": 768
+          }
+        }
+      ]
+    }
+  },
+  "live_runs": {
+    "live-v1": {
+      "cases": 8,
+      "automated_passed": 6,
+      "results": [
+        {
+          "id": "count",
+          "http_status": 200,
+          "outcome": "supported",
+          "values": [
+            "11"
+          ],
+          "errors": []
+        },
+        {
+          "id": "followup",
+          "http_status": 200,
+          "outcome": "supported",
+          "values": [
+            "Ana Reed"
+          ],
+          "errors": []
+        },
+        {
+          "id": "separate_counts",
+          "http_status": 200,
+          "outcome": "supported",
+          "values": [
+            "6",
+            "4"
+          ],
+          "errors": []
+        },
+        {
+          "id": "pdf",
+          "http_status": 200,
+          "outcome": "supported",
+          "values": [
+            "13"
+          ],
+          "errors": []
+        },
+        {
+          "id": "exact_json",
+          "http_status": 200,
+          "outcome": "insufficient_evidence",
+          "values": [],
+          "errors": [
+            "{'draft_text': None, 'evidence': [{'id': 'E1', 'key': {'chunk_id': 'c0', 'document_id': 'doc-f3b2ac50-9862-40a7-aa43-835a0249c900', 'revision': 'f65560cb76011857cdb37257016ff700995f7d9bad2611d5258024f3b7324429'}, 'labels': [], 'record_text': '{\"amount\":9007199254740993.00000000000001,\"id\":\"precision-lumen\",\"unknown\":null,\"zero\":0}', 'sources': [{'label': 'JSON pointer ', 'raw_text': '{\"locator\":{\"Json\":{\"pointer\":\"\",\"record_id\":\"precision-lumen\"}},\"revision\":\"f65560cb76011857cdb37257016ff700995f"
+          ]
+        },
+        {
+          "id": "missing",
+          "http_status": 200,
+          "outcome": "insufficient_evidence",
+          "values": [],
+          "errors": []
+        },
+        {
+          "id": "clarification",
+          "http_status": 400,
+          "outcome": null,
+          "values": [],
+          "errors": []
+        },
+        {
+          "id": "aggregation",
+          "http_status": 400,
+          "outcome": null,
+          "values": [],
+          "errors": [
+            "{'error': {'code': 'invalid_request', 'message': 'invalid record: aggregate question requires an unsupported corpus aggregation operation'}}"
+          ]
+        }
+      ],
+      "contract_review": {
+        "reviewed_passed": 7,
+        "original_score_preserved": true,
+        "exception": "aggregation: existing Rust pre-planning guard correctly returned HTTP 400 invalid_request, with the existing unsupported corpus aggregation message; initial harness expected the planner wording.",
+        "remaining_failure": "exact_json: planner incorrectly selected integer for a numeric amount; source validation abstained."
+      }
+    },
+    "live-v3": {
+      "cases": 8,
+      "automated_passed": 8,
+      "results": [
+        {
+          "id": "count",
+          "http_status": 200,
+          "outcome": "supported",
+          "values": [
+            "8"
+          ],
+          "errors": []
+        },
+        {
+          "id": "followup",
+          "http_status": 200,
+          "outcome": "supported",
+          "values": [
+            "Inez Flores"
+          ],
+          "errors": []
+        },
+        {
+          "id": "separate_counts",
+          "http_status": 200,
+          "outcome": "supported",
+          "values": [
+            "21",
+            "2"
+          ],
+          "errors": []
+        },
+        {
+          "id": "pdf",
+          "http_status": 200,
+          "outcome": "supported",
+          "values": [
+            "9"
+          ],
+          "errors": []
+        },
+        {
+          "id": "exact_json",
+          "http_status": 200,
+          "outcome": "supported",
+          "values": [
+            "0",
+            "9007199254740995.00000000000009",
+            "null"
+          ],
+          "errors": []
+        },
+        {
+          "id": "missing",
+          "http_status": 200,
+          "outcome": "insufficient_evidence",
+          "values": [],
+          "errors": []
+        },
+        {
+          "id": "clarification",
+          "http_status": 400,
+          "outcome": null,
+          "values": [],
+          "errors": []
+        },
+        {
+          "id": "aggregation",
+          "http_status": 400,
+          "outcome": null,
+          "values": [],
+          "errors": []
+        }
+      ]
+    }
+  },
+  "verification": {
+    "rust_top_level_passed": 158,
+    "python_passed": 62,
+    "frozen_http_cases_passed": 71,
+    "browser_boundaries_passed": 5,
+    "openapi_checks_passed": 2,
+    "frontend_components_passed": 5,
+    "offline_browser_scenarios_passed": 10,
+    "real_adapter_docs_scenarios_passed": 2,
+    "live_browser_scenarios_passed": 1,
+    "captured_replay_scenarios_passed": 1,
+    "fmt": "passed",
+    "clippy": "passed",
+    "frontend_build": "passed"
+  },
+  "activation": {
+    "ready": true,
+    "library_unchanged": true,
+    "documents": 1,
+    "capabilities": {
+      "embedding": true,
+      "generation": true,
+      "pdf": true,
+      "reranking": true
+    },
+    "images": {
+      "vectornext-vectornext-1": "sha256:6eb40df896cca9ae072e009d04bdaafb631c49057d69b8ce048368028fed491d",
+      "vectornext-processor-1": "sha256:e35e7ac30dc120ab1818422faed944ec0fdddc29a33de452f08bc33e142598d8",
+      "vectornext-llm-1": "sha256:af5058019fb4a130c61849a738b5918b48067b6fd0c52d1c9b44075fa86fd74a"
+    }
+  },
+  "execution_freezes": {
+    "execution-freeze-v1.json": {
+      "head": "c0ada19a8464478e4a642e11a3541a80d467da6f",
+      "files": {
+        "model_worker/planning.py": "ed39d3f3626364ce38eb0cbed71853334d2937837efe5e3bca4a2019f3874ca3",
+        "model_worker/answers.py": "4165d49c44c97e70421fb731d9abb0e76b4e029fbca021a54e8bbe7dda6025a3",
+        "model_worker/server.py": "fb00b3245ab72f3f1bfa49cce99f329e12ce30c99a90102df05a4f0874474297",
+        "model_worker/scheduler.py": "b583ccfa9e4d338f56fe3250696a099037264151dba87266175aa7d46d0c278d",
+        "src/service/ui.rs": "bd4d03720235e7358225f42e79ee483509e0b490f345d916bf93926f074192de",
+        "experiments/t26/planner_check.py": "2ff1ed42eb402905be303fb1864a16dae5e5417d3306b8973a3c9997d3b887f7"
+      },
+      "images": {
+        "vectornext-app-processor:t18": "sha256:2b54b9dd045f7e95ce1c632fb167d8061cdbc3057c41efbc680e252c160bf233",
+        "vectornext-app-processor:t26": "sha256:4bcdb995d85e2611c1f2e37da899b42c64b797947d163505e9c6a8f468138ce3",
+        "vectornext-app-llm:t18": "sha256:af5058019fb4a130c61849a738b5918b48067b6fd0c52d1c9b44075fa86fd74a"
+      }
+    },
+    "execution-freeze-v3.json": {
+      "head": "c0ada19a8464478e4a642e11a3541a80d467da6f",
+      "files": {
+        "model_worker/planning.py": "d34aec7b619170c313691f618841b1e08f8b254e5dcc4280f24ea37bb0983a31",
+        "model_worker/answers.py": "4165d49c44c97e70421fb731d9abb0e76b4e029fbca021a54e8bbe7dda6025a3",
+        "model_worker/server.py": "fb00b3245ab72f3f1bfa49cce99f329e12ce30c99a90102df05a4f0874474297",
+        "model_worker/scheduler.py": "b583ccfa9e4d338f56fe3250696a099037264151dba87266175aa7d46d0c278d",
+        "src/service/ui.rs": "78922a9211bcbb30e6c70e8f5c9a72e57f15acf2532eaa09a5579ae9f2935555",
+        "experiments/t26/planner_check.py": "ba5044d5a030c37f5633951c67698e0cc3be24e5b92c3ac12a2849fd8302ec4c",
+        "experiments/t26/live_check.py": "6adf572837c60cf766869b3023b57e805e63c3eb7a371c5c970d050892e667b6",
+        "frontend/e2e/planning-live.spec.ts": "8e5c55d5e9cf49edbe632f53f1cb4a86af18fa7e7af53e6a607d5b404d09227e"
+      },
+      "images": {
+        "vectornext-app:t26": "sha256:6eb40df896cca9ae072e009d04bdaafb631c49057d69b8ce048368028fed491d",
+        "vectornext-app-processor:t26": "sha256:e24749fe968ce2b8429b0887aa552e30733f0263085db60098fe04677d069eaf",
+        "vectornext-app-llm:t18": "sha256:af5058019fb4a130c61849a738b5918b48067b6fd0c52d1c9b44075fa86fd74a"
+      }
+    }
+  },
+  "retained_archives": {
+    "backups/t25-source-before-t26.zip": "c1e30c8cc4dc546adbe04397eb5b5a770480e41b55147153825cbe7e81c93395",
+    "data/t26/candidate-v1-source.zip": "7b736906ff91e11676d268d3b02231d3f6b411149108e37f549447644926c6d1"
+  },
+  "final_ui_test_image": "sha256:79a19cdb567d42444c90dcd696109898061e88d483e55c33b92ebd37b914db1c",
+  "harness_attempts": [
+    "Initial raw diagnosis before readiness returned 503; retained and repeated after readiness.",
+    "Initial Python suite referenced nonexistent deployment.test_processor; corrected module run passed.",
+    "First browser null locator matched value and type.",
+    "Browser recheck stopped while waiting for a hidden Inspect button, after three automatic answers.",
+    "First replay collided with preview port; later replay identified hidden locator.",
+    "Final visible citation locator and bounded waits passed replay and full live browser verification."
+  ]
+}

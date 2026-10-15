@@ -1,0 +1,3 @@
+# Synthetic outpost registry
+
+Quartz outpost has 11 sensors and 4 cameras. The director of Quartz outpost is Ana Reed.

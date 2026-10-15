@@ -50,7 +50,8 @@ The response also includes retrieved passages, source locations, field proofs an
 | **Hybrid retrieval** | Exact cosine similarity, per-field BM25, bounded scalar/document/media filter indexes with exact scan fallback, reciprocal rank fusion and source-preserving deduplication. |
 | **Document-aware ingestion** | TXT passages with byte mappings; PDF text, tables and OCR with page coordinates; JSON records with exact types and pointers. |
 | **Local contextual retrieval** | Plain, structural and optional generated context, followed by CPU reranking and evidence expansion within token budgets. |
-| **Experimental field coverage** | Per-field reranking, bounded passage selection and JSON output constrained to existing typed source paths, with a frozen comparison against ranked two/five. |
+| **Automatic question planning** | One local model call proposes bounded fields from the original question/history, with reported counts, follow-ups, independent numeric types and explicit clarification/aggregation errors. Advanced fields bypass planning. |
+| **Experimental evidence selection** | Opt-in `facet_coverage_v1` expands candidates with up to four field queries and selects complementary passages. Earlier `coverage_v1` remains available; ranked 30/20/5 stays the default. Both experiments retain their frozen results and failures. |
 | **Answers with inspectable sources** | Typed fields, exact quotes or JSON pointers, deterministic templates, conversational context and separate presentation drafts. |
 | **Readable workflow reports** | CLI commands, high-level function references and readable ingestion/search/answer steps, with saved Markdown and offline capture replay. |
 | **Recovery and diagnostics** | Visible coordinator failures, bounded busy retries, PDF warnings before publication and rejected-answer diagnostics with unvalidated drafts. |
@@ -99,6 +100,8 @@ The Rust API is the sole database writer. Parsing and model calls run outside wr
 
 **Query flow:** original question → optional local field planning → embedding + keyword search → rank fusion → CPU reranking → source-context expansion → answerability assessment → typed extraction → validation and formatting. Field planning cannot invent answer values, filters, JSON pointers or a replacement search question.
 
+The versioned `field-planning-v3` operation uses only the original question and bounded conversation history. It defines the requested facts before evidence retrieval: reported counts and separate facts are allowed, calculations across records are unsupported, and unresolved references require clarification. Types are selected independently per field; ordinary missing evidence is not a nullable value. One schema-constrained Gemma call runs at temperature 0, with strict input/output bounds and no automatic retries or fallback fields. Diagnostics record the planner version, original-input hash, prompt/schema/model identities and timings. [Planner contracts](docs/browser-api.md) · [T26 verification](docs/reports/t26-planning.md).
+
 ### Storage, transactions and recovery
 
 VectorNext owns the database and search algorithms. It does not wrap another vector database or search engine, and the runtime needs neither MinIO nor Redis.
@@ -139,6 +142,8 @@ Context policies are `plain` (evidence), `structural` (structure plus evidence, 
 4. **Assemble evidence.** Include original spans, required headings/table labels, complete JSON records and eligible neighbors within the rendered prompt budget: **3,328 input tokens + 768 reserved output tokens** in a 4,096-token context. Skipped expansions are recorded.
 5. **Assess and extract.** Gemma separately assesses answerability, then extracts schema-constrained fields for supported requests. Ambiguous and insufficient-evidence outcomes remain explicit; invalid proofs are rejected.
 6. **Resolve and validate.** For JSON evidence, the model selects an existing record/pointer and Rust materializes the exact source value. For prose, Rust checks typed values, quoted evidence and numeric boundaries against the supplied source. Templates format validated values; optional generated prose stays a labelled draft.
+
+Opt-in facet coverage adds field-derived candidate searches and replaces the final passage selector. It keeps at most 20 reranker candidates and five primaries, suppresses heading-only/substantially overlapping passages, and records planned versus admitted evidence. Neighbor expansion is disabled for this mode; required source labels and complete JSON records still accompany admitted evidence. [Facet selection contract](docs/answers.md#facet-coverage-t25-opt-in).
 
 BM25 uses separate evidence, structural and generated fields with `k1=1.2`, `b=0.75`; RRF defaults to `k=60`. Unicode keyword normalization handles case/diacritics without modifying source evidence. The application sets structural/generated keyword weights to 1 independently of ingestion policy; a fully plain comparison must set both to 0. The underlying search library defaults generated weight to 0. Rankings, filter exclusions, suppressed duplicates, evidence, model identities and stage timings are inspectable.
 
@@ -196,8 +201,8 @@ The normal Compose project runs these three services:
 
 | Service | Image | Resource limits | Data access |
 | --- | --- | --- | --- |
-| `vectornext` | `vectornext-app:t25` | 2 CPUs, 4 GiB RAM | Sole read/write mount of the `data` volume at `/storage`; API, React and docs on host loopback port 8088. |
-| `processor` | `vectornext-app-processor:t18` | 4 CPUs, 6 GiB RAM | Read-only model files and disposable `cache` volume; no database mount or GPU. |
+| `vectornext` | `vectornext-app:t26` | 2 CPUs, 4 GiB RAM | Sole read/write mount of the `data` volume at `/storage`; API, React and docs on host loopback port 8088. |
+| `processor` | `vectornext-app-processor:t26` | 4 CPUs, 6 GiB RAM | Read-only model files and disposable `cache` volume; no database mount or GPU. |
 | `llm` | `vectornext-app-llm:t18` | 8 CPUs, 32 GiB RAM, NVIDIA GPU | Read-only GGUF weights; internal network endpoint with the llama.cpp backend behind the scheduler. |
 
 These are configured limits, not typical utilization. Containers use read-only root filesystems, bounded temporary storage, dropped capabilities and `no-new-privileges`. Processor/generator communication stays on an internal Docker network; only the API publishes a host port. CLI and offline-admin containers run on demand through the `tools` profile. The admin tool has no network and requires exclusive database ownership for export/restore.
@@ -240,11 +245,24 @@ T23 tests evidence retrieval on **12 fresh NIST references / 188 chunks**, using
 
 T24 holds the expanded shortlist constant and tests final passage selection on **10 fresh NASA references / 388 chunks**. Facet-focused selection improves complete frozen final evidence coverage from **16/20 to 18/20 questions**, with no measured regressions, but median uncached retrieval latency rises from **685 ms to 1,437 ms**. All 96 requests succeeded. T25 integrates this selector as an opt-in application mode; those frozen T24 scores measure authored facets and passage coverage, not the automatic app or generated-answer quality. [Results, cost and source-review limitations](docs/reports/t24-final-selection.md) · [Reproduce](evals/selection/README.md).
 
+### Automatic field-planning verification
+
+T26 repairs the follow-up/count failures exposed by T25, then separately addresses a mixed numeric-type failure discovered during verification. Its final `field-planning-v3` candidate passed:
+
+| Check | Result |
+| --- | --- |
+| Newly frozen planner cases | **12/12** — independent field types, counts, follow-ups, units/date constraints, raw nulls and appropriate refusals. |
+| Fresh source-backed API workflows | **8/8** — TXT/PDF/JSON, separate document counts, a conversational follow-up, exact decimal/zero/null values, missing evidence and invalid requests. |
+| Previously observed planner failures and controls | **5/5** — regression checks kept separate from the new cases. |
+| Live browser workflow | Automatic questions, history/scope handling, clickable sources, IndexedDB reload and exact diagnostic export passed. |
+
+The final planner's median call took **7.11 seconds** on its 12-case set. Ordinary questions add this one planning operation before retrieval and the existing answer operations; explicit fields bypass it. These small, agent-authored synthetic checks establish the tested integration behavior. Broad semantic accuracy remains unproven. The first candidate's decimal-type failure and all original scores remain recorded. [Results and retained failures](docs/reports/t26-planning.md) · [Machine-readable results](docs/reports/t26-planning.json) · [Reproduce with isolated data](experiments/t26/README.md).
+
 ### Retrieval and answer evaluations
 
 Measured on an **RTX 4060 with 8 GB VRAM, Ryzen 5 7600 and approximately 64 GB system RAM**, using Docker on Windows/WSL 2.
 
-**Latest: question-aware evidence coverage (T14).** Eight new NASA/USGS sources, 201 chunks and 16 frozen questions compare three strategies across 96 local requests:
+**Public-source answer comparison: question-aware evidence coverage (T14).** Eight new NASA/USGS sources, 201 chunks and 16 frozen questions compare three strategies across 96 local requests:
 
 | Configuration | Exact outcomes, each pass | Median, cold / warm |
 | --- | --- | --- |
@@ -287,6 +305,8 @@ Use Docker Desktop with WSL 2, Linux containers and NVIDIA GPU support. The test
 
 Inside the app: **choose or drop files → select documents → type a question → click a citation**. Try [the Apollo 11 notes](tests/fixtures/ui/apollo11.txt) and ask “In which year did Apollo 11 launch?” TXT, PDF and JSON are accepted up to 16 MiB each. IDs and ordinary answer fields are automatic. Replace and Remove are in the library; removal asks for confirmation.
 
+Automatic field planning works with both Ranked and Facet coverage. A follow-up can refer to a subject from the visible conversation context; the answer still needs supporting document evidence. Advanced controls let you supply fields directly, choose retrieval options or request a separately labelled prose draft. A missing fact produces an insufficient-evidence outcome rather than a guessed value.
+
 Use **VectorNext.cmd → Stop** to stop only this application while keeping documents, models and caches. Choose **Rebuild** after pulling code changes. Routine Start never builds or downloads. The equivalent scripted actions are `powershell -File deployment/VectorNext.ps1 -Action Setup`, `Start`, `Rebuild`, `Stop` or `Status`.
 
 Conversations and captured evidence live in **IndexedDB in this browser**, not on the server. Use **Export** before clearing browser data or changing profiles. Different hostnames/ports have separate histories; use the same `localhost:8088` address consistently. Only the last four supported question/answer exchanges are sent as context. Changing document scope starts a new conversation. Historical passages stay captured after a document is replaced or removed. See [browser/API details and limits](docs/browser-api.md).
@@ -297,7 +317,7 @@ Open **Advanced answer controls → Evidence selection → Facet coverage (exper
 
 The API accepts `"options":{"evidence_strategy":"facet_coverage_v1"}` on `/v1/ui/ask` or `/v1/ask`; CLI users can add `--evidence-strategy facet_coverage_v1`. The mode requires 1–4 fields, reranking enabled, at most 20 reranker candidates and five primaries. It preserves explicit document scope, exact JSON values and source validation.
 
-Local Gemma field planning remains a limitation: in the fresh synthetic integration smoke it declined three follow-up/count questions before retrieval. Supplying explicit fields in Advanced made all three answer correctly with this selector. The automatic simple question, exact JSON/null/zero case and missing-evidence case also passed. This is plumbing verification, not a quality benchmark. [T25 results and reproduction](docs/reports/t25-facet-integration.md).
+Facet selection remains experimental: the T24 passage-coverage results do not establish end-to-end answer accuracy. T26 repairs the measured automatic-planning failures from its application integration; broader relevance and ambiguity handling still need evaluation. [T26 planning results](docs/reports/t26-planning.md) · [Historical T25 integration results](docs/reports/t25-facet-integration.md).
 
 ### Troubleshooting
 
@@ -305,7 +325,7 @@ Local Gemma field planning remains a limitation: in the fresh synthetic integrat
 - **Models are still loading:** browse documents while the capability indicators update. GPU contention or insufficient system RAM can slow generation. Stop other GPU experiments before launching this stack.
 - **Upload is busy or interrupted:** the interface retains its upload identity, reconciles saved work and offers Retry. Saved processing failures require explicit retry. A failed replacement must finish before that document can be removed.
 - **PDF was rejected:** inspect the failure; strict extraction is the default. Enable partial extraction in Upload options only when incomplete extraction is acceptable. Warnings remain available with evidence.
-- **Question planning fails:** rephrase the question or supply fields in Advanced. Corpus totals/aggregates remain unsupported. Supported results still require human semantic review.
+- **Question planning fails:** a clarification error asks for a subject and requested fact; an aggregation error means a calculation across records is unsupported. Ask for separately reported facts or supply fields in Advanced. Invalid plans fail explicitly. Supported results still require human semantic review.
 - **Browser storage failed:** keep the tab open and export conversations. Clear space or use a persistent browser profile; private mode/history deletion can remove saved conversations. Use one active tab to avoid competing workspace saves.
 - **Updated code is not visible:** choose Rebuild, then reload the browser. Start deliberately reuses installed images.
 
@@ -393,15 +413,23 @@ docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest evals
 docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest deployment.test_workflow -v
 ```
 
-These commands cover the 157 Rust checks (including the T23/T24 experimental selectors), 54 original fixture/scorer/protocol checks and 27 workflow/client checks. T14 adds `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. T15 passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
+These commands cover the 158 Rust checks (including the T23/T24 experimental selectors), 54 original fixture/scorer/protocol checks and 27 workflow/client checks. T14 adds `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. T15 passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
 
 Browser verification runs entirely in Docker:
 
 ```sh
-docker build -f docker/ui-test.Dockerfile -t vectornext-ui-test:t19 .
-docker run --rm --network none vectornext-ui-test:t19 npm test
-docker run --rm --network none --ipc=host vectornext-ui-test:t19 npm run e2e -- workspace.spec.ts
+docker build -f docker/ui-test.Dockerfile -t vectornext-ui-test:t26 .
+docker run --rm --network none vectornext-ui-test:t26 npm test
+docker run --rm --network none --ipc=host vectornext-ui-test:t26 npm run e2e -- workspace.spec.ts
 ```
+
+The planner's six deterministic contract tests need no models or GPU calls. Once the processor image is built:
+
+```sh
+docker run --rm --network none vectornext-app-processor:t26 /opt/model-env/bin/python -m unittest model_worker.test_planning -v
+```
+
+The latest completed T26 verification passed **158 Rust and 62 Python checks**, formatting/Clippy, 71 frozen HTTP cases, five browser-boundary checks, two OpenAPI checks, five component tests and 13 browser scenarios. Full local-model planner/API/browser checks use fresh isolated storage and the commands in [the T26 reproduction guide](experiments/t26/README.md); they are separate from the offline tests above. No historical holdout was used.
 
 T16–T18 passed 116 Rust, 118 Python unit/regression checks, five live HTTP checks, five frontend component checks, nine offline browser scenarios and a production-browser scenario with real Gemma. [Results, retained failures and limitations](docs/reports/t16-t18-local-app.md). These are operational checks, not a new retrieval-quality benchmark.
 
@@ -415,14 +443,16 @@ T19 additionally passed the frozen 71-case HTTP comparison, two OpenAPI schema c
 | [`src/search/`](src/search/) | Exact cosine, BM25, typed filtering, fusion and retrieval traces |
 | [`src/ingestion/`](src/ingestion/) and [`processor/`](processor/) | Durable stages, format-aware chunking and source mappings |
 | [`src/answers.rs`](src/answers.rs) and [`model_worker/`](model_worker/) | Evidence assembly, local models, exact JSON reads and generation scheduling |
+| [`model_worker/planning.py`](model_worker/planning.py) and [`experiments/t26/`](experiments/t26/) | Field-only planning, strict output contracts, frozen checks and retained failures |
 | [`src/service/`](src/service/) and [`deployment/`](deployment/) | Shared database ownership, API, CPU admission and client |
+| [`frontend/`](frontend/) and [browser contracts](docs/browser-api.md) | React workspace, browser-only history, exact text rendering and Playwright scenarios |
 | [`evals/`](evals/) and [public-source evaluation](docs/reports/t11-independent.md) | Frozen sources, paired comparisons, source-aware scoring, timings and retained failures |
 
 ## Project status and next steps
 
-T01–T25 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection, numeric proof validation, a reproducible pgvector comparison, bounded large-state checkpoints/exports, indexed scalar filtering and fresh candidate/final-evidence retrieval experiments. The app is ready for local experimentation within its documented limits. The browser workspace, Windows launcher and Axum API with offline OpenAPI documentation are implemented. The public API is still evolving; multi-user authentication remains out of scope.
+T01–T26 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection, numeric proof validation, a reproducible pgvector comparison, bounded large-state checkpoints/exports, indexed scalar filtering, candidate/final-evidence retrieval experiments and automatic field-planning repairs. The app is ready for local experimentation within its documented limits. The browser workspace, Windows launcher and Axum API with offline OpenAPI documentation are implemented. The public API is still evolving; multi-user authentication remains out of scope.
 
-T13 adds coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). T22 adds bounded scalar/document/media filter indexes. T23/T24 complete fresh candidate and final-selection experiments; T25 integrates opt-in facet coverage with source-linked browser/API verification. Ranked remains the default. Automatic field-planning reliability and clearer ambiguity evaluation remain proposed quality work. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
+T13 adds coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). T22 adds bounded scalar/document/media filter indexes. T23/T24 complete fresh candidate and final-selection experiments; T25 integrates opt-in facet coverage and T26 repairs measured automatic-planning failures with source-linked browser/API verification. Ranked remains the default. Broader planning reliability and clearer ambiguity evaluation remain future quality work. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
 
 For contributions, start with the [architecture](docs/architecture.md), [build plan](docs/plan.md) and [working instructions](AGENTS.md). Reproducible retrieval failures with shareable source files are especially useful.
 

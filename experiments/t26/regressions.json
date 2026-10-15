@@ -1,0 +1,157 @@
+[
+  {
+    "id": "R01",
+    "input": {
+      "question": "In which year did the Aster station open?",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "aster"
+          ],
+          [
+            "year"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R02",
+    "input": {
+      "question": "Who directs that station?",
+      "history": [
+        {
+          "role": "user",
+          "text": "In which year did the Aster station open?"
+        },
+        {
+          "role": "assistant",
+          "text": "opening_year: 2017 (integer)"
+        }
+      ]
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "string",
+        "nullable": false,
+        "terms": [
+          [
+            "aster"
+          ],
+          [
+            "direct"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R03",
+    "input": {
+      "question": "How many solar panels does Aster station have, and how many antennas does Boreal station have?",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "aster"
+          ],
+          [
+            "panel"
+          ]
+        ]
+      },
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "boreal"
+          ],
+          [
+            "antenna"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R04",
+    "input": {
+      "question": "How many sensors does Cobalt station have?",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "cobalt"
+          ],
+          [
+            "sensor"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R05",
+    "input": {
+      "question": "What are the exact numeric amount, integer zero and raw nullable integer unknown stored in precision-lumen?",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "number",
+        "nullable": false,
+        "terms": [
+          [
+            "precision"
+          ],
+          [
+            "amount"
+          ]
+        ]
+      },
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "precision"
+          ],
+          [
+            "zero"
+          ]
+        ]
+      },
+      {
+        "kind": "integer",
+        "nullable": true,
+        "terms": [
+          [
+            "precision"
+          ],
+          [
+            "unknown"
+          ]
+        ]
+      }
+    ]
+  }
+]

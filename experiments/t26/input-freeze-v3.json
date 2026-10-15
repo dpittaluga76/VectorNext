@@ -1,0 +1,9 @@
+{
+  "experiments/t26/protocol-amendment-01.md": "829aa23f477ee98a4361858fc67d37c1e9076cc5193d940e033ad4e6a1537d54",
+  "experiments/t26/cases-v3.json": "61e45292105cab454d4a1a751204eb21c3a319093be93e5f9c5f6c72162d500f",
+  "experiments/t26/live-v3.json": "95f7d27d38bebbc21e123c2f4a6e5ae33e67eedf0fd671fd5bfd6188de562813",
+  "tests/fixtures/planning-v3/cedar.txt": "e164c36033ecf3160a1a073ba24837cc7a47a5f774f233f3c5a44ee4601edbb6",
+  "tests/fixtures/planning-v3/harbor.txt": "a74c35e5e9de6b921260356d2fe8e8d0bb7cea8a823fba1b636a1c19815bb70c",
+  "tests/fixtures/planning-v3/nimbus.pdf": "d7023eb31216dee68b78f8e8107415da523af0b6edb05e6cb8e53c9188eca21b",
+  "tests/fixtures/planning-v3/precision.json": "590deef13ad1187de93db5126581a358b569643b8049c187f0d74214c7e0a623"
+}

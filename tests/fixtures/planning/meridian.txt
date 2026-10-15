@@ -1,0 +1,3 @@
+# Synthetic communications registry
+
+Meridian outpost has 6 radios. The Meridian observatory opened in 2018.

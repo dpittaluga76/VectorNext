@@ -1,0 +1,17 @@
+[
+  {"id":"P01","input":{"question":"How many sensors are installed at Quartz outpost?","history":[]},"status":"ready","fields":[{"kind":"integer","nullable":false,"terms":[["quartz"],["sensor"]]}]},
+  {"id":"P02","input":{"question":"In which year did Meridian observatory open?","history":[]},"status":"ready","fields":[{"kind":"integer","nullable":false,"terms":[["meridian"],["year"]]}]},
+  {"id":"P03","input":{"question":"Who leads the Juniper expedition?","history":[]},"status":"ready","fields":[{"kind":"string","nullable":false,"terms":[["juniper"],["lead","leader","director"]]}]},
+  {"id":"P04","input":{"question":"What is the reported battery capacity of Lumen rover in watt-hours?","history":[]},"status":"ready","fields":[{"kind":"number","nullable":false,"terms":[["lumen"],["capacity"],["watt"]]}]},
+  {"id":"P05","input":{"question":"How many cameras does Quartz outpost have, and how many radios does Meridian outpost have?","history":[]},"status":"ready","fields":[{"kind":"integer","nullable":false,"terms":[["quartz"],["camera"]]},{"kind":"integer","nullable":false,"terms":[["meridian"],["radio"]]}]},
+  {"id":"P06","input":{"question":"Who leads that expedition?","history":[{"role":"user","text":"In which year did the Juniper expedition start?"},{"role":"assistant","text":"start_year: 2022 (integer)"}]},"status":"ready","fields":[{"kind":"string","nullable":false,"terms":[["juniper"],["lead","leader","director"]]}]},
+  {"id":"P07","input":{"question":"How many does it have?","history":[{"role":"user","text":"What is the reported number of sensors at Quartz outpost?"},{"role":"assistant","text":"sensor_count: 11 (integer)"}]},"status":"ready","fields":[{"kind":"integer","nullable":false,"terms":[["quartz"],["sensor"]]}]},
+  {"id":"P08","input":{"question":"Return the raw nullable integer maintenance_count stored for Lumen rover.","history":[]},"status":"ready","fields":[{"kind":"integer","nullable":true,"terms":[["lumen"],["maintenance"]]}]},
+  {"id":"P09","input":{"question":"What is the reported launch year of fictional ship Vesper?","history":[]},"status":"ready","fields":[{"kind":"integer","nullable":false,"terms":[["vesper"],["launch"],["year"]]}]},
+  {"id":"N01","input":{"question":"Who leads it?","history":[]},"status":"needs_clarification","fields":[]},
+  {"id":"N02","input":{"question":"How many?","history":[]},"status":"needs_clarification","fields":[]},
+  {"id":"N03","input":{"question":"Sum the sensor counts across all outpost records.","history":[]},"status":"unsupported","fields":[]},
+  {"id":"N04","input":{"question":"What is the average camera count across all records?","history":[]},"status":"unsupported","fields":[]},
+  {"id":"N05","input":{"question":"How many records mention Quartz?","history":[]},"status":"unsupported","fields":[]},
+  {"id":"N06","input":{"question":"What is the total number of radios across all stations?","history":[]},"status":"unsupported","fields":[]}
+]

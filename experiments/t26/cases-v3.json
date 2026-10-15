@@ -1,0 +1,329 @@
+[
+  {
+    "id": "V01",
+    "input": {
+      "question": "What is the numeric amount stored in precision-spruce?",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "number",
+        "nullable": false,
+        "terms": [
+          [
+            "precision"
+          ],
+          [
+            "amount"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "V02",
+    "input": {
+      "question": "Give the integer retry_count and numeric balance stored for Beacon.",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "beacon"
+          ],
+          [
+            "retry"
+          ]
+        ]
+      },
+      {
+        "kind": "number",
+        "nullable": false,
+        "terms": [
+          [
+            "beacon"
+          ],
+          [
+            "balance"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "V03",
+    "input": {
+      "question": "Give the decimal voltage and integer port_count of the Cinder instrument.",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "number",
+        "nullable": false,
+        "terms": [
+          [
+            "cinder"
+          ],
+          [
+            "voltage"
+          ]
+        ]
+      },
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "cinder"
+          ],
+          [
+            "port"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "V04",
+    "input": {
+      "question": "What are the numeric amount, integer zero and raw nullable integer unknown stored in precision-spruce?",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "number",
+        "nullable": false,
+        "terms": [
+          [
+            "precision"
+          ],
+          [
+            "amount"
+          ]
+        ]
+      },
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "precision"
+          ],
+          [
+            "zero"
+          ]
+        ]
+      },
+      {
+        "kind": "integer",
+        "nullable": true,
+        "terms": [
+          [
+            "precision"
+          ],
+          [
+            "unknown"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "V05",
+    "input": {
+      "question": "How many probes does the Harbor expedition have?",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "harbor"
+          ],
+          [
+            "probe"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "V06",
+    "input": {
+      "question": "Who directs it?",
+      "history": [
+        {
+          "role": "user",
+          "text": "How many probes does the Harbor expedition have?"
+        },
+        {
+          "role": "assistant",
+          "text": "probes: 8 (integer)"
+        }
+      ]
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "string",
+        "nullable": false,
+        "terms": [
+          [
+            "harbor"
+          ],
+          [
+            "director",
+            "directs",
+            "name"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "V07",
+    "input": {
+      "question": "What was the reported temperature of Finch sensor on 2024-03-09 in degrees Celsius?",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "number",
+        "nullable": false,
+        "terms": [
+          [
+            "finch"
+          ],
+          [
+            "temperature"
+          ],
+          [
+            "2024-03-09"
+          ],
+          [
+            "celsius"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "V08",
+    "input": {
+      "question": "Return the stored boolean active and string owner for Ash buoy.",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "boolean",
+        "nullable": false,
+        "terms": [
+          [
+            "ash"
+          ],
+          [
+            "active"
+          ]
+        ]
+      },
+      {
+        "kind": "string",
+        "nullable": false,
+        "terms": [
+          [
+            "ash"
+          ],
+          [
+            "owner"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "V09",
+    "input": {
+      "question": "In which year did the Willow station open?",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "willow"
+          ],
+          [
+            "year"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "V10",
+    "input": {
+      "question": "How many boats does Harbor expedition have, and how many gauges does Cedar weather post have?",
+      "history": []
+    },
+    "status": "ready",
+    "fields": [
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "harbor"
+          ],
+          [
+            "boat"
+          ]
+        ]
+      },
+      {
+        "kind": "integer",
+        "nullable": false,
+        "terms": [
+          [
+            "cedar"
+          ],
+          [
+            "gauge"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "V11",
+    "input": {
+      "question": "Compute the average balance across every account record.",
+      "history": []
+    },
+    "status": "unsupported",
+    "fields": []
+  },
+  {
+    "id": "V12",
+    "input": {
+      "question": "What is its capacity?",
+      "history": []
+    },
+    "status": "needs_clarification",
+    "fields": []
+  }
+]

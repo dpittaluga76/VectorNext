@@ -1,0 +1,8 @@
+{
+  "experiments/t26/protocol.md": "0fd8a375da98318fef91686480273dc70692cf0b2b5df4ab576a1901b2f9b66c",
+  "experiments/t26/cases.json": "d306cd04b2e33b2b71bf4f409c94308cf3b7a5bb4a87f608b3c0a1a4a63babb6",
+  "tests/fixtures/planning/dawn.pdf": "633d5cde2270e74fa7a9e240c5a72ed8b707035c6de10a92fbb7faaeb8373fcb",
+  "tests/fixtures/planning/meridian.txt": "eaf3f6792a5ae2f2228a8ba556a402435332d4f87049afbb11b541a463262e67",
+  "tests/fixtures/planning/precision.json": "689193223f47b88559790da53ff98896abdd6b7a95d76167a8d772215126b13a",
+  "tests/fixtures/planning/quartz.txt": "ec235e6e059ad2112f0f4c423f56a75be9271352bc54e3cd96253fbf79bed147"
+}

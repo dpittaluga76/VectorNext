@@ -299,10 +299,28 @@ pub fn parse_plan(value: &Value) -> Result<BTreeMap<String, FieldSpec>> {
     }
     let plan:Plan=serde_json::from_value(value.get("plan").cloned().unwrap_or(Value::Null))
         .map_err(|_|Error::Invalid("the model could not plan valid answer fields; rephrase or specify fields in Advanced".into()))?;
-    require(
-        plan.status == "ready" && (1..=12).contains(&plan.fields.len()),
-        "question needs clarification or requests unsupported aggregation; rephrase or use Advanced fields",
-    )?;
+    match plan.status.as_str() {
+        "ready" => require(
+            (1..=12).contains(&plan.fields.len()),
+            "invalid planned field count; use 1..12 fields",
+        )?,
+        "needs_clarification" | "unsupported" => {
+            require(
+                plan.fields.is_empty(),
+                "invalid declined plan: fields must be empty",
+            )?;
+            return Err(Error::Invalid(if plan.status == "needs_clarification" {
+                "question needs clarification: name the subject and requested fact, or specify fields in Advanced"
+            } else {
+                "automatic planning does not support calculations across records; ask for separately reported facts"
+            }.into()));
+        }
+        _ => {
+            return Err(Error::Invalid(
+                "invalid planning status; rephrase or specify fields in Advanced".into(),
+            ));
+        }
+    }
     let mut fields = BTreeMap::new();
     for f in plan.fields {
         require(

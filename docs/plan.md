@@ -5,9 +5,11 @@ Design reference: [architecture.md](architecture.md).
 
 ## Current state
 
-- T25 complete: opt-in `facet_coverage_v1` now spans API/CLI/browser; ranked defaults unchanged. 157 available Rust checks, format/Clippy, 62 Python checks, HTTP/schema and 13 browser scenarios verified. Six live outcomes/controls passed; three automatic planner declines are retained and documented. The normal API/UI is active on `:t25`, all capabilities ready; pre-upgrade storage and prior images retained. [Results and limits](reports/t25-facet-integration.md).
+- T26 complete: field-only automatic planning distinguishes reported counts, separate facts, contextual references and independent numeric types. Final v3 passed 12 new planner cases, eight fresh source-backed checks and five observed regressions; initial v2 failures remain recorded. 158 Rust / 62 Python checks, HTTP/schema, frontend and browser verification passed. API/client/admin and processor `:t26` are active with all capabilities ready and the existing library unchanged; generator stays `:t18`. [Results and limitations](reports/t26-planning.md).
 
-- Phase: T01 through T25 complete. Architecture/task definitions were updated before implementation. Facet coverage is opt-in; ranked/coverage_v1 behavior remains compatible.
+- T25 complete: opt-in `facet_coverage_v1` spans API/CLI/browser; ranked defaults unchanged. 157 available Rust checks, format/Clippy, 62 Python checks, HTTP/schema and 13 browser scenarios verified. Six live outcomes/controls passed; three automatic planner declines are retained and documented. At T25 completion, the API/UI activated `:t25`; pre-upgrade storage and prior images remain retained. T26 supersedes that deployment. [Historical results and limits](reports/t25-facet-integration.md).
+
+- Phase: T01 through T26 complete. Architecture/task definitions were updated before implementation. Facet coverage is opt-in; ranked/coverage_v1 behavior remains compatible. Historical T25 activation/results below are superseded by T26 only for the current deployment.
 - T24 complete: ten fresh NASA TXT sources / 388 chunks, 24 frozen questions and 96 successful CPU requests. Same shortlists/general scores across arms; final frozen coverage improves 16/20 → 18/20, with median initially-empty-cache latency 685 → 1,437 ms. Eight Rust/nine Python checks, source/hash validation, format/Clippy and separate synthetic smoke passed. [Results, cost and alternate-support limits](reports/t24-final-selection.md). All experiment containers exited; data/caches retained and normal services unchanged.
 - T23 complete: twelve fresh attributed NIST sources, 24 frozen questions and 96 offline CPU requests; 188 chunks admitted. Expanded candidates improve complete shortlist coverage 18/20 → 20/20, but final-five coverage remains 16/20 in both arms. Five scorer checks, one experimental Rust check, fixture/source freezes, format/Clippy and synthetic smoke passed. [Results and source-review limits](reports/t23-evidence.md). All experiment containers exited; data/caches retained, normal app unchanged.
 - T22 complete: immutable bounded scalar/document/media filter postings, exact scan fallback and unchanged search/API contracts. Verified 135 Rust checks, format/Clippy, 4,224 paired release requests, retained original volume hashes and offline production startup. [Results](reports/t22-filters.md). At T22 completion, Compose selected T22 while the normal app still ran T19; T25 now supersedes that deployment.
@@ -46,7 +48,7 @@ T02 subsequently demonstrated container GPU visibility and actual CUDA inference
 
 ## Next useful step
 
-Collect user end-to-end feedback on opt-in facet coverage. Scope automatic field-planning reliability and clear clarification behavior on new data next: T25 found three planner declines before retrieval, while explicit-field controls succeeded. Preserve ranked defaults, historical captures and the unused holdout; no additional implementation is automatically authorized.
+Proposed next: scope clear clarification/ambiguity cases on separately authored data, including which missing constraint to ask the user for. T26 fixes the measured planner failures but does not establish broad semantic accuracy. Keep ranked defaults and the original holdout unused. No further quality experiment or implementation is automatically authorized.
 
 ## Work queue
 
@@ -525,6 +527,19 @@ Status: complete (2026-10-15). Depends on T24. User authorized integration and p
 - Verify Rust regressions/format/Clippy, relevant Python and schema checks, frontend type/component/offline browser checks, and fresh isolated TXT/JSON/PDF local inference smoke (including automatic planning and follow-ups). Preserve every attempt, no historical quality rerun or holdout use.
 - Acceptance: supported source-linked answers through the opted-in browser/API path, visible recorded selector behavior, explicit errors and verified boundaries, updated docs/handoff, new local API/UI active with rollback copy retained, meaningful commits pushed. Report smoke limitations honestly; no broad quality claim.
 
+### T26 — Automatic field-planning reliability
+
+Status: complete. Depends on T25. Architecture/task updated before implementation; user authorized fixing the automatic declines. Final `field-planning-v3` passed 12 separately frozen planner cases, eight source-backed checks, five observed regression replays and application/browser verification. Activated API/processor `:t26` without changing the library or generator. [Full results and retained failures](reports/t26-planning.md).
+
+First verification: `field-planning-v2` passed 15/15 frozen planner checks. The decimal/zero/raw-null request incorrectly planned its amount as integer; source validation withheld the answer. Retain this failure and freeze a separate type-selection verification before the next candidate. This remains T26; do not change the first protocol, inputs or scores. The live runner scored 6/8: besides the type failure, its expected aggregation message differed from the valid existing pre-planning refusal (7/8 after separate contract review).
+
+- Capture actual planner outputs for the observed failure classes and identify prompt/schema/transport versus semantic classification errors. Preserve the original T25 captures, scores and source version.
+- Separate field-definition planning from evidence answerability: directly stated quantities and separately requested facts can be planned without source knowledge. Use the original bounded history for reference resolution; retain genuine missing-referent and unsupported aggregate errors.
+- Keep one bounded field-only planning operation, strict validation, no fabricated defaults/automatic retries, no inferred filters/pointers or answer values. Preserve explicit-field bypass, limits, queue/deadline/model configuration, retrieval defaults and numeric/source integrity. Version any revised prompt/schema audit; keep public request/response envelopes compatible.
+- Freeze fresh planner cases and separate end-to-end source fixtures before candidate inference, then report classification, requested fields/types/constraints, latency and downstream answer outcomes including every failure. T25 cases are regressions only; never consume the original holdout or alter historical fixtures.
+- Verify malformed/over-budget plans and model outages, no-plan explicit fields, HTTP error contracts, Rust/Python checks, frontend/browser behavior and isolated local GPU inference. Keep storage and caches separate from the normal library; retain attempts and volumes.
+- Acceptance: the observed decline classes plan and answer automatically on declared source-backed checks, unsupported/unclear requests fail clearly without relaxing evidence validation, regressions pass, architecture/handoff/README record results and limitations, and the verified local app uses the fix. Do not mark complete based on formatting alone or hide failed cases.
+
 ### Later — Clarification and ambiguity evaluation
 
 Scope a separate clarification workflow and clearly worded ambiguity evaluation after T23. Candidate-retrieval evidence does not establish answerability or ambiguity quality. Keep production defaults and historical freezes intact.
@@ -532,6 +547,17 @@ Scope a separate clarification workflow and clearly worded ambiguity evaluation 
 ## Session handoff discipline
 
 Keep the Current state and Next useful step sections accurate. For each meaningful work session, add one concise entry below with changed files/capabilities, task IDs, verification actually performed, unresolved issues, and the next step. Do not paste full chat transcripts or command logs.
+
+### 2026-10-15 — README refresh and publication
+
+- User authorized committing and pushing the completed T26 changes. Updated README capability descriptions, final planning results and cost, current verification counts/image tags, offline planner-test command and implementation links. Clarified default versus opt-in retrieval behavior and retained the original failed-run results.
+- Reused the completed T26 implementation verification. Local README/report/reproduction links, all three frozen input manifests and whitespace checks passed; the documented offline planner command passed all six tests. Model weights, private documents, databases, caches and local captures remain excluded from Git.
+
+### 2026-10-15 — T26 completed
+
+- Updated architecture/task first, diagnosed actual T25 planning declines, froze new cases and source fixtures, and repaired planning without extra inference/retries or changes to retrieval/proof rules. Added versioned planning audits and distinct clarification/aggregation errors.
+- Preserved the v2 decimal-type failure and a separately reviewed refusal-message harness mismatch. An amendment and new frozen cases preceded v3's independent per-field type repair. Final checks: 12/12 planner, 8/8 source-backed, 5/5 observed regressions; 158 Rust, 62 Python, formatting/Clippy, frozen HTTP/OpenAPI, five components and 13 browser scenarios passed, plus a captured-response browser replay. Browser harness locator/startup failures are retained in the report.
+- Activated API/client/admin and processor `:t26`, generator unchanged, all capabilities ready and library byte-for-byte unchanged. Test services stopped; volumes, images, captures and source archives retained. No holdout use, historical score changes or automatic Git publication. Next: separately scope clarification/ambiguity evaluation.
 
 ### 2026-10-15 — T25 completed
 

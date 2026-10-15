@@ -166,6 +166,26 @@ fn planner_rejects_invented_values_and_pointers() {
     assert!(ui::parse_plan(&json!({"plan":{"status":"unsupported","fields":[]}})).is_err());
 }
 #[test]
+fn planner_errors_distinguish_clarification_aggregation_and_invalid_plans() {
+    let parse = |status: &str| {
+        ui::parse_plan(&json!({"plan":{"status":status,"fields":[]}}))
+            .unwrap_err()
+            .to_string()
+    };
+    assert!(parse("needs_clarification").contains("name the subject and requested fact"));
+    assert!(parse("unsupported").contains("calculations across records"));
+    assert!(parse("unrecognized").contains("invalid planning status"));
+    assert!(parse("ready").contains("invalid planned field count"));
+    let bad = json!({"plan":{"status":"needs_clarification","fields":[{"name":"x","kind":"string","nullable":false,"description":"x"}]}});
+    assert!(
+        ui::parse_plan(&bad)
+            .unwrap_err()
+            .to_string()
+            .contains("fields must be empty")
+    );
+}
+
+#[test]
 fn exact_numbers_only_cross_browser_boundary_as_text() {
     let raw:Value=serde_json::from_str(r#"{"answer":{"status":"supported","fields":{"amount":{"value":9007199254740993.00000000000001,"evidence_id":"E1","quote":"","pointer":"/amount"},"zero":{"value":0},"unknown":{"value":null}}},"request":{"fields":{"amount":{"kind":"number"},"zero":{"kind":"integer"}}},"evidence":[{"id":"E1","record":{"amount":9007199254740993.00000000000001}}],"generation":9007199254740993}"#).unwrap();
     let view = ui::answer_view(&raw).unwrap();

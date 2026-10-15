@@ -1,0 +1,3 @@
+Synthetic measurement registry
+
+The Cedar weather post has 21 gauges.
