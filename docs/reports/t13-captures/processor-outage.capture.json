@@ -1,0 +1,15 @@
+{
+  "format": "vectornext-workflow-v1",
+  "operation": "job",
+  "http_status": 200,
+  "response_json": "{\"coordinator\": {\"last_error\": null, \"recovery\": null, \"state\": \"running\"}, \"document_id\": \"recovery-t13\", \"failure_count\": 1, \"job_id\": \"recovery-t13-strict\", \"last_failure\": {\"message\": \"capability unavailable: processor /rpc/background: http://processor:8090/rpc/background: Dns Failed: resolve dns name 'processor:8090': failed to lookup address information: Name or service not known\", \"stage\": \"Parsed\"}, \"receipt\": null, \"revision\": \"b29e6eca66589c86d3c81592bf6bb7f1c6671b01c02f6b161f7a0f4026639d8b\", \"stage\": \"Parsed\", \"successful_stages\": 1}",
+  "context": {
+    "source": "recovery.txt",
+    "media_type": "Txt",
+    "admission_attempts": []
+  },
+  "elapsed_seconds": null,
+  "document": null,
+  "note": "Fresh T13 CPU operational drill; no generation model was used.",
+  "invocation": null
+}

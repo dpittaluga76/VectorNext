@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "kind": "data",
+  "frozen_utc": "2026-10-15T01:15:05.866671+00:00",
+  "blocks": [
+    [
+      "five-cold",
+      "ranked",
+      5
+    ],
+    [
+      "two-cold",
+      "ranked",
+      2
+    ],
+    [
+      "coverage-cold",
+      "coverage_v1",
+      5
+    ],
+    [
+      "coverage-warm",
+      "coverage_v1",
+      5
+    ],
+    [
+      "two-warm",
+      "ranked",
+      2
+    ],
+    [
+      "five-warm",
+      "ranked",
+      5
+    ]
+  ],
+  "holdout_used": false,
+  "files": {
+    "docs/t14-protocol.md": "afe12668389edc69419221a56331e8116ede7712e5ab78814e6520bf0e5824fb",
+    "evals/coverage/acquire.py": "03c03b8b4783a7d8a1a8feb910d6d2cb1b6af341dd99050785e4fdd119ce7b51",
+    "evals/coverage/build_dataset.py": "024692ab75ca2e53500764a1acc9d110ff496939fb72efa78784cd9185040dda",
+    "evals/coverage/dataset.json": "55ac8f702e5487a27a2defe8a28d5a2b37a5891c821f51dc8c3fef00bbadd85b",
+    "evals/coverage/fixtures/magellan.txt": "d870fe28b6761c94d5403c2dda6fb2198cb81865ed4aee4b0a909a08635e1ada",
+    "evals/coverage/fixtures/mariner_10.txt": "f0b0545f161c67e13358df62a3b36e45e6552e94b0fe960a6cabc6258b57052c",
+    "evals/coverage/fixtures/mariner_4.txt": "08723514bf102127a8546935f71d3e49f6770769f4ea37b7bb9bfbbb1ece4c87",
+    "evals/coverage/fixtures/mariner_6.txt": "ea9be1f1060497ac2e6079be8d7eac2936856cea8e16e8651a018e7a389bae50",
+    "evals/coverage/fixtures/mariner_9.txt": "b9e9dcb95b55171a66318f3943e9b668e5c7c525f56ea556ee978320babcec1a",
+    "evals/coverage/fixtures/near_shoemaker.txt": "60b1deb966e5c4487bb442a9f9d46b2d349fb932ec96d835ffb35ddd6f4a6e67",
+    "evals/coverage/fixtures/nepal.json": "16b366f43c79dc4e8a54dd1a937b8662a8590eecd3f45c28db58be0bfd12bfa5",
+    "evals/coverage/fixtures/sumatra.json": "54fc8f0f24737123574a32a797b2f60359844af7c3becc89b06bc6b2a1feffa6",
+    "evals/coverage/requests.json": "03d77f27ee8b511048cd5badf00d8201124d77c806876e31419e95ea075bd6ec",
+    "evals/coverage/score.py": "b8f94f655548e972d8afed5bc8d6b45346db665a8918247052d99e9b297d7abb",
+    "evals/coverage/sources.json": "e491ce8ea8b73fb0a4a2254f45862d9a613fedcf6e27ab96db4f531899532894",
+    "evals/independent/acquire.py": "46d2e4299e07178529a6c6b21944f66c87da65ca8bede8992ee114ff36552e77",
+    "evals/score.py": "2df5c12b57748ddd1ee6f6cca793efb28467cdd07cbedcf60fa7468a1a743512"
+  }
+}

@@ -1,0 +1,14 @@
+# T13 operational drill: use with compose.app.yaml and -p vectornext-t13.
+# Start processor/vectornext with --no-deps; this drill needs no GPU service.
+services:
+  vectornext:
+    image: vectornext-app:t13
+    environment:
+      VECTORNEXT_DATA: /storage/reliability
+    ports: !override ["127.0.0.1:8093:8088"]
+  processor:
+    image: vectornext-app-processor:t13
+  client:
+    image: vectornext-app:t13
+  admin:
+    image: vectornext-app:t13

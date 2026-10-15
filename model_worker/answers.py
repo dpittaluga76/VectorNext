@@ -3,6 +3,7 @@ import json
 import hashlib
 import math
 import time
+from decimal import Decimal
 import jsonschema
 from .cache import canonical, digest
 
@@ -21,8 +22,43 @@ def object_schema(properties):
     return {"type": "object", "properties": properties, "required": list(properties), "additionalProperties": False}
 
 
-def schema(fields, evidence=None):
+def pointer_catalog(fields, evidence):
+    """Paths/types only, derived from exact source text; never copy source numeric values."""
+    catalog = {}
+    for item in evidence:
+        if item['record'] is None:
+            continue
+        leaves = []
+
+        def walk(value, path='', depth=0):
+            if depth > 64 or len(path.encode()) > 2048:
+                raise ValueError('record pointer catalog exceeds depth/path bounds')
+            if isinstance(value, dict):
+                for key, child in value.items():
+                    walk(child, path + '/' + key.replace('~', '~0').replace('/', '~1'), depth + 1)
+            elif isinstance(value, list):
+                for index, child in enumerate(value):
+                    walk(child, path + '/' + str(index), depth + 1)
+            else:
+                kind = ('null' if value is None else 'boolean' if type(value) is bool else
+                        'integer' if type(value) is int else 'number' if isinstance(value, Decimal) else 'string')
+                leaves.append((path, kind))
+                if len(leaves) > 256:
+                    raise ValueError('record pointer catalog exceeds 256 scalar/null leaves')
+
+        walk(json.loads(item['text'], parse_float=Decimal))
+        catalog[item['id']] = {name: [path for path, kind in leaves
+            if (kind in (spec['kind'], 'null') or (spec['kind'] == 'number' and kind == 'integer'))
+            and (spec.get('pointer') is None or path == spec['pointer'])] for name, spec in fields.items()}
+    if len(canonical(catalog)) > 32768:
+        raise ValueError('record pointer catalog exceeds byte budget')
+    return catalog
+
+
+def schema(fields, evidence=None, constrain_pointers=False):
     props = {}
+    catalog = pointer_catalog(fields, evidence) if constrain_pointers else {}
+    supported_possible = True
     for name, spec in fields.items():
         kind = spec["kind"]
         generic = object_schema({
@@ -37,6 +73,15 @@ def schema(fields, evidence=None):
         for is_json in (False, True):
             ids = [e["id"] for e in evidence if (e["record"] is not None) == is_json]
             if not ids: continue
+            if is_json and constrain_pointers:
+                for identifier in ids:
+                    paths = catalog[identifier][name]
+                    if paths:
+                        branches.append(object_schema({
+                            'evidence_id': {'const': identifier}, 'value': {'type': 'null'},
+                            'quote': {'const': ''}, 'pointer': {'enum': paths},
+                        }))
+                continue
             pointer = ({"const": spec["pointer"]} if spec.get("pointer") is not None else {"type": "string"}) if is_json else {"type": "null"}
             branches.append(object_schema({
                 # Select source format before generating its dependent proof/value branch.
@@ -46,10 +91,13 @@ def schema(fields, evidence=None):
                 "quote": {"const": ""} if is_json else {"type": "string", "minLength": 1},
                 "pointer": pointer,
             }))
-        props[name] = {"oneOf": branches} if len(branches) > 1 else branches[0]
+        if not branches:
+            supported_possible = False
+        else:
+            props[name] = {"oneOf": branches} if len(branches) > 1 else branches[0]
     # Complete branches avoid unsupported conditional-schema behavior in the pinned runtime.
     return {"oneOf": [object_schema({"status": {"const": status}, "fields": object_schema(props if status == "supported" else {})})
-                      for status in ("supported", "ambiguous", "insufficient_evidence")]}
+                      for status in ("supported", "ambiguous", "insufficient_evidence") if status != 'supported' or supported_possible]}
 
 
 def messages(value):
@@ -58,6 +106,8 @@ def messages(value):
                  "format": "json_record" if e["record"] is not None else "prose", "text": e["text"]}
                 for e in value["evidence"]]
     user = {"ORIGINAL QUESTION": value["question"], "CONVERSATION": value["history"], "REQUESTED FIELDS": value["fields"], "EVIDENCE": evidence}
+    if value.get('constrain_pointers'):
+        user['EXISTING JSON POINTERS BY EVIDENCE AND REQUESTED TYPE'] = pointer_catalog(value['fields'], value['evidence'])
     return [{"role": "system", "content": PROMPT}, {"role": "user", "content": canonical(user).decode()}]
 
 
@@ -124,7 +174,7 @@ def handle(worker, op, value):
         decision, assessment_audit = generate(worker, msgs, ASSESS_SCHEMA, ASSESS_PROMPT, output_tokens=192)
         if decision["status"] != "supported":
             return {"answer": {"status": decision["status"], "fields": {}}, "audit": {"assessment": decision, "assessment_audit": assessment_audit}}
-        result, audit = generate(worker, messages(value), schema(value["fields"], value["evidence"]), PROMPT)
+        result, audit = generate(worker, messages(value), schema(value["fields"], value["evidence"], value.get('constrain_pointers', False)), PROMPT)
         audit["assessment"] = decision
         audit["assessment_audit"] = assessment_audit
         return {"answer": result, "audit": audit}

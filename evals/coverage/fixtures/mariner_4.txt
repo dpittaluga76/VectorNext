@@ -1,0 +1,192 @@
+Explore Mars In Depth
+
+# Mariner 4
+
+Occurred 59 years ago
+
+Type
+
+Flyby
+
+Launch
+
+Nov. 28, 1964
+
+Target
+
+Mars
+
+flyby
+
+July 14, 1965
+
+The first successful mission to Mars, Mariner 4 captured the first close-up images of any planet beyond Earth. Its grainy black-and-white views of a barren, heavily cratered planet quashed ideas of possible intelligent life, but opened the age of Red Planet exploration, laying a path for the orbiters, landers, and rovers that follow to this day.
+
+60 years of mars exploration
+
+## Mariner 4: First Images From Another Planet
+
+June 14, 1965 — NASA’s Mariner 4 became the first spacecraft to fly by Mars, and captured the first close-up views of another planet. Its "profound" images dispelled centuries-old notions of the Red Planet, and opened the era of Mars Exploration.
+
+Read ‘Triumph of Mariner 4’
+
+The first picture that Mariner 4 captured of Mars was the planet’s edge, against the blackness of space. But mission team members back on Earth were too eager to wait hours for their computers to process the image. So they printed out the data from Mariner, cut it into strips, and hand-colored the paper wherever the numbers said the picture should be dark, or light, or something in between.
+
+NASA/JPL-Caltech
+
+### What was Mariner 4?
+
+The Mariner 4 mission, the second of two Mars flyby attempts launched in 1964 by NASA, was one of the great early successes of the agency, and indeed the Space Age, returning the very first photos of another planet from deep space.
+
+Nation | United States of America
+
+Objective | Mars Flyby
+
+Spacecraft | Mariner-64D / Mariner-D
+
+Spacecraft Mass | 575 pounds (260.8 kilograms)
+
+Spacecraft Power | Solar
+
+Mission Design and Management | NASA/JPL
+
+Launch Vehicle | Atlas Agena D (Atlas Agena D no. 12 / Atlas D no. 288 / Agena D no. AD69/6932)
+
+Launch Date | Nov 28, 1964 / 14:22:01 UT
+
+Launch Site | Cape Canaveral Fla. / Launch Complex 12
+
+Scientific Instruments | 1. Imaging System
+2. Cosmic Dust Detector
+3. Cosmic Ray Telescope
+4. Ionization Chamber
+5. Helium Magnetometer
+6. Trapped Radiation Detector
+7. Solar Plasma Probe
+
+A real-time data translator machine converted Mariner 4 digital image data into numbers printed on strips of paper. The team colored in the strips by hand with pastels, making this both a work of art and the first digital image from space.
+
+NASA/JPL-Caltech
+
+A diagram of early Mariner Mars spacecraft.
+
+NASA/JPL-Caltech
+
+### Results
+
+The first of the two twin spacecraft, Mariner 3, launched from Cape Kennedy Air Force Station, Florida, on Nov. 5, 1964, atop an Atlas-Agena D rocket. Due to the failure of the spacecraft’s payload shroud to jettison, its solar panels could not deploy and Mariner 3 sailed on into solar orbit as an inert spacecraft.
+
+Using a new all-metal shroud, Mariner 4 lifted off without any problems and was successfully boosted towards Mars by the Agena D upper stage. A single course correction on Dec. 5, 1964, ensured that the spacecraft would fly between 5,000 and 6000 miles (8,000 and 9,660 kilometers) from the Martian surface.
+
+On one of the scientific instruments, the plasma probe, there was a component failure making its readings unintelligible, although due to a better telemetry rate, some data was received between January and May 1965. Additionally, a Geiger tube, one of the two sensors in the ionization chamber experiment, failed and stopped returning data in March 1965.
+
+Approximately 40 minutes prior to closest approach (which was at 08:00:57 p.m. EDT on July 14, 1965 [01:00:57 UT July 15], at a range of 6,118 miles (9,846 kilometers), the TV camera began taking the first of 21 images (plus 22 lines of a 22nd image) through red and green filters.
+
+## The images... fundamentally transformed the scientific view of the Red Planet, providing hard data where speculation had previously dominated.
+
+About 1.25 hours after the encounter, Mariner 4 dipped behind the right-hand side of Mars (as viewed from Earth) in an occultation experiment in order to refract its radio signals through the Martian atmosphere. Data indicated that surface pressure was quite low, i.e., future Mars landers would have to be equipped with retro-rocket engines in addition to parachutes.
+
+The images, as well as the occultation experiment, fundamentally transformed the scientific view of the Red Planet, providing hard data where speculation had previously dominated.
+
+The probe detected daytime surface temperatures at minus 148 degrees Fahrenheit (minus 100 degrees Celsius). A very weak radiation belt, about 0.1% of that of Earth’s, was also detected.
+
+The day after the closest encounter, Mariner 4 began transmitting its photos back to Earth. The images clearly showed Mars to be an ancient Moon-like body with widespread cratering, thus incontrovertibly quashing any expectations of lost civilizations on the planet. Given the thin atmosphere, scientists believed that it was unlikely that Mars harbored any life.
+
+NASA maintained contact with the spacecraft until Oct. 1, 1965, when the probe was 192 million miles (309 million kilometers) from Earth.
+
+Two years later, in October 1967, the spacecraft was reactivated for attitude control tests in support of the Mariner 5 mission to Venus that used a similar spacecraft bus.
+
+Contact was maintained until Dec. 31, 1967, over three years after launch.
+
+##
+Learn More
+
+## Mariner 4: First to Explore Mars
+
+Scientists in the 1960s knew relatively little about Mars, and images from the best Earth-based telescopes revealed little surface detail.
+
+## 'The Changing Face of Mars'
+
+From Mariner 4 through the arrival of the Viking orbiters and landers in 1976, this documentary reveals JPL’s first roles in exploring the Red Planet, using archival footage and interviews with key scientists and engineers.
+
+## NSSDC Master Catalog: Mariner 4
+
+In depth-mission details and data from the National Space Science Data Center.
+
+## Beyond Earth: A Chronicle of Deep Space Exploration
+
+A definitive history of deep space missions.
+
+## Mariner 4 Image Catalog
+
+A collection of the spacecraft's Mars images, original and enhanced, plus a quartet of relief maps made from pairs of the first eight images. Mariner 4 captured 22 images, but the last one was partial, and Nos. 20-22 were all in darkness.
+
+## Deep Space Network
+
+Mariner 4 was able to send its images and other data to Earth — even at unprecedented distances of 191 million miles and more — because of the network of enormous dish antennas, NASA's Deep Space Network, capable of collecting the faint signals. Transmissions that left the spacecraft at a signal strength of 10 watts dwindled to a barely perceptible one-billionth-of-one-billionth-of-one-watt when they reached the 85-foot antennas in South Africa, Australia, and Goldstone, California.
+
+JPL Director William H. Pickering shows President Lyndon Johnson images of Mars from Mariner 4, at a White House medal ceremony on July 29, 1965. There, for the first time, NASA made public the full set of 21 complete images that Mariner 4 captured of Mars on July 14 — the first close-up images of another planet. “This advance for mankind is awe-inspiring,” Johnson said. “I think I speak for every American when I tell you how very proud and how impressed, how grateful we are for what you and all the many members of your team have accomplished on the Mariner 4 mission.”
+
+NASA/JPL-Caltech
+
+## Mariner 4 Stories and Images
+
+Mariner 4’s Image Locations on Mars
+
+1 min read
+
+This diagram shows the flyby route of NASA's Mariner 4 and the locations of the 22 images taken by the…
+
+Teletypes Confirm That Data Was Recorded And Sent Back To Earth
+
+1 min read
+
+In this archival clip, the Mariner 4 operations and science teams learn for the first time that the spacecraft tape…
+
+Team Receives Confirmation That A Key Command Was Sent
+
+1 min read
+
+Tension is high as Mariner 4's Operations Team waits for the signal telling them that a crucial command to turn…
+
+Five Ways Mariner 4 Changed Mars Exploration
+
+1 min read
+
+Mariner 4 was the first spacecraft to fly by Mars and send home close-up images. Find out how the mission…
+
+Coloring The Mariner 4 Image Data
+
+1 min read
+
+While waiting for all of Mariner 4's image data to be received, processed and printed, engineers and science team members…
+
+First TV Image of Mars (Hand Colored)
+
+1 min read
+
+Too anxious to wait for first processed image of Mars, employees from the Telecommunications Section at NASA's Jet Propulsion Laboratory…
+
+Keep Exploring
+
+## Discover More Topics From NASA
+
+###
+James Webb Space Telescope
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+###
+Perseverance Rover
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+###
+Parker Solar Probe
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+###
+Juno
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

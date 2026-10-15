@@ -1,0 +1,78 @@
+{
+  "format": "vectornext-workflow-v1",
+  "operation": "job",
+  "http_status": 200,
+  "response_json": "{\"coordinator\": {\"last_error\": null, \"recovery\": null, \"state\": \"running\"}, \"document_id\": \"perseverance-t13\", \"failure_count\": 0, \"job_id\": \"perseverance-t13-partial\", \"last_failure\": null, \"pdf_diagnostics\": {\"allow_partial\": true, \"artifact_sha256\": \"fcd2fd77a23e8fb54e71cadd993de5c6e1f92f930d895bc2a4343f1114bbd4a0\", \"items\": 36, \"next_action\": \"Review page warnings and extraction coverage; illustrations are not interpreted.\", \"pages\": [{\"height\": 792.0, \"native_cells\": 45, \"ocr_cells\": 1, \"ocr_mean_confidence\": 0.040464099999999996, \"page\": 1, \"width\": 612.0}, {\"height\": 792.0, \"native_cells\": 80, \"ocr_cells\": 0, \"ocr_mean_confidence\": null, \"page\": 2, \"width\": 612.0}], \"source_sha256\": \"14ddeea4fb8e04dbee9a95bdba27471f5cccc9d6bd10692ed287b2274f3664fb\", \"status\": \"partial\", \"warning_count\": 4, \"warnings\": [{\"bbox\": [511.3333333333333, 126.0, 558.3333333333334, 447.0], \"code\": \"low_ocr_confidence\", \"message\": \"SPVPRVSVN\", \"page\": 1}, {\"bbox\": [44.56557083129883, 351.2037658691406, 468.1089172363281, 585.1572875976562], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 1}, {\"bbox\": [508.2441101074219, 26.68151092529297, 574.6812744140625, 85.34993743896484], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 1}, {\"bbox\": [313.15576171875, 198.38589477539062, 566.0455322265625, 348.0158386230469], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 2}], \"warnings_truncated\": false}, \"receipt\": {\"generation\": 4, \"request_sha256\": \"cf8ad05142b494905bdee9f3d3f7049927c3bceca8fc9eb10e023b07ac1909c8\"}, \"revision\": \"9605d5a6453823a433f35be58143876b98c30cec6f761326097da857951418c6\", \"stage\": \"Committed\", \"successful_stages\": 4}",
+  "context": {
+    "source": "perseverance_pdf.pdf",
+    "media_type": "Pdf",
+    "admission_attempts": []
+  },
+  "elapsed_seconds": null,
+  "document": {
+    "document_id": "perseverance-t13",
+    "revision": "9605d5a6453823a433f35be58143876b98c30cec6f761326097da857951418c6",
+    "media_type": "Pdf",
+    "source_bytes": 1223537,
+    "blocks": 36,
+    "chunks": 18,
+    "records": 0,
+    "policy": "structural",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "pdf_status": "partial",
+    "pdf_pages": 2,
+    "pdf_methods": {
+      "Native": 36,
+      "Ocr": 1
+    },
+    "warnings": [
+      {
+        "bbox": [
+          511.3333333333333,
+          126.0,
+          558.3333333333334,
+          447.0
+        ],
+        "code": "low_ocr_confidence",
+        "message": "SPVPRVSVN",
+        "page": 1
+      },
+      {
+        "bbox": [
+          44.56557083129883,
+          351.2037658691406,
+          468.1089172363281,
+          585.1572875976562
+        ],
+        "code": "uninterpreted_picture",
+        "message": "Picture/diagram semantics are not extracted",
+        "page": 1
+      },
+      {
+        "bbox": [
+          508.2441101074219,
+          26.68151092529297,
+          574.6812744140625,
+          85.34993743896484
+        ],
+        "code": "uninterpreted_picture",
+        "message": "Picture/diagram semantics are not extracted",
+        "page": 1
+      },
+      {
+        "bbox": [
+          313.15576171875,
+          198.38589477539062,
+          566.0455322265625,
+          348.0158386230469
+        ],
+        "code": "uninterpreted_picture",
+        "message": "Picture/diagram semantics are not extracted",
+        "page": 2
+      }
+    ],
+    "generated_context_outcomes": {}
+  },
+  "note": "Fresh T13 CPU operational drill; no generation model was used.",
+  "invocation": null
+}

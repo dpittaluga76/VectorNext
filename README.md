@@ -42,7 +42,10 @@ The response also includes retrieved passages, source locations, field proofs an
 | **Hybrid retrieval** | Exact cosine similarity, per-field BM25, typed filters, reciprocal rank fusion and source-preserving deduplication. |
 | **Document-aware ingestion** | TXT passages with byte mappings; PDF text, tables and OCR with page coordinates; JSON records with exact types and pointers. |
 | **Local contextual retrieval** | Plain, structural and optional generated context, followed by CPU reranking and evidence expansion within token budgets. |
+| **Experimental field coverage** | Per-field reranking, bounded passage selection and JSON output constrained to existing typed source paths, with a frozen comparison against ranked two/five. |
 | **Answers with inspectable sources** | Typed fields, exact quotes or JSON pointers, deterministic templates, conversational context and separate presentation drafts. |
+| **Readable workflow reports** | CLI commands, high-level function references and readable ingestion/search/answer steps, with saved Markdown and offline capture replay. |
+| **Recovery and diagnostics** | Visible coordinator failures, bounded busy retries, PDF warnings before publication and rejected-answer diagnostics with unvalidated drafts. |
 | **Durable local operation** | Resumable ingestion jobs, explicit retries, bounded processing queues, capability readiness and checksummed export/restore. |
 
 For explicit JSON values, the model selects the record and pointer; Rust reads the original value. Zero, a stored `null`, a missing field and a string such as `"007"` retain their distinct meanings. Generated context is stored separately and never becomes source evidence.
@@ -79,7 +82,19 @@ The default generation profile uses **Gemma 4 26B A4B QAT Q4_0**, with CPU exper
 
 Measured on an **RTX 4060 with 8 GB VRAM, Ryzen 5 7600 and approximately 64 GB system RAM**, using Docker on Windows/WSL 2.
 
-The latest comparison uses **20 public NASA/USGS documents and 28 new questions**, with the same corpus, models and retrieval settings for both passage limits.
+**Latest: question-aware evidence coverage (T14).** Eight new NASA/USGS sources, 201 chunks and 16 frozen questions compare three strategies across 96 local requests:
+
+| Configuration | Exact outcomes, each pass | Median, cold / warm |
+| --- | --- | --- |
+| Ranked five — default | 8/16 | 29.18 / 28.53 s |
+| Ranked two | 7/16 | 18.19 / 17.34 s |
+| Field coverage — experimental | 8/16 | 16.50 / 15.86 s |
+
+Coverage reduced median latency by **43.5–44.4%**, but did not increase strict answer accuracy or clear the adoption gate. **Ranked five remains the default.** The experiment distinguishes missing candidates, evidence selection and quote-validation failures. One question also permits a reasonable interpretation different from its frozen ambiguity label; the score and source-review exception are both retained. This is a small diagnostic corpus, not an independently administered benchmark.
+
+T14 found numeric proof defects. **T15 repairs them:** exact English grouped numbers and named-month date years validate, while shortened numeric quotes are checked against the complete supplied passage. For example, `3,000` supports `3000`; clipping it to `3` cannot support `3`. Original quotes, exact values and historical scores are preserved. These mechanical checks do not guarantee factual correctness. [T15 verification and limits](docs/reports/t15-numeric-proofs.md) · [T14 results](docs/reports/t14-evidence-coverage.md) · [Readable coverage trace](docs/reports/t14-coverage-workflow.md) · [Try the experimental option](evals/coverage/README.md).
+
+**Earlier public-source comparison (T11):** **20 NASA/USGS documents and 28 questions**, with the same corpus, models and retrieval settings for both passage limits. Its corpus/annotation protocol differs from T14, so the answer rates are not directly comparable.
 
 | Answer configuration | Median, cold cache | Median, warm cache | Correct outcomes / planned |
 | --- | --- | --- | --- |
@@ -92,7 +107,7 @@ Only **18/20 documents were admitted, producing 658 chunks**. One PDF failed str
 
 A separate **core-only capacity probe** searched **12,800 supplied 384-dimensional vectors across 400 synthetic documents** in **9.95 ms median**, with **79.3 MiB peak process RSS**. This measures hybrid search capacity; it excludes document parsing, embeddings and answer generation.
 
-The latest verification recorded **167 passing automated checks**: 91 Rust, 54 fixture/scorer/protocol and 22 worker/answer/scheduler/transport checks, plus formatting, lint and Compose validation. These software checks are separate from the end-to-end answer scores above. T11 also found and fixed a UTF-8 ingestion panic; the earlier failed attempt is retained.
+T14 verification passed **217 automated checks** (101 Rust, 116 Python), plus formatting, lint and Compose validation. Those checks are separate from answer quality and the newly recorded numeric-boundary diagnostic. T13 also completed a CPU recovery/PDF drill; see [results](docs/reports/t13-reliability.md). T11 found and fixed a UTF-8 ingestion panic; the earlier failed attempt is retained.
 
 The earlier synthetic development comparison passed 13/13 questions with both limits. Generated context increased its five-file ingestion from **24.76 s to 72.16 s** without improving final answers, so structural context remains the default. Broader quality and sustained-load performance remain open.
 
@@ -157,6 +172,16 @@ PDF ingestion is strict by default: unprocessed illustrations or uncertain OCR c
 
 Stop with `docker compose -f compose.app.yaml stop`. Documents and models persist; subsequent starts use `up -d`. See the [operations guide](docs/development.md) for job inspection, retry, document replacement and backup commands.
 
+### 4. See how the workflow ran
+
+Append `--explain` for a readable account of the input, processing steps, selected source passages and answer:
+
+```sh
+docker compose -f compose.app.yaml run --rm client ask /app/tests/fixtures/answers/voyager.json --explain
+```
+
+Use `--report` to save Markdown and `--capture` for offline replay. Reports include the client invocation, API handler and high-level function references beside the steps. See the [real Voyager workflow report](docs/reports/t12-voyager-workflow.md) and [commands for saving a complete workflow](docs/workflow-debugging.md).
+
 ## Verification
 
 The core and fixture checks run in Docker without a GPU or model downloads. The first image build requires network access; test containers run with networking disabled.
@@ -169,9 +194,10 @@ docker compose run --rm core cargo clippy --locked --offline --all-targets -- -D
 docker compose run --rm evals
 docker compose run --rm evals python -m unittest evals.test_validate evals.test_score -v
 docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest evals.independent.test_protocol evals.independent.test_summary -v
+docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest deployment.test_workflow -v
 ```
 
-These commands cover the 91 Rust checks and 54 fixture/scorer/protocol checks. The last command mounts the repository read-only and works in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
+These commands cover the 108 Rust checks, 54 original fixture/scorer/protocol checks and 26 workflow/client checks. T14 adds `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. T15 passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
 
 ## Explore the implementation
 
@@ -186,9 +212,9 @@ These commands cover the 91 Rust checks and 54 fixture/scorer/protocol checks. T
 
 ## Project status and next steps
 
-T01–T11 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, development evaluation and the first public-source comparison. The app is ready for local experimentation. The public API is still evolving, and there is no web UI or multi-user authentication.
+T01–T15 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection and numeric proof validation. The app is ready for local experimentation. The public API is still evolving, and there is no web UI or multi-user authentication.
 
-The next proposed tasks address the failures this evaluation exposed: **T12** for ingestion recovery, PDF diagnostics and bounded busy retries; **T13** for evidence coverage, conversational retrieval and structured pointer selection, measured on new frozen data. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
+T13 adds coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). After T15, the next work to scope is field-specific candidate retrieval and clearer ambiguity evaluation. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
 
 For contributions, start with the [architecture](docs/architecture.md), [build plan](docs/plan.md) and [working instructions](AGENTS.md). Reproducible retrieval failures with shareable source files are especially useful.
 

@@ -1,6 +1,6 @@
 //! Snapshot-scoped retrieval and mechanically checked extraction. See docs/answers.md.
 use crate::{
-    Result,
+    Error, Result,
     contracts::*,
     ingestion::{Encoder, worker::ModelWorker},
     require,
@@ -10,6 +10,8 @@ use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 use std::collections::{BTreeMap, BTreeSet};
 use std::time::Instant;
+mod coverage;
+mod numeric;
 
 pub const INPUT_TOKENS: usize = 3328;
 pub const OUTPUT_TOKENS: usize = 768;
@@ -85,6 +87,11 @@ pub struct AnswerInput {
     pub history: Vec<Turn>,
     pub fields: BTreeMap<String, FieldSpec>,
     pub evidence: Vec<Evidence>,
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub constrain_pointers: bool,
+}
+fn is_false(value: &bool) -> bool {
+    !value
 }
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "snake_case")]
@@ -199,6 +206,16 @@ pub struct AnswerReport {
     pub validation: Value,
     pub timings_ms: BTreeMap<String, f64>,
     pub options: AnswerOptions,
+    #[serde(skip_serializing_if = "Value::is_null")]
+    pub selection: Value,
+}
+
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "snake_case")]
+pub enum EvidenceStrategy {
+    #[default]
+    Ranked,
+    CoverageV1,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -208,6 +225,7 @@ pub struct AnswerOptions {
     pub rerank_limit: usize,
     pub primary_limit: usize,
     pub rerank: bool,
+    pub evidence_strategy: EvidenceStrategy,
 }
 impl Default for AnswerOptions {
     fn default() -> Self {
@@ -216,11 +234,17 @@ impl Default for AnswerOptions {
             rerank_limit: 20,
             primary_limit: 5,
             rerank: true,
+            evidence_strategy: EvidenceStrategy::Ranked,
         }
     }
 }
 impl AnswerOptions {
     fn validate(&self) -> Result<()> {
+        require(
+            self.evidence_strategy != EvidenceStrategy::CoverageV1
+                || (self.rerank && self.rerank_limit <= 20),
+            "coverage_v1 requires reranking and at most 20 candidates",
+        )?;
         require(
             (1..=100).contains(&self.candidates)
                 && (1..=100).contains(&self.rerank_limit)
@@ -305,7 +329,17 @@ pub fn ask_with_options(
     options.validate()?;
     validate_request(&request)?;
     let mut query = request.question.clone();
-    if !request.history.is_empty() {
+    if options.evidence_strategy == EvidenceStrategy::CoverageV1 {
+        if let Some(turn) = request
+            .history
+            .iter()
+            .rev()
+            .find(|t| matches!(t.role, Role::User))
+        {
+            query.push_str("\nPrevious user question for reference resolution (not evidence):\n");
+            query.push_str(&turn.text);
+        }
+    } else if !request.history.is_empty() {
         query.push_str("\nConversation for reference resolution (not evidence):\n");
         query.push_str(&serde_json::to_string(&request.history)?);
     }
@@ -330,6 +364,7 @@ pub fn ask_with_options(
         validation: Value::Null,
         timings_ms: BTreeMap::from([("resolution_validation".into(), elapsed(total))]),
         options: options.clone(),
+        selection: Value::Null,
     };
     let stage = Instant::now();
     if request.scope == Scope::StructuredLookup {
@@ -416,11 +451,33 @@ pub fn ask_with_options(
                 .timings_ms
                 .insert("reranking_with_preparation".into(), elapsed(stage));
             let stage = Instant::now();
+            let selected = if options.evidence_strategy == EvidenceStrategy::CoverageV1 {
+                let (keys, audit) = coverage::select(
+                    models,
+                    &request,
+                    &query,
+                    &retrieval,
+                    &passages,
+                    &report.ranked,
+                    options.primary_limit,
+                )?;
+                report.selection = audit;
+                Some(keys)
+            } else {
+                None
+            };
+            if selected.is_some() {
+                report
+                    .timings_ms
+                    .insert("field_coverage_selection".into(), elapsed(stage));
+            }
+            let stage = Instant::now();
             let mut input = AnswerInput {
                 question: request.question.clone(),
                 history: request.history.clone(),
                 fields: request.fields.clone(),
                 evidence: vec![],
+                constrain_pointers: options.evidence_strategy == EvidenceStrategy::CoverageV1,
             };
             require(
                 models.answer_tokens(&input)? <= INPUT_TOKENS,
@@ -428,10 +485,12 @@ pub fn ask_with_options(
             )?;
             let mut seen = BTreeSet::new();
             let mut primary = vec![];
-            for hit in &report.ranked {
+            let order: Vec<_> =
+                selected.unwrap_or_else(|| report.ranked.iter().map(|h| h.key.clone()).collect());
+            for key in &order {
                 if primary.len() >= options.primary_limit {
                     report.skipped.push(Skipped {
-                        key: hit.key.clone(),
+                        key: key.clone(),
                         reason: "primary limit".into(),
                     });
                     continue;
@@ -439,16 +498,31 @@ pub fn ask_with_options(
                 if add_evidence(
                     index,
                     models,
-                    &hit.key,
+                    key,
                     &mut input,
                     &mut seen,
                     &mut report.skipped,
                 )? {
-                    primary.push(hit.key.clone());
+                    primary.push(key.clone());
                 }
             }
             // Expansion has lower priority than primary evidence and respects the same filter.
-            for key in primary {
+            if options.evidence_strategy == EvidenceStrategy::CoverageV1 {
+                report.selection["admitted_primary_keys"] = json!(primary);
+                report.selection["neighbor_expansion"] = json!("disabled; source labels retained");
+                for hit in &report.ranked {
+                    if !order.contains(&hit.key) {
+                        report.skipped.push(Skipped {
+                            key: hit.key.clone(),
+                            reason: "outside field coverage selection".into(),
+                        });
+                    }
+                }
+            }
+            for key in primary
+                .into_iter()
+                .filter(|_| options.evidence_strategy == EvidenceStrategy::Ranked)
+            {
                 let (_, chunk) = index.resolve(&key).unwrap();
                 for id in [&chunk.previous, &chunk.next].into_iter().flatten() {
                     let neighbor = ChunkKey {
@@ -489,7 +563,10 @@ pub fn ask_with_options(
                     .insert("answer_model_calls".into(), elapsed(stage));
                 report.answer = extraction.answer;
                 report.audit = extraction.audit;
-                let resolved = resolve_json_values(&input, &mut report.answer)?;
+                let resolved =
+                    resolve_json_values(&input, &mut report.answer).map_err(|error| {
+                        rejected(&report, &input.evidence, "resolve_json_values", &error)
+                    })?;
                 if !resolved.is_empty() {
                     if !report.audit.is_object() {
                         report.audit = json!({"model_audit":report.audit});
@@ -513,14 +590,16 @@ pub fn ask_with_options(
         for field in source_types.values_mut() {
             field.nullable = true;
         }
-        validate_answer(&source_types, &report.evidence, &report.answer)?;
+        validate_answer(&source_types, &report.evidence, &report.answer)
+            .map_err(|error| rejected(&report, &report.evidence, "validate_source_null", &error))?;
         if !report.audit.is_object() {
             report.audit = json!({"model_audit":report.audit});
         }
         report.audit["source_null_abstention"] = json!({"reason":"requested non-nullable field is explicitly null in the source", "verified_source_fields":report.answer.fields});
         report.answer = Answer::empty(Status::InsufficientEvidence);
     }
-    validate_answer(&request.fields, &report.evidence, &report.answer)?;
+    validate_answer(&request.fields, &report.evidence, &report.answer)
+        .map_err(|error| rejected(&report, &report.evidence, "validate_answer", &error))?;
     report.validation = json!({"schema":"passed", "source_references":"passed", "mechanical_support":"passed", "semantic_correctness":"not_automatically_established"});
     if report.answer.status == Status::Supported {
         report.formatted = Some(render(&report.answer, request.template.as_deref())?);
@@ -539,6 +618,32 @@ pub fn ask_with_options(
         .timings_ms
         .insert("answer_total".into(), elapsed(total));
     Ok(report)
+}
+
+fn rejected(report: &AnswerReport, evidence: &[Evidence], stage: &str, error: &Error) -> Error {
+    // Diagnostics remain inside an error envelope and can never be used as an answer.
+    let draft = serde_json::to_value(&report.answer).unwrap_or(Value::Null);
+    let raw = draft.to_string();
+    let draft = if raw.len() <= 32768 {
+        draft
+    } else {
+        json!({"truncated":true,"json_preview":raw.chars().take(8192).collect::<String>()})
+    };
+    let selected: Vec<_> = evidence.iter().take(10).map(|e| json!({
+        "id":e.id,"key":e.key,"text_preview":e.text.chars().take(1200).collect::<String>(),
+        "text_truncated":e.text.chars().count()>1200,"sources":e.sources.iter().take(12).collect::<Vec<_>>(),
+        "source_count":e.sources.len()
+    })).collect();
+    Error::AnswerRejected {
+        message: error.to_string(),
+        diagnostics: Box::new(json!({
+            "outcome":"rejected","stage":stage,"generation":report.generation,
+            "question":report.request.question,"requested_fields":report.request.fields,
+            "unvalidated_draft":draft,"evidence":selected,"evidence_count":evidence.len(),
+            "assessment":report.audit.get("assessment"),
+            "next_action":"Inspect selected evidence, field quotes and JSON pointers. This draft failed validation and is not a supported answer."
+        })),
+    }
 }
 
 // The model selects a JSON location; it never transcribes the authoritative value.
@@ -932,20 +1037,17 @@ pub fn validate_answer(
                 .map(String::from)
                 .unwrap_or_else(|| proof.value.to_string());
             require(
-                !literal.is_empty()
-                    && proof.quote.match_indices(&literal).any(|(i, _)| {
-                        let before = proof.quote[..i].chars().next_back();
-                        let after = proof.quote[i + literal.len()..].chars().next();
-                        !before.is_some_and(char::is_alphanumeric)
-                            && !after.is_some_and(char::is_alphanumeric)
-                            && (!proof.value.is_number()
-                                || !(matches!(before, Some('-' | '+' | '.' | ','))
-                                    || (matches!(after, Some('.' | ','))
-                                        && proof.quote[i + literal.len()..]
-                                            .chars()
-                                            .nth(1)
-                                            .is_some_and(|c| c.is_ascii_digit()))))
-                    }),
+                if let Some(number) = proof.value.as_number() {
+                    numeric::supported(&e.text, &proof.quote, number)
+                } else {
+                    !literal.is_empty()
+                        && proof.quote.match_indices(&literal).any(|(i, _)| {
+                            let before = proof.quote[..i].chars().next_back();
+                            let after = proof.quote[i + literal.len()..].chars().next();
+                            !before.is_some_and(char::is_alphanumeric)
+                                && !after.is_some_and(char::is_alphanumeric)
+                        })
+                },
                 "quoted source does not contain the exact answer value",
             )?;
         }

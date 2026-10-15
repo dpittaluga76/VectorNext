@@ -16,6 +16,7 @@ struct Models {
     input: RefCell<Option<AnswerInput>>,
     response: Option<Answer>,
     budget: bool,
+    queries: RefCell<Vec<String>>,
 }
 impl Models {
     fn new(space: EmbeddingSpace) -> Self {
@@ -24,6 +25,7 @@ impl Models {
             input: RefCell::new(None),
             response: None,
             budget: false,
+            queries: RefCell::new(vec![]),
         }
     }
 }
@@ -44,7 +46,8 @@ impl Encoder for Models {
     }
 }
 impl AnswerModels for Models {
-    fn rerank(&self, _: &str, passages: &[String]) -> Result<Rerank> {
+    fn rerank(&self, query: &str, passages: &[String]) -> Result<Rerank> {
+        self.queries.borrow_mut().push(query.into());
         assert!(passages.iter().all(|p| !p.contains("GENERATED LIE")));
         Ok(Rerank {
             scores: passages
@@ -188,6 +191,288 @@ fn exact_json_zero_null_missing_and_large_numbers() {
     r.fields.get_mut("goals").unwrap().pointer = Some("/zero".into());
     assert!(validate_answer(&r.fields, &[e], &supported(Value::Null, "", Some("/null"))).is_err());
 }
+
+fn numeric_proof(source: &str, quote: &str, number: &str) -> Result<()> {
+    let fields = BTreeMap::from([(
+        "goals".into(),
+        serde_json::from_value(json!({"kind":"number"})).unwrap(),
+    )]);
+    validate_answer(
+        &fields,
+        &[source_evidence(source)],
+        &supported(serde_json::from_str(number).unwrap(), quote, None),
+    )
+}
+
+#[test]
+fn numeric_quotes_accept_only_exact_plain_or_three_digit_grouped_spellings() {
+    for (quote, value) in [
+        ("0", "0"),
+        ("3,000", "3000"),
+        ("-12,345", "-12345"),
+        ("1,234,567", "1234567"),
+        ("12,345.06789", "12345.06789"),
+        ("-0.000000000000000000001", "-0.000000000000000000001"),
+        (
+            "9,007,199,254,740,993,123,456,789",
+            "9007199254740993123456789",
+        ),
+        ("1,234.000000000000000000001", "1234.000000000000000000001"),
+        ("1e+999999999999999999999999", "1e+999999999999999999999999"),
+    ] {
+        let source = format!("Measurement: {quote}.");
+        assert!(
+            numeric_proof(&source, quote, value).is_ok(),
+            "{source} / {value}"
+        );
+        assert!(
+            numeric_proof(&source, &source, value).is_ok(),
+            "{source} / {value}"
+        );
+    }
+    // Validation never normalizes the stored source, model quote or typed value.
+    let evidence = vec![source_evidence("Measurement: 3,000.")];
+    let answer = supported(json!(3000), "3,000", None);
+    let before = serde_json::to_string(&(&evidence, &answer)).unwrap();
+    validate_answer(&request().fields, &evidence, &answer).unwrap();
+    assert_eq!(
+        serde_json::to_string(&(&evidence, &answer)).unwrap(),
+        before
+    );
+    assert_eq!(
+        render(&answer, Some("Count: {goals}")).unwrap(),
+        "Count: 3000"
+    );
+}
+
+#[test]
+fn numeric_quotes_cannot_clip_source_signs_digits_decimals_or_separators() {
+    for (source, quote, value) in [
+        ("Count: 3,000.", "3", "3"),
+        ("Count: 3,000.", "000", "0"),
+        ("Count: 13,000.", "3,000", "3000"),
+        ("Count: 3,000,001.", "3,000", "3000"),
+        ("Count: -3.", "3", "3"),
+        ("Count: +3.", "3", "3"),
+        ("Count: −3.", "3", "3"),
+        ("Count: - 3.", "3", "3"),
+        ("Count: --3.", "-3", "-3"),
+        ("Value: 3.50.", "3.5", "3.5"),
+        ("Value: 3.5.", "3", "3"),
+        ("Value: 5.3.", "3", "3"),
+        ("Value: .3.", "3", "3"),
+        ("Value: 3e2.", "3", "3"),
+        ("Value: 3e20.", "3e2", "3e2"),
+        ("Value: 3e-2.", "-2", "-2"),
+        ("Value: 3.e2.", "3", "3"),
+        ("Value: 3..5.", "3", "3"),
+        ("Value: 3/4.", "3", "3"),
+        ("Value: 3/4.", "4", "4"),
+        ("Time: 3:30.", "30", "30"),
+        ("Value: 3–5.", "3", "3"),
+        ("Value: 3–5.", "5", "5"),
+        ("Value: 3'000.", "3", "3"),
+        ("Value: 3’000.", "000", "0"),
+        ("Value: 3 000.", "3", "3"),
+        ("Value: 3\u{202f}000.", "3", "3"),
+        ("Value: 3\u{00a0}000.", "3", "3"),
+        ("Value: 3٬000.", "3", "3"),
+        ("Value: 3٫5.", "5", "5"),
+        ("Code: item_3.", "3", "3"),
+        ("Code: 3_items.", "3", "3"),
+        ("Code: é3.", "3", "3"),
+        ("Code: 3².", "3", "3"),
+    ] {
+        assert!(
+            numeric_proof(source, quote, value).is_err(),
+            "{source} / {quote} / {value}"
+        );
+    }
+}
+
+#[test]
+fn numeric_quotes_reject_malformed_grouping_rewrites_and_precision_loss() {
+    for (quote, value) in [
+        ("30,00", "3000"),
+        ("3,00", "3"),
+        ("3,0000", "30000"),
+        ("3,,000", "3000"),
+        ("03,000", "3000"),
+        ("0,003", "3"),
+        ("12,34,567", "1234567"),
+        ("1.234,56", "1234.56"),
+        ("1,234.56", "1.23456"),
+        ("1, 234", "1234"),
+        ("-3,000", "3000"),
+        ("3,000", "-3000"),
+        ("3,000.1", "3000"),
+        ("3,000", "3000.1"),
+        ("3.0", "3"),
+        ("3", "3.0"),
+        ("3e2", "300"),
+        ("3%", "0.03"),
+        ("three thousand", "3000"),
+        ("9,007,199,254,740,993", "9007199254740992"),
+        ("1,234.000000000000000000001", "1234.0"),
+    ] {
+        assert!(
+            numeric_proof(quote, quote, value).is_err(),
+            "{quote} / {value}"
+        );
+    }
+    assert!(numeric_proof("Count: 3,000.", "3000", "3000").is_err());
+}
+
+#[test]
+fn numeric_year_boundaries_use_complete_named_month_dates_in_source() {
+    for (date, year) in [
+        ("Feb. 25,1969", "1969"),
+        ("February 25, 1969", "1969"),
+        ("FEB. 29,2000", "2000"),
+        ("Sept 1,2024", "2024"),
+        ("(December 31,1999)", "1999"),
+    ] {
+        let source = format!("Date: {date}.");
+        assert!(numeric_proof(&source, date, year).is_ok(), "{date}");
+        assert!(numeric_proof(&source, year, year).is_ok(), "{date}");
+    }
+    for source in [
+        "25,1969",
+        "Unknown 25,1969",
+        "NotFeb. 25,1969",
+        "1Feb. 25,1969",
+        "Feb. 29,1969",
+        "Feb. 29,1900",
+        "Apr. 31,1969",
+        "Feb. 0,1969",
+        "Feb. 25,19690",
+        "Feb. 25,1969.5",
+        "Feb. 25,1969e2",
+        "Feb. 25,1969,000",
+        "Feb. 25,1969/1970",
+        "Feb. 25,1969–1970",
+    ] {
+        assert!(numeric_proof(source, "1969", "1969").is_err(), "{source}");
+    }
+}
+
+#[test]
+fn numeric_support_requires_a_valid_occurrence_inside_the_exact_quote() {
+    assert!(numeric_proof("3,000; count 3.", "3", "3").is_ok());
+    assert!(numeric_proof("3,000; count 3.", "3,000", "3").is_err());
+    assert!(numeric_proof("3,000; count 3.", "count 3", "3000").is_err());
+    assert!(numeric_proof("Café — count 12,345.", "12,345", "12345").is_ok());
+    assert!(numeric_proof("Café — count 12,345.", "345", "345").is_err());
+    assert!(numeric_proof("Count 3.\nOther count 4.", "3", "3").is_ok());
+    assert!(numeric_proof("Count: '3'.", "3", "3").is_ok());
+    assert!(numeric_proof("Count, 3", "3", "3").is_ok());
+    assert!(numeric_proof("First. 3 units", "3", "3").is_ok());
+    assert!(numeric_proof("A 3-year period.", "3", "3").is_ok());
+}
+
+#[test]
+fn numeric_format_support_does_not_relax_json_equality_or_field_types() {
+    let mut evidence = source_evidence("Count: 3,000.");
+    evidence.record = Some(json!({"count": "3,000", "number": 3000, "null": null}));
+    assert!(
+        validate_answer(
+            &request().fields,
+            &[evidence.clone()],
+            &supported(json!(3000), "3,000", Some("/count"))
+        )
+        .is_err()
+    );
+    assert!(
+        validate_answer(
+            &request().fields,
+            &[evidence.clone()],
+            &supported(json!(3), "3", Some("/number"))
+        )
+        .is_err()
+    );
+    assert!(
+        validate_answer(
+            &request().fields,
+            &[evidence.clone()],
+            &supported(json!(3000), "", Some("/number"))
+        )
+        .is_ok()
+    );
+    assert!(
+        validate_answer(
+            &request().fields,
+            &[evidence],
+            &supported(json!(0), "", Some("/null"))
+        )
+        .is_err()
+    );
+    assert!(
+        validate_answer(
+            &request().fields,
+            &[source_evidence("3,000.5")],
+            &supported(json!(3000.5), "3,000.5", None)
+        )
+        .is_err()
+    );
+}
+
+#[test]
+fn numeric_proof_pipeline_preserves_success_and_error_envelopes() {
+    let (_dir, mut db) = database();
+    let space = space(3);
+    let doc = document(
+        &mut db,
+        "d",
+        "r1",
+        &["Count: 3,000."],
+        vec![vec![1.; 3]],
+        &space,
+    );
+    publish(&mut db, doc, &space, None);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let mut models = Models::new(space);
+    let request: AskRequest = serde_json::from_value(json!({
+        "question":"What is the count?", "fields":{"count":{"kind":"integer"}},
+        "template":"Count: {count}"
+    }))
+    .unwrap();
+    let answer = |value, quote| {
+        serde_json::from_value(json!({
+            "status":"supported", "fields":{"count":{
+                "value":value, "quote":quote, "evidence_id":"E1", "pointer":null
+            }}
+        }))
+        .unwrap()
+    };
+    models.response = Some(answer(3000, "3,000"));
+    let report = ask(&index, &models, request.clone()).unwrap();
+    assert_eq!(report.answer.fields["count"].value, 3000);
+    assert_eq!(report.answer.fields["count"].quote, "3,000");
+    assert_eq!(
+        render(&report.answer, request.template.as_deref()).unwrap(),
+        "Count: 3000"
+    );
+
+    models.response = Some(answer(3, "3"));
+    let error = ask(&index, &models, request).unwrap_err();
+    let (status, body) = vectornext::service::http::error_response(&error);
+    assert_eq!(status, 400);
+    assert_eq!(body["error"]["code"], "answer_rejected");
+    let diagnostics = &body["error"]["diagnostics"];
+    assert_eq!(diagnostics["stage"], "validate_answer");
+    assert_eq!(
+        diagnostics["unvalidated_draft"]["fields"]["count"]["value"],
+        3
+    );
+    assert!(
+        diagnostics["evidence"][0]["text_preview"]
+            .as_str()
+            .unwrap()
+            .contains("3,000")
+    );
+    assert!(body.get("answer").is_none());
+    assert!(body.get("formatted").is_none());
+}
 #[test]
 fn templates_render_values_once_without_interpreting_value_braces() {
     let mut a = supported(json!(0), "", None);
@@ -266,6 +551,7 @@ fn bounded_options_keep_filter_and_expose_stage_timings() {
         rerank_limit: 1,
         primary_limit: 1,
         rerank: false,
+        ..AnswerOptions::default()
     };
     let report = ask_with_options(&index, &models, request(), options.clone()).unwrap();
     assert_eq!(report.ranked.len(), 1);
@@ -285,6 +571,100 @@ fn bounded_options_keep_filter_and_expose_stage_timings() {
         ..options
     };
     assert!(ask_with_options(&index, &models, request(), invalid).is_err());
+}
+#[test]
+fn coverage_focus_retains_authoritative_history_and_explicit_filter() {
+    let (_dir, db, space) = ingest_json(br#"[{"id":"a","goals":0},{"id":"b","goals":2}]"#);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let models = Models::new(space);
+    let mut r = request();
+    r.question = "How many did they score?".into();
+    r.history = vec![
+        Turn {
+            role: Role::User,
+            text: "Earlier topic".into(),
+        },
+        Turn {
+            role: Role::User,
+            text: "Current subject with exact constraints".into(),
+        },
+        Turn {
+            role: Role::Assistant,
+            text: "Other distracting subject".into(),
+        },
+    ];
+    r.filter = Filter::DocumentIds(["d".into()].into());
+    r.fields.get_mut("goals").unwrap().description = "Requested event goals".into();
+    let report = ask_with_options(
+        &index,
+        &models,
+        r.clone(),
+        AnswerOptions {
+            evidence_strategy: EvidenceStrategy::CoverageV1,
+            ..AnswerOptions::default()
+        },
+    )
+    .unwrap();
+    assert!(report.search_text.contains("exact constraints"));
+    assert!(!report.search_text.contains("distracting"));
+    assert!(!report.search_text.contains("Earlier topic"));
+    let input = models.input.borrow();
+    let input = input.as_ref().unwrap();
+    assert_eq!(input.history.len(), 3);
+    assert_eq!(input.question, r.question);
+    assert!(input.constrain_pointers);
+    assert_eq!(report.retrieval.unwrap().request.filter, r.filter);
+    assert_eq!(models.queries.borrow().len(), 2);
+    assert!(models.queries.borrow()[1].starts_with("goals: Requested event goals"));
+    assert!(
+        report.selection["neighbor_expansion"]
+            .as_str()
+            .unwrap()
+            .contains("disabled")
+    );
+    assert_eq!(
+        report.selection["planned_primary_keys"]
+            .as_array()
+            .unwrap()
+            .len(),
+        2
+    );
+}
+#[test]
+fn coverage_requires_bounded_reranking_and_legacy_inputs_remain_compatible() {
+    let options: AnswerOptions = serde_json::from_value(json!({})).unwrap();
+    assert_eq!(options.evidence_strategy, EvidenceStrategy::Ranked);
+    let input: AnswerInput =
+        serde_json::from_value(json!({"question":"Q", "history":[],"fields":{},"evidence":[]}))
+            .unwrap();
+    assert!(!input.constrain_pointers);
+    assert!(
+        serde_json::to_value(input)
+            .unwrap()
+            .get("constrain_pointers")
+            .is_none()
+    );
+    assert!(
+        serde_json::from_value::<AnswerOptions>(json!({"evidence_strategy":"unknown"})).is_err()
+    );
+    let (_dir, db, space) = ingest_json(br#"[{"goals":0}]"#);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let models = Models::new(space);
+    for bad in [
+        json!({"evidence_strategy":"coverage_v1","rerank":false}),
+        json!({"evidence_strategy":"coverage_v1","rerank_limit":21}),
+    ] {
+        assert!(
+            ask_with_options(
+                &index,
+                &models,
+                request(),
+                serde_json::from_value(bad).unwrap()
+            )
+            .is_err()
+        );
+    }
+    assert!(models.queries.borrow().is_empty());
 }
 #[test]
 fn structured_lookup_scans_all_records_and_dedupes_copies() {
@@ -420,6 +800,62 @@ fn json_selection_materializes_exact_values_without_model_transcription() {
     );
     r.fields.get_mut("goals").unwrap().pointer = Some("/other".into());
     assert!(ask(&index, &models, r).is_err());
+}
+
+#[test]
+fn rejected_json_pointer_retains_draft_and_source_without_supported_response() {
+    let (_dir, db, space) = ingest_json(br#"[{"goals":9007199254740993.00000000000001}]"#);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let mut models = Models::new(space);
+    models.response = Some(supported(Value::Null, "", Some("/missing")));
+    let error = ask(&index, &models, request()).unwrap_err();
+    let (status, body) = vectornext::service::http::error_response(&error);
+    assert_eq!(status, 400);
+    assert!(body.get("answer").is_none() && body.get("formatted").is_none());
+    let d = &body["error"]["diagnostics"];
+    assert_eq!(d["outcome"], "rejected");
+    assert_eq!(d["stage"], "resolve_json_values");
+    assert_eq!(
+        d["unvalidated_draft"]["fields"]["goals"]["pointer"],
+        "/missing"
+    );
+    assert!(
+        d["evidence"][0]["text_preview"]
+            .as_str()
+            .unwrap()
+            .contains("9007199254740993.00000000000001")
+    );
+    assert!(!d["evidence"][0]["sources"].as_array().unwrap().is_empty());
+}
+
+#[test]
+fn rejected_quote_retains_unvalidated_value_and_precise_source_context() {
+    let (_dir, mut db) = database();
+    let space = space(3);
+    let doc = document(
+        &mut db,
+        "d",
+        "r1",
+        &["He scored 3 goals."],
+        vec![vec![1.; 3]],
+        &space,
+    );
+    publish(&mut db, doc, &space, None);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let mut models = Models::new(space);
+    models.response = Some(supported(json!(9), "He scored 9", None));
+    let error = ask(&index, &models, request()).unwrap_err();
+    let (_, body) = vectornext::service::http::error_response(&error);
+    let d = &body["error"]["diagnostics"];
+    assert_eq!(d["stage"], "validate_answer");
+    assert_eq!(d["unvalidated_draft"]["fields"]["goals"]["value"], 9);
+    assert!(
+        d["evidence"][0]["text_preview"]
+            .as_str()
+            .unwrap()
+            .contains("3 goals")
+    );
+    assert!(body.get("answer").is_none());
 }
 
 #[test]

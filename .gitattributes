@@ -10,3 +10,6 @@
 Cargo.lock text eol=lf
 processor/requirements.lock text eol=lf
 *.pdf binary
+# T14 manifests bind exact working-tree bytes, including acquisition line endings.
+evals/coverage/** -text
+compose.coverage.yaml -text

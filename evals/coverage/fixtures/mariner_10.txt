@@ -1,0 +1,142 @@
+Explore This Section
+
+# Mariner 10
+
+Occurred 52 years ago
+
+Type
+
+Multiple Flybys
+
+Launch
+
+Nov. 3, 1973
+
+Targets
+
+Mercury, Venus
+
+Results
+
+Successful
+
+## What was Mariner 10?
+
+NASA's Mariner 10 spacecraft took its first image of Mercury on March 24, 1974. This picture was taken from a distance of 3,340,000 miles (5,380,000 km) from the surface of Mercury.
+
+NASA/JPL/USGS
+
+Mariner 10 was the first spacecraft sent to the planet Mercury; the first mission to explore two planets (Mercury and Venus) during a single mission; the first to return to its primary destination for another look; and the first to use a gravity assist to change its flight path.
+
+Nation | United States of America (USA)
+
+Objective(s) | Mercury Flyby, Venus Flyby
+
+Spacecraft | Mariner-73J / Mariner-J
+
+Spacecraft Mass | 1,100 pounds (502.9 kilograms)
+
+Spacecraft Power | Solar
+
+Mission Design and Management | NASA / JPL
+
+Launch Vehicle | Atlas Centaur (AC-34 / Atlas 3D no. 5014D / Centaur D-1A)
+
+Launch Date and Time | Nov. 3, 1973 / 05:45:00 UT
+
+Launch Site | Cape Canaveral, Fla. / Launch Complex 36B
+
+Scientific Instruments | 1. Two Telescopes/Cameras
+2. Infrared Radiometer
+3. Ultraviolet Airglow Spectrometer
+4. Ultraviolet Occultation Spectrometer
+5. Magnetometer
+6. Charged Particle Telescope
+7. Plasma Analyzer
+
+This photo identifies the spacecraft's science instruments, which were used to study the atmospheric, surface and physical characteristics of Venus and Mercury. This was the sixth in the series of Mariner spacecraft that explored the inner planets beginning in 1962.
+
+NASA/JPL
+
+## Firsts
+
+First spacecraft sent to study Mercury
+
+First spacecraft to use the gravity of one planet (in this case, Venus) to reach another
+
+First spacecraft to return data on a long-period comet
+
+First mission to explore two planets (Mercury and Venus) during a single mission
+
+First spacecraft to use a gravity assist to change its flight path
+
+The first spacecraft to return to its target after an initial encounter
+
+First probe to use the solar wind as a major means of spacecraft orientation during flight
+
+## Results
+
+Mariner 10 was the first spacecraft sent to the planet Mercury; the first mission to explore two planets (Mercury and Venus) during a single mission; the first to use a gravity assist to change its flight path; the first to return to its target after an initial encounter; and the first to use the solar wind as a major means of spacecraft orientation during flight.
+
+The primary goal of the Mariner 10 was to study the atmosphere (if any), surface and physical characteristics of Mercury. Soon after leaving Earth orbit, the spacecraft returned striking photos of both Earth and the Moon as it sped to its first destination, Venus.
+
+The Earth and Moon as seen by NASA’s Mariner 10 spacecraft in 1973.
+
+NASA/JPL/Northwestern University
+
+During the coast, there were numerous technical problems, including malfunctions in the high-gain antenna and the attitude control system. In January 1974, Mariner 10 successfully returned data (sans photographs) on Comet C/1973 E1 Kohoutek, the first time a spacecraft returned data on a long-period comet.
+
+After midcourse corrections Nov. 13, 1973, and Jan. 21, 1974, Mariner 10 approached Venus for a gravity assist maneuver to send it toward Mercury. On Feb. 5, 1974, the spacecraft began returning images of Venus, the first picture showing the day-night terminator of the planet as a thin bright line. Overall, Mariner 10 returned 4,165 photos of Venus and collected important scientific data during its encounter. The closest flyby range was 3,584 miles (5,768 kilometers) at 17:01 UT Feb. 5, 1974.
+
+Assisted by Venusian gravity, the spacecraft now headed to the innermost planet, which it reached after another course correction March 16, 1974. As Mariner 10 approached Mercury, photos began to show a very Moon-like surface with craters, ridges and chaotic terrain.
+
+The spacecraft’s magnetometers revealed a weak magnetic field. Radiometer readings suggested nighttime temperatures of minus 297 degrees Fahrenheit (minus 183 degrees Celsius) and maximum daytime temperatures of 369 degrees Fahrenheit (187 degrees Celsius).
+
+The closest encounter came at 20:47 UT March 29, 1974, at a range of 437 miles (703 kilometers). An occultation experiment as the vehicle crossed behind the nightside of the planet indicated a lack of an atmosphere or ionosphere.
+
+Leaving Mercury behind, the spacecraft looped around the Sun and headed back to its target, helped along by subsequent course corrections May 9, May 10 and July 2, 1974. Mariner 10 flew by Mercury once more on at 20:59 UT Sept. 21, 1974, at a range of about 29,869 miles (48,069 kilometers), adding imagery of the southern polar region. The spacecraft used solar pressure on its solar panels and high-gain antenna for attitude control.
+
+Mariner 10 once again sped away from Mercury before a final and third encounter with Mercury, enabled by three maneuvers (Oct. 30, 1974, Feb. 13, 1975, and March 7, 1975), the last one actually to avoid impact with the planet. The third flyby, at 22:39 UT March 16, 1975, was the closest to Mercury, at a range of about 200 miles (327 kilometers).
+
+Because of the failure of a tape recorder and restrictions in the rate of data reception, only the central quarter of each of 300 high-resolution images was received during this encounter.
+
+Last contact with the spacecraft was at 12:21 UT March 24, 1975, after the spacecraft exhausted its supply of gas for attitude control.
+
+Mariner 10 returned over 2,700 pictures during its three Mercury flybys that covered nearly half of the planet’s surface. Some of the images showed detail as small as 328 feet (100 meters) wide. Perhaps the most impressive surface feature was the Caloris basin, characterized by a set of concentric rings and ridges and about 1,550 miles (2,500 kilometers) in diameter.
+
+The mission was the last visit to Mercury by a robotic probe for more than 30 years.
+
+##
+Read More
+
+## NSSDC Master Catalog: Mariner 10
+
+In depth mission details and data from the National Space Science Data Center.
+
+## Beyond Earth: A Chronicle of Deep Space Exploration
+
+A definitive history of deep space missions.
+
+Keep Exploring
+
+## Discover More Topics From NASA
+
+###
+James Webb Space Telescope
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+###
+Perseverance Rover
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+###
+Parker Solar Probe
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+###
+Juno
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

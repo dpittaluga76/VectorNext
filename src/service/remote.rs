@@ -40,7 +40,21 @@ impl Client {
         } else {
             agent.get(&url).call()
         };
-        let reply = reply.map_err(|e| Error::Unavailable(format!("processor {path}: {e}")))?;
+        let reply = match reply {
+            Ok(reply) => reply,
+            Err(ureq::Error::Status(503, response)) => {
+                let mut raw = String::new();
+                response.into_reader().take(4096).read_to_string(&mut raw)?;
+                if serde_json::from_str::<Value>(&raw)
+                    .ok()
+                    .is_some_and(|v| v["code"] == "busy")
+                {
+                    return Err(Error::Busy(format!("processor {path}: CPU admission busy")));
+                }
+                return Err(Error::Unavailable(format!("processor {path}: HTTP 503")));
+            }
+            Err(error) => return Err(Error::Unavailable(format!("processor {path}: {error}"))),
+        };
         let mut bytes = vec![];
         reply
             .into_reader()

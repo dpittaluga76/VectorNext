@@ -1,0 +1,142 @@
+Explore Mars In Depth
+
+# Mariner 6
+
+Occurred 55 years ago
+
+Type
+
+Flyby
+
+Launch
+
+Feb. 25,1969
+
+Target
+
+Mars
+
+status
+
+Successful
+
+### What was Mariner 6?
+
+Mariner 6—along with its twin Mariner 7—was designed to make a close flyby of Mars to look for signs of life and to develop technology for future missions. It returned photos showing a chaotic and heavily cratered surface as well as the dark features long seen from Earth.
+
+Nation | United States of America (USA)
+
+Objective(s) | Mars Flyby
+
+Spacecraft | Mariner-69F / Mariner-F
+
+Spacecraft Mass | 840 pounds (381 kilograms)
+
+Spacecraft Power | Solar
+
+Mission Design and Management | NASA / JPL
+
+Launch Vehicle | Atlas Centaur (AC-20 / Atlas 3C no. 5403C / Centaur D-1A)
+
+Launch Date and Time | Feb. 25,1969 / 01:29:02 UT
+
+Launch Site | Cape Canaveral, Fla. / Launch Complex 36B
+
+Scientific Instruments | 1. Imaging System (Two TV cameras)
+2. Infrared Spectrometer
+3. Ultraviolet Spectrometer
+4. Infrared Radiometer
+5. Celestial Mechanics Experiment
+6. S-Band Occultation Experiment
+7. Conical Radiometer
+
+An artist's concept of NASA's Mariner 6 and 7 spacecraft.
+
+NASA
+
+### Results
+
+NASA's Mariner 6 and 7—identical spacecraft intended to fly by Mars—were the first Mariner spacecraft launched by the Atlas Centaur and this allowed for a heavier instrument suite.
+
+Both spacecraft were intended to study the surface and atmosphere of Mars during close flybys (approximately 2,000 miles or 3,200 kilometers) that would include a radio-occultation experiment. All onboard instrumentation was designed to collect data on Mars; there were no experiments for the study of interplanetary space.
+
+Mariner 6 was launched at 01:29:02 UT Feb. 25, 1969, from Cape Canaveral, Florida.
+
+The 11-foot (3.35-meter) tall spacecraft was built around an eight-sided magnesium framework with four rectangular solar panels for 449 watts of power. The heart of the spacecraft was the 26-pound (11.8-kilogram) Control Computer and Sequencer (CC&S) computer which was designed to independently operate Mariner without intervention from ground control.
+
+After a course correction on Feb. 28, 1969, and preliminary imaging sessions (50 photos) on July 28, 1969, Mariner 6 flew by Mars at 05:19:07 UT on July 31, 1969, at a distance of about 2,131 miles (3,429 kilometers). Just 15 minutes prior to closest approach (south of the Martian equator), the two TV cameras on a scan platform began taking photos of the planet automatically every 42 seconds.
+
+Mariner 6 took 24 near-encounter photos during a period of 17 minutes which were stored on a tape recorder and later transmitted back to Earth some 20 hours after the flyby at a rate of one frame every 5 minutes.
+
+The photos showed heavily cratered and chaotic areas, not unlike parts of Earth's Moon. Images of the south polar region showed intriguing detail of an irregular border. The scientific instruments indicated that the polar cap gave off infrared radiation consistent with solid carbon dioxide.
+
+Mariner 6 found surface pressure to be equal to about 19 miles (30.5 kilometers) above Earth’s surface. The atmospheric composition was about 98 percent carbon dioxide. Surface temperatures ranged from minus 99 degrees Fahrenheit (minus 73 degrees Celsius) at night to minus 193 degrees Fahrenheit (minus 125 degrees Celsius) at the south polar cap.
+
+Mariner 6 eventually entered heliocentric orbit (1.14 × 1.75 AU) and NASA continued to receive data from the vehicle until mid-1971.
+
+##
+Read More
+
+## NSSDC Master Catalog: Mariner 6
+
+In depth mission details and data from the National Space Science Data Center.
+
+## Beyond Earth: A Chronicle of Deep Space Exploration
+
+A definitive history of deep space missions.
+
+## Mariner 6 Stories
+
+Explore All Mariner 6 Stories
+
+News Release
+
+2 Min Read
+
+NASA to Host News Conference Previewing US Spacewalks 100, 101
+
+Article
+
+1 Min Read
+
+NASA Astronauts to Answer Questions from Florida Students
+
+5 Min Read
+
+NASA Roman Team Checks Out Main Instrument, Sharpens Telescope’s Focus
+
+Blog
+
+18 Min Read
+
+Episode 184: State Hubs: Opening Doors for Technical Students
+
+3 Min Read
+
+Crew Preps for Dragon’s Arrival During Vision and Robotics Research
+
+Blog
+
+Keep Exploring
+
+## Discover More Topics From NASA
+
+###
+James Webb Space Telescope
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+###
+Perseverance Rover
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+###
+Parker Solar Probe
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+###
+Juno
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

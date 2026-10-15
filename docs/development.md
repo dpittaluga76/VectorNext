@@ -242,4 +242,4 @@ When ready to build:
 
 > Read the project instructions and design, then implement the next ready task in docs/plan.md. Verify its acceptance criteria and update the handoff with the results.
 
-The T01–T11 queue is complete. The next proposed step is T12 ingestion recovery and failure diagnostics, followed by T13 question-aware evidence coverage on new frozen data. Read [T11 results](reports/t11-independent.md) before changing defaults. Preserve the six existing holdout questions and retain T11 as observed regression evidence; these results do not establish broad retrieval quality.
+The T01–T13 queue is complete. T12's [workflow reporting guide](workflow-debugging.md) covers readable CLI output, saved Markdown and offline captures; see the [fresh Voyager example](reports/t12-voyager-workflow.md). T13 adds [recovery and diagnostics](reliability.md), verified in a fresh CPU drill. Remaining proposed work is T14 evidence coverage. Read [T11 results](reports/t11-independent.md) before changing defaults. Preserve the six existing holdout questions and retain T11 as observed regression evidence; these results do not establish broad retrieval quality.

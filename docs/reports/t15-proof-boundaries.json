@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "accepted": true,
+      "case": "grouped",
+      "error": null,
+      "quote": "3,000",
+      "source": "Count: 3,000.",
+      "value": 3000
+    },
+    {
+      "accepted": false,
+      "case": "fragment",
+      "error": "invalid record: quoted source does not contain the exact answer value",
+      "quote": "3",
+      "source": "Count: 3,000.",
+      "value": 3
+    },
+    {
+      "accepted": true,
+      "case": "date",
+      "error": null,
+      "quote": "Feb. 25,1969",
+      "source": "Date: Feb. 25,1969",
+      "value": 1969
+    }
+  ],
+  "purpose": "post-T14 mechanical support diagnostic; not a quality benchmark"
+}

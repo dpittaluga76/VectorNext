@@ -34,6 +34,8 @@ The JSON coordinate order follows the [USGS GeoJSON format](https://earthquake.u
 
 Run from the repository root. Keep the frozen files unchanged. Validation is offline and never downloads or regenerates sources:
 
+For the historical T11 execution, use commit `aed598c336477b184a25c86e17cf63136ff88fdd` in a separate checkout. T12 adds reporting to `deployment/client.py`, which is one of the frozen execution files. The original freeze correctly rejects that later implementation; do not regenerate it to run a different version under the old comparison name. The source snapshots, labels, requests and scorer are unchanged.
+
 ```sh
 docker compose build evals
 docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest evals.independent.test_protocol -v

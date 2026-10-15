@@ -161,7 +161,8 @@ class Server(ThreadingHTTPServer):
         if not self.slots.acquire(blocking=False):
             try:
                 request.settimeout(1)
-                request.sendall(b'HTTP/1.0 503 Busy\r\nContent-Length: 0\r\n\r\n')
+                body=b'{"code":"busy","error":"CPU HTTP admission full"}'
+                request.sendall(b'HTTP/1.0 503 Busy\r\nContent-Type: application/json\r\nContent-Length: '+str(len(body)).encode()+b'\r\n\r\n'+body)
             finally: self.shutdown_request(request)
             return
         try: super().process_request(request, address)
@@ -199,7 +200,7 @@ class Handler(BaseHTTPRequestHandler):
             # Compact exact bytes are supplied by Rust; no parsed source-number reserialization.
             timeout = 720 if parsed['op'] == 'answer' else 420
             self.reply(200, lane.call(body, timeout))
-        except Busy as error: self.reply(503, {'error':str(error)})
+        except Busy as error: self.reply(503, {'code':'busy','error':str(error)})
         except (ValueError, OSError) as error: self.reply(400, {'error':str(error)[:1000]})
         except Exception as error: self.reply(503, {'error':type(error).__name__})
 

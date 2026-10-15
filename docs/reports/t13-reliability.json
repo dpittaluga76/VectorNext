@@ -1,0 +1,107 @@
+{
+  "completed": true,
+  "project": "vectornext-t13",
+  "gpu_generations": 0,
+  "baseline_response_sha256": "5f8b24ced41ba6fb05b98ebdd07624edf513bb8d579da3508fb18962ae369e1b",
+  "committed_document_unchanged": true,
+  "generation": 5,
+  "recovery_failure_count": 1,
+  "busy_rejections": 5,
+  "images": {
+    "vectornext": "1b6e6a91ed6964b7075b280cc851e755d4b0d6ca5ead9018eef2378437af08ba",
+    "processor": "5585b7689e0d6b63215d28e4bdff7ce8a7c2286e72f410823bf2b97d57fc1c42"
+  },
+  "date": "2026-10-14",
+  "scope": "Operational reliability; deterministic rejection/panic regressions and fresh CPU drill, not a model-quality evaluation.",
+  "checks": {
+    "rust_passed": 97,
+    "python_passed": 90,
+    "python_workflow": 25,
+    "python_reliability": 7,
+    "python_transport": 4,
+    "python_evaluation": 54,
+    "total_passed": 187,
+    "rustfmt": "passed",
+    "clippy_warnings_denied": "passed",
+    "compose": "passed"
+  },
+  "final_images": {
+    "vectornext-app:t13": "sha256:eb703e9cf8128f579638e5d10d41b7bed01fb8330e1b68368cdd808486eada62",
+    "vectornext-app-processor:t13": "sha256:d5930600ebbb21bf5161ffbef41a8f7fab7b60c83ed49583fbb034443ffef4ef"
+  },
+  "image_note": "Live service image identities are in images. Final images add the replay/operational runner and final presentation/client tests; Rust and processor behavior are identical to the live drill.",
+  "implementation_sha256": {
+    "src/service/coordinator.rs": "ee1d014437e3345edef2cc976382050f8698d7685f4a1dc299dfaf94856368c6",
+    "src/service/mod.rs": "a961ffa1df4dbc51891613f93dde80c2bfbc87ef7209be2e50afd673d438bc0b",
+    "src/service/http.rs": "2ebd194ddf0d076bbc5489953539d3d4e96d938752ec2030c17b6abe758cf4d2",
+    "src/service/remote.rs": "f409023fdcea0d502d7d95fc70e5f39555277f276b24b77965af91ca0f94e73f",
+    "src/answers.rs": "7d4d6df2acbe3fc14b056f05c3b4b03af3cab0ae54e9e7d4e683cd549366ec74",
+    "src/lib.rs": "cb004f23fc5e3c83187e9ef24887b65d6d02922028e983aa963f2950ecdf5266",
+    "deployment/client.py": "4aa80615f43a9be46e0f3aef474e4440eb02f6548a810089e69f61fe7a50be26",
+    "deployment/workflow.py": "22b9bfaee8ea9f9e849f53e99494b06fa299aac484bc5ab60e84880c9687f7c5",
+    "deployment/processor_server.py": "5fea43fb99d632aefab4b77899dbbb59c4060ab9678443265485ae01e86bdba1",
+    "deployment/test_workflow.py": "a8075cdcd7e606a97022c5aa654a3a6f55527fd2c2a7149197995f3805f8dd5c",
+    "deployment/test_reliability.py": "1f898f797902af88c6181b81d23b100990ad6ca950a2553f938de5af587e2ad0",
+    "deployment/reliability.py": "8ed8e5c07f2e92b411d5ab32495577cb1fb75279c1d9ca844a56158140804d1c",
+    "tests/answers.rs": "feda279bf68d21d05f02d4bcd20606e4fc1439ed878ad8fd1855db81f17bbeb2",
+    "tests/deployment.rs": "19304d3ecf0c97c9b9c759f98d3b508f9d8387d93b9cbb9824b2d06477e7b23a",
+    "compose.reliability.yaml": "e1c7d5ad2199df4fd4d0b6ba3aa5479363426eff41ee4c0050afae2f7553300f"
+  },
+  "raw_files": {
+    "apollo-strict.capture.json": "b023b00fb227650d1ad4040f2a48842a82823baba6dd42a4cf4b49e06161926c",
+    "apollo-t13-partial.capture.json": "68ba58072474da5eaea7061b5f767bce57948e4ef46702ec9244da5270b64c6b",
+    "apollo-t13-partial.json": "f408b596c021c96b09c0236c4f71c7d539d1f97dbe7400fd45f86588282606ee",
+    "apollo-t13-strict.json": "3f3534e1f2e77f09be3e6864ed67027bbe185678e0922519c87e68731d507772",
+    "apollo-upload.json": "6aac122352014757f9e886d5e613fd0ac3b02a71217dacb6dd5caae934db4a06",
+    "baseline-after.json": "3c786b8f1ac1e6793a9a9af2c3d2ecc836762331958d4ea413251e220fa0e7c0",
+    "baseline-before.json": "5f8b24ced41ba6fb05b98ebdd07624edf513bb8d579da3508fb18962ae369e1b",
+    "before-interruption.json": "b46f8989987b945e575e605b38bb73a4e2c9a761239011f6cac554305743e8d1",
+    "busy-admission.json": "70a0fc99d8f2b1bb3850fbbed25d66b5855864ac0c40b7030aed818efa55d6db",
+    "cpu-ready.json": "cc7f54b81ae483d3d240e77d23265f39a0f367314300b6c5ec25f9b3e8ed7c35",
+    "events.json": "d11d4334dc1c91b218c5a570b1fbe13720bf0152f7b72308fc5ec401f9e459e0",
+    "immutable-partial-policy.json": "86137281f11ee86e69c3d79d0abf51ccf6fcfb5b1527fb9675d6698807350b44",
+    "perseverance-t13-partial.capture.json": "1e957f54c43652598b10a2d7191c8e31d1226590771e47f7ea6a47000c71fd1a",
+    "perseverance-t13-partial.json": "1e70013c1fba02624a283685fa0bb5b84e98fe503b85e1e5aa6aed577446583a",
+    "perseverance-t13-strict.capture.json": "48389756b5addf8e55283d75f0a9d6be45e2e8266f2b1ce00b080732ebb3f1f2",
+    "perseverance-t13-strict.json": "912cd17fe0bb3f7df58d1853f61d1e8d139b6184a7e3f7d5590cb7bc5f45bfd2",
+    "processor-outage.capture.json": "53b0bb5c5d7efa55f4d0903c4c96f1524d1c2928974386b4fc3cb510448f7433",
+    "processor-outage.json": "3efc59da63a8b3f8f522d08890d0528aef5173119690e43102abc6b894b4832d",
+    "queued-admission.capture.json": "ba69d1a24207af1c84db7eb13dae5c2f79016e6c7672a81d13e77d6724928244",
+    "queued-t13-strict.json": "911f67f9cc551905af450ee751f116ba491f835cea1df76fb286a9cae5597b1f",
+    "recovered.capture.json": "ee50b2d4e844d97964344828e107502288b476373829f2d3a60f292a50f42ed5",
+    "recovery-t13-strict.json": "81622916723d2f3990aa28c445c51c9279b896a74963aa10027169aedecdce7d",
+    "verified.json": "91ae5a066b6ac99f40a983e3c6a30982104493a773e8d519c06d4b13f46d8fc5",
+    "voyager-t13-strict.json": "6eaa30f51d913b215496f20adea480d3e2a34fec5ae6b8a232f32e6e223a5dd4",
+    "workflow.md": "c5efa8fb1279315ecc9368e7f611c987715df9eb040397db21e5f3938fd11b67"
+  },
+  "published_captures": {
+    "apollo-strict.capture.json": "b023b00fb227650d1ad4040f2a48842a82823baba6dd42a4cf4b49e06161926c",
+    "apollo-t13-partial.capture.json": "68ba58072474da5eaea7061b5f767bce57948e4ef46702ec9244da5270b64c6b",
+    "perseverance-t13-partial.capture.json": "1e957f54c43652598b10a2d7191c8e31d1226590771e47f7ea6a47000c71fd1a",
+    "perseverance-t13-strict.capture.json": "48389756b5addf8e55283d75f0a9d6be45e2e8266f2b1ce00b080732ebb3f1f2",
+    "processor-outage.capture.json": "53b0bb5c5d7efa55f4d0903c4c96f1524d1c2928974386b4fc3cb510448f7433",
+    "queued-admission.capture.json": "ba69d1a24207af1c84db7eb13dae5c2f79016e6c7672a81d13e77d6724928244",
+    "recovered.capture.json": "ee50b2d4e844d97964344828e107502288b476373829f2d3a60f292a50f42ed5"
+  },
+  "published_workflow": {
+    "path": "docs/reports/t13-operational-workflow.md",
+    "sha256": "ae03fd448d8f0d8bec65b0ab35763b7b19e7bafdf13e0e2d34c9e91bf6ac98f0"
+  },
+  "historical_t11_changed_execution_inputs": [
+    "deployment/client.py",
+    "deployment/processor_server.py",
+    "src/answers.rs",
+    "src/lib.rs",
+    "src/service/http.rs",
+    "src/service/mod.rs",
+    "src/service/remote.rs"
+  ],
+  "t11_sources_labels_requests_scores_and_freeze_unchanged": true,
+  "services_stopped": true,
+  "limitations": [
+    "Coordinator panic is injected in deterministic Rust tests; actual process kill and CPU outage exercised in live drill.",
+    "Rejected-answer drafts are deterministic test-model regressions; no new Gemma answer inference.",
+    "Partial PDF policy retains warnings and does not validate OCR semantics.",
+    "Pre-admission attempt history is retained by the client/capture, not in a server durable ledger."
+  ]
+}

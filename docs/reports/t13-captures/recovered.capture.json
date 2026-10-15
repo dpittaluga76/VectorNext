@@ -1,0 +1,30 @@
+{
+  "format": "vectornext-workflow-v1",
+  "operation": "job",
+  "http_status": 200,
+  "response_json": "{\"coordinator\": {\"last_error\": null, \"recovery\": null, \"state\": \"running\"}, \"document_id\": \"recovery-t13\", \"failure_count\": 1, \"job_id\": \"recovery-t13-strict\", \"last_failure\": null, \"receipt\": {\"generation\": 5, \"request_sha256\": \"af04ceaeb06b9b47248f39c2f5557753460d1e1a995528865a57fe834b2053d2\"}, \"revision\": \"b29e6eca66589c86d3c81592bf6bb7f1c6671b01c02f6b161f7a0f4026639d8b\", \"stage\": \"Committed\", \"successful_stages\": 4}",
+  "context": {
+    "source": "recovery.txt",
+    "media_type": "Txt",
+    "admission_attempts": []
+  },
+  "elapsed_seconds": null,
+  "document": {
+    "document_id": "recovery-t13",
+    "revision": "b29e6eca66589c86d3c81592bf6bb7f1c6671b01c02f6b161f7a0f4026639d8b",
+    "media_type": "Txt",
+    "source_bytes": 161528,
+    "blocks": 500,
+    "chunks": 500,
+    "records": 0,
+    "policy": "structural",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "pdf_status": null,
+    "pdf_pages": null,
+    "pdf_methods": {},
+    "warnings": [],
+    "generated_context_outcomes": {}
+  },
+  "note": "Fresh T13 CPU operational drill; no generation model was used.",
+  "invocation": null
+}

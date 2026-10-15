@@ -1,0 +1,15 @@
+{
+  "format": "vectornext-workflow-v1",
+  "operation": "job",
+  "http_status": 200,
+  "response_json": "{\"coordinator\": {\"last_error\": null, \"recovery\": null, \"state\": \"running\"}, \"document_id\": \"perseverance-t13\", \"failure_count\": 1, \"job_id\": \"perseverance-t13-strict\", \"last_failure\": {\"message\": \"invalid record: partial PDF extraction rejected; inspect diagnostics or explicitly allow partial\", \"stage\": \"Uploaded\"}, \"pdf_diagnostics\": {\"allow_partial\": false, \"artifact_sha256\": \"fcd2fd77a23e8fb54e71cadd993de5c6e1f92f930d895bc2a4343f1114bbd4a0\", \"items\": 36, \"next_action\": \"Review page warnings. To accept recovered text explicitly, submit a new job ID with --allow-partial; the existing job policy is immutable.\", \"pages\": [{\"height\": 792.0, \"native_cells\": 45, \"ocr_cells\": 1, \"ocr_mean_confidence\": 0.040464099999999996, \"page\": 1, \"width\": 612.0}, {\"height\": 792.0, \"native_cells\": 80, \"ocr_cells\": 0, \"ocr_mean_confidence\": null, \"page\": 2, \"width\": 612.0}], \"source_sha256\": \"14ddeea4fb8e04dbee9a95bdba27471f5cccc9d6bd10692ed287b2274f3664fb\", \"status\": \"partial\", \"warning_count\": 4, \"warnings\": [{\"bbox\": [511.3333333333333, 126.0, 558.3333333333334, 447.0], \"code\": \"low_ocr_confidence\", \"message\": \"SPVPRVSVN\", \"page\": 1}, {\"bbox\": [44.56557083129883, 351.2037658691406, 468.1089172363281, 585.1572875976562], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 1}, {\"bbox\": [508.2441101074219, 26.68151092529297, 574.6812744140625, 85.34993743896484], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 1}, {\"bbox\": [313.15576171875, 198.38589477539062, 566.0455322265625, 348.0158386230469], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 2}], \"warnings_truncated\": false}, \"receipt\": null, \"revision\": \"451ac272da15897ca1ba78bd2fe329f16d6e49b33d8b08f5afa3c85cd76ffdb5\", \"stage\": \"Uploaded\", \"successful_stages\": 0}",
+  "context": {
+    "source": "perseverance_pdf.pdf",
+    "media_type": "Pdf",
+    "admission_attempts": []
+  },
+  "elapsed_seconds": null,
+  "document": null,
+  "note": "Fresh T13 CPU operational drill; no generation model was used.",
+  "invocation": null
+}
