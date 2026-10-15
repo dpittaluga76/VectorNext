@@ -43,5 +43,7 @@ frontend/playwright-report/
 !docker/benchmark.Dockerfile
 !docker/benchmark-runner.Dockerfile
 !docker/checkpoint-test.Dockerfile
+!docker/filter-profile.Dockerfile
+!docker/evidence-test.Dockerfile
 
 frontend/test-results-live/

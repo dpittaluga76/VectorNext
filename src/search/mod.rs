@@ -1,5 +1,6 @@
 //! Snapshot-scoped exact dense and keyword retrieval; no inference or persistent index format.
 mod filter;
+mod filter_index;
 mod keyword;
 
 use crate::{
@@ -8,6 +9,8 @@ use crate::{
     require, sha256,
 };
 pub use filter::{AttributeTrust, Bound, Filter, Predicate, Truth};
+use filter_index::FilterIndex;
+pub use filter_index::FilterIndexStats;
 use keyword::FieldIndex;
 pub use keyword::{TOKENIZER, tokenize};
 use serde::{Deserialize, Serialize};
@@ -230,6 +233,7 @@ pub struct SearchIndex {
     rows: Vec<Row>,
     lookup: BTreeMap<ChunkKey, usize>,
     fields: [FieldIndex; 3],
+    filters: FilterIndex,
 }
 
 impl SearchIndex {
@@ -300,6 +304,7 @@ impl SearchIndex {
                 }),
             ),
         ];
+        let filters = FilterIndex::build(&rows);
         Ok(Self {
             snapshot,
             space_id,
@@ -307,7 +312,13 @@ impl SearchIndex {
             rows,
             lookup,
             fields,
+            filters,
         })
+    }
+
+    /// Construction counters for disposable filter indexes, not resident bytes.
+    pub fn filter_index_stats(&self) -> &FilterIndexStats {
+        self.filters.stats()
     }
 
     pub fn generation(&self) -> u64 {
@@ -364,11 +375,7 @@ impl SearchIndex {
             !dense_enabled || request.vector.is_some(),
             "dense retrieval requires a query vector",
         )?;
-        let decisions: Vec<_> = self
-            .rows
-            .iter()
-            .map(|r| request.filter.evaluate(&r.document, r.chunk()))
-            .collect();
+        let decisions = self.filters.evaluate(&request.filter, &self.rows);
         let eligible: Vec<_> = decisions.iter().map(|d| *d == Truth::True).collect();
         let eligible_chunks = eligible.iter().filter(|&&v| v).count();
         let query_terms: Vec<_> = tokenize(&request.text)

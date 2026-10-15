@@ -24,6 +24,14 @@ Missing and explicit null differ. Exists/missing test path presence; equality ag
 
 Attributes derived from source or deterministic processing are eligible by default. Generated attributes are unknown unless the caller explicitly selects `Any` trust. The trace counts unknown exclusions; no automatic uncertain-attribute filter is created. Filters apply before branch top-k selection. BM25 corpus statistics do not change with filters; this is not a tenant/security isolation boundary.
 
+### Filter execution indexes (T22)
+
+Each new `SearchIndex` builds immutable document/media postings and bounded top-level scalar attribute columns. Scalar equality uses exact typed ordered keys; numeric ranges compare each distinct numeric key once, then mark its row postings. Missing values and generated-value trust retain the existing unknown semantics. Boolean expressions combine complete true/false/unknown decisions, including unknown counts when detailed eligibility tracing is disabled. Query validation and all response fields remain unchanged.
+
+Construction considers at most the first 32 lexicographic attribute names (each at most 16 KiB). A scalar column has at most 4,096 distinct values and 16 KiB per value key. Total retained attribute keys/names are bounded to 1 MiB and attribute posting slots to 1,000,000, counting separate generated-trust postings. Columns containing containers or exceeding a bound are discarded completely; no partial index can exclude eligible rows. Nested JSON pointers, container comparisons and unindexed columns use the original scan evaluator. These are indexing limits, not document/query admission limits. Ordinary document/media postings still scale with corpus rows.
+
+`SearchIndex::filter_index_stats` exposes construction counters for diagnostic tools, not HTTP fields or byte-exact memory usage. Indexes are rebuilt for new generations and remain disposable; no persistent storage format changes. Existing full-corpus BM25 statistics, exact cosine/tie behavior, RRF and deduplication are unchanged. This first optimization does not add ANN, incremental updates, nested-field indexes or selectivity-based join planning. Profile reproduction is in `experiments/t22/README.md`.
+
 ## Fusion, deduplication, and inspection
 
 Each enabled branch selects its own top-k after filtering. Weighted reciprocal rank fusion scores their union as `dense_weight/(rrf_k+dense_rank) + keyword_weight/(rrf_k+keyword_rank)` for branches containing a hit, using one-based ranks; default rrf_k=60. A chunk present in both branches appears once. Raw cosine and BM25 scales are never added together. Zero-weight/zero-budget branches are disabled. Parameters must be finite, nonnegative where applicable, and bounded; rrf_k must be positive. Background: [RRF paper](https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf).

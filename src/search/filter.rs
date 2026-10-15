@@ -214,7 +214,7 @@ fn exact_equal(a: &Value, b: &Value) -> bool {
 
 // Compare scientific decimal representations without rounding or expanding a
 // potentially enormous exponent into zeros. BigInt is used only for the exponent.
-fn numeric_cmp(a: &Number, b: &Number) -> Ordering {
+pub(super) fn numeric_cmp(a: &Number, b: &Number) -> Ordering {
     fn parts(number: &Number) -> (i8, BigInt, String) {
         let text = number.to_string();
         let negative = text.starts_with('-');
