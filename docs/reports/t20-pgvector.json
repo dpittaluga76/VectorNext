@@ -1,0 +1,1869 @@
+{
+  "metadata": {
+    "task": "T20",
+    "date": "2026-10-15",
+    "run": "20261015-fixed-v3",
+    "base_commit": "9e3831f",
+    "scope": "Synthetic CPU vector-storage/search comparison; no semantic/model-quality claims",
+    "hardware": {
+      "cpu": "AMD Ryzen 5 7600",
+      "physical_cores": 6,
+      "logical_processors": 12,
+      "host_ram_bytes": 67802910720,
+      "environment": "Windows / Docker Desktop / WSL2",
+      "docker_server": "29.6.2"
+    },
+    "database_limits": {
+      "cpus_each": 2,
+      "memory_bytes_each": 4294967296
+    },
+    "images": {
+      "vectornext": "sha256:bf7d34608b21aa4dce4e4a4bf1a473c793c47aa54ac403fcf88ebd4bc0890ca9",
+      "runner": "sha256:ea664b4fc4fabbea033787597dc004869b956e9d81e4b9624e575b9b14e056dd",
+      "postgres_image": "sha256:55141572004e92a39edfdc2d16e821c214b64ca4fba50c1f7e408a09a3d04aff",
+      "postgres_pinned_reference": "pgvector/pgvector:0.8.7-pg18@sha256:2358fcba361ed2233a5ed81b5fe4ca779ccb304120ce531a3bf51c0ed7e2bc11"
+    },
+    "verification": {
+      "rust_passed": 123,
+      "python_benchmark_passed": 8,
+      "timed_requests": 4096,
+      "timed_errors": 0,
+      "exact_timed_correct": 2048,
+      "exact_timed_planned": 2048,
+      "recovery_exact_correct": 512,
+      "recovery_exact_planned": 512,
+      "source_hashes_checked": 39,
+      "input_hashes_identical_across_attempts": true
+    },
+    "limitations": [
+      "Clustered synthetic vectors and repetitive text; no real embedding relevance or answer accuracy measured.",
+      "Single client and one PC; three warm passes repeat 32 independent query vectors per corpus.",
+      "HTTP and PostgreSQL protocols, storage schemas and preparation boundaries differ.",
+      "Initial pass is not a cold OS/disk-cache measurement.",
+      "Filtered HNSW-labelled configurations use exact filter/index/sort plans.",
+      "Memory includes page cache/setup and cumulative container history; PostgreSQL WAL is cluster-wide.",
+      "VectorNext checkpoints failed at both sizes due to the 64 MiB snapshot frame limit; successful journal recovery does not establish checkpoint support.",
+      "Offline export calls checkpoint and is therefore also blocked at these states; inferred from code, no export command tested here.",
+      "Normal application and an unrelated service remained running; not a dedicated idle machine.",
+      "The stats endpoint does not compute a digest; its empty SHA256 field is not verification. Use verified_digest and recovery.digest."
+    ],
+    "attempts": [
+      {
+        "run": "20261015-fixed-v1",
+        "outcome": "400-document load/digest passed; preparation report failed to serialize PostgreSQL Decimal WAL counter; no timed queries.",
+        "archive": "data/t20/20261015-fixed-v1/execution-source-before-resource-fix.zip"
+      },
+      {
+        "run": "20261015-fixed-v2",
+        "outcome": "400-document timed queries completed; checkpoint rejection stopped recovery. Captures preserved.",
+        "archive": "data/t20/20261015-fixed-v2/execution-source-before-recovery-amendment.zip"
+      },
+      {
+        "run": "20261015-fixed-v3",
+        "outcome": "Both sizes complete with recorded checkpoint failures and successful recovery under amendment 01."
+      }
+    ]
+  },
+  "manifest": {
+    "protocol": "t20-v1+recovery-amendment-01",
+    "sizes": [
+      400,
+      1600
+    ],
+    "dimensions": 384,
+    "queries_per_scope": 32,
+    "source_hashes": {
+      "Cargo.lock": "d6178dbb48f1ca6b79e17d54b5dbb31e71738be51adf8dcfcfdb3b0b44d2ef6f",
+      "Cargo.toml": "e29c60a29ccf9136605787b811ab92461e45cf0dd9dd671655939d48305401a5",
+      "compose.benchmark.yaml": "bd353fd05cba1e71c0b9cda538c886aef00617627f57832761761a47a7d0a61f",
+      "docker/benchmark-runner.Dockerfile": "d8ffd5b2bc89346aa600b09fa170f1657d4b63f424ed5232119f0b1f604bb2ca",
+      "docker/benchmark.Dockerfile": "9d991060a720a984a479b45f117f020d26ebbd780f4bbf1da577213c933f2e30",
+      "docs/t20-protocol-amendment-01.md": "4786e5ee71b8e5cc790434c5ce20d973a804080da6cd9b11bbeacb2c329fdb3c",
+      "docs/t20-protocol.md": "91755495fc0ce1fa26c56d250f47cfa81124b243b4a9405eef4586a315ae64ff",
+      "examples/vector_bench.rs": "f700172a9d90f42297843f83da652038e1e478cb2d7555df382c7083eb963eb7",
+      "experiments/t20/run.py": "3ccc8d34cd1d0e4ed2dc8201652e08fd480e489e43faff210ad99cd4a6ac20d2",
+      "experiments/t20/test_benchmark.py": "5bd5d399193c871d10d68e23a5561a29672dcd41b6f13619f8a43f1849b9c00a",
+      "src/answers.rs": "27c6270c67e800ab8763e7636261f9e9cc9621d62352a46c2537f6e3de8d742e",
+      "src/answers/coverage.rs": "37547f2d05bb2912ec395d1057f61d39de24f435ddcaa4e2198184c33f329300",
+      "src/answers/numeric.rs": "9972e70409bb413fbaa4cca6ade5dd01882a8d1074dbf441790a59830ada6600",
+      "src/backup.rs": "d382e1d96f97b4c14c016a90ba3ab18d8cc0bd8043a6223140e0a893824835b7",
+      "src/bin/vectornext.rs": "d78d54a743c964ba77c82a1585c3af006d4b33e008358db49597c7167fcafc63",
+      "src/blob.rs": "3c2d26b31e9b318df6916cf8a8c72d114cc6d2a147c61e4a14a75c4e74860023",
+      "src/contracts.rs": "d766078e8e93240daf5506ac8c42963373addf88759cd871284c6cd04a835ad4",
+      "src/frame.rs": "4e3263cd44de0930ac2ab83f524c8be1b79abbd48f4c9b6f07945234273a1a32",
+      "src/ingestion/context.rs": "61478a3903460dab82fe32cfcbc0345da248b03712d672f9cc91e3a950c5c75f",
+      "src/ingestion/jobs.rs": "7c1ee0cf4bb81b6e2384137859db6ccd2a85b5eeef1af60594327b6768ac6f37",
+      "src/ingestion/mod.rs": "898b34d857f88808e29ed23db62deea8fb506b58b47fc8070561ceb2dda21a2f",
+      "src/ingestion/pdf.rs": "fecf7dce7fdb6da3364da6cda9bf6dc0b547b4d250a1572e5f5bf5615b47e2af",
+      "src/ingestion/prepare.rs": "7c5b295416193c31d8f0bd174d758b23f5f415f7d3d07665e0e6189818e7d9a0",
+      "src/ingestion/worker.rs": "b6373df5d6a52cfa197f0a5157cf0f051079d5ca42332ed2beb3b3e8c3d6bead",
+      "src/lib.rs": "cb004f23fc5e3c83187e9ef24887b65d6d02922028e983aa963f2950ecdf5266",
+      "src/search/filter.rs": "79a34c215a4fa126df9f65d4d5849d7f9d9ed15c6684bcc7f524461523e7c277",
+      "src/search/keyword.rs": "33a6a103c081a313e4950290cec3ba3dca005f466e5faebc2558bd2f2be0a500",
+      "src/search/mod.rs": "548b6ecbce5a54209bfae86aa07ac5a2737b15872c44d7ba2b442a80238427f1",
+      "src/service/coordinator.rs": "ee1d014437e3345edef2cc976382050f8698d7685f4a1dc299dfaf94856368c6",
+      "src/service/http.rs": "583eab8780d2499c1fc5dac2853f98a2c940033cda15ec4fccc6ba76b32b54d4",
+      "src/service/http/docs.html": "7ade1114489522b0cdacb4a0ad0db8b5a3ceb7e74d5f2db23663215831968fe6",
+      "src/service/http/docs.js": "5337666b0e521c4c3529b22679f29b01e1c3774b92c7f9dedab51d3196fd4ae2",
+      "src/service/http/openapi.rs": "91c083d49e05088b5dd2e5ac7f6958bb6a399fb8b11084198e0171e02b9a8c64",
+      "src/service/http/schemas.json": "cf6b9eb528d7878108a14b5404f0dbb5e72ddb14ef739a344662fa625ed8f279",
+      "src/service/mod.rs": "db6377162b64c3f70802dabb192a28d52eba445b933451a6ef07119f3ccedbf4",
+      "src/service/remote.rs": "08efb1d7518b816df85231fcb9339fa29a8056d56b9674c69773bfcfe132c74a",
+      "src/service/ui.rs": "033bfa32f30a415759550d26f9e513d389f570bf78b895af97c9085be8010489",
+      "src/storage.rs": "1be15719f0d2a8723e6f92fc66f0bed7449c76c1ebb18eb6e15152324386656d",
+      "src/storage/tests.rs": "c4b8f2e7ef951c1fe1f4a55f879ff2ce25d9af174afae5328880a0fc66bb8243"
+    },
+    "corpora": {
+      "400": {
+        "digest": "0f1c2fc9c87f5a25f402d55d787f9e881154927f518e398cd2656d61f378a23f",
+        "after_sentinel_digest": "7ddedb4f0ec5319649d4b243bcea37ba5d4650c5ab39967f95e080df47a8c951",
+        "files": {
+          "documents.jsonl": "48e55c5eba88a68713387bb3e98eac7d09a740a51f3544c42a869038f317baf2",
+          "queries.json": "398c15e311e16713f7b8eb30ff0a5a874c1646d2db761b4544f0b50790cc2970",
+          "sentinel.json": "4108205886d52b27837c73f397961a0b59e2bff2ddb035c0b22d2a795fc0ea3b",
+          "vectors.npy": "ae2016b7514fb4c77f8d4771e968a1eb47afbe6ff4ba28c3eb3180606fd8fdd9"
+        }
+      },
+      "1600": {
+        "digest": "946d35a50be9c76caa107a24d8bb232db30615f0699c57ac3f2b6bf18b6db149",
+        "after_sentinel_digest": "729dee29696733df142acd16a535defe83c01a9b2af9ecab52facecfaabc5856",
+        "files": {
+          "documents.jsonl": "443962ad272cb20f571ccc8223c8fa0f95df20ea0a6002a1cd38599b3cd8d22a",
+          "queries.json": "4fbf0940e61ae0cc9c62f825e80c1e60831b605c0c75494ced4d1803085473aa",
+          "sentinel.json": "e12c8ca790429e5113333738cdd126f7d7d62a10f6b6a747107c378eafe63c29",
+          "vectors.npy": "a70ca9e62e194a93aca2cdc8fbdc0d5eb7514fefa27beeb7a5ab79076fbcf050"
+        }
+      }
+    }
+  },
+  "capture_sha256": {
+    "1600/run/checkpoint.json": "b6c996dd5cd61d1639ad4ebd590ffbe420b548a7815ba4028a586b1a56aa8adf",
+    "1600/run/final.json": "4a58ef4d7f9256f6c21d5da4627c54d7bee2d198557e53441a5b9b591120fc92",
+    "1600/run/ingestion.jsonl": "75371624010ef9ad4923110fa94d59818d67fbff491cf112067369447d39824d",
+    "1600/run/plans.json": "04fd94d97865cf08f44e29902de7daac5289d2d19c000ab8550be76541744650",
+    "1600/run/preparation.json": "1e1578c3f0da3afccf70bc3dd903d05a241e99a41f9768e1bc9c9fc4d2ec96ca",
+    "1600/run/queries.jsonl": "d774328fa41d38e3aa24b588acebc6fa2634726a4aad2116d9413ffe14d68ce4",
+    "1600/run/recovery-pending.json": "babf4addbe709c1e68114a504e066b1610dea7244877c919820204eeaf30c968",
+    "1600/run/recovery.json": "586cd59499241c00431dfa7981e0ae9247b151e4acfe7513b8f01b3c0f3d5f78",
+    "400/run/checkpoint.json": "5cd8981b04687475f46498a3fcbbef57470c941b8ad575b227b3000e85423ea3",
+    "400/run/final.json": "134970bb0279140e00bcff37a69fa85cbdeccace71bdaca18579b5592c9a27fe",
+    "400/run/ingestion.jsonl": "10f04f954f4fbb168855506af654206b76dc2c642e3668b609348717c7b31aae",
+    "400/run/plans.json": "62d69940af2b77387fce03ac9ba7b616b0f491e32e460e23e8d531040bba7c07",
+    "400/run/preparation.json": "9315c41c72f7e3c76125db5efba1e09d8d7931da28dc3f086d7a1f8b6c6e8284",
+    "400/run/queries.jsonl": "c3e5877499d87dcde68497e6f7c9b4e39fa59bd73958dde51b4f242eb5f7c73e",
+    "400/run/recovery-pending.json": "16987d739f5b32cabc4d940d3b888de733ed50caa7555165ae9b39fbc2b5aa03",
+    "400/run/recovery.json": "5a880dbfc2404bc5ddacd067d0b54081a06b4c180442e7a48643ec3cd0599b81",
+    "manifest.json": "1f1dea41d620c1e09eba2ce5a5e4859926d6f472d413aef60912733d8f7b69c0",
+    "summary.json": "95118b2621722251743aa3ce4189846219da844fd2c8cbe080ec38832d15e2f4"
+  },
+  "earlier_source_archive_sha256": {
+    "data/t20/20261015-fixed-v1/execution-source-before-resource-fix.zip": "8fb5f96905ccd263a8441357a364080b4b8d510c7136c5d8dba86dd8c6f5fda9",
+    "data/t20/20261015-fixed-v2/execution-source-before-recovery-amendment.zip": "b5b48f566bb195709420c156ae2aae5297300a2baa10fec3db8b048f878707e1"
+  },
+  "request_counts": {
+    "400": {
+      "vectornext": {
+        "planned": 512,
+        "correct": 512,
+        "errors": 0
+      },
+      "pg_exact": {
+        "planned": 512,
+        "correct": 512,
+        "errors": 0
+      },
+      "pg_hnsw40": {
+        "planned": 512,
+        "correct": 512,
+        "errors": 0
+      },
+      "pg_hnsw200": {
+        "planned": 512,
+        "correct": 512,
+        "errors": 0
+      }
+    },
+    "1600": {
+      "vectornext": {
+        "planned": 512,
+        "correct": 512,
+        "errors": 0
+      },
+      "pg_exact": {
+        "planned": 512,
+        "correct": 512,
+        "errors": 0
+      },
+      "pg_hnsw40": {
+        "planned": 512,
+        "correct": 500,
+        "errors": 0
+      },
+      "pg_hnsw200": {
+        "planned": 512,
+        "correct": 500,
+        "errors": 0
+      }
+    }
+  },
+  "plan_nodes": {
+    "400": {
+      "pg_exact": {
+        "all": [
+          "Limit",
+          "Sort",
+          "Seq Scan"
+        ],
+        "scope5": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_document"
+        ],
+        "attribute1": [
+          "Limit",
+          "Sort",
+          "Bitmap Heap Scan",
+          "Bitmap Index Scan:chunks_bucket"
+        ],
+        "empty": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_bucket"
+        ]
+      },
+      "pg_hnsw40": {
+        "all": [
+          "Limit",
+          "Index Scan:chunks_hnsw"
+        ],
+        "scope5": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_document"
+        ],
+        "attribute1": [
+          "Limit",
+          "Sort",
+          "Bitmap Heap Scan",
+          "Bitmap Index Scan:chunks_bucket"
+        ],
+        "empty": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_bucket"
+        ]
+      },
+      "pg_hnsw200": {
+        "all": [
+          "Limit",
+          "Index Scan:chunks_hnsw"
+        ],
+        "scope5": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_document"
+        ],
+        "attribute1": [
+          "Limit",
+          "Sort",
+          "Bitmap Heap Scan",
+          "Bitmap Index Scan:chunks_bucket"
+        ],
+        "empty": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_bucket"
+        ]
+      }
+    },
+    "1600": {
+      "pg_exact": {
+        "all": [
+          "Limit",
+          "Sort",
+          "Seq Scan"
+        ],
+        "scope5": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_document"
+        ],
+        "attribute1": [
+          "Limit",
+          "Sort",
+          "Bitmap Heap Scan",
+          "Bitmap Index Scan:chunks_bucket"
+        ],
+        "empty": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_bucket"
+        ]
+      },
+      "pg_hnsw40": {
+        "all": [
+          "Limit",
+          "Index Scan:chunks_hnsw"
+        ],
+        "scope5": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_document"
+        ],
+        "attribute1": [
+          "Limit",
+          "Sort",
+          "Bitmap Heap Scan",
+          "Bitmap Index Scan:chunks_bucket"
+        ],
+        "empty": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_bucket"
+        ]
+      },
+      "pg_hnsw200": {
+        "all": [
+          "Limit",
+          "Index Scan:chunks_hnsw"
+        ],
+        "scope5": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_document"
+        ],
+        "attribute1": [
+          "Limit",
+          "Sort",
+          "Bitmap Heap Scan",
+          "Bitmap Index Scan:chunks_bucket"
+        ],
+        "empty": [
+          "Limit",
+          "Sort",
+          "Index Scan:chunks_bucket"
+        ]
+      }
+    }
+  },
+  "measurements": {
+    "400": {
+      "groups": [
+        {
+          "phase": "first",
+          "config": "vectornext",
+          "filter": "all",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 9.96594800017192,
+            "p95": 10.840388149517821,
+            "p99": 10.979739779804731
+          },
+          "successful_client_ms": {
+            "p50": 9.96594800017192,
+            "p95": 10.840388149517821,
+            "p99": 10.979739779804731
+          }
+        },
+        {
+          "phase": "first",
+          "config": "vectornext",
+          "filter": "scope5",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 1.5697525004725321,
+            "p95": 1.8624629503847245,
+            "p99": 1.9594870206128692
+          },
+          "successful_client_ms": {
+            "p50": 1.5697525004725321,
+            "p95": 1.8624629503847245,
+            "p99": 1.9594870206128692
+          }
+        },
+        {
+          "phase": "first",
+          "config": "vectornext",
+          "filter": "attribute1",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 4.46653349990811,
+            "p95": 4.994684799839888,
+            "p99": 5.3336743799263795
+          },
+          "successful_client_ms": {
+            "p50": 4.46653349990811,
+            "p95": 4.994684799839888,
+            "p99": 5.3336743799263795
+          }
+        },
+        {
+          "phase": "first",
+          "config": "vectornext",
+          "filter": "empty",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 4.5259270000315155,
+            "p95": 5.277705899970897,
+            "p99": 5.404259970155181
+          },
+          "successful_client_ms": {
+            "p50": 4.5259270000315155,
+            "p95": 5.277705899970897,
+            "p99": 5.404259970155181
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_exact",
+          "filter": "all",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 5.485390499870846,
+            "p95": 6.082810600264565,
+            "p99": 6.122515690021828
+          },
+          "successful_client_ms": {
+            "p50": 5.485390499870846,
+            "p95": 6.082810600264565,
+            "p99": 6.122515690021828
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_exact",
+          "filter": "scope5",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.7382295002571482,
+            "p95": 0.9456356000555387,
+            "p99": 1.0805543400601894
+          },
+          "successful_client_ms": {
+            "p50": 0.7382295002571482,
+            "p95": 0.9456356000555387,
+            "p99": 1.0805543400601894
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_exact",
+          "filter": "attribute1",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.4796924999936891,
+            "p95": 0.6615622995923331,
+            "p99": 0.7307866495284544
+          },
+          "successful_client_ms": {
+            "p50": 0.4796924999936891,
+            "p95": 0.6615622995923331,
+            "p99": 0.7307866495284544
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_exact",
+          "filter": "empty",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.3978280001319945,
+            "p95": 0.4709950998858403,
+            "p99": 0.6404421599472702
+          },
+          "successful_client_ms": {
+            "p50": 0.3978280001319945,
+            "p95": 0.4709950998858403,
+            "p99": 0.6404421599472702
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw40",
+          "filter": "all",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.543826499779243,
+            "p95": 0.6423636003546562,
+            "p99": 0.6666009700165887
+          },
+          "successful_client_ms": {
+            "p50": 0.543826499779243,
+            "p95": 0.6423636003546562,
+            "p99": 0.6666009700165887
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw40",
+          "filter": "scope5",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.6871199998386146,
+            "p95": 0.8418353496836061,
+            "p99": 0.9072112794456189
+          },
+          "successful_client_ms": {
+            "p50": 0.6871199998386146,
+            "p95": 0.8418353496836061,
+            "p99": 0.9072112794456189
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw40",
+          "filter": "attribute1",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.4300070004319423,
+            "p95": 0.5199412003094039,
+            "p99": 0.5721875001381705
+          },
+          "successful_client_ms": {
+            "p50": 0.4300070004319423,
+            "p95": 0.5199412003094039,
+            "p99": 0.5721875001381705
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw40",
+          "filter": "empty",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.3674349995890225,
+            "p95": 0.43565490018409037,
+            "p99": 0.4529418695892673
+          },
+          "successful_client_ms": {
+            "p50": 0.3674349995890225,
+            "p95": 0.43565490018409037,
+            "p99": 0.4529418695892673
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw200",
+          "filter": "all",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.9294259998569032,
+            "p95": 1.3082759500321117,
+            "p99": 1.5633769903070065
+          },
+          "successful_client_ms": {
+            "p50": 0.9294259998569032,
+            "p95": 1.3082759500321117,
+            "p99": 1.5633769903070065
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw200",
+          "filter": "scope5",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.6686509996143286,
+            "p95": 0.8066080999014957,
+            "p99": 0.8624782798233355
+          },
+          "successful_client_ms": {
+            "p50": 0.6686509996143286,
+            "p95": 0.8066080999014957,
+            "p99": 0.8624782798233355
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw200",
+          "filter": "attribute1",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.4613730002347438,
+            "p95": 0.5393268500483828,
+            "p99": 0.5790759100091237
+          },
+          "successful_client_ms": {
+            "p50": 0.4613730002347438,
+            "p95": 0.5393268500483828,
+            "p99": 0.5790759100091237
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw200",
+          "filter": "empty",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.41566150002836366,
+            "p95": 0.5000910004127945,
+            "p99": 0.5537498300236622
+          },
+          "successful_client_ms": {
+            "p50": 0.41566150002836366,
+            "p95": 0.5000910004127945,
+            "p99": 0.5537498300236622
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "vectornext",
+          "filter": "all",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 8.817860500585084,
+            "p95": 11.023352499933026,
+            "p99": 13.129710649991463
+          },
+          "successful_client_ms": {
+            "p50": 8.817860500585084,
+            "p95": 11.023352499933026,
+            "p99": 13.129710649991463
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "vectornext",
+          "filter": "scope5",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 1.4951025000300433,
+            "p95": 1.898928999708005,
+            "p99": 2.1057224502328604
+          },
+          "successful_client_ms": {
+            "p50": 1.4951025000300433,
+            "p95": 1.898928999708005,
+            "p99": 2.1057224502328604
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "vectornext",
+          "filter": "attribute1",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 4.196225000214326,
+            "p95": 5.062633000079586,
+            "p99": 7.096502200010941
+          },
+          "successful_client_ms": {
+            "p50": 4.196225000214326,
+            "p95": 5.062633000079586,
+            "p99": 7.096502200010941
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "vectornext",
+          "filter": "empty",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 4.415545500251028,
+            "p95": 5.240332500079603,
+            "p99": 7.750683149879471
+          },
+          "successful_client_ms": {
+            "p50": 4.415545500251028,
+            "p95": 5.240332500079603,
+            "p99": 7.750683149879471
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_exact",
+          "filter": "all",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 5.672729499565321,
+            "p95": 6.930899999588291,
+            "p99": 7.497147650428814
+          },
+          "successful_client_ms": {
+            "p50": 5.672729499565321,
+            "p95": 6.930899999588291,
+            "p99": 7.497147650428814
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_exact",
+          "filter": "scope5",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.737784000193642,
+            "p95": 0.8916974998101068,
+            "p99": 1.1526536003657377
+          },
+          "successful_client_ms": {
+            "p50": 0.737784000193642,
+            "p95": 0.8916974998101068,
+            "p99": 1.1526536003657377
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_exact",
+          "filter": "attribute1",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.468836499749159,
+            "p95": 0.5904152503717341,
+            "p99": 0.7320901499497267
+          },
+          "successful_client_ms": {
+            "p50": 0.468836499749159,
+            "p95": 0.5904152503717341,
+            "p99": 0.7320901499497267
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_exact",
+          "filter": "empty",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.4143485002714442,
+            "p95": 0.5534857505153923,
+            "p99": 0.648685700207352
+          },
+          "successful_client_ms": {
+            "p50": 0.4143485002714442,
+            "p95": 0.5534857505153923,
+            "p99": 0.648685700207352
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw40",
+          "filter": "all",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.5857814999217226,
+            "p95": 0.7650267500594055,
+            "p99": 1.4033625497177111
+          },
+          "successful_client_ms": {
+            "p50": 0.5857814999217226,
+            "p95": 0.7650267500594055,
+            "p99": 1.4033625497177111
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw40",
+          "filter": "scope5",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.7003010000516952,
+            "p95": 0.9150297498763393,
+            "p99": 1.1897749498984882
+          },
+          "successful_client_ms": {
+            "p50": 0.7003010000516952,
+            "p95": 0.9150297498763393,
+            "p99": 1.1897749498984882
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw40",
+          "filter": "attribute1",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.45865399988542777,
+            "p95": 0.6318030002603336,
+            "p99": 0.6925685496753431
+          },
+          "successful_client_ms": {
+            "p50": 0.45865399988542777,
+            "p95": 0.6318030002603336,
+            "p99": 0.6925685496753431
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw40",
+          "filter": "empty",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.3978730001108488,
+            "p95": 0.5272442494970164,
+            "p99": 0.801513449732738
+          },
+          "successful_client_ms": {
+            "p50": 0.3978730001108488,
+            "p95": 0.5272442494970164,
+            "p99": 0.801513449732738
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw200",
+          "filter": "all",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.9284594998462126,
+            "p95": 1.1715674995684822,
+            "p99": 1.234807549963079
+          },
+          "successful_client_ms": {
+            "p50": 0.9284594998462126,
+            "p95": 1.1715674995684822,
+            "p99": 1.234807549963079
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw200",
+          "filter": "scope5",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.6562805001522065,
+            "p95": 0.8053142494190979,
+            "p99": 1.1218539999845234
+          },
+          "successful_client_ms": {
+            "p50": 0.6562805001522065,
+            "p95": 0.8053142494190979,
+            "p99": 1.1218539999845234
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw200",
+          "filter": "attribute1",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.4554839997581439,
+            "p95": 0.5746590002217999,
+            "p99": 0.6077781499243429
+          },
+          "successful_client_ms": {
+            "p50": 0.4554839997581439,
+            "p95": 0.5746590002217999,
+            "p99": 0.6077781499243429
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw200",
+          "filter": "empty",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.3945505000046978,
+            "p95": 0.4753827499826002,
+            "p99": 0.5341543502709096
+          },
+          "successful_client_ms": {
+            "p50": 0.3945505000046978,
+            "p95": 0.4753827499826002,
+            "p99": 0.5341543502709096
+          }
+        }
+      ],
+      "ingestion": {
+        "vectornext": {
+          "total_ms": 10281.715008996798,
+          "per_document_ms": {
+            "p50": 25.35053900010098,
+            "p95": 28.09465944965268,
+            "p99": 32.61952556018514
+          }
+        },
+        "postgres": {
+          "total_ms": 2619.6727100023054,
+          "per_document_ms": {
+            "p50": 6.147057500129449,
+            "p95": 7.573374699404666,
+            "p99": 8.512246969830812
+          }
+        }
+      },
+      "preparation": {
+        "open": {
+          "open_ms": 19.472992
+        },
+        "indexes": {
+          "vectornext": {
+            "engine_ms": 216.907831,
+            "memory": {
+              "cgroup_current": "199008256\n",
+              "cgroup_peak": "199008256\n",
+              "cpu_stat": "usage_usec 5879778\nuser_usec 4791543\nsystem_usec 1088234\nnr_periods 217\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+            }
+          },
+          "postgres_filter_ms": 113.21297399990726,
+          "postgres_hnsw_ms": 1673.4613399994487
+        },
+        "before_ann": {
+          "vectornext": {
+            "chunks": 12800,
+            "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "disk_bytes": 98252812,
+            "documents": 400,
+            "memory": {
+              "cgroup_current": "199270400\n",
+              "cgroup_peak": "199274496\n",
+              "cpu_stat": "usage_usec 5920902\nuser_usec 4831953\nsystem_usec 1088949\nnr_periods 221\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+            }
+          },
+          "postgres": {
+            "documents": 400,
+            "chunks": 12800,
+            "relation_bytes": 27189248,
+            "cluster_wal_bytes": 50331648,
+            "memory": {
+              "cgroup_current": "200892416\n",
+              "cgroup_peak": "239390720\n",
+              "cpu_stat": "usage_usec 3584883\nuser_usec 2003074\nsystem_usec 1581809\nnr_periods 258\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+            }
+          }
+        },
+        "verified_digest": "0f1c2fc9c87f5a25f402d55d787f9e881154927f518e398cd2656d61f378a23f"
+      },
+      "final": {
+        "vectornext": {
+          "chunks": 12800,
+          "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "disk_bytes": 98252812,
+          "documents": 400,
+          "memory": {
+            "cgroup_current": "203382784\n",
+            "cgroup_peak": "218218496\n",
+            "cpu_stat": "usage_usec 8653381\nuser_usec 7283160\nsystem_usec 1370221\nnr_periods 260\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+          }
+        },
+        "postgres": {
+          "documents": 400,
+          "chunks": 12800,
+          "relation_bytes": 53420032,
+          "cluster_wal_bytes": 67108864,
+          "memory": {
+            "cgroup_current": "270274560\n",
+            "cgroup_peak": "309932032\n",
+            "cpu_stat": "usage_usec 6545807\nuser_usec 4660285\nsystem_usec 1885521\nnr_periods 307\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+          }
+        },
+        "settings": {
+          "server_version": "18.6 (Debian 18.6-1.pgdg12+2)",
+          "shared_buffers": "512MB",
+          "work_mem": "32MB",
+          "maintenance_work_mem": "512MB",
+          "fsync": "on",
+          "synchronous_commit": "on",
+          "full_page_writes": "on",
+          "max_parallel_workers_per_gather": "0",
+          "pgvector": "0.8.7"
+        }
+      },
+      "checkpoint": {
+        "vectornext": {
+          "ok": false,
+          "error": "RuntimeError({'error': 'invalid record: frame exceeds 64 MiB limit'})",
+          "recovery_path": "journal replay after rejected checkpoint"
+        },
+        "reopen_after_rejection": {
+          "open_ms": 573.152783
+        },
+        "postgres": {
+          "ok": true,
+          "client_ms": 124.65868999970553
+        }
+      },
+      "recovery": {
+        "open": {
+          "open_ms": 602.133558
+        },
+        "index": {
+          "engine_ms": 220.422226,
+          "memory": {
+            "cgroup_current": "93302784\n",
+            "cgroup_peak": "93302784\n",
+            "cpu_stat": "usage_usec 1026734\nuser_usec 923664\nsystem_usec 103069\nnr_periods 15\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+          }
+        },
+        "vnx_open_index_client_ms": 824.6963990004588,
+        "digest": "7ddedb4f0ec5319649d4b243bcea37ba5d4650c5ab39967f95e080df47a8c951",
+        "vectornext": {
+          "chunks": 12832,
+          "digest": "7ddedb4f0ec5319649d4b243bcea37ba5d4650c5ab39967f95e080df47a8c951",
+          "disk_bytes": 98498782,
+          "documents": 401,
+          "memory": {
+            "cgroup_current": "93302784\n",
+            "cgroup_peak": "93569024\n",
+            "cpu_stat": "usage_usec 1065303\nuser_usec 962233\nsystem_usec 103069\nnr_periods 15\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+          }
+        },
+        "postgres": {
+          "documents": 401,
+          "chunks": 12832,
+          "relation_bytes": 53592064,
+          "cluster_wal_bytes": 67108864,
+          "memory": {
+            "cgroup_current": "55554048\n",
+            "cgroup_peak": "58228736\n",
+            "cpu_stat": "usage_usec 292728\nuser_usec 99077\nsystem_usec 193651\nnr_periods 15\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+          }
+        },
+        "all_exact_correct": true
+      }
+    },
+    "1600": {
+      "groups": [
+        {
+          "phase": "first",
+          "config": "vectornext",
+          "filter": "all",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 44.13513800045621,
+            "p95": 54.662485100379854,
+            "p99": 66.0652575405766
+          },
+          "successful_client_ms": {
+            "p50": 44.13513800045621,
+            "p95": 54.662485100379854,
+            "p99": 66.0652575405766
+          }
+        },
+        {
+          "phase": "first",
+          "config": "vectornext",
+          "filter": "scope5",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 5.242657500275527,
+            "p95": 7.194801400191864,
+            "p99": 8.782463020397703
+          },
+          "successful_client_ms": {
+            "p50": 5.242657500275527,
+            "p95": 7.194801400191864,
+            "p99": 8.782463020397703
+          }
+        },
+        {
+          "phase": "first",
+          "config": "vectornext",
+          "filter": "attribute1",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 16.400147999775072,
+            "p95": 19.209994400171126,
+            "p99": 22.596020290438904
+          },
+          "successful_client_ms": {
+            "p50": 16.400147999775072,
+            "p95": 19.209994400171126,
+            "p99": 22.596020290438904
+          }
+        },
+        {
+          "phase": "first",
+          "config": "vectornext",
+          "filter": "empty",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 16.81510549997256,
+            "p95": 19.63655480003581,
+            "p99": 20.249820749822902
+          },
+          "successful_client_ms": {
+            "p50": 16.81510549997256,
+            "p95": 19.63655480003581,
+            "p99": 20.249820749822902
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_exact",
+          "filter": "all",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 23.277782000150182,
+            "p95": 24.635117049956534,
+            "p99": 24.920134180074456
+          },
+          "successful_client_ms": {
+            "p50": 23.277782000150182,
+            "p95": 24.635117049956534,
+            "p99": 24.920134180074456
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_exact",
+          "filter": "scope5",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 1.9946385000366718,
+            "p95": 2.351276949639214,
+            "p99": 2.5071704896254237
+          },
+          "successful_client_ms": {
+            "p50": 1.9946385000366718,
+            "p95": 2.351276949639214,
+            "p99": 2.5071704896254237
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_exact",
+          "filter": "attribute1",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.7765440000184753,
+            "p95": 0.9896690995446988,
+            "p99": 1.0763219399723314
+          },
+          "successful_client_ms": {
+            "p50": 0.7765440000184753,
+            "p95": 0.9896690995446988,
+            "p99": 1.0763219399723314
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_exact",
+          "filter": "empty",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.47115999996094615,
+            "p95": 0.6879956998091075,
+            "p99": 0.7306655399952433
+          },
+          "successful_client_ms": {
+            "p50": 0.47115999996094615,
+            "p95": 0.6879956998091075,
+            "p99": 0.7306655399952433
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw40",
+          "filter": "all",
+          "planned": 32,
+          "errors": 0,
+          "correct": 29,
+          "mean_recall10": 0.990625,
+          "client_ms": {
+            "p50": 0.8296845003314957,
+            "p95": 1.008477299774313,
+            "p99": 1.1105738799687972
+          },
+          "successful_client_ms": {
+            "p50": 0.8296845003314957,
+            "p95": 1.008477299774313,
+            "p99": 1.1105738799687972
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw40",
+          "filter": "scope5",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 1.5679980001550575,
+            "p95": 1.8647285002316494,
+            "p99": 2.1361612905820953
+          },
+          "successful_client_ms": {
+            "p50": 1.5679980001550575,
+            "p95": 1.8647285002316494,
+            "p99": 2.1361612905820953
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw40",
+          "filter": "attribute1",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.6539910000356031,
+            "p95": 0.7733921998351434,
+            "p99": 0.8672610800113035
+          },
+          "successful_client_ms": {
+            "p50": 0.6539910000356031,
+            "p95": 0.7733921998351434,
+            "p99": 0.8672610800113035
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw40",
+          "filter": "empty",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.4092389995093981,
+            "p95": 0.5225508997682482,
+            "p99": 0.5332679801540507
+          },
+          "successful_client_ms": {
+            "p50": 0.4092389995093981,
+            "p95": 0.5225508997682482,
+            "p99": 0.5332679801540507
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw200",
+          "filter": "all",
+          "planned": 32,
+          "errors": 0,
+          "correct": 29,
+          "mean_recall10": 0.990625,
+          "client_ms": {
+            "p50": 1.0553815004641365,
+            "p95": 1.265136900201469,
+            "p99": 1.3798397800928799
+          },
+          "successful_client_ms": {
+            "p50": 1.0553815004641365,
+            "p95": 1.265136900201469,
+            "p99": 1.3798397800928799
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw200",
+          "filter": "scope5",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 1.5880689998084563,
+            "p95": 1.830584199842633,
+            "p99": 2.191665690279479
+          },
+          "successful_client_ms": {
+            "p50": 1.5880689998084563,
+            "p95": 1.830584199842633,
+            "p99": 2.191665690279479
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw200",
+          "filter": "attribute1",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.6645880002906779,
+            "p95": 0.7870441496379499,
+            "p99": 0.9690508699623027
+          },
+          "successful_client_ms": {
+            "p50": 0.6645880002906779,
+            "p95": 0.7870441496379499,
+            "p99": 0.9690508699623027
+          }
+        },
+        {
+          "phase": "first",
+          "config": "pg_hnsw200",
+          "filter": "empty",
+          "planned": 32,
+          "errors": 0,
+          "correct": 32,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.4228504999446159,
+            "p95": 0.48212199963018065,
+            "p99": 0.49651210964839265
+          },
+          "successful_client_ms": {
+            "p50": 0.4228504999446159,
+            "p95": 0.48212199963018065,
+            "p99": 0.49651210964839265
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "vectornext",
+          "filter": "all",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 43.86227050008529,
+            "p95": 48.25956100012263,
+            "p99": 51.09135355014586
+          },
+          "successful_client_ms": {
+            "p50": 43.86227050008529,
+            "p95": 48.25956100012263,
+            "p99": 51.09135355014586
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "vectornext",
+          "filter": "scope5",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 5.14649799970357,
+            "p95": 6.723372750002454,
+            "p99": 7.710203599617667
+          },
+          "successful_client_ms": {
+            "p50": 5.14649799970357,
+            "p95": 6.723372750002454,
+            "p99": 7.710203599617667
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "vectornext",
+          "filter": "attribute1",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 16.41980849990432,
+            "p95": 19.26214524974057,
+            "p99": 22.05170325069048
+          },
+          "successful_client_ms": {
+            "p50": 16.41980849990432,
+            "p95": 19.26214524974057,
+            "p99": 22.05170325069048
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "vectornext",
+          "filter": "empty",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 17.053067500455654,
+            "p95": 19.270063499789103,
+            "p99": 20.777241950327138
+          },
+          "successful_client_ms": {
+            "p50": 17.053067500455654,
+            "p95": 19.270063499789103,
+            "p99": 20.777241950327138
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_exact",
+          "filter": "all",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 22.729447000074288,
+            "p95": 27.018866750040615,
+            "p99": 30.66384405019557
+          },
+          "successful_client_ms": {
+            "p50": 22.729447000074288,
+            "p95": 27.018866750040615,
+            "p99": 30.66384405019557
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_exact",
+          "filter": "scope5",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 1.9231385003877222,
+            "p95": 2.3381507505746413,
+            "p99": 2.6643011496616893
+          },
+          "successful_client_ms": {
+            "p50": 1.9231385003877222,
+            "p95": 2.3381507505746413,
+            "p99": 2.6643011496616893
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_exact",
+          "filter": "attribute1",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.7359860001088236,
+            "p95": 1.0168075002638943,
+            "p99": 1.0862632498174207
+          },
+          "successful_client_ms": {
+            "p50": 0.7359860001088236,
+            "p95": 1.0168075002638943,
+            "p99": 1.0862632498174207
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_exact",
+          "filter": "empty",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.48703499987823307,
+            "p95": 0.7452792506228434,
+            "p99": 1.0048814000128914
+          },
+          "successful_client_ms": {
+            "p50": 0.48703499987823307,
+            "p95": 0.7452792506228434,
+            "p99": 1.0048814000128914
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw40",
+          "filter": "all",
+          "planned": 96,
+          "errors": 0,
+          "correct": 87,
+          "mean_recall10": 0.990625,
+          "client_ms": {
+            "p50": 0.8427400002801733,
+            "p95": 1.033886249842908,
+            "p99": 1.2071542001649482
+          },
+          "successful_client_ms": {
+            "p50": 0.8427400002801733,
+            "p95": 1.033886249842908,
+            "p99": 1.2071542001649482
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw40",
+          "filter": "scope5",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 1.5366089996859955,
+            "p95": 1.9885660001364158,
+            "p99": 2.163026749713026
+          },
+          "successful_client_ms": {
+            "p50": 1.5366089996859955,
+            "p95": 1.9885660001364158,
+            "p99": 2.163026749713026
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw40",
+          "filter": "attribute1",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.6585245000678697,
+            "p95": 0.8070859998952074,
+            "p99": 0.8453953499611088
+          },
+          "successful_client_ms": {
+            "p50": 0.6585245000678697,
+            "p95": 0.8070859998952074,
+            "p99": 0.8453953499611088
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw40",
+          "filter": "empty",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.4225354996378883,
+            "p95": 0.5715527499887685,
+            "p99": 0.6292375002885819
+          },
+          "successful_client_ms": {
+            "p50": 0.4225354996378883,
+            "p95": 0.5715527499887685,
+            "p99": 0.6292375002885819
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw200",
+          "filter": "all",
+          "planned": 96,
+          "errors": 0,
+          "correct": 87,
+          "mean_recall10": 0.990625,
+          "client_ms": {
+            "p50": 1.072553499852802,
+            "p95": 1.320380249808295,
+            "p99": 1.5284596504443468
+          },
+          "successful_client_ms": {
+            "p50": 1.072553499852802,
+            "p95": 1.320380249808295,
+            "p99": 1.5284596504443468
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw200",
+          "filter": "scope5",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 1.6347560003850958,
+            "p95": 2.0892292500320764,
+            "p99": 2.129568100554024
+          },
+          "successful_client_ms": {
+            "p50": 1.6347560003850958,
+            "p95": 2.0892292500320764,
+            "p99": 2.129568100554024
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw200",
+          "filter": "attribute1",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": 1.0,
+          "client_ms": {
+            "p50": 0.671499500185746,
+            "p95": 0.8631332500499411,
+            "p99": 0.9519451998130535
+          },
+          "successful_client_ms": {
+            "p50": 0.671499500185746,
+            "p95": 0.8631332500499411,
+            "p99": 0.9519451998130535
+          }
+        },
+        {
+          "phase": "warm",
+          "config": "pg_hnsw200",
+          "filter": "empty",
+          "planned": 96,
+          "errors": 0,
+          "correct": 96,
+          "mean_recall10": null,
+          "client_ms": {
+            "p50": 0.42504950033617206,
+            "p95": 0.544938250186533,
+            "p99": 0.6110363495736236
+          },
+          "successful_client_ms": {
+            "p50": 0.42504950033617206,
+            "p95": 0.544938250186533,
+            "p99": 0.6110363495736236
+          }
+        }
+      ],
+      "ingestion": {
+        "vectornext": {
+          "total_ms": 42350.92976699161,
+          "per_document_ms": {
+            "p50": 26.182408500062593,
+            "p95": 28.97161324985973,
+            "p99": 32.227969119567206
+          }
+        },
+        "postgres": {
+          "total_ms": 10358.811052014062,
+          "per_document_ms": {
+            "p50": 6.234201500319614,
+            "p95": 7.664643300131502,
+            "p99": 8.775451619903833
+          }
+        }
+      },
+      "preparation": {
+        "open": {
+          "open_ms": 48.383036
+        },
+        "indexes": {
+          "vectornext": {
+            "engine_ms": 875.167107,
+            "memory": {
+              "cgroup_current": "783794176\n",
+              "cgroup_peak": "783794176\n",
+              "cpu_stat": "usage_usec 17770018\nuser_usec 15164455\nsystem_usec 2605562\nnr_periods 720\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+            }
+          },
+          "postgres_filter_ms": 306.8644590002805,
+          "postgres_hnsw_ms": 8817.200305999904
+        },
+        "before_ann": {
+          "vectornext": {
+            "chunks": 51200,
+            "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "disk_bytes": 393013827,
+            "documents": 1600,
+            "memory": {
+              "cgroup_current": "784666624\n",
+              "cgroup_peak": "798691328\n",
+              "cpu_stat": "usage_usec 18121308\nuser_usec 15470801\nsystem_usec 2650506\nnr_periods 729\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+            }
+          },
+          "postgres": {
+            "documents": 1600,
+            "chunks": 51200,
+            "relation_bytes": 108437504,
+            "cluster_wal_bytes": 100663296,
+            "memory": {
+              "cgroup_current": "344309760\n",
+              "cgroup_peak": "432680960\n",
+              "cpu_stat": "usage_usec 8626327\nuser_usec 5336455\nsystem_usec 3289872\nnr_periods 777\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+            }
+          }
+        },
+        "verified_digest": "946d35a50be9c76caa107a24d8bb232db30615f0699c57ac3f2b6bf18b6db149"
+      },
+      "final": {
+        "vectornext": {
+          "chunks": 51200,
+          "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "disk_bytes": 393013827,
+          "documents": 1600,
+          "memory": {
+            "cgroup_current": "786374656\n",
+            "cgroup_peak": "812548096\n",
+            "cpu_stat": "usage_usec 29648918\nuser_usec 25871804\nsystem_usec 3777113\nnr_periods 854\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+          }
+        },
+        "postgres": {
+          "documents": 1600,
+          "chunks": 51200,
+          "relation_bytes": 213311488,
+          "cluster_wal_bytes": 201326592,
+          "memory": {
+            "cgroup_current": "656859136\n",
+            "cgroup_peak": "750690304\n",
+            "cpu_stat": "usage_usec 21726629\nuser_usec 17552309\nsystem_usec 4174319\nnr_periods 929\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+          }
+        },
+        "settings": {
+          "server_version": "18.6 (Debian 18.6-1.pgdg12+2)",
+          "shared_buffers": "512MB",
+          "work_mem": "32MB",
+          "maintenance_work_mem": "512MB",
+          "fsync": "on",
+          "synchronous_commit": "on",
+          "full_page_writes": "on",
+          "max_parallel_workers_per_gather": "0",
+          "pgvector": "0.8.7"
+        }
+      },
+      "checkpoint": {
+        "vectornext": {
+          "ok": false,
+          "error": "RuntimeError({'error': 'invalid record: frame exceeds 64 MiB limit'})",
+          "recovery_path": "journal replay after rejected checkpoint"
+        },
+        "reopen_after_rejection": {
+          "open_ms": 2710.845162
+        },
+        "postgres": {
+          "ok": true,
+          "client_ms": 243.5904229996595
+        }
+      },
+      "recovery": {
+        "open": {
+          "open_ms": 3177.352162
+        },
+        "index": {
+          "engine_ms": 861.125533,
+          "memory": {
+            "cgroup_current": "368918528\n",
+            "cgroup_peak": "368918528\n",
+            "cpu_stat": "usage_usec 4444364\nuser_usec 3727660\nsystem_usec 716703\nnr_periods 47\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+          }
+        },
+        "vnx_open_index_client_ms": 4040.675721000298,
+        "digest": "729dee29696733df142acd16a535defe83c01a9b2af9ecab52facecfaabc5856",
+        "vectornext": {
+          "chunks": 51232,
+          "digest": "729dee29696733df142acd16a535defe83c01a9b2af9ecab52facecfaabc5856",
+          "disk_bytes": 393259806,
+          "documents": 1601,
+          "memory": {
+            "cgroup_current": "369184768\n",
+            "cgroup_peak": "369184768\n",
+            "cpu_stat": "usage_usec 4597010\nuser_usec 3876224\nsystem_usec 720785\nnr_periods 49\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+          }
+        },
+        "postgres": {
+          "documents": 1601,
+          "chunks": 51232,
+          "relation_bytes": 213475328,
+          "cluster_wal_bytes": 201326592,
+          "memory": {
+            "cgroup_current": "136138752\n",
+            "cgroup_peak": "139948032\n",
+            "cpu_stat": "usage_usec 574860\nuser_usec 159215\nsystem_usec 415644\nnr_periods 21\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n"
+          }
+        },
+        "all_exact_correct": true
+      }
+    }
+  }
+}

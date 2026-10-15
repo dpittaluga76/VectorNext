@@ -5,7 +5,8 @@ Design reference: [architecture.md](architecture.md).
 
 ## Current state
 
-- Phase: T01 through T19 complete. The API uses Axum with local OpenAPI documentation; candidate retrieval and ambiguity experiments are next to scope.
+- Phase: T01 through T20 complete. T20's pgvector comparison exposes a checkpoint/export capacity limit; scope its repair next, followed by filter profiling. Candidate retrieval and ambiguity experiments remain separate quality work.
+- T20 complete: isolated CPU comparison at 12,800/51,200 supplied vectors, independent exact oracle, pgvector exact/HNSW, fixed filters, load/resource measurements and interruption recovery. All 4,096 timed requests completed; 2,048 exact requests and 512 recovery checks passed. PostgreSQL exact was faster in every warm group. VectorNext checkpoints failed at both sizes (64 MiB frame); journal recovery passed, but the dependent export path is blocked at those states. Verified 123 Rust/eight Python checks, format/Clippy, builds, smoke and manifests. [Results and limitations](reports/t20-pgvector.md). All benchmark services stopped; failed attempts, data and volumes retained; normal application unchanged.
 - T15 complete: exact English numeric grouping, named-month date-year boundaries and numeric-fragment checks in complete supplied evidence. Preserves quotes/typed values, JSON pointer/null semantics and API/storage contracts. Verified 108 Rust/90 Python checks, format/lint, the three-case probe, release image build/liveness and T14 archive integrity. [Results](reports/t15-numeric-proofs.md). No GPU benchmark rerun or revised T14 quality score.
 - T14 complete: opt-in field-focused selection and actual-record JSON pointer constraints, annotation v2 and a new eight-source/16-question frozen comparison. All 96 local requests completed: five 8/16, two 7/16, coverage 8/16 in each pass. Coverage cut median latency 43.5–44.4%; retain five by default. [Results](reports/t14-evidence-coverage.md), [workflow](reports/t14-coverage-workflow.md) and [source-review limitations](reports/t14-source-review.md). All T14 services stopped; volumes/captures retained. 101 Rust/116 Python checks passed; a separate probe exposed numeric proof-boundary defects for T15.
 - T13 complete: supervised coordinator, pre-publication PDF diagnostics, bounded busy-admission retries and rejected-answer error envelopes. Verified 97 Rust/90 Python checks and a fresh CPU operational drill with real illustrated NASA PDFs, interruption/retry, unchanged committed data and idempotent publication. [Results and limits](reports/t13-reliability.md). Test services stopped; captures and volumes retained.
@@ -39,7 +40,7 @@ T02 subsequently demonstrated container GPU visibility and actual CUDA inference
 
 ## Next useful step
 
-Scope candidate retrieval and clearer ambiguity cases on fresh evaluation data. T19 is complete; see [HTTP compatibility, verification and limits](reports/t19-axum.md). Keep structural context and ranked 30/20/5 defaults; `coverage_v1` stays experimental. Preserve historical captures, volumes, the pre-T15 source archive and the original unused holdout.
+Scope a crash-safe checkpoint/export design that removes the complete-snapshot 64 MiB frame limit found by T20, preserving existing journal, revision, retry and backup contracts. This repair is proposed, not implemented. Then profile filter eligibility/candidate selection using fresh measurements; keep candidate-retrieval and ambiguity quality experiments separate. Read [T20 results and retained evidence](reports/t20-pgvector.md). Keep structural context and ranked 30/20/5 defaults; `coverage_v1` stays experimental. Preserve historical captures, volumes, the pre-T15 source archive and the original unused holdout.
 
 ## Work queue
 
@@ -431,13 +432,47 @@ Status: complete (2026-10-15). Depends on T18. [Verification and limitations](re
 - Run Rust tests/format/Clippy, relevant Python regressions, frontend checks and Docker browser workflows including offline documentation. Preserve the old API image for rollback; do not rerun GPU quality benchmarks or historical evaluation sets.
 - Acceptance met: existing browser/CLI workflows passed, local API documentation worked with external networking disabled, and deployment remains three services. Verified 122 Rust, 118 Python unit/regression, 71 frozen HTTP cases plus five boundary/two schema checks, five component and eleven browser tests; format/Clippy/builds passed. Normal API upgraded with unchanged documents and dependency containers; T18 image retained.
 
+### T20 — Benchmark VectorNext against PostgreSQL + pgvector
+
+Status: complete (2026-10-15). Depends on T19. Architecture and task updated before implementation. [Protocol](t20-protocol.md), [recovery amendment](t20-protocol-amendment-01.md), [results](reports/t20-pgvector.md) and [reproduction](../experiments/t20/README.md).
+
+- Add a dedicated CPU-only Compose project with isolated storage and adapters. Pin PostgreSQL/pgvector, runner dependencies and image identities. Do not change the production backend, search implementation or normal services.
+- Freeze a protocol and deterministic corpus/query manifests before measurements: 400 and 1,600 documents, 32 chunks each, 384-dimensional supplied float32 vectors, matching text/attributes, top-10 queries and unfiltered/5%-document/1%-attribute/empty scopes. This measures vector storage/search, not semantic relevance or end-to-end RAG quality.
+- Validate exact results against an independent float64 cosine reference with documented numerical/tie tolerance. Include failures in denominators. Compare pgvector HNSW separately at fixed search budgets with recall; no tuning on observed results.
+- Apply equal service CPU/RAM limits; record hardware, versions, configuration, input/source hashes and query plans. Report initial-pass and warm p50/p95/p99 across counterbalanced passes, retaining per-query results. Separate client round-trip from engine diagnostics; explain adapter differences and do not claim a cold disk cache.
+- Measure acknowledged per-document ingestion, index preparation, database disk usage and idle/query memory with explicit scope. Exercise interruption/restart and verify acknowledged records/query results. Do not imply physical power-loss certification or maturity parity.
+- Add generator/oracle/scorer/filter checks; run relevant Rust tests, formatting/Clippy and isolated verification. Preserve historical evaluations and the unused holdout; no GPU/model quality rerun.
+- Acceptance: reproducible commands and retained measurements for both corpus sizes, exact-result correctness or explicit failures, separate ANN recall/latency, recovery checks, comparison report and README summary. Record limitations and stop only benchmark services, retaining volumes/artifacts, before marking complete.
+
+Completion evidence:
+
+- Final run `20261015-fixed-v3`: 4,096 requests completed, no query errors; both exact engines passed all 2,048 exact timed checks. Warm unfiltered medians were VectorNext/PostgreSQL 8.818/5.673 ms at 12,800 vectors and 43.862/22.729 ms at 51,200. HNSW ef=40 medians were 0.586/0.843 ms with 100%/99.0625% recall. Selectively filtered HNSW-labelled configurations used exact B-tree/sort plans; report this distinction.
+- Both VectorNext checkpoint attempts failed on the existing 64 MiB frame limit. Amendment 01 records rejection/reopening and journal recovery without changing engine code or queries. PostgreSQL checkpointed; both engines retained the full acknowledged-data digest including sentinel documents and passed 512/512 post-kill exact checks. Offline export depends on checkpoint and inherits the limit (code-derived, not separately executed).
+- Verified 123 Rust tests, eight benchmark Python tests, formatting/Clippy, release/runner builds, a separate two-document smoke test, 39 execution-source hashes, corpus hashes and all capture denominators. No GPU/model, semantic-quality or concurrent-load claim. Production code and historical evaluation artifacts remain unchanged.
+- Initial Decimal-report failure and the earlier completed small-corpus run/checkpoint failure remain under separate v1/v2 directories with matching source archives. All three attempts have identical input hashes. All benchmark services are stopped; isolated volumes, networks and captures remain. Normal application services remain healthy. Benchmark acceptance is complete; the storage defect is an explicit follow-up.
+
+### Later — Scalable checkpoint/export and filter profiling
+
+Scope this before candidate-retrieval experiments. T20 shows that one-frame snapshot serialization prevents checkpoint/export at both measured sizes; design bounded publication, format compatibility and crash recovery before changing storage. Then profile the observed attribute/empty-filter cost and consider candidate indexes with correctness checks. These are proposed follow-ups, not authorized implementation or a claim that ANN alone solves the measured gaps.
+
 ### Later — Candidate retrieval and ambiguity evaluation
 
-Scope field-specific candidate retrieval and a clearly worded ambiguity evaluation after T19. Reranking cannot recover a required source absent from the candidate pool. Keep these quality experiments separate from API/usability acceptance and preserve historical freezes.
+Scope field-specific candidate retrieval and a clearly worded ambiguity evaluation after the storage-capacity follow-up identified by T20. Reranking cannot recover a required source absent from the candidate pool. Keep these quality experiments separate from API/usability acceptance and preserve historical freezes.
 
 ## Session handoff discipline
 
 Keep the Current state and Next useful step sections accurate. For each meaningful work session, add one concise entry below with changed files/capabilities, task IDs, verification actually performed, unresolved issues, and the next step. Do not paste full chat transcripts or command logs.
+
+### 2026-10-15 — T20 completed
+
+- Updated architecture and plan before implementation; added the isolated Rust supplied-vector adapter, pinned PostgreSQL/runner Compose tooling, frozen protocol, independent reference/scorer, recovery amendment, reproduction guide and Markdown/JSON results. README now includes the comparison and checkpoint/export limitation; its preceding technical expansion is preserved.
+- Both corpus sizes completed the fixed four-configuration comparison. Exact correctness and journal recovery passed, PostgreSQL was faster in all exact warm groups, and larger-corpus HNSW recall was 99.0625%. VectorNext checkpointing failed at both sizes; do not hide this behind successful recovery or advertise backup at those states.
+- Verified 123 Rust/eight Python checks, format/Clippy, builds, separate smoke, manifest integrity, summaries and stopped benchmark services. Retain `data/t20/20261015-fixed-v1`, `-v2`, `-v3`, all project volumes and earlier source archives. Normal app is healthy; no production code, GPU run, historical dataset or original holdout changed. Next: scope checkpoint/export repair before filter-performance and retrieval-quality work.
+
+### 2026-10-15 — Technical README expanded
+
+- Expanded the public README with the pinned Rust/Axum/Tokio/utoipa and frontend/worker stack, storage durability, format-specific ingestion, retrieval/answer pipeline, local models, API routes/contracts, scheduling, browser persistence and Docker resource/configuration details.
+- Checked claims against manifests, Compose and the relevant implementation/contracts. Verified local links/anchors, Markdown fences, pinned versions, route coverage and whitespace. Documentation only; no application code, services, model runs or historical results changed. T19 remains complete; candidate retrieval and ambiguity evaluation remain the next work to scope.
 
 ### 2026-10-15 — T19 completed
 

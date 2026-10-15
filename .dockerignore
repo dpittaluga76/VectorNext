@@ -40,5 +40,7 @@ frontend/dist/
 frontend/test-results/
 frontend/playwright-report/
 !docker/ui-test.Dockerfile
+!docker/benchmark.Dockerfile
+!docker/benchmark-runner.Dockerfile
 
 frontend/test-results-live/

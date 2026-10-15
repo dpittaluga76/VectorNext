@@ -1,6 +1,6 @@
 # VectorNext architecture
 
-Status: implemented T01–T19 local application, evaluations, workflow reports, recovery, numeric proof support, browser workspace and Axum API with local OpenAPI documentation. Remaining proposals are identified below.
+Status: implemented T01–T20 local application, evaluations, workflow reports, recovery, numeric proof support, browser workspace, Axum API with local OpenAPI documentation and isolated pgvector comparison. T20 exposes a checkpoint/export capacity limit; remaining proposals are identified below.
 Last updated: 2026-10-15.
 
 This document condenses the project discussion into an implementation reference. It is not a claim that the system is implemented or that every proposed technology has been selected. Explicit user instructions can revise it.
@@ -23,6 +23,16 @@ T01 evaluation fixtures/contracts, T02 local-model feasibility, T03's Rust stora
 T10 adds source/answer scoring, isolated cold/warm API comparisons, stage/queue/resource measurements, bounded answer options and independent keyword-field weights. The [evaluation report](reports/t10-evaluation.md) retains structural context and exact search as defaults. Two primary passages reduced median response time by 30–32% on the 13 development questions; the later [T11 public-source comparison](reports/t11-independent.md) found lost answers with two, so five remain the general default. Generated context did not improve final answers and cost substantially more to ingest. These results do not establish broad retrieval quality.
 
 ## 2. Integrated deployment
+
+### Adopted database comparison — T20 (completed 2026-10-15)
+
+Benchmark the existing VectorNext core against PostgreSQL with pgvector in an isolated, CPU-only Docker project. PostgreSQL is a benchmark competitor, not a replacement backend or an added production dependency. Preserve the normal three-service application and historical evaluation artifacts.
+
+Use deterministic 384-dimensional float32 vectors and identical chunk text, document identities and filter attributes. Validate exact cosine top-k against an independent float64 reference before interpreting performance. Measure pgvector HNSW separately with recall. Parsing, model inference, BM25, reranking and final answer quality remain outside this first storage/vector-search comparison because they require separate matched pipelines.
+
+Freeze corpus/query hashes, filters, resource limits and measurement rules before timed queries. Include 400 and 1,600 documents, filtered/unfiltered/empty results, initial and warm latency, ingestion/index preparation, resource/storage measurements and acknowledged-data recovery after interruption. Report client and engine timing boundaries honestly; the supplied-vector benchmark adapter is not the ordinary text-query API. Retain failed attempts and disclose cache, transport, schema and maturity differences. No superiority claim follows without matching evidence.
+
+Both corpora completed: 4,096 timed requests, 2,048/2,048 exact requests correct, and 512/512 post-interruption exact checks passed. PostgreSQL exact was faster in every warm group; HNSW's larger-corpus unfiltered recall was 99.0625%. VectorNext checkpointing failed at both sizes because the complete JSON snapshot exceeds the existing 64 MiB frame limit. Export calls checkpoint and inherits that limit. Journal recovery preserved acknowledged data; this does not establish working large-state checkpoint/export. [Results and qualifications](reports/t20-pgvector.md) record the protocol amendment, failed attempts, schemas, timing boundaries and retained artifacts. The next proposed storage work is a bounded checkpoint/export design; no storage-format or production-backend change is adopted by T20.
 
 ### Adopted HTTP migration — T19 (implemented 2026-10-15)
 
@@ -281,6 +291,8 @@ Keep database reads/writes independent of model availability. Expose capability-
 
 T03 implements a checksummed append-only journal and explicit checkpoints, specified in [storage.md](storage.md). A batch atomically registers embedding spaces and replaces/deletes complete document revisions. Preserve originals durably first; write and fsync the prepare frame, write and fsync its matching commit, then publish an immutable reader snapshot. Recovery trims incomplete tails and rejects complete corrupt frames. Checkpoints use a flushed temporary file, atomic rename, and directory fsync. They retain the full journal and bind to its prefix by SHA-256; disk compaction is deferred.
 
+Current capacity limitation (T20): a checkpoint serializes the entire state into one frame capped at 64 MiB. The 400- and 1,600-document supplied-vector corpora both exceeded it; checkpoint rejection poisons the writer until reopening, and offline export depends on checkpoint success. Journal recovery passed. Do not equate successful ingestion with successful backup at arbitrary state sizes. A scalable checkpoint format remains proposed work, with compatibility and crash-recovery rules to be designed before implementation.
+
 The supported durability environment is a Linux local filesystem inside Docker with working file/directory fsync and atomic rename. Native Windows storage explicitly returns unsupported; the Windows host uses Docker. An OS-held lock enforces one writer. Write failures require reopening before further mutations. Operation IDs persist exact retry receipts, revisions use compare-and-swap preconditions, and old revision IDs stay reserved after deletion. Recovery needs stored vectors and originals, never a model service. The tests simulate truncation, corruption, I/O failures, and forced process termination; they do not certify physical power-loss behavior of a host disk.
 
 New queries exclude deleted records. Reclaim obsolete revisions later while respecting active readers. Backups must capture a consistent database snapshot and referenced original files, not just copy changing files opportunistically.
@@ -312,6 +324,7 @@ Open choices include final production model selection, broader parser/OCR langua
 
 | Date | Status | Decision or proposal | Reason |
 | --- | --- | --- | --- |
+| 2026-10-15 | Evaluated (T20); repair proposed | Retain the own-database production design; scope bounded checkpoint/export before further capacity claims | Exact searches and journal recovery passed, but PostgreSQL was faster and both VectorNext snapshots exceeded the 64 MiB frame limit. The isolated comparison adds no production PostgreSQL dependency or storage-format change |
 | 2026-10-14 | Implemented (T13) | Supervised coordinator, stored PDF diagnostics, bounded busy-admission retries and rejected-answer error envelopes | Make operational failures observable without weakening publication/validation. Verified restart/retry and explicit partial-text policy in a fresh CPU drill |
 | 2026-10-14 | Confirmed | Build our own vector database | Explicit user direction; an existing vector database must not replace the core |
 | 2026-10-14 | Confirmed | Local models, GPU, and Docker | Explicit operating/deployment requirements |

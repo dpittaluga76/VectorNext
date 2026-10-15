@@ -1,0 +1,9 @@
+# T20 amendment 01: record checkpoint rejection and test journal recovery
+
+2026-10-15, after the 400-document v2 query passes and before its interruption drill or the 1,600-document run. The original protocol and v2 captures remain unchanged; matching execution sources are archived under that run directory.
+
+VectorNext successfully stored and verified the 12,800 vectors, completed all timed requests, then rejected the requested checkpoint: `invalid record: frame exceeds 64 MiB limit`. The existing format writes a complete snapshot in one bounded frame, and checkpoint failure poisons the writer until reopening. This is a database capacity limitation, not a scorer error. No engine change is authorized by this amendment.
+
+For a fresh v3 execution with identical corpus/query hashes and search settings, record each engine's checkpoint result rather than aborting the experiment. If VectorNext rejects a checkpoint, retain its error, reopen the database, verify the complete acknowledged-data digest and record the reopen cost. Then acknowledge the independent sentinel and perform the original kill/restart/digest/exact-query verification. Report recovery from the journal when no usable checkpoint exists; never report a successful checkpoint or post-checkpoint recovery for that engine. PostgreSQL still runs its ordinary checkpoint.
+
+The change affects only recovery reporting/control flow after timed queries. It does not change supplied vectors, queries, expected results, filter semantics, search budgets, measured SQL, timing boundaries, storage code or model behavior. Preserve v1's report-serialization failure and v2's complete query captures plus checkpoint failure. Use a new project, run identity and execution freeze; compare input hashes across attempts. Report the checkpoint limit prominently alongside final timing results.
