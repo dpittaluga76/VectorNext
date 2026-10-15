@@ -2,12 +2,25 @@
 param(
     [ValidateSet('Menu', 'Setup', 'Start', 'Rebuild', 'Stop', 'Status')]
     [string]$Action = 'Menu',
-    [switch]$NoBrowser
+    [switch]$NoBrowser,
+    [ValidateSet('', '26b-offload22', '12b', '26b-gpu')]
+    [string]$ModelProfile = ''
 )
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $appCompose = Join-Path $projectRoot 'compose.app.yaml'
 $appArguments = @('compose', '--project-name', 'vectornext', '--project-directory', $projectRoot, '-f', $appCompose)
+$profiles = Get-Content -LiteralPath (Join-Path $projectRoot 'model_worker/generator_profiles.json') -Raw | ConvertFrom-Json
+$profileState = Join-Path $projectRoot 'data/launcher/model-profile.txt'
+if (-not $ModelProfile -and $env:VECTORNEXT_GENERATOR_PROFILE) { $ModelProfile = $env:VECTORNEXT_GENERATOR_PROFILE }
+if (-not $ModelProfile -and (Test-Path -LiteralPath $profileState)) { $ModelProfile = (Get-Content -LiteralPath $profileState -Raw).Trim() }
+if ($ModelProfile) {
+    if ($ModelProfile -notin $profiles.profiles.PSObject.Properties.Name) { throw "Unknown model profile: $ModelProfile" }
+    $env:VECTORNEXT_GENERATOR_PROFILE = $ModelProfile
+    $appArguments += @('-f', (Join-Path $projectRoot 'compose.app.models.yaml'))
+}
+$selectedProfile = if ($ModelProfile) { $ModelProfile } else { $profiles.default }
+$selectedModelLock = $profiles.profiles.$selectedProfile.lock
 
 function Invoke-Docker {
     param([string[]]$Arguments)
@@ -28,7 +41,7 @@ function Check-Installed {
         if ($LASTEXITCODE -ne 0) { throw "Required image $image is missing. Choose Setup first, or Rebuild after a repository update." }
     }
     $modelRoot = ($configuration.services.processor.volumes | Where-Object { $_.target -eq '/models' }).source
-    $manifest = Get-Content -LiteralPath (Join-Path $projectRoot 'experiments/t02/models.26b.lock.json') -Raw | ConvertFrom-Json
+    $manifest = Get-Content -LiteralPath (Join-Path $projectRoot $selectedModelLock) -Raw | ConvertFrom-Json
     foreach ($model in $manifest.models.PSObject.Properties.Value) {
         foreach ($file in $model.files) {
             $path = Join-Path (Join-Path $modelRoot $model.directory) $file.path
@@ -59,6 +72,10 @@ function Start-Workspace {
         Start-Sleep -Seconds 2
     }
     if (-not $available) { throw 'The interface did not start. Choose Status and inspect Docker Desktop logs for the vectornext service.' }
+    if ($ModelProfile) {
+        New-Item -ItemType Directory -Force -Path (Split-Path -Parent $profileState) | Out-Null
+        Set-Content -LiteralPath $profileState -Value $selectedProfile -Encoding ascii
+    }
     Write-Host "Ready to browse: $address" -ForegroundColor Green
     if (-not $NoBrowser) { Start-Process $address }
 }
@@ -82,6 +99,9 @@ try {
             Invoke-Docker @('compose', '--project-directory', $projectRoot, '-f', (Join-Path $projectRoot 'compose.models.yaml'), 'run', '--rm', '--no-deps', 'gpu-check')
             Write-Host 'Step 2 of 4: Preparing the download tools and verifying local Gemma / embedding / reranking files. Existing valid files are reused.' -ForegroundColor Cyan
             $modelsArguments = @('compose', '--project-directory', $projectRoot, '-f', (Join-Path $projectRoot 'compose.models.yaml'), '-f', (Join-Path $projectRoot 'compose.models.26b.yaml'))
+            if ($selectedProfile -eq '12b') {
+                $modelsArguments = @('compose', '--project-directory', $projectRoot, '-f', (Join-Path $projectRoot 'compose.models.yaml'), '-f', (Join-Path $projectRoot 'compose.models.12b.yaml'))
+            }
             Invoke-Docker ($modelsArguments + @('build', 'model-download'))
             Invoke-Docker ($modelsArguments + @('run', '--rm', '--no-deps', 'model-download'))
             Write-Host 'Step 3 of 4: Preparing and verifying PDF / OCR assets.' -ForegroundColor Cyan

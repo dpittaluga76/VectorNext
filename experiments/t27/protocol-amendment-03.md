@@ -1,0 +1,5 @@
+# T27 operational amendment 03 — verified Linux weight cache
+
+Before measured requests, copy the two existing GGUF artifacts into the dedicated `vectornext-t27-generation-models` Docker volume, verifying copied bytes against their unchanged model locks. Both arms use this same read-only Linux volume. CPU embedding/reranking/PDF artifacts retain the original read-only model mount. Keep original downloads and cached weights; no new model content or quantization is introduced.
+
+Windows bind-mounted SHA-256 verification/reloading took several minutes for 26B. A Linux cache avoids repeating that filesystem overhead during the paired block switches. Startup remains separate from request latency. Record the cache mount in resolved Compose and keep the runtime's own verification enabled on every launch. This is not a measured inference optimization. A first inline copy invocation failed with a shell quoting error before copying; the checked-in standard-library script replaces it, and the failed log remains.

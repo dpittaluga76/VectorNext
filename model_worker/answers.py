@@ -122,7 +122,7 @@ def generate(worker, msgs, output_schema, prompt, output_tokens=OUTPUT_TOKENS):
     if tokens > INPUT_TOKENS:
         raise ValueError("answer prompt exceeds reserved context budget")
     response = worker.http("/v1/chat/completions", {
-        "model": "vectornext-gemma4-26b-a4b", "messages": msgs, "temperature": 0, "seed": 42,
+        "model": worker.generator_alias, "messages": msgs, "temperature": 0, "seed": 42,
         "max_tokens": output_tokens, "cache_prompt": False, "reasoning": "off",
         "response_format": {"type": "json_schema", "json_schema": {"name": "answer", "strict": True, "schema": output_schema}},
     }, priority="interactive")

@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 libcur
     && rm -rf /var/lib/apt/lists/*
 COPY --from=download /opt/llama /opt/llama
 ENV LD_LIBRARY_PATH=/opt/llama NVIDIA_VISIBLE_DEVICES=all NVIDIA_DRIVER_CAPABILITIES=compute,utility
-COPY model_worker/launch_llm.py /launch_llm.py
-COPY model_worker/scheduler.py /scheduler.py
-COPY experiments/t02/models.26b.lock.json /models.lock.json
-ENTRYPOINT ["python", "/launch_llm.py"]
+WORKDIR /app
+COPY model_worker/launch_llm.py model_worker/scheduler.py model_worker/generator_profile.py model_worker/generator_profiles.json model_worker/
+COPY experiments/t02/models.26b.lock.json experiments/t02/
+COPY experiments/t27/models.12b.lock.json experiments/t27/
+ENTRYPOINT ["python", "-m", "model_worker.launch_llm"]

@@ -1,7 +1,7 @@
 name: vectornext
 services:
   vectornext:
-    image: vectornext-app:t26
+    image: vectornext-app:t27
     build:
       context: .
       dockerfile: docker/app.Dockerfile
@@ -29,7 +29,7 @@ services:
       retries: 3
 
   processor:
-    image: vectornext-app-processor:t26
+    image: vectornext-app-processor:t27
     build:
       context: .
       dockerfile: docker/app-processor.Dockerfile
@@ -53,7 +53,7 @@ services:
       retries: 3
 
   llm:
-    image: vectornext-app-llm:t18
+    image: vectornext-app-llm:t27
     build:
       context: .
       dockerfile: docker/app-llm.Dockerfile
@@ -82,7 +82,7 @@ services:
       retries: 12
 
   client:
-    image: vectornext-app:t26
+    image: vectornext-app:t27
     profiles: [tools]
     entrypoint: [python, -m, deployment.client]
     read_only: true
@@ -95,7 +95,7 @@ services:
     networks: [local]
 
   admin:
-    image: vectornext-app:t26
+    image: vectornext-app:t27
     profiles: [tools]
     command: [inspect, /storage/db]
     read_only: true

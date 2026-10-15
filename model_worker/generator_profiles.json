@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "default": "26b-offload22",
+  "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695",
+  "profiles": {
+    "26b-offload22": {
+      "lock": "experiments/t02/models.26b.lock.json",
+      "alias": "vectornext-gemma4-26b-a4b",
+      "cpu_moe": 22
+    },
+    "12b": {
+      "lock": "experiments/t27/models.12b.lock.json",
+      "alias": "vectornext-gemma4-12b",
+      "cpu_moe": 0
+    },
+    "26b-gpu": {
+      "lock": "experiments/t02/models.26b.lock.json",
+      "alias": "vectornext-gemma4-26b-a4b",
+      "cpu_moe": 0
+    }
+  }
+}

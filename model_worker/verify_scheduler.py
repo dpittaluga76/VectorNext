@@ -20,7 +20,8 @@ def until(predicate):
 
 
 def generate(name, priority):
-    payload = {"model": "vectornext-gemma4-26b-a4b", "messages": [{"role": "user", "content": "Write a paragraph of about 100 words explaining how a soccer match works."}],
+    from model_worker.generator_profile import load
+    payload = {"model": load()['alias'], "messages": [{"role": "user", "content": "Write a paragraph of about 100 words explaining how a soccer match works."}],
                "temperature": 0, "seed": 42, "max_tokens": 192, "reasoning": "off", "cache_prompt": False}
     request = urllib.request.Request(BASE + "/v1/chat/completions", data=json.dumps(payload).encode(),
                                     headers={"Content-Type": "application/json", "X-VectorNext-Priority": priority})

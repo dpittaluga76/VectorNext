@@ -1,0 +1,26 @@
+# Isolated T27 project only; apply after compose.app.yaml and compose.app.models.yaml.
+services:
+  vectornext:
+    image: vectornext-app:t27
+    environment:
+      VECTORNEXT_DATA: ${T27_DATABASE:-/storage/preflight}
+      VECTORNEXT_STRUCTURAL_WEIGHT: 1
+      VECTORNEXT_GENERATED_WEIGHT: 1
+    ports: !override ["127.0.0.1:8097:8088"]
+  processor:
+    environment:
+      VECTORNEXT_CACHE: ${T27_CACHE:-/cache/preflight}
+  llm:
+    restart: "no"
+    volumes: !override [generation-models:/models:ro]
+networks:
+  local:
+    ipam:
+      config: [{subnet: "10.254.27.0/24"}]
+  ingress:
+    ipam:
+      config: [{subnet: "10.254.28.0/24"}]
+volumes:
+  generation-models:
+    external: true
+    name: vectornext-t27-generation-models

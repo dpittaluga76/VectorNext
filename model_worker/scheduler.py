@@ -144,14 +144,14 @@ def backend_request(path, body=None):
         raise BackendUncertain("backend disconnected or timed out; restart required") from error
 
 
-def validate(path, body, priority):
+def validate(path, body, priority, model_alias="vectornext-gemma4-26b-a4b"):
     if path not in {"/apply-template", "/tokenize", "/v1/chat/completions"}:
         raise Rejected("unsupported model endpoint")
     data = json.loads(body)
     if not isinstance(data, dict): raise Rejected("expected an object")
     if path == "/v1/chat/completions":
         limit = 768 if priority == "interactive" else 256
-        if (data.get("model") != "vectornext-gemma4-26b-a4b" or type(data.get("max_tokens")) is not int
+        if (data.get("model") != model_alias or type(data.get("max_tokens")) is not int
                 or not 1 <= data["max_tokens"] <= limit or data.get("stream", False) is not False
                 or data.get("n", 1) != 1 or data.get("temperature") != 0):
             raise Rejected("invalid model, output budget, streaming, sample count, or temperature")
@@ -164,8 +164,9 @@ class Server(ThreadingHTTPServer):
     daemon_threads = True
     request_queue_size = 32
 
-    def __init__(self, scheduler, address=("0.0.0.0", 8080)):
+    def __init__(self, scheduler, address=("0.0.0.0", 8080), model_alias="vectornext-gemma4-26b-a4b"):
         self.scheduler = scheduler
+        self.model_alias = model_alias
         self.slots = threading.BoundedSemaphore(32)
         super().__init__(address, Handler)
 
@@ -219,7 +220,7 @@ class Handler(BaseHTTPRequestHandler):
             body = self.rfile.read(size)
             if len(body) != size: raise Rejected("incomplete request")
             priority = self.headers.get("X-VectorNext-Priority", "background")
-            validate(self.path, body, priority)
+            validate(self.path, body, priority, self.server.model_alias)
             code, response = self.server.scheduler.submit(self.path, body, priority)
             self.reply(code, response)
         except (Rejected, BackendUncertain) as error:

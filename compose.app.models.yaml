@@ -1,0 +1,11 @@
+# Explicit experimental model selection. The normal application remains on its verified images.
+services:
+  processor:
+    image: vectornext-app-processor:t27
+    environment:
+      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-26b-offload22}
+  llm:
+    image: vectornext-app-llm:t27
+    environment:
+      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-26b-offload22}
+    command: []

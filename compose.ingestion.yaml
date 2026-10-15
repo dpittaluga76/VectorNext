@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: docker/ingestion.Dockerfile
-    image: vectornext-ingestion:t08
+    image: vectornext-ingestion:t27
     profiles: [tools]
     read_only: true
     init: true
@@ -17,21 +17,23 @@ services:
       - ingestion-data:/storage
       - ingestion-cache:/cache
     networks: [models-internal]
+    environment:
+      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-26b-offload22}
 
   llm:
     extends:
       file: compose.models.yaml
       service: llm
     profiles: [generation]
-    entrypoint: [python, /launch_llm.py]
+    entrypoint: [python, -m, model_worker.launch_llm]
+    working_dir: /app
+    environment:
+      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-26b-offload22}
     volumes:
-      - ./model_worker/launch_llm.py:/launch_llm.py:ro
-      - ./model_worker/scheduler.py:/scheduler.py:ro
-      - ./experiments/t02/models.26b.lock.json:/models.lock.json:ro
-    command: [--model, /models/generator-26b/gemma-4-26B_q4_0-it.gguf, --alias, vectornext-gemma4-26b-a4b,
-      --host, 0.0.0.0, --port, '8080', --ctx-size, '4096', --n-gpu-layers, '99', --n-cpu-moe, '22',
-      --parallel, '1', --n-predict, '256', --batch-size, '512', --ubatch-size, '128', --threads, '4',
-      --flash-attn, 'on', --jinja, --reasoning, 'off', --no-context-shift, --no-ui, --offline, --verbosity, '4']
+      - ./model_worker:/app/model_worker:ro
+      - ./experiments/t02:/app/experiments/t02:ro
+      - ./experiments/t27:/app/experiments/t27:ro
+    command: []
     healthcheck:
       retries: 300
 
