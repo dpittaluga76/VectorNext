@@ -164,17 +164,13 @@ The API and CPU processor preserve separate interactive/background admission. A 
 
 Models are checksum-verified from local files. Bounded disposable disk caches key results by exact input and full model/configuration identity; corrupt entries become misses. Committed vectors and source evidence live in the database, so deleting a cache does not remove documents. There is no answer cache. The normal GPU service is the only component with NVIDIA access.
 
-**12B is the default after T28's 208-request evaluation.** Applying evidence-specific JSON pointer constraints to ranked extraction recovered every lost T27 control case and its validated support. Ranked five scored **13/16 on T14 and 18/28 on T11 in both passes**, with no correctness/source-support loss against either retained T27 model run. Median latency was **9.99–11.16 seconds**, **50.4–62.8% lower** than the retained 26B control. All declared gates passed; the normal app was activated with its existing library preserved.
-
-T27's earlier 416-request comparison had rejected promotion because unconstrained JSON paths reduced 12B's scores to 10/16 and 14/28. Its [negative result](docs/reports/t27-model-comparison.md) is preserved. T28 changes the extraction contract, then compares against retained controls; it is not a fresh paired 26B run or independent quality validation. T11 ranked-five medians are about 5% slower than the earlier 12B run, so the fix has measurable overhead. [Full results, per-case changes and limitations](docs/reports/t28-ranked-pointers.md).
+**12B is the default after T28's 208-request evaluation.** Evidence-specific JSON pointer constraints recovered the lost T27 control cases and their validated source support. See the [12B/26B comparison, extraction changes and limitations](#gemma-12b-vs-26b) for the accuracy, latency and memory measurements behind that decision.
 
 | Generation profile | Placement | Status |
 | --- | --- | --- |
 | `12b` | Full layer offload | **Default** after T28; verified on the 8 GB RTX 4060. |
 | `26b-offload22` | 22 CPU expert layers | Optional compatibility/rollback profile; saved generation identities preserved. |
 | `26b-gpu` | Full layer offload | Optional 16–24 GB target, unverified on this machine. |
-
-T28's measured-query peak was **7,880/8,188 MiB**, leaving only **308 MiB sampled GPU headroom**. No OOM/backend failure was observed; Windows GPU page-outs remain unverified. This tests one 8 GB card, not the whole intended 8–12 GB range. The pinned runtime, context, sampling, CPU models and committed corpus match T27. The proposed 65–75% overall median reduction was not achieved. T11/T14 timings exclude automatic field planning; separate planner/source/browser checks passed. Exact-value constraints do not remove semantic errors, strict PDF failures or the existing rejection of numeric fragments inside ranges.
 
 Profiles are shared by the worker, validating GPU launcher and scheduler. Model/runtime identities separate generated-context caches; unfinished jobs keep their original generator policies and reject mismatched profiles. Fresh setup defaults to `12b`. Existing saved choices are respected: migrate explicitly with `./deployment/VectorNext.ps1 -Action Setup -ModelProfile 12b`, or use Start if the release images/files are installed. Selection persists for later Start/Setup/Rebuild. Return with `./deployment/VectorNext.ps1 -Action Start -ModelProfile 26b-offload22` after installing that profile's files. Routine Start remains offline. Direct Compose users apply `compose.app.models.yaml` after `compose.app.yaml` and set `VECTORNEXT_GENERATOR_PROFILE` consistently. The optional `26b-gpu` profile targets larger cards; neither 26B profile adds corpus-wide aggregation. [Profiles, rollback and frozen reproduction](docs/reports/t28-ranked-pointers.md#reproduction-profiles-and-rollback).
 
@@ -235,6 +231,48 @@ The CPU worker uses existing 420-second operation deadlines, extended to 720 sec
 [Compose configuration](compose.app.yaml) · [Architecture and decisions](docs/architecture.md) · [Operational commands](docs/development.md) · [Recovery guide](docs/reliability.md)
 
 ## Measured results
+
+### Gemma 12B vs 26B
+
+**12B became the default after T28 recovered its JSON-answer failures while retaining most of its speed advantage.** T27 compared Gemma 4 26B A4B QAT Q4_0 with Gemma 4 12B QAT Q4_0 in 416 requests and initially rejected 12B's promotion. T28 changed the application's extraction constraints, kept the model weights unchanged, and completed a separate 208-request 12B evaluation against the retained T27 results.
+
+Answer scores and latency below use the default **five primary passages**. T14 contains 16 evidence-coverage questions; T11 contains 28 NASA/USGS questions. Accuracy was identical in both cache passes. Resource peaks cover all query blocks, including the other passage-selection strategies.
+
+| Measurement | 26B — T27 baseline | 12B — before T28 | **12B — current** |
+| --- | ---: | ---: | ---: |
+| T14: correct outcomes | **13/16** | 10/16 | **13/16** |
+| T11: correct outcomes | 16/28 | 14/28 | **18/28** |
+| T14 median latency, cold / warm | 29.51 / 28.44 s | 11.59 / 11.16 s | **11.16 / 10.57 s** |
+| T11 median latency, cold / warm | 20.86 / 21.23 s | **9.86 / 9.48 s** | 10.35 / 9.99 s |
+| Previously correct 26B cases | Baseline | Some lost | **All preserved, including source support** |
+| Model placement | Experts from 22 layers on CPU | All layers on GPU | All layers on GPU |
+| Peak whole-device GPU use | **6,706 MiB** | 7,864 MiB | 7,880 MiB |
+| Peak generator memory, including file cache | 19.81 GiB | 11.82 GiB | **10.19 GiB** |
+| Decision | Previous default | Failed promotion gates | **Current default** |
+
+Cold/warm refers to persisted application caches; OS/backend caches were not globally flushed. Latencies include errors and abstentions, exclude model loading/warmup, and use explicit answer fields. Ordinary browser questions add a separate automatic field-planning call. Whole-device GPU measurements include desktop workloads; generator memory is container accounting including file cache, not process RSS.
+
+**What changed in T28:**
+
+| Area | Before T28 | After T28 |
+| --- | --- | --- |
+| JSON path selection | Ranked extraction allowed unconstrained path strings. | The schema permits only existing, type-compatible RFC 6901 paths from admitted evidence records. |
+| Example failure | The model could emit `properties.mag`. | It must select an allowed pointer such as `/properties/mag`. |
+| Evidence association | Invalid record/path combinations could reach validation and be rejected. | Schema branches bind each permitted pointer to its specific evidence record. |
+| Actual answer value | Rust read the original JSON value and validated it. | **Unchanged.** The model does not transcribe the numeric value; exact values, zero, raw null and missing fields retain their distinctions. |
+| Prompt budgeting | Ranked extraction lacked the pointer catalog. | Catalog tokens count toward the budget and can displace other evidence. Rejected additions restore the prior constraint state. |
+| Inference calls | Existing assessment/extraction calls. | **No additional calls or repair retries.** |
+| Other settings | Pinned models and runtime, existing context and retrieval configuration. | **Unchanged:** model weights, embeddings, reranker, 4,096-token context, temperature zero, seed 42 and ranked 30/20/5. |
+
+**Limitations and tradeoffs:**
+
+- **Comparison scope:** T28 reran 12B only. **26B with the new pointer constraints remains unmeasured.** These results compare application configurations on one RTX 4060, including 26B's CPU expert offload; they do not establish that 12B is intrinsically more capable. Full-GPU 26B on larger cards remains unverified.
+- **Speed and overhead:** current 12B reduced ranked-five median latency by **50.4–62.8%** versus retained 26B, exceeding the 20% promotion gate. The proposed 65–75% overall reduction was not achieved. T11 medians increased about **5%** versus the earlier 12B run. Catalog token accounting changed a prose neighbor in two of 208 requests, so evidence was not identical in every case.
+- **GPU headroom:** full GPU placement uses less system memory here but more VRAM than offloaded 26B. The current sampled peak was **7,880/8,188 MiB**, leaving only **308 MiB**. No OOM/backend failure was observed; Windows GPU page-outs remain unverified. Only this 8 GB card was tested, not the whole intended 8–12 GB range.
+- **Quality evidence:** these are 44 reused questions across strategies and passes, not independent proof of broad quality. T11 retains two PDF admission failures and their six dependent questions in every 28-question denominator. T28's 208 requests include six rejected responses; HTTP success is not the accuracy score. Original strict labels and separate source-review exceptions remain unchanged.
+- **Remaining failures:** a valid pointer can still select a semantically irrelevant field. PDF extraction failures, semantic mistakes and the existing rejection of year-range endpoints remain. Separate planner/source/browser checks passed, but their success does not guarantee correct answers to every ordinary question.
+
+26B remains available as an optional compatibility and rollback profile. [T27 results and original promotion failure](docs/reports/t27-model-comparison.md) · [T28 complete results, p95, case changes and rollout](docs/reports/t28-ranked-pointers.md) · [Pointer and proof contract](docs/answers.md#ranked-json-pointer-constraints-t28).
 
 ### Database comparison: PostgreSQL + pgvector
 

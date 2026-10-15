@@ -603,6 +603,12 @@ Scope a separate clarification workflow and clearly worded ambiguity evaluation 
 
 Keep the Current state and Next useful step sections accurate. For each meaningful work session, add one concise entry below with changed files/capabilities, task IDs, verification actually performed, unresolved issues, and the next step. Do not paste full chat transcripts or command logs.
 
+### 2026-10-15 — README model comparison
+
+- Added the requested 26B / original 12B / current 12B comparison under Measured results, covering scores, cold/warm latency, placement, GPU/system memory and default decisions. Added a before/after T28 extraction table and linked it from the model configuration section.
+- Kept the retained-control comparison, unmeasured updated 26B, catalog overhead/evidence changes, narrow GPU headroom, paging uncertainty, explicit-field timing and remaining quality failures visible. Checked the table against the existing T27/T28 reports and local documentation links; no runtime changes or benchmark reruns.
+- User authorized committing and pushing this documentation update. T27/T28 implementation commits are already published; frozen inputs, scores, private data and the running app remain unchanged. Next quality work remains separately scoped.
+
 ### 2026-10-15 — T27/T28 publication preparation
 
 - User authorized committing and pushing both completed tasks. Separated the validated model-profile/T27 comparison state from ranked pointer constraints and the T28 12B promotion, using the verified pre-T28 archive without changing running files or services.
