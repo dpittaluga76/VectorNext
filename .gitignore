@@ -227,3 +227,8 @@ __marimo__/
 /backups/
 # T11's final attributed source manifest is versioned; the acquisition draft is local.
 /evals/independent/sources-draft.json
+node_modules/
+frontend/test-results/
+frontend/playwright-report/
+
+frontend/test-results-live/

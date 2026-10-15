@@ -33,3 +33,12 @@ processor/**/__pycache__/
 !experiments/
 !experiments/**
 experiments/**/__pycache__/
+!frontend/
+!frontend/**
+frontend/node_modules/
+frontend/dist/
+frontend/test-results/
+frontend/playwright-report/
+!docker/ui-test.Dockerfile
+
+frontend/test-results-live/

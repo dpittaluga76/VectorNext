@@ -113,7 +113,7 @@ impl RemoteModels {
             profile,
         })
     }
-    fn call(&self, op: &str, input: Value) -> Result<Value> {
+    pub(crate) fn call(&self, op: &str, input: Value) -> Result<Value> {
         self.client.rpc(self.lane, json!({"op":op,"input":input}))
     }
 }

@@ -2,6 +2,7 @@
 mod coordinator;
 pub mod http;
 pub mod remote;
+pub mod ui;
 use crate::{
     Database, Error, ReadSnapshot, Result,
     answers::{self, AnswerOptions, AskRequest, Scope},
@@ -76,6 +77,7 @@ pub struct Application {
     indexes: Mutex<IndexCache>,
     background: Mutex<()>,
     interactive: Mutex<()>,
+    uploads: Mutex<BTreeMap<String, String>>,
     active: Mutex<Option<String>>,
     coordinator: Mutex<coordinator::State>,
     stopping: AtomicBool,
@@ -128,6 +130,7 @@ impl Application {
             indexes: Mutex::new(BTreeMap::new()),
             background: Mutex::new(()),
             interactive: Mutex::new(()),
+            uploads: Mutex::new(BTreeMap::new()),
             active: Mutex::new(None),
             coordinator: Mutex::new(coordinator::State::default()),
             stopping: AtomicBool::new(false),
@@ -213,6 +216,9 @@ impl Application {
         Ok(job_summary(&lock(&self.db)?.retry_ingestion(id)?))
     }
     pub fn upload(&self, upload: Upload) -> Result<Value> {
+        self.upload_named(upload, None)
+    }
+    fn upload_named(&self, upload: Upload, source_name: Option<String>) -> Result<Value> {
         require(
             !upload.job_id.trim().is_empty()
                 && upload.job_id.len() <= 128
@@ -245,6 +251,7 @@ impl Application {
                         && job.request.media_type == upload.media_type
                         && job.draft.document.original.sha256 == crate::sha256(&bytes)
                         && config.record_pointer == upload.record_pointer
+                        && config.source_name == source_name
                         && config
                             .context
                             .as_ref()
@@ -270,6 +277,7 @@ impl Application {
         )?;
         self.require_coordinator()?;
         let _background = busy(&self.background)?;
+        self.check_document_change(&upload.document_id, upload.expected_revision.as_deref())?;
         let upload_start = Instant::now();
         let models = RemoteModels::connect(self.processor.clone(), "background")?;
         let artifact = if upload.media_type == MediaType::Pdf {
@@ -283,6 +291,7 @@ impl Application {
             IngestConfig::new(models.space())
         };
         config.record_pointer = upload.record_pointer;
+        config.source_name = source_name;
         config.context = Some(ContextConfig::new(
             upload.policy.clone(),
             (upload.policy == Policy::Generated).then(|| models.profile.generator.clone()),

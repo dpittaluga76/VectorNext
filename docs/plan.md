@@ -1,11 +1,11 @@
 # VectorNext build plan and handoff
 
-Last updated: 2026-10-14.
+Last updated: 2026-10-15.
 Design reference: [architecture.md](architecture.md).
 
 ## Current state
 
-- Phase: T01 through T15 complete. Next: scope field-specific candidate retrieval and clearer ambiguity evaluation.
+- Phase: T01 through T18 complete. Browser usability is implemented and verified; candidate retrieval and ambiguity experiments follow afterward.
 - T15 complete: exact English numeric grouping, named-month date-year boundaries and numeric-fragment checks in complete supplied evidence. Preserves quotes/typed values, JSON pointer/null semantics and API/storage contracts. Verified 108 Rust/90 Python checks, format/lint, the three-case probe, release image build/liveness and T14 archive integrity. [Results](reports/t15-numeric-proofs.md). No GPU benchmark rerun or revised T14 quality score.
 - T14 complete: opt-in field-focused selection and actual-record JSON pointer constraints, annotation v2 and a new eight-source/16-question frozen comparison. All 96 local requests completed: five 8/16, two 7/16, coverage 8/16 in each pass. Coverage cut median latency 43.5–44.4%; retain five by default. [Results](reports/t14-evidence-coverage.md), [workflow](reports/t14-coverage-workflow.md) and [source-review limitations](reports/t14-source-review.md). All T14 services stopped; volumes/captures retained. 101 Rust/116 Python checks passed; a separate probe exposed numeric proof-boundary defects for T15.
 - T13 complete: supervised coordinator, pre-publication PDF diagnostics, bounded busy-admission retries and rejected-answer error envelopes. Verified 97 Rust/90 Python checks and a fresh CPU operational drill with real illustrated NASA PDFs, interruption/retry, unchanged committed data and idempotent publication. [Results and limits](reports/t13-reliability.md). Test services stopped; captures and volumes retained.
@@ -16,7 +16,7 @@ Design reference: [architecture.md](architecture.md).
 - T10 complete: isolated evaluation runner, source-coverage/answer scorer, independent keyword weights, bounded answer budgets and stage/resource/queue measurements. Six configurations produced 156 responses on the same 13 development questions, cold/warm; only one-primary context failed the table question in both passes. Two primaries passed 26/26 and reduced median response time by 30–32%, but five remain the general default. Generated context added ingestion cost without final answer gain. The 400-document/12,800-vector capacity probe measured 9.946-ms median hybrid search; this is supplied-vector capacity, not corpus quality. Verified 90 Rust, 36 fixture/scorer and 22 worker/transport checks, Linux formatting/Clippy and Compose. See [T10 results](reports/t10-evaluation.md). Six holdout questions remain unused.
 - T11 complete: 20 attributed NASA/USGS source snapshots, 28 frozen questions, 47 source references and four counterbalanced two-versus-five blocks. Admitted 18 documents / 658 chunks; six questions from unavailable PDFs remain in the denominator. Five scored 16/28 and two 15/28 in both passes. Two cut median latency by 46–50% but lost two answers and improved one; retain five by default. Repaired a UTF-8 line-mapping panic before any comparison queries and preserved the initial attempt. Verified 91 Rust, 54 evaluation and 22 worker/transport checks, formatting/Clippy, Compose and the real NASA Voyager README demo. See [T11 results](reports/t11-independent.md). This first public-source set is Codex-authored, not independently administered; broad quality remains unproven.
 - T12 complete: opt-in human-readable ingestion/search/answer reports, client commands, API/function references, exact-response captures and offline replay in the existing CLI. Verified 25 new reporting/client checks and 58 existing evaluation/transport checks, a fresh Docker Voyager ingestion/search/Gemma answer, and retained failure/abstention examples. Command references were added through offline replay without new inference. Read [the Voyager report](reports/t12-voyager-workflow.md), [usage guide](workflow-debugging.md) and [verification](reports/t12-workflow.md). T12 services are stopped; captures and volumes retained. The original T11 execution freeze remains unchanged; the intentional client extension requires a historical checkout to repeat that exact experiment.
-- Not implemented: web UI, public authentication/multi-user service, corpus aggregates, approximate indexing, or broad independently administered quality validation.
+- Not implemented: public authentication/multi-user service, corpus aggregates, approximate indexing, or broad independently administered quality validation.
 - Available: public project overview and quickstart in the [README](../README.md), detailed [development/operations commands](development.md), repository instructions, architecture, this task plan, the [storage specification](storage.md), [retrieval specification](retrieval.md), [source-coverage diagnostics](reports/t04-retrieval.md), and [evaluation guide](../evals/README.md).
 - User-confirmed scope: our own vector database; local models and GPU; Docker; TXT/PDF/JSON; approximately 400 files of 10–30 KB; MinIO/Redis optional.
 - Adopted: Rust storage/retrieval and deterministic TXT/JSON preparation, CPU Python Docling/Tesseract PDF artifacts, source-preserving PDF chunking and partial-quality policy, serializable processor stages, separate durable jobs, version-1 journal/checkpoint contracts, Linux/Docker durability, immutable per-space indexes, exact cosine, BM25, typed filters, RRF, and conservative evidence deduplication. T07 adopts a persistent Python child in the CLI container and a separate GPU generation service. T08 adds CPU reranking, source-linked typed answers, and bounded GPU priority. T09 adds shared application ownership, CPU admission, isolated services and verified backups.
@@ -39,7 +39,7 @@ T02 subsequently demonstrated container GPU visibility and actual CUDA inference
 
 ## Next useful step
 
-Review [T15 validation results](reports/t15-numeric-proofs.md) and [T14 source-support findings](reports/t14-source-review.md), then scope a separate field-specific candidate-retrieval experiment and clearly worded ambiguity cases. A new quality claim needs a fresh frozen protocol/corpus. Keep structural context and 30/20/5 defaults; `coverage_v1` stays experimental. T11–T14 services are stopped, volumes/captures retained, and the six original holdout questions remain unused. T11/T14 are observed regression evidence. Preserve `backups/t14-source-before-t15.zip` for historical reproduction; current runtime intentionally differs from the old execution freeze.
+T16–T18 are complete; see [verification and limits](reports/t16-t18-local-app.md). Next scope field-specific candidate retrieval and clearer ambiguity evaluation on fresh data. Keep structural context and ranked 30/20/5 defaults; `coverage_v1` stays experimental. Preserve historical captures, volumes, the pre-T15 source archive and the original unused holdout.
 
 ## Work queue
 
@@ -369,11 +369,70 @@ Status: complete. Dependencies: T14. Implemented after T14's frozen comparison. 
 
 Completion evidence (2026-10-14): added `src/answers/numeric.rs`, routed prose numeric validation through full supplied-source boundaries, and added seven focused Rust regressions. Exact English grouping and named-month date years pass; clipped signs/digits/decimals and ambiguous unsupported notation fail. The unchanged probe now reports accepted/rejected/accepted. Passed 108 Rust/90 Python checks, format/lint, release API build/liveness and archive/data integrity checks. Fixed an initial lint finding; final checks are clean. API/storage/JSON/null contracts and retrieval/model defaults are unchanged. [Report](reports/t15-numeric-proofs.md). No GPU rerun or new quality claim; T14's historical evidence remains byte-identical.
 
-Next, scope field-specific candidate retrieval and a clearly worded ambiguity evaluation. Reranking cannot recover a required source absent from the candidate pool.
+### T16 — Browser API and simple questions
+
+Status: complete (2026-10-15). Depends on T15. [Verification](reports/t16-t18-local-app.md).
+
+- Serve UI assets and same-origin browser requests through the Rust API while preserving CLI routes and rejecting unrelated origins.
+
+- Add `/v1/ui/` multipart uploads, automatic IDs, compact library summaries, revision-bound sources and replacement/removal. Preserve optional filenames without changing absent-field legacy serialization.
+
+- Sequential uploads retain an identity across bounded busy retries; unknown outcomes are reconciled before resubmission. PDF preparation is distinct from durable job progress. Existing limits and structural context remain defaults.
+
+- Require current revisions for replacement/removal and reject changes during unfinished ingestion. Preserve historical jobs and existing reclamation behavior.
+
+- Add bounded local field planning from question/history only, followed by existing answer validation. No inferred answers, pointers, filters or replacement queries; advanced fields bypass planning and aggregates remain unsupported.
+
+- Return exact answer literals/types, citations and recorded workflow data, with raw reports as opaque JSON text.
+
+- Acceptance: browser-compatible uploads of TXT/PDF/JSON and ordinary factual questions without manually supplied IDs/fields. Verify API/CLI compatibility, retry/revision races, planner failures, null/zero and exact numeric fidelity.
+
+### T17 — React document and answer workspace
+
+Status: complete (2026-10-15). Depends on T16. [Verification](reports/t16-t18-local-app.md).
+
+- React + TypeScript + Vite + shadcn/ui; responsive library/conversation/evidence layout, system fonts, accessible controls and light/dark themes. Docker builds static assets into the API image.
+
+- Drag/drop sequential uploads, real processing states, failure/retry, revision-safe replacement and confirmed removal. Advanced JSON pointer/partial-PDF controls.
+
+- Ordinary questions default to factual fields with clickable sources; clearly distinguish ambiguity, missing evidence and rejected drafts. Optional prose remains labelled.
+
+- Exact TXT/PDF/JSON evidence, page/pointer references and original PDF opening; captured historical evidence cannot silently become a newer revision. Readable recorded workflow with detailed function references, honest waiting states and elapsed time.
+
+- IndexedDB browser-only conversation/evidence persistence, export/clear and visible four-exchange context; exclude rejected drafts, reject oversized turns, start new conversations when scope changes.
+
+- Advanced field/template/retrieval controls retain ranked 30/20/5. No CDN/runtime frontend server.
+
+- Acceptance: upload/ask/source/replace/remove workflows require no terminal or request JSON after startup. Verify reload/history, precision, keyboard/narrow layouts, untrusted text and storage/transport/model failures in browser tests.
+
+### T18 — Setup and startup
+
+Status: complete (2026-10-15). Depends on T17. [Verification](reports/t16-t18-local-app.md).
+
+- Windows PowerShell launcher and double-click command entry point with separate Setup, Start, Rebuild and Stop actions.
+
+- Setup checks Docker/GPU and invokes existing pinned model/image preparation with progress; Start reuses installed artifacts and opens the browser after API liveness.
+
+- Capability readiness remains visible while models load; unavailable generation does not block browsing. Stop only the normal project, preserving all persistent data.
+
+- Update README/handoff and verify prerequisite failures, cached offline startup, rebuild and stop behavior.
+
+- Acceptance: one shortcut reaches a usable UI after setup, with clear readiness feedback.
+
+### Later — Candidate retrieval and ambiguity evaluation
+
+Scope field-specific candidate retrieval and a clearly worded ambiguity evaluation after T16–T18. Reranking cannot recover a required source absent from the candidate pool. Keep these quality experiments separate from usability acceptance and preserve historical freezes.
 
 ## Session handoff discipline
 
 Keep the Current state and Next useful step sections accurate. For each meaningful work session, add one concise entry below with changed files/capabilities, task IDs, verification actually performed, unresolved issues, and the next step. Do not paste full chat transcripts or command logs.
+
+### 2026-10-15 — T16–T18 completed
+
+- Updated architecture and sequence before code. Added the browser API, field-only Gemma planning, exact text projections, revision-safe document workflows, React/shadcn workspace with IndexedDB history, and Windows Setup/Start/Rebuild/Stop launchers. README now leads with the browser quickstart and an actual local-model screenshot.
+- Verified 116 Rust checks, 90 Python regressions, 28 worker/planner checks, five live HTTP boundary checks, five frontend component/storage checks, nine offline browser scenarios and one production-browser scenario with local Gemma. Format/lint, type/build, all three upload formats, exact decimal/null/zero, missing evidence, source invalidation, offline browsing and launcher actions passed. See [the complete report](reports/t16-t18-local-app.md).
+- Preserved the initial stage-casing harness failure and an automatic planning decline. Released only this session's stopped test networks after Docker pool exhaustion; retained test volumes/captures. Repeated normal Setup passed. The normal app remains running at localhost:8088; unrelated workloads were untouched.
+- Limits: browser-local history/no tab merging, fallible planning and semantics, no failed-job cancellation, Chromium-only browser testing, reused model-download verification. Historical freezes/results and the original holdout remain unchanged. Next: separately scope candidate retrieval and ambiguity evaluation; no quality-default changes.
 
 ### 2026-10-14 — T15 completed
 

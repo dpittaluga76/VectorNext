@@ -33,6 +33,8 @@ pub struct IngestConfig {
     pub pdf: Option<pdf::PdfConfig>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub context: Option<context::ContextConfig>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub source_name: Option<String>,
 }
 
 impl IngestConfig {
@@ -47,9 +49,19 @@ impl IngestConfig {
             space,
             pdf: None,
             context: None,
+            source_name: None,
         }
     }
     pub fn validate(&self) -> Result<()> {
+        require(
+            self.source_name.as_ref().is_none_or(|s| {
+                !s.is_empty()
+                    && s.len() <= 255
+                    && !s.chars().any(char::is_control)
+                    && !s.contains(['/', '\\'])
+            }),
+            "invalid source filename",
+        )?;
         require(
             serde_json::to_vec(self)?.len() <= 32 * 1024,
             "ingestion configuration exceeds 32 KiB",
