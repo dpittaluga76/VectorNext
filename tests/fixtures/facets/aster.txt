@@ -1,0 +1,4 @@
+# Synthetic station registry
+
+The fictional Aster station opened in 2017. Its director is Maya Chen.
+The Aster station has 17 solar panels.

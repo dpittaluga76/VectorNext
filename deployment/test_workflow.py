@@ -27,6 +27,17 @@ def render(operation, value, **kw):
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_facet_selection_reports_expansion_and_selector_references(self):
+        value = ask('supported')
+        value['selection'] = {'strategy':'facet_coverage_v1', 'candidate_searches':[{}],
+            'candidate_keys':['a','b'], 'field_rankings':[{}],
+            'planned_primary_keys':['a','b'], 'admitted_primary_keys':['a']}
+        out = render('ask', value)
+        self.assertIn('Ran 1 extra searches with the same scope; merged 2 unique candidates', out)
+        self.assertIn('answers::facets::retrieve()', out)
+        self.assertIn('answers::final_selection::select()', out)
+        self.assertNotIn('answers::coverage::select()', out)
+
     def test_coverage_selection_explains_recorded_calls_without_claiming_correctness(self):
         value = ask('supported')
         value['selection'] = {'field_rankings': {'year': {}}, 'planned_primary_keys': ['a', 'b'], 'admitted_primary_keys': ['a']}
@@ -247,6 +258,10 @@ class ClientTests(unittest.TestCase):
             self.assertEqual(out,raw+b'\n')
             self.assertIn(b'9007199254740993.00000000000001',opener.seen)
             self.assertEqual(json.loads(opener.seen)['options'],{'evidence_strategy':'coverage_v1'})
+            with patch('urllib.request.build_opener',return_value=opener):
+                out=self.run_cli(['ask',str(path),'--evidence-strategy','facet_coverage_v1'])
+            self.assertEqual(out,raw+b'\n')
+            self.assertEqual(json.loads(opener.seen)['options'],{'evidence_strategy':'facet_coverage_v1'})
 
 
 if __name__=='__main__':unittest.main()

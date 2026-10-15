@@ -252,6 +252,14 @@ async function backend(page: Page) {
             evidence_count: 1,
             planning: 'local field planning recorded',
             timings_ms: { answer_total: 123 },
+            ...(data.options?.evidence_strategy === 'facet_coverage_v1'
+              ? {
+                  selection_summary:
+                    'Facet coverage: 1 field queries, 1 candidates, 1 planned and 1 admitted primary passages.',
+                  facet_queries: ['amount: Requested exact amount'],
+                  selection_functions: 'answers::facets::select()',
+                }
+              : {}),
           },
           raw_report: `{"value":${exact}}`,
         },
@@ -263,6 +271,38 @@ async function backend(page: Page) {
   })
   return { count: () => uploadCount }
 }
+test('facet choice reaches API and recorded workflow survives reload', async ({
+  page,
+}) => {
+  await backend(page)
+  await page.goto('/')
+  await page.getByLabel('Observations.json').check()
+  await page.getByText('Advanced answer controls', { exact: true }).click()
+  await expect(page.getByLabel('Evidence selection')).toHaveValue('ranked')
+  await page.getByLabel('Evidence selection').selectOption('facet_coverage_v1')
+  await page
+    .getByLabel('Ask a question', { exact: true })
+    .fill('What is the amount?')
+  const request = page.waitForRequest((r) => r.url().endsWith('/v1/ui/ask'))
+  await page.getByRole('button', { name: 'Ask question', exact: true }).click()
+  expect((await request).postDataJSON().options.evidence_strategy).toBe(
+    'facet_coverage_v1',
+  )
+  await expect(page.getByText(exact, { exact: true })).toBeVisible()
+  await page.getByText('How did you find this?', { exact: true }).click()
+  await expect(
+    page.locator('p').filter({ hasText: /Facet coverage: 1 field queries/ }),
+  ).toBeVisible()
+  await expect(page.getByLabel('Recorded facet queries')).toHaveText(
+    'amount: Requested exact amount',
+  )
+  await page.reload()
+  await page.getByText('How did you find this?', { exact: true }).click()
+  await expect(
+    page.locator('p').filter({ hasText: /Facet coverage: 1 field queries/ }),
+  ).toBeVisible()
+  await expect(page.getByText(exact, { exact: true })).toBeVisible()
+})
 test('question, exact values, citations, reload, export and historical evidence', async ({
   page,
 }) => {

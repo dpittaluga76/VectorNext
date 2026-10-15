@@ -322,7 +322,8 @@ i.ok {
   margin-top: 12px;
 }
 .advanced label > input:not([type='checkbox']),
-.advanced textarea {
+.advanced textarea,
+.advanced select {
   display: block;
   width: 100%;
   margin-top: 5px;

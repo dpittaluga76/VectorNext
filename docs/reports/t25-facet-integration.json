@@ -1,0 +1,160 @@
+{
+  "task": "T25",
+  "date": "2026-10-15",
+  "strategy": "facet_coverage_v1",
+  "default": "ranked",
+  "app_image": "sha256:f5453a0967c120747224d3987423f8488bd9a713053a14198ba52b5676646f16",
+  "binary_sha256": "1eec00897f9e280ceda2ba2907eeb30f5daceb5ecc12f58cda63373a5ad457a6",
+  "rust_checks_available": 157,
+  "python_checks_passed": 62,
+  "http_compatibility_cases": 71,
+  "browser_boundary_tests": 5,
+  "openapi_checks": 2,
+  "frontend_component_checks": 5,
+  "browser_scenarios_passed": 13,
+  "live_smoke": {
+    "passed": false,
+    "requests": 11,
+    "results": [
+      {
+        "question": "In which year did the Aster station open?",
+        "outcome": "supported",
+        "fields": [
+          {
+            "evidence_id": "E1",
+            "kind": "integer",
+            "name": "opening_year",
+            "pointer": null,
+            "quote": "opened in 2017",
+            "value_text": "2017"
+          }
+        ],
+        "selection_summary": "Facet coverage: 1 field queries, 2 candidates, 1 planned and 1 admitted primary passages. Relevance is a heuristic, not a correctness guarantee."
+      },
+      {
+        "question": "What are the amount, zero and unknown values in precision-check?",
+        "outcome": "supported",
+        "fields": [
+          {
+            "evidence_id": "E1",
+            "kind": "number",
+            "name": "amount",
+            "pointer": "/amount",
+            "quote": "",
+            "value_text": "9007199254740993.00000000000001"
+          },
+          {
+            "evidence_id": "E1",
+            "kind": "null",
+            "name": "unknown",
+            "pointer": "/unknown",
+            "quote": "",
+            "value_text": "null"
+          },
+          {
+            "evidence_id": "E1",
+            "kind": "integer",
+            "name": "zero",
+            "pointer": "/zero",
+            "quote": "",
+            "value_text": "0"
+          }
+        ],
+        "selection_summary": "Facet coverage: 3 field queries, 1 candidates, 1 planned and 1 admitted primary passages. Relevance is a heuristic, not a correctness guarantee."
+      },
+      {
+        "question": "Who built the Aster station?",
+        "outcome": "insufficient_evidence",
+        "fields": [],
+        "selection_summary": "Facet coverage: 1 field queries, 2 candidates, 1 planned and 1 admitted primary passages. Relevance is a heuristic, not a correctness guarantee."
+      },
+      {
+        "question": "Who directs that station?",
+        "outcome": "supported",
+        "fields": [
+          {
+            "evidence_id": "E1",
+            "kind": "string",
+            "name": "director",
+            "pointer": null,
+            "quote": "Its director is Maya Chen.",
+            "value_text": "Maya Chen"
+          }
+        ],
+        "selection_summary": "Facet coverage: 1 field queries, 2 candidates, 1 planned and 1 admitted primary passages. Relevance is a heuristic, not a correctness guarantee."
+      },
+      {
+        "question": "How many solar panels does Aster station have, and how many antennas does Boreal station have?",
+        "outcome": "supported",
+        "fields": [
+          {
+            "evidence_id": "E1",
+            "kind": "integer",
+            "name": "aster_panels",
+            "pointer": null,
+            "quote": "The Aster station has 17 solar panels.",
+            "value_text": "17"
+          },
+          {
+            "evidence_id": "E2",
+            "kind": "integer",
+            "name": "boreal_antennas",
+            "pointer": null,
+            "quote": "The fictional Boreal station has 29 antennas.",
+            "value_text": "29"
+          }
+        ],
+        "selection_summary": "Facet coverage: 2 field queries, 4 candidates, 2 planned and 2 admitted primary passages. Relevance is a heuristic, not a correctness guarantee."
+      },
+      {
+        "question": "How many sensors does Cobalt station have?",
+        "outcome": "supported",
+        "fields": [
+          {
+            "evidence_id": "E1",
+            "kind": "integer",
+            "name": "sensors",
+            "pointer": null,
+            "quote": "7 sensors",
+            "value_text": "7"
+          }
+        ],
+        "selection_summary": "Facet coverage: 1 field queries, 1 candidates, 1 planned and 1 admitted primary passages. Relevance is a heuristic, not a correctness guarantee."
+      }
+    ],
+    "failures": [
+      {
+        "question": "Who directs that station?",
+        "error": {
+          "code": "invalid_request",
+          "message": "invalid record: question needs clarification or requests unsupported aggregation; rephrase or use Advanced fields"
+        }
+      },
+      {
+        "question": "How many solar panels does Aster station have, and how many antennas does Boreal station have?",
+        "error": {
+          "code": "invalid_request",
+          "message": "invalid record: question needs clarification or requests unsupported aggregation; rephrase or use Advanced fields"
+        }
+      },
+      {
+        "question": "How many sensors does Cobalt station have?",
+        "error": {
+          "code": "invalid_request",
+          "message": "invalid record: question needs clarification or requests unsupported aggregation; rephrase or use Advanced fields"
+        }
+      }
+    ],
+    "continued_from": "/out/live-v1-continued"
+  },
+  "fixtures": {
+    "aster.txt": "561c768e78713cb613d772e4a56224d57e2e6f2bf47816764c6d2c97b9c7d62d",
+    "boreal.txt": "7ce62f27a4bf6df11ccc45bf254f827019b1d5d33bcd3a348e8810a989453d9d",
+    "cobalt.pdf": "94d432e02462b12b2fd4dc3d42238b2cae176dd3dfa8beb5534aa52a4583c646",
+    "exact.json": "56d3b7b14f8ad2e54ef117c0cad6afe01c9dc202636075928669349130a7c62b",
+    "README.md": "03c2631b086cdf763f3577ba6a55ed1d1531669b46195406c2e23e260cd6425b"
+  },
+  "normal_app_ready": true,
+  "prior_state_archive_sha256": "aab64b57b1710a75d5412c3ca028874183c6316999c7d99e5cf371faed0d159c",
+  "t24_source_archive_sha256": "9eac7131ecdd04c1f768e1fc0bdb58431dbab4451ab06ad3d1cd7349d9d9eaf6"
+}

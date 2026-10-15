@@ -365,10 +365,29 @@ fn evidence_view(raw: &Value) -> Value {
         "record_text":if e["record"].is_null(){None}else{Some(e["record"].to_string())}})).collect::<Vec<_>>())
 }
 fn workflow(raw: &Value) -> Value {
-    json!({"timings_ms":raw["timings_ms"],"generation":raw["generation"].to_string(),"search_text":raw["search_text"],
+    let mut view = json!({"timings_ms":raw["timings_ms"],"generation":raw["generation"].to_string(),"search_text":raw["search_text"],
         "planning":if raw["planning"].is_null(){"explicit fields; planning skipped"}else{"local field planning recorded"},
         "evidence_count":raw["evidence"].as_array().map(Vec::len),"validation":raw["validation"],
-        "details":"Function references describe the implementation, not instrumented calls. answers::ask_with_options performs retrieval, evidence selection and validation; model_worker.answers.handle performs recorded model operations. See exported diagnostics for recorded timings, calls and skipped steps."})
+        "details":"Function references describe the implementation, not instrumented calls. answers::ask_with_options performs retrieval, evidence selection and validation; model_worker.answers.handle performs recorded model operations. See exported diagnostics for recorded timings, calls and skipped steps."});
+    if raw["selection"]["strategy"] == "facet_coverage_v1" {
+        let selection = &raw["selection"];
+        view["selection_summary"] = json!(format!(
+            "Facet coverage: {} field queries, {} candidates, {} planned and {} admitted primary passages. Relevance is a heuristic, not a correctness guarantee.",
+            selection["facet_queries"].as_array().map_or(0, Vec::len),
+            selection["candidate_keys"].as_array().map_or(0, Vec::len),
+            selection["planned_primary_keys"]
+                .as_array()
+                .map_or(0, Vec::len),
+            selection["admitted_primary_keys"]
+                .as_array()
+                .map_or(0, Vec::len)
+        ));
+        view["facet_queries"] = selection["facet_queries"].clone();
+        view["selection_functions"] = json!(
+            "answers::facets::retrieve(), answers::facets::select(), answers::final_selection::select(); implementation references, not instrumented calls"
+        );
+    }
+    view
 }
 pub fn answer_view(raw: &Value) -> Result<Value> {
     let fields=raw["answer"]["fields"].as_object().into_iter().flatten().map(|(name,f)|json!({"name":name,

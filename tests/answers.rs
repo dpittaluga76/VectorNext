@@ -17,6 +17,7 @@ struct Models {
     response: Option<Answer>,
     budget: bool,
     queries: RefCell<Vec<String>>,
+    bad_facet: bool,
 }
 impl Models {
     fn new(space: EmbeddingSpace) -> Self {
@@ -26,6 +27,7 @@ impl Models {
             response: None,
             budget: false,
             queries: RefCell::new(vec![]),
+            bad_facet: false,
         }
     }
 }
@@ -48,6 +50,13 @@ impl Encoder for Models {
 impl AnswerModels for Models {
     fn rerank(&self, query: &str, passages: &[String]) -> Result<Rerank> {
         self.queries.borrow_mut().push(query.into());
+        if self.bad_facet && query == "goals" {
+            return Ok(Rerank {
+                scores: vec![f64::NAN; passages.len()],
+                pair_tokens: vec![1; passages.len()],
+                identity: json!("broken"),
+            });
+        }
         assert!(passages.iter().all(|p| !p.contains("GENERATED LIE")));
         Ok(Rerank {
             scores: passages
@@ -665,6 +674,228 @@ fn coverage_requires_bounded_reranking_and_legacy_inputs_remain_compatible() {
         );
     }
     assert!(models.queries.borrow().is_empty());
+}
+
+fn facet_options() -> AnswerOptions {
+    AnswerOptions {
+        evidence_strategy: EvidenceStrategy::FacetCoverageV1,
+        ..AnswerOptions::default()
+    }
+}
+
+#[test]
+fn facets_keep_scope_original_search_history_and_exact_source_values() {
+    let (_dir, db, space) = ingest_json(br#"[{"id":"a","goals":9007199254740993.00000000000001}]"#);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let mut models = Models::new(space);
+    models.response = Some(supported(Value::Null, "", Some("/goals")));
+    let mut r = request();
+    r.fields.get_mut("goals").unwrap().kind = FieldKind::Number;
+    r.fields.get_mut("goals").unwrap().description = "Requested score".into();
+    r.filter = Filter::DocumentIds(["d".into()].into());
+    r.history = vec![
+        Turn {
+            role: Role::User,
+            text: "Previous subject".into(),
+        },
+        Turn {
+            role: Role::Assistant,
+            text: "Untrusted distracting value".into(),
+        },
+    ];
+    let report = ask_with_options(&index, &models, r.clone(), facet_options()).unwrap();
+    assert_eq!(
+        report.answer.fields["goals"].value.to_string(),
+        "9007199254740993.00000000000001"
+    );
+    assert!(report.search_text.contains("Previous subject"));
+    assert!(!report.search_text.contains("Untrusted"));
+    assert_eq!(
+        report.retrieval.as_ref().unwrap().request.text,
+        report.search_text
+    );
+    let aux: Vec<SearchResponse> =
+        serde_json::from_value(report.selection["candidate_searches"].clone()).unwrap();
+    assert_eq!(aux.len(), 1);
+    assert_eq!(aux[0].request.filter, r.filter);
+    assert_eq!(aux[0].generation, report.generation);
+    assert_eq!(aux[0].request.text, "goals: Requested score");
+    let input = models.input.borrow();
+    let input = input.as_ref().unwrap();
+    assert_eq!(input.history.len(), 2);
+    assert_eq!(input.question, r.question);
+    assert!(input.constrain_pointers);
+    assert_eq!(
+        report.selection["admitted_primary_keys"]
+            .as_array()
+            .unwrap()
+            .len(),
+        1
+    );
+    assert!(report.timings_ms.contains_key("facet_candidate_expansion"));
+    let view =
+        vectornext::service::ui::answer_view(&serde_json::to_value(&report).unwrap()).unwrap();
+    assert_eq!(
+        view["fields"][0]["value_text"],
+        "9007199254740993.00000000000001"
+    );
+    assert!(
+        view["workflow"]["selection_summary"]
+            .as_str()
+            .unwrap()
+            .contains("Facet coverage")
+    );
+}
+
+#[test]
+fn facets_fail_explicitly_for_unsupported_budgets_fields_or_scope() {
+    let (_dir, db, space) = ingest_json(br#"[{"goals":0}]"#);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let models = Models::new(space);
+    for options in [
+        AnswerOptions {
+            rerank: false,
+            ..facet_options()
+        },
+        AnswerOptions {
+            rerank_limit: 21,
+            ..facet_options()
+        },
+        AnswerOptions {
+            primary_limit: 6,
+            ..facet_options()
+        },
+    ] {
+        assert!(ask_with_options(&index, &models, request(), options).is_err());
+    }
+    let mut r = request();
+    for i in 0..4 {
+        r.fields
+            .insert(format!("extra{i}"), r.fields["goals"].clone());
+    }
+    assert!(
+        ask_with_options(&index, &models, r, facet_options())
+            .unwrap_err()
+            .to_string()
+            .contains("1..4")
+    );
+    let mut r = request();
+    r.scope = Scope::StructuredLookup;
+    assert!(ask_with_options(&index, &models, r, facet_options()).is_err());
+    assert!(models.queries.borrow().is_empty());
+}
+
+#[test]
+fn facets_report_context_omissions_and_do_not_expand_neighbors() {
+    let (_dir, db, space) = ingest_json(br#"[{"id":"a","goals":0},{"id":"b","goals":2}]"#);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let mut models = Models::new(space);
+    models.budget = true;
+    let report = ask_with_options(&index, &models, request(), facet_options()).unwrap();
+    assert_eq!(
+        report.selection["planned_primary_keys"]
+            .as_array()
+            .unwrap()
+            .len(),
+        2
+    );
+    assert_eq!(
+        report.selection["admitted_primary_keys"]
+            .as_array()
+            .unwrap()
+            .len(),
+        1
+    );
+    assert_eq!(report.evidence.len(), 1);
+    assert!(!report.skipped.is_empty());
+    assert!(
+        report.selection["neighbor_expansion"]
+            .as_str()
+            .unwrap()
+            .contains("disabled")
+    );
+}
+
+#[test]
+fn facets_empty_scope_does_not_infer_answer_or_broaden_filter() {
+    let (_dir, db, space) = ingest_json(br#"[{"goals":0}]"#);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let models = Models::new(space);
+    let mut r = request();
+    r.filter = Filter::DocumentIds(["absent".into()].into());
+    let report = ask_with_options(&index, &models, r, facet_options()).unwrap();
+    assert_eq!(report.answer.status, Status::InsufficientEvidence);
+    assert!(report.evidence.is_empty());
+    assert!(models.queries.borrow().is_empty());
+    assert_eq!(report.selection["candidate_keys"], json!([]));
+    assert_eq!(report.selection["admitted_primary_keys"], json!([]));
+}
+
+#[test]
+fn facets_keep_rejected_values_inside_diagnostics_with_selection_audit() {
+    let (_dir, db, space) = ingest_json(br#"[{"goals":0}]"#);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let mut models = Models::new(space);
+    models.response = Some(supported(Value::Null, "", Some("/missing")));
+    let error = ask_with_options(&index, &models, request(), facet_options()).unwrap_err();
+    let Error::AnswerRejected { diagnostics, .. } = error else {
+        panic!("expected rejection")
+    };
+    assert_eq!(diagnostics["selection"]["strategy"], "facet_coverage_v1");
+    assert!(diagnostics.get("answer").is_none());
+}
+
+#[test]
+fn malformed_facet_reranking_fails_before_extraction() {
+    let (_dir, db, space) = ingest_json(br#"[{"goals":0}]"#);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let mut models = Models::new(space);
+    models.bad_facet = true;
+    assert!(
+        ask_with_options(&index, &models, request(), facet_options())
+            .unwrap_err()
+            .to_string()
+            .contains("invalid facet reranker")
+    );
+    assert!(models.input.borrow().is_none());
+}
+
+#[test]
+fn facets_preserve_ambiguous_zero_and_source_null_contracts() {
+    for (source, nullable, expected) in [
+        (br#"[{"goals":0}]"#.as_slice(), false, Status::Supported),
+        (br#"[{"goals":null}]"#.as_slice(), true, Status::Supported),
+        (
+            br#"[{"goals":null}]"#.as_slice(),
+            false,
+            Status::InsufficientEvidence,
+        ),
+    ] {
+        let (_dir, db, space) = ingest_json(source);
+        let index =
+            SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+        let mut models = Models::new(space);
+        models.response = Some(supported(Value::Null, "", Some("/goals")));
+        let mut r = request();
+        r.fields.get_mut("goals").unwrap().nullable = nullable;
+        let report = ask_with_options(&index, &models, r, facet_options()).unwrap();
+        assert_eq!(report.answer.status, expected);
+        if expected == Status::Supported {
+            assert_eq!(
+                report.answer.fields["goals"].value,
+                if nullable { Value::Null } else { json!(0) }
+            );
+        } else {
+            assert!(report.answer.fields.is_empty());
+        }
+        models.response = Some(Answer {
+            status: Status::Ambiguous,
+            fields: BTreeMap::new(),
+        });
+        let report = ask_with_options(&index, &models, request(), facet_options()).unwrap();
+        assert_eq!(report.answer.status, Status::Ambiguous);
+        assert!(report.answer.fields.is_empty());
+    }
 }
 #[test]
 fn structured_lookup_scans_all_records_and_dedupes_copies() {

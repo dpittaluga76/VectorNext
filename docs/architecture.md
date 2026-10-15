@@ -1,6 +1,6 @@
 # VectorNext architecture
 
-Status: implemented T01–T22 local application, evaluations, workflow reports, recovery, numeric proof support, browser workspace, Axum API with local OpenAPI documentation, isolated pgvector comparison, bounded checkpoint/export repair and filter indexing. T23 candidate retrieval and T24 final passage selection are complete as separate experiments. Production retrieval defaults remain unchanged. Remaining proposals are identified below.
+Status: implemented T01–T22 local application, evaluations, workflow reports, recovery, numeric proof support, browser workspace, Axum API with local OpenAPI documentation, isolated pgvector comparison, bounded checkpoint/export repair and filter indexing. T23 candidate retrieval and T24 final passage selection are complete as separate experiments; T25 integrates opt-in facet coverage into the application. Ranked retrieval defaults remain unchanged. Remaining proposals are identified below.
 Last updated: 2026-10-15.
 
 This document condenses the project discussion into an implementation reference. It is not a claim that the system is implemented or that every proposed technology has been selected. Explicit user instructions can revise it.
@@ -23,6 +23,16 @@ T01 evaluation fixtures/contracts, T02 local-model feasibility, T03's Rust stora
 T10 adds source/answer scoring, isolated cold/warm API comparisons, stage/queue/resource measurements, bounded answer options and independent keyword-field weights. The [evaluation report](reports/t10-evaluation.md) retains structural context and exact search as defaults. Two primary passages reduced median response time by 30–32% on the 13 development questions; the later [T11 public-source comparison](reports/t11-independent.md) found lost answers with two, so five remain the general default. Generated context did not improve final answers and cost substantially more to ingest. These results do not establish broad retrieval quality.
 
 ## 2. Integrated deployment
+
+### Adopted application facet coverage — T25 (implemented 2026-10-15)
+
+Expose `facet_coverage_v1` as an opt-in answer strategy in the API, CLI and browser Advanced controls; retain ranked 30/20/5 as the default and preserve `coverage_v1`. Derive one facet per requested field from its name and description (1–4 fields, reject larger plans explicitly). Existing browser field planning supplies these definitions; no additional generation operation or answer values are introduced. Facet-only text drives extra CPU embeddings/searches and reranking. The original question plus latest user question remains the main retrieval query; complete authoritative history still reaches extraction. Empty descriptions use the field name, and all encoder/pair/context budgets remain enforced without silent truncation.
+
+Merge the main and facet search results round-robin into at most 20 unique candidates, using the identical immutable snapshot, explicit filter and per-query candidate budgets. Preserve the main search response separately; record each auxiliary search and the merged shortlist. Apply T24's original non-heading span selector (at most five primaries, four facets, 80% shorter-span overlap within the same document revision); do not infer hard filters or JSON pointers. Original source bundles, exact JSON materialization and proof validation remain authoritative. Disable neighbor expansion in this mode, constrain JSON pointers to supplied records, and report planned versus context-admitted primaries and budget omissions. A selected passage is not a semantic coverage guarantee.
+
+Add readable strategy/facet/selection information with exact opaque diagnostic export. Keep old responses unchanged when the new mode is absent. Verify deterministic selection, scope/history, malformed/over-budget plans, context exhaustion, all source formats, exact values, no-evidence and rejected answers, offline browser persistence and real local model smoke on fresh synthetic fixtures. This is application integration, not a new quality benchmark. Preserve T24's committed sources and byte-exact archive before edits. Build and activate the new API/UI image after verification, retain prior images and a pre-upgrade storage copy, and publish meaningful commits as requested.
+
+Disposition: integration and activation passed, including deterministic/API/browser checks and source-linked TXT/PDF/JSON answers. Three automatic field-planning requests declined before retrieval; explicit-field controls succeeded. Keep the mode opt-in and scope planner reliability separately. The normal API/UI now uses `:t25`, with a stopped-state pre-upgrade storage copy retained. [Verification and limitations](reports/t25-facet-integration.md).
 
 ### Adopted final passage selection — T24 (experiment completed 2026-10-15)
 

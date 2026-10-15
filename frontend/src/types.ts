@@ -46,6 +46,9 @@ export type Answer = {
     planning?: string
     details?: string
     validation?: unknown
+    selection_summary?: string
+    facet_queries?: string[]
+    selection_functions?: string
   }
   raw_report: string
 }

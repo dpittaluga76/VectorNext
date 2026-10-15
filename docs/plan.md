@@ -5,11 +5,13 @@ Design reference: [architecture.md](architecture.md).
 
 ## Current state
 
-- Phase: T01 through T24 complete. Architecture/task definitions were updated before implementation. T24 remains an experimental selector; production ranked/coverage_v1 defaults are unchanged.
+- T25 complete: opt-in `facet_coverage_v1` now spans API/CLI/browser; ranked defaults unchanged. 157 available Rust checks, format/Clippy, 62 Python checks, HTTP/schema and 13 browser scenarios verified. Six live outcomes/controls passed; three automatic planner declines are retained and documented. The normal API/UI is active on `:t25`, all capabilities ready; pre-upgrade storage and prior images retained. [Results and limits](reports/t25-facet-integration.md).
+
+- Phase: T01 through T25 complete. Architecture/task definitions were updated before implementation. Facet coverage is opt-in; ranked/coverage_v1 behavior remains compatible.
 - T24 complete: ten fresh NASA TXT sources / 388 chunks, 24 frozen questions and 96 successful CPU requests. Same shortlists/general scores across arms; final frozen coverage improves 16/20 → 18/20, with median initially-empty-cache latency 685 → 1,437 ms. Eight Rust/nine Python checks, source/hash validation, format/Clippy and separate synthetic smoke passed. [Results, cost and alternate-support limits](reports/t24-final-selection.md). All experiment containers exited; data/caches retained and normal services unchanged.
 - T23 complete: twelve fresh attributed NIST sources, 24 frozen questions and 96 offline CPU requests; 188 chunks admitted. Expanded candidates improve complete shortlist coverage 18/20 → 20/20, but final-five coverage remains 16/20 in both arms. Five scorer checks, one experimental Rust check, fixture/source freezes, format/Clippy and synthetic smoke passed. [Results and source-review limits](reports/t23-evidence.md). All experiment containers exited; data/caches retained, normal app unchanged.
-- T22 complete: immutable bounded scalar/document/media filter postings, exact scan fallback and unchanged search/API contracts. Verified 135 Rust checks, format/Clippy, 4,224 paired release requests, retained original volume hashes and offline production startup. [Results](reports/t22-filters.md). Compose selects built T22 API; normal app remains on T19.
-- T21 complete: bounded version-2 checkpoint stream with legacy reads, unchanged publication/journal/backup contracts and nine new regressions. Both formerly failing T20 states checkpoint/export/restore correctly on fresh copies; 132 Rust and 768 exact-query checks passed. Old-binary rollback requires a pre-upgrade copy; batch/job and total backup limits remain. [Results](reports/t21-checkpoints.md). T21 services stopped; original T20 data unchanged; normal app still running T19, with Compose selecting the built T21 API image for the next startup.
+- T22 complete: immutable bounded scalar/document/media filter postings, exact scan fallback and unchanged search/API contracts. Verified 135 Rust checks, format/Clippy, 4,224 paired release requests, retained original volume hashes and offline production startup. [Results](reports/t22-filters.md). At T22 completion, Compose selected T22 while the normal app still ran T19; T25 now supersedes that deployment.
+- T21 complete: bounded version-2 checkpoint stream with legacy reads, unchanged publication/journal/backup contracts and nine new regressions. Both formerly failing T20 states checkpoint/export/restore correctly on fresh copies; 132 Rust and 768 exact-query checks passed. Old-binary rollback requires a pre-upgrade copy; batch/job and total backup limits remain. [Results](reports/t21-checkpoints.md). T21 services stopped; original T20 data unchanged; the normal app was left on T19 at that task completion (upgraded in T25).
 - T20 complete: isolated CPU comparison at 12,800/51,200 supplied vectors, independent exact oracle, pgvector exact/HNSW, fixed filters, load/resource measurements and interruption recovery. All 4,096 timed requests completed; 2,048 exact requests and 512 recovery checks passed. PostgreSQL exact was faster in every warm group. VectorNext checkpoints failed at both sizes (64 MiB frame); journal recovery passed, but the dependent export path is blocked at those states. Verified 123 Rust/eight Python checks, format/Clippy, builds, smoke and manifests. [Results and limitations](reports/t20-pgvector.md). All benchmark services stopped; failed attempts, data and volumes retained; normal application unchanged.
 - T15 complete: exact English numeric grouping, named-month date-year boundaries and numeric-fragment checks in complete supplied evidence. Preserves quotes/typed values, JSON pointer/null semantics and API/storage contracts. Verified 108 Rust/90 Python checks, format/lint, the three-case probe, release image build/liveness and T14 archive integrity. [Results](reports/t15-numeric-proofs.md). No GPU benchmark rerun or revised T14 quality score.
 - T14 complete: opt-in field-focused selection and actual-record JSON pointer constraints, annotation v2 and a new eight-source/16-question frozen comparison. All 96 local requests completed: five 8/16, two 7/16, coverage 8/16 in each pass. Coverage cut median latency 43.5–44.4%; retain five by default. [Results](reports/t14-evidence-coverage.md), [workflow](reports/t14-coverage-workflow.md) and [source-review limitations](reports/t14-source-review.md). All T14 services stopped; volumes/captures retained. 101 Rust/116 Python checks passed; a separate probe exposed numeric proof-boundary defects for T15.
@@ -44,7 +46,7 @@ T02 subsequently demonstrated container GPU visibility and actual CUDA inference
 
 ## Next useful step
 
-Scope opt-in application integration of the T24 selector, including bounded automatic facets from field definitions, context-budget behavior and end-to-end answer verification on new frozen data. Preserve production defaults until that separate work is adopted. T23/T24 are now observed regression corpora; preserve all historical captures and the unused original holdout. Clarification/ambiguity remains separate. No further implementation is automatically authorized.
+Collect user end-to-end feedback on opt-in facet coverage. Scope automatic field-planning reliability and clear clarification behavior on new data next: T25 found three planner declines before retrieval, while explicit-field controls succeeded. Preserve ranked defaults, historical captures and the unused holdout; no additional implementation is automatically authorized.
 
 ## Work queue
 
@@ -513,6 +515,16 @@ Status: complete (2026-10-15). Depends on T23. Authorized by the user's request 
 
 Completion evidence: all ten sources admitted (388 chunks), 96/96 requests successful, 72 identical shortlist/general-score comparisons and 48 identical paired selection comparisons. Complete frozen final coverage improves 16/20 → 18/20, with 32/37 → 35/37 fact requirements; no measured coverage regressions. First-pass median latency 685.1 → 1,437.0 ms, cached 3.77 → 4.29 ms. Eight Rust/nine Python checks, format/Clippy, release build, frozen-source validation and separate real-model smoke passed. Alternate Earth-tilt/Sun-rotation support is recorded without revising labels/scores. Runtime/input freezes and captures retained; all experiment containers exited, normal app remains T19 and Compose remains T22. Prototype is isolated; no API/model/storage/default change or GPU inference.
 
+### T25 — Opt-in facet coverage in the application
+
+Status: complete (2026-10-15). Depends on T24. User authorized integration and publication; architecture/plan updated before runtime edits.
+
+- Add bounded `facet_coverage_v1`: 1–4 field-derived facets, original-plus-facet candidate expansion, at most 20 reranker inputs and five primary passages, tested T24 selection and unchanged source/answer validation.
+- Preserve original search diagnostics separately from extra searches; record facet queries, ranks, omissions, costs and planned/admitted keys. Keep full extraction history, explicit filters, exact JSON values, revision identities and context budgets. Reject unsupported budgets/field counts; never silently drop fields.
+- Expose an accessible browser choice, CLI flag and OpenAPI schema; readable workflow and opaque exports must survive saved conversation reloads. Ranked and coverage_v1 remain compatible.
+- Verify Rust regressions/format/Clippy, relevant Python and schema checks, frontend type/component/offline browser checks, and fresh isolated TXT/JSON/PDF local inference smoke (including automatic planning and follow-ups). Preserve every attempt, no historical quality rerun or holdout use.
+- Acceptance: supported source-linked answers through the opted-in browser/API path, visible recorded selector behavior, explicit errors and verified boundaries, updated docs/handoff, new local API/UI active with rollback copy retained, meaningful commits pushed. Report smoke limitations honestly; no broad quality claim.
+
 ### Later — Clarification and ambiguity evaluation
 
 Scope a separate clarification workflow and clearly worded ambiguity evaluation after T23. Candidate-retrieval evidence does not establish answerability or ambiguity quality. Keep production defaults and historical freezes intact.
@@ -520,6 +532,12 @@ Scope a separate clarification workflow and clearly worded ambiguity evaluation 
 ## Session handoff discipline
 
 Keep the Current state and Next useful step sections accurate. For each meaningful work session, add one concise entry below with changed files/capabilities, task IDs, verification actually performed, unresolved issues, and the next step. Do not paste full chat transcripts or command logs.
+
+### 2026-10-15 — T25 completed
+
+- Updated architecture/plan first, preserved T24 in commit `a4efed3` and a byte-exact archive, then integrated bounded field-derived retrieval/selection with API, CLI, OpenAPI, browser controls and captured workflow details. Ranked defaults and historical inputs/scores remain unchanged.
+- Verified Rust/format/Clippy, Python, frozen HTTP and schema contracts, offline workspace/docs and a live model browser check. The synthetic smoke retained three automatic planning declines; six other outcomes/controls passed, including TXT/PDF, multi-document evidence, follow-up with fields, exact decimals/zero/null and missing evidence. See the T25 report for original attempts and limits.
+- Activated API/UI `:t25` on localhost:8088 after a stopped-state storage backup; all capabilities ready. Only the normal API was recreated. Test services are stopped, data/caches retained. Next: user feedback, then separately scope planner/clarification quality.
 
 ### 2026-10-15 — T24 completed
 

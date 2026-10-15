@@ -1,0 +1,3 @@
+# Synthetic communications registry
+
+The fictional Boreal station has 29 antennas. Its director is Luca Diaz.

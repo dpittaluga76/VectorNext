@@ -88,6 +88,7 @@ export default function App() {
   const [candidates, setCandidates] = useState(30),
     [rerank, setRerank] = useState(20),
     [primary, setPrimary] = useState(5)
+  const [strategy, setStrategy] = useState('ranked')
   const uploading = useRef(false),
     askLock = useRef(false),
     fileInput = useRef<HTMLInputElement>(null),
@@ -354,6 +355,15 @@ export default function App() {
         )
       const turns = context(chat)
       const fields = fieldJson.trim() ? JSON.parse(fieldJson) : undefined
+      if (
+        strategy === 'facet_coverage_v1' &&
+        (primary > 5 ||
+          rerank > 20 ||
+          (fields && Object.keys(fields).length > 4))
+      )
+        throw new Error(
+          'Facet coverage supports up to 4 fields, 20 candidates to rerank and 5 passages. Reduce these controls or choose Ranked.',
+        )
       const chatId = chat.id,
         id = crypto.randomUUID(),
         text = question
@@ -382,7 +392,12 @@ export default function App() {
           fields,
           template: template || undefined,
           prose,
-          options: { candidates, rerank_limit: rerank, primary_limit: primary },
+          options: {
+            candidates,
+            rerank_limit: rerank,
+            primary_limit: primary,
+            evidence_strategy: strategy,
+          },
         })
         answer.evidence = answer.evidence.map((e) => ({
           ...e,
@@ -960,6 +975,29 @@ export default function App() {
             <details className="advanced">
               <summary>Advanced answer controls</summary>
               <label>
+                Evidence selection
+                <select
+                  value={strategy}
+                  onChange={(e) => setStrategy(e.target.value)}
+                >
+                  <option value="ranked">Ranked (default)</option>
+                  <option value="facet_coverage_v1">
+                    Facet coverage (experimental)
+                  </option>
+                  <option value="coverage_v1">
+                    Field coverage (legacy experiment)
+                  </option>
+                </select>
+              </label>
+              {strategy === 'facet_coverage_v1' && (
+                <small>
+                  Searches each answer field separately and selects
+                  complementary passages. Up to 4 fields and 5 passages; extra
+                  CPU work can take longer. Coverage is a relevance heuristic,
+                  not a guarantee of a correct answer.
+                </small>
+              )}
+              <label>
                 Fields (optional JSON; skips automatic planning)
                 <textarea
                   placeholder={
@@ -1222,6 +1260,16 @@ export function AnswerCard({
           {answer.workflow.planning}. {answer.workflow.evidence_count ?? 0}{' '}
           captured passages. Outcome: {labels[answer.outcome].toLowerCase()}.
         </p>
+        {answer.workflow.selection_summary && (
+          <p>{answer.workflow.selection_summary}</p>
+        )}
+        {answer.workflow.facet_queries && (
+          <ul aria-label="Recorded facet queries">
+            {answer.workflow.facet_queries.map((facet, i) => (
+              <li key={i}>{facet}</li>
+            ))}
+          </ul>
+        )}
         {answer.workflow.timings_ms && (
           <ul>
             {Object.entries(answer.workflow.timings_ms).map(([name, ms]) => (

@@ -67,7 +67,7 @@ def main():
     s=sub.add_parser('search'); s.add_argument('text'); s.add_argument('--mode',choices=['keyword','hybrid'],default='hybrid'); s.add_argument('--space-id'); s.add_argument('--limit',type=int,default=10)
     workflow_options(s)
     s=sub.add_parser('ask'); s.add_argument('request',type=Path); s.add_argument('--space-id')
-    s.add_argument('--evidence-strategy', choices=['ranked', 'coverage_v1'], help='experimental coverage_v1; ranked is the default')
+    s.add_argument('--evidence-strategy', choices=['ranked', 'coverage_v1', 'facet_coverage_v1'], help='opt-in field/facet coverage; ranked is the default')
     workflow_options(s)
     s=sub.add_parser('explain',help='render saved workflow captures without calling the API or a model')
     s.add_argument('captures',type=Path,nargs='+'); s.add_argument('--report',type=Path)

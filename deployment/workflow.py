@@ -269,11 +269,17 @@ def answer(r, value):
             Decimal(str(timings['reranking_with_preparation']))/1000 if 'reranking_with_preparation' in timings else None,calls=('RemoteModels::rerank()',))
     selection = value.get('selection')
     if selection:
+        facets = selection.get('strategy') == 'facet_coverage_v1'
+        if facets:
+            r.step('Expand candidates for requested fields', 'completed',
+                f"Ran {len(selection.get('candidate_searches',[]))} extra searches with the same scope; merged {len(selection.get('candidate_keys',[]))} unique candidates. Facet text is a retrieval aid, not evidence.",
+                Decimal(str(timings['facet_candidate_expansion']))/1000 if 'facet_candidate_expansion' in timings else None,
+                calls=('answers::facets::retrieve()', 'SearchIndex::search()'))
         r.step('Select evidence for requested fields', 'completed',
             f"Ranked candidates for {len(selection.get('field_rankings',{}))} fields; planned {len(selection.get('planned_primary_keys',[]))} primary passages and admitted {len(selection.get('admitted_primary_keys',[]))}. "
             + 'Automatic neighbor expansion disabled; original source labels retained. Coverage is a heuristic, not a correctness guarantee.',
             Decimal(str(timings['field_coverage_selection']))/1000 if 'field_coverage_selection' in timings else None,
-            calls=('answers::coverage::select()', 'RemoteModels::rerank()'))
+            calls=(('answers::facets::select()', 'answers::final_selection::select()', 'RemoteModels::rerank()') if facets else ('answers::coverage::select()', 'RemoteModels::rerank()')))
     groups=len(value.get('evidence',[]))
     r.step('Assemble source context','completed',f"Prepared {groups} evidence group"+('s' if groups!=1 else '')
         + (f" within a limit of {value['options']['primary_limit']} primary passages" if value.get('options') else '')

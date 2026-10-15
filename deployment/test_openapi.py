@@ -39,6 +39,7 @@ class OpenApiTests(unittest.TestCase):
         self.assertEqual(set(self.spec['paths']), expected)
         self.assertTrue(self.spec['openapi'].startswith('3.1.'))
         schemas = self.spec['components']['schemas']
+        self.assertIn('facet_coverage_v1', schemas['AnswerOptions']['properties']['evidence_strategy']['enum'])
         for name, schema in schemas.items():
             with self.subTest(schema=name):
                 Draft202012Validator.check_schema(schema)
@@ -82,6 +83,9 @@ class OpenApiTests(unittest.TestCase):
             'fields': {'amount': {'kind': 'number', 'pointer': '/amount'}}}})
         self.assertEqual(str(result['answer']['fields']['amount']['value']), '9007199254740993.00000000000001')
         self.validate_response('/v1/ui/ask', 'post', {'question': 'amount', 'document_ids': [doc['document_id']]})
+        result = self.validate_response('/v1/ui/ask', 'post', {'question': 'amount', 'document_ids': [doc['document_id']], 'options': {'evidence_strategy':'facet_coverage_v1'}})
+        self.assertIn('Facet coverage', result['workflow']['selection_summary'])
+        self.assertEqual(result['fields'][0]['value_text'], '9007199254740993.00000000000001')
         for path in ['/v1/ask', '/v1/ui/ask', '/v1/document', '/v1/job', '/v1/ingest']:
             with self.subTest(invalid=path):
                 self.validate_response(path, 'post', {})

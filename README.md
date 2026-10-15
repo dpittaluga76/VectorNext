@@ -196,7 +196,7 @@ The normal Compose project runs these three services:
 
 | Service | Image | Resource limits | Data access |
 | --- | --- | --- | --- |
-| `vectornext` | `vectornext-app:t22` | 2 CPUs, 4 GiB RAM | Sole read/write mount of the `data` volume at `/storage`; API, React and docs on host loopback port 8088. |
+| `vectornext` | `vectornext-app:t25` | 2 CPUs, 4 GiB RAM | Sole read/write mount of the `data` volume at `/storage`; API, React and docs on host loopback port 8088. |
 | `processor` | `vectornext-app-processor:t18` | 4 CPUs, 6 GiB RAM | Read-only model files and disposable `cache` volume; no database mount or GPU. |
 | `llm` | `vectornext-app-llm:t18` | 8 CPUs, 32 GiB RAM, NVIDIA GPU | Read-only GGUF weights; internal network endpoint with the llama.cpp backend behind the scheduler. |
 
@@ -238,7 +238,7 @@ T22 profiles the same synthetic stores with baseline and optimized Rust release 
 
 T23 tests evidence retrieval on **12 fresh NIST references / 188 chunks**, using real CPU embeddings and reranking. Across 96 successful requests, question-focused candidate expansion improved complete evidence coverage in the 20-passage shortlist from **18/20 to 20/20 questions**, but final-five coverage stayed **16/20**. Production defaults remain unchanged: this points to final evidence selection as the next experiment. These are agent-authored literal-source coverage measurements, not generated-answer accuracy or independent human adjudication. [Frozen protocol, results and limitations](docs/reports/t23-evidence.md) · [Reproduce](evals/evidence/README.md).
 
-T24 holds the expanded shortlist constant and tests final passage selection on **10 fresh NASA references / 388 chunks**. Facet-focused selection improves complete frozen final evidence coverage from **16/20 to 18/20 questions**, with no measured regressions, but median uncached retrieval latency rises from **685 ms to 1,437 ms**. All 96 requests succeeded. The selector remains experimental; automatic facets and end-to-end answer behavior have not been evaluated. [Results, cost and source-review limitations](docs/reports/t24-final-selection.md) · [Reproduce](evals/selection/README.md).
+T24 holds the expanded shortlist constant and tests final passage selection on **10 fresh NASA references / 388 chunks**. Facet-focused selection improves complete frozen final evidence coverage from **16/20 to 18/20 questions**, with no measured regressions, but median uncached retrieval latency rises from **685 ms to 1,437 ms**. All 96 requests succeeded. T25 integrates this selector as an opt-in application mode; those frozen T24 scores measure authored facets and passage coverage, not the automatic app or generated-answer quality. [Results, cost and source-review limitations](docs/reports/t24-final-selection.md) · [Reproduce](evals/selection/README.md).
 
 ### Retrieval and answer evaluations
 
@@ -290,6 +290,14 @@ Inside the app: **choose or drop files → select documents → type a question 
 Use **VectorNext.cmd → Stop** to stop only this application while keeping documents, models and caches. Choose **Rebuild** after pulling code changes. Routine Start never builds or downloads. The equivalent scripted actions are `powershell -File deployment/VectorNext.ps1 -Action Setup`, `Start`, `Rebuild`, `Stop` or `Status`.
 
 Conversations and captured evidence live in **IndexedDB in this browser**, not on the server. Use **Export** before clearing browser data or changing profiles. Different hostnames/ports have separate histories; use the same `localhost:8088` address consistently. Only the last four supported question/answer exchanges are sent as context. Changing document scope starts a new conversation. Historical passages stay captured after a document is replaced or removed. See [browser/API details and limits](docs/browser-api.md).
+
+### Try facet coverage
+
+Open **Advanced answer controls → Evidence selection → Facet coverage (experimental)** before asking a question. The app derives up to four focused searches from the requested answer fields, merges candidates, and picks up to five complementary source passages. **How did you find this?** shows the recorded facet queries and planned/admitted passages. Extra CPU searches and reranking can take longer; Ranked stays the default. The choice resets on page reload, while saved answers retain their recorded workflow.
+
+The API accepts `"options":{"evidence_strategy":"facet_coverage_v1"}` on `/v1/ui/ask` or `/v1/ask`; CLI users can add `--evidence-strategy facet_coverage_v1`. The mode requires 1–4 fields, reranking enabled, at most 20 reranker candidates and five primaries. It preserves explicit document scope, exact JSON values and source validation.
+
+Local Gemma field planning remains a limitation: in the fresh synthetic integration smoke it declined three follow-up/count questions before retrieval. Supplying explicit fields in Advanced made all three answer correctly with this selector. The automatic simple question, exact JSON/null/zero case and missing-evidence case also passed. This is plumbing verification, not a quality benchmark. [T25 results and reproduction](docs/reports/t25-facet-integration.md).
 
 ### Troubleshooting
 
@@ -385,7 +393,7 @@ docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest evals
 docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest deployment.test_workflow -v
 ```
 
-These commands cover the 144 Rust checks (including the T23/T24 experimental selectors), 54 original fixture/scorer/protocol checks and 26 workflow/client checks. T14 adds `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. T15 passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
+These commands cover the 157 Rust checks (including the T23/T24 experimental selectors), 54 original fixture/scorer/protocol checks and 27 workflow/client checks. T14 adds `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. T15 passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
 
 Browser verification runs entirely in Docker:
 
@@ -412,9 +420,9 @@ T19 additionally passed the frozen 71-case HTTP comparison, two OpenAPI schema c
 
 ## Project status and next steps
 
-T01–T24 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection, numeric proof validation, a reproducible pgvector comparison, bounded large-state checkpoints/exports, indexed scalar filtering and fresh candidate/final-evidence retrieval experiments. The app is ready for local experimentation within its documented limits. The browser workspace, Windows launcher and Axum API with offline OpenAPI documentation are implemented. The public API is still evolving; multi-user authentication remains out of scope.
+T01–T25 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection, numeric proof validation, a reproducible pgvector comparison, bounded large-state checkpoints/exports, indexed scalar filtering and fresh candidate/final-evidence retrieval experiments. The app is ready for local experimentation within its documented limits. The browser workspace, Windows launcher and Axum API with offline OpenAPI documentation are implemented. The public API is still evolving; multi-user authentication remains out of scope.
 
-T13 adds coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). T22 adds bounded scalar/document/media filter indexes. T23/T24 complete fresh candidate and final-selection experiments without changing production defaults; opt-in application integration, end-to-end answer validation and clearer ambiguity evaluation remain proposed quality work. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
+T13 adds coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). T22 adds bounded scalar/document/media filter indexes. T23/T24 complete fresh candidate and final-selection experiments; T25 integrates opt-in facet coverage with source-linked browser/API verification. Ranked remains the default. Automatic field-planning reliability and clearer ambiguity evaluation remain proposed quality work. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
 
 For contributions, start with the [architecture](docs/architecture.md), [build plan](docs/plan.md) and [working instructions](AGENTS.md). Reproducible retrieval failures with shareable source files are especially useful.
 

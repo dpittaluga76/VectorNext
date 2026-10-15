@@ -11,6 +11,8 @@ use serde_json::{Value, json};
 use std::collections::{BTreeMap, BTreeSet};
 use std::time::Instant;
 mod coverage;
+mod facets;
+mod final_selection;
 mod numeric;
 
 pub const INPUT_TOKENS: usize = 3328;
@@ -216,6 +218,7 @@ pub enum EvidenceStrategy {
     #[default]
     Ranked,
     CoverageV1,
+    FacetCoverageV1,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -240,6 +243,11 @@ impl Default for AnswerOptions {
 }
 impl AnswerOptions {
     pub(crate) fn validate(&self) -> Result<()> {
+        require(
+            self.evidence_strategy != EvidenceStrategy::FacetCoverageV1
+                || (self.rerank && self.rerank_limit <= 20 && self.primary_limit <= 5),
+            "facet_coverage_v1 requires reranking, at most 20 candidates and five primary passages",
+        )?;
         require(
             self.evidence_strategy != EvidenceStrategy::CoverageV1
                 || (self.rerank && self.rerank_limit <= 20),
@@ -328,8 +336,17 @@ pub fn ask_with_options(
     let total = Instant::now();
     options.validate()?;
     validate_request(&request)?;
+    let facet_queries = if options.evidence_strategy == EvidenceStrategy::FacetCoverageV1 {
+        require(
+            request.scope == Scope::Passage,
+            "facet_coverage_v1 requires passage scope",
+        )?;
+        facets::queries(&request)?
+    } else {
+        vec![]
+    };
     let mut query = request.question.clone();
-    if options.evidence_strategy == EvidenceStrategy::CoverageV1 {
+    if options.evidence_strategy != EvidenceStrategy::Ranked {
         if let Some(turn) = request
             .history
             .iter()
@@ -400,10 +417,20 @@ pub fn ask_with_options(
         let (retrieval, search_times) = index.search_measured(&search)?;
         report.timings_ms.extend(search_times);
         let stage = Instant::now();
-        if !retrieval.results.is_empty() {
+        let hits = if options.evidence_strategy == EvidenceStrategy::FacetCoverageV1 {
+            let (hits, audit) = facets::retrieve(index, models, &facet_queries, &retrieval)?;
+            report.selection = audit;
+            report
+                .timings_ms
+                .insert("facet_candidate_expansion".into(), elapsed(stage));
+            hits
+        } else {
+            retrieval.results.clone()
+        };
+        let stage = Instant::now();
+        if !hits.is_empty() {
             // Rerank original evidence with source-backed structure, never generated context.
-            let passages: Vec<_> = retrieval
-                .results
+            let passages: Vec<_> = hits
                 .iter()
                 .map(|h| {
                     let (doc, chunk) = index.resolve(&h.key).unwrap();
@@ -433,8 +460,7 @@ pub fn ask_with_options(
                 "invalid reranker result",
             )?;
             report.reranker = Some(ranked.identity);
-            report.ranked = retrieval
-                .results
+            report.ranked = hits
                 .iter()
                 .zip(ranked.scores)
                 .zip(ranked.pair_tokens)
@@ -463,6 +489,16 @@ pub fn ask_with_options(
                 )?;
                 report.selection = audit;
                 Some(keys)
+            } else if options.evidence_strategy == EvidenceStrategy::FacetCoverageV1 {
+                Some(facets::select(
+                    index,
+                    models,
+                    &hits,
+                    &passages,
+                    &report.ranked,
+                    options.primary_limit,
+                    &mut report.selection,
+                )?)
             } else {
                 None
             };
@@ -477,7 +513,7 @@ pub fn ask_with_options(
                 history: request.history.clone(),
                 fields: request.fields.clone(),
                 evidence: vec![],
-                constrain_pointers: options.evidence_strategy == EvidenceStrategy::CoverageV1,
+                constrain_pointers: options.evidence_strategy != EvidenceStrategy::Ranked,
             };
             require(
                 models.answer_tokens(&input)? <= INPUT_TOKENS,
@@ -507,7 +543,7 @@ pub fn ask_with_options(
                 }
             }
             // Expansion has lower priority than primary evidence and respects the same filter.
-            if options.evidence_strategy == EvidenceStrategy::CoverageV1 {
+            if options.evidence_strategy != EvidenceStrategy::Ranked {
                 report.selection["admitted_primary_keys"] = json!(primary);
                 report.selection["neighbor_expansion"] = json!("disabled; source labels retained");
                 for hit in &report.ranked {
@@ -634,15 +670,21 @@ fn rejected(report: &AnswerReport, evidence: &[Evidence], stage: &str, error: &E
         "text_truncated":e.text.chars().count()>1200,"sources":e.sources.iter().take(12).collect::<Vec<_>>(),
         "source_count":e.sources.len()
     })).collect();
+    let mut diagnostics = json!({
+        "outcome":"rejected","stage":stage,"generation":report.generation,
+        "question":report.request.question,"requested_fields":report.request.fields,
+        "unvalidated_draft":draft,"evidence":selected,"evidence_count":evidence.len(),
+        "assessment":report.audit.get("assessment"),
+        "next_action":"Inspect selected evidence, field quotes and JSON pointers. This draft failed validation and is not a supported answer."
+    });
+    if report.options.evidence_strategy == EvidenceStrategy::FacetCoverageV1 {
+        diagnostics["selection"] = report.selection.clone();
+        diagnostics["timings_ms"] = json!(report.timings_ms);
+        diagnostics["skipped"] = json!(report.skipped);
+    }
     Error::AnswerRejected {
         message: error.to_string(),
-        diagnostics: Box::new(json!({
-            "outcome":"rejected","stage":stage,"generation":report.generation,
-            "question":report.request.question,"requested_fields":report.request.fields,
-            "unvalidated_draft":draft,"evidence":selected,"evidence_count":evidence.len(),
-            "assessment":report.audit.get("assessment"),
-            "next_action":"Inspect selected evidence, field quotes and JSON pointers. This draft failed validation and is not a supported answer."
-        })),
+        diagnostics: Box::new(diagnostics),
     }
 }
 

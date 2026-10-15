@@ -389,14 +389,15 @@
         "type": "string",
         "enum": [
           "ranked",
-          "coverage_v1"
+          "coverage_v1",
+          "facet_coverage_v1"
         ],
         "default": "ranked"
       }
     },
     "required": [],
     "additionalProperties": false,
-    "description": "primary_limit <= rerank_limit <= 2*candidates. coverage_v1 requires reranking and rerank_limit <= 20."
+    "description": "primary_limit <= rerank_limit <= 2*candidates. coverage_v1 requires reranking and rerank_limit <= 20. facet_coverage_v1 also requires primary_limit <= 5, passage scope and 1..4 answer fields. Facets come from field names/descriptions; original and facet searches share explicit scope. Ranked remains the default."
   },
   "AskRequest": {
     "type": "object",
@@ -1402,6 +1403,19 @@
   "UiWorkflow": {
     "type": "object",
     "properties": {
+      "selection_summary": {
+        "type": "string",
+        "description": "Recorded facet strategy counts, only present for facet_coverage_v1."
+      },
+      "facet_queries": {
+        "type": "array",
+        "items": { "type": "string" },
+        "maxItems": 4
+      },
+      "selection_functions": {
+        "type": "string",
+        "description": "Implementation references, not instrumented calls."
+      },
       "timings_ms": {
         "anyOf": [
           {
