@@ -1,0 +1,4055 @@
+{
+  "experiment": "T23 frozen NIST primary evidence retrieval",
+  "date": "2026-10-15",
+  "image": "sha256:3b15d9a7c749d146e8f6eb6f0ee8e9ca6ab1c14e38f70692445f7fbc80b733dd",
+  "counts": {
+    "sources": 12,
+    "questions": 24,
+    "facts": 19,
+    "fact_requirements": 34,
+    "source_bytes": 62334
+  },
+  "ingestion": [
+    {
+      "elapsed_ms": 172.17361,
+      "id": "length",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 4,
+        "revision": "c52f2871f5528b6ecda9c31a7b014a22baaec3d042ec20c471abb158eb0bf299",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 527.646628,
+      "id": "time",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 19,
+        "revision": "007782962648a1dd9d4b47a593488a7bf47143664ac0d2a542eae017a29a1d7d",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 180.607404,
+      "id": "mass",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 5,
+        "revision": "297aa1e2d97a0275622744149a75bf18393092f66b8ffba4839db60125ee77e7",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 111.26768200000001,
+      "id": "current",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 4,
+        "revision": "31803766d9d6857288d56ae0f7dffb5a2b8118c55d8de08fa0767bf2333710f9",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 412.063352,
+      "id": "temperature",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 11,
+        "revision": "1858bf3d4913789f7018cc73ef546b6d372423de8636b1c8fae54960a1358abd",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 91.687777,
+      "id": "amount",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 3,
+        "revision": "a79e1a7c1263ca7a2ff2ca06e6a8363b82abee055bd1b43be8a2ec89592fd0da",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 91.83503499999999,
+      "id": "light",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 3,
+        "revision": "48755af2063268ee0a46c40b858dfd9dd0d7544120db3d36bc99637992233964",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 617.191344,
+      "id": "prefixes",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 21,
+        "revision": "3c644a5dea32db35d5c545247ea564df946e6bc925b03c5b8a2fcba9211e1057",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 869.133226,
+      "id": "writing",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 36,
+        "revision": "b3145a9bb6a74b2b4028f0f3ccac78b9a2d9e26e5ef25f4af890c0338d59101d",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 428.435893,
+      "id": "conversion",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 15,
+        "revision": "f1ac7c29fc301313df807f4175c0e2e5057f76015b370d1fe5906ea136695560",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 610.1436289999999,
+      "id": "overview",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 22,
+        "revision": "fdf7357c4986b80bde4a800bd1e17d4cf881c634c66dd9bd09750564d37f3165",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 1605.068091,
+      "id": "style",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 45,
+        "revision": "11f7c9453adbbb58c1a9a365858f4f120293f8e3f591b94e35c85a7215b50876",
+        "status": "ok"
+      }
+    }
+  ],
+  "runs": [
+    {
+      "capture": "data/t23/final-v1/01-baseline.jsonl",
+      "requests": 24,
+      "errors": 0,
+      "stages": {
+        "raw": {
+          "complete": 20,
+          "positive_questions": 20,
+          "facts": 34,
+          "fact_requirements": 34,
+          "macro_recall": 1.0,
+          "hits": {
+            "n": 24,
+            "median": 51.0,
+            "p95": 56
+          }
+        },
+        "selected": {
+          "complete": 18,
+          "positive_questions": 20,
+          "facts": 31,
+          "fact_requirements": 34,
+          "macro_recall": 0.9416666666666667,
+          "hits": {
+            "n": 24,
+            "median": 20.0,
+            "p95": 20
+          }
+        },
+        "primary": {
+          "complete": 16,
+          "positive_questions": 20,
+          "facts": 28,
+          "fact_requirements": 34,
+          "macro_recall": 0.8833333333333333,
+          "hits": {
+            "n": 24,
+            "median": 5.0,
+            "p95": 5
+          }
+        }
+      },
+      "latency": {
+        "elapsed_ms": {
+          "n": 24,
+          "median": 624.6355649999999,
+          "p95": 713.7839339999999
+        },
+        "embedding_ms": {
+          "n": 24,
+          "median": 10.5820165,
+          "p95": 58.31951
+        },
+        "search_ms": {
+          "n": 24,
+          "median": 0.374541,
+          "p95": 0.501085
+        },
+        "rerank_ms": {
+          "n": 24,
+          "median": 610.5787195,
+          "p95": 700.33064
+        }
+      },
+      "cases": [
+        {
+          "id": "S01",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "time"
+            ],
+            "hits": 56,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "time"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "time"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1498.989568,
+            "embedding_ms": 11.586663,
+            "search_ms": 0.360898,
+            "rerank_ms": 1486.955753
+          },
+          "probes": 1
+        },
+        {
+          "id": "S02",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "length"
+            ],
+            "hits": 56,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "length"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "length"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 694.9029989999999,
+            "embedding_ms": 12.803125999999999,
+            "search_ms": 0.383314,
+            "rerank_ms": 681.621523
+          },
+          "probes": 1
+        },
+        {
+          "id": "S03",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 616.267285,
+            "embedding_ms": 9.425852,
+            "search_ms": 0.413169,
+            "rerank_ms": 606.3267500000001
+          },
+          "probes": 1
+        },
+        {
+          "id": "S04",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "current"
+            ],
+            "hits": 52,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "current"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "current"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 691.4820189999999,
+            "embedding_ms": 10.352052,
+            "search_ms": 0.40057200000000004,
+            "rerank_ms": 680.624025
+          },
+          "probes": 1
+        },
+        {
+          "id": "S05",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 51,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 689.038473,
+            "embedding_ms": 9.070181,
+            "search_ms": 0.382536,
+            "rerank_ms": 679.490532
+          },
+          "probes": 1
+        },
+        {
+          "id": "S06",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 602.6525849999999,
+            "embedding_ms": 11.428267,
+            "search_ms": 0.396532,
+            "rerank_ms": 590.7457400000001
+          },
+          "probes": 1
+        },
+        {
+          "id": "S07",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "light"
+            ],
+            "hits": 50,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "light"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "light"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 626.568277,
+            "embedding_ms": 8.20292,
+            "search_ms": 0.327741,
+            "rerank_ms": 617.953404
+          },
+          "probes": 1
+        },
+        {
+          "id": "S08",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 59,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 589.064728,
+            "embedding_ms": 58.31951,
+            "search_ms": 0.36504099999999995,
+            "rerank_ms": 530.279038
+          },
+          "probes": 1
+        },
+        {
+          "id": "S09",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 46,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 603.181424,
+            "embedding_ms": 9.322212,
+            "search_ms": 0.29501799999999995,
+            "rerank_ms": 593.465221
+          },
+          "probes": 1
+        },
+        {
+          "id": "S10",
+          "group": "single",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 605.950775,
+            "embedding_ms": 8.552532,
+            "search_ms": 0.314318,
+            "rerank_ms": 596.994284
+          },
+          "probes": 1
+        },
+        {
+          "id": "M01",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "length",
+              "time"
+            ],
+            "hits": 54,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "length"
+            ],
+            "hits": 20,
+            "recall": 0.5,
+            "complete": false
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": 0.0,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 668.164731,
+            "embedding_ms": 56.276419000000004,
+            "search_ms": 0.414991,
+            "rerank_ms": 611.368973
+          },
+          "probes": 1
+        },
+        {
+          "id": "M02",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 49,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 607.491424,
+            "embedding_ms": 9.745244,
+            "search_ms": 0.34921,
+            "rerank_ms": 597.310907
+          },
+          "probes": 1
+        },
+        {
+          "id": "M03",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 45,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 702.157492,
+            "embedding_ms": 10.796836,
+            "search_ms": 0.412262,
+            "rerank_ms": 690.845675
+          },
+          "probes": 1
+        },
+        {
+          "id": "M04",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "time",
+              "length",
+              "mass"
+            ],
+            "hits": 51,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 20,
+            "recall": 0.3333333333333333,
+            "complete": false
+          },
+          "primary": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 5,
+            "recall": 0.3333333333333333,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 676.865446,
+            "embedding_ms": 11.123854000000001,
+            "search_ms": 54.502688,
+            "rerank_ms": 611.142259
+          },
+          "probes": 1
+        },
+        {
+          "id": "M05",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "current",
+              "temperature",
+              "light"
+            ],
+            "hits": 39,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "current",
+              "temperature",
+              "light"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "current",
+              "light"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 615.319454,
+            "embedding_ms": 9.304035,
+            "search_ms": 0.296716,
+            "rerank_ms": 605.645243
+          },
+          "probes": 1
+        },
+        {
+          "id": "M06",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "mass",
+              "amount",
+              "temperature"
+            ],
+            "hits": 43,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass",
+              "amount",
+              "temperature"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass",
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 713.7839339999999,
+            "embedding_ms": 12.970178,
+            "search_ms": 0.395228,
+            "rerank_ms": 700.33064
+          },
+          "probes": 1
+        },
+        {
+          "id": "M07",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 598.5199690000001,
+            "embedding_ms": 9.413606999999999,
+            "search_ms": 0.501085,
+            "rerank_ms": 588.477711
+          },
+          "probes": 1
+        },
+        {
+          "id": "M08",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 46,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 663.673143,
+            "embedding_ms": 8.753755,
+            "search_ms": 0.366546,
+            "rerank_ms": 654.431148
+          },
+          "probes": 1
+        },
+        {
+          "id": "M09",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 43,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 588.612818,
+            "embedding_ms": 13.560046,
+            "search_ms": 0.438803,
+            "rerank_ms": 574.480595
+          },
+          "probes": 1
+        },
+        {
+          "id": "M10",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 52,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 622.7028529999999,
+            "embedding_ms": 12.20741,
+            "search_ms": 0.385428,
+            "rerank_ms": 610.01518
+          },
+          "probes": 1
+        },
+        {
+          "id": "N01",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 43,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 607.757617,
+            "embedding_ms": 13.227796,
+            "search_ms": 0.28582599999999997,
+            "rerank_ms": 594.163989
+          },
+          "probes": 1
+        },
+        {
+          "id": "N02",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 48,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 583.299984,
+            "embedding_ms": 66.39295200000001,
+            "search_ms": 0.32656,
+            "rerank_ms": 516.4838699999999
+          },
+          "probes": 1
+        },
+        {
+          "id": "N03",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 47,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 676.681734,
+            "embedding_ms": 8.987851,
+            "search_ms": 0.361791,
+            "rerank_ms": 667.216411
+          },
+          "probes": 1
+        },
+        {
+          "id": "N04",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 54,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 639.859915,
+            "embedding_ms": 10.367196999999999,
+            "search_ms": 0.32600100000000004,
+            "rerank_ms": 629.046501
+          },
+          "probes": 1
+        }
+      ],
+      "worker_stats": {
+        "cache_hits": 0,
+        "cache_misses": 48,
+        "inference": {
+          "count": 0,
+          "embed": 24,
+          "generate": 0,
+          "rerank": 24
+        }
+      }
+    },
+    {
+      "capture": "data/t23/final-v1/02-expanded.jsonl",
+      "requests": 24,
+      "errors": 0,
+      "stages": {
+        "raw": {
+          "complete": 20,
+          "positive_questions": 20,
+          "facts": 34,
+          "fact_requirements": 34,
+          "macro_recall": 1.0,
+          "hits": {
+            "n": 24,
+            "median": 62.0,
+            "p95": 86
+          }
+        },
+        "selected": {
+          "complete": 20,
+          "positive_questions": 20,
+          "facts": 34,
+          "fact_requirements": 34,
+          "macro_recall": 1.0,
+          "hits": {
+            "n": 24,
+            "median": 20.0,
+            "p95": 20
+          }
+        },
+        "primary": {
+          "complete": 16,
+          "positive_questions": 20,
+          "facts": 28,
+          "fact_requirements": 34,
+          "macro_recall": 0.8833333333333333,
+          "hits": {
+            "n": 24,
+            "median": 5.0,
+            "p95": 5
+          }
+        }
+      },
+      "latency": {
+        "elapsed_ms": {
+          "n": 24,
+          "median": 618.971978,
+          "p95": 718.984064
+        },
+        "embedding_ms": {
+          "n": 24,
+          "median": 24.140951,
+          "p95": 78.191087
+        },
+        "search_ms": {
+          "n": 24,
+          "median": 0.7672225,
+          "p95": 1.1463199999999998
+        },
+        "rerank_ms": {
+          "n": 24,
+          "median": 592.079182,
+          "p95": 698.373155
+        }
+      },
+      "cases": [
+        {
+          "id": "S01",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "time"
+            ],
+            "hits": 61,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "time"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "time"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1569.590588,
+            "embedding_ms": 22.914974,
+            "search_ms": 0.716309,
+            "rerank_ms": 1545.839677
+          },
+          "probes": 2
+        },
+        {
+          "id": "S02",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "length"
+            ],
+            "hits": 66,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "length"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "length"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 618.522108,
+            "embedding_ms": 15.340633,
+            "search_ms": 0.74169,
+            "rerank_ms": 602.320163
+          },
+          "probes": 2
+        },
+        {
+          "id": "S03",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 62,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 665.39918,
+            "embedding_ms": 69.391918,
+            "search_ms": 0.751628,
+            "rerank_ms": 595.113595
+          },
+          "probes": 2
+        },
+        {
+          "id": "S04",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "current"
+            ],
+            "hits": 59,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "current"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "current"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 619.421848,
+            "embedding_ms": 15.197078000000001,
+            "search_ms": 0.653356,
+            "rerank_ms": 603.474807
+          },
+          "probes": 2
+        },
+        {
+          "id": "S05",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 58,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 602.972403,
+            "embedding_ms": 69.48723,
+            "search_ms": 0.749231,
+            "rerank_ms": 532.6155190000001
+          },
+          "probes": 2
+        },
+        {
+          "id": "S06",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 60,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 611.6699759999999,
+            "embedding_ms": 63.52124,
+            "search_ms": 0.760902,
+            "rerank_ms": 547.2648919999999
+          },
+          "probes": 2
+        },
+        {
+          "id": "S07",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "light"
+            ],
+            "hits": 55,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "light"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "light"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 551.7356679999999,
+            "embedding_ms": 16.225575,
+            "search_ms": 0.697668,
+            "rerank_ms": 534.697723
+          },
+          "probes": 2
+        },
+        {
+          "id": "S08",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 78,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 607.794198,
+            "embedding_ms": 16.825291,
+            "search_ms": 0.708402,
+            "rerank_ms": 590.1444759999999
+          },
+          "probes": 2
+        },
+        {
+          "id": "S09",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 60,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 595.0109970000001,
+            "embedding_ms": 16.130761,
+            "search_ms": 0.548219,
+            "rerank_ms": 578.2211430000001
+          },
+          "probes": 2
+        },
+        {
+          "id": "S10",
+          "group": "single",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 72,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 599.588145,
+            "embedding_ms": 23.89139,
+            "search_ms": 0.8687370000000001,
+            "rerank_ms": 574.695161
+          },
+          "probes": 3
+        },
+        {
+          "id": "M01",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "length",
+              "time"
+            ],
+            "hits": 74,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "length",
+              "time"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": 0.0,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 620.7268740000001,
+            "embedding_ms": 25.050299,
+            "search_ms": 1.0202,
+            "rerank_ms": 594.513145
+          },
+          "probes": 3
+        },
+        {
+          "id": "M02",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 68,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 617.4213560000001,
+            "embedding_ms": 78.191087,
+            "search_ms": 1.0151540000000001,
+            "rerank_ms": 538.074622
+          },
+          "probes": 3
+        },
+        {
+          "id": "M03",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 61,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 619.492972,
+            "embedding_ms": 24.390512,
+            "search_ms": 0.95717,
+            "rerank_ms": 594.013888
+          },
+          "probes": 3
+        },
+        {
+          "id": "M04",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "time",
+              "length",
+              "mass"
+            ],
+            "hits": 86,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "time",
+              "length",
+              "mass"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 5,
+            "recall": 0.3333333333333333,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 692.137003,
+            "embedding_ms": 12.26068,
+            "search_ms": 1.334406,
+            "rerank_ms": 677.9485050000001
+          },
+          "probes": 4
+        },
+        {
+          "id": "M05",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "current",
+              "temperature",
+              "light"
+            ],
+            "hits": 69,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "current",
+              "temperature",
+              "light"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "current",
+              "light"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 718.984064,
+            "embedding_ms": 19.325190999999997,
+            "search_ms": 1.1463199999999998,
+            "rerank_ms": 698.373155
+          },
+          "probes": 4
+        },
+        {
+          "id": "M06",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "mass",
+              "amount",
+              "temperature"
+            ],
+            "hits": 71,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass",
+              "amount",
+              "temperature"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass",
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 684.693797,
+            "embedding_ms": 66.216026,
+            "search_ms": 1.128707,
+            "rerank_ms": 617.221408
+          },
+          "probes": 4
+        },
+        {
+          "id": "M07",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 98,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 697.745535,
+            "embedding_ms": 77.482596,
+            "search_ms": 0.9889219999999999,
+            "rerank_ms": 619.126804
+          },
+          "probes": 3
+        },
+        {
+          "id": "M08",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 62,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 682.547599,
+            "embedding_ms": 91.625037,
+            "search_ms": 1.042389,
+            "rerank_ms": 589.6862130000001
+          },
+          "probes": 3
+        },
+        {
+          "id": "M09",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 65,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 690.804938,
+            "embedding_ms": 27.475517999999997,
+            "search_ms": 0.9822150000000001,
+            "rerank_ms": 662.208751
+          },
+          "probes": 3
+        },
+        {
+          "id": "M10",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 74,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 604.558118,
+            "embedding_ms": 31.308987000000002,
+            "search_ms": 1.0734970000000001,
+            "rerank_ms": 572.0337549999999
+          },
+          "probes": 3
+        },
+        {
+          "id": "N01",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 61,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 610.508966,
+            "embedding_ms": 22.508655,
+            "search_ms": 0.531857,
+            "rerank_ms": 587.368848
+          },
+          "probes": 2
+        },
+        {
+          "id": "N02",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 54,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 683.282336,
+            "embedding_ms": 77.871324,
+            "search_ms": 0.7735430000000001,
+            "rerank_ms": 604.476938
+          },
+          "probes": 2
+        },
+        {
+          "id": "N03",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 56,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 595.119944,
+            "embedding_ms": 18.669562,
+            "search_ms": 0.7353270000000001,
+            "rerank_ms": 575.578405
+          },
+          "probes": 2
+        },
+        {
+          "id": "N04",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 59,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 592.565668,
+            "embedding_ms": 17.585401,
+            "search_ms": 0.510074,
+            "rerank_ms": 574.345275
+          },
+          "probes": 2
+        }
+      ],
+      "worker_stats": {
+        "cache_hits": 8,
+        "cache_misses": 78,
+        "inference": {
+          "count": 0,
+          "embed": 54,
+          "generate": 0,
+          "rerank": 24
+        }
+      }
+    },
+    {
+      "capture": "data/t23/final-v1/03-expanded.jsonl",
+      "requests": 24,
+      "errors": 0,
+      "stages": {
+        "raw": {
+          "complete": 20,
+          "positive_questions": 20,
+          "facts": 34,
+          "fact_requirements": 34,
+          "macro_recall": 1.0,
+          "hits": {
+            "n": 24,
+            "median": 62.0,
+            "p95": 86
+          }
+        },
+        "selected": {
+          "complete": 20,
+          "positive_questions": 20,
+          "facts": 34,
+          "fact_requirements": 34,
+          "macro_recall": 1.0,
+          "hits": {
+            "n": 24,
+            "median": 20.0,
+            "p95": 20
+          }
+        },
+        "primary": {
+          "complete": 16,
+          "positive_questions": 20,
+          "facts": 28,
+          "fact_requirements": 34,
+          "macro_recall": 0.8833333333333333,
+          "hits": {
+            "n": 24,
+            "median": 5.0,
+            "p95": 5
+          }
+        }
+      },
+      "latency": {
+        "elapsed_ms": {
+          "n": 24,
+          "median": 3.3533305,
+          "p95": 4.885998
+        },
+        "embedding_ms": {
+          "n": 24,
+          "median": 2.0466125,
+          "p95": 3.3938859999999997
+        },
+        "search_ms": {
+          "n": 24,
+          "median": 0.5866804999999999,
+          "p95": 0.8516360000000001
+        },
+        "rerank_ms": {
+          "n": 24,
+          "median": 0.42742250000000004,
+          "p95": 0.503347
+        }
+      },
+      "cases": [
+        {
+          "id": "S01",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "time"
+            ],
+            "hits": 61,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "time"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "time"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 958.1381700000001,
+            "embedding_ms": 2.077241,
+            "search_ms": 0.476793,
+            "rerank_ms": 955.487505
+          },
+          "probes": 2
+        },
+        {
+          "id": "S02",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "length"
+            ],
+            "hits": 66,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "length"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "length"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.125639,
+            "embedding_ms": 2.004356,
+            "search_ms": 0.596614,
+            "rerank_ms": 0.418041
+          },
+          "probes": 2
+        },
+        {
+          "id": "S03",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 62,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.650926,
+            "embedding_ms": 1.75107,
+            "search_ms": 0.410776,
+            "rerank_ms": 0.413285
+          },
+          "probes": 2
+        },
+        {
+          "id": "S04",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "current"
+            ],
+            "hits": 59,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "current"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "current"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.123093,
+            "embedding_ms": 2.015984,
+            "search_ms": 0.584023,
+            "rerank_ms": 0.431112
+          },
+          "probes": 2
+        },
+        {
+          "id": "S05",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 58,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.668816,
+            "embedding_ms": 1.715286,
+            "search_ms": 0.441168,
+            "rerank_ms": 0.42989
+          },
+          "probes": 2
+        },
+        {
+          "id": "S06",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 60,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.698216,
+            "embedding_ms": 1.732884,
+            "search_ms": 0.44191400000000003,
+            "rerank_ms": 0.443543
+          },
+          "probes": 2
+        },
+        {
+          "id": "S07",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "light"
+            ],
+            "hits": 55,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "light"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "light"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.660174,
+            "embedding_ms": 1.706043,
+            "search_ms": 0.480379,
+            "rerank_ms": 0.389596
+          },
+          "probes": 2
+        },
+        {
+          "id": "S08",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 78,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.7633129999999997,
+            "embedding_ms": 1.89527,
+            "search_ms": 0.420291,
+            "rerank_ms": 0.35786500000000004
+          },
+          "probes": 2
+        },
+        {
+          "id": "S09",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 60,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.7537220000000002,
+            "embedding_ms": 1.832722,
+            "search_ms": 0.37041,
+            "rerank_ms": 0.37770000000000004
+          },
+          "probes": 2
+        },
+        {
+          "id": "S10",
+          "group": "single",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 72,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.581022,
+            "embedding_ms": 2.4973289999999997,
+            "search_ms": 0.589338,
+            "rerank_ms": 0.391078
+          },
+          "probes": 3
+        },
+        {
+          "id": "M01",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "length",
+              "time"
+            ],
+            "hits": 74,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "length",
+              "time"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": 0.0,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 3.6974859999999996,
+            "embedding_ms": 2.615817,
+            "search_ms": 0.589512,
+            "rerank_ms": 0.39674000000000004
+          },
+          "probes": 3
+        },
+        {
+          "id": "M02",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 68,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 4.077459999999999,
+            "embedding_ms": 2.804864,
+            "search_ms": 0.67757,
+            "rerank_ms": 0.503347
+          },
+          "probes": 3
+        },
+        {
+          "id": "M03",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 61,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.862191,
+            "embedding_ms": 2.666935,
+            "search_ms": 0.715055,
+            "rerank_ms": 0.38118599999999997
+          },
+          "probes": 3
+        },
+        {
+          "id": "M04",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "time",
+              "length",
+              "mass"
+            ],
+            "hits": 86,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "time",
+              "length",
+              "mass"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 5,
+            "recall": 0.3333333333333333,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 4.666491,
+            "embedding_ms": 3.2330740000000002,
+            "search_ms": 0.8706550000000001,
+            "rerank_ms": 0.45921
+          },
+          "probes": 4
+        },
+        {
+          "id": "M05",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "current",
+              "temperature",
+              "light"
+            ],
+            "hits": 69,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "current",
+              "temperature",
+              "light"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "current",
+              "light"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 4.885998,
+            "embedding_ms": 3.5866879999999997,
+            "search_ms": 0.8485210000000001,
+            "rerank_ms": 0.353982
+          },
+          "probes": 4
+        },
+        {
+          "id": "M06",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "mass",
+              "amount",
+              "temperature"
+            ],
+            "hits": 71,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass",
+              "amount",
+              "temperature"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass",
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 4.691242,
+            "embedding_ms": 3.3938859999999997,
+            "search_ms": 0.8516360000000001,
+            "rerank_ms": 0.353706
+          },
+          "probes": 4
+        },
+        {
+          "id": "M07",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 98,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.823097,
+            "embedding_ms": 2.605604,
+            "search_ms": 0.6739750000000001,
+            "rerank_ms": 0.430525
+          },
+          "probes": 3
+        },
+        {
+          "id": "M08",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 62,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 4.079954,
+            "embedding_ms": 2.8354909999999998,
+            "search_ms": 0.683376,
+            "rerank_ms": 0.413438
+          },
+          "probes": 3
+        },
+        {
+          "id": "M09",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 65,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.9468840000000003,
+            "embedding_ms": 2.731833,
+            "search_ms": 0.646975,
+            "rerank_ms": 0.460345
+          },
+          "probes": 3
+        },
+        {
+          "id": "M10",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 74,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 4.197035,
+            "embedding_ms": 2.8545190000000003,
+            "search_ms": 0.739858,
+            "rerank_ms": 0.49045
+          },
+          "probes": 3
+        },
+        {
+          "id": "N01",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 61,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 2.8309509999999998,
+            "embedding_ms": 1.9723899999999999,
+            "search_ms": 0.34765100000000004,
+            "rerank_ms": 0.424955
+          },
+          "probes": 2
+        },
+        {
+          "id": "N02",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 54,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 2.645275,
+            "embedding_ms": 1.7427199999999998,
+            "search_ms": 0.331372,
+            "rerank_ms": 0.49176899999999996
+          },
+          "probes": 2
+        },
+        {
+          "id": "N03",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 56,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 2.705757,
+            "embedding_ms": 1.7666529999999998,
+            "search_ms": 0.410429,
+            "rerank_ms": 0.43879599999999996
+          },
+          "probes": 2
+        },
+        {
+          "id": "N04",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 59,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 2.72446,
+            "embedding_ms": 1.8465850000000001,
+            "search_ms": 0.315267,
+            "rerank_ms": 0.479915
+          },
+          "probes": 2
+        }
+      ],
+      "worker_stats": {
+        "cache_hits": 86,
+        "cache_misses": 0,
+        "inference": {
+          "count": 0,
+          "embed": 0,
+          "generate": 0
+        }
+      }
+    },
+    {
+      "capture": "data/t23/final-v1/04-baseline.jsonl",
+      "requests": 24,
+      "errors": 0,
+      "stages": {
+        "raw": {
+          "complete": 20,
+          "positive_questions": 20,
+          "facts": 34,
+          "fact_requirements": 34,
+          "macro_recall": 1.0,
+          "hits": {
+            "n": 24,
+            "median": 51.0,
+            "p95": 56
+          }
+        },
+        "selected": {
+          "complete": 18,
+          "positive_questions": 20,
+          "facts": 31,
+          "fact_requirements": 34,
+          "macro_recall": 0.9416666666666667,
+          "hits": {
+            "n": 24,
+            "median": 20.0,
+            "p95": 20
+          }
+        },
+        "primary": {
+          "complete": 16,
+          "positive_questions": 20,
+          "facts": 28,
+          "fact_requirements": 34,
+          "macro_recall": 0.8833333333333333,
+          "hits": {
+            "n": 24,
+            "median": 5.0,
+            "p95": 5
+          }
+        }
+      },
+      "latency": {
+        "elapsed_ms": {
+          "n": 24,
+          "median": 1.522466,
+          "p95": 2.485129
+        },
+        "embedding_ms": {
+          "n": 24,
+          "median": 0.873183,
+          "p95": 1.2149050000000001
+        },
+        "search_ms": {
+          "n": 24,
+          "median": 0.210068,
+          "p95": 0.30736
+        },
+        "rerank_ms": {
+          "n": 24,
+          "median": 0.39606050000000004,
+          "p95": 0.571482
+        }
+      },
+      "cases": [
+        {
+          "id": "S01",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "time"
+            ],
+            "hits": 56,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "time"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "time"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 934.6975180000001,
+            "embedding_ms": 1.169252,
+            "search_ms": 0.296131,
+            "rerank_ms": 933.139992
+          },
+          "probes": 1
+        },
+        {
+          "id": "S02",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "length"
+            ],
+            "hits": 56,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "length"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "length"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.062376,
+            "embedding_ms": 1.2149050000000001,
+            "search_ms": 0.33023399999999997,
+            "rerank_ms": 0.43563
+          },
+          "probes": 1
+        },
+        {
+          "id": "S03",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.6964409999999999,
+            "embedding_ms": 0.99661,
+            "search_ms": 0.250832,
+            "rerank_ms": 0.387135
+          },
+          "probes": 1
+        },
+        {
+          "id": "S04",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "current"
+            ],
+            "hits": 52,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "current"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "current"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.4684139999999999,
+            "embedding_ms": 0.843565,
+            "search_ms": 0.216613,
+            "rerank_ms": 0.348587
+          },
+          "probes": 1
+        },
+        {
+          "id": "S05",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 51,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "temperature"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.436973,
+            "embedding_ms": 0.81601,
+            "search_ms": 0.209193,
+            "rerank_ms": 0.35230199999999995
+          },
+          "probes": 1
+        },
+        {
+          "id": "S06",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.5504740000000001,
+            "embedding_ms": 0.928495,
+            "search_ms": 0.212615,
+            "rerank_ms": 0.350802
+          },
+          "probes": 1
+        },
+        {
+          "id": "S07",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "light"
+            ],
+            "hits": 50,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "light"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "light"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.53944,
+            "embedding_ms": 0.913323,
+            "search_ms": 0.206665,
+            "rerank_ms": 0.363345
+          },
+          "probes": 1
+        },
+        {
+          "id": "S08",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 59,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "spacing"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.505905,
+            "embedding_ms": 0.812496,
+            "search_ms": 0.20778300000000002,
+            "rerank_ms": 0.415063
+          },
+          "probes": 1
+        },
+        {
+          "id": "S09",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 46,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "celsius"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.531215,
+            "embedding_ms": 0.891244,
+            "search_ms": 0.19684,
+            "rerank_ms": 0.367091
+          },
+          "probes": 1
+        },
+        {
+          "id": "S10",
+          "group": "single",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "intermediate",
+              "final"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.510818,
+            "embedding_ms": 0.8448140000000001,
+            "search_ms": 0.190507,
+            "rerank_ms": 0.408549
+          },
+          "probes": 1
+        },
+        {
+          "id": "M01",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "length",
+              "time"
+            ],
+            "hits": 54,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "length"
+            ],
+            "hits": 20,
+            "recall": 0.5,
+            "complete": false
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": 0.0,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 1.442258,
+            "embedding_ms": 0.7974460000000001,
+            "search_ms": 0.21037,
+            "rerank_ms": 0.372427
+          },
+          "probes": 1
+        },
+        {
+          "id": "M02",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 49,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass",
+              "current"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.669602,
+            "embedding_ms": 0.948286,
+            "search_ms": 0.21484999999999999,
+            "rerank_ms": 0.448768
+          },
+          "probes": 1
+        },
+        {
+          "id": "M03",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 45,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "temperature",
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.465897,
+            "embedding_ms": 0.860851,
+            "search_ms": 0.197806,
+            "rerank_ms": 0.35348999999999997
+          },
+          "probes": 1
+        },
+        {
+          "id": "M04",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "time",
+              "length",
+              "mass"
+            ],
+            "hits": 51,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 20,
+            "recall": 0.3333333333333333,
+            "complete": false
+          },
+          "primary": {
+            "covered": [
+              "mass"
+            ],
+            "hits": 5,
+            "recall": 0.3333333333333333,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 1.573156,
+            "embedding_ms": 0.799157,
+            "search_ms": 0.248436,
+            "rerank_ms": 0.451144
+          },
+          "probes": 1
+        },
+        {
+          "id": "M05",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "current",
+              "temperature",
+              "light"
+            ],
+            "hits": 39,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "current",
+              "temperature",
+              "light"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "current",
+              "light"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 1.468485,
+            "embedding_ms": 0.885788,
+            "search_ms": 0.180531,
+            "rerank_ms": 0.34900000000000003
+          },
+          "probes": 1
+        },
+        {
+          "id": "M06",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "mass",
+              "amount",
+              "temperature"
+            ],
+            "hits": 43,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mass",
+              "amount",
+              "temperature"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mass",
+              "amount"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 1.510314,
+            "embedding_ms": 0.83838,
+            "search_ms": 0.209766,
+            "rerank_ms": 0.411116
+          },
+          "probes": 1
+        },
+        {
+          "id": "M07",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "liter",
+              "concentration"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.7097609999999999,
+            "embedding_ms": 1.006749,
+            "search_ms": 0.236898,
+            "rerank_ms": 0.403132
+          },
+          "probes": 1
+        },
+        {
+          "id": "M08",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 46,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "quetta",
+              "quecto"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.494277,
+            "embedding_ms": 0.813222,
+            "search_ms": 0.19489700000000001,
+            "rerank_ms": 0.40258900000000003
+          },
+          "probes": 1
+        },
+        {
+          "id": "M09",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 43,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "compound",
+              "gram"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.639722,
+            "embedding_ms": 0.9640519999999999,
+            "search_ms": 0.21338100000000002,
+            "rerank_ms": 0.38931000000000004
+          },
+          "probes": 1
+        },
+        {
+          "id": "M10",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 52,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "volt",
+              "ohm"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1.568877,
+            "embedding_ms": 0.885515,
+            "search_ms": 0.23194399999999998,
+            "rerank_ms": 0.389532
+          },
+          "probes": 1
+        },
+        {
+          "id": "N01",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 43,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 1.435493,
+            "embedding_ms": 0.82337,
+            "search_ms": 0.171993,
+            "rerank_ms": 0.381981
+          },
+          "probes": 1
+        },
+        {
+          "id": "N02",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 48,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 1.513717,
+            "embedding_ms": 0.833307,
+            "search_ms": 0.17857699999999999,
+            "rerank_ms": 0.438348
+          },
+          "probes": 1
+        },
+        {
+          "id": "N03",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 47,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 1.492958,
+            "embedding_ms": 0.813061,
+            "search_ms": 0.195269,
+            "rerank_ms": 0.41087399999999996
+          },
+          "probes": 1
+        },
+        {
+          "id": "N04",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 54,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 2.485129,
+            "embedding_ms": 1.4548020000000002,
+            "search_ms": 0.30736,
+            "rerank_ms": 0.571482
+          },
+          "probes": 1
+        }
+      ],
+      "worker_stats": {
+        "cache_hits": 48,
+        "cache_misses": 0,
+        "inference": {
+          "count": 0,
+          "embed": 0,
+          "generate": 0
+        }
+      }
+    }
+  ],
+  "paired_keys_and_rerank_scores_identical": true,
+  "production_defaults_changed": false,
+  "captures": {
+    "00-ingest.jsonl": "ac276f5e46583adda806a6fc03c17836c4e1e4d74360e1efe9f130753323c5e4",
+    "00-ingest.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "00-process.json": "cb00b6858641096a0217ec5956814d7cd4a254af332261b3e555602a165d5640",
+    "01-baseline.jsonl": "a535942f641a8115327c9347153c713f59e19cdf7f2fde4beef2e1efa8a62270",
+    "01-baseline.log": "faf9a8b32c5c880b04c5d03952e2ddd8770c2d4810cb58068664967c4d6ee812",
+    "01-process.json": "c97443f8226d13fc8c6004102e2dee233c647b5acbb1a9592386ab5ca97a7500",
+    "02-expanded.jsonl": "fd95812e1b4c9e428a896268542d34e4b704faed6b5c7ac6543aca4b54fb8f6c",
+    "02-expanded.log": "42c86f32b9200e46f98b16c0dd5c89bb3897c8135a77528a12c10dd1b85d41de",
+    "02-process.json": "cb63aec2161f265a15003efd5f4c0d9fca73fa855219b684cf0771171b17ddd3",
+    "03-expanded.jsonl": "57bf108dea61756ae936ee6e8d26d582810e2e32368eb838fea63f18d51212f8",
+    "03-expanded.log": "42c86f32b9200e46f98b16c0dd5c89bb3897c8135a77528a12c10dd1b85d41de",
+    "03-process.json": "be0f0eec16255f32c2705770fb1dd88d0c7a01fd7c4b815a9e95886c91b89694",
+    "04-baseline.jsonl": "f9d130887040215163d3536fd40020283cb4cc823c54aecd04915620e359893b",
+    "04-baseline.log": "faf9a8b32c5c880b04c5d03952e2ddd8770c2d4810cb58068664967c4d6ee812",
+    "04-process.json": "34dd42431fe10aa7f4a649e6639963783e2e87a225327cb0d7ad79566b8236ac",
+    "execution-freeze.json": "60b761499efaa246f65344161d6b8a25f83ee2a929feeb8c5f594af99a48b25e",
+    "scores.json": "3501c7c1b268eca1eebe36a6962bbdf28a56ce8d3544ce7ccb2e9dfd1b30bae9"
+  },
+  "input_freeze_sha256": "0cb17aad4ec3331784dd3f4db9f0079b904a7e42959afb0b09725a5fa08857d6",
+  "execution_freeze_sha256": "60b761499efaa246f65344161d6b8a25f83ee2a929feeb8c5f594af99a48b25e"
+}

@@ -1,0 +1,70 @@
+# SI Units – Temperature
+
+The kelvin (K) is defined by taking the fixed numerical value of the Boltzmann constant k to be 1.380 649 ×10^(−23) when expressed in the unit J K^(−1), which is equal to kg m^(2) s^(−2) K^(−1), where the kilogram, meter and second are defined in terms of h, c and ∆ν_(Cs). The temperature 0 K is commonly referred to as "absolute zero." On the widely used Celsius temperature scale, water freezes at 0 °C and boils at about 100 °C. One Celsius degree is an interval of 1 K, and zero degrees Celsius is 273.15 K. An interval of one Celsius degree corresponds to an interval of 1.8 Fahrenheit degrees on the Fahrenheit temperature scale.
+
+The standard temperature at the triple point of water is provided by a special cell, an evacuated glass cylinder containing pure water. When the cell is cooled enough so that a mantle of ice forms around the reentrant well, the temperature at the interface of solid, liquid, and vapor is 273.16 K. Thermometers to be calibrated are placed in the reentrant well.
+
+## Celsius Temperature Poem
+
+Activity: Estimate the Celsius temperature in each scene (ice crystals, tulip flowers, park bench, and swimming pool). Recite and reflect on the Celsius Temperature Poem. Use the hints provided by the poem.
+
+- 30 °C is hot
+
+- 20 °C is nice
+
+- 10 °C is cold
+
+- 0 °C is ice
+
+## Touchstone Temperatures (Approximate)
+
+Description | Celsius (°C) | Kelvin (K) | Fahrenheit (°F)
+
+Surface of the Sun | 5600 | 5900 | 10100
+
+Boiling Point of Water | 100 | 373 | 212
+
+Body Temperature | 37 | 310 | 99
+
+Sweltering Day | 40 | 313 | 104
+
+Hot Day | 30 | 303 | 86
+
+Room Temperature | 20 | 293 | 68
+
+Cold Day | 10 | 283 | 50
+
+Freezing Point of Water | 0 | 273 | 32
+
+## Oven Temperature Equivalences (Approximate)
+
+Description* | °F | °C
+
+Cool | 200 | 90
+
+Very Slow | 250 | 120
+
+Slow | 300 to 325 | 150 to 160
+
+Moderately Slow | 325 to 350 | 160 to 180
+
+Moderate | 350 to 375 | 180 to 190
+
+Moderately Hot | 375 to 400 | 190 to 200
+
+Hot | 400 to 450 | 200 to 230
+
+Very Hot | 450 to 500 | 230 to 260
+
+*These legacy culinary descriptions are provided as a guide for preparing heirloom and vintage recipes, translating the terms into modern oven temperature equivalents. The NIST Metric Kitchen provides additional cooking and baking measurement resources.
+
+## Temperature Conversion (Exact)
+
+From | To Fahrenheit | To Celsius | To Kelvin
+
+Fahrenheit (°F) | °F | (°F - 32) / 1.8 | (°F - 32) / 1.8 + 273.15
+
+Celsius (°C) | (°C * 1.8) + 32 | °C | °C + 273.15
+
+Kelvin (K) | (K - 273.15) * 1.8 + 32 | K - 273.15 | K
+

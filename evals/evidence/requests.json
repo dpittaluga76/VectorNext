@@ -1,0 +1,184 @@
+[
+  {
+    "id": "S01",
+    "question": "Which fixed constant and exact numerical value define the SI unit of time?",
+    "hints": [
+      "SI definition of time and its defining constant value"
+    ]
+  },
+  {
+    "id": "S02",
+    "question": "Which fixed constant and exact numerical value define the SI unit of length?",
+    "hints": [
+      "SI definition of length and its defining constant value"
+    ]
+  },
+  {
+    "id": "S03",
+    "question": "Which fixed constant and exact numerical value define the SI unit of mass?",
+    "hints": [
+      "SI definition of mass and its defining constant value"
+    ]
+  },
+  {
+    "id": "S04",
+    "question": "Which fixed constant and exact numerical value define the SI unit of electric current?",
+    "hints": [
+      "SI definition of electric current and its defining constant value"
+    ]
+  },
+  {
+    "id": "S05",
+    "question": "Which fixed constant and exact numerical value define the SI unit of thermodynamic temperature?",
+    "hints": [
+      "SI definition of thermodynamic temperature and its defining constant value"
+    ]
+  },
+  {
+    "id": "S06",
+    "question": "Which fixed constant and exact numerical value define the SI unit of amount of substance?",
+    "hints": [
+      "SI definition of amount of substance and its defining constant value"
+    ]
+  },
+  {
+    "id": "S07",
+    "question": "Which fixed constant and exact numerical value define the SI unit of luminous intensity?",
+    "hints": [
+      "SI definition of luminous intensity and its defining constant value"
+    ]
+  },
+  {
+    "id": "S08",
+    "question": "When writing a measurement in SI, what separates the number from the unit symbol?",
+    "hints": [
+      "SI number and unit symbol spacing rule"
+    ]
+  },
+  {
+    "id": "S09",
+    "question": "What is zero degrees Celsius expressed in kelvin, including the exact decimal value?",
+    "hints": [
+      "exact conversion of zero degrees Celsius to kelvin"
+    ]
+  },
+  {
+    "id": "S10",
+    "question": "When converting units, should intermediate quantities or the final result be rounded?",
+    "hints": [
+      "rounding intermediate quantities during unit conversion",
+      "rounding the final result of unit conversion"
+    ]
+  },
+  {
+    "id": "M01",
+    "question": "Which constants and exact values define the SI units of length and time?",
+    "hints": [
+      "SI definition of length and defining constant value",
+      "SI definition of time and defining constant value"
+    ]
+  },
+  {
+    "id": "M02",
+    "question": "Give the defining constants and their exact values for the SI units of mass and electric current.",
+    "hints": [
+      "SI definition of mass and defining constant value",
+      "SI definition of electric current and defining constant value"
+    ]
+  },
+  {
+    "id": "M03",
+    "question": "Which fixed constants and values define thermodynamic temperature and amount of substance in SI?",
+    "hints": [
+      "SI definition of thermodynamic temperature and defining constant value",
+      "SI definition of amount of substance and defining constant value"
+    ]
+  },
+  {
+    "id": "M04",
+    "question": "For time, length and mass, list the fixed constants and exact values that define their SI base units.",
+    "hints": [
+      "SI definition of time and defining constant value",
+      "SI definition of length and defining constant value",
+      "SI definition of mass and defining constant value"
+    ]
+  },
+  {
+    "id": "M05",
+    "question": "Compare the defining constants and exact values for electric current, thermodynamic temperature and luminous intensity.",
+    "hints": [
+      "SI definition of electric current and defining constant value",
+      "SI definition of thermodynamic temperature and defining constant value",
+      "SI definition of luminous intensity and defining constant value"
+    ]
+  },
+  {
+    "id": "M06",
+    "question": "What exact defining constants apply to the SI units of mass, amount of substance and thermodynamic temperature?",
+    "hints": [
+      "SI definition of mass and defining constant value",
+      "SI definition of amount of substance and defining constant value",
+      "SI definition of thermodynamic temperature and defining constant value"
+    ]
+  },
+  {
+    "id": "M07",
+    "question": "How is a liter related to a cubic decimeter, and what is the SI unit of concentration of amount of substance?",
+    "hints": [
+      "liter relationship to cubic decimeter",
+      "SI unit of concentration of amount of substance"
+    ]
+  },
+  {
+    "id": "M08",
+    "question": "What symbols and powers of ten correspond to the metric prefixes quetta and quecto?",
+    "hints": [
+      "quetta metric prefix symbol and power of ten",
+      "quecto metric prefix symbol and power of ten"
+    ]
+  },
+  {
+    "id": "M09",
+    "question": "Are compound SI prefixes allowed, and which unit receives prefix symbols for multiples and submultiples of mass?",
+    "hints": [
+      "rule for compound SI prefixes",
+      "prefix symbols for multiples and submultiples of mass"
+    ]
+  },
+  {
+    "id": "M10",
+    "question": "What are the SI units for electric potential difference and resistance, and how are they expressed using other electrical units?",
+    "hints": [
+      "SI unit of electric potential difference and unit relation",
+      "SI unit of electric resistance and unit relation"
+    ]
+  },
+  {
+    "id": "N01",
+    "question": "What temperature was measured in the fictional Cedar Lab at noon on 15 October 2026?",
+    "hints": [
+      "Cedar Lab temperature measurement on 15 October 2026"
+    ]
+  },
+  {
+    "id": "N02",
+    "question": "What is the measured mass of the fictional sample VX-742?",
+    "hints": [
+      "measured mass of sample VX-742"
+    ]
+  },
+  {
+    "id": "N03",
+    "question": "Which SI symbol and factor are assigned to the invented prefix hypermega?",
+    "hints": [
+      "hypermega SI prefix symbol and factor"
+    ]
+  },
+  {
+    "id": "N04",
+    "question": "What calibration correction was issued for thermometer VX-919 on 15 October 2026?",
+    "hints": [
+      "thermometer VX-919 calibration correction on 15 October 2026"
+    ]
+  }
+]

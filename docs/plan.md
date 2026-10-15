@@ -5,7 +5,9 @@ Design reference: [architecture.md](architecture.md).
 
 ## Current state
 
-- Phase: T01 through T21 complete. Next scope filter profiling; candidate retrieval and ambiguity experiments remain separate quality work.
+- Phase: T01 through T23 complete. Architecture/task definitions were updated before implementation. Production retrieval defaults are unchanged after T23; scope final evidence selection on new data next.
+- T23 complete: twelve fresh attributed NIST sources, 24 frozen questions and 96 offline CPU requests; 188 chunks admitted. Expanded candidates improve complete shortlist coverage 18/20 → 20/20, but final-five coverage remains 16/20 in both arms. Five scorer checks, one experimental Rust check, fixture/source freezes, format/Clippy and synthetic smoke passed. [Results and source-review limits](reports/t23-evidence.md). All experiment containers exited; data/caches retained, normal app unchanged.
+- T22 complete: immutable bounded scalar/document/media filter postings, exact scan fallback and unchanged search/API contracts. Verified 135 Rust checks, format/Clippy, 4,224 paired release requests, retained original volume hashes and offline production startup. [Results](reports/t22-filters.md). Compose selects built T22 API; normal app remains on T19.
 - T21 complete: bounded version-2 checkpoint stream with legacy reads, unchanged publication/journal/backup contracts and nine new regressions. Both formerly failing T20 states checkpoint/export/restore correctly on fresh copies; 132 Rust and 768 exact-query checks passed. Old-binary rollback requires a pre-upgrade copy; batch/job and total backup limits remain. [Results](reports/t21-checkpoints.md). T21 services stopped; original T20 data unchanged; normal app still running T19, with Compose selecting the built T21 API image for the next startup.
 - T20 complete: isolated CPU comparison at 12,800/51,200 supplied vectors, independent exact oracle, pgvector exact/HNSW, fixed filters, load/resource measurements and interruption recovery. All 4,096 timed requests completed; 2,048 exact requests and 512 recovery checks passed. PostgreSQL exact was faster in every warm group. VectorNext checkpoints failed at both sizes (64 MiB frame); journal recovery passed, but the dependent export path is blocked at those states. Verified 123 Rust/eight Python checks, format/Clippy, builds, smoke and manifests. [Results and limitations](reports/t20-pgvector.md). All benchmark services stopped; failed attempts, data and volumes retained; normal application unchanged.
 - T15 complete: exact English numeric grouping, named-month date-year boundaries and numeric-fragment checks in complete supplied evidence. Preserves quotes/typed values, JSON pointer/null semantics and API/storage contracts. Verified 108 Rust/90 Python checks, format/lint, the three-case probe, release image build/liveness and T14 archive integrity. [Results](reports/t15-numeric-proofs.md). No GPU benchmark rerun or revised T14 quality score.
@@ -41,7 +43,7 @@ T02 subsequently demonstrated container GPU visibility and actual CUDA inference
 
 ## Next useful step
 
-Scope filter eligibility/candidate profiling using fresh measurements, informed by the T20 attribute/empty-filter gap. T21's checkpoint/export repair is complete; read [results and compatibility](reports/t21-checkpoints.md). Keep candidate-retrieval and ambiguity quality experiments separate, retain structural context and ranked 30/20/5 defaults, and leave `coverage_v1` experimental. Preserve historical captures/volumes, the pre-T15 and pre-T21 source archives and the original unused holdout.
+Scope a fresh final evidence-selection experiment: T23 recovered evidence into the fixed reranker shortlist but lost it in the final five passages. Compare a bounded coverage/diversity policy against ranked selection on new frozen data, with explicit latency and source-support criteria, before any production change. Clarification/ambiguity remains a separate later proposal. Preserve all historical captures, the now-observed T23 corpus and the unused original holdout. No next implementation task is automatically authorized.
 
 ## Work queue
 
@@ -471,17 +473,51 @@ Completion evidence:
 - Verified 132 Rust checks (full 131 plus the added >64 MiB regression), format/Clippy, core/release/app builds, actual T19 export migration with identical records and old-reader rejection, and four offline production API/UI/docs smoke routes. Existing future-compatibility notices remain; no GPU/model or historical-quality rerun.
 - Compose selects built API/client/admin `:t21`; processor/generator stay unchanged. Normal app remains healthy on T19 until the next Start/Rebuild. All T21 test containers are stopped; new data/export/restored volumes and `data/t21/` reports/logs are retained. Old releases need an untouched pre-upgrade copy after new checkpoint publication. Next: scope filter profiling.
 
-### Later — Filter profiling
+### T22 — Filter profiling and indexing
 
-After T21, profile the observed attribute/empty-filter cost and consider candidate indexes with correctness checks on fresh measurements. This is a proposed follow-up, not an assertion that approximate indexing solves the measured gaps.
+Status: complete (2026-10-15). Depends on T21. Architecture/plan updated before implementation. [Results](reports/t22-filters.md), [protocol](t22-protocol.md), [reproduction](../experiments/t22/README.md).
 
-### Later — Candidate retrieval and ambiguity evaluation
+- Freeze a baseline binary/source identity and a fixed profiling workload before production edits. Use fresh copies/new capture paths; preserve historical stores and evaluation artifacts.
+- Profile filter/tokenization, dense/keyword/ranking stages and complete query latency separately. Include 12,800/51,200 base-vector sizes, unfiltered, document, scalar equality/range, empty, Boolean, trust/unknown and fallback cases; record index construction and indexing budgets.
+- Add immutable per-snapshot document/media postings and bounded top-level scalar attribute indexes. Preserve exact decimal/large-number comparisons, null/missing/type distinctions, generated-attribute trust, three-valued All/Any/Not behavior and full eligibility traces. Unsupported/over-budget columns use the original evaluator.
+- Preserve API and storage contracts, exact cosine/tie ordering, BM25 statistics, default retrieval budgets and model identities. No ANN, GPU work or production service migration.
+- Verify indexed versus scan decisions and complete search responses, boundary values, fallback/budget cases, compound filters, snapshot replacement/removal and concurrent readers. Run Rust regressions, formatting/Clippy and offline release checks.
+- Acceptance: unchanged results across deterministic equivalence checks and the frozen profile; reproducible latency/build/memory-counter evidence demonstrates the targeted improvement or reports its limits honestly. Update retrieval documentation, README and handoff; retain all captures and stop isolated containers before marking complete.
 
-Scope field-specific candidate retrieval and a clearly worded ambiguity evaluation after the storage-capacity follow-up identified by T20. Reranking cannot recover a required source absent from the candidate pool. Keep these quality experiments separate from API/usability acceptance and preserve historical freezes.
+Completion evidence: 135 Rust tests, formatting/Clippy, release/core/app builds and offline startup passed. The 4,224 profile requests match complete response hashes across 352 unique groups; large-corpus equality/empty/range medians improved from 16.302/16.693/25.177 ms to 0.252/0.059/1.024 ms. Build cost and fallback limits are reported. All 2,013 original T20 file hashes are unchanged; T22 captures/volume remain and isolated services are stopped. Normal app remains T19; Compose selects built T22.
+
+### T23 — Fresh evidence-retrieval improvement experiment
+
+Status: complete (2026-10-15). Depends on T22. Authorized after the filter work. [Protocol](t23-protocol.md), [results](reports/t23-evidence.md), [reproduction](../evals/evidence/README.md).
+
+- Select fresh attributed public reference documents; freeze snapshots, source terms, questions and source-bound evidence labels before retrieval runs. Keep original holdout and all historical comparisons unused/unchanged.
+- Use pinned real CPU embeddings/reranking, structural context and the existing ranked 30/20/5 baseline. Compare a fixed bounded field-focused candidate expansion in experiment tooling; retain original questions/scopes and record every auxiliary query.
+- Keep gold labels out of runtime queries and prompts. Freeze per-variant candidate/rerank/final budgets and disclose extra retrieval/encoding work. Do not tune on measured outcomes or silently promote the variant into production.
+- Measure source admission, candidate evidence recall, final evidence recall, complete-question coverage and latency, retaining failures and per-question captures. Include multi-source/detail questions and clearly scoped missing-evidence cases. No GPU/answer-generation quality claim.
+- Validate fixtures/scoring and run paired comparisons on identical admitted source revisions/model identities. Preserve execution/input hashes and failed attempts. Publish results/limitations even if the proposed strategy does not improve retrieval.
+- Acceptance: reproducible completed comparison on fresh data, source-linked scoring and honest conclusions, frozen artifacts and updated handoff. Agent-authored labels must not be described as independent human adjudication.
+
+Completion evidence: all 12 sources admitted (188 chunks); 96/96 requests succeeded in baseline/expanded/expanded/baseline order, with identical paired ranking/score outputs. Fixed 20-input coverage improved 18/20 → 20/20 questions (31/34 → 34/34 fact requirements); final-five coverage stayed 16/20 and 28/34. Empty-cache medians were 624.6/619.0 ms; cached medians 1.52/3.35 ms. Five Python scorer tests, one experimental Rust test, Docker fixture validation, format/Clippy, release build and separate synthetic real-model smoke passed. Post-run alternative time support is documented without rewriting gold. Production defaults, historical evaluations and normal services are unchanged. New sources/code/image identities and all captures/volumes remain available.
+
+### Later — Clarification and ambiguity evaluation
+
+Scope a separate clarification workflow and clearly worded ambiguity evaluation after T23. Candidate-retrieval evidence does not establish answerability or ambiguity quality. Keep production defaults and historical freezes intact.
 
 ## Session handoff discipline
 
 Keep the Current state and Next useful step sections accurate. For each meaningful work session, add one concise entry below with changed files/capabilities, task IDs, verification actually performed, unresolved issues, and the next step. Do not paste full chat transcripts or command logs.
+
+### 2026-10-15 — T23 completed
+
+- Froze twelve attributed NIST text sources, 24 question/hint requests and separate source-bound labels before inference. Built an isolated CPU candidate-expansion experiment, validation/scoring tests and reproducible runner; preserved all inputs, code/image identities and captures.
+- All 96 requests succeeded. Expansion improves the shortlist but not final-five evidence coverage; retain production defaults. Recorded conservative source-label limitations and separate real-inference versus result-cache latency.
+- Experimental containers exited; data/caches retained. Normal T19 app remains healthy, Compose selects built T22. Next scope final evidence selection with new data; no further implementation is started.
+
+### 2026-10-15 — T22 completed; T23 next
+
+- Updated architecture/plan first, froze and profiled T21, then implemented immutable bounded scalar/document/media indexes with the original scan evaluator as fallback. Added equivalence/revision/budget tests, paired profiling, reports and reproduction.
+- Verified 135 Rust tests, format/Clippy, 4,224 complete response checks, image builds and four offline API/UI/docs routes. Recorded filter gains plus index-build costs; original stores and historical evaluation artifacts are unchanged.
+- T22 containers stopped, captures and data retained; normal app stays on T19 while Compose selects T22. Next run the separately authorized fresh T23 evidence experiment, without GPU generation or production-default changes.
 
 ### 2026-10-15 — T21 completed
 

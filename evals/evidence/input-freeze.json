@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-10-15T15:57:33.084217+00:00",
+  "stage": "before ingestion or retrieval",
+  "files": {
+    "docs/t23-protocol.md": "686b8408d8a35e1ae5238df256949001b554fd37fc5b2d4436970c403a5042df",
+    "evals/evidence/fixtures/amount.txt": "910632af6aef6f1109cf8962f9cd51970334697a9f65657601c828545d5a1db0",
+    "evals/evidence/fixtures/conversion.txt": "5356d4bf0b3ab0d719b4d27e237137c7cf582d11780e48c9ddb6165d46f2ba14",
+    "evals/evidence/fixtures/current.txt": "8313339db2708c1c955cc7286d5f484d3df947218f06c445a5b3062a169e114a",
+    "evals/evidence/fixtures/length.txt": "dd368c0fc8839ddd24c84e860b53f8aa8f5999147906275a343b51805f7f5393",
+    "evals/evidence/fixtures/light.txt": "35d766719aa98c9fc3a1f83469f5f73ba3d6be011ba8916fc249d1b7f01c44f7",
+    "evals/evidence/fixtures/mass.txt": "8cfd2b1d0fbb83bf558c60c60818a1cf1ab14daeef918aa23558ec7e803b999d",
+    "evals/evidence/fixtures/overview.txt": "8d9f4072aa24f5d962fe10148696dd64e942249db2abc8ab9b5aa754b8fc15d5",
+    "evals/evidence/fixtures/prefixes.txt": "5bc804ab83839025d775bf33c92a9dcbe58cd4e903692ba3c8b8a8a11028c9e6",
+    "evals/evidence/fixtures/style.txt": "0cc762443b7804ee7e8fb803706ffac2ad7fcfc13e332aba10fdda98a3c9c491",
+    "evals/evidence/fixtures/temperature.txt": "a532ee4b37c34d2b56f970e71d0813b060377c61077c71fed1ac50c29a757511",
+    "evals/evidence/fixtures/time.txt": "5658cba401842a9b3e67bbd58870602eb7b6a426797efd5fafc66f9d3e35b19f",
+    "evals/evidence/fixtures/writing.txt": "cf1a3b038f43dbbbec37db0bda613912c98e69c849b1dc745f219033c8d07eb0",
+    "evals/evidence/gold.json": "f53e0107f30b1788b2339e9a71a711bb8e55f985104988a0a3ab728642065208",
+    "evals/evidence/NOTICE.md": "a4eec4a52aba5cd6a8e5185c0ecd1a931fc9e0693aa2c742d017193917f24f06",
+    "evals/evidence/requests.json": "2702913d0ea02c5916cfbc7b8421017a86785092c9e6afd36faecf2840eb2aa6",
+    "evals/evidence/sources.json": "2c62f8f43ee8a36d9c50563d2afea0d99386ef83c3371dba8838be24122a0547"
+  }
+}

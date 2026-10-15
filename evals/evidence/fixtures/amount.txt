@@ -1,0 +1,8 @@
+# SI Units – Amount of Substance
+
+One mole (mol) contains exactly 6.02214076 × 10^(23) elementary entities. This number is the fixed numerical value of the Avogadro constant, N_(A), when expressed in the unit mol^(−1) and is called the Avogadro number. The amount of substance, symbol n, of a system is a measure of the number of specified elementary entities. An elementary entity may be an atom, a molecule, an ion, an electron, any other particle or specified group of particles.
+
+When the mole is used, the elementary entities must be specified and may be atoms, molecules, ions, electrons, other particles, or specified groups of such particles.
+
+The SI unit of concentration (of amount of substance) is the mole per cubic meter (mol/m^(3)).
+

@@ -1,0 +1,417 @@
+{
+  "facts": {
+    "length": {
+      "supports": [
+        {
+          "document_id": "length",
+          "quote": "The meter (m) is defined by taking the fixed numerical value of the speed of light in vacuum c to be 299,792,458 when expressed in the unit m s^(−1), where the second is defined in terms of ∆ν_(Cs).",
+          "start": 23,
+          "end": 226,
+          "source_sha256": "dd368c0fc8839ddd24c84e860b53f8aa8f5999147906275a343b51805f7f5393"
+        }
+      ]
+    },
+    "time": {
+      "supports": [
+        {
+          "document_id": "time",
+          "quote": "The second (s) is defined by taking the fixed numerical value of the cesium frequency ∆ν_(Cs), the unperturbed ground-state hyperfine transition frequency of the cesium-133 atom, to be 9,192,631,770 when expressed in the unit Hz, which is equal to s^(−1).",
+          "start": 21,
+          "end": 281,
+          "source_sha256": "5658cba401842a9b3e67bbd58870602eb7b6a426797efd5fafc66f9d3e35b19f"
+        }
+      ]
+    },
+    "mass": {
+      "supports": [
+        {
+          "document_id": "mass",
+          "quote": "The kilogram (kg) is defined by taking the fixed numerical value of the Planck constant h to be 6.62607015 ×10^(−34) when expressed in the unit J s, which is equal to kg m^(2) s^(−1), where the meter and the second are defined in terms of c and ∆ν_(Cs).",
+          "start": 19,
+          "end": 280,
+          "source_sha256": "8cfd2b1d0fbb83bf558c60c60818a1cf1ab14daeef918aa23558ec7e803b999d"
+        }
+      ]
+    },
+    "current": {
+      "supports": [
+        {
+          "document_id": "current",
+          "quote": "The ampere is defined by taking the fixed numerical value of the elementary charge e to be 1.602176634 × 10^(−19) when expressed in the unit C, which is equal to A s, where the second is defined in terms of ∆ν_(Cs).",
+          "start": 33,
+          "end": 254,
+          "source_sha256": "8313339db2708c1c955cc7286d5f484d3df947218f06c445a5b3062a169e114a"
+        }
+      ]
+    },
+    "temperature": {
+      "supports": [
+        {
+          "document_id": "temperature",
+          "quote": "The kelvin (K) is defined by taking the fixed numerical value of the Boltzmann constant k to be 1.380 649 ×10^(−23) when expressed in the unit J K^(−1), which is equal to kg m^(2) s^(−2) K^(−1), where the kilogram, meter and second are defined in terms of h, c and ∆ν_(Cs).",
+          "start": 28,
+          "end": 313,
+          "source_sha256": "a532ee4b37c34d2b56f970e71d0813b060377c61077c71fed1ac50c29a757511"
+        }
+      ]
+    },
+    "light": {
+      "supports": [
+        {
+          "document_id": "light",
+          "quote": "The candela (cd) is defined by taking the fixed numerical value of the luminous efficacy of monochromatic radiation of frequency 540 × 10^(12) Hz, K_(cd), to be 683 when expressed in the unit lm W^(−1), which is equal to cd sr W^(−1), or cd sr kg^(−1) m^(−2) s^(3), where the kilogram, meter and second are defined in terms of h, c and ∆ν_(Cs).",
+          "start": 35,
+          "end": 391,
+          "source_sha256": "35d766719aa98c9fc3a1f83469f5f73ba3d6be011ba8916fc249d1b7f01c44f7"
+        }
+      ]
+    },
+    "amount": {
+      "supports": [
+        {
+          "document_id": "amount",
+          "quote": "One mole (mol) contains exactly 6.02214076 × 10^(23) elementary entities. This number is the fixed numerical value of the Avogadro constant, N_(A), when expressed in the unit mol^(−1) and is called the Avogadro number.",
+          "start": 36,
+          "end": 257,
+          "source_sha256": "910632af6aef6f1109cf8962f9cd51970334697a9f65657601c828545d5a1db0"
+        }
+      ]
+    },
+    "spacing": {
+      "supports": [
+        {
+          "document_id": "writing",
+          "quote": "A space is used between the number and the symbol to which it refers.",
+          "start": 2684,
+          "end": 2753,
+          "source_sha256": "cf1a3b038f43dbbbec37db0bda613912c98e69c849b1dc745f219033c8d07eb0"
+        },
+        {
+          "document_id": "style",
+          "quote": "The numerical value always precedes the unit and a space is always used to separate the unit from the number.",
+          "start": 6850,
+          "end": 6959,
+          "source_sha256": "0cc762443b7804ee7e8fb803706ffac2ad7fcfc13e332aba10fdda98a3c9c491"
+        }
+      ]
+    },
+    "celsius": {
+      "supports": [
+        {
+          "document_id": "temperature",
+          "quote": "zero degrees Celsius is 273.15 K.",
+          "start": 521,
+          "end": 554,
+          "source_sha256": "a532ee4b37c34d2b56f970e71d0813b060377c61077c71fed1ac50c29a757511"
+        }
+      ]
+    },
+    "intermediate": {
+      "supports": [
+        {
+          "document_id": "conversion",
+          "quote": "Do not round any quantities used within the calculation.",
+          "start": 5895,
+          "end": 5951,
+          "source_sha256": "5356d4bf0b3ab0d719b4d27e237137c7cf582d11780e48c9ddb6165d46f2ba14"
+        }
+      ]
+    },
+    "final": {
+      "supports": [
+        {
+          "document_id": "conversion",
+          "quote": "Only round the final calculated quantity.",
+          "start": 5955,
+          "end": 5996,
+          "source_sha256": "5356d4bf0b3ab0d719b4d27e237137c7cf582d11780e48c9ddb6165d46f2ba14"
+        }
+      ]
+    },
+    "liter": {
+      "supports": [
+        {
+          "document_id": "length",
+          "quote": "The liter (1 cubic decimeter), although not an SI unit, is accepted for use with the SI",
+          "start": 705,
+          "end": 792,
+          "source_sha256": "dd368c0fc8839ddd24c84e860b53f8aa8f5999147906275a343b51805f7f5393"
+        }
+      ]
+    },
+    "concentration": {
+      "supports": [
+        {
+          "document_id": "amount",
+          "quote": "The SI unit of concentration (of amount of substance) is the mole per cubic meter (mol/m^(3)).",
+          "start": 657,
+          "end": 751,
+          "source_sha256": "910632af6aef6f1109cf8962f9cd51970334697a9f65657601c828545d5a1db0"
+        }
+      ]
+    },
+    "quetta": {
+      "supports": [
+        {
+          "document_id": "prefixes",
+          "quote": "quetta | Q | 10^(30)",
+          "start": 1211,
+          "end": 1231,
+          "source_sha256": "5bc804ab83839025d775bf33c92a9dcbe58cd4e903692ba3c8b8a8a11028c9e6"
+        }
+      ]
+    },
+    "quecto": {
+      "supports": [
+        {
+          "document_id": "prefixes",
+          "quote": "quecto | q | 10^(-30)",
+          "start": 2291,
+          "end": 2312,
+          "source_sha256": "5bc804ab83839025d775bf33c92a9dcbe58cd4e903692ba3c8b8a8a11028c9e6"
+        }
+      ]
+    },
+    "compound": {
+      "supports": [
+        {
+          "document_id": "writing",
+          "quote": "Compound prefix names or symbols are not permitted.",
+          "start": 4313,
+          "end": 4364,
+          "source_sha256": "cf1a3b038f43dbbbec37db0bda613912c98e69c849b1dc745f219033c8d07eb0"
+        },
+        {
+          "document_id": "style",
+          "quote": "A prefix is never used in isolation and compound prefixes are never used.",
+          "start": 1342,
+          "end": 1415,
+          "source_sha256": "0cc762443b7804ee7e8fb803706ffac2ad7fcfc13e332aba10fdda98a3c9c491"
+        }
+      ]
+    },
+    "gram": {
+      "supports": [
+        {
+          "document_id": "prefixes",
+          "quote": "symbols for decimal multiples and submultiples of the unit of mass are formed by attaching SI prefix symbols to g (gram).",
+          "start": 4716,
+          "end": 4837,
+          "source_sha256": "5bc804ab83839025d775bf33c92a9dcbe58cd4e903692ba3c8b8a8a11028c9e6"
+        },
+        {
+          "document_id": "writing",
+          "quote": "symbols for decimal multiples and submultiples of the unit of mass are formed by attaching SI prefix symbols to g (gram).",
+          "start": 5015,
+          "end": 5136,
+          "source_sha256": "cf1a3b038f43dbbbec37db0bda613912c98e69c849b1dc745f219033c8d07eb0"
+        },
+        {
+          "document_id": "mass",
+          "quote": "Names and symbols for decimal multiples and submultiples of the unit of mass are formed by attaching prefix names to the unit name \"gram,\" and prefix symbols to the unit symbol \"g.\"",
+          "start": 1237,
+          "end": 1418,
+          "source_sha256": "8cfd2b1d0fbb83bf558c60c60818a1cf1ab14daeef918aa23558ec7e803b999d"
+        }
+      ]
+    },
+    "volt": {
+      "supports": [
+        {
+          "document_id": "current",
+          "quote": "The SI unit of electric potential difference is the volt (V) 1 V = 1 W/A.",
+          "start": 256,
+          "end": 329,
+          "source_sha256": "8313339db2708c1c955cc7286d5f484d3df947218f06c445a5b3062a169e114a"
+        }
+      ]
+    },
+    "ohm": {
+      "supports": [
+        {
+          "document_id": "current",
+          "quote": "The SI unit of electric resistance is the ohm (Ω). 1 Ω = 1 V/A.",
+          "start": 331,
+          "end": 396,
+          "source_sha256": "8313339db2708c1c955cc7286d5f484d3df947218f06c445a5b3062a169e114a"
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "S01",
+      "group": "single",
+      "facts": [
+        "time"
+      ]
+    },
+    {
+      "id": "S02",
+      "group": "single",
+      "facts": [
+        "length"
+      ]
+    },
+    {
+      "id": "S03",
+      "group": "single",
+      "facts": [
+        "mass"
+      ]
+    },
+    {
+      "id": "S04",
+      "group": "single",
+      "facts": [
+        "current"
+      ]
+    },
+    {
+      "id": "S05",
+      "group": "single",
+      "facts": [
+        "temperature"
+      ]
+    },
+    {
+      "id": "S06",
+      "group": "single",
+      "facts": [
+        "amount"
+      ]
+    },
+    {
+      "id": "S07",
+      "group": "single",
+      "facts": [
+        "light"
+      ]
+    },
+    {
+      "id": "S08",
+      "group": "single",
+      "facts": [
+        "spacing"
+      ]
+    },
+    {
+      "id": "S09",
+      "group": "single",
+      "facts": [
+        "celsius"
+      ]
+    },
+    {
+      "id": "S10",
+      "group": "single",
+      "facts": [
+        "intermediate",
+        "final"
+      ]
+    },
+    {
+      "id": "M01",
+      "group": "multi",
+      "facts": [
+        "length",
+        "time"
+      ]
+    },
+    {
+      "id": "M02",
+      "group": "multi",
+      "facts": [
+        "mass",
+        "current"
+      ]
+    },
+    {
+      "id": "M03",
+      "group": "multi",
+      "facts": [
+        "temperature",
+        "amount"
+      ]
+    },
+    {
+      "id": "M04",
+      "group": "multi",
+      "facts": [
+        "time",
+        "length",
+        "mass"
+      ]
+    },
+    {
+      "id": "M05",
+      "group": "multi",
+      "facts": [
+        "current",
+        "temperature",
+        "light"
+      ]
+    },
+    {
+      "id": "M06",
+      "group": "multi",
+      "facts": [
+        "mass",
+        "amount",
+        "temperature"
+      ]
+    },
+    {
+      "id": "M07",
+      "group": "multi",
+      "facts": [
+        "liter",
+        "concentration"
+      ]
+    },
+    {
+      "id": "M08",
+      "group": "multi",
+      "facts": [
+        "quetta",
+        "quecto"
+      ]
+    },
+    {
+      "id": "M09",
+      "group": "multi",
+      "facts": [
+        "compound",
+        "gram"
+      ]
+    },
+    {
+      "id": "M10",
+      "group": "multi",
+      "facts": [
+        "volt",
+        "ohm"
+      ]
+    },
+    {
+      "id": "N01",
+      "group": "missing",
+      "facts": []
+    },
+    {
+      "id": "N02",
+      "group": "missing",
+      "facts": []
+    },
+    {
+      "id": "N03",
+      "group": "missing",
+      "facts": []
+    },
+    {
+      "id": "N04",
+      "group": "missing",
+      "facts": []
+    }
+  ]
+}

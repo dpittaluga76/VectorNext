@@ -1,6 +1,6 @@
 # VectorNext architecture
 
-Status: implemented T01–T21 local application, evaluations, workflow reports, recovery, numeric proof support, browser workspace, Axum API with local OpenAPI documentation, isolated pgvector comparison and bounded checkpoint/export repair. Remaining proposals are identified below.
+Status: implemented T01–T22 local application, evaluations, workflow reports, recovery, numeric proof support, browser workspace, Axum API with local OpenAPI documentation, isolated pgvector comparison, bounded checkpoint/export repair and filter indexing. T23 fresh evidence retrieval is complete as an experiment; production retrieval defaults remain unchanged. Remaining proposals are identified below.
 Last updated: 2026-10-15.
 
 This document condenses the project discussion into an implementation reference. It is not a claim that the system is implemented or that every proposed technology has been selected. Explicit user instructions can revise it.
@@ -23,6 +23,22 @@ T01 evaluation fixtures/contracts, T02 local-model feasibility, T03's Rust stora
 T10 adds source/answer scoring, isolated cold/warm API comparisons, stage/queue/resource measurements, bounded answer options and independent keyword-field weights. The [evaluation report](reports/t10-evaluation.md) retains structural context and exact search as defaults. Two primary passages reduced median response time by 30–32% on the 13 development questions; the later [T11 public-source comparison](reports/t11-independent.md) found lost answers with two, so five remain the general default. Generated context did not improve final answers and cost substantially more to ingest. These results do not establish broad retrieval quality.
 
 ## 2. Integrated deployment
+
+### Adopted filter optimization — T22 (implemented 2026-10-15)
+
+Profile the existing exact-search filter stage before editing production code, then add disposable, immutable indexes scoped to the same snapshot and embedding space as `SearchIndex`. Index document IDs, media types and a bounded set of top-level scalar attribute columns. Use exact canonical numeric keys, source/generated trust information and true/unknown row sets to preserve three-valued Boolean semantics. Nested pointers, containers and columns outside the indexing budget retain the existing evaluator. Prefer a complete correct scan to an incomplete index; indexed fields and build/posting/key budgets must be deterministic and reported.
+
+Keep HTTP/storage formats, query validation, exact cosine scores/ties, BM25 corpus statistics, RRF/deduplication, eligibility traces and unknown counts unchanged. Do not add inferred filters, ANN, model calls or persistent indexes. Measure index build cost, index size counters, filter/search latency and result equivalence with trace on/off on fresh isolated copies. Preserve T20/T21 data and reports; compare frozen baseline and optimized binaries on identical inputs and resource limits, with warm/cold-build boundaries explicit. Normal application services are not upgraded by this experiment.
+
+T22 passed 135 Rust tests, format/Clippy, 4,224 release requests with identical response groups, and offline API/UI/docs startup. At 51,232 vectors, scalar equality median fell from 16.302 to 0.252 ms in the isolated in-process profile; index construction costs more. Nested fields retain scans. [Results and limits](reports/t22-filters.md). Compose selects the built T22 API image; normal services remain running their previous images.
+
+### Adopted fresh evidence experiment — T23 (completed 2026-10-15)
+
+Run a separately frozen, CPU-only evidence-retrieval experiment using fresh attributed public reference documents, real pinned MiniLM embeddings and the existing reranker. Compare the original-question ranked baseline with a bounded field-focused candidate expansion strategy in experiment tooling. Keep original questions, explicit scopes, source evidence, structural context, actual token budgets and the baseline 30/20/5 configuration authoritative. Auxiliary queries are recorded retrieval aids, never evidence or automatic hard filters. Production defaults remain unchanged unless separately justified and adopted.
+
+Freeze source snapshots, queries, evidence labels, candidate budgets, comparison/scoring rules and execution identities before measured retrieval. Separate source admission, candidate recall, final evidence recall/complete coverage and latency; include missing sources and failed requests in denominators. Author labels without inspecting experiment retrieval outputs, document that agent-authored labels are not independent human adjudication, and retain all attempts. This experiment measures evidence retrieval, not generated-answer quality. Do not use the original holdout or change T11/T14/T20/T21 artifacts. GPU generation is unnecessary.
+
+Disposition: the frozen twelve-source NIST corpus admitted 188 chunks; all 96 CPU retrieval requests passed. Authored question hints plus round-robin candidate merging improved complete frozen evidence coverage at 20 reranker inputs from 18/20 to 20/20 positive questions, but both arms retained only 16/20 in the final five. Keep production ranked 30/20/5 unchanged. This experiment does not implement automatic query decomposition or replace production answer assembly. Source-review exceptions and cache/latency limits are in [T23 results](reports/t23-evidence.md); the observed corpus is now regression data. A future final-selection/coverage experiment needs new frozen data and a separately adopted design.
 
 ### Adopted scalable checkpoints — T21 (implemented 2026-10-15)
 

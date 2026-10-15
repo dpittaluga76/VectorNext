@@ -1,0 +1,6 @@
+# SI Units – Luminous Intensity
+
+The candela (cd) is defined by taking the fixed numerical value of the luminous efficacy of monochromatic radiation of frequency 540 × 10^(12) Hz, K_(cd), to be 683 when expressed in the unit lm W^(−1), which is equal to cd sr W^(−1), or cd sr kg^(−1) m^(−2) s^(3), where the kilogram, meter and second are defined in terms of h, c and ∆ν_(Cs).
+
+Radiation at frequencies other than 540 x 10^(12) Hz is also measured in candelas in accordance with the standard luminous efficiency, V (λ), curve that peaks at 540 x 10^(12) Hz (yellow-green). Learn more about the realization of the candela and luminance (candela per square meter).
+

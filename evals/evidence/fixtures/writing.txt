@@ -1,0 +1,104 @@
+# Writing with SI (Metric System) Units
+
+A benefit of the International System of Units (SI) is that written technical information is effectively communicated, overcoming the variations of language, including spelling and pronunciation. Values of quantities are expressed using Arabic symbols for numbers paired with a unit symbol, often with a prefix symbol that modifies unit magnitude. International SI style and usage publications focus on written communication. Verbal pronunciation of SI terminology is purposefully not addressed in the BIPM SI Brochure (French is the primary language, English is secondary), NIST SP 330 (uses American English spelling), NIST SP 811 (uses American English spelling), or IEEE SA - IEEE/ASTM SI_10-2016.
+
+NIST SP 811 provides an editorial checklist for reviewing manuscripts' conformity with the SI and the basic principles of physical quantities and units.
+
+Spelling | Plurals | Capitalization | Spacing | Punctuation | Decimal Point | Prefixes Incorrect Terms | Pronunciation | Conversions | Time | International Paper Sizes
+
+## Spelling
+
+NIST guides use American English spelling practice in accordance with the United States Government Printing Office Style Manual, found in Webster's Third New International Dictionary. All units and prefixes should be spelled as shown in this guide. Examples: meter, liter, and deka, NOT metre, litre, and deca.
+
+## Plurals
+
+- Unit Names: Names of units are made plural only when the numerical value that precedes them is more than one. Examples: 0.25 liter (quantity is less than one) and 250 milliliters (quantity is more than one).
+
+- Unit Symbols: Symbols for units are never pluralized. For example, 250 mm = 250 millimeters, NOT 250 mms.Return to Top
+
+## Capitalization
+
+- Unit Names: The names of all units start with a lowercase letter (meter, lumen, weber, volt, etc.) except, of course, at the beginning of the sentence. There is one exception: in "degree Celsius" (unit symbol °C) the unit "degree" is lowercase but the modifier "Celsius" is capitalized. Thus, body temperature is written as 37 degrees Celsius.
+
+- Unit Symbols: Unit symbols are written in lowercase letters (m for the unit "meter" or s for the unit "second"). Exceptions include the unit "liter" (L) and those units derived from the name of a person. When the unit is derived from the name of a person, the symbol or the first letter of the symbol is an uppercase letter (W for the unit "watt" or Pa for the unit "pascal").
+
+- Prefixes: Symbols of SI prefixes that mean a million or more are capitalized and those less than a million are lowercase. For example, M for mega (millions), m for milli (thousandths).
+
+## Spacing
+
+A space is used between the number and the symbol to which it refers. For example: 7 m, 31.4 kg, 37 °C.
+
+When a metric value is used as a one-thought modifier before a noun, hyphenating the quantity is not necessary. However, if a hyphen is used, write out the name of the metric quantity with the hyphen between the numeral and the quantity. For example:
+
+- a 2-liter bottle, NOT a 2-L bottle
+
+- a 100-meter relay, NOT a 100-m relay
+
+- 35-millimeter film, NOT 35-mm film
+
+Spaces are not used between prefixes and unit names nor between prefix symbols and unit symbols. Examples: milligram, mg (NOT milli-gram or m-g); kilometer, km (NOT kilo-meter or k-m); terahertz, THz (NOT tera-hertz or T-Hz).
+
+Technical writing often uses the SI writing style practice of separating digits into groups of three, counting from the decimal marker towards the left and right using a thin, fixed (nonbreaking) space. For example:
+
+- 76 483 522, NOT 76,483,522
+
+- 0.453 592 37, NOT 0.45359237
+
+- 8 012.594 7, NOT 8012.5947
+
+## Punctuation
+
+DO NOT use a period with metric unit names and symbols except at the end of a sentence.
+
+## Decimal Point
+
+The dot or period is used as the decimal point within numbers. For numbers less than one, a leading zero should be written before the decimal point. Examples: 7.038 g; 0.038 g.
+
+## Prefixes
+
+Some of the metric units listed above include prefixes such as kilo, centi, and milli. Prefixes, added to a unit name, create larger or smaller units by factors that are powers of 10. For example, add the prefix kilo, which means a thousand, to the unit gram to indicate 1000 g; thus 1000 g becomes 1 kg. Compound prefix names or symbols are not permitted. Example: nm (nanometer), NOT mμm (millimicrometer).
+
+Prefix symbols may be used with the unit symbol ºC and prefix names may be used with the unit name “degree Celsius.” For example, 12 mºC (12 millidegrees Celsius) is acceptable. However, to avoid confusion, prefix symbols (and prefix names) are not used with the time-related unit symbols (names) min (minute), h (hour), d (day); nor with the angle-related symbols (names) º (degree), ' (minute), and " (second).
+
+For historical reasons, the name "kilogram" for the SI base unit of mass contains the name "kilo," the SI prefix for 10^(3). Thus, because compound prefixes are unacceptable, symbols for decimal multiples and submultiples of the unit of mass are formed by attaching SI prefix symbols to g (gram). The names of such multiples and submultiples are formed by attaching SI prefix names to the name "gram." Example: 1 mg, NOT 1 μkg (1 microkilogram).
+
+## Incorrect Terms
+
+The prefix "kilo" stands for one thousand of the named unit. It is not a stand-alone term in the metric system. The most common misuse of this is the use of "kilo" for a "kilogram" of something. The word "micron" is an obsolete term for the quantity "micrometer." Also "degree centigrade" is no longer the correct unit term for temperature in the metric system; it has been replaced by degree Celsius. Use the name "metric ton," not "tonne."
+
+## Pronunciation
+
+The pronunciation of common metric units is well known, except for pascal, which rhymes with rascal, and hectare, which rhymes with bare. The first syllable of every prefix is accented, not the second syllable. Example: KILL-oh-meter, NOT kil-LOM-meter. Additional pronunciation information is available online.
+
+## Conversions
+
+Conversions should follow a rule of reason: do not use more significant digits than justified by the precision of the original data. For example, 36 in should be converted to 91 cm, not 91.44 cm (36 in x 2.54 cm per in = 91.44 cm), and 40.1 in converts to 101.9 cm, not 101.854 cm.
+
+## Time
+
+The SI unit of time (actually time interval) is the second (s) and should be used in all technical calculations. When time relates to calendar cycles, the minute (min), hour (h), and day (d) might be necessary. For example, the kilometer per hour (km/h) is the usual unit for expressing vehicular speeds.
+
+## International Paper Sizes
+
+The International System of Units (SI) is about measuring the weight or dimensions of objects, not changing their sizes. The U.S. paper industry uses several customary paper formats that all have metric dimensions. Any object weighed or measured using the SI has a metric size (e.g., a typical page of office paper is 215 mm by 280 mm), just as the same object measured using customary units has a size (8.5 in by 11 in). While the standardization of sizes provides some benefits by simplifying things, the process of standardization is independent of the system of measurement.
+
+Note: This information is published as NIST LC 1137, Metric Style Guide for the News Media.
+
+For More Detail: Detailed metric information and precise conversions are available in NIST SP 811 and SP 1038 PDF. SP 811 also provides an editorial checklist for reviewing a manuscript's conformity with SI and the basic principles of physical quantities and units.
+
+## Resources
+
+- Writing with the SI (January 2021). Increase familiarity with SI writing conventions, add clarity to work correspondence, and build confidence in communicating measurement results.
+
+- SI/Metric Usage (US Metric Association). This list highlights important points to help with metric system communication, including common writing errors.
+
+- How Many? A Dictionary of Units of Measurement (Rowlett). Useful tips on using numbers and unit symbols in measurements.
+
+- SI Units
+
+- Guide for the Use of the International System of Units (SI) (NIST SP 811)
+
+## EXPLORE THE METRIC PROGRAM
+
+Becoming Familiar with SI | Everyday Estimation | Metrication FAQs | Prefixes | Metric Kitchen | SI Education and Training | SI Publications | Understanding Metric | Writing with Metric Units | National Metric Week | NEST-R (STEM Registry) | NIST Education Resources
+

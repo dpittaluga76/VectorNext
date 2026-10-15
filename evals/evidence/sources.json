@@ -1,0 +1,149 @@
+{
+  "extraction": "NIST HTML body to UTF-8 text; headings/paragraphs/lists/tables; superscripts ^(...), subscripts _(...); figures/scripts and navigation elements omitted; some resource text retained; whitespace normalized; modified 2026-10-15",
+  "sources": [
+    {
+      "id": "length",
+      "title": "SI Units – Length",
+      "url": "https://www.nist.gov/pml/owm/si-units-length",
+      "resolved_url": "https://www.nist.gov/pml/owm/si-units-length",
+      "retrieved_utc": "2026-10-15T15:45:31.207046+00:00",
+      "html_sha256": "215bbec112deffeb298c3e661a792e42713a5ebbfec0dd96df7dab224c66ac33",
+      "text_sha256": "dd368c0fc8839ddd24c84e860b53f8aa8f5999147906275a343b51805f7f5393",
+      "text_bytes": 1283,
+      "file": "fixtures/length.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "time",
+      "title": "SI Units – Time",
+      "url": "https://www.nist.gov/pml/owm/si-units-time",
+      "resolved_url": "https://www.nist.gov/pml/owm/si-units-time",
+      "retrieved_utc": "2026-10-15T15:45:31.946086+00:00",
+      "html_sha256": "d6d0167e9e2de775ef7bb8478e17106770393ac8510d4a239138cf600a00ccc7",
+      "text_sha256": "5658cba401842a9b3e67bbd58870602eb7b6a426797efd5fafc66f9d3e35b19f",
+      "text_bytes": 7186,
+      "file": "fixtures/time.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "mass",
+      "title": "SI Units - Mass",
+      "url": "https://www.nist.gov/pml/owm/si-units-mass",
+      "resolved_url": "https://www.nist.gov/pml/owm/si-units-mass",
+      "retrieved_utc": "2026-10-15T15:45:32.633654+00:00",
+      "html_sha256": "cdbfb929c13a13938a4fa827f2f8243f1be4e6fcd5356980c11c9f7cf4a97fce",
+      "text_sha256": "8cfd2b1d0fbb83bf558c60c60818a1cf1ab14daeef918aa23558ec7e803b999d",
+      "text_bytes": 1829,
+      "file": "fixtures/mass.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "current",
+      "title": "SI Units – Electric Current",
+      "url": "https://www.nist.gov/pml/owm/si-units-electric-current",
+      "resolved_url": "https://www.nist.gov/pml/owm/si-units-electric-current",
+      "retrieved_utc": "2026-10-15T15:45:33.299184+00:00",
+      "html_sha256": "b551150bfd754211159d32071d1e5779ebfe39534eef5cf496420e152f49d66d",
+      "text_sha256": "8313339db2708c1c955cc7286d5f484d3df947218f06c445a5b3062a169e114a",
+      "text_bytes": 1390,
+      "file": "fixtures/current.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "temperature",
+      "title": "SI Units – Temperature",
+      "url": "https://www.nist.gov/pml/owm/si-units-temperature",
+      "resolved_url": "https://www.nist.gov/pml/owm/si-units-temperature",
+      "retrieved_utc": "2026-10-15T15:45:34.544138+00:00",
+      "html_sha256": "d25bc3506b9cbefa675de740343875b22add9140d9873fdd2a4f97e5ee09c6ca",
+      "text_sha256": "a532ee4b37c34d2b56f970e71d0813b060377c61077c71fed1ac50c29a757511",
+      "text_bytes": 2580,
+      "file": "fixtures/temperature.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "amount",
+      "title": "SI Units – Amount of Substance",
+      "url": "https://www.nist.gov/pml/owm/si-units-amount-substance",
+      "resolved_url": "https://www.nist.gov/pml/owm/si-units-amount-substance",
+      "retrieved_utc": "2026-10-15T15:45:35.264001+00:00",
+      "html_sha256": "7c830a1506d62cbb9f91837ba83cccd7852a4e74ebdb06b7764e321766ee3ede",
+      "text_sha256": "910632af6aef6f1109cf8962f9cd51970334697a9f65657601c828545d5a1db0",
+      "text_bytes": 753,
+      "file": "fixtures/amount.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "light",
+      "title": "SI Units – Luminous Intensity",
+      "url": "https://www.nist.gov/pml/owm/si-units-luminous-intensity",
+      "resolved_url": "https://www.nist.gov/pml/owm/si-units-luminous-intensity",
+      "retrieved_utc": "2026-10-15T15:45:36.009413+00:00",
+      "html_sha256": "ec9b08491480df0855ea0be3ba10bb487729aa36f1f3b3c215398f2b0185a2bd",
+      "text_sha256": "35d766719aa98c9fc3a1f83469f5f73ba3d6be011ba8916fc249d1b7f01c44f7",
+      "text_bytes": 680,
+      "file": "fixtures/light.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "prefixes",
+      "title": "Metric (SI) Prefixes",
+      "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+      "resolved_url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+      "retrieved_utc": "2026-10-15T15:45:36.747108+00:00",
+      "html_sha256": "7d15982b1d69d4e400c993325a7041c49c48d66a8ed5b936eb99c2c695a2cc0c",
+      "text_sha256": "5bc804ab83839025d775bf33c92a9dcbe58cd4e903692ba3c8b8a8a11028c9e6",
+      "text_bytes": 7501,
+      "file": "fixtures/prefixes.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "writing",
+      "title": "Writing with SI (Metric System) Units",
+      "url": "https://www.nist.gov/pml/owm/writing-si-metric-system-units",
+      "resolved_url": "https://www.nist.gov/pml/owm/writing-si-metric-system-units",
+      "retrieved_utc": "2026-10-15T15:45:37.413303+00:00",
+      "html_sha256": "5f76a581e960acfe3c9e21ac211b5b04c8e20efada53089ae0d42e59e386b5f7",
+      "text_sha256": "cf1a3b038f43dbbbec37db0bda613912c98e69c849b1dc745f219033c8d07eb0",
+      "text_bytes": 8533,
+      "file": "fixtures/writing.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "conversion",
+      "title": "Unit Conversion",
+      "url": "https://www.nist.gov/pml/owm/metric-si/unit-conversion",
+      "resolved_url": "https://www.nist.gov/pml/owm/metric-si/unit-conversion",
+      "retrieved_utc": "2026-10-15T15:45:38.089191+00:00",
+      "html_sha256": "3271c1858e41b6aeb3985b6aed36f7067e0a9f2e25d0d3ef7d65f2967bb09c28",
+      "text_sha256": "5356d4bf0b3ab0d719b4d27e237137c7cf582d11780e48c9ddb6165d46f2ba14",
+      "text_bytes": 6863,
+      "file": "fixtures/conversion.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "overview",
+      "title": "SI Units",
+      "url": "https://www.nist.gov/pml/owm/metric-si/si-units",
+      "resolved_url": "https://www.nist.gov/pml/owm/metric-si/si-units",
+      "retrieved_utc": "2026-10-15T15:45:38.817327+00:00",
+      "html_sha256": "1f79deb8b2c4042cb4e535375d8484ade4365b083ff3be4fb0bf342c55ce710e",
+      "text_sha256": "8d9f4072aa24f5d962fe10148696dd64e942249db2abc8ab9b5aa754b8fc15d5",
+      "text_bytes": 7737,
+      "file": "fixtures/overview.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    },
+    {
+      "id": "style",
+      "title": "SP 330 - Section 5",
+      "url": "https://www.nist.gov/pml/special-publication-330/sp-330-section-5",
+      "resolved_url": "https://www.nist.gov/pml/special-publication-330/sp-330-section-5",
+      "retrieved_utc": "2026-10-15T15:45:39.819832+00:00",
+      "html_sha256": "835c49f861acff7bef06b3ee56778ae9d97c7b590a62e5831e78384064c7c9d3",
+      "text_sha256": "0cc762443b7804ee7e8fb803706ffac2ad7fcfc13e332aba10fdda98a3c9c491",
+      "text_bytes": 15999,
+      "file": "fixtures/style.txt",
+      "terms": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"
+    }
+  ]
+}

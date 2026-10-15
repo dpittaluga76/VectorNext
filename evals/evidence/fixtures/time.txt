@@ -1,0 +1,88 @@
+# SI Units – Time
+
+The second (s) is defined by taking the fixed numerical value of the cesium frequency ∆ν_(Cs), the unperturbed ground-state hyperfine transition frequency of the cesium-133 atom, to be 9,192,631,770 when expressed in the unit Hz, which is equal to s^(−1).
+
+The number of periods or cycles per second is called frequency. The SI unit for frequency is the hertz (Hz). One hertz is the same as one cycle per second. Standard frequencies and the correct time are broadcast by radio stations WWV and WWVB in Colorado, and WWVH in Hawaii. NIST delivers digital timing signals by telephone and through the internet.
+
+Official U.S. Government time is provided by NIST and USNO. NIST also offers an Internet Time Service (ITS) and an Automated Computer Time Service (ACTS) that allow setting of computer and other clocks through the Internet or over standard commercial telephone lines. Free software for using these services on several types of popular computers can be downloaded there. Information about these services can be found on the Time and Frequency Division Web site.
+
+## Resources for Teachers and Students
+
+## Teachers: Top 10 Tips for Teaching the Metric System. (NIST)
+
+- Not sure how to tell that scientific minded person in your life how you feel? Maybe our Superhero Valentine's Day cards will do the trick.
+
+- Download these fun coloring pages for Professor Second and our SI Superheroes.
+
+- League of SI Superheroes - Professor SecondThis comic book-style video animation series has been developed to help middle school students learn about the 7 SI base measurement units.
+
+- SI Units Card Deck (SP 1297) (NIST) - this activity offers a fun way to enhance understanding of the International System of Units.
+
+- SI Units Card Deck (SP 1297) (NIST) - this activity offers a fun way to enhance understanding of the International System of Units.
+
+- SI Base Units Relationship Poster (SP 1247) (NIST) - a colorful poster illustrating the relationships of the International System of Units (SI) derived units with special names and symbols and the seven traditional base units.
+
+- How Do You Measure Your Location Using GPS? (NIST HDYMI Series) - The Global Positioning System, or GPS, has been part of our daily lives for more than 20 years. Learn about how we measure our location using GPS in this article.
+
+- How Do We Measure Time? (NIST HDYMI Series) - Learn how we measure time using atomic clocks, which count the tiny vibrations of atoms to define the second with incredible precision.
+
+- How Do Atomic Clocks Work? (NIST) - Our modern world depends on clocks that tap the secrets hidden inside atoms. But how do we use these tiny particles to tell time? This article will answer that question.
+
+- Second: Introduction (NIST) - In the modern world, atoms have become our best clocks. Atomic clocks enable us to define the second. This article delves into the brief history of second.
+
+- The Time - Place Connection (Smithsonian) - If you want to know where you are, you need a reliable clock. This article from Smithsonian: National Air and Space Museum explores interesting facts about how knowing the accurate time is essential for determining position
+
+- 5 Concepts Can Help You Understand Quantum Mechanics and Technology — Without Math! Quantum mechanics may sound strange or confusing at first, but it is actually just a different way of understanding how the tiniest parts of our universe work. This blog explains key ideas and why they matter today.
+
+- SI Units Card Deck (SP 1297) (NIST) - this activity offers a fun way to enhance understanding of the International System of Units.
+
+- SI Base Units Relationship Poster (SP 1247) (NIST) - a colorful poster illustrating the relationships of the International System of Units (SI) derived units with special names and symbols and the seven traditional base units.
+
+- Atomic Clock (NIST) - Harnessing atomic time is one of humanity’s most beautiful and awe-inspiring achievements. This Page covers many interesting topics about atomic clocks.
+
+- A Brief History of Atomic Time (NIST) - Since the first societies, humans have needed to keep track of time. As human societies became more technological and complex, so did the demands for accurate timekeeping. Learn more about an interesting history of Atomic Time in this article.
+
+- How Do We Know What Time It Is? (NIST) - Time is probably the most measured quantity on Earth. At first glance, telling time seems simple. But there is an intricate global timekeeping effort behind this simplicity. Learn more in this article.
+
+- What Determines the Length of the Day? Precise time measurement in the International System of Units (SI) relies on atomic clocks rather than astronomical observations. Compare the difference between natural phenomena and a standardized measurement unit.
+
+- How to Rebuild an Atomic Clock (NIST/JILA) Atomic clocks are crucial for everyday living as they help our telecommunications, electrical power grids and many more. This article explores the importance of an atomic clock and how to rebuild it.
+
+- Measuring Time and Frequency (NIST) – Find out more about NIST's history including a brief history of atomic clocks and other time Frequently Asked Questions (FAQs).
+
+- Take A Walk Through Time (NIST) - Learn about different stages and eras of time. Click link to download the attached PDF file.
+
+- Think You Know What a Second Is? It Will Likely Change in the Next Decade - Timekeeping has come a long way from watching the Earth's rotation to using the vibrations of atoms. This article explores key ideas about time and why they matter.
+
+## FAQ
+
+## What is the current Coordinated Universal Time?
+
+NIST and the U.S. Naval Observatory jointly operate a website that provides the Official U.S. Time. Readings from the clocks of these two agencies contribute to world time, called Coordinated Universal Time (UTC). Learn more... How to get the time using a telephone, computer or radio signals? What is a leap second? What are the daylight saving time rules? Visit the Time and Frequency Division FAQs for more information.
+
+## League of SI Superheroes – Professor Second
+
+This comic book-style video animation series has been developed to help middle school students learn about the 7 SI base measurement units. With her precise timing powers, Professor Second is the master of time. The second is defined by the exact number of vibrations, 9,192,631,770 cycles of microwaves emitted by cesium atoms, making it the world’s standard unit of time.
+
+Navigate to more SI base unit information
+
+- SI Units
+
+- Fundamental Physical Constants
+
+- Length – meter (m)
+
+- Amount of substance – mole (mole)
+
+- Electric current – ampere (A)
+
+- Temperature – kelvin (K)
+
+- Luminous intensity – candela (cd)
+
+- Mass – kilogram (kg)
+
+## EXPLORE THE METRIC PROGRAM
+
+Time & Frequency | U.S. Metrication | Becoming Familiar with SI | Everyday Estimation | Metrication FAQs | Prefixes | Metric Kitchen | Metric Estimation Game | SI Education and Training | SI Publications | Understanding Metric | Writing with Metric Units | National Metric Week | NEST-R (STEM Registry) | NIST Education Resources
+

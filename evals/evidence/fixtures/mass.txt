@@ -1,0 +1,30 @@
+# SI Units - Mass
+
+The kilogram (kg) is defined by taking the fixed numerical value of the Planck constant h to be 6.62607015 ×10^(−34) when expressed in the unit J s, which is equal to kg m^(2) s^(−1), where the meter and the second are defined in terms of c and ∆ν_(Cs).
+
+The primary standard of mass for this country is United States Prototype Kilogram 20, which is a platinum-iridium cylinder kept at NIST. The kilogram, originally defined as the mass of one cubic decimeter of water at the temperature of maximum density, was known as the Kilogram of the Archives. It was replaced after the International Metric Convention in 1875 by the International Prototype Kilogram which became the unit of mass without reference to the mass of a cubic decimeter of water or to the Kilogram of the Archives. Each country that subscribed to the International Metric Convention was assigned one or more copies of the international standards; these are known as National Prototype Meters and Kilograms. Learn more about the history and current definition of the kilogram.
+
+Among the SI base units, the kilogram (kg) is the only one whose name and symbol, for historical reasons, include a prefix. "Kilo" the SI prefix for 1000 or 10^(3). Names and symbols for decimal multiples and submultiples of the unit of mass are formed by attaching prefix names to the unit name "gram," and prefix symbols to the unit symbol "g."
+
+Units of Mass
+
+10 milligrams (mg) | = | 1 centigrams (cg)
+
+10 centigrams | = | 1 decigrams (dg) = 100 milligrams
+
+10 decigrams | = | 1 gram (g)
+
+10 decigrams | = | 1000 milligrams
+
+10 grams | = | 1 dekagrams (dag)
+
+10 dekagrams | = | 1 hectogram (hg)
+
+10 dekagrams | = | 100 grams
+
+10 hectograms | = | 1 kilogram (kg)
+
+10 hectograms | = | 1000 grams
+
+1000 kilograms | = | 1 megagram (Mg) or 1 metric ton (t)
+

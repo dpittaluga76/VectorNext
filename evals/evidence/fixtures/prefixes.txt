@@ -1,0 +1,146 @@
+# Metric (SI) Prefixes
+
+Prefixes | Common metric prefixes and the relationship with their place values | Prefix Progress FAQ: How do I pronounce the prefix giga? | NIST SI Measurement System Chart
+
+A benefit of the SI (International System of Units) is that written technical information is effectively communicated, transcending the variations of language – including spelling and pronunciation. Values of quantities are expressed using Arabic symbols for numbers paired with a unit symbol, often with a prefix symbol that modifies unit magnitude.
+
+In the SI, designations of multiples and subdivision of any unit may be arrived at by combining with the name of the unit the prefixes deka, hecto, and kilo meaning, respectively, 10, 100, and 1000, and deci, centi, and milli, meaning, respectively, one-tenth, one-hundredth, and one-thousandth. In certain cases, particularly in scientific usage, it becomes convenient to provide for multiples larger than 1000 and for subdivisions smaller than one-thousandth. The following table of 24 SI prefixes ranging from 10^(30) to 10^(−30) are currently recognized for use.
+
+## Prefixes
+
+Purpose | Name | Symbol | Factor | Name
+
+larger quantities or whole units | quetta | Q | 10^(30) | nonillion
+
+ronna | R | 10^(27) | octillion
+
+yotta | Y | 10^(24) | septillion
+
+zetta | Z | 10^(21) | sextillion
+
+exa | E | 10^(18) | quintillion
+
+peta | P | 10^(15) | quadrillion
+
+tera Example: terahertz | T | 10^(12) | trillion
+
+giga Example: gigawatt | G | 10^(9) | billion
+
+mega | M | 10^(6) | million
+
+kilo Example: kiloliter | k | 10^(3) | thousand
+
+hecto Example: hectare | h | 10^(2) | hundred
+
+deka Example: dekameter | da | 10^(1) | ten
+
+| | | 10^(0) | one
+
+smaller quantities or sub units | deci Example: decimeter | d | 10^(-1) | tenth
+
+centi Example: centigram | c | 10^(-2) | hundredth
+
+milli Example: milliliter | m | 10^(-3) | thousandth
+
+micro Example: microgram | μ | 10^(-6) | millionth
+
+nano Example: nanometer | n | 10^(-9) | billionth
+
+pico Example: picogram | p | 10^(-12) | trillionth
+
+femto Example: femtosecond | f | 10^(-15) | quadrillionth
+
+atto | a | 10^(-18) | quintillionth
+
+zepto Example: zeptosecond | z | 10^(-21) | sextillionth
+
+yocto Example: yoctosecond | y | 10^(-24) | septillionth
+
+ronto | r | 10^(-27) | octillionth
+
+quecto | q | 10^(-30) | nonillionth
+
+The simplified table below shows common metric prefixes and the relationship with their place values. Note that the recommended decimal sign or marker for use in the United States is the dot on the line, which is used to separate whole numbers from parts. Use a leading zero for numbers less than one. The convention of writing a zero before the decimal point is used to ensure that the quantity is appropriately interpreted.
+
+Whole Units | Decimal Units
+
+thousands | hundreds | tens | SI unit^(*) | tenths | hundredths | thousandths
+
+1000 | 100 | 10 | 1 | 0.1 | 0.01 | 0.001
+
+kilo- | hecto- | deka- | meter gram liter | deci- | centi- | milli
+
+* SI base or derived units with special names may be used
+
+## Prefix Progress
+
+Since the first eight prefixes were adopted by the CGPM in 1889, there have been five subsequent prefix expansions. This chronological summary highlights these developments.
+
+Year | Description | Prefix Total
+
+1795 | Eight original SI prefixes were officially adopted: deca, hecto, kilo, myria, deci, centi, milli, and myrio, derived from Greek and Latin numbers. Initially, all prefixes were represented by lowercase symbols. | 8
+
+1889 | The first General Conference on Weights and Measures (CGPM) approves the 8 prefixes for use. | 8
+
+1960 | Two prefixes were made obsolete: myria and myrio. Six prefixes were added. Three for forming multiples: mega, giga, and tera. Three for forming submultiples: micro, nano, and pico. | 12
+
+1964 | Two prefixes for forming submultiples were added: femto and atto. This created an imbalanced situation, where there were more prefixes for small quantities. | 14
+
+1975 | Two prefixes for forming multiples were added: peta and exa. | 16
+
+1991 | Four prefixes were added. Two for forming multiples: zetta and yotta. Two for forming submultiples: zepto and yocto. | 20
+
+2022 | Four prefixes were added. Two for forming multiples: ronna and quetta. Two forming submultiples: ronto and quecto. | 24
+
+SI prefixes for submultiples (smaller quantities or sub units) are formatted with all lowercase symbols while prefixes for multiples (larger quantities or whole units) use uppercase symbols with the exception of three: kilo (k), hecto (h), and deka (da).
+
+For historical reasons, the name "kilogram" for the SI base unit of mass contains the name "kilo," the SI prefix for 10^(3). Thus, because compound prefixes are unacceptable, symbols for decimal multiples and submultiples of the unit of mass are formed by attaching SI prefix symbols to g (gram). The names of such multiples and submultiples are formed by attaching SI prefix names to the name "gram." Example: 1 mg, NOT 1 μkg (1 microkilogram).
+
+It’s important to note that spelling in NIST publications are made in accordance with the United States Government Printing Office Style Manual, which follows American English writing practices found in Webster's Third New International Dictionary. For example, the prefix deka is used (American English spelling) but not deca (British English). Webster’s pronunciation guidance reflects contemporary American English.
+
+Guidance is provided to aid general public use of the metric system. Writing with Metric Units discusses common best practices for effectively using SI practices in written communications and is based on NIST LC 1137, Metric Style Guide for the News Media.
+
+## FAQ: How do I pronounce the prefix giga?
+
+The Merriam-Webster Collegiate Dictionary provides two common pronunciations for the scientific term gigawatt. The soft “g” pronunciation is listed first, followed by the hard "g" pronunciation. Prefix Etymology resources list both soft and hard “g” pronunciations. The official language of the BIPM SI Brochure is French and includes an English translation but provides no pronunciation guidance.
+
+## NIST SI Measurement System Chart (2021)
+
+This chart is a colorful chart explaining the 7 base units of the SI, prefix symbols, and features the Measurement League: Guardians of the SI. SI Prefix symbols are featured in the chart and used to represent smaller or larger units by factors that are powers of 10. Submit hard copy requests to TheSI [at] nist.gov (TheSI[at]nist[dot]gov). Chart dimensions: 216 mm by 279 mm (8.5 in by 11 in).
+
+- SI Prefixes (BIPM)
+
+- SI Prefixes Chart (BIPM)
+
+- Commonly Used Metric System Units, Symbols, and Prefixes (US Metric Association).
+
+- SI Prefixes and Their Etymologies (US Metric Association).
+
+- Prefix Table and Approval Dates, How Many? A Dictionary of Units of Measurement (Rowlett).
+
+- Are you pronouncing 'kilometre' correctly? (Australian Broadcasting Corporation).
+
+- Becoming Familiar with SI
+
+- Everyday Estimation
+
+- U.S. Metrication
+
+- U.S. Metrication FAQs
+
+- SI Publications
+
+- Writing with SI (Metric) Units
+
+- Metric Kitchen
+
+- Metric Week
+
+- NEST-R (STEM Registry)
+
+- NIST Education Resources
+
+## EXPLORE THE METRIC PROGRAM
+
+Becoming Familiar with SI | Everyday Estimation | Metrication FAQs | Prefixes | Metric Kitchen | Metric Estimation Game | SI Education and Training | SI Publications | Understanding Metric | Writing with Metric Units | National Metric Week | NEST-R (STEM Registry) | NIST Education Resources
+

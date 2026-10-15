@@ -1,0 +1,24 @@
+# SI Units – Electric Current
+
+The ampere is defined by taking the fixed numerical value of the elementary charge e to be 1.602176634 × 10^(−19) when expressed in the unit C, which is equal to A s, where the second is defined in terms of ∆ν_(Cs).
+
+The SI unit of electric potential difference is the volt (V) 1 V = 1 W/A.
+
+The SI unit of electric resistance is the ohm (Ω). 1 Ω = 1 V/A.
+
+When spelled out in full, unit names are treated like ordinary English nouns. Thus, the names of all units start with a lower-case letter, except at the beginning of a sentence or in capitalized material such as a title. In keeping with this rule, the unit symbols for ampere are a capitalized "A" and volt is capitalized "V" because both unit names are based on the names of scientists.
+
+Andre Marie Ampere (1775 - 1836) Name endures in everyday life in the ampere, the unit for measuring electric current. These biographical website can help you learn more:
+
+- IEEE Global History Network
+
+- University of St. Andrews, Scotland
+
+Alessandro Volta (1745 - 1827) Name endures in everyday life in the volt, the derived unit for measuring electric potential and also the inventor of the first battery. These biographical website can help you learn more:
+
+- Engineering and Technology History Wiki
+
+- Massachusetts Institute of Technology (MIT) Libraries
+
+- Spark Museum of Electrical Invention
+
