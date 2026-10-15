@@ -163,6 +163,84 @@ fn pending_pdf_artifact_survives_backup_and_restart() {
 }
 
 #[test]
+fn rejected_pdf_diagnostics_are_available_before_publication_and_after_restart() {
+    let root = TempDir::new().unwrap();
+    let mut db = Database::open(root.path()).unwrap();
+    let artifact = pdf::Artifact::from_slice(
+        &fs::read("tests/fixtures/pdf/uninterpreted_graphic.json").unwrap(),
+    )
+    .unwrap();
+    let encoder = TestEncoder::default();
+    let config = artifact.config(encoder.space(), false).unwrap();
+    db.put_original(&serde_json::to_vec(&artifact).unwrap())
+        .unwrap();
+    db.submit_ingestion(
+        IngestRequest {
+            job_id: "graphic".into(),
+            document_id: "graphic".into(),
+            expected_revision: None,
+            media_type: MediaType::Pdf,
+            config,
+        },
+        &fs::read("processor/fixtures/uninterpreted_graphic.pdf").unwrap(),
+    )
+    .unwrap();
+    let processor = pdf::PdfProcessor {
+        local: LocalProcessor { encoder },
+        artifact,
+    };
+    assert!(db.advance_ingestion("graphic", &processor).is_err());
+    drop(db);
+    let app = Application::open(root.path(), Client::new("http://127.0.0.1:1".into())).unwrap();
+    let job = app.job("graphic").unwrap();
+    assert_eq!(job["stage"], "Uploaded");
+    assert_eq!(job["pdf_diagnostics"]["status"], "partial");
+    assert_eq!(job["pdf_diagnostics"]["allow_partial"], false);
+    assert!(job["pdf_diagnostics"]["warning_count"].as_u64().unwrap() > 0);
+    assert!(
+        job["pdf_diagnostics"]["next_action"]
+            .as_str()
+            .unwrap()
+            .contains("new job ID")
+    );
+    assert_eq!(app.documents().unwrap()["generation"], 0);
+}
+
+#[test]
+fn only_explicit_cpu_busy_is_retryable() {
+    for (body, is_busy) in [
+        (json!({"code":"busy","error":"lane full"}), true),
+        (json!({"error":"backend unavailable"}), false),
+    ] {
+        let server = tiny_http::Server::http("127.0.0.1:0").unwrap();
+        let url = format!("http://{}", server.server_addr());
+        let handle = thread::spawn(move || {
+            server
+                .recv()
+                .unwrap()
+                .respond(tiny_http::Response::from_string(body.to_string()).with_status_code(503))
+                .unwrap();
+        });
+        let client = Client::new(url);
+        let error = client
+            .rpc("background", json!({"op":"profile"}))
+            .unwrap_err();
+        assert_eq!(matches!(error, Error::Busy(_)), is_busy);
+        let (status, response) = vectornext::service::http::error_response(&error);
+        assert_eq!(status, 503);
+        assert_eq!(
+            response["error"]["code"],
+            if is_busy {
+                "busy"
+            } else {
+                "capability_unavailable"
+            }
+        );
+        handle.join().unwrap();
+    }
+}
+
+#[test]
 fn external_stage_failures_are_current_durable_and_explicitly_retried() {
     let root = TempDir::new().unwrap();
     let mut db = Database::open(root.path()).unwrap();

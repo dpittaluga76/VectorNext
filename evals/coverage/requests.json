@@ -1,0 +1,232 @@
+{
+  "ignition_duration": {
+    "question": "For how many seconds did Mariner 9 fire its main engine to enter Mars orbit?",
+    "fields": {
+      "seconds": {
+        "kind": "number",
+        "description": "Mariner 9 Mars orbit insertion engine burn duration in seconds",
+        "nullable": false
+      }
+    }
+  },
+  "mission_photos": {
+    "question": "How many photos had Mariner 9 returned by last contact, including the moon photos?",
+    "fields": {
+      "photos": {
+        "kind": "integer",
+        "description": "Mariner 9 final reported photo count, including Phobos and Deimos",
+        "nullable": false
+      }
+    }
+  },
+  "venus_photos": {
+    "question": "How many photos of Venus did Mariner 10 return during its Venus encounter?",
+    "fields": {
+      "photos": {
+        "kind": "integer",
+        "description": "Mariner 10 Venus encounter photo count",
+        "nullable": false
+      }
+    }
+  },
+  "three_mercury_ranges": {
+    "question": "Give the closest approach ranges in kilometers for Mariner 10's first, second and third Mercury flybys separately.",
+    "fields": {
+      "first_km": {
+        "kind": "integer",
+        "description": "Mariner 10 first Mercury flyby closest range in kilometers",
+        "nullable": false
+      },
+      "second_km": {
+        "kind": "integer",
+        "description": "Mariner 10 second Mercury flyby closest range in kilometers",
+        "nullable": false
+      },
+      "third_km": {
+        "kind": "integer",
+        "description": "Mariner 10 third Mercury flyby closest range in kilometers",
+        "nullable": false
+      }
+    }
+  },
+  "three_masses": {
+    "question": "Give the listed spacecraft masses in kilograms for Mariner 4, NEAR Shoemaker and Magellan separately.",
+    "fields": {
+      "mariner_4_kg": {
+        "kind": "number",
+        "description": "mariner 4 spacecraft mass in kilograms",
+        "nullable": false
+      },
+      "near_shoemaker_kg": {
+        "kind": "integer",
+        "description": "near shoemaker spacecraft mass in kilograms",
+        "nullable": false
+      },
+      "magellan_kg": {
+        "kind": "integer",
+        "description": "magellan spacecraft mass in kilograms",
+        "nullable": false
+      }
+    }
+  },
+  "three_launches": {
+    "question": "Give the launch years of Mariner 6, Mariner 9 and NEAR Shoemaker separately.",
+    "fields": {
+      "mariner_6_year": {
+        "kind": "integer",
+        "description": "mariner 6 launch year",
+        "nullable": false
+      },
+      "mariner_9_year": {
+        "kind": "integer",
+        "description": "mariner 9 launch year",
+        "nullable": false
+      },
+      "near_shoemaker_year": {
+        "kind": "integer",
+        "description": "near shoemaker launch year",
+        "nullable": false
+      }
+    }
+  },
+  "two_earthquakes": {
+    "question": "Give the USGS recorded magnitudes for the April 25, 2015 Nepal earthquake and December 26, 2004 Sumatra earthquake separately.",
+    "fields": {
+      "nepal_magnitude": {
+        "kind": "number",
+        "description": "nepal earthquake magnitude, April 25 2015",
+        "nullable": false
+      },
+      "sumatra_magnitude": {
+        "kind": "number",
+        "description": "sumatra earthquake magnitude, December 26 2004",
+        "nullable": false
+      }
+    }
+  },
+  "near_timeline": {
+    "question": "In which years did NEAR Shoemaker launch and touch down on Eros?",
+    "fields": {
+      "launch_year": {
+        "kind": "integer",
+        "description": "NEAR Shoemaker launch year",
+        "nullable": false
+      },
+      "landing_year": {
+        "kind": "integer",
+        "description": "NEAR Shoemaker touchdown on Eros year",
+        "nullable": false
+      }
+    }
+  },
+  "conversation_planet": {
+    "question": "How many photos did it return of that planet?",
+    "fields": {
+      "photos": {
+        "kind": "integer",
+        "description": "Photos of the planet asked about in the preceding user question",
+        "nullable": false
+      }
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "When did Mariner 10 encounter Venus?"
+      },
+      {
+        "role": "assistant",
+        "text": "It encountered Venus in February 1974, then continued to Mercury, where three flybys returned over 2,700 pictures."
+      }
+    ]
+  },
+  "conversation_mission": {
+    "question": "What was the final photo count for that mission, including the moon photos?",
+    "fields": {
+      "photos": {
+        "kind": "integer",
+        "description": "Final photo count for the mission named in the preceding user question",
+        "nullable": false
+      }
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "What did Mariner 9 observe at Mars?"
+      },
+      {
+        "role": "assistant",
+        "text": "It observed Mars, Phobos and Deimos; at least 80 photos showed the moons. Mariner 10 later imaged Venus and Mercury."
+      }
+    ]
+  },
+  "nepal_record": {
+    "question": "For the April 25, 2015 Nepal event, return the recorded magnitude, depth in kilometers, and raw tsunami flag stored in this USGS record.",
+    "fields": {
+      "magnitude": {
+        "kind": "number",
+        "description": "Nepal 2015 USGS magnitude",
+        "nullable": false
+      },
+      "depth_km": {
+        "kind": "number",
+        "description": "Nepal 2015 USGS geometry depth in kilometers",
+        "nullable": false
+      },
+      "tsunami_flag": {
+        "kind": "integer",
+        "description": "Nepal 2015 raw properties tsunami flag; not a statement about physical tsunami occurrence",
+        "nullable": false
+      }
+    }
+  },
+  "sumatra_stations": {
+    "question": "What station count is recorded as nst for the December 26, 2004 Sumatra earthquake?",
+    "fields": {
+      "stations": {
+        "kind": "integer",
+        "description": "Sumatra 2004 recorded nst station count",
+        "nullable": false
+      }
+    }
+  },
+  "raw_null": {
+    "question": "Return the raw nullable nst field for the April 25, 2015 Nepal earthquake.",
+    "fields": {
+      "nst": {
+        "kind": "integer",
+        "description": "Nepal 2015 raw nullable nst property",
+        "nullable": true
+      }
+    }
+  },
+  "unknown_count": {
+    "question": "How many stations were used for the April 25, 2015 Nepal earthquake, according to its nst field?",
+    "fields": {
+      "stations": {
+        "kind": "integer",
+        "description": "Nepal 2015 station count; an unknown is not a numeric count",
+        "nullable": false
+      }
+    }
+  },
+  "unspecified_flyby": {
+    "question": "At what closest range in kilometers did Mariner 10 fly by Mercury?",
+    "fields": {
+      "range_km": {
+        "kind": "integer",
+        "description": "Mariner 10 Mercury flyby closest range in kilometers",
+        "nullable": false
+      }
+    }
+  },
+  "absent_fact": {
+    "question": "How many humans traveled aboard Mariner 10, according to an explicit crew-count statement in these sources?",
+    "fields": {
+      "crew": {
+        "kind": "integer",
+        "description": "Explicitly reported Mariner 10 human crew count; do not infer from spacecraft type",
+        "nullable": false
+      }
+    }
+  }
+}

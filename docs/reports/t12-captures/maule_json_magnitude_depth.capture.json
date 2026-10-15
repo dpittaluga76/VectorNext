@@ -1,0 +1,10 @@
+{
+  "format": "vectornext-workflow-v1",
+  "operation": "ask",
+  "http_status": 400,
+  "response_json": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: selected JSON pointer is missing\"}}",
+  "context": {},
+  "elapsed_seconds": null,
+  "document": null,
+  "note": "Retained T11 case: maule_json_magnitude_depth. Rendered offline for T12; no new model call."
+}

@@ -1,4 +1,5 @@
 //! Shared database owner and short-write/long-processing application boundary.
+mod coordinator;
 pub mod http;
 pub mod remote;
 use crate::{
@@ -76,6 +77,7 @@ pub struct Application {
     background: Mutex<()>,
     interactive: Mutex<()>,
     active: Mutex<Option<String>>,
+    coordinator: Mutex<coordinator::State>,
     stopping: AtomicBool,
     measured: Mutex<BTreeMap<String, (u64, f64)>>,
     structural_weight: f64,
@@ -87,9 +89,15 @@ fn lock<T>(value: &Mutex<T>) -> Result<std::sync::MutexGuard<'_, T>> {
         .map_err(|_| Error::Unavailable("application lock poisoned; restart required".into()))
 }
 fn busy<T>(value: &Mutex<T>) -> Result<std::sync::MutexGuard<'_, T>> {
-    value
-        .try_lock()
-        .map_err(|_| Error::Unavailable("processing lane busy; retry later".into()))
+    match value.try_lock() {
+        Ok(guard) => Ok(guard),
+        Err(std::sync::TryLockError::WouldBlock) => {
+            Err(Error::Busy("processing lane busy; retry later".into()))
+        }
+        Err(_) => Err(Error::Unavailable(
+            "processing lane poisoned; restart required".into(),
+        )),
+    }
 }
 pub fn job_summary(job: &IngestJob) -> Value {
     json!({"job_id":job.request.job_id,"document_id":job.request.document_id,"revision":job.input_sha256,
@@ -121,6 +129,7 @@ impl Application {
             background: Mutex::new(()),
             interactive: Mutex::new(()),
             active: Mutex::new(None),
+            coordinator: Mutex::new(coordinator::State::default()),
             stopping: AtomicBool::new(false),
             measured: Mutex::new(BTreeMap::new()),
             structural_weight,
@@ -147,7 +156,7 @@ impl Application {
         let db = lock(&self.db)?;
         Ok(
             json!({"live":true,"storage_ready":!db.poisoned,"generation":db.snapshot().generation(),
-            "active_job":*lock(&self.active)?,"stopping":self.stopping.load(Ordering::Relaxed)}),
+            "active_job":*lock(&self.active)?,"coordinator":self.coordinator_status()?,"stopping":self.stopping.load(Ordering::Relaxed)}),
         )
     }
     pub fn ready(&self) -> Result<Value> {
@@ -158,6 +167,8 @@ impl Application {
             .unwrap_or_else(|e| json!({"error":e.to_string(),"capabilities":{}}));
         let capabilities = &processor["capabilities"];
         let ready = storage["storage_ready"] == true
+            && storage["coordinator"]["state"] == "running"
+            && !self.stopping.load(Ordering::Relaxed)
             && ["embedding", "reranking", "pdf", "generation"]
                 .iter()
                 .all(|k| capabilities[*k] == true);
@@ -182,17 +193,22 @@ impl Application {
     }
     pub fn jobs(&self) -> Result<Value> {
         Ok(
-            json!({"jobs":lock(&self.db)?.ingestion_jobs()?.iter().map(job_summary).collect::<Vec<_>>()}),
+            json!({"coordinator":self.coordinator_status()?,"jobs":lock(&self.db)?.ingestion_jobs()?.iter().map(job_summary).collect::<Vec<_>>()}),
         )
     }
     pub fn job(&self, id: &str) -> Result<Value> {
-        Ok(job_summary(
-            &lock(&self.db)?
-                .ingestion_job(id)?
-                .ok_or_else(|| Error::Invalid("unknown job".into()))?,
-        ))
+        let job = lock(&self.db)?
+            .ingestion_job(id)?
+            .ok_or_else(|| Error::Invalid("unknown job".into()))?;
+        let mut result = job_summary(&job);
+        result["coordinator"] = self.coordinator_status()?;
+        if job.request.config.pdf.is_some() {
+            result["pdf_diagnostics"] = self.pdf_diagnostics(&job)?;
+        }
+        Ok(result)
     }
     pub fn retry(&self, id: &str) -> Result<Value> {
+        self.require_coordinator()?;
         let _background = busy(&self.background)?;
         Ok(job_summary(&lock(&self.db)?.retry_ingestion(id)?))
     }
@@ -252,6 +268,7 @@ impl Application {
             !upload.allow_partial || upload.media_type == MediaType::Pdf,
             "partial extraction applies only to PDF",
         )?;
+        self.require_coordinator()?;
         let _background = busy(&self.background)?;
         let upload_start = Instant::now();
         let models = RemoteModels::connect(self.processor.clone(), "background")?;
@@ -405,8 +422,10 @@ impl Application {
     }
     /// Process one saved stage outside the database mutex. Only one coordinator runs.
     pub fn step(&self) -> Result<bool> {
-        let Ok(_background) = self.background.try_lock() else {
-            return Ok(false);
+        let _background = match busy(&self.background) {
+            Ok(guard) => guard,
+            Err(Error::Busy(_)) => return Ok(false),
+            Err(error) => return Err(error),
         };
         let job = {
             let db = lock(&self.db)?;
@@ -423,9 +442,18 @@ impl Application {
         let id = &job.request.job_id;
         let started = Instant::now();
         if job.stage == Stage::Embedded {
-            let result = lock(&self.db)?.commit_ingestion(id);
+            let mut db = lock(&self.db)?;
+            let result = db.commit_ingestion(id);
             self.measure("publication", started);
-            result?;
+            if let Err(error) = result {
+                if db.poisoned
+                    || db
+                        .ingestion_job(id)?
+                        .is_none_or(|j| j.last_failure.is_none())
+                {
+                    return Err(error);
+                }
+            }
             return Ok(true);
         }
         let request = lock(&self.db)?.ingestion_stage_request(id)?;
@@ -473,17 +501,7 @@ impl Application {
         Ok(true)
     }
     pub fn start(self: &Arc<Self>) -> std::thread::JoinHandle<()> {
-        let app = self.clone();
-        std::thread::spawn(move || {
-            while !app.stopping.load(Ordering::Relaxed) {
-                match app.step() {
-                    Ok(true) => continue,
-                    Err(error) => eprintln!("ingestion coordinator: {error}"),
-                    _ => (),
-                }
-                std::thread::sleep(Duration::from_millis(500));
-            }
-        })
+        self.start_coordinator(|app| app.step())
     }
     pub fn stop(&self) {
         self.stopping.store(true, Ordering::Relaxed);

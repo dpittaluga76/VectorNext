@@ -18,6 +18,8 @@ Verification covered a fresh volume, all three source formats, actual GPU answer
 
 Use `compose.app.yaml` and `python -m deployment.client` (standard library only), either through the containerized `client` tool or on the host. See the README for setup and commands. This is an initial versioned API, not a stable public compatibility promise. Responses preserve exact Rust JSON numeric literals; the client prints server bytes without converting them through Python floats.
 
+T12 adds optional `--explain`, `--report` and `--capture` flags for ingestion/job/search/ask commands, plus offline `explain` for saved captures. These are client views of existing responses, not new API routes. Only opted-in committed-job reports add a read-only document inspection, which must match the job revision. See [workflow debugging](workflow-debugging.md) for usage and observation limits.
+
 | Method/path | Request/result |
 | --- | --- |
 | `GET /healthz` | Process liveness, storage readiness, generation, active job |
@@ -41,7 +43,9 @@ T10 metrics are diagnostic cumulative counters, reset by process recreation. Rus
 
 ## Admission and recovery
 
-One background operation and one interactive model operation can run in the API at once. Busy callers receive 503 and may retry. The processor independently enforces one operation in each lane. PDF conversion occupies the background lane; source-only reads use neither lane. The GPU wrapper gives waiting interactive generation priority, but cannot preempt an active request. No answer cache is introduced.
+T13 adds [recovery and diagnostic behavior](reliability.md): readiness requires a running coordinator, and health/job inspection exposes its state and restart instruction. A panic or unrecoverable loop error stops ingestion admission; healthy committed source reads remain available. PDF job inspection includes hash-bound extraction diagnostics before publication. Answer validation failures return HTTP 400 `answer_rejected` with bounded unvalidated diagnostics under `error`, never a supported answer.
+
+One background operation and one interactive model operation can run in the API at once. Busy callers receive explicit 503 `busy` errors. The CLI retries ingestion/retry admission up to three times by default (`--busy-retries 0..5`), retaining the identical payload/job ID and recording every rejection in stderr/captures. Unknown outcomes and saved stage failures are not automatically retried. The processor independently enforces one operation in each lane. PDF conversion occupies the background lane; source-only reads use neither lane. The GPU wrapper gives waiting interactive generation priority, but cannot preempt an active request. No answer cache is introduced.
 
 HTTP dispatch admits 16 handlers; JSON bodies are limited to 64 KiB, or 23 MiB for base64 uploads. Internal model frames/replies are capped at 4 MiB, PDF input/artifacts at 16 MiB. CPU worker calls have a 420-second deadline (720 seconds for the multi-call answer operation); a timed-out or broken child is killed before reuse. PDF work has a 185-second outer deadline and kills its process group, including OCR descendants. Container CPU, RAM, process and temporary-disk limits bound individual services. The API's small HTTP library does not provide a complete slow-client connection deadline; do not expose this local endpoint as a public service.
 

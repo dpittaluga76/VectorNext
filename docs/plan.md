@@ -5,13 +5,17 @@ Design reference: [architecture.md](architecture.md).
 
 ## Current state
 
-- Phase: T01 through T11 complete. T12 and T13 are proposed follow-ups, not started.
+- Phase: T01 through T15 complete. Next: scope field-specific candidate retrieval and clearer ambiguity evaluation.
+- T15 complete: exact English numeric grouping, named-month date-year boundaries and numeric-fragment checks in complete supplied evidence. Preserves quotes/typed values, JSON pointer/null semantics and API/storage contracts. Verified 108 Rust/90 Python checks, format/lint, the three-case probe, release image build/liveness and T14 archive integrity. [Results](reports/t15-numeric-proofs.md). No GPU benchmark rerun or revised T14 quality score.
+- T14 complete: opt-in field-focused selection and actual-record JSON pointer constraints, annotation v2 and a new eight-source/16-question frozen comparison. All 96 local requests completed: five 8/16, two 7/16, coverage 8/16 in each pass. Coverage cut median latency 43.5–44.4%; retain five by default. [Results](reports/t14-evidence-coverage.md), [workflow](reports/t14-coverage-workflow.md) and [source-review limitations](reports/t14-source-review.md). All T14 services stopped; volumes/captures retained. 101 Rust/116 Python checks passed; a separate probe exposed numeric proof-boundary defects for T15.
+- T13 complete: supervised coordinator, pre-publication PDF diagnostics, bounded busy-admission retries and rejected-answer error envelopes. Verified 97 Rust/90 Python checks and a fresh CPU operational drill with real illustrated NASA PDFs, interruption/retry, unchanged committed data and idempotent publication. [Results and limits](reports/t13-reliability.md). Test services stopped; captures and volumes retained.
 - Implemented: Rust storage/retrieval and TXT/JSON/PDF ingestion, durable jobs, and 66 foundation tests (18 storage, 20 TXT/JSON/job durability, 8 PDF, 18 retrieval, 2 diagnostic); offline CPU Docling/Tesseract adapter with 13 tests; synthetic fixtures/schema/validator and 27 T01 tests; an offline Docker local-model experiment with pinned downloads, GPU generation, CPU embeddings/reranking, 11 T02 contract tests, optional status-dependent output constraints, and archived measurements.
 - T07 implemented: real MiniLM embeddings, three context policies, separately attributed Gemma 4 26B annotations, bounded caches, Docker ingestion/inspection/probe tools, seven additional Rust tests and five Python worker tests. Total core checks: 73.
 - T08 implemented: snapshot-scoped hybrid retrieval/CPU reranking, budgeted source evidence assembly, two-stage Gemma answers, exact JSON pointer reads, source/type checks, deterministic templates, separate prose drafts, complete filtered structured lookup, and bounded generation priority. Ten additional Rust tests bring the core total to 83; Python worker/answer/scheduler coverage totals 18. All 13 source-authored development cases passed; see [T08 results](reports/t08-answers.md) for qualifications and prior failures.
 - T09 implemented: shared Rust API/database owner, isolated CPU service with bounded lanes, local client, capability readiness, three-service Compose, and offline checksummed export/restore. Six new Rust checks bring the total to 89; four CPU transport checks bring Python worker coverage to 22. Integrated TXT/JSON/PDF ingestion, actual GPU answers, full model outages, restart/rebuild, interrupted work and exact restoration passed; see [T09 results](reports/t09-deployment.md).
 - T10 complete: isolated evaluation runner, source-coverage/answer scorer, independent keyword weights, bounded answer budgets and stage/resource/queue measurements. Six configurations produced 156 responses on the same 13 development questions, cold/warm; only one-primary context failed the table question in both passes. Two primaries passed 26/26 and reduced median response time by 30–32%, but five remain the general default. Generated context added ingestion cost without final answer gain. The 400-document/12,800-vector capacity probe measured 9.946-ms median hybrid search; this is supplied-vector capacity, not corpus quality. Verified 90 Rust, 36 fixture/scorer and 22 worker/transport checks, Linux formatting/Clippy and Compose. See [T10 results](reports/t10-evaluation.md). Six holdout questions remain unused.
 - T11 complete: 20 attributed NASA/USGS source snapshots, 28 frozen questions, 47 source references and four counterbalanced two-versus-five blocks. Admitted 18 documents / 658 chunks; six questions from unavailable PDFs remain in the denominator. Five scored 16/28 and two 15/28 in both passes. Two cut median latency by 46–50% but lost two answers and improved one; retain five by default. Repaired a UTF-8 line-mapping panic before any comparison queries and preserved the initial attempt. Verified 91 Rust, 54 evaluation and 22 worker/transport checks, formatting/Clippy, Compose and the real NASA Voyager README demo. See [T11 results](reports/t11-independent.md). This first public-source set is Codex-authored, not independently administered; broad quality remains unproven.
+- T12 complete: opt-in human-readable ingestion/search/answer reports, client commands, API/function references, exact-response captures and offline replay in the existing CLI. Verified 25 new reporting/client checks and 58 existing evaluation/transport checks, a fresh Docker Voyager ingestion/search/Gemma answer, and retained failure/abstention examples. Command references were added through offline replay without new inference. Read [the Voyager report](reports/t12-voyager-workflow.md), [usage guide](workflow-debugging.md) and [verification](reports/t12-workflow.md). T12 services are stopped; captures and volumes retained. The original T11 execution freeze remains unchanged; the intentional client extension requires a historical checkout to repeat that exact experiment.
 - Not implemented: web UI, public authentication/multi-user service, corpus aggregates, approximate indexing, or broad independently administered quality validation.
 - Available: public project overview and quickstart in the [README](../README.md), detailed [development/operations commands](development.md), repository instructions, architecture, this task plan, the [storage specification](storage.md), [retrieval specification](retrieval.md), [source-coverage diagnostics](reports/t04-retrieval.md), and [evaluation guide](../evals/README.md).
 - User-confirmed scope: our own vector database; local models and GPU; Docker; TXT/PDF/JSON; approximately 400 files of 10–30 KB; MinIO/Redis optional.
@@ -35,7 +39,7 @@ T02 subsequently demonstrated container GPU visibility and actual CUDA inference
 
 ## Next useful step
 
-The next proposed implementation task is **T12**, ingestion recovery and failure diagnostics, based on [T11's retained failures](reports/t11-independent.md). Follow with **T13**, question-aware evidence coverage and a new frozen evaluation. Keep structural context and 30/20/5 defaults. T11 services are stopped and all volumes/captures are retained; T07/T09/T10 data and the six original holdout questions remain untouched. Do not present tuning on the now-observed T11 set as new independent validation.
+Review [T15 validation results](reports/t15-numeric-proofs.md) and [T14 source-support findings](reports/t14-source-review.md), then scope a separate field-specific candidate-retrieval experiment and clearly worded ambiguity cases. A new quality claim needs a fresh frozen protocol/corpus. Keep structural context and 30/20/5 defaults; `coverage_v1` stays experimental. T11–T14 services are stopped, volumes/captures retained, and the six original holdout questions remain unused. T11/T14 are observed regression evidence. Preserve `backups/t14-source-before-t15.zip` for historical reproduction; current runtime intentionally differs from the old execution freeze.
 
 ## Work queue
 
@@ -281,7 +285,7 @@ Completion evidence (2026-10-14):
 - Completed five/cold, two/cold, two/warm and five/warm: 112 requests, 104 HTTP successes and eight retained HTTP 400 errors. Five scored 16/28 in each pass; two scored 15/28. Cold medians were 22.269 s versus 11.081 s; warm medians 21.173 s versus 11.515 s. Two lost a three-document answer and the Uranus follow-up while fixing the Galileo distractor case; the conservative decision gate fails, so five remain the default.
 - Inspected 17 distinct proof groups covering all 46 supported responses. Preserved raw source-overlap failures for valid alternative passages and three annotation spans crossing blank separators; separate [review evidence](reports/t11-source-review.json) explains them without rewriting labels or scores. Rejected drafts remain unavailable for full diagnosis.
 - Packaged the real NASA Voyager source/request and verified README ingest/search/ask in a fresh separate database. Verified 167 automated checks (91 Rust, 54 evaluation, 22 worker/transport), formatting/Clippy, Compose and 86 frozen inputs. See [full results](reports/t11-independent.md) and [machine-readable evidence](reports/t11-independent.json).
-- Stopped all T11 services; retained both attempts, caches and raw captures. All T01/T10 records and six holdout questions remain unchanged. T12/T13 are proposed follow-ups, not part of this completed evaluation.
+- Stopped all T11 services; retained both attempts, caches and raw captures. All T01/T10 records and six holdout questions remain unchanged. The reliability/coverage follow-ups, now T13/T14, are not part of this completed evaluation.
 
 User requested an independent factual dataset, two-versus-five passage comparison, and a real README example. Adopt this as an additional task without changing the original regression fixtures.
 
@@ -294,9 +298,44 @@ Acceptance:
 - Apply the protocol's conservative decision rule; retain five by default unless justified, and disclose dataset/measurement limits.
 - Replace README example/quickstart with a cited real fact, verify it live, and update report, reproducible commands and handoff.
 
-### T12 — Harden ingestion recovery and failure diagnostics
+### T12 — Explain the workflow with human-readable debug information
 
-Status: proposed follow-up, not started. Dependency: T11. Findings motivating the scope are preserved in T11; do not change its sources, labels, captures or scores.
+Status: done. Dependencies: T09–T11. Implemented following the user's request to run T12.
+
+Generate a short, readable account of what happened during ingestion, search and answering. A reader should be able to follow the workflow from the input to the result without understanding the internals or reading raw logs. Cover every major stage that ran; keep each stage's explanation shallow and concrete.
+
+Scope:
+
+- Ingestion: identify the document and format; summarize reading/parsing or OCR, records/chunks created, context policy, embedding and storage; show warnings and the final job outcome.
+- Search: show the question, any history or rewrite actually used, keyword/vector search, filtering/fusion, reranking and selected passages. Include useful counts, source names/locations and short excerpts rather than vectors, large payloads or score dumps.
+- Answering: show the evidence supplied, local model used, answerability decision, extraction, validation and formatting; end with the answer or a clear ambiguity, insufficient-evidence or failure outcome. Label optional rewrites separately when they ran.
+- Present steps in execution order with plain-language status, measured elapsed time and known cache reuse when available. Distinguish completed, skipped, failed and unrecorded steps; do not invent events, timings, reasons or model reasoning.
+- Include the client invocation, API handler and high-level function references. Preserve missing/recovered command provenance and distinguish implementation references from measured runtime calls.
+- Add an opt-in readable view to the existing CLI that can be saved as text or Markdown. Keep the existing structured API reports available. Build the explanation from recorded execution data, without additional LLM calls or another service.
+
+Acceptance:
+
+- A reader can identify the input, what the workflow did, which source passages informed the result, and where it stopped or failed from one concise report.
+- Ingestion, standalone search and question answering each have readable coverage. Include TXT/PDF/JSON-specific steps when applicable, and make skipped optional stages visible.
+- Exercise a successful factual answer plus ambiguous/insufficient-evidence and failed-ingestion or failed-answer cases. Reports match actual recorded stages and source references; unavailable details are explicitly marked.
+- Preserve existing answers, exact typed values, source provenance, retrieval/model defaults and normal JSON output. Reporting does not change retrieval or inference behavior.
+- Document the implemented commands and provide a readable report for the real Voyager example. Check the presentation using retained captures or targeted fixtures; no broad GPU benchmark is needed for formatting work.
+
+Boundary: this task explains the workflow at a high level. Deep profiling, full prompt/token/vector dumps, a web dashboard and the reliability/retrieval fixes below remain outside its scope. Minimal stage metadata may be added where needed to explain actual execution; worker recovery and detailed rejected-draft diagnostics remain T13.
+
+Completion evidence (2026-10-14):
+
+- Implemented `deployment/workflow.py` and CLI `--explain`, `--report`, `--capture`, plus offline `explain`. Reports preserve execution outcomes, source excerpts/locations and exact typed values, label skipped/unrecorded steps, and add no inference or services. Extra document inspection is read-only and revision-checked.
+- Passed 78 offline checks: 20 new workflow/client regressions, four existing transport checks and 54 existing evaluation checks. Verified default raw JSON output, precise outbound filter literals, null/string-null distinction, safe Markdown, failures and non-overwrite behavior.
+- Fresh isolated Docker run on port 8092 ingested the real Voyager TXT into 86 blocks/25 chunks, returned three search hits, and answered the 1977/1979/1980 timeline with local Gemma. The combined [workflow report](reports/t12-voyager-workflow.md) was rendered offline from those exact captures. Four retained T11 responses exercise ambiguity, insufficient evidence, rejected JSON-pointer and PDF-ingestion failures.
+- Published seven public-source captures, [usage instructions](workflow-debugging.md) and [verification evidence](reports/t12-workflow.md). Stopped only `vectornext-t12`; retained its database/cache and `data/t12/20261014-workflow/` records. No Rust, model, prompt or default changes. T11's old freeze and results remain intact; the new CLI intentionally differs from the historical execution hash.
+- Follow-up: added recorded client arguments, API handlers and stage function references; regenerated the Voyager/failure reports offline. The three published Voyager envelopes recover command arguments from the saved run record; original responses and raw drill files remain unchanged. Fixed the report's disabled-reranking status. Passed 83 offline checks (25 workflow/client, four transport, 54 evaluation); no model rerun.
+
+### T13 — Harden ingestion recovery and failure diagnostics
+
+Status: done. Dependencies: T11–T12. Findings motivating the scope are preserved in T11; do not change its sources, labels, captures or scores.
+
+Implemented: supervised coordinator state through readiness/job inspection; restart from durable stages; stored PDF diagnostics before publication; bounded client retries only for explicit busy admission, recording every rejection in stderr/captures. Saved stage failures still require explicit retry. Rejected-answer drafts remain inside error envelopes. No quality retuning or GPU run.
 
 - Make a failed ingestion coordinator visible to readiness/job inspection; exercise recovery after an unexpected worker failure without losing committed documents or silently hanging queued work.
 - Expose actionable PDF extraction diagnostics before publication and exercise the existing explicit partial-text policy with real illustrated PDFs. Preserve warnings; do not silently weaken strict ingestion.
@@ -304,9 +343,11 @@ Status: proposed follow-up, not started. Dependency: T11. Findings motivating th
 - Preserve useful rejected-answer diagnostics for missing JSON pointers and quoted-value failures without reporting invalid drafts as supported answers.
 - Verify with targeted regressions and a fresh operational drill. Existing T11 outcomes become regression evidence, not fresh independent quality validation.
 
-### T13 — Evaluate question-aware evidence coverage
+Completion evidence (2026-10-14): 97 Rust and 90 Python checks passed, plus formatting/Clippy/Compose and final image builds. The fresh `vectornext-t13` CPU drill preserved five busy rejections, strict rejection and explicit partial-text publication of two illustrated NASA PDFs (48/four warnings), actual API termination, one durable processor-outage failure and explicit retry into 500 chunks. The committed Voyager revision stayed unchanged and publication remained idempotent. Coordinator panic and rejected-answer envelopes have deterministic regressions. All T13 services stopped, volumes/captures retained; [report](reports/t13-reliability.md), [workflow](reports/t13-operational-workflow.md) and [recovery guide](reliability.md) record limits and commands. Historical T11 sources/labels/scores/freezes remain unchanged.
 
-Status: proposed follow-up, not started. Dependencies: T11 and T12. Keep the general five-primary default until new evidence supports a change.
+### T14 — Evaluate question-aware evidence coverage
+
+Status: done. Dependencies: T11 and T13. Keep the general five-primary default. The [T14 protocol](t14-protocol.md) fixed the candidate, annotation v2, new eight-source/16-question corpus, six comparison blocks and adoption gate before inference.
 
 - Evaluate source diversity and constraint coverage before selecting a smaller context; a fixed count alone can omit another mission or a distant passage in the same document.
 - Investigate conversational retrieval: in T11, the Uranus follow-up ranks Neptune passages first despite carrying the original history.
@@ -315,16 +356,57 @@ Status: proposed follow-up, not started. Dependencies: T11 and T12. Keep the gen
 - Version an improved annotation protocol for duplicate supporting passages and source spans separated only by whitespace. Retain T11's original metrics and its separately reviewed exceptions.
 - Freeze a new evaluation set before measuring any proposed adaptive strategy. Preserve the six original T01 holdout questions and do not claim benchmark gains from tuning on T11.
 
+Completion evidence (2026-10-14): eight sources/201 chunks, all 27 source references faithful, 96 requests across six completed blocks. Five scored 8/16 with 29.18/28.53-second medians, two 7/16 with 18.19/17.34 seconds, coverage 8/16 with 16.50/15.86 seconds. The gate failed; one ambiguity label has a separately documented wording limitation. Coverage recovered some fields but missed others and cannot restore absent candidates. JSON pointer constraints ran with real local Gemma; defaults and T11 labels/scores/freezes remain unchanged. Verified 101 Rust/116 Python checks, formatting/Clippy/Compose/images; separate diagnostic confirms numeric-quote false negatives and a fragment false positive. See [results](reports/t14-evidence-coverage.md). Stopped only T14 services; retain data and captures.
+
+### T15 — Source-exact numeric proof validation
+
+Status: complete. Dependencies: T14. Implemented after T14's frozen comparison. Preserved the matching 272-file tree in `backups/t14-source-before-t15.zip` before runtime changes; both original freezes and every archived file hash verified.
+
+- Accept defensible thousands-separated numbers and date-year quotations while preserving the exact original quote and typed value. T14 exposed correct drafts rejected for `7,329`/`7329` and `Feb. 25,1969`/`1969`.
+- Validate numeric boundaries against the full source occurrence, not only the model's submitted quote. The deterministic `examples/proof_boundaries.rs` probe exposes acceptance of quote `3` from source `Count: 3,000.`; preserve it as a regression.
+- Reject numeric fragments, changed signs/decimals, ambiguous separators and precision loss. Keep exact JSON source reads and missing/null/zero semantics unchanged. No blanket punctuation stripping or benchmark-specific values.
+- Add focused source-support regressions and verify unchanged API/storage contracts. T14 is now observed regression evidence; any new quality claim needs a fresh protocol/corpus. Keep its original freezes, responses, scores and source-review exception intact.
+
+Completion evidence (2026-10-14): added `src/answers/numeric.rs`, routed prose numeric validation through full supplied-source boundaries, and added seven focused Rust regressions. Exact English grouping and named-month date years pass; clipped signs/digits/decimals and ambiguous unsupported notation fail. The unchanged probe now reports accepted/rejected/accepted. Passed 108 Rust/90 Python checks, format/lint, release API build/liveness and archive/data integrity checks. Fixed an initial lint finding; final checks are clean. API/storage/JSON/null contracts and retrieval/model defaults are unchanged. [Report](reports/t15-numeric-proofs.md). No GPU rerun or new quality claim; T14's historical evidence remains byte-identical.
+
+Next, scope field-specific candidate retrieval and a clearly worded ambiguity evaluation. Reranking cannot recover a required source absent from the candidate pool.
+
 ## Session handoff discipline
 
 Keep the Current state and Next useful step sections accurate. For each meaningful work session, add one concise entry below with changed files/capabilities, task IDs, verification actually performed, unresolved issues, and the next step. Do not paste full chat transcripts or command logs.
+
+### 2026-10-14 — T15 completed
+
+- Followed [architecture.md](architecture.md); repaired numeric prose proof handling without changing storage, JSON reads, model calls or retrieval defaults. Documented the strict English grammar and its conservative limitations in [answers.md](answers.md).
+- Preserved the entire matching T14 source tree before edits. Archive and original data/execution manifests verified; historical T14 reports/captures remain unchanged. Current execution correctly differs at `src/answers.rs`; do not rewrite the old freeze.
+- Verified 198 checks (108 Rust/90 Python), formatting/Clippy, before/after deterministic probe behavior and the rebuilt `vectornext-app:t15` release API liveness. Initial lint finding corrected. Temporary smoke container removed; no persistent services started or user data changed.
+- Updated README, contracts, handoff and [T15 report](reports/t15-numeric-proofs.md). Next: independently scope candidate retrieval and ambiguity evaluation; keep the original holdout unused.
+
+### 2026-10-14 — T14 completed
+
+- Followed [architecture.md](architecture.md) and the pre-inference protocol. Added opt-in field selection, pointer constraints, exact-value/client/workflow compatibility checks, a separate v2 scorer and frozen new public corpus. No storage format, model identity or default strategy changed.
+- Completed all six comparison blocks and retained every response/error: five 8/16, two 7/16, coverage 8/16 in both passes; coverage median 43.5–44.4% lower. Published the full report, source-review exception, readable successful/failure workflows and a deterministic numeric-boundary probe. This is an evaluated tradeoff, not a required quality improvement or broad superiority claim.
+- 217 automated checks passed, plus format/lint/Compose and live JSON grammar/source-value checks. Fixed an initial pinned-compiler syntax issue and test invocation/environment mistakes before the freeze. New numeric proof defects remain explicit T15 scope, not silently repaired during measurement.
+- All T14 services stopped; isolated volumes/cache, 96 raw responses and source downloads retained under `data/t14/20261014-coverage/`. T11/T14 freezes are unchanged; the original holdout is unused. Next: T15 numeric proof validation, then separately scoped candidate retrieval and clearer ambiguity evaluation.
+
+### 2026-10-14 — T12 completed
+
+- Added readable CLI workflow reports, exact-response capture and offline rendering; documented commands and published the fresh Voyager report plus retained failure examples. Followed the reporting scope in [architecture.md](architecture.md); no new service or inference narration was introduced.
+- Verified 78 checks and one fresh Docker ingestion/search/answer run. The final report records the correct Voyager timeline and real supporting quotes. Original JSON output and exact numeric literals remain intact; missing timing/trace information is labeled unrecorded.
+- All T12 services stopped; raw data and volumes retained. Published report: `docs/reports/t12-voyager-workflow.md`. Full verification and limitations: [T12 report](reports/t12-workflow.md). Next proposed work: T13 reliability/diagnostics, then T14 evidence coverage. Historical T11 reproduction requires its recorded pre-T12 code rather than changing the original freeze.
+
+### 2026-10-14 — Workflow explanation prioritized as T12
+
+- Added the user-requested T12: concise human-readable debug reports covering ingestion, search and answering from actual execution data, with readable steps, evidence, timings where available and outcomes.
+- Moved the previous reliability and evidence-coverage tasks to the bottom of the work queue as T13 and T14; updated current priorities, dependencies and documentation references. Recorded the requirement in [architecture.md](architecture.md).
+- Planning/documentation only; T12 implementation has not started. Checked task ordering, references, local links and whitespace; no application tests or GPU services were run. Next: implement T12 when requested.
 
 ### 2026-10-14 — T11 completed
 
 - Added the attributed public-source dataset, explicit acquisition/authoring tools, frozen public requests/gold, isolated runner, comparison summaries, source review and reports. Replaced the fictional README example with a verified NASA Voyager timeline. Followed [architecture.md](architecture.md); no storage/search/model default or service boundary changed.
 - Preserved the initial ingestion interruption and repaired only UTF-8 line counting before queries. The complete 112-request comparison retains all PDF admission and answer-validation failures: five 16/28 versus two 15/28 in each pass, despite two reducing median latency by 46–50%. Keep five; separate failure causes and annotation limitations are in [T11 results](reports/t11-independent.md).
 - Verified 167 checks, format/lint, Compose, input hashes, source proofs and the standalone Docker CLI demo. Raw data remains under `data/t11/20261014-independent-fixed/`, the earlier attempt under `data/t11/20261014-independent/`, and the demo under `data/t11/readme-voyager-20261014/`. All T11 services stopped; volumes/caches retained, prior projects untouched.
-- Next proposed work: T12 reliability/diagnostics, then T13 evidence coverage on new frozen data. Do not reuse the observed T11 cases as independent tuning validation or consume the six original holdout questions without a new explicit protocol.
+- Follow-ups identified at completion: reliability/diagnostics, then evidence coverage on new frozen data (now T13 and T14 after the requested T12 insertion). Do not reuse the observed T11 cases as independent tuning validation or consume the six original holdout questions without a new explicit protocol.
 
 ### 2026-10-14 — Public repository README
 

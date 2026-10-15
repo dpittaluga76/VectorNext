@@ -77,6 +77,21 @@ pub fn dispatch(app: &Application, method: &str, path: &str, input: Value) -> Re
         )),
     }
 }
+pub fn error_response(error: &Error) -> (u16, Value) {
+    let (status, code) = match error {
+        Error::Busy(_) => (503, "busy"),
+        Error::AnswerRejected { .. } => (400, "answer_rejected"),
+        Error::Unavailable(_) | Error::Poisoned => (503, "capability_unavailable"),
+        Error::Conflict(_) | Error::RetryConflict | Error::Locked => (409, "conflict"),
+        Error::Invalid(_) | Error::Json(_) => (400, "invalid_request"),
+        _ => (500, "storage_or_internal_error"),
+    };
+    let mut value = json!({"error":{"code":code,"message":error.to_string()}});
+    if let Error::AnswerRejected { diagnostics, .. } = error {
+        value["error"]["diagnostics"] = diagnostics.as_ref().clone();
+    }
+    (status, value)
+}
 fn handle(app: &Application, mut request: Request) {
     let result = (|| {
         let input = if request.method() == &Method::Post {
@@ -89,17 +104,8 @@ fn handle(app: &Application, mut request: Request) {
     match result {
         Ok((status, value)) => respond(request, status, value),
         Err(error) => {
-            let (status, code) = match &error {
-                Error::Unavailable(_) | Error::Poisoned => (503, "capability_unavailable"),
-                Error::Conflict(_) | Error::RetryConflict | Error::Locked => (409, "conflict"),
-                Error::Invalid(_) | Error::Json(_) => (400, "invalid_request"),
-                _ => (500, "storage_or_internal_error"),
-            };
-            respond(
-                request,
-                status,
-                json!({"error":{"code":code,"message":error.to_string()}}),
-            );
+            let (status, value) = error_response(&error);
+            respond(request, status, value);
         }
     }
 }

@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-14",
+  "scope": "One fresh ingestion/search/ask run, not a quality benchmark.",
+  "project": "vectornext-t12",
+  "database": "/storage/workflow-20261014",
+  "startup_seconds": 123.00977720000083,
+  "commands": [
+    [
+      "ingest",
+      [
+        "ingest",
+        "/app/evals/independent/fixtures/voyager1.txt",
+        "--document",
+        "voyager-workflow",
+        "--job",
+        "voyager-workflow-v1",
+        "--wait"
+      ]
+    ],
+    [
+      "search",
+      [
+        "search",
+        "Voyager 1 launch Jupiter Saturn",
+        "--limit",
+        "3"
+      ]
+    ],
+    [
+      "ask",
+      [
+        "ask",
+        "/app/tests/fixtures/answers/voyager.json"
+      ]
+    ]
+  ],
+  "images": {
+    "llm": "sha256:7c17888aac221414f8373c7bff0fadd5f6ee458ffa7b025255e3fefe65fb1949",
+    "processor": "sha256:136c1f9ec9afda3cce8d742c794e3b6298448a8cb9d97abd84d767298e5d14d9",
+    "vectornext": "sha256:deb9e3846b9e8e4cbc8cdfdde917ac62513ba3e534d98e85b940b2ec38b6cbf9"
+  },
+  "files": {
+    "ask.capture.json": "8bbb26a5156f64d7252e27bb44750328f036d9a7e9372f8c44334d44df084895",
+    "ask.json": "0d740328012633d9b9f4c15062b5237e96e073f99d6ef25bb676555da80018a0",
+    "ask.md": "49ea05b543f28d1cf14fcf4c33e95641c0a773c11907fdd826bb32e7085169d6",
+    "ingest.capture.json": "cdbbbdc5113f4724118ca34d29f9d452629d966d67c06b28c8727af87f89a572",
+    "ingest.json": "942d624bb186163b9ca3c3d02cf9544813362aa826d76618b399a682ebe0e77b",
+    "ingest.md": "78075b871e51b32ec6245d7b0c205b43871be79bdfc4d1360a488e190f5aaa30",
+    "search.capture.json": "d491cc0b11f7df77dcfa321f042d72cf608fa13edad281db019504efe5405e01",
+    "search.json": "b5c39aa180cc0ddcd248f4a365d255d8d3ab62e05c74fabc66b6149fe210c8cb",
+    "search.md": "e56d3bb9f7f50a0607b979717e59c3157a64b80d4c4dbd573363c36b6e810169",
+    "voyager-workflow.md": "c131f3d1a895fc18b9888bdf4b2b3e496aca80647b2d15ac1578e6949e309cec"
+  },
+  "live_client_image": "sha256:018f3919b80654b5398e481c967a4cbe6ff920343c6447b86fe6ff644d304cfa",
+  "final_renderer_image": "sha256:01405f295a36ac92a939084d9045cdc6962df894e057a1c72d59d91f1f0569fc",
+  "presentation_note": "The final Markdown was rerendered offline from identical captured responses after presentation-only fixes; no inference was repeated.",
+  "implementation_sha256": {
+    "deployment/client.py": "518896d31241483cddf9a735336178557876f227d05162fb33e1dea4c4b3066b",
+    "deployment/workflow.py": "30ae660ccd5965fad78603000586b1d1e0dd1928ccbbc2e6c2e7f710d8f8ab48",
+    "deployment/test_workflow.py": "a8075cdcd7e606a97022c5aa654a3a6f55527fd2c2a7149197995f3805f8dd5c"
+  },
+  "published_captures": {
+    "ambiguous_voyager.capture.json": "0c3602219ba175085ba2ed5deea352a6d24ff77db9b0238d459316319def334b",
+    "apollo11_pdf.capture.json": "2bb9af097f3f024582237a678e54e851aa61dbe4f4efd9c01dd97c3d22f1d671",
+    "ask.capture.json": "30ded10408d441a862c34f4c04bcc689954c7f477cf210f8316e453d5d30fee0",
+    "ingest.capture.json": "49f53abd360d75946681b136c21f9ee455325b50658375e7921a901c13568a7c",
+    "maule_json_magnitude_depth.capture.json": "419810b0d720fae6fd6440cebdd62e7a8fb56f61f53953767ea59b0de6645d25",
+    "search.capture.json": "5624e9cabc44e53c1142edffcfc83ab2439c62090410fbe33d1ad0b357e30da8",
+    "unknown_station_distance.capture.json": "f711e7a10fb3206aeba22eca389dde276106bad90927e9057e08c84b77e6a83f"
+  },
+  "published_reports": {
+    "t12-voyager-workflow.md": "160643a3a11b2dd2084edee8cf945bd5ff9bfab3a3846110764e1b60262caf85",
+    "t12-failure-workflows.md": "1b00bfcf8975ce7c7bac26bdcc8ea2b4b636c3faef5a4107eaf5fd317bbf7e5e"
+  },
+  "retained_case_provenance": [
+    {
+      "case": "ambiguous_voyager",
+      "source": "data/t11/20261014-independent-fixed/five-cold/ambiguous_voyager.json",
+      "sha256": "9d5b86f1674303d7b8417996f642a0c9faca550348581c37453d1fe3f21d525a"
+    },
+    {
+      "case": "unknown_station_distance",
+      "source": "data/t11/20261014-independent-fixed/five-cold/unknown_station_distance.json",
+      "sha256": "baf210f2145ce53e66f2f96a59a2b6b7634e6997279c9e8c135c147c43b10cc7"
+    },
+    {
+      "case": "maule_json_magnitude_depth",
+      "source": "data/t11/20261014-independent-fixed/five-cold/maule_json_magnitude_depth.json",
+      "sha256": "3dfb83d1ca5ecd21e390b4af70057bce8fa43556280798877295677d68725fd9"
+    },
+    {
+      "case": "apollo11_pdf",
+      "source": "data/t11/20261014-independent-fixed/ingestion/complete.json",
+      "sha256": "0c1403dcb3736ae4cdfdde974da84dc9790c8e8d6b3a560683911fd382828d0a",
+      "selection": "rows[document=apollo11_pdf].job"
+    }
+  ],
+  "checks": {
+    "workflow_and_client": 25,
+    "existing_transport": 4,
+    "existing_evaluation": 54,
+    "total_passed": 83,
+    "new_live_generations": "One answer request (assessment plus extraction), no narration calls.",
+    "core_and_model_suites": "Not rerun: Rust and model code unchanged."
+  },
+  "t11_frozen_execution_note": {
+    "changed_file": "deployment/client.py",
+    "pre_t12_commit": "aed598c336477b184a25c86e17cf63136ff88fdd",
+    "sources_labels_requests_scorer_and_all_other_frozen_files_unchanged": true,
+    "freeze_rewritten": false
+  },
+  "initial_checks": {
+    "workflow_and_client": 20,
+    "existing_transport": 4,
+    "existing_evaluation": 54,
+    "total_passed": 78,
+    "new_live_generations": "One answer request (assessment plus extraction), no narration calls.",
+    "core_and_model_suites": "Not rerun: Rust and model code unchanged."
+  },
+  "invocation_extension": {
+    "date": "2026-10-14",
+    "previous_renderer_image": "sha256:3b98a73c92c452957f7770d15ea95c6d346516edfe56c501b5890a9ef2bf685b",
+    "replay_network": "none",
+    "new_model_calls": 0,
+    "arguments_origin": "The three published Voyager envelopes recover operation arguments from data/t12/20261014-workflow/verified.json, omitting report/capture switches. Other published envelopes have no invocation metadata.",
+    "original_response_strings_unchanged": true,
+    "original_drill_files_unchanged": true,
+    "code_references": "Current implementation references; not runtime instrumentation."
+  }
+}

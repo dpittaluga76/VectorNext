@@ -1,0 +1,42 @@
+{
+  "format": "vectornext-workflow-v1",
+  "operation": "ingest",
+  "http_status": 200,
+  "response_json": "{\"document_id\":\"voyager-workflow\",\"failure_count\":0,\"job_id\":\"voyager-workflow-v1\",\"last_failure\":null,\"receipt\":{\"generation\":1,\"request_sha256\":\"57c3bd5b5f7a210133bf27b45fc07286ddf01207ec6ee1d5fc15c5938db29ac3\"},\"revision\":\"4062f9613204d0a055d8bfb05a2060bcdcea5640232e1cadbe5c7fe03ed4c535\",\"stage\":\"Committed\",\"successful_stages\":4}",
+  "context": {
+    "source": "/app/evals/independent/fixtures/voyager1.txt",
+    "document_id": "voyager-workflow",
+    "media_type": "Txt",
+    "policy": "structural"
+  },
+  "elapsed_seconds": 1.5372243830024672,
+  "document": {
+    "document_id": "voyager-workflow",
+    "revision": "4062f9613204d0a055d8bfb05a2060bcdcea5640232e1cadbe5c7fe03ed4c535",
+    "media_type": "Txt",
+    "source_bytes": 8314,
+    "blocks": 86,
+    "chunks": 25,
+    "records": 0,
+    "policy": "structural",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "pdf_status": null,
+    "pdf_pages": null,
+    "pdf_methods": {},
+    "warnings": [],
+    "generated_context_outcomes": {}
+  },
+  "note": "Captured from a local API operation.",
+  "invocation": {
+    "arguments": [
+      "ingest",
+      "/app/evals/independent/fixtures/voyager1.txt",
+      "--document",
+      "voyager-workflow",
+      "--job",
+      "voyager-workflow-v1",
+      "--wait"
+    ],
+    "origin": "saved_run_record"
+  }
+}

@@ -1,0 +1,20 @@
+# Apply after compose.app.yaml with -p vectornext-t14. T14 evaluates opt-in field coverage without changing defaults.
+services:
+  vectornext:
+    image: vectornext-app:t14
+    environment:
+      VECTORNEXT_DATA: ${T14_DATABASE:-/storage/coverage}
+      VECTORNEXT_GENERATED_WEIGHT: 1
+      VECTORNEXT_STRUCTURAL_WEIGHT: 1
+    ports: !override ["127.0.0.1:8094:8088"]
+  processor:
+    image: vectornext-app-processor:t14
+    environment:
+      VECTORNEXT_CACHE: ${T14_CACHE:-/cache/coverage-ingest}
+  llm:
+    image: vectornext-app-llm:t10
+  client:
+    image: vectornext-app:t14
+  admin:
+    image: vectornext-app:t14
+

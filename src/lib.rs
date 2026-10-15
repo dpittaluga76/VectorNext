@@ -16,6 +16,13 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
+    #[error("admission busy: {0}")]
+    Busy(String),
+    #[error("answer rejected: {message}")]
+    AnswerRejected {
+        message: String,
+        diagnostics: Box<serde_json::Value>,
+    },
     #[error("capability unavailable: {0}")]
     Unavailable(String),
     #[error("I/O error: {0}")]

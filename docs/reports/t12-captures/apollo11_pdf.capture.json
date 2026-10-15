@@ -1,0 +1,13 @@
+{
+  "format": "vectornext-workflow-v1",
+  "operation": "ingest",
+  "http_status": 200,
+  "response_json": "{\"document_id\": \"apollo11_pdf\", \"failure_count\": 1, \"job_id\": \"apollo11_pdf-v1\", \"last_failure\": {\"message\": \"invalid record: partial PDF extraction rejected; inspect diagnostics or explicitly allow partial\", \"stage\": \"Uploaded\"}, \"receipt\": null, \"revision\": \"1e18c6649ab25a80616d65fa7b70ee37a2a37b37ed8426c9da043e9fbe308a4c\", \"stage\": \"Uploaded\", \"successful_stages\": 0}",
+  "context": {
+    "media_type": "Pdf",
+    "source": "apollo11_pdf"
+  },
+  "elapsed_seconds": null,
+  "document": null,
+  "note": "Retained T11 Apollo PDF job state. Rendered offline for T12; no new ingestion."
+}

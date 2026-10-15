@@ -1,0 +1,71 @@
+{
+  "format": "vectornext-workflow-v1",
+  "operation": "job",
+  "http_status": 200,
+  "response_json": "{\"coordinator\": {\"last_error\": null, \"recovery\": null, \"state\": \"running\"}, \"document_id\": \"queued-t13\", \"failure_count\": 0, \"job_id\": \"queued-t13-strict\", \"last_failure\": null, \"receipt\": {\"generation\": 2, \"request_sha256\": \"ac76fc8ee724210223e7861261a55fedb54d22ea8c7090c230fab2152304ec8d\"}, \"revision\": \"6f297e7dd85917f6eeca5db0e6c16edc3340db2b8aec924223a8b8e2632ec923\", \"stage\": \"Committed\", \"successful_stages\": 4}",
+  "context": {
+    "source": "queued.txt",
+    "media_type": "Txt",
+    "admission_attempts": [
+      {
+        "path": "/v1/ingest",
+        "attempt": 1,
+        "http_status": 503,
+        "code": "busy",
+        "message": "admission busy: processing lane busy; retry later",
+        "retry_in_seconds": 1
+      },
+      {
+        "path": "/v1/ingest",
+        "attempt": 2,
+        "http_status": 503,
+        "code": "busy",
+        "message": "admission busy: processing lane busy; retry later",
+        "retry_in_seconds": 2
+      },
+      {
+        "path": "/v1/ingest",
+        "attempt": 3,
+        "http_status": 503,
+        "code": "busy",
+        "message": "admission busy: processing lane busy; retry later",
+        "retry_in_seconds": 4
+      },
+      {
+        "path": "/v1/ingest",
+        "attempt": 4,
+        "http_status": 503,
+        "code": "busy",
+        "message": "admission busy: processing lane busy; retry later",
+        "retry_in_seconds": 4
+      },
+      {
+        "path": "/v1/ingest",
+        "attempt": 5,
+        "http_status": 503,
+        "code": "busy",
+        "message": "admission busy: processing lane busy; retry later",
+        "retry_in_seconds": 4
+      }
+    ]
+  },
+  "elapsed_seconds": null,
+  "document": {
+    "document_id": "queued-t13",
+    "revision": "6f297e7dd85917f6eeca5db0e6c16edc3340db2b8aec924223a8b8e2632ec923",
+    "media_type": "Txt",
+    "source_bytes": 26,
+    "blocks": 1,
+    "chunks": 1,
+    "records": 0,
+    "policy": "structural",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "pdf_status": null,
+    "pdf_pages": null,
+    "pdf_methods": {},
+    "warnings": [],
+    "generated_context_outcomes": {}
+  },
+  "note": "Fresh T13 CPU operational drill; no generation model was used.",
+  "invocation": null
+}

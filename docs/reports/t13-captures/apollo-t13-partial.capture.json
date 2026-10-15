@@ -1,0 +1,561 @@
+{
+  "format": "vectornext-workflow-v1",
+  "operation": "job",
+  "http_status": 200,
+  "response_json": "{\"coordinator\": {\"last_error\": null, \"recovery\": null, \"state\": \"running\"}, \"document_id\": \"apollo-t13\", \"failure_count\": 0, \"job_id\": \"apollo-t13-partial\", \"last_failure\": null, \"pdf_diagnostics\": {\"allow_partial\": true, \"artifact_sha256\": \"b63d91a7bae8b70296e7f64e9e79beae207af7e950d722fc470130080ee30374\", \"items\": 28, \"next_action\": \"Review page warnings and extraction coverage; illustrations are not interpreted.\", \"pages\": [{\"height\": 612.0, \"native_cells\": 3, \"ocr_cells\": 9, \"ocr_mean_confidence\": 0.23958586333333334, \"page\": 1, \"width\": 792.0}, {\"height\": 612.0, \"native_cells\": 86, \"ocr_cells\": 12, \"ocr_mean_confidence\": 0.22847072333333332, \"page\": 2, \"width\": 792.0}], \"source_sha256\": \"71c6bb4ce84deb06caceabbb6953ff37c7751064153c15b619e02c8db99af799\", \"status\": \"partial\", \"warning_count\": 48, \"warnings\": [{\"bbox\": [718.3333333333334, 363.6666666666667, 723.0, 365.6666666666667], \"code\": \"low_ocr_confidence\", \"message\": \"—\", \"page\": 1}, {\"bbox\": [718.6666666666666, 374.0, 723.0, 383.6666666666667], \"code\": \"low_ocr_confidence\", \"message\": \"w\", \"page\": 1}, {\"bbox\": [713.3333333333334, 361.6666666666667, 717.6666666666666, 373.0], \"code\": \"low_ocr_confidence\", \"message\": \"Oe\", \"page\": 1}, {\"bbox\": [710.6666666666666, 390.6666666666667, 713.0, 399.6666666666667], \"code\": \"low_ocr_confidence\", \"message\": \"ete\", \"page\": 1}, {\"bbox\": [710.0, 405.0, 710.6666666666666, 405.6666666666667], \"code\": \"low_ocr_confidence\", \"message\": \"tae\", \"page\": 1}, {\"bbox\": [712.0, 418.3333333333333, 714.6666666666666, 422.3333333333333], \"code\": \"low_ocr_confidence\", \"message\": \"Pe\", \"page\": 1}, {\"bbox\": [711.6666666666666, 435.6666666666667, 716.3333333333334, 446.0], \"code\": \"low_ocr_confidence\", \"message\": \"we\", \"page\": 1}, {\"bbox\": [684.0, 355.3333333333333, 691.3333333333334, 361.6666666666667], \"code\": \"low_ocr_confidence\", \"message\": \"‘\", \"page\": 1}, {\"bbox\": [672.6666666666666, 423.0, 702.6666666666666, 431.6666666666667], \"code\": \"low_ocr_confidence\", \"message\": \"os\", \"page\": 1}, {\"bbox\": [681.0, 296.66666666666663, 699.3333333333333, 302.0], \"code\": \"low_ocr_confidence\", \"message\": \"J2NOD\", \"page\": 2}, {\"bbox\": [647.0, 296.66666666666663, 678.3333333333333, 303.66666666666663], \"code\": \"low_ocr_confidence\", \"message\": \"papiersiq\", \"page\": 2}, {\"bbox\": [696.6666666666667, 288.0, 706.3333333333333, 292.66666666666663], \"code\": \"low_ocr_confidence\", \"message\": \"hi\", \"page\": 2}, {\"bbox\": [670.0, 287.33333333333337, 672.0, 290.0], \"code\": \"low_ocr_confidence\", \"message\": \"‘\", \"page\": 2}, {\"bbox\": [628.0, 286.66666666666663, 636.0, 297.66666666666663], \"code\": \"low_ocr_confidence\", \"message\": \"‘i\", \"page\": 2}, {\"bbox\": [621.0, 248.0, 631.0, 254.0], \"code\": \"low_ocr_confidence\", \"message\": \"We)\", \"page\": 2}, {\"bbox\": [605.3333333333333, 249.33333333333331, 613.3333333333333, 256.0], \"code\": \"low_ocr_confidence\", \"message\": \"We\", \"page\": 2}, {\"bbox\": [574.0, 248.0, 598.0, 254.0], \"code\": \"low_ocr_confidence\", \"message\": \"erewey\", \"page\": 2}, {\"bbox\": [586.3333333333333, 227.66666666666669, 604.3333333333333, 238.66666666666669], \"code\": \"low_ocr_confidence\", \"message\": \"Bm\", \"page\": 2}, {\"bbox\": [662.6666666666667, 228.0, 669.6666666666667, 250.33333333333331], \"code\": \"low_ocr_confidence\", \"message\": \"i\", \"page\": 2}, {\"bbox\": [620.6666666666667, 231.33333333333331, 653.6666666666667, 251.0], \"code\": \"low_ocr_confidence\", \"message\": \"eo)\", \"page\": 2}, {\"bbox\": [691.3113403320312, 33.92692947387695, 764.6148071289062, 94.67466735839844], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 1}, {\"bbox\": [32.7666015625, 106.83838653564453, 758.012451171875, 529.9412231445312], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 1}, {\"bbox\": [37.005306243896484, 37.25752639770508, 101.00736999511719, 101.84815216064453], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 2}, {\"bbox\": [688.6516723632812, 36.931522369384766, 754.3446044921875, 101.99691772460938], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 2}, {\"bbox\": [282.1741027832031, 146.84793090820312, 509.0257873535156, 326.3864440917969], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 2}, {\"bbox\": [528.3388671875, 204.4981689453125, 755.756591796875, 339.44342041015625], \"code\": \"uninterpreted_picture\", \"message\": \"Picture/diagram semantics are not extracted\", \"page\": 2}, {\"bbox\": [718.3333333333334, 363.6666666666667, 723.0, 365.6666666666667], \"code\": \"unmapped_text\", \"message\": \"—\", \"page\": 1}, {\"bbox\": [718.6666666666666, 374.0, 723.0, 383.6666666666667], \"code\": \"unmapped_text\", \"message\": \"w\", \"page\": 1}, {\"bbox\": [713.3333333333334, 361.6666666666667, 717.6666666666666, 373.0], \"code\": \"unmapped_text\", \"message\": \"Oe\", \"page\": 1}, {\"bbox\": [710.6666666666666, 390.6666666666667, 713.0, 399.6666666666667], \"code\": \"unmapped_text\", \"message\": \"ete\", \"page\": 1}, {\"bbox\": [710.0, 405.0, 710.6666666666666, 405.6666666666667], \"code\": \"unmapped_text\", \"message\": \"tae\", \"page\": 1}, {\"bbox\": [712.0, 418.3333333333333, 714.6666666666666, 422.3333333333333], \"code\": \"unmapped_text\", \"message\": \"Pe\", \"page\": 1}, {\"bbox\": [711.6666666666666, 435.6666666666667, 716.3333333333334, 446.0], \"code\": \"unmapped_text\", \"message\": \"we\", \"page\": 1}, {\"bbox\": [684.0, 355.3333333333333, 691.3333333333334, 361.6666666666667], \"code\": \"unmapped_text\", \"message\": \"‘\", \"page\": 1}, {\"bbox\": [672.6666666666666, 423.0, 702.6666666666666, 431.6666666666667], \"code\": \"unmapped_text\", \"message\": \"os\", \"page\": 1}, {\"bbox\": [532.2, 326.316, 552.2969999999999, 334.77375], \"code\": \"unmapped_text\", \"message\": \"50 m\", \"page\": 2}, {\"bbox\": [681.0, 296.66666666666663, 699.3333333333333, 302.0], \"code\": \"unmapped_text\", \"message\": \"J2NOD\", \"page\": 2}, {\"bbox\": [647.0, 296.66666666666663, 678.3333333333333, 303.66666666666663], \"code\": \"unmapped_text\", \"message\": \"papiersiq\", \"page\": 2}, {\"bbox\": [732.3333333333333, 289.33333333333337, 733.3333333333333, 290.66666666666663], \"code\": \"unmapped_text\", \"message\": \"'\", \"page\": 2}, {\"bbox\": [696.6666666666667, 288.0, 706.3333333333333, 292.66666666666663], \"code\": \"unmapped_text\", \"message\": \"hi\", \"page\": 2}, {\"bbox\": [670.0, 287.33333333333337, 672.0, 290.0], \"code\": \"unmapped_text\", \"message\": \"‘\", \"page\": 2}, {\"bbox\": [628.0, 286.66666666666663, 636.0, 297.66666666666663], \"code\": \"unmapped_text\", \"message\": \"‘i\", \"page\": 2}, {\"bbox\": [621.0, 248.0, 631.0, 254.0], \"code\": \"unmapped_text\", \"message\": \"We)\", \"page\": 2}, {\"bbox\": [605.3333333333333, 249.33333333333331, 613.3333333333333, 256.0], \"code\": \"unmapped_text\", \"message\": \"We\", \"page\": 2}, {\"bbox\": [574.0, 248.0, 598.0, 254.0], \"code\": \"unmapped_text\", \"message\": \"erewey\", \"page\": 2}, {\"bbox\": [586.3333333333333, 227.66666666666669, 604.3333333333333, 238.66666666666669], \"code\": \"unmapped_text\", \"message\": \"Bm\", \"page\": 2}, {\"bbox\": [662.6666666666667, 228.0, 669.6666666666667, 250.33333333333331], \"code\": \"unmapped_text\", \"message\": \"i\", \"page\": 2}, {\"bbox\": [620.6666666666667, 231.33333333333331, 653.6666666666667, 251.0], \"code\": \"unmapped_text\", \"message\": \"eo)\", \"page\": 2}], \"warnings_truncated\": false}, \"receipt\": {\"generation\": 3, \"request_sha256\": \"60fc291af2be8ae0bbe2fcb844f70b0b303f47d5b672c44c9e157f95625ac53b\"}, \"revision\": \"d948e21b29c81129f15ae43b580be4b88162bd973014fb121ce47542a65a7817\", \"stage\": \"Committed\", \"successful_stages\": 4}",
+  "context": {
+    "source": "apollo11_pdf.pdf",
+    "media_type": "Pdf",
+    "admission_attempts": []
+  },
+  "elapsed_seconds": null,
+  "document": {
+    "document_id": "apollo-t13",
+    "revision": "d948e21b29c81129f15ae43b580be4b88162bd973014fb121ce47542a65a7817",
+    "media_type": "Pdf",
+    "source_bytes": 447642,
+    "blocks": 28,
+    "chunks": 14,
+    "records": 0,
+    "policy": "structural",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "pdf_status": "partial",
+    "pdf_pages": 2,
+    "pdf_methods": {
+      "Native": 28
+    },
+    "warnings": [
+      {
+        "bbox": [
+          718.3333333333334,
+          363.6666666666667,
+          723.0,
+          365.6666666666667
+        ],
+        "code": "low_ocr_confidence",
+        "message": "—",
+        "page": 1
+      },
+      {
+        "bbox": [
+          718.6666666666666,
+          374.0,
+          723.0,
+          383.6666666666667
+        ],
+        "code": "low_ocr_confidence",
+        "message": "w",
+        "page": 1
+      },
+      {
+        "bbox": [
+          713.3333333333334,
+          361.6666666666667,
+          717.6666666666666,
+          373.0
+        ],
+        "code": "low_ocr_confidence",
+        "message": "Oe",
+        "page": 1
+      },
+      {
+        "bbox": [
+          710.6666666666666,
+          390.6666666666667,
+          713.0,
+          399.6666666666667
+        ],
+        "code": "low_ocr_confidence",
+        "message": "ete",
+        "page": 1
+      },
+      {
+        "bbox": [
+          710.0,
+          405.0,
+          710.6666666666666,
+          405.6666666666667
+        ],
+        "code": "low_ocr_confidence",
+        "message": "tae",
+        "page": 1
+      },
+      {
+        "bbox": [
+          712.0,
+          418.3333333333333,
+          714.6666666666666,
+          422.3333333333333
+        ],
+        "code": "low_ocr_confidence",
+        "message": "Pe",
+        "page": 1
+      },
+      {
+        "bbox": [
+          711.6666666666666,
+          435.6666666666667,
+          716.3333333333334,
+          446.0
+        ],
+        "code": "low_ocr_confidence",
+        "message": "we",
+        "page": 1
+      },
+      {
+        "bbox": [
+          684.0,
+          355.3333333333333,
+          691.3333333333334,
+          361.6666666666667
+        ],
+        "code": "low_ocr_confidence",
+        "message": "‘",
+        "page": 1
+      },
+      {
+        "bbox": [
+          672.6666666666666,
+          423.0,
+          702.6666666666666,
+          431.6666666666667
+        ],
+        "code": "low_ocr_confidence",
+        "message": "os",
+        "page": 1
+      },
+      {
+        "bbox": [
+          681.0,
+          296.66666666666663,
+          699.3333333333333,
+          302.0
+        ],
+        "code": "low_ocr_confidence",
+        "message": "J2NOD",
+        "page": 2
+      },
+      {
+        "bbox": [
+          647.0,
+          296.66666666666663,
+          678.3333333333333,
+          303.66666666666663
+        ],
+        "code": "low_ocr_confidence",
+        "message": "papiersiq",
+        "page": 2
+      },
+      {
+        "bbox": [
+          696.6666666666667,
+          288.0,
+          706.3333333333333,
+          292.66666666666663
+        ],
+        "code": "low_ocr_confidence",
+        "message": "hi",
+        "page": 2
+      },
+      {
+        "bbox": [
+          670.0,
+          287.33333333333337,
+          672.0,
+          290.0
+        ],
+        "code": "low_ocr_confidence",
+        "message": "‘",
+        "page": 2
+      },
+      {
+        "bbox": [
+          628.0,
+          286.66666666666663,
+          636.0,
+          297.66666666666663
+        ],
+        "code": "low_ocr_confidence",
+        "message": "‘i",
+        "page": 2
+      },
+      {
+        "bbox": [
+          621.0,
+          248.0,
+          631.0,
+          254.0
+        ],
+        "code": "low_ocr_confidence",
+        "message": "We)",
+        "page": 2
+      },
+      {
+        "bbox": [
+          605.3333333333333,
+          249.33333333333331,
+          613.3333333333333,
+          256.0
+        ],
+        "code": "low_ocr_confidence",
+        "message": "We",
+        "page": 2
+      },
+      {
+        "bbox": [
+          574.0,
+          248.0,
+          598.0,
+          254.0
+        ],
+        "code": "low_ocr_confidence",
+        "message": "erewey",
+        "page": 2
+      },
+      {
+        "bbox": [
+          586.3333333333333,
+          227.66666666666669,
+          604.3333333333333,
+          238.66666666666669
+        ],
+        "code": "low_ocr_confidence",
+        "message": "Bm",
+        "page": 2
+      },
+      {
+        "bbox": [
+          662.6666666666667,
+          228.0,
+          669.6666666666667,
+          250.33333333333331
+        ],
+        "code": "low_ocr_confidence",
+        "message": "i",
+        "page": 2
+      },
+      {
+        "bbox": [
+          620.6666666666667,
+          231.33333333333331,
+          653.6666666666667,
+          251.0
+        ],
+        "code": "low_ocr_confidence",
+        "message": "eo)",
+        "page": 2
+      },
+      {
+        "bbox": [
+          691.3113403320312,
+          33.92692947387695,
+          764.6148071289062,
+          94.67466735839844
+        ],
+        "code": "uninterpreted_picture",
+        "message": "Picture/diagram semantics are not extracted",
+        "page": 1
+      },
+      {
+        "bbox": [
+          32.7666015625,
+          106.83838653564453,
+          758.012451171875,
+          529.9412231445312
+        ],
+        "code": "uninterpreted_picture",
+        "message": "Picture/diagram semantics are not extracted",
+        "page": 1
+      },
+      {
+        "bbox": [
+          37.005306243896484,
+          37.25752639770508,
+          101.00736999511719,
+          101.84815216064453
+        ],
+        "code": "uninterpreted_picture",
+        "message": "Picture/diagram semantics are not extracted",
+        "page": 2
+      },
+      {
+        "bbox": [
+          688.6516723632812,
+          36.931522369384766,
+          754.3446044921875,
+          101.99691772460938
+        ],
+        "code": "uninterpreted_picture",
+        "message": "Picture/diagram semantics are not extracted",
+        "page": 2
+      },
+      {
+        "bbox": [
+          282.1741027832031,
+          146.84793090820312,
+          509.0257873535156,
+          326.3864440917969
+        ],
+        "code": "uninterpreted_picture",
+        "message": "Picture/diagram semantics are not extracted",
+        "page": 2
+      },
+      {
+        "bbox": [
+          528.3388671875,
+          204.4981689453125,
+          755.756591796875,
+          339.44342041015625
+        ],
+        "code": "uninterpreted_picture",
+        "message": "Picture/diagram semantics are not extracted",
+        "page": 2
+      },
+      {
+        "bbox": [
+          718.3333333333334,
+          363.6666666666667,
+          723.0,
+          365.6666666666667
+        ],
+        "code": "unmapped_text",
+        "message": "—",
+        "page": 1
+      },
+      {
+        "bbox": [
+          718.6666666666666,
+          374.0,
+          723.0,
+          383.6666666666667
+        ],
+        "code": "unmapped_text",
+        "message": "w",
+        "page": 1
+      },
+      {
+        "bbox": [
+          713.3333333333334,
+          361.6666666666667,
+          717.6666666666666,
+          373.0
+        ],
+        "code": "unmapped_text",
+        "message": "Oe",
+        "page": 1
+      },
+      {
+        "bbox": [
+          710.6666666666666,
+          390.6666666666667,
+          713.0,
+          399.6666666666667
+        ],
+        "code": "unmapped_text",
+        "message": "ete",
+        "page": 1
+      },
+      {
+        "bbox": [
+          710.0,
+          405.0,
+          710.6666666666666,
+          405.6666666666667
+        ],
+        "code": "unmapped_text",
+        "message": "tae",
+        "page": 1
+      },
+      {
+        "bbox": [
+          712.0,
+          418.3333333333333,
+          714.6666666666666,
+          422.3333333333333
+        ],
+        "code": "unmapped_text",
+        "message": "Pe",
+        "page": 1
+      },
+      {
+        "bbox": [
+          711.6666666666666,
+          435.6666666666667,
+          716.3333333333334,
+          446.0
+        ],
+        "code": "unmapped_text",
+        "message": "we",
+        "page": 1
+      },
+      {
+        "bbox": [
+          684.0,
+          355.3333333333333,
+          691.3333333333334,
+          361.6666666666667
+        ],
+        "code": "unmapped_text",
+        "message": "‘",
+        "page": 1
+      },
+      {
+        "bbox": [
+          672.6666666666666,
+          423.0,
+          702.6666666666666,
+          431.6666666666667
+        ],
+        "code": "unmapped_text",
+        "message": "os",
+        "page": 1
+      },
+      {
+        "bbox": [
+          532.2,
+          326.316,
+          552.2969999999999,
+          334.77375
+        ],
+        "code": "unmapped_text",
+        "message": "50 m",
+        "page": 2
+      },
+      {
+        "bbox": [
+          681.0,
+          296.66666666666663,
+          699.3333333333333,
+          302.0
+        ],
+        "code": "unmapped_text",
+        "message": "J2NOD",
+        "page": 2
+      },
+      {
+        "bbox": [
+          647.0,
+          296.66666666666663,
+          678.3333333333333,
+          303.66666666666663
+        ],
+        "code": "unmapped_text",
+        "message": "papiersiq",
+        "page": 2
+      },
+      {
+        "bbox": [
+          732.3333333333333,
+          289.33333333333337,
+          733.3333333333333,
+          290.66666666666663
+        ],
+        "code": "unmapped_text",
+        "message": "'",
+        "page": 2
+      },
+      {
+        "bbox": [
+          696.6666666666667,
+          288.0,
+          706.3333333333333,
+          292.66666666666663
+        ],
+        "code": "unmapped_text",
+        "message": "hi",
+        "page": 2
+      },
+      {
+        "bbox": [
+          670.0,
+          287.33333333333337,
+          672.0,
+          290.0
+        ],
+        "code": "unmapped_text",
+        "message": "‘",
+        "page": 2
+      },
+      {
+        "bbox": [
+          628.0,
+          286.66666666666663,
+          636.0,
+          297.66666666666663
+        ],
+        "code": "unmapped_text",
+        "message": "‘i",
+        "page": 2
+      },
+      {
+        "bbox": [
+          621.0,
+          248.0,
+          631.0,
+          254.0
+        ],
+        "code": "unmapped_text",
+        "message": "We)",
+        "page": 2
+      },
+      {
+        "bbox": [
+          605.3333333333333,
+          249.33333333333331,
+          613.3333333333333,
+          256.0
+        ],
+        "code": "unmapped_text",
+        "message": "We",
+        "page": 2
+      },
+      {
+        "bbox": [
+          574.0,
+          248.0,
+          598.0,
+          254.0
+        ],
+        "code": "unmapped_text",
+        "message": "erewey",
+        "page": 2
+      },
+      {
+        "bbox": [
+          586.3333333333333,
+          227.66666666666669,
+          604.3333333333333,
+          238.66666666666669
+        ],
+        "code": "unmapped_text",
+        "message": "Bm",
+        "page": 2
+      },
+      {
+        "bbox": [
+          662.6666666666667,
+          228.0,
+          669.6666666666667,
+          250.33333333333331
+        ],
+        "code": "unmapped_text",
+        "message": "i",
+        "page": 2
+      },
+      {
+        "bbox": [
+          620.6666666666667,
+          231.33333333333331,
+          653.6666666666667,
+          251.0
+        ],
+        "code": "unmapped_text",
+        "message": "eo)",
+        "page": 2
+      }
+    ],
+    "generated_context_outcomes": {}
+  },
+  "note": "Fresh T13 CPU operational drill; no generation model was used.",
+  "invocation": null
+}
