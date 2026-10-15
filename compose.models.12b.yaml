@@ -1,11 +1,11 @@
-# Experimental 12B override; use after compose.models.yaml. No default promotion yet.
+# Explicit 12B selection; also the T28 base default.
 services:
   model-download:
-    image: vectornext-model-check:t27
+    image: vectornext-model-check:t28-12b
     environment:
       VECTORNEXT_MODELS_LOCK: /workspace/experiments/t27/models.12b.lock.json
   model-check:
-    image: vectornext-model-check:t27
+    image: vectornext-model-check:t28-12b
     environment:
       VECTORNEXT_MODELS_LOCK: /workspace/experiments/t27/models.12b.lock.json
       VECTORNEXT_GENERATOR_ALIAS: vectornext-gemma4-12b

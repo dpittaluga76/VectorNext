@@ -57,7 +57,7 @@ The response also includes retrieved passages, source locations, field proofs an
 | **Recovery and diagnostics** | Visible coordinator failures, bounded busy retries, PDF warnings before publication and rejected-answer diagnostics with unvalidated drafts. |
 | **Durable local operation** | Resumable ingestion jobs, explicit retries, bounded processing queues, capability readiness and checksummed export/restore. |
 
-For explicit JSON values, the model selects the record and pointer; Rust reads the original value. Zero, a stored `null`, a missing field and a string such as `"007"` retain their distinct meanings. Generated context is stored separately and never becomes source evidence.
+For explicit JSON values, the model selects a record and a type-compatible RFC 6901 pointer constrained to the admitted evidence; Rust reads the original value. Ranked and coverage modes share these source-bound constraints, including escaped keys and arrays. A valid path still requires semantic review. Zero, a stored `null`, a missing field and a string such as `"007"` retain their distinct meanings. Generated context is stored separately and never becomes source evidence.
 
 ## Technology stack
 
@@ -157,24 +157,26 @@ An explicit `structured_lookup` request can scan selected JSON records and mater
 | --- | --- | --- |
 | Embeddings | `sentence-transformers/all-MiniLM-L6-v2`, ONNX CPU | 384 dimensions, attention-mask mean pooling, L2 normalization, 256-token input limit. |
 | Reranking | `cross-encoder/ms-marco-MiniLM-L6-v2`, ONNX CPU | Question/passage pair scoring; raw logits are ranking scores, not confidence probabilities. |
-| Planning, context and answers | **Gemma 4 26B A4B QAT Q4_0**, llama.cpp CUDA | 4,096-token context, one inference slot, 22 CPU-offloaded MoE layers, temperature 0 and schema-constrained outputs. |
+| Planning, context and answers | **Gemma 4 12B QAT Q4_0**, llama.cpp CUDA | 4,096-token context, one inference slot, full layer offload, temperature 0, seed 42, reasoning disabled and schema-constrained outputs. |
 | PDF extraction | Heron layout, accurate TableFormer, English Tesseract | CPU processing; native/OCR provenance, layout/table structure and quality diagnostics. |
 
 The API and CPU processor preserve separate interactive/background admission. A bounded queue in the GPU service prioritizes waiting interactive generation over background enrichment, with FIFO ordering within each class. Active inference is non-preemptive. Backend uncertainty closes generation admission until restart, preventing a timed-out request from overlapping new work.
 
 Models are checksum-verified from local files. Bounded disposable disk caches key results by exact input and full model/configuration identity; corrupt entries become misses. Committed vectors and source evidence live in the database, so deleting a cache does not remove documents. There is no answer cache. The normal GPU service is the only component with NVIDIA access.
 
-**T27 measured 416 requests and kept 26B as the default.** The official **Gemma 4 12B QAT Q4_0** reduced ranked-five median latency by **52.7–60.7%**, but lost correct JSON answers. In both passes, current-runtime T14 scores were **13/16 for 26B versus 10/16 for 12B**; T11 scores were **16/28 versus 14/28**. T11's candidate also missed the historical 16/28 floor. Incorrect pointers were rejected; drafts were not promoted to factual answers. The separate 12B planner/source/browser checks passed. These observed regression comparisons are separate from historical scores and are not independent quality validation.
+**12B is the default after T28's 208-request evaluation.** Applying evidence-specific JSON pointer constraints to ranked extraction recovered every lost T27 control case and its validated support. Ranked five scored **13/16 on T14 and 18/28 on T11 in both passes**, with no correctness/source-support loss against either retained T27 model run. Median latency was **9.99–11.16 seconds**, **50.4–62.8% lower** than the retained 26B control. All declared gates passed; the normal app was activated with its existing library preserved.
+
+T27's earlier 416-request comparison had rejected promotion because unconstrained JSON paths reduced 12B's scores to 10/16 and 14/28. Its [negative result](docs/reports/t27-model-comparison.md) is preserved. T28 changes the extraction contract, then compares against retained controls; it is not a fresh paired 26B run or independent quality validation. T11 ranked-five medians are about 5% slower than the earlier 12B run, so the fix has measurable overhead. [Full results, per-case changes and limitations](docs/reports/t28-ranked-pointers.md).
 
 | Generation profile | Placement | Status |
 | --- | --- | --- |
-| `26b-offload22` | 22 CPU expert layers | Established application default; saved generation identities preserved. |
-| `12b` | Full layer offload | Experimental. Passed full-context/restart checks on this RTX 4060, but failed accuracy gates. |
+| `12b` | Full layer offload | **Default** after T28; verified on the 8 GB RTX 4060. |
+| `26b-offload22` | 22 CPU expert layers | Optional compatibility/rollback profile; saved generation identities preserved. |
 | `26b-gpu` | Full layer offload | Optional 16–24 GB target, unverified on this machine. |
 
-The 12B measured-query peak was **7,864/8,188 MiB**, leaving **324 MiB sampled headroom**. This is a result for one 8 GB card, not a guarantee across 8–12 GB systems. Both models used the same pinned llama.cpp runtime, context, sampling settings, CPU models and committed corpus. The proposed 65–75% overall median reduction was not achieved. T11/T14 timing excludes automatic field planning; the application checks cover that separately.
+T28's measured-query peak was **7,880/8,188 MiB**, leaving only **308 MiB sampled GPU headroom**. No OOM/backend failure was observed; Windows GPU page-outs remain unverified. This tests one 8 GB card, not the whole intended 8–12 GB range. The pinned runtime, context, sampling, CPU models and committed corpus match T27. The proposed 65–75% overall median reduction was not achieved. T11/T14 timings exclude automatic field planning; separate planner/source/browser checks passed. Exact-value constraints do not remove semantic errors, strict PDF failures or the existing rejection of numeric fragments inside ranges.
 
-Profiles are shared by the worker, validating GPU launcher and scheduler. Model/runtime identities separate generated-context caches; unfinished jobs keep their original generator policies. To try 12B explicitly, use `./deployment/VectorNext.ps1 -Action Setup -ModelProfile 12b`. Selection persists for later Start/Setup/Rebuild. Return with `./deployment/VectorNext.ps1 -Action Start -ModelProfile 26b-offload22`. Routine Start remains offline. Direct Compose users apply `compose.app.models.yaml` after `compose.app.yaml` and set `VECTORNEXT_GENERATOR_PROFILE` consistently. [Measured results and limits](docs/reports/t27-model-comparison.md) · [Setup, profiles and reproduction](experiments/t27/README.md) · [Frozen protocol](experiments/t27/protocol.md).
+Profiles are shared by the worker, validating GPU launcher and scheduler. Model/runtime identities separate generated-context caches; unfinished jobs keep their original generator policies and reject mismatched profiles. Fresh setup defaults to `12b`. Existing saved choices are respected: migrate explicitly with `./deployment/VectorNext.ps1 -Action Setup -ModelProfile 12b`, or use Start if the release images/files are installed. Selection persists for later Start/Setup/Rebuild. Return with `./deployment/VectorNext.ps1 -Action Start -ModelProfile 26b-offload22` after installing that profile's files. Routine Start remains offline. Direct Compose users apply `compose.app.models.yaml` after `compose.app.yaml` and set `VECTORNEXT_GENERATOR_PROFILE` consistently. The optional `26b-gpu` profile targets larger cards; neither 26B profile adds corpus-wide aggregation. [Profiles, rollback and frozen reproduction](docs/reports/t28-ranked-pointers.md#reproduction-profiles-and-rollback).
 
 ### HTTP API and OpenAPI
 
@@ -213,9 +215,9 @@ The normal Compose project runs these three services:
 
 | Service | Image | Resource limits | Data access |
 | --- | --- | --- | --- |
-| `vectornext` | `vectornext-app:t27` | 2 CPUs, 4 GiB RAM | Sole read/write mount of the `data` volume at `/storage`; API, React and docs on host loopback port 8088. |
-| `processor` | `vectornext-app-processor:t27` | 4 CPUs, 6 GiB RAM | Read-only model files and disposable `cache` volume; no database mount or GPU. |
-| `llm` | `vectornext-app-llm:t27` | 8 CPUs, 32 GiB RAM, NVIDIA GPU | Read-only GGUF weights; internal network endpoint with the llama.cpp backend behind the scheduler. |
+| `vectornext` | `vectornext-app:t28-12b` | 2 CPUs, 4 GiB RAM | Sole read/write mount of the `data` volume at `/storage`; API, React and docs on host loopback port 8088. |
+| `processor` | `vectornext-app-processor:t28-12b` | 4 CPUs, 6 GiB RAM | Read-only model files and disposable `cache` volume; no database mount or GPU. |
+| `llm` | `vectornext-app-llm:t28-12b` | 8 CPUs, 32 GiB RAM, NVIDIA GPU | Read-only GGUF weights; internal network endpoint with the llama.cpp backend behind the scheduler. |
 
 These are configured limits, not typical utilization. Containers use read-only root filesystems, bounded temporary storage, dropped capabilities and `no-new-privileges`. Processor/generator communication stays on an internal Docker network; only the API publishes a host port. CLI and offline-admin containers run on demand through the `tools` profile. The admin tool has no network and requires exclusive database ownership for export/restore.
 
@@ -307,7 +309,7 @@ The earlier synthetic development comparison passed 13/13 questions with both li
 
 ## Quickstart
 
-Use Docker Desktop with WSL 2, Linux containers and NVIDIA GPU support. The tested PC has an RTX 4060 (8 GB VRAM) and about 64 GB RAM. The generation container has reached about **23 GiB including mapped model/file cache**. The model file alone is approximately **14.44 GB**, plus CPU/PDF models and images.
+Use Docker Desktop with WSL 2, Linux containers and NVIDIA GPU support. The tested PC has an RTX 4060 (8 GB VRAM) and about 64 GB RAM. The default 12B model file is **6.98 GB**; add space for CPU/PDF models, images and documents. T28's query blocks measured **10.19 GiB generator cgroup memory including file cache** and **7,880 MiB whole-device GPU use**. These observations are not minimum system requirements or a guarantee that concurrent GPU workloads fit. The optional offloaded 26B model uses a 14.44 GB file and considerably more system RAM.
 
 ### Windows: setup once, then double-click
 
@@ -337,6 +339,7 @@ Facet selection remains experimental: the T24 passage-coverage results do not es
 - **Models are still loading:** browse documents while the capability indicators update. GPU contention or insufficient system RAM can slow generation. Stop other GPU experiments before launching this stack.
 - **Upload is busy or interrupted:** the interface retains its upload identity, reconciles saved work and offers Retry. Saved processing failures require explicit retry. A failed replacement must finish before that document can be removed.
 - **PDF was rejected:** inspect the failure; strict extraction is the default. Enable partial extraction in Upload options only when incomplete extraction is acceptable. Warnings remain available with evidence.
+- **A year from a range is rejected:** the numeric validator deliberately rejects fragments of ranges. A correct model draft can still fail this check; inspect the source directly. T28 changes JSON pointer validity, not numeric range interpretation.
 - **Question planning fails:** a clarification error asks for a subject and requested fact; an aggregation error means a calculation across records is unsupported. Ask for separately reported facts or supply fields in Advanced. Invalid plans fail explicitly. Supported results still require human semantic review.
 - **Browser storage failed:** keep the tab open and export conversations. Clear space or use a persistent browser profile; private mode/history deletion can remove saved conversations. Use one active tab to avoid competing workspace saves.
 - **Updated code is not visible:** choose Rebuild, then reload the browser. Start deliberately reuses installed images.
@@ -351,13 +354,13 @@ The existing CLI and JSON API remain available. For manual setup:
 git clone https://github.com/dpittaluga76/VectorNext.git
 cd VectorNext
 
-docker compose -f compose.models.yaml -f compose.models.26b.yaml build model-download
-docker compose -f compose.models.yaml -f compose.models.26b.yaml run --rm --no-deps model-download
+docker compose -f compose.models.yaml build model-download
+docker compose -f compose.models.yaml run --rm --no-deps model-download
 docker compose -f compose.processor.yaml build processor
 docker compose -f compose.processor.yaml run --rm pdf-setup
 ```
 
-Initial setup needs network access. Model downloads are checksum-verified and reused when already present. Weights stay outside images in `models/`; normal operation uses local files.
+Initial setup needs network access. `compose.models.yaml` selects the pinned 12B artifact by default; `compose.models.26b.yaml` is an explicit offload22 override and `compose.models.26b-gpu.yaml` provides optional full-GPU placement. Model downloads are checksum-verified and reused when already present. Weights stay outside images in `models/`; normal operation uses local files. If a shell has `VECTORNEXT_GENERATOR_PROFILE` set, it overrides the application default; use the same profile for setup and runtime.
 
 #### 2. Start the application
 
@@ -367,7 +370,7 @@ docker compose -f compose.app.yaml up -d --no-build --pull never
 docker compose -f compose.app.yaml run --rm client ready
 ```
 
-Repeat the readiness check until all capabilities are available. The measured model restart took about **137 seconds** on the test PC; loading time varies. The API listens at `http://127.0.0.1:8088`. Keep other VectorNext GPU experiments stopped while using this stack.
+Repeat the readiness check until all capabilities are available. T28's normal Windows launcher activation reached readiness in **67 seconds**; its separate Linux model-volume restart took **7.48 seconds**. Different storage/loading paths make these noninterchangeable observations. The API listens at `http://127.0.0.1:8088`. Keep other VectorNext GPU experiments stopped while using this stack.
 
 #### 3. Ingest, search and ask
 
@@ -425,23 +428,23 @@ docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest evals
 docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest deployment.test_workflow -v
 ```
 
-These commands cover the 158 Rust checks (including the T23/T24 experimental selectors), 54 original fixture/scorer/protocol checks and 27 workflow/client checks. T14 adds `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. T15 passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
+These commands cover the 160 top-level Rust checks (including the T23/T24 experimental selectors), 54 original fixture/scorer/protocol checks and 27 workflow/client checks. T14 adds `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. T15 passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
 
 Browser verification runs entirely in Docker:
 
 ```sh
-docker build -f docker/ui-test.Dockerfile -t vectornext-ui-test:t26 .
-docker run --rm --network none vectornext-ui-test:t26 npm test
-docker run --rm --network none --ipc=host vectornext-ui-test:t26 npm run e2e -- workspace.spec.ts
+docker build -f docker/ui-test.Dockerfile -t vectornext-ui-test:t28 .
+docker run --rm --network none vectornext-ui-test:t28 npm test
+docker run --rm --network none --ipc=host vectornext-ui-test:t28 npm run e2e -- workspace.spec.ts
 ```
 
 The planner/profile contract tests need no models or GPU calls. Once the processor image is built:
 
 ```sh
-docker run --rm --network none vectornext-app-processor:t27 /opt/model-env/bin/python -m unittest model_worker.test_planning model_worker.test_generator_profile -v
+docker run --rm --network none vectornext-app-processor:t28-12b /opt/model-env/bin/python -m unittest model_worker.test_planning model_worker.test_generator_profile -v
 ```
 
-T27 verification passed **158 Rust and 68 Python checks**, four comparison-protocol checks, formatting/Clippy, 71 frozen HTTP cases, five browser-boundary checks, two OpenAPI checks, five component tests, 13 browser scenarios and six launcher contracts under both PowerShell variants. The 12B application replay passed 12 planner, eight source-backed and five observed-regression cases. Its separate 416-request quality comparison failed promotion gates. [Results and limitations](docs/reports/t27-model-comparison.md). Full model checks use fresh isolated storage; no historical holdout was used.
+T28 verification passed **160 top-level Rust and 81 Python checks**, formatting/Clippy, 71 frozen HTTP cases, five browser boundaries, two OpenAPI checks, five components, 12 offline/adapter browser scenarios and two live model browser scenarios. All 25 original T26 planner/source/regression cases and 16 fresh fixed/source checks passed. Release selection added 35 focused Python checks and eight launcher contracts under both PowerShell variants. All **208 frozen regression requests** completed; the report retains six rejected responses, PDF admission failures, engineering failures and the normal-library numeric-range limitation. [Results and reproduction caveat](docs/reports/t28-ranked-pointers.md). Model checks use isolated data; no historical holdout was used.
 
 T16–T18 passed 116 Rust, 118 Python unit/regression checks, five live HTTP checks, five frontend component checks, nine offline browser scenarios and a production-browser scenario with real Gemma. [Results, retained failures and limitations](docs/reports/t16-t18-local-app.md). These are operational checks, not a new retrieval-quality benchmark.
 
@@ -457,15 +460,16 @@ T19 additionally passed the frozen 71-case HTTP comparison, two OpenAPI schema c
 | [`src/answers.rs`](src/answers.rs) and [`model_worker/`](model_worker/) | Evidence assembly, local models, exact JSON reads and generation scheduling |
 | [`model_worker/planning.py`](model_worker/planning.py) and [`experiments/t26/`](experiments/t26/) | Field-only planning, strict output contracts, frozen checks and retained failures |
 | [`model_worker/generator_profiles.json`](model_worker/generator_profiles.json) and [`experiments/t27/`](experiments/t27/) | Pinned generation profiles, paired model comparison and promotion gates |
+| [`experiments/t28/`](experiments/t28/) and [T28 results](docs/reports/t28-ranked-pointers.md) | Frozen pointer-contract checks, 208-request replay and conditional 12B rollout |
 | [`src/service/`](src/service/) and [`deployment/`](deployment/) | Shared database ownership, API, CPU admission and client |
 | [`frontend/`](frontend/) and [browser contracts](docs/browser-api.md) | React workspace, browser-only history, exact text rendering and Playwright scenarios |
 | [`evals/`](evals/) and [public-source evaluation](docs/reports/t11-independent.md) | Frozen sources, paired comparisons, source-aware scoring, timings and retained failures |
 
 ## Project status and next steps
 
-T01–T27 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection, numeric proof validation, a reproducible pgvector comparison, bounded large-state checkpoints/exports, indexed scalar filtering, candidate/final-evidence retrieval experiments, automatic field-planning repairs and a gated 12B/26B model comparison. The app is ready for local experimentation within its documented limits. The browser workspace, Windows launcher and Axum API with offline OpenAPI documentation are implemented. The public API is still evolving; multi-user authentication remains out of scope.
+T01–T28 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection, numeric proof validation, a reproducible pgvector comparison, bounded large-state checkpoints/exports, indexed scalar filtering, candidate/final-evidence retrieval experiments, automatic field-planning repairs and a gated 12B/26B model comparison. The app is ready for local experimentation within its documented limits. The browser workspace, Windows launcher and Axum API with offline OpenAPI documentation are implemented. The public API is still evolving; multi-user authentication remains out of scope.
 
-T13 adds coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). T22 adds bounded scalar/document/media filter indexes. T23/T24 complete fresh candidate and final-selection experiments; T25 integrates opt-in facet coverage and T26 repairs measured automatic-planning failures with source-linked browser/API verification. T27 adds shared model profiles and retains 26B after measured 12B correctness losses. Ranked remains the default. A separately scoped JSON-pointer contract experiment, broader planning reliability and clearer ambiguity evaluation remain future quality work. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
+T13 adds coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). T22 adds bounded scalar/document/media filter indexes. T23/T24 complete fresh candidate and final-selection experiments; T25 integrates opt-in facet coverage and T26 repairs measured automatic-planning failures with source-linked browser/API verification. T27 adds shared model profiles and records 12B's initial correctness losses. T28 constrains ranked JSON pointers, recovers those losses and promotes 12B after 208 evaluated requests plus application/operational checks. Ranked 30/20/5 remains the default. Broader planning reliability, numeric-range interpretation and clearer ambiguity evaluation remain future quality work. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
 
 For contributions, start with the [architecture](docs/architecture.md), [build plan](docs/plan.md) and [working instructions](AGENTS.md). Reproducible retrieval failures with shareable source files are especially useful.
 

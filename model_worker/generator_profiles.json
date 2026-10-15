@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "default": "26b-offload22",
+  "default": "12b",
   "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695",
   "profiles": {
     "26b-offload22": {

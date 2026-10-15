@@ -18,6 +18,8 @@ struct Models {
     budget: bool,
     queries: RefCell<Vec<String>>,
     bad_facet: bool,
+    token_inputs: RefCell<Vec<AnswerInput>>,
+    reject_json: bool,
 }
 impl Models {
     fn new(space: EmbeddingSpace) -> Self {
@@ -28,6 +30,8 @@ impl Models {
             budget: false,
             queries: RefCell::new(vec![]),
             bad_facet: false,
+            token_inputs: RefCell::new(vec![]),
+            reject_json: false,
         }
     }
 }
@@ -76,11 +80,16 @@ impl AnswerModels for Models {
         })
     }
     fn answer_tokens(&self, input: &AnswerInput) -> Result<usize> {
-        Ok(if self.budget && input.evidence.len() > 1 {
-            4000
-        } else {
-            100
-        })
+        self.token_inputs.borrow_mut().push(input.clone());
+        Ok(
+            if (self.budget && input.evidence.len() > 1)
+                || (self.reject_json && input.evidence.iter().any(|e| e.record.is_some()))
+            {
+                4000
+            } else {
+                100
+            },
+        )
     }
     fn extract(&self, input: &AnswerInput) -> Result<Extraction> {
         *self.input.borrow_mut() = Some(input.clone());
@@ -530,6 +539,7 @@ fn pipeline_preserves_constraints_filters_budget_and_generated_separation() {
     assert!(report.skipped.iter().any(|s| s.reason.contains("budget")));
     assert_eq!(report.retrieval.unwrap().request.filter, r.filter);
     assert_eq!(report.answer.status, Status::InsufficientEvidence);
+    assert!(!models.input.borrow().as_ref().unwrap().constrain_pointers);
 }
 fn ingest_json(bytes: &[u8]) -> (tempfile::TempDir, Database, EmbeddingSpace) {
     let (dir, mut db) = database();
@@ -580,6 +590,82 @@ fn bounded_options_keep_filter_and_expose_stage_timings() {
         ..options
     };
     assert!(ask_with_options(&index, &models, request(), invalid).is_err());
+}
+
+#[test]
+fn ranked_json_constraints_are_counted_before_admission_and_keep_only_admitted_records() {
+    let (_dir, db, space) = ingest_json(br#"[{"id":"north","goals":7},{"id":"south","goals":4}]"#);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    for primary_limit in [2, 5] {
+        let mut models = Models::new(space.clone());
+        models.budget = true;
+        let report = ask_with_options(
+            &index,
+            &models,
+            request(),
+            AnswerOptions {
+                primary_limit,
+                ..AnswerOptions::default()
+            },
+        )
+        .unwrap();
+        let inputs = models.token_inputs.borrow();
+        assert!(
+            inputs
+                .iter()
+                .filter(|i| !i.evidence.is_empty())
+                .all(|i| i.constrain_pointers)
+        );
+        assert!(inputs.iter().any(|i| i.evidence.len() == 2));
+        let extracted = models.input.borrow();
+        let extracted = extracted.as_ref().unwrap();
+        assert!(extracted.constrain_pointers);
+        assert_eq!(extracted.evidence.len(), 1);
+        assert_eq!(report.evidence.len(), 1);
+        assert!(
+            report
+                .skipped
+                .iter()
+                .any(|s| s.reason.contains("prompt budget"))
+        );
+        assert_eq!(extracted.evidence[0].record, report.evidence[0].record);
+    }
+}
+
+#[test]
+fn ranked_rejected_json_restores_prose_only_constraints() {
+    let (_dir, mut db, space) = ingest_json(br#"[{"id":"quarry","goals":7}]"#);
+    let doc = document(
+        &mut db,
+        "prose",
+        "r1",
+        &[TARGET],
+        vec![vec![
+            1. / (space.dimensions as f32).sqrt();
+            space.dimensions
+        ]],
+        &space,
+    );
+    publish(&mut db, doc, &space, None);
+    let index = SearchIndex::build(db.snapshot(), space.id(), KeywordConfig::default()).unwrap();
+    let mut models = Models::new(space);
+    models.reject_json = true;
+    let report = ask(&index, &models, request()).unwrap();
+    assert!(
+        models
+            .token_inputs
+            .borrow()
+            .iter()
+            .any(|i| i.constrain_pointers)
+    );
+    assert!(report.evidence.iter().all(|e| e.record.is_none()));
+    assert!(
+        report
+            .skipped
+            .iter()
+            .any(|s| s.reason.contains("prompt budget"))
+    );
+    assert!(!models.input.borrow().as_ref().unwrap().constrain_pointers);
 }
 #[test]
 fn coverage_focus_retains_authoritative_history_and_explicit_filter() {

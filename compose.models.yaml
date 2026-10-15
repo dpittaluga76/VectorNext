@@ -8,10 +8,12 @@ services:
     command: ["--query-gpu=name,memory.total,memory.used,driver_version", "--format=csv"]
 
   model-download:
+    environment:
+      VECTORNEXT_MODELS_LOCK: /workspace/experiments/t27/models.12b.lock.json
     build:
       context: .
       dockerfile: docker/model-check.Dockerfile
-    image: vectornext-model-check:t02
+    image: vectornext-model-check:t28-12b
     profiles: [setup]
     volumes:
       - ./models:/models
@@ -31,9 +33,9 @@ services:
     networks: [models-internal]
     command:
       - --model
-      - /models/generator/gemma-4-E2B_q4_0-it.gguf
+      - /models/generator-12b/gemma-4-12b-it-qat-q4_0.gguf
       - --alias
-      - vectornext-gemma4-e2b
+      - vectornext-gemma4-12b
       - --host
       - 0.0.0.0
       - --port
@@ -70,10 +72,13 @@ services:
       start_period: 5s
 
   model-check:
+    environment:
+      VECTORNEXT_MODELS_LOCK: /workspace/experiments/t27/models.12b.lock.json
+      VECTORNEXT_GENERATOR_ALIAS: vectornext-gemma4-12b
     build:
       context: .
       dockerfile: docker/model-check.Dockerfile
-    image: vectornext-model-check:t02
+    image: vectornext-model-check:t28-12b
     profiles: [tools]
     read_only: true
     tmpfs: [/tmp]

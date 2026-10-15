@@ -1,10 +1,11 @@
 # Contract checks with Docker/HTTP/model-file metadata stubs. No services or models are touched.
 $ErrorActionPreference = 'Stop'
 $repository = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$testRoot = Join-Path $repository ('data/t27/launcher-' + [guid]::NewGuid().ToString('N'))
+$testRoot = Join-Path $repository ('data/t28/launcher-' + [guid]::NewGuid().ToString('N'))
 $mockModels = Join-Path $testRoot 'models'
 $mockSizes = @{}
 $calls = [System.Collections.Generic.List[object]]::new()
+$checkedModels = [System.Collections.Generic.List[string]]::new()
 $previousProfile = $env:VECTORNEXT_GENERATOR_PROFILE
 
 foreach ($file in @('deployment/VectorNext.ps1', 'model_worker/generator_profiles.json',
@@ -33,9 +34,9 @@ function docker {
     if ($args[0] -eq 'info') { return 'linux' }
     if ($args -contains 'config') {
         return (@{services = @{
-            vectornext = @{image = 'vectornext-app:t27'; ports = @(@{published = '8088'})}
-            processor = @{image = 'vectornext-app-processor:t27'; volumes = @(@{target = '/models'; source = $mockModels})}
-            llm = @{image = 'vectornext-app-llm:t27'}
+            vectornext = @{image = 'vectornext-app:t28-12b'; ports = @(@{published = '8088'})}
+            processor = @{image = 'vectornext-app-processor:t28-12b'; volumes = @(@{target = '/models'; source = $mockModels})}
+            llm = @{image = 'vectornext-app-llm:t28-12b'}
         }} | ConvertTo-Json -Depth 8)
     }
 }
@@ -48,7 +49,7 @@ function Test-Path {
 function Get-Item {
     param([string]$LiteralPath)
     $key = [IO.Path]::GetFullPath($LiteralPath)
-    if ($mockSizes.ContainsKey($key)) { return @{Length = $mockSizes[$key]} }
+    if ($mockSizes.ContainsKey($key)) { $checkedModels.Add($key); return @{Length = $mockSizes[$key]} }
     return Microsoft.PowerShell.Management\Get-Item -LiteralPath $LiteralPath
 }
 function Assert-Contract { param([bool]$Condition, [string]$Message); if (-not $Condition) { throw $Message } }
@@ -60,6 +61,12 @@ function Run-Action {
 }
 try {
     $env:VECTORNEXT_GENERATOR_PROFILE = $null
+    Run-Action 'Start'
+    Assert-Contract (@($checkedModels | Where-Object { $_ -like '*generator-12b*' }).Count -gt 0) 'Default Start did not check 12B files'
+    Assert-Contract (@($checkedModels | Where-Object { $_ -like '*generator-26b*' }).Count -eq 0) 'Default Start required optional 26B files'
+    Assert-Contract (@($calls | Where-Object { $_ -contains 'build' -or $_ -contains 'run' }).Count -eq 0) 'Default Start built/downloaded models'
+    Run-Action 'Setup'
+    Assert-Contract (@($calls | Where-Object { $_ -contains 'model-download' -and $_ -contains (Join-Path $testRoot 'compose.models.12b.yaml') }).Count -eq 2) 'Default Setup did not use the 12B lock'
     Run-Action 'Start' '12b'
     Assert-Contract (@($calls | Where-Object { $_ -contains 'build' -or $_ -contains 'run' }).Count -eq 0) 'Start built/downloaded models'
     $up = @($calls | Where-Object { $_ -contains 'up' })
@@ -86,7 +93,7 @@ try {
 
     Run-Action 'Start' '26b-offload22'
     Assert-Contract ((Get-Content -LiteralPath $saved -Raw).Trim() -eq '26b-offload22') 'Explicit rollback did not persist'
-    Write-Output 'PASS: six launcher contracts; all Docker, HTTP and model metadata calls were stubbed.'
+    Write-Output 'PASS: eight launcher contracts; all Docker, HTTP and model metadata calls were stubbed.'
 } finally {
     $env:VECTORNEXT_GENERATOR_PROFILE = $previousProfile
 }

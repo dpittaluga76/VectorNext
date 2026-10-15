@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: docker/ingestion.Dockerfile
-    image: vectornext-ingestion:t27
+    image: vectornext-ingestion:t28-12b
     profiles: [tools]
     read_only: true
     init: true
@@ -18,7 +18,7 @@ services:
       - ingestion-cache:/cache
     networks: [models-internal]
     environment:
-      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-26b-offload22}
+      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-12b}
 
   llm:
     extends:
@@ -28,7 +28,7 @@ services:
     entrypoint: [python, -m, model_worker.launch_llm]
     working_dir: /app
     environment:
-      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-26b-offload22}
+      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-12b}
     volumes:
       - ./model_worker:/app/model_worker:ro
       - ./experiments/t02:/app/experiments/t02:ro

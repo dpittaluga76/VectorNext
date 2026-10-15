@@ -1,0 +1,180 @@
+[
+  {
+    "id": "escaped",
+    "question": "How many active sensors does Quarry station have in 2031?",
+    "documents": [
+      "quarry.json"
+    ],
+    "fields": {
+      "active_sensors": {
+        "kind": "integer",
+        "nullable": false,
+        "pointer": null,
+        "description": "Active sensor count, not pressure."
+      }
+    },
+    "status": "supported",
+    "expected": {
+      "active_sensors": {
+        "pointer": "/sensors~1count/~0active/0",
+        "value_text": "7",
+        "evidence_id": "E1"
+      }
+    }
+  },
+  {
+    "id": "exact",
+    "question": "What is the exact numeric value of the first reading at Quarry station in 2031?",
+    "documents": [
+      "quarry.json"
+    ],
+    "fields": {
+      "reading": {
+        "kind": "number",
+        "nullable": false,
+        "pointer": null,
+        "description": ""
+      }
+    },
+    "status": "supported",
+    "expected": {
+      "reading": {
+        "pointer": "/readings/0/value",
+        "value_text": "9007199254740997.00000000000003",
+        "evidence_id": "E1"
+      }
+    }
+  },
+  {
+    "id": "zero",
+    "question": "What integer is stored in the zero field at Quarry station in 2031?",
+    "documents": [
+      "quarry.json"
+    ],
+    "fields": {
+      "zero": {
+        "kind": "integer",
+        "nullable": false,
+        "pointer": null,
+        "description": ""
+      }
+    },
+    "status": "supported",
+    "expected": {
+      "zero": {
+        "pointer": "/zero",
+        "value_text": "0",
+        "evidence_id": "E1"
+      }
+    }
+  },
+  {
+    "id": "raw_null",
+    "question": "What is the raw nullable integer value of unknown at Quarry station in 2031?",
+    "documents": [
+      "quarry.json"
+    ],
+    "fields": {
+      "unknown": {
+        "kind": "integer",
+        "nullable": true,
+        "pointer": null,
+        "description": ""
+      }
+    },
+    "status": "supported",
+    "expected": {
+      "unknown": {
+        "pointer": "/unknown",
+        "value_text": "null",
+        "evidence_id": "E1"
+      }
+    }
+  },
+  {
+    "id": "null_count",
+    "question": "How many unavailable sensors does Quarry station have, according to its unknown field?",
+    "documents": [
+      "quarry.json"
+    ],
+    "fields": {
+      "unavailable_sensors": {
+        "kind": "integer",
+        "nullable": false,
+        "pointer": null,
+        "description": "Count from the unknown field."
+      }
+    },
+    "status": "insufficient_evidence",
+    "expected": {}
+  },
+  {
+    "id": "missing",
+    "question": "Who built Quarry station?",
+    "documents": [
+      "quarry.json"
+    ],
+    "fields": {
+      "builder": {
+        "kind": "string",
+        "nullable": false,
+        "pointer": null,
+        "description": ""
+      }
+    },
+    "status": "insufficient_evidence",
+    "expected": {}
+  },
+  {
+    "id": "ambiguous",
+    "question": "How many sensors does Drift station have?",
+    "documents": [
+      "drift-2030.json",
+      "drift-2031.json"
+    ],
+    "fields": {
+      "sensors": {
+        "kind": "integer",
+        "nullable": false,
+        "pointer": null,
+        "description": ""
+      }
+    },
+    "status": "ambiguous",
+    "expected": {}
+  },
+  {
+    "id": "two_facts",
+    "question": "What are the active sensor count and the pressure at Quarry station in 2031?",
+    "documents": [
+      "quarry.json"
+    ],
+    "fields": {
+      "active_sensors": {
+        "kind": "integer",
+        "nullable": false,
+        "pointer": null,
+        "description": ""
+      },
+      "pressure": {
+        "kind": "integer",
+        "nullable": false,
+        "pointer": null,
+        "description": ""
+      }
+    },
+    "status": "supported",
+    "expected": {
+      "active_sensors": {
+        "pointer": "/sensors~1count/~0active/0",
+        "value_text": "7",
+        "evidence_id": "E1"
+      },
+      "pressure": {
+        "pointer": "/pressure",
+        "value_text": "93",
+        "evidence_id": "E1"
+      }
+    }
+  }
+]

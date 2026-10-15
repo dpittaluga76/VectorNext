@@ -1,4 +1,4 @@
-# Apply after compose.models.yaml. Retains the E2B configuration as the default.
+# Optional 26B with 22 CPU-offloaded expert layers; apply after compose.models.yaml.
 services:
   model-download:
     environment:

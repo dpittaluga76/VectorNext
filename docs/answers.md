@@ -60,4 +60,12 @@ For JSON evidence only, `coverage_v1` builds a catalog of existing scalar/null p
 
 Catalog bounds: 256 scalar/null leaves per record, depth 64, 2,048 UTF-8 bytes per pointer and 32,768 bytes for the complete catalog. Exceeding a bound fails explicitly; there is no silent schema truncation or fallback to unconstrained paths. Empty objects/arrays are not scalar answer fields. Numeric type inspection preserves decimal syntax instead of rounding through Python floats.
 
+### Ranked JSON pointer constraints (T28)
+
+Ranked extraction now enables the same existing worker catalog/schema whenever a JSON record is added to the evidence under consideration. It enables constraints before the actual prompt-token check and restores the previous constraint state if the added record does not fit. The final catalog therefore contains only admitted records, including admitted neighbors. Ranked prose-only messages and the coverage modes retain their previous behavior. Two versus five primary passages changes selection budgets, not pointer validity rules.
+
+Each schema branch binds one evidence ID to paths matching that requested field's type and any explicit pointer; a union of unrelated records' paths is never used. Stored null paths retain the existing Rust non-nullable abstention check. The worker's schema and prompt hashes identify the actual extraction contract. No model call, repair retry, source-value transcription or relaxed Rust proof check is added. Catalog tokens can reduce evidence admission, and grammar/schema work can affect latency. Existing catalog bounds fail explicitly rather than reverting to unconstrained extraction.
+
+These constraints exclude invalid paths from accepted output, but a valid path can still be semantically irrelevant. Missing fields, conflicting records and same-type distractors remain model-quality questions, tested separately from syntactic schema validity. The [T28 evaluation](reports/t28-ranked-pointers.md) completed 208 requests, recovered the T27 regression cases and promoted 12B after its application/hardware gates. This does not establish general semantics or correct abstention on unseen documents. The existing conservative rejection of numeric fragments inside ranges remains unchanged.
+
 The client exposes `ask request.json --evidence-strategy coverage_v1`. At the API, set `options.evidence_strategy` alongside the ordinary request. Omit it to keep ranked five. See the [T14 frozen protocol](t14-protocol.md) and [reproduction guide](../evals/coverage/README.md).

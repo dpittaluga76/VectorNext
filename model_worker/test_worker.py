@@ -77,23 +77,27 @@ class WorkerTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "configuration mismatch"): w.generate(changed)
 
     def test_profile_switch_preserves_embedding_and_rejects_saved_generator_policy(self):
-        saved = self.context()
-        with tempfile.TemporaryDirectory() as cache:
-            with patch.dict(os.environ, {'VECTORNEXT_CACHE': cache, 'VECTORNEXT_GENERATOR_PROFILE': '12b'}):
-                candidate = Worker()
-            self.assertEqual(candidate.space, self.worker.space)
-            with patch.object(candidate, 'http') as http:
-                with self.assertRaisesRegex(ValueError, 'configuration mismatch'):
-                    candidate.generate(saved)
-                http.assert_not_called()
-            current = copy.deepcopy(saved)
-            current['config']['generator'] = candidate.generator
-            with patch.object(candidate, 'http', side_effect=self.mock_http) as http:
-                candidate.generate(current)
-                self.assertEqual(http.call_args.args[1]['model'], 'vectornext-gemma4-12b')
-                candidate.generate(current)
-                self.assertEqual(http.call_count, 3)
-            self.assertEqual(saved['config']['generator'], self.worker.generator)
+        for old_profile, new_profile in [('26b-offload22', '12b'), ('12b', '26b-offload22')]:
+            with self.subTest(old=old_profile, new=new_profile), tempfile.TemporaryDirectory() as cache:
+                with patch.dict(os.environ, {'VECTORNEXT_CACHE': cache, 'VECTORNEXT_GENERATOR_PROFILE': old_profile}):
+                    previous = Worker()
+                saved = self.context()
+                saved['config']['generator'] = previous.generator
+                with patch.dict(os.environ, {'VECTORNEXT_CACHE': cache, 'VECTORNEXT_GENERATOR_PROFILE': new_profile}):
+                    candidate = Worker()
+                self.assertEqual(candidate.space, previous.space)
+                with patch.object(candidate, 'http') as http:
+                    with self.assertRaisesRegex(ValueError, 'configuration mismatch'):
+                        candidate.generate(saved)
+                    http.assert_not_called()
+                current = copy.deepcopy(saved)
+                current['config']['generator'] = candidate.generator
+                with patch.object(candidate, 'http', side_effect=self.mock_http) as http:
+                    candidate.generate(current)
+                    self.assertEqual(http.call_args.args[1]['model'], candidate.generator_alias)
+                    candidate.generate(current)
+                    self.assertEqual(http.call_count, 3)
+                self.assertEqual(saved['config']['generator'], previous.generator)
 
     def test_outage_overflow_and_bad_format_do_not_cache(self):
         w = self.worker; value = self.context(); value["evidence"] += " outage"

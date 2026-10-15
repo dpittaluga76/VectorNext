@@ -1,7 +1,7 @@
 name: vectornext
 services:
   vectornext:
-    image: vectornext-app:t27
+    image: vectornext-app:t28-12b
     build:
       context: .
       dockerfile: docker/app.Dockerfile
@@ -29,7 +29,9 @@ services:
       retries: 3
 
   processor:
-    image: vectornext-app-processor:t27
+    environment:
+      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-12b}
+    image: vectornext-app-processor:t28-12b
     build:
       context: .
       dockerfile: docker/app-processor.Dockerfile
@@ -53,7 +55,9 @@ services:
       retries: 3
 
   llm:
-    image: vectornext-app-llm:t27
+    environment:
+      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-12b}
+    image: vectornext-app-llm:t28-12b
     build:
       context: .
       dockerfile: docker/app-llm.Dockerfile
@@ -70,10 +74,7 @@ services:
     volumes:
       - ${VECTORNEXT_MODELS_DIR:-./models}:/models:ro
     networks: [local]
-    command: [--model, /models/generator-26b/gemma-4-26B_q4_0-it.gguf, --alias, vectornext-gemma4-26b-a4b,
-      --host, 0.0.0.0, --port, '8080', --ctx-size, '4096', --n-gpu-layers, '99', --n-cpu-moe, '22',
-      --parallel, '1', --n-predict, '256', --batch-size, '512', --ubatch-size, '128', --threads, '4',
-      --flash-attn, 'on', --jinja, --reasoning, 'off', --no-context-shift, --no-ui, --offline, --verbosity, '4']
+    command: []
     healthcheck:
       test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=2)"]
       interval: 5s
@@ -82,7 +83,7 @@ services:
       retries: 12
 
   client:
-    image: vectornext-app:t27
+    image: vectornext-app:t28-12b
     profiles: [tools]
     entrypoint: [python, -m, deployment.client]
     read_only: true
@@ -95,7 +96,7 @@ services:
     networks: [local]
 
   admin:
-    image: vectornext-app:t27
+    image: vectornext-app:t28-12b
     profiles: [tools]
     command: [inspect, /storage/db]
     read_only: true

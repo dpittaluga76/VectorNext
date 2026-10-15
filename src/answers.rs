@@ -944,9 +944,14 @@ fn add_evidence(
         text.splice(0..0, e.labels.clone());
         e.text = text.join("\n\n");
     }
+    let previous_constraints = input.constrain_pointers;
+    // Ranked JSON uses the same record/type-bound schema as coverage. Enable it
+    // before token counting so its visible catalog consumes the prompt budget.
+    input.constrain_pointers |= e.record.is_some();
     input.evidence.push(e);
     if models.answer_tokens(input)? > INPUT_TOKENS {
         input.evidence = previous;
+        input.constrain_pointers = previous_constraints;
         skipped.push(Skipped {
             key: key.clone(),
             reason: "mandatory evidence exceeds remaining prompt budget".into(),

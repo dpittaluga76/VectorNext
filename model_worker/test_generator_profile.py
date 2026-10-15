@@ -13,6 +13,11 @@ from .scheduler import validate, Rejected
 
 
 class GeneratorProfileTests(unittest.TestCase):
+    def test_promoted_default_is_12b_and_explicit_rollback_remains_available(self):
+        with patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(profiles.load()['name'], '12b')
+            self.assertEqual(profiles.load('26b-offload22')['cpu_moe'], 22)
+
     def test_legacy_identity_and_cpu_models_unchanged(self):
         old = profiles.load('26b-offload22')
         self.assertEqual(profiles.runtime_identity(old),

@@ -1,0 +1,10 @@
+{
+  "experiments/t28/cases.json": "472c0332d00fa1922633f6f98f2fdf7dd0a30c1772ba0c92aab69136bf1c137f",
+  "experiments/t28/fresh_check.py": "2d687a323c8fef2bdc6407bf0fe9f87ec769df3d8f83476e20a2c2455773e235",
+  "frontend/e2e/pointers-live.spec.ts": "589de4ab1b929f51f058735bbf13b854281ec406cf30d9947f0146a7e3c12350",
+  "experiments/t28/fixtures/drift-2030.json": "dcaa64d8bc961034e08433f87bb3a2a9c2fc14a8e4ca58f358c8a51fee474211",
+  "experiments/t28/fixtures/drift-2031.json": "2429685fc5078ac6ec05c433493815fb9bff99fa2d33bce50989f6ad2b008d0c",
+  "experiments/t28/fixtures/precision.json": "1a7e47151de04d341bdf55e760ce4f44be2ce23212a94a7f2e55e9fe1c5c94ee",
+  "experiments/t28/fixtures/quarry.json": "12759c7557f3202b571d1df9616081140b11f80a37dbd2147e21fa65d1bc9148",
+  "experiments/t28/fixtures/ridge.txt": "293126424fc4659ab06bd2011cdfcabd3474f3398f3ad709a79b8a4b95a88f85"
+}
