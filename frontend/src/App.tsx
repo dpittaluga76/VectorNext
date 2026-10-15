@@ -476,6 +476,9 @@ export default function App() {
           </span>
         </a>
         <div className="top-actions">
+          <a href="/docs" target="_blank" rel="noreferrer">
+            API docs
+          </a>
           <span className={`connection ${online ? 'connected' : ''}`}>
             <i />
             {online ? 'Local connection' : 'API offline'}

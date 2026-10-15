@@ -21,11 +21,12 @@ function Check-Docker {
     Invoke-Docker @('compose', 'version')
 }
 function Check-Installed {
-    foreach ($image in @('vectornext-app:t18', 'vectornext-app-processor:t18', 'vectornext-app-llm:t18')) {
+    $configuration = Get-AppConfiguration
+    foreach ($service in @('vectornext', 'processor', 'llm')) {
+        $image = $configuration.services.$service.image
         & docker image inspect $image --format '{{.Id}}' 2>$null | Out-Null
         if ($LASTEXITCODE -ne 0) { throw "Required image $image is missing. Choose Setup first, or Rebuild after a repository update." }
     }
-    $configuration = Get-AppConfiguration
     $modelRoot = ($configuration.services.processor.volumes | Where-Object { $_.target -eq '/models' }).source
     $manifest = Get-Content -LiteralPath (Join-Path $projectRoot 'experiments/t02/models.26b.lock.json') -Raw | ConvertFrom-Json
     foreach ($model in $manifest.models.PSObject.Properties.Value) {

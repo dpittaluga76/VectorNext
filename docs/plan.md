@@ -5,7 +5,7 @@ Design reference: [architecture.md](architecture.md).
 
 ## Current state
 
-- Phase: T01 through T18 complete. Browser usability is implemented and verified; candidate retrieval and ambiguity experiments follow afterward.
+- Phase: T01 through T19 complete. The API uses Axum with local OpenAPI documentation; candidate retrieval and ambiguity experiments are next to scope.
 - T15 complete: exact English numeric grouping, named-month date-year boundaries and numeric-fragment checks in complete supplied evidence. Preserves quotes/typed values, JSON pointer/null semantics and API/storage contracts. Verified 108 Rust/90 Python checks, format/lint, the three-case probe, release image build/liveness and T14 archive integrity. [Results](reports/t15-numeric-proofs.md). No GPU benchmark rerun or revised T14 quality score.
 - T14 complete: opt-in field-focused selection and actual-record JSON pointer constraints, annotation v2 and a new eight-source/16-question frozen comparison. All 96 local requests completed: five 8/16, two 7/16, coverage 8/16 in each pass. Coverage cut median latency 43.5–44.4%; retain five by default. [Results](reports/t14-evidence-coverage.md), [workflow](reports/t14-coverage-workflow.md) and [source-review limitations](reports/t14-source-review.md). All T14 services stopped; volumes/captures retained. 101 Rust/116 Python checks passed; a separate probe exposed numeric proof-boundary defects for T15.
 - T13 complete: supervised coordinator, pre-publication PDF diagnostics, bounded busy-admission retries and rejected-answer error envelopes. Verified 97 Rust/90 Python checks and a fresh CPU operational drill with real illustrated NASA PDFs, interruption/retry, unchanged committed data and idempotent publication. [Results and limits](reports/t13-reliability.md). Test services stopped; captures and volumes retained.
@@ -39,7 +39,7 @@ T02 subsequently demonstrated container GPU visibility and actual CUDA inference
 
 ## Next useful step
 
-T16–T18 are complete; see [verification and limits](reports/t16-t18-local-app.md). Next scope field-specific candidate retrieval and clearer ambiguity evaluation on fresh data. Keep structural context and ranked 30/20/5 defaults; `coverage_v1` stays experimental. Preserve historical captures, volumes, the pre-T15 source archive and the original unused holdout.
+Scope candidate retrieval and clearer ambiguity cases on fresh evaluation data. T19 is complete; see [HTTP compatibility, verification and limits](reports/t19-axum.md). Keep structural context and ranked 30/20/5 defaults; `coverage_v1` stays experimental. Preserve historical captures, volumes, the pre-T15 source archive and the original unused holdout.
 
 ## Work queue
 
@@ -419,13 +419,33 @@ Status: complete (2026-10-15). Depends on T17. [Verification](reports/t16-t18-lo
 
 - Acceptance: one shortcut reaches a usable UI after setup, with clear readiness feedback.
 
+### T19 — Migrate the API to Axum with OpenAPI documentation
+
+Status: complete (2026-10-15). Depends on T18. [Verification and limitations](reports/t19-axum.md).
+
+- Replace production tiny_http with Axum/Tokio; register routes and collect schemas through utoipa-axum. Keep tiny_http only for existing test mocks and pin dependencies compatible with Rust 1.87.
+- Preserve all legacy/browser endpoint contracts, exact values, origin checks, body/multipart limits, custom headers, static/PDF sources, revision guards and retry reconciliation. Override framework routing/extractor defaults to retain current rejection behavior.
+- Run synchronous Application calls in bounded spawn_blocking work. Preserve immediate 16-handler admission and separate model lanes. Work retains its permit after disconnect; no new operation timeouts/retries or database/model rewrites.
+- Add /openapi.json and locally bundled /docs with interactive Swagger UI, no CDN/external validation, exact raw responses and same-origin Try it out. Add the workspace link and README instructions.
+- Capture deterministic HTTP behavior before replacement, using isolated data and processor substitutes. Verify route/method/query/error compatibility, limits, origin handling, revisions, admission saturation/disconnects, recovery, all answer outcomes, exact large numbers/null/zero and OpenAPI coverage.
+- Run Rust tests/format/Clippy, relevant Python regressions, frontend checks and Docker browser workflows including offline documentation. Preserve the old API image for rollback; do not rerun GPU quality benchmarks or historical evaluation sets.
+- Acceptance met: existing browser/CLI workflows passed, local API documentation worked with external networking disabled, and deployment remains three services. Verified 122 Rust, 118 Python unit/regression, 71 frozen HTTP cases plus five boundary/two schema checks, five component and eleven browser tests; format/Clippy/builds passed. Normal API upgraded with unchanged documents and dependency containers; T18 image retained.
+
 ### Later — Candidate retrieval and ambiguity evaluation
 
-Scope field-specific candidate retrieval and a clearly worded ambiguity evaluation after T16–T18. Reranking cannot recover a required source absent from the candidate pool. Keep these quality experiments separate from usability acceptance and preserve historical freezes.
+Scope field-specific candidate retrieval and a clearly worded ambiguity evaluation after T19. Reranking cannot recover a required source absent from the candidate pool. Keep these quality experiments separate from API/usability acceptance and preserve historical freezes.
 
 ## Session handoff discipline
 
 Keep the Current state and Next useful step sections accurate. For each meaningful work session, add one concise entry below with changed files/capabilities, task IDs, verification actually performed, unresolved issues, and the next step. Do not paste full chat transcripts or command logs.
+
+### 2026-10-15 — T19 completed
+
+- Updated architecture/plan first, captured the old server's 71-case HTTP baseline, and migrated only the HTTP boundary to Axum/Tokio with bounded blocking work. Added utoipa route definitions, explicit wire schemas and vendored Swagger documentation with exact raw response displays/downloads.
+- Verified 122 Rust tests, 118 Python unit/regression checks, the 71-case baseline, five HTTP boundary/two OpenAPI schema checks, five frontend component checks and eleven offline browser scenarios. Rust format/Clippy, TypeScript/production builds, CLI reads, revision/restart/cancellation checks and normal startup passed. [Results and limitations](reports/t19-axum.md).
+- Fixed a Swagger renderer registration that initially rounded displayed numbers, made legacy header checks case-insensitive, and corrected the worker test model mount. Launcher image checks now follow Compose. No production model/retrieval/storage behavior or historical evaluations changed; the original holdout remains unused.
+- Normal API now runs `vectornext-app:t19` on localhost:8088; processor/generator container IDs and committed document listing are unchanged. Retained `vectornext-app:t18` for rollback and ignored `data/t19/` verification logs. T19 test containers stopped. No GPU quality rerun.
+- Next: scope candidate retrieval and ambiguity evaluation separately on fresh data.
 
 ### 2026-10-15 — T16–T18 completed
 

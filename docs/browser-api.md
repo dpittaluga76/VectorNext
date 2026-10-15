@@ -2,6 +2,10 @@
 
 The Rust service serves the React build and API at `http://localhost:8088`. The production image contains local JavaScript/CSS assets, system fonts and no frontend server or CDN. The three normal Compose services remain unchanged in responsibility.
 
+T19 uses Axum/Tokio for HTTP and utoipa-axum for route registration/OpenAPI. Open `/docs` for locally bundled Swagger UI or `/openapi.json` for the specification. Documentation uses the same origin rules, adds the required client header to interactive requests, disables external validation, and shows/downloads original response text without rounding numbers. Its JSON request editor also preserves exact numeric literals. Documentation requests can change the local collection when an ingestion/removal operation is executed.
+
+The synchronous application/processor contracts stay behind bounded blocking execution. Sixteen HTTP requests are admitted without waiting; a disconnected caller does not release the permit held by running work. Existing background/interactive lanes and deadlines are unchanged. HTTP header names are case-insensitive and Axum emits lowercase names. Explicit routing/body adapters retain existing rejection statuses, unsupported-method behavior and limits. OpenAPI schemas describe wire shapes separately from storage serialization; schema validation checks representative real responses.
+
 All POST requests require `X-VectorNext-Client: 1` and a bounded Content-Length. JSON bodies use `application/json` and are limited to 64 KiB. A browser Origin must exactly match the request's loopback Host (`localhost` or `127.0.0.1`, including the port); unrelated, null and cross-site browser origins are rejected. No wildcard CORS is enabled. CLI requests without browser headers continue to work on the existing routes. This is local single-user operation, without public authentication.
 
 ## Additive endpoints

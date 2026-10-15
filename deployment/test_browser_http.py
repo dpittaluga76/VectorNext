@@ -12,12 +12,12 @@ class BrowserHttpTests(unittest.TestCase):
         headers={'Host':'localhost:8098', **headers}
         req=urllib.request.Request(url+path,data=body,headers=headers)
         try:
-            with urllib.request.urlopen(req,timeout=10) as r:return r.status,r.read(),dict(r.headers)
-        except urllib.error.HTTPError as e:return e.code,e.read(),dict(e.headers)
+            with urllib.request.urlopen(req,timeout=10) as r:return r.status,r.read(),{k.lower():v for k,v in r.headers.items()}
+        except urllib.error.HTTPError as e:return e.code,e.read(),{k.lower():v for k,v in e.headers.items()}
 
     def test_static_assets_and_cli_compatibility(self):
         status,body,headers=self.request('/')
-        self.assertEqual(status,200);self.assertIn(b'VectorNext',body);self.assertIn("default-src 'self'",headers['Content-Security-Policy'])
+        self.assertEqual(status,200);self.assertIn(b'VectorNext',body);self.assertIn("default-src 'self'",headers['content-security-policy'])
         self.assertEqual(self.request('/v1/documents')[0],200)
         self.assertEqual(self.request('/../Cargo.toml')[0],404)
         self.assertEqual(self.request('/%2e%2e/Cargo.toml')[0],404)

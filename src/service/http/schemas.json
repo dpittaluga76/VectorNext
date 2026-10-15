@@ -1,0 +1,1773 @@
+{
+  "Error": {
+    "type": "object",
+    "properties": {
+      "error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          "message": {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          "diagnostics": {
+            "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+          },
+          "raw_report": {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "error"
+    ],
+    "additionalProperties": false
+  },
+  "MediaType": {
+    "type": "string",
+    "enum": [
+      "Txt",
+      "Pdf",
+      "Json"
+    ]
+  },
+  "Policy": {
+    "type": "string",
+    "enum": [
+      "plain",
+      "structural",
+      "generated"
+    ],
+    "default": "structural"
+  },
+  "DocumentId": {
+    "type": "object",
+    "properties": {
+      "document_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      }
+    },
+    "required": [
+      "document_id"
+    ],
+    "additionalProperties": true
+  },
+  "JobId": {
+    "type": "object",
+    "properties": {
+      "job_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      }
+    },
+    "required": [
+      "job_id"
+    ],
+    "additionalProperties": true
+  },
+  "Revision": {
+    "type": "object",
+    "properties": {
+      "document_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "revision": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      }
+    },
+    "required": [
+      "document_id",
+      "revision"
+    ],
+    "additionalProperties": true
+  },
+  "UploadId": {
+    "type": "object",
+    "properties": {
+      "upload_id": {
+        "type": "string",
+        "minLength": 16,
+        "maxLength": 64,
+        "pattern": "^[A-Za-z0-9-]+$"
+      }
+    },
+    "required": [
+      "upload_id"
+    ],
+    "additionalProperties": true
+  },
+  "FieldSpec": {
+    "type": "object",
+    "properties": {
+      "kind": {
+        "type": "string",
+        "enum": [
+          "string",
+          "integer",
+          "number",
+          "boolean"
+        ]
+      },
+      "nullable": {
+        "type": "boolean",
+        "default": false
+      },
+      "description": {
+        "type": "string",
+        "default": ""
+      },
+      "pointer": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "kind"
+    ],
+    "additionalProperties": false
+  },
+  "Turn": {
+    "type": "object",
+    "properties": {
+      "role": {
+        "type": "string",
+        "enum": [
+          "user",
+          "assistant"
+        ]
+      },
+      "text": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      }
+    },
+    "required": [
+      "role",
+      "text"
+    ],
+    "additionalProperties": false
+  },
+  "Bound": {
+    "type": "object",
+    "properties": {
+      "value": {
+        "type": "number"
+      },
+      "inclusive": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "value",
+      "inclusive"
+    ],
+    "additionalProperties": true
+  },
+  "Predicate": {
+    "oneOf": [
+      {
+        "type": "string",
+        "enum": [
+          "Exists",
+          "Missing"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "Eq": {
+            "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+          }
+        },
+        "required": [
+          "Eq"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "NumericRange": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/Bound"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "max": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/Bound"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [],
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "NumericRange"
+        ],
+        "additionalProperties": false
+      }
+    ]
+  },
+  "Filter": {
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "All": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Filter"
+            }
+          }
+        },
+        "required": [
+          "All"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "Any": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Filter"
+            }
+          }
+        },
+        "required": [
+          "Any"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "Not": {
+            "$ref": "#/components/schemas/Filter"
+          }
+        },
+        "required": [
+          "Not"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "DocumentIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "DocumentIds"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "MediaType": {
+            "$ref": "#/components/schemas/MediaType"
+          }
+        },
+        "required": [
+          "MediaType"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "Attribute": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+              },
+              "pointer": {
+                "type": "string",
+                "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+              },
+              "predicate": {
+                "$ref": "#/components/schemas/Predicate"
+              },
+              "trust": {
+                "type": "string",
+                "enum": [
+                  "SourceOrDeterministic",
+                  "Any"
+                ]
+              }
+            },
+            "required": [
+              "key",
+              "pointer",
+              "predicate",
+              "trust"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "Attribute"
+        ],
+        "additionalProperties": false
+      }
+    ],
+    "description": "Externally tagged typed filter. At most 1024 nodes and depth 32. Numeric comparisons preserve exact JSON values.",
+    "default": {
+      "All": []
+    }
+  },
+  "AnswerOptions": {
+    "type": "object",
+    "properties": {
+      "candidates": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 30
+      },
+      "rerank_limit": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 20
+      },
+      "primary_limit": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 20,
+        "default": 5
+      },
+      "rerank": {
+        "type": "boolean",
+        "default": true
+      },
+      "evidence_strategy": {
+        "type": "string",
+        "enum": [
+          "ranked",
+          "coverage_v1"
+        ],
+        "default": "ranked"
+      }
+    },
+    "required": [],
+    "additionalProperties": false,
+    "description": "primary_limit <= rerank_limit <= 2*candidates. coverage_v1 requires reranking and rerank_limit <= 20."
+  },
+  "AskRequest": {
+    "type": "object",
+    "properties": {
+      "question": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "history": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Turn"
+        },
+        "default": []
+      },
+      "fields": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/FieldSpec"
+        }
+      },
+      "filter": {
+        "$ref": "#/components/schemas/Filter"
+      },
+      "scope": {
+        "type": "string",
+        "enum": [
+          "passage",
+          "structured_lookup",
+          "corpus_aggregate"
+        ],
+        "default": "passage"
+      },
+      "template": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "prose": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "question",
+      "fields"
+    ],
+    "additionalProperties": false,
+    "description": "corpus_aggregate is unsupported. Source-grounded fields remain authoritative; prose is an optional draft."
+  },
+  "Question": {
+    "type": "object",
+    "properties": {
+      "request": {
+        "$ref": "#/components/schemas/AskRequest"
+      },
+      "space_id": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "options": {
+        "$ref": "#/components/schemas/AnswerOptions"
+      }
+    },
+    "required": [
+      "request"
+    ],
+    "additionalProperties": false
+  },
+  "UiQuestion": {
+    "type": "object",
+    "properties": {
+      "question": {
+        "type": "string",
+        "maxLength": 8192,
+        "description": "Maximum 8192 UTF-8 bytes; aggregate questions are unsupported."
+      },
+      "document_ids": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "maxItems": 400
+      },
+      "history": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Turn"
+        },
+        "default": [],
+        "maxItems": 8
+      },
+      "fields": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/FieldSpec"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "template": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "prose": {
+        "type": "boolean",
+        "default": false
+      },
+      "options": {
+        "$ref": "#/components/schemas/AnswerOptions"
+      }
+    },
+    "required": [
+      "question",
+      "document_ids"
+    ],
+    "additionalProperties": false,
+    "description": "Without fields, local Gemma plans field definitions only. History is at most four complete user/assistant exchanges, 4096 UTF-8 bytes per turn. Explicit fields bypass planning."
+  },
+  "Search": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "mode": {
+        "type": "string",
+        "enum": [
+          "keyword",
+          "hybrid"
+        ],
+        "default": "keyword"
+      },
+      "filter": {
+        "$ref": "#/components/schemas/Filter"
+      },
+      "limit": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 10
+      },
+      "space_id": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "text"
+    ],
+    "additionalProperties": false
+  },
+  "Upload": {
+    "type": "object",
+    "properties": {
+      "job_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "document_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "expected_revision": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "media_type": {
+        "$ref": "#/components/schemas/MediaType"
+      },
+      "policy": {
+        "$ref": "#/components/schemas/Policy"
+      },
+      "record_pointer": {
+        "type": "string",
+        "default": ""
+      },
+      "allow_partial": {
+        "type": "boolean",
+        "default": false
+      },
+      "source_base64": {
+        "type": "string",
+        "contentEncoding": "base64"
+      }
+    },
+    "required": [
+      "job_id",
+      "document_id",
+      "media_type",
+      "source_base64"
+    ],
+    "additionalProperties": false,
+    "description": "Original source is 1 byte to 16 MiB; IDs are 1..128 UTF-8 bytes. Reuse identical job ID and payload to reconcile uncertain outcomes. Replacement requires current revision. At most 64 unfinished jobs."
+  },
+  "UploadMetadata": {
+    "type": "object",
+    "properties": {
+      "upload_id": {
+        "type": "string",
+        "minLength": 16,
+        "maxLength": 64,
+        "pattern": "^[A-Za-z0-9-]+$"
+      },
+      "filename": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "document_id": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "expected_revision": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "record_pointer": {
+        "type": "string",
+        "default": ""
+      },
+      "allow_partial": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "upload_id",
+      "filename"
+    ],
+    "additionalProperties": false,
+    "description": "filename: 1..255 UTF-8 bytes, no paths/control characters. document_id and expected_revision must be supplied together for replacement. record_pointer <=4096 bytes. Structural context is always used."
+  },
+  "MultipartUpload": {
+    "type": "object",
+    "properties": {
+      "metadata": {
+        "type": "string",
+        "description": "JSON text matching UploadMetadata; at most 8192 bytes.",
+        "example": "{\"upload_id\":\"docs-upload-example-0001\",\"filename\":\"example.txt\"}"
+      },
+      "file": {
+        "type": "string",
+        "format": "binary",
+        "description": "One nonempty TXT, PDF or JSON file, at most 16 MiB."
+      }
+    },
+    "required": [
+      "metadata",
+      "file"
+    ],
+    "additionalProperties": false
+  },
+  "Coordinator": {
+    "type": "object",
+    "properties": {
+      "state": {
+        "type": "string",
+        "enum": [
+          "not_started",
+          "running",
+          "failed",
+          "stopped"
+        ]
+      },
+      "last_error": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "recovery": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "state",
+      "last_error",
+      "recovery"
+    ],
+    "additionalProperties": false
+  },
+  "Health": {
+    "type": "object",
+    "properties": {
+      "live": {
+        "type": "boolean"
+      },
+      "storage_ready": {
+        "type": "boolean"
+      },
+      "generation": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "active_job": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "coordinator": {
+        "$ref": "#/components/schemas/Coordinator"
+      },
+      "stopping": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "live",
+      "storage_ready",
+      "generation",
+      "active_job",
+      "coordinator",
+      "stopping"
+    ],
+    "additionalProperties": false
+  },
+  "Readiness": {
+    "type": "object",
+    "properties": {
+      "ready": {
+        "type": "boolean"
+      },
+      "storage": {
+        "$ref": "#/components/schemas/Health"
+      },
+      "processor": {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "Capability readiness and worker diagnostics; may contain error/capabilities when unavailable."
+      },
+      "independent_operations": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+        }
+      }
+    },
+    "required": [
+      "ready",
+      "storage",
+      "processor",
+      "independent_operations"
+    ],
+    "additionalProperties": false
+  },
+  "Metrics": {
+    "type": "object",
+    "properties": {
+      "scope": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "stages": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "processor": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      }
+    },
+    "required": [
+      "scope",
+      "stages",
+      "processor"
+    ],
+    "additionalProperties": false
+  },
+  "BlobRef": {
+    "type": "object",
+    "properties": {
+      "sha256": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "bytes": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "required": [
+      "sha256",
+      "bytes"
+    ],
+    "additionalProperties": false
+  },
+  "DocumentSummary": {
+    "type": "object",
+    "properties": {
+      "document_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "revision": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "media_type": {
+        "$ref": "#/components/schemas/MediaType"
+      },
+      "original": {
+        "$ref": "#/components/schemas/BlobRef"
+      },
+      "chunks": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "required": [
+      "document_id",
+      "revision",
+      "media_type",
+      "original",
+      "chunks"
+    ],
+    "additionalProperties": false
+  },
+  "Documents": {
+    "type": "object",
+    "properties": {
+      "generation": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "spaces": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+            },
+            "space": {
+              "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+            }
+          },
+          "required": [
+            "id",
+            "space"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "documents": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/DocumentSummary"
+        }
+      }
+    },
+    "required": [
+      "generation",
+      "spaces",
+      "documents"
+    ],
+    "additionalProperties": false
+  },
+  "Document": {
+    "type": "object",
+    "properties": {
+      "generation": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "document": {
+        "type": "object",
+        "description": "Complete committed revision including chunks, attributes, source locations, embeddings and processing metadata.",
+        "additionalProperties": true
+      }
+    },
+    "required": [
+      "generation",
+      "document"
+    ],
+    "additionalProperties": false
+  },
+  "Receipt": {
+    "type": "object",
+    "properties": {
+      "generation": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "request_sha256": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "generation",
+      "request_sha256"
+    ],
+    "additionalProperties": false
+  },
+  "Job": {
+    "type": "object",
+    "properties": {
+      "job_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "document_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "revision": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "stage": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "successful_stages": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      },
+      "failure_count": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "last_failure": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      },
+      "receipt": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/Receipt"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "coordinator": {
+        "$ref": "#/components/schemas/Coordinator"
+      },
+      "pdf_diagnostics": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      },
+      "filename": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "job_id",
+      "document_id",
+      "revision",
+      "stage",
+      "successful_stages",
+      "failure_count",
+      "last_failure",
+      "receipt"
+    ],
+    "additionalProperties": false
+  },
+  "Jobs": {
+    "type": "object",
+    "properties": {
+      "coordinator": {
+        "$ref": "#/components/schemas/Coordinator"
+      },
+      "jobs": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Job"
+        }
+      }
+    },
+    "required": [
+      "coordinator",
+      "jobs"
+    ],
+    "additionalProperties": false
+  },
+  "LibraryDocument": {
+    "type": "object",
+    "properties": {
+      "document_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "revision": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "filename": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "media_type": {
+        "type": "string",
+        "enum": [
+          "txt",
+          "pdf",
+          "json"
+        ]
+      },
+      "chunks": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "bytes": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "processing": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "document_id",
+      "revision",
+      "filename",
+      "media_type",
+      "chunks",
+      "bytes",
+      "processing"
+    ],
+    "additionalProperties": false
+  },
+  "Library": {
+    "type": "object",
+    "properties": {
+      "generation": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "documents": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LibraryDocument"
+        }
+      },
+      "jobs": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Job"
+        }
+      }
+    },
+    "required": [
+      "generation",
+      "documents",
+      "jobs"
+    ],
+    "additionalProperties": false
+  },
+  "UploadStatus": {
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "absent",
+              "preparing"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "acknowledged"
+            ]
+          },
+          "job": {
+            "$ref": "#/components/schemas/Job"
+          }
+        },
+        "required": [
+          "state",
+          "job"
+        ],
+        "additionalProperties": false
+      }
+    ]
+  },
+  "Removal": {
+    "type": "object",
+    "properties": {
+      "removed": {
+        "type": "boolean"
+      },
+      "receipt_text": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      }
+    },
+    "required": [
+      "removed",
+      "receipt_text"
+    ],
+    "additionalProperties": false
+  },
+  "SourceLocation": {
+    "type": "object",
+    "properties": {
+      "label": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "raw_text": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      }
+    },
+    "required": [
+      "label",
+      "raw_text"
+    ],
+    "additionalProperties": false
+  },
+  "Source": {
+    "type": "object",
+    "properties": {
+      "document_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "revision": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "media_type": {
+        "type": "string",
+        "enum": [
+          "txt",
+          "pdf",
+          "json"
+        ]
+      },
+      "processing_text": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "chunks": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+            },
+            "text": {
+              "type": "string",
+              "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SourceLocation"
+              }
+            }
+          },
+          "required": [
+            "id",
+            "text",
+            "sources"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "document_id",
+      "revision",
+      "media_type",
+      "processing_text",
+      "chunks"
+    ],
+    "additionalProperties": false
+  },
+  "ChunkKey": {
+    "type": "object",
+    "properties": {
+      "document_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "revision": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "chunk_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      }
+    },
+    "required": [
+      "document_id",
+      "revision",
+      "chunk_id"
+    ],
+    "additionalProperties": false
+  },
+  "UiEvidence": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "key": {
+        "$ref": "#/components/schemas/ChunkKey"
+      },
+      "text": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "sources": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SourceLocation"
+        }
+      },
+      "labels": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+        }
+      },
+      "record_text": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "key",
+      "text",
+      "sources",
+      "labels",
+      "record_text"
+    ],
+    "additionalProperties": false
+  },
+  "UiField": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "value_text": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "kind": {
+        "type": "string",
+        "enum": [
+          "string",
+          "integer",
+          "number",
+          "boolean",
+          "null"
+        ]
+      },
+      "evidence_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "quote": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "pointer": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "name",
+      "value_text",
+      "kind",
+      "evidence_id",
+      "quote",
+      "pointer"
+    ],
+    "additionalProperties": false
+  },
+  "UiWorkflow": {
+    "type": "object",
+    "properties": {
+      "timings_ms": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "generation": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "search_text": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "planning": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "evidence_count": {
+        "anyOf": [
+          {
+            "type": "integer",
+            "minimum": 0
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "validation": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      },
+      "details": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      }
+    },
+    "required": [
+      "timings_ms",
+      "generation",
+      "search_text",
+      "planning",
+      "evidence_count",
+      "validation",
+      "details"
+    ],
+    "additionalProperties": false
+  },
+  "UiAnswer": {
+    "type": "object",
+    "properties": {
+      "outcome": {
+        "type": "string",
+        "enum": [
+          "supported",
+          "ambiguous",
+          "insufficient_evidence",
+          "rejected"
+        ]
+      },
+      "fields": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/UiField"
+        }
+      },
+      "evidence": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/UiEvidence"
+        }
+      },
+      "formatted": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "draft_text": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "workflow": {
+        "$ref": "#/components/schemas/UiWorkflow"
+      },
+      "raw_report": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "message": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "outcome",
+      "fields",
+      "evidence",
+      "workflow",
+      "raw_report"
+    ],
+    "additionalProperties": false,
+    "description": "Rejected extraction returns outcome rejected, an explanation, empty factual fields and captured diagnostics. formatted/draft_text are absent on rejection."
+  },
+  "SearchResult": {
+    "type": "object",
+    "properties": {
+      "generation": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "space_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "hits": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "$ref": "#/components/schemas/ChunkKey"
+            },
+            "score": {
+              "type": "number"
+            },
+            "evidence": {
+              "type": "string",
+              "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+            },
+            "structural_context": {
+              "type": "string",
+              "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+              }
+            }
+          },
+          "required": [
+            "key",
+            "score",
+            "evidence",
+            "structural_context",
+            "sources"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "trace": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      }
+    },
+    "required": [
+      "generation",
+      "space_id",
+      "hits",
+      "trace"
+    ],
+    "additionalProperties": false
+  },
+  "Answer": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "supported",
+          "ambiguous",
+          "insufficient_evidence"
+        ]
+      },
+      "fields": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+            },
+            "evidence_id": {
+              "type": "string",
+              "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+            },
+            "quote": {
+              "type": "string",
+              "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+            },
+            "pointer": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "evidence_id",
+            "quote",
+            "pointer"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "status",
+      "fields"
+    ],
+    "additionalProperties": false
+  },
+  "AnswerReport": {
+    "type": "object",
+    "properties": {
+      "version": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "generation": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "embedding_space_id": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "request": {
+        "$ref": "#/components/schemas/AskRequest"
+      },
+      "search_text": {
+        "type": "string",
+        "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+      },
+      "retrieval": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      },
+      "reranker": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      },
+      "ranked": {
+        "type": "array",
+        "items": {
+          "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+        }
+      },
+      "evidence": {
+        "type": "array",
+        "items": {
+          "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+        }
+      },
+      "skipped": {
+        "type": "array",
+        "items": {
+          "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+        }
+      },
+      "prompt_tokens": {
+        "anyOf": [
+          {
+            "type": "integer",
+            "minimum": 0
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "input_limit": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "output_limit": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "answer": {
+        "$ref": "#/components/schemas/Answer"
+      },
+      "formatted": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "presentation_draft": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      },
+      "audit": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      },
+      "validation": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      },
+      "timings_ms": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number"
+        }
+      },
+      "options": {
+        "$ref": "#/components/schemas/AnswerOptions"
+      },
+      "selection": {
+        "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      }
+    },
+    "required": [
+      "version",
+      "generation",
+      "embedding_space_id",
+      "request",
+      "search_text",
+      "retrieval",
+      "reranker",
+      "ranked",
+      "evidence",
+      "skipped",
+      "prompt_tokens",
+      "input_limit",
+      "output_limit",
+      "answer",
+      "formatted",
+      "presentation_draft",
+      "audit",
+      "validation",
+      "timings_ms",
+      "options"
+    ],
+    "additionalProperties": false
+  }
+}

@@ -1,51 +1,60 @@
+//! HTTP compatibility adapter. Application work stays synchronous and bounded.
 use super::*;
-use std::{io::Read, sync::atomic::AtomicUsize};
-use tiny_http::{Header, Method, Request, Response, Server, StatusCode};
-const MAX_BODY: usize = 23 * 1024 * 1024;
+use axum::{
+    Router,
+    body::{Body, to_bytes},
+    extract::{Request, State},
+    http::HeaderMap,
+    middleware::{self, Next},
+    response::Response,
+};
+use std::io::Read;
+use tokio::sync::{OwnedSemaphorePermit, Semaphore};
 
-fn respond(request: Request, status: u16, value: Value) {
+mod openapi;
+const MAX_BODY: usize = 23 * 1024 * 1024;
+const UPLOAD_BODY: usize = 16 * 1024 * 1024 + 16384;
+const CSP: &str = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'";
+
+pub(super) struct HttpState {
+    app: Arc<Application>,
+    permits: Arc<Semaphore>,
+    specification: Value,
+}
+
+fn respond(status: u16, value: Value) -> Response {
     let bytes = serde_json::to_vec(&value)
         .unwrap_or_else(|_| b"{\"error\":\"serialization failure\"}".to_vec());
-    let response = Response::from_data(bytes)
-        .with_status_code(StatusCode(status))
-        .with_header(Header::from_bytes("Content-Type", "application/json").unwrap())
-        .with_header(Header::from_bytes("Cache-Control", "no-store").unwrap());
-    let _ = request.respond(response);
+    Response::builder()
+        .status(status)
+        .header("Content-Type", "application/json")
+        .header("Cache-Control", "no-store")
+        .body(Body::from(bytes))
+        .unwrap()
 }
-fn body(request: &mut Request) -> Result<Value> {
-    let content_type = request
-        .headers()
-        .iter()
-        .find(|h| h.field.equiv("Content-Type"))
-        .map(|h| h.value.as_str());
-    require(
-        content_type == Some("application/json"),
-        "application/json content type required",
-    )?;
-    require(
-        request
-            .headers()
-            .iter()
-            .any(|h| h.field.equiv("X-VectorNext-Client") && h.value.as_str() == "1"),
-        "X-VectorNext-Client: 1 is required",
-    )?;
-    let limit = if request.url() == "/v1/ingest" {
-        MAX_BODY
-    } else {
-        64 * 1024
-    };
-    require(
-        request.body_length().is_some_and(|n| n > 0 && n <= limit),
-        "invalid/missing content length",
-    )?;
-    let mut bytes = vec![];
-    request
-        .as_reader()
-        .take(limit as u64 + 1)
-        .read_to_end(&mut bytes)?;
-    require(bytes.len() <= limit, "request too large")?;
-    Ok(serde_json::from_slice(&bytes)?)
+fn respond_bytes(status: u16, bytes: Vec<u8>, kind: &str) -> Response {
+    Response::builder()
+        .status(status)
+        .header("Content-Type", kind)
+        .header("X-Content-Type-Options", "nosniff")
+        .header("Cache-Control", "no-store")
+        .header("Content-Security-Policy", CSP)
+        .body(Body::from(bytes))
+        .unwrap()
 }
+fn failure(error: &Error, ui: bool) -> Response {
+    let (status, mut value) = error_response(error);
+    if ui {
+        if let Some(diagnostic) = value["error"]
+            .as_object_mut()
+            .and_then(|v| v.remove("diagnostics"))
+        {
+            value["error"]["raw_report"] = json!(diagnostic.to_string());
+        }
+    }
+    respond(status, value)
+}
+
 fn field<'a>(body: &'a Value, name: &str) -> Result<&'a str> {
     body.get(name)
         .and_then(Value::as_str)
@@ -101,136 +110,87 @@ pub fn error_response(error: &Error) -> (u16, Value) {
     }
     (status, value)
 }
-fn handle(app: &Application, mut request: Request) {
-    if let Err(error) = check_origin(&request) {
-        respond(
-            request,
-            403,
-            json!({"error":{"code":"origin_rejected","message":error.to_string()}}),
-        );
-        return;
-    }
-    if request.method() == &Method::Get
-        && !request.url().starts_with("/v1/")
-        && !matches!(request.url(), "/healthz" | "/readyz")
-    {
-        static_file(request);
-        return;
-    }
-    if request.method() == &Method::Get && request.url().starts_with("/v1/ui/original?") {
-        let result = (|| {
-            let query = request.url().split_once('?').unwrap().1;
-            let parts: BTreeMap<_, _> =
-                query.split('&').filter_map(|p| p.split_once('=')).collect();
-            let id = parts
-                .get("document_id")
-                .ok_or_else(|| Error::Invalid("missing document_id".into()))?;
-            let revision = parts
-                .get("revision")
-                .ok_or_else(|| Error::Invalid("missing revision".into()))?;
-            let id = percent_encoding::percent_decode_str(id)
-                .decode_utf8()
-                .map_err(|_| Error::Invalid("invalid document ID encoding".into()))?;
-            app.ui_original(&id, revision)
-        })();
-        match result {
-            Ok(bytes) => respond_bytes(request, 200, bytes, "application/pdf"),
-            Err(e) => {
-                let (s, v) = error_response(&e);
-                respond(request, s, v);
-            }
-        }
-        return;
-    }
-    let ui = request.url().starts_with("/v1/ui/");
-    let result = (|| {
-        if request.method() == &Method::Post && request.url() == "/v1/ui/upload" {
-            let (metadata, bytes) = multipart_body(&mut request)?;
-            return Ok((202, app.ui_upload(metadata, bytes)?));
-        }
-        let input = if request.method() == &Method::Post {
-            body(&mut request)?
-        } else {
-            Value::Null
-        };
-        dispatch(app, request.method().as_str(), request.url(), input)
-    })();
-    match result {
-        Ok((status, value)) => respond(request, status, value),
-        Err(error) => {
-            let (status, mut value) = error_response(&error);
-            if ui {
-                if let Some(diagnostic) = value["error"]
-                    .as_object_mut()
-                    .and_then(|v| v.remove("diagnostics"))
-                {
-                    value["error"]["raw_report"] = json!(diagnostic.to_string());
-                }
-            }
-            respond(request, status, value);
-        }
-    }
-}
 pub fn origin_allowed(host: &str, origin: &str) -> bool {
     let authority = host.split(':').next().unwrap_or("");
     matches!(authority, "localhost" | "127.0.0.1") && origin == format!("http://{host}")
 }
-fn check_origin(request: &Request) -> Result<()> {
-    let origins: Vec<_> = request
-        .headers()
-        .iter()
-        .filter(|h| h.field.equiv("Origin"))
-        .collect();
-    let hosts: Vec<_> = request
-        .headers()
-        .iter()
-        .filter(|h| h.field.equiv("Host"))
-        .collect();
+
+fn header<'a>(headers: &'a HeaderMap, name: &str) -> Option<&'a str> {
+    headers.get(name).and_then(|v| v.to_str().ok())
+}
+fn check_origin(headers: &HeaderMap) -> Result<()> {
+    let origins: Vec<_> = headers.get_all("origin").iter().collect();
+    let hosts: Vec<_> = headers.get_all("host").iter().collect();
     require(
         origins.len() <= 1 && hosts.len() == 1,
         "ambiguous browser origin",
     )?;
-    if request
-        .headers()
-        .iter()
-        .any(|h| h.field.equiv("Sec-Fetch-Site"))
-    {
+    let host = hosts[0].to_str().unwrap_or("");
+    if headers.contains_key("sec-fetch-site") {
         require(
-            matches!(
-                hosts[0].value.as_str().split(':').next(),
-                Some("localhost" | "127.0.0.1")
-            ),
+            matches!(host.split(':').next(), Some("localhost" | "127.0.0.1")),
             "browser access requires a loopback host",
         )?;
     }
     require(
-        !request
-            .headers()
+        !headers
+            .get_all("sec-fetch-site")
             .iter()
-            .any(|h| h.field.equiv("Sec-Fetch-Site") && h.value.as_str() == "cross-site"),
+            .any(|h| h == "cross-site"),
         "unrelated browser origin rejected",
     )?;
     require(
         origins
             .first()
-            .is_none_or(|h| origin_allowed(hosts[0].value.as_str(), h.value.as_str())),
+            .is_none_or(|h| origin_allowed(host, h.to_str().unwrap_or(""))),
         "unrelated browser origin rejected",
     )
 }
-fn multipart_body(request: &mut Request) -> Result<(ui::UploadMetadata, Vec<u8>)> {
+fn has_client_header(headers: &HeaderMap) -> bool {
+    headers
+        .get_all("x-vectornext-client")
+        .iter()
+        .any(|v| v == "1")
+}
+/// Validate headers before reading the body, including the legacy validation order.
+fn body_limit(method: &str, url: &str, headers: &HeaderMap) -> Result<usize> {
+    if method != "POST" {
+        return Ok(0);
+    }
+    let length = header(headers, "content-length").and_then(|n| n.parse::<usize>().ok());
+    if url == "/v1/ui/upload" {
+        require(
+            has_client_header(headers),
+            "X-VectorNext-Client: 1 is required",
+        )?;
+        multipart_boundary(headers)?;
+        require(
+            length.is_some_and(|n| n > 0 && n <= UPLOAD_BODY),
+            "upload exceeds 16 MiB plus metadata",
+        )?;
+        return Ok(UPLOAD_BODY);
+    }
     require(
-        request
-            .headers()
-            .iter()
-            .any(|h| h.field.equiv("X-VectorNext-Client") && h.value.as_str() == "1"),
+        header(headers, "content-type") == Some("application/json"),
+        "application/json content type required",
+    )?;
+    require(
+        has_client_header(headers),
         "X-VectorNext-Client: 1 is required",
     )?;
-    let kind = request
-        .headers()
-        .iter()
-        .find(|h| h.field.equiv("Content-Type"))
-        .map(|h| h.value.as_str())
-        .unwrap_or("");
+    let limit = if url == "/v1/ingest" {
+        MAX_BODY
+    } else {
+        64 * 1024
+    };
+    require(
+        length.is_some_and(|n| n > 0 && n <= limit),
+        "invalid/missing content length",
+    )?;
+    Ok(limit)
+}
+fn multipart_boundary(headers: &HeaderMap) -> Result<String> {
+    let kind = header(headers, "content-type").unwrap_or("");
     require(
         kind.starts_with("multipart/form-data;"),
         "multipart/form-data required",
@@ -246,13 +206,9 @@ fn multipart_body(request: &mut Request) -> Result<(ui::UploadMetadata, Vec<u8>)
         !boundary.is_empty() && boundary.len() <= 70,
         "invalid multipart boundary",
     )?;
-    let limit = 16 * 1024 * 1024 + 16384;
-    require(
-        request.body_length().is_some_and(|n| n > 0 && n <= limit),
-        "upload exceeds 16 MiB plus metadata",
-    )?;
-    parse_multipart(request.as_reader().take(limit as u64 + 1), boundary)
+    Ok(boundary)
 }
+
 pub fn parse_multipart(
     reader: impl Read,
     boundary: String,
@@ -290,16 +246,9 @@ pub fn parse_multipart(
             .ok_or_else(|| Error::Invalid("empty or missing file".into()))?,
     ))
 }
-fn respond_bytes(request: Request, status: u16, bytes: Vec<u8>, kind: &str) {
-    let response=Response::from_data(bytes).with_status_code(StatusCode(status))
-        .with_header(Header::from_bytes("Content-Type",kind).unwrap())
-        .with_header(Header::from_bytes("X-Content-Type-Options","nosniff").unwrap())
-        .with_header(Header::from_bytes("Cache-Control","no-store").unwrap())
-        .with_header(Header::from_bytes("Content-Security-Policy","default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'").unwrap());
-    let _ = request.respond(response);
-}
-fn static_file(request: Request) {
-    let path = request.url().split('?').next().unwrap_or("");
+
+fn static_file(url: &str) -> Response {
+    let path = url.split('?').next().unwrap_or("");
     let relative = if path == "/" {
         "index.html"
     } else {
@@ -322,45 +271,156 @@ fn static_file(request: Request) {
                 "svg" => "image/svg+xml",
                 _ => "application/octet-stream",
             };
-            respond_bytes(request, 200, bytes, kind);
-            return;
+            return respond_bytes(200, bytes, kind);
         }
     }
     respond(
-        request,
         404,
         json!({"error":{"message":"file not found; build the browser assets"}}),
-    );
+    )
 }
-struct Permit(Arc<AtomicUsize>);
-impl Drop for Permit {
-    fn drop(&mut self) {
-        self.0.fetch_sub(1, Ordering::Relaxed);
+fn original(app: &Application, url: &str) -> Result<Vec<u8>> {
+    let query = url.split_once('?').unwrap().1;
+    let parts: BTreeMap<_, _> = query.split('&').filter_map(|p| p.split_once('=')).collect();
+    let id = parts
+        .get("document_id")
+        .ok_or_else(|| Error::Invalid("missing document_id".into()))?;
+    let revision = parts
+        .get("revision")
+        .ok_or_else(|| Error::Invalid("missing revision".into()))?;
+    let id = percent_encoding::percent_decode_str(id)
+        .decode_utf8()
+        .map_err(|_| Error::Invalid("invalid document ID encoding".into()))?;
+    app.ui_original(&id, revision)
+}
+fn execute(
+    state: &HttpState,
+    method: &str,
+    url: &str,
+    headers: &HeaderMap,
+    bytes: &[u8],
+) -> Response {
+    if method == "GET" {
+        if url == "/openapi.json" {
+            return respond(200, state.specification.clone());
+        }
+        if url == "/docs" || url.starts_with("/docs/") {
+            return openapi::documentation(url);
+        }
+        if !url.starts_with("/v1/") && !matches!(url, "/healthz" | "/readyz") {
+            return static_file(url);
+        }
+        if url.starts_with("/v1/ui/original?") {
+            return match original(&state.app, url) {
+                Ok(bytes) => respond_bytes(200, bytes, "application/pdf"),
+                Err(e) => failure(&e, false),
+            };
+        }
+    }
+    let result = (|| {
+        if method == "POST" && url == "/v1/ui/upload" {
+            let (metadata, bytes) = parse_multipart(bytes, multipart_boundary(headers)?)?;
+            return Ok((202, state.app.ui_upload(metadata, bytes)?));
+        }
+        let input = if method == "POST" {
+            serde_json::from_slice(bytes)?
+        } else {
+            Value::Null
+        };
+        dispatch(&state.app, method, url, input)
+    })();
+    match result {
+        Ok((status, value)) => respond(status, value),
+        Err(e) => failure(&e, url.starts_with("/v1/ui/")),
     }
 }
-pub fn serve(app: Arc<Application>, address: &str) -> Result<()> {
-    let server = Server::http(address).map_err(|e| Error::Unavailable(e.to_string()))?;
-    let active = Arc::new(AtomicUsize::new(0));
-    for request in server.incoming_requests() {
-        if active
-            .fetch_update(Ordering::Relaxed, Ordering::Relaxed, |n| {
-                (n < 16).then_some(n + 1)
-            })
-            .is_err()
-        {
-            respond(
-                request,
+async fn admit(State(state): State<Arc<HttpState>>, mut request: Request, next: Next) -> Response {
+    let permit = match state.permits.clone().try_acquire_owned() {
+        Ok(permit) => Arc::new(permit),
+        Err(_) => {
+            return respond(
                 503,
                 json!({"error":{"code":"busy","message":"HTTP capacity reached; retry later"}}),
             );
-            continue;
         }
-        let permit = Permit(active.clone());
-        let app = app.clone();
-        std::thread::spawn(move || {
-            let _permit = permit;
-            handle(&app, request);
-        });
+    };
+    request.extensions_mut().insert(permit);
+    next.run(request).await
+}
+pub(super) async fn handle(State(state): State<Arc<HttpState>>, request: Request) -> Response {
+    let (mut parts, body) = request.into_parts();
+    let permit = parts
+        .extensions
+        .remove::<Arc<OwnedSemaphorePermit>>()
+        .expect("HTTP admission middleware");
+    if let Err(error) = check_origin(&parts.headers) {
+        return respond(
+            403,
+            json!({"error":{"code":"origin_rejected","message":error.to_string()}}),
+        );
     }
-    Ok(())
+    let method = parts.method.as_str().to_owned();
+    let url = parts
+        .uri
+        .path_and_query()
+        .map(|v| v.as_str())
+        .unwrap_or("/")
+        .to_owned();
+    let ui = url.starts_with("/v1/ui/");
+    let limit = match body_limit(&method, &url, &parts.headers) {
+        Ok(limit) => limit,
+        Err(e) => return failure(&e, ui),
+    };
+    let bytes = if limit == 0 {
+        Vec::new()
+    } else {
+        match to_bytes(body, limit).await {
+            Ok(bytes) => bytes.to_vec(),
+            Err(_) => {
+                return failure(
+                    &Error::Invalid("request too large or incomplete".into()),
+                    ui,
+                );
+            }
+        }
+    };
+    // The closure, not the HTTP future, owns admission during synchronous work.
+    // Dropping a response future must never free capacity for a duplicate operation.
+    match tokio::task::spawn_blocking(move || {
+        let _permit = permit;
+        execute(&state, &method, &url, &parts.headers, &bytes)
+    })
+    .await
+    {
+        Ok(response) => response,
+        Err(_) => failure(
+            &Error::Unavailable("HTTP worker failed; inspect readiness".into()),
+            ui,
+        ),
+    }
+}
+
+pub fn router(app: Arc<Application>) -> Router {
+    let (routes, api) = openapi::routes();
+    let state = Arc::new(HttpState {
+        app,
+        permits: Arc::new(Semaphore::new(16)),
+        specification: serde_json::to_value(api).expect("OpenAPI serialization"),
+    });
+    routes
+        .fallback(handle)
+        .layer(middleware::from_fn_with_state(state.clone(), admit))
+        .with_state(state)
+}
+pub fn serve(app: Arc<Application>, address: &str) -> Result<()> {
+    let runtime = tokio::runtime::Builder::new_multi_thread()
+        .worker_threads(2)
+        .enable_all()
+        .build()?;
+    runtime.block_on(async {
+        let listener = tokio::net::TcpListener::bind(address).await?;
+        axum::serve(listener, router(app))
+            .await
+            .map_err(Error::from)
+    })
 }

@@ -1,0 +1,574 @@
+{
+  "source_commit": "ae0abc41233dc194c6431d81f2478da296ca445f",
+  "image": "vectornext-app:t18",
+  "cases": {
+    "get /v1/documents": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"documents\":[],\"generation\":0,\"spaces\":[]}"
+    },
+    "get /v1/jobs": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"coordinator\":{\"last_error\":null,\"recovery\":null,\"state\":\"running\"},\"jobs\":[]}"
+    },
+    "get /v1/ui/library": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"documents\":[],\"generation\":\"0\",\"jobs\":[]}"
+    },
+    "get /v1/unknown": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "get /v1/documents?x=1": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "get /v1/documents/": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "get /healthz?x=1": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"message\":\"file not found; build the browser assets\"}}"
+    },
+    "get /unknown": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"message\":\"file not found; build the browser assets\"}}"
+    },
+    "get /../Cargo.toml": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"message\":\"file not found; build the browser assets\"}}"
+    },
+    "get /%2e%2e/Cargo.toml": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"message\":\"file not found; build the browser assets\"}}"
+    },
+    "HEAD /v1/documents": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": ""
+    },
+    "HEAD /v1/unknown": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": ""
+    },
+    "HEAD /": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": ""
+    },
+    "OPTIONS /v1/documents": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "OPTIONS /v1/unknown": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "OPTIONS /": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "PUT /v1/documents": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "PUT /v1/unknown": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "PUT /": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "DELETE /v1/documents": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "DELETE /v1/unknown": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "DELETE /": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "PATCH /v1/documents": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "PATCH /v1/unknown": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "PATCH /": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "empty object /v1/ingest": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"serialization error: missing field `job_id`\"}}"
+    },
+    "empty object /v1/document": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: missing document_id\"}}"
+    },
+    "empty object /v1/job": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: missing job_id\"}}"
+    },
+    "empty object /v1/retry": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: missing job_id\"}}"
+    },
+    "empty object /v1/search": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"serialization error: missing field `text`\"}}"
+    },
+    "empty object /v1/ask": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"serialization error: missing field `request`\"}}"
+    },
+    "empty object /v1/ui/upload-status": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: missing upload_id\"}}"
+    },
+    "empty object /v1/ui/remove": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: missing document_id\"}}"
+    },
+    "empty object /v1/ui/source": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: missing document_id\"}}"
+    },
+    "empty object /v1/ui/ask": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"serialization error: missing field `question`\"}}"
+    },
+    "empty object /v1/unknown": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "empty object /v1/ui/ask?x=1": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "missing content type": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: application/json content type required\"}}"
+    },
+    "missing client header": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: X-VectorNext-Client: 1 is required\"}}"
+    },
+    "wrong content type": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: application/json content type required\"}}"
+    },
+    "json charset": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: application/json content type required\"}}"
+    },
+    "missing length": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: invalid/missing content length\"}}"
+    },
+    "zero length": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: invalid/missing content length\"}}"
+    },
+    "invalid json": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"serialization error: EOF while parsing an object at line 1 column 1\"}}"
+    },
+    "json boundary": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "json over boundary": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: invalid/missing content length\"}}"
+    },
+    "base64 boundary": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"serialization error: missing field `job_id`\"}}"
+    },
+    "base64 over boundary": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: invalid/missing content length\"}}"
+    },
+    "origin http://localhost:8099": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"documents\":[],\"generation\":0,\"spaces\":[]}"
+    },
+    "origin null": {
+      "status": 403,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"origin_rejected\",\"message\":\"invalid record: unrelated browser origin rejected\"}}"
+    },
+    "origin https://localhost:8099": {
+      "status": 403,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"origin_rejected\",\"message\":\"invalid record: unrelated browser origin rejected\"}}"
+    },
+    "origin http://localhost:8088": {
+      "status": 403,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"origin_rejected\",\"message\":\"invalid record: unrelated browser origin rejected\"}}"
+    },
+    "origin http://evil.test": {
+      "status": 403,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"origin_rejected\",\"message\":\"invalid record: unrelated browser origin rejected\"}}"
+    },
+    "origin http://localhost:8099.evil.test": {
+      "status": 403,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"origin_rejected\",\"message\":\"invalid record: unrelated browser origin rejected\"}}"
+    },
+    "cross site": {
+      "status": 403,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"origin_rejected\",\"message\":\"invalid record: unrelated browser origin rejected\"}}"
+    },
+    "rebinding": {
+      "status": 403,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"origin_rejected\",\"message\":\"invalid record: browser access requires a loopback host\"}}"
+    },
+    "duplicate origins": {
+      "status": 403,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"origin_rejected\",\"message\":\"invalid record: ambiguous browser origin\"}}"
+    },
+    "original ": {
+      "status": 404,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"not_found\",\"message\":\"unknown endpoint\"}}"
+    },
+    "original ?": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: missing document_id\"}}"
+    },
+    "original ?document_id=x": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: missing revision\"}}"
+    },
+    "original ?revision=x": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: missing document_id\"}}"
+    },
+    "original ?document_id=%FF&revision=x": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: invalid document ID encoding\"}}"
+    },
+    "original ?document_id=missing&revision=x": {
+      "status": 409,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"conflict\",\"message\":\"revision conflict: original PDF revision is no longer current\"}}"
+    },
+    "original ?document_id=a&document_id=b&revision=x": {
+      "status": 409,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"conflict\",\"message\":\"revision conflict: original PDF revision is no longer current\"}}"
+    },
+    "missing parts": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: missing upload metadata\"}}"
+    },
+    "missing file": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: empty or missing file\"}}"
+    },
+    "empty file": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: empty or missing file\"}}"
+    },
+    "duplicate metadata": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: expected exactly one metadata field and one file\"}}"
+    },
+    "unknown part": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: expected exactly one metadata field and one file\"}}"
+    },
+    "metadata over limit": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: multipart field exceeds limit\"}}"
+    },
+    "file over limit": {
+      "status": 400,
+      "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-store"
+      },
+      "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"invalid record: multipart field exceeds limit\"}}"
+    }
+  }
+}

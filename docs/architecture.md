@@ -1,6 +1,6 @@
 # VectorNext architecture
 
-Status: implemented T01–T15 local application, evaluations, workflow reports, recovery, experimental field coverage and numeric proof support. Remaining proposals are identified below.
+Status: implemented T01–T19 local application, evaluations, workflow reports, recovery, numeric proof support, browser workspace and Axum API with local OpenAPI documentation. Remaining proposals are identified below.
 Last updated: 2026-10-15.
 
 This document condenses the project discussion into an implementation reference. It is not a claim that the system is implemented or that every proposed technology has been selected. Explicit user instructions can revise it.
@@ -23,6 +23,14 @@ T01 evaluation fixtures/contracts, T02 local-model feasibility, T03's Rust stora
 T10 adds source/answer scoring, isolated cold/warm API comparisons, stage/queue/resource measurements, bounded answer options and independent keyword-field weights. The [evaluation report](reports/t10-evaluation.md) retains structural context and exact search as defaults. Two primary passages reduced median response time by 30–32% on the 13 development questions; the later [T11 public-source comparison](reports/t11-independent.md) found lost answers with two, so five remain the general default. Generated context did not improve final answers and cost substantially more to ingest. These results do not establish broad retrieval quality.
 
 ## 2. Integrated deployment
+
+### Adopted HTTP migration — T19 (implemented 2026-10-15)
+
+The production adapter uses Axum/Tokio and utoipa/utoipa-axum, retaining the synchronous Application, processor client, ingestion coordinator and all existing API behavior. HTTP parsing runs asynchronously; blocking application work runs through spawn_blocking under the existing non-waiting 16-request admission limit. A running operation owns its permit even if its caller disconnects. Existing interactive/background lanes, deadlines and durable retry reconciliation remain authoritative; no automatic retries or new operation timeouts are introduced.
+
+Preserve request/response schemas, exact numeric serialization, status/error envelopes, browser origin checks, Content-Length/custom-header requirements, limits, multipart validation, revision/source rules, static asset restrictions and security headers. Explicit compatibility adapters override framework rejection, routing and HEAD/OPTIONS defaults. Storage/model/retrieval contracts and the three-service runtime do not change.
+
+T19 adds only GET /openapi.json and /docs (with local documentation assets). Route registration also collects OpenAPI definitions. Swagger UI is vendored, works without a CDN or external validator, uses same-origin requests with the existing client header, and preserves raw response text. Dependencies are pinned for Rust 1.87; tiny_http remains only for test mocks. Schema-only definitions describe the existing serialization without changing application types. The 71-case baseline captured before replacement, isolated Docker regressions and offline browser documentation checks passed; see [T19 verification and limitations](reports/t19-axum.md). Historical evaluations and the original holdout are not rerun or modified.
 
 ### Adopted browser workspace — T16–T18 (implemented 2026-10-15)
 

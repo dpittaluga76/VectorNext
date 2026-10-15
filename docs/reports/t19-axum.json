@@ -1,0 +1,62 @@
+{
+  "task": "T19",
+  "date": "2026-10-15",
+  "status": "complete",
+  "baseline_commit": "ae0abc41233dc194c6431d81f2478da296ca445f",
+  "baseline_fixture": "tests/fixtures/http/t18-boundaries.json",
+  "baseline_sha256": "db1257c8fd6baf3bd4c25e993b916323fd726be94da958508dbd3788e4eb42b1",
+  "images": {
+    "rollback_api": "sha256:7c810d751081151e7cdc71441e34c837f533df74300666e7ebe256aaff44f7e5",
+    "api": "sha256:8c0a2f04f5e3e5711194e99579ed6fa336e8987324a508cc5d6b598d39fae163",
+    "core": "sha256:4c28568a46272312341b95d17f5578a65859eed4b22201402dd3d3eec3bf6762",
+    "ui_test": "sha256:eadff2757e787bfa8fdcc5ed0bfd803b1fb94fb0da6d82ec020ca79a88618aa3"
+  },
+  "passed": {
+    "rust": 122,
+    "python_regression": 90,
+    "cpu_worker": 28,
+    "frozen_http_cases": 71,
+    "browser_http": 5,
+    "openapi_schema": 2,
+    "frontend_component": 5,
+    "workspace_browser": 9,
+    "real_api_browser": 2
+  },
+  "checks": {
+    "rust_1_87_build": true,
+    "format": true,
+    "clippy": true,
+    "frontend_type_build": true,
+    "offline_docs": true,
+    "exact_numeric_request_display_download": true,
+    "normal_api_ready": true,
+    "normal_documents_unchanged": true,
+    "processor_generator_containers_unchanged": true,
+    "windows_start_no_build": true,
+    "windows_status": true
+  },
+  "limitations": [
+    "Chromium on one PC",
+    "Synthetic processor for new HTTP/browser fixtures",
+    "No new GPU or retrieval-quality measurement",
+    "No complete slow-client deadline",
+    "Existing multipart/buf_redux future-Rust notices",
+    "No historical evaluation or original holdout use"
+  ],
+  "logs_directory": "data/t19/",
+  "logs": [
+    "rust-tests.log",
+    "lint-final.log",
+    "python-regressions.log",
+    "worker-tests-final.log",
+    "http-final.log",
+    "schema-final.log",
+    "components-final.log",
+    "workspace-final.log",
+    "docs-browser-final.log",
+    "api-build-final.log",
+    "ui-build-final.log",
+    "normal-final.json"
+  ],
+  "screenshot": "data/t19/browser-final/docs.png"
+}
