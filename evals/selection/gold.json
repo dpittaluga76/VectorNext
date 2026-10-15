@@ -1,0 +1,446 @@
+{
+  "facts": {
+    "mercury_spin": {
+      "supports": [
+        {
+          "document_id": "mercury",
+          "quote": "Mercury spins slowly on its axis and completes one rotation every 59 Earth days.",
+          "start": 1999,
+          "end": 2079,
+          "source_sha256": "088b6100a41e404b613bfffee726632a735648a988cdefc9be1bf6e3e4894780"
+        }
+      ]
+    },
+    "mercury_year": {
+      "supports": [
+        {
+          "document_id": "mercury",
+          "quote": "Mercury is the fastest planet, zipping around the Sun every 88 Earth days.",
+          "start": 778,
+          "end": 852,
+          "source_sha256": "088b6100a41e404b613bfffee726632a735648a988cdefc9be1bf6e3e4894780"
+        },
+        {
+          "document_id": "mercury",
+          "quote": "It speeds around the Sun every 88 days",
+          "start": 1857,
+          "end": 1895,
+          "source_sha256": "088b6100a41e404b613bfffee726632a735648a988cdefc9be1bf6e3e4894780"
+        }
+      ]
+    },
+    "mercury_tilt": {
+      "supports": [
+        {
+          "document_id": "mercury",
+          "quote": "Mercury's axis of rotation is tilted just 2 degrees with respect to the plane of its orbit around the Sun.",
+          "start": 2561,
+          "end": 2667,
+          "source_sha256": "088b6100a41e404b613bfffee726632a735648a988cdefc9be1bf6e3e4894780"
+        }
+      ]
+    },
+    "mercury_heat": {
+      "supports": [
+        {
+          "document_id": "mercury",
+          "quote": "day temperatures can reach highs of 800°F (430°C).",
+          "start": 458,
+          "end": 510,
+          "source_sha256": "088b6100a41e404b613bfffee726632a735648a988cdefc9be1bf6e3e4894780"
+        }
+      ]
+    },
+    "venus_spin": {
+      "supports": [
+        {
+          "document_id": "venus",
+          "quote": "your “day” would be 243 Earth days long",
+          "start": 5360,
+          "end": 5403,
+          "source_sha256": "71e35e01dbe1531bf20e0f1fafc513d8ad42421bd8bd9b96b08c63893fc980b3"
+        }
+      ]
+    },
+    "venus_gas": {
+      "supports": [
+        {
+          "document_id": "venus",
+          "quote": "The atmosphere is mostly carbon dioxide",
+          "start": 13390,
+          "end": 13429,
+          "source_sha256": "71e35e01dbe1531bf20e0f1fafc513d8ad42421bd8bd9b96b08c63893fc980b3"
+        }
+      ]
+    },
+    "earth_year": {
+      "supports": [
+        {
+          "document_id": "earth",
+          "quote": "It takes 365.25 days to complete one trip around the Sun.",
+          "start": 2357,
+          "end": 2414,
+          "source_sha256": "906a1d31d9adaaac04cf4865dd460d941cbe0fccaf29ed58014f41bcc28fae1f"
+        }
+      ]
+    },
+    "earth_tilt": {
+      "supports": [
+        {
+          "document_id": "earth",
+          "quote": "Earth's axis of rotation is tilted 23.4 degrees with respect to the plane of Earth's orbit around the Sun.",
+          "start": 2709,
+          "end": 2815,
+          "source_sha256": "906a1d31d9adaaac04cf4865dd460d941cbe0fccaf29ed58014f41bcc28fae1f"
+        }
+      ]
+    },
+    "earth_nitrogen": {
+      "supports": [
+        {
+          "document_id": "earth",
+          "quote": "Earth has an atmosphere that consists of 78% nitrogen",
+          "start": 6754,
+          "end": 6807,
+          "source_sha256": "906a1d31d9adaaac04cf4865dd460d941cbe0fccaf29ed58014f41bcc28fae1f"
+        },
+        {
+          "document_id": "earth",
+          "quote": "Earth's atmosphere is 78% nitrogen",
+          "start": 8746,
+          "end": 8780,
+          "source_sha256": "906a1d31d9adaaac04cf4865dd460d941cbe0fccaf29ed58014f41bcc28fae1f"
+        }
+      ]
+    },
+    "mars_spin": {
+      "supports": [
+        {
+          "document_id": "mars",
+          "quote": "As Mars orbits the Sun, it completes one rotation every 24.6 hours",
+          "start": 1612,
+          "end": 1678,
+          "source_sha256": "805241fb4c714a91bdc35955b02c4c608d37e45c03a9819b60c07975598c0487"
+        }
+      ]
+    },
+    "mars_year": {
+      "supports": [
+        {
+          "document_id": "mars",
+          "quote": "A year on Mars lasts 669.6 sols, which is the same as 687 Earth days.",
+          "start": 1792,
+          "end": 1861,
+          "source_sha256": "805241fb4c714a91bdc35955b02c4c608d37e45c03a9819b60c07975598c0487"
+        }
+      ]
+    },
+    "jupiter_spin": {
+      "supports": [
+        {
+          "document_id": "jupiter",
+          "quote": "taking about 9.9 hours to spin around once on its axis.",
+          "start": 323,
+          "end": 378,
+          "source_sha256": "9e1ac3cf4cb7f4e5e43e40f551bf9b5f7cced1b097b5ea1755c4668e9dcb5346"
+        },
+        {
+          "document_id": "jupiter",
+          "quote": "One day on Jupiter takes 9.9 hours (the time it takes for Jupiter to rotate or spin around once)",
+          "start": 2201,
+          "end": 2297,
+          "source_sha256": "9e1ac3cf4cb7f4e5e43e40f551bf9b5f7cced1b097b5ea1755c4668e9dcb5346"
+        }
+      ]
+    },
+    "jupiter_year": {
+      "supports": [
+        {
+          "document_id": "jupiter",
+          "quote": "Jupiter makes a complete orbit around the Sun (a year in Jovian time) in about 12 Earth years (4,333 Earth days).",
+          "start": 2303,
+          "end": 2416,
+          "source_sha256": "9e1ac3cf4cb7f4e5e43e40f551bf9b5f7cced1b097b5ea1755c4668e9dcb5346"
+        }
+      ]
+    },
+    "saturn_spin": {
+      "supports": [
+        {
+          "document_id": "saturn",
+          "quote": "One day on Saturn takes only 10.7 hours (the time it takes for Saturn to rotate or spin around once)",
+          "start": 1792,
+          "end": 1892,
+          "source_sha256": "c9b698d8cebb97ea76eaab14915cf6952a0ca0436ee7358b0d138ec4af15c9be"
+        }
+      ]
+    },
+    "saturn_year": {
+      "supports": [
+        {
+          "document_id": "saturn",
+          "quote": "Saturn makes a complete orbit around the Sun (a year in Saturnian time) in about 29.4 Earth years (10,756 Earth days).",
+          "start": 1898,
+          "end": 2016,
+          "source_sha256": "c9b698d8cebb97ea76eaab14915cf6952a0ca0436ee7358b0d138ec4af15c9be"
+        }
+      ]
+    },
+    "uranus_tilt": {
+      "supports": [
+        {
+          "document_id": "uranus",
+          "quote": "Uranus is the only planet whose equator is nearly at a right angle to its orbit, with a tilt of 97.77 degrees.",
+          "start": 1993,
+          "end": 2103,
+          "source_sha256": "7de65130e40223a2c642e4506d4880edab304a96de6bfcf1db6c9bc4d8b2c6ab"
+        }
+      ]
+    },
+    "uranus_year": {
+      "supports": [
+        {
+          "document_id": "uranus",
+          "quote": "Uranus makes a complete orbit around the Sun (a year in Uranian time) in about 84 Earth years (30,687 Earth days).",
+          "start": 1877,
+          "end": 1991,
+          "source_sha256": "7de65130e40223a2c642e4506d4880edab304a96de6bfcf1db6c9bc4d8b2c6ab"
+        }
+      ]
+    },
+    "neptune_year": {
+      "supports": [
+        {
+          "document_id": "neptune",
+          "quote": "Neptune makes a complete orbit around the Sun (a year in Neptunian time) in about 165 Earth years (60,190 Earth days).",
+          "start": 2173,
+          "end": 2291,
+          "source_sha256": "c92d042044c1284ecfdd486c127d27b4153f74d298650ce8c06ef248e7c48aac"
+        }
+      ]
+    },
+    "sun_equator": {
+      "supports": [
+        {
+          "document_id": "sun",
+          "quote": "At its equator, the Sun completes one rotation in 25 Earth days.",
+          "start": 907,
+          "end": 971,
+          "source_sha256": "35cae7f3217ce8b77c21fc62fd610dc64f69ac893a7b09b490c22c68d779f2a6"
+        }
+      ]
+    },
+    "sun_poles": {
+      "supports": [
+        {
+          "document_id": "sun",
+          "quote": "At its poles, the Sun rotates once on its axis every 36 Earth days.",
+          "start": 972,
+          "end": 1039,
+          "source_sha256": "35cae7f3217ce8b77c21fc62fd610dc64f69ac893a7b09b490c22c68d779f2a6"
+        }
+      ]
+    },
+    "moon_radius": {
+      "supports": [
+        {
+          "document_id": "moon",
+          "quote": "With a radius of about 1,080 miles (1,740 kilometers), the Moon is less than a third of the width of Earth.",
+          "start": 2175,
+          "end": 2282,
+          "source_sha256": "9b4a60238c0ecd95808d1e8bdac894ade0c6096b81491a6a3b164071afbe1b2d"
+        }
+      ]
+    },
+    "moon_distance": {
+      "supports": [
+        {
+          "document_id": "moon",
+          "quote": "It goes around the Earth at a distance of about 239,000 miles (385,000 kilometers).",
+          "start": 346,
+          "end": 429,
+          "source_sha256": "9b4a60238c0ecd95808d1e8bdac894ade0c6096b81491a6a3b164071afbe1b2d"
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "S01",
+      "group": "single",
+      "facts": [
+        "mercury_spin"
+      ]
+    },
+    {
+      "id": "S02",
+      "group": "single",
+      "facts": [
+        "venus_spin"
+      ]
+    },
+    {
+      "id": "S03",
+      "group": "single",
+      "facts": [
+        "earth_year"
+      ]
+    },
+    {
+      "id": "S04",
+      "group": "single",
+      "facts": [
+        "mars_spin"
+      ]
+    },
+    {
+      "id": "S05",
+      "group": "single",
+      "facts": [
+        "jupiter_spin"
+      ]
+    },
+    {
+      "id": "S06",
+      "group": "single",
+      "facts": [
+        "saturn_year"
+      ]
+    },
+    {
+      "id": "S07",
+      "group": "single",
+      "facts": [
+        "uranus_tilt"
+      ]
+    },
+    {
+      "id": "S08",
+      "group": "single",
+      "facts": [
+        "neptune_year"
+      ]
+    },
+    {
+      "id": "S09",
+      "group": "single",
+      "facts": [
+        "sun_equator"
+      ]
+    },
+    {
+      "id": "S10",
+      "group": "single",
+      "facts": [
+        "moon_radius"
+      ]
+    },
+    {
+      "id": "M01",
+      "group": "multi",
+      "facts": [
+        "mercury_spin",
+        "venus_spin"
+      ]
+    },
+    {
+      "id": "M02",
+      "group": "multi",
+      "facts": [
+        "earth_year",
+        "mars_year"
+      ]
+    },
+    {
+      "id": "M03",
+      "group": "multi",
+      "facts": [
+        "jupiter_spin",
+        "saturn_spin"
+      ]
+    },
+    {
+      "id": "M04",
+      "group": "multi",
+      "facts": [
+        "uranus_year",
+        "neptune_year"
+      ]
+    },
+    {
+      "id": "M05",
+      "group": "multi",
+      "facts": [
+        "sun_equator",
+        "sun_poles"
+      ]
+    },
+    {
+      "id": "M06",
+      "group": "multi",
+      "facts": [
+        "moon_radius",
+        "moon_distance"
+      ]
+    },
+    {
+      "id": "M07",
+      "group": "multi",
+      "facts": [
+        "mercury_year",
+        "venus_spin",
+        "earth_nitrogen",
+        "mars_spin"
+      ]
+    },
+    {
+      "id": "M08",
+      "group": "multi",
+      "facts": [
+        "jupiter_year",
+        "saturn_spin",
+        "uranus_tilt",
+        "neptune_year"
+      ]
+    },
+    {
+      "id": "M09",
+      "group": "multi",
+      "facts": [
+        "mercury_tilt",
+        "earth_tilt",
+        "uranus_tilt"
+      ]
+    },
+    {
+      "id": "M10",
+      "group": "multi",
+      "facts": [
+        "mercury_heat",
+        "venus_gas",
+        "sun_poles",
+        "moon_radius"
+      ]
+    },
+    {
+      "id": "N01",
+      "group": "missing",
+      "facts": []
+    },
+    {
+      "id": "N02",
+      "group": "missing",
+      "facts": []
+    },
+    {
+      "id": "N03",
+      "group": "missing",
+      "facts": []
+    },
+    {
+      "id": "N04",
+      "group": "missing",
+      "facts": []
+    }
+  ]
+}

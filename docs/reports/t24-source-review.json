@@ -1,0 +1,50 @@
+{
+  "kind": "post-run possible alternate support; not a rescore or gold amendment",
+  "items": [
+    {
+      "capture": "01-ranked",
+      "question": "M09",
+      "key": {
+        "chunk_id": "c12",
+        "document_id": "mars",
+        "revision": "130bba47dabc75d61f9450fb1bd856e8a8d47de66224a6beb6308a82265ac9c6"
+      },
+      "quote": "This is another similarity with Earth, which has an axial tilt of 23.4 degrees.",
+      "source_sha256": "805241fb4c714a91bdc35955b02c4c608d37e45c03a9819b60c07975598c0487",
+      "source_bytes": [
+        1962,
+        2041
+      ]
+    },
+    {
+      "capture": "02-facets",
+      "question": "M09",
+      "key": {
+        "chunk_id": "c12",
+        "document_id": "mars",
+        "revision": "130bba47dabc75d61f9450fb1bd856e8a8d47de66224a6beb6308a82265ac9c6"
+      },
+      "quote": "This is another similarity with Earth, which has an axial tilt of 23.4 degrees.",
+      "source_sha256": "805241fb4c714a91bdc35955b02c4c608d37e45c03a9819b60c07975598c0487",
+      "source_bytes": [
+        1962,
+        2041
+      ]
+    },
+    {
+      "capture": "02-facets",
+      "question": "M10",
+      "key": {
+        "chunk_id": "c19",
+        "document_id": "sun",
+        "revision": "745b157fe76316381137b0c115b7236a0b83debe595154545eceec1ab53e8047"
+      },
+      "quote": "at its poles, the Sun rotates once on its axis every 36 Earth days.",
+      "source_sha256": "35cae7f3217ce8b77c21fc62fd610dc64f69ac893a7b09b490c22c68d779f2a6",
+      "source_bytes": [
+        6037,
+        6104
+      ]
+    }
+  ]
+}

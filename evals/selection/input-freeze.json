@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-10-15T16:19:07.456516+00:00",
+  "stage": "before measured ingestion or retrieval",
+  "files": {
+    "docs/t24-protocol.md": "977c32e9e8f44a59448e842f6eed84399873b1cd2b8d71107773d4da44db8844",
+    "evals/selection/fixtures/earth.txt": "906a1d31d9adaaac04cf4865dd460d941cbe0fccaf29ed58014f41bcc28fae1f",
+    "evals/selection/fixtures/jupiter.txt": "9e1ac3cf4cb7f4e5e43e40f551bf9b5f7cced1b097b5ea1755c4668e9dcb5346",
+    "evals/selection/fixtures/mars.txt": "805241fb4c714a91bdc35955b02c4c608d37e45c03a9819b60c07975598c0487",
+    "evals/selection/fixtures/mercury.txt": "088b6100a41e404b613bfffee726632a735648a988cdefc9be1bf6e3e4894780",
+    "evals/selection/fixtures/moon.txt": "9b4a60238c0ecd95808d1e8bdac894ade0c6096b81491a6a3b164071afbe1b2d",
+    "evals/selection/fixtures/neptune.txt": "c92d042044c1284ecfdd486c127d27b4153f74d298650ce8c06ef248e7c48aac",
+    "evals/selection/fixtures/saturn.txt": "c9b698d8cebb97ea76eaab14915cf6952a0ca0436ee7358b0d138ec4af15c9be",
+    "evals/selection/fixtures/sun.txt": "35cae7f3217ce8b77c21fc62fd610dc64f69ac893a7b09b490c22c68d779f2a6",
+    "evals/selection/fixtures/uranus.txt": "7de65130e40223a2c642e4506d4880edab304a96de6bfcf1db6c9bc4d8b2c6ab",
+    "evals/selection/fixtures/venus.txt": "71e35e01dbe1531bf20e0f1fafc513d8ad42421bd8bd9b96b08c63893fc980b3",
+    "evals/selection/gold.json": "d6b21db3001d6c2ab7df5f697e04164e82fcb6f1270f29fcf9475ccf360e00e6",
+    "evals/selection/NOTICE.md": "f5d301463efe2911f924d24e9b313b5a93bfb98920551489f403b5e7a42f8a12",
+    "evals/selection/requests.json": "6fa957d49be4d4cbfa7881d1b27fd9fe5ffaef375dd51a25d3ef62648e901138",
+    "evals/selection/sources.json": "904d50bb3f18d0f9a19b07da8891615c4db7c4b2e69ee0926befad3d00673c73"
+  }
+}

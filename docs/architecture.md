@@ -1,6 +1,6 @@
 # VectorNext architecture
 
-Status: implemented T01–T22 local application, evaluations, workflow reports, recovery, numeric proof support, browser workspace, Axum API with local OpenAPI documentation, isolated pgvector comparison, bounded checkpoint/export repair and filter indexing. T23 fresh evidence retrieval is complete as an experiment; production retrieval defaults remain unchanged. Remaining proposals are identified below.
+Status: implemented T01–T22 local application, evaluations, workflow reports, recovery, numeric proof support, browser workspace, Axum API with local OpenAPI documentation, isolated pgvector comparison, bounded checkpoint/export repair and filter indexing. T23 candidate retrieval and T24 final passage selection are complete as separate experiments. Production retrieval defaults remain unchanged. Remaining proposals are identified below.
 Last updated: 2026-10-15.
 
 This document condenses the project discussion into an implementation reference. It is not a claim that the system is implemented or that every proposed technology has been selected. Explicit user instructions can revise it.
@@ -23,6 +23,14 @@ T01 evaluation fixtures/contracts, T02 local-model feasibility, T03's Rust stora
 T10 adds source/answer scoring, isolated cold/warm API comparisons, stage/queue/resource measurements, bounded answer options and independent keyword-field weights. The [evaluation report](reports/t10-evaluation.md) retains structural context and exact search as defaults. Two primary passages reduced median response time by 30–32% on the 13 development questions; the later [T11 public-source comparison](reports/t11-independent.md) found lost answers with two, so five remain the general default. Generated context did not improve final answers and cost substantially more to ingest. These results do not establish broad retrieval quality.
 
 ## 2. Integrated deployment
+
+### Adopted final passage selection — T24 (experiment completed 2026-10-15)
+
+Isolate final selection from upstream retrieval: compare whole-question ranked selection with a bounded facet-focused selector on the identical expanded shortlist of at most 20 original source passages. Keep five primary slots, the same real CPU embeddings/cross-encoder, structural ingestion context and original question. The candidate reranks each explicit question-derived facet separately, selects each facet's best available passage before filling remaining slots from the general ranking, and avoids substantially overlapping spans from the same revision. Heading-only chunks cannot satisfy candidate primary slots. Facet ranks are relevance heuristics, not proof of answerability. Record exclusions, selected keys, per-facet rankings and all extra model work. Never invent filters, answer values or source identifiers from labels.
+
+Implement this in isolated experimental tooling first; do not change production `ranked` or `coverage_v1`, API/storage formats, model identities or normal services. Freeze fresh attributed sources, positive/negative questions, source-bound labels, budgets and selection rules before measured retrieval. Preserve T23 and earlier freezes/captures and leave the original holdout unused. The main comparison holds the candidate shortlist constant, so any change in final evidence coverage can be attributed to selection; report upstream misses separately. Use a separate synthetic smoke fixture, paired offline CPU runs, immutable source revisions, failure-inclusive denominators and cost/coverage measurements. No GPU generation or answer-quality claim. Publish adverse/neutral results without tuning on the new observed data; adoption requires a separate decision.
+
+Disposition: ten fresh NASA sources admitted 388 chunks; 96/96 offline CPU requests completed with identical shortlists/general scores across arms. The candidate improves complete frozen final evidence coverage 16/20 → 18/20 and fact requirements 32/37 → 35/37, with no observed regressions. First-pass median latency rises 685 → 1,437 ms; the small correlated, agent-authored set and literal-label exceptions limit the claim. Eight Rust/nine Python checks, format/Clippy, source validation and separate real-model smoke passed. Keep ranked 30/20/5 and coverage_v1 unchanged. Scope opt-in application integration and automatic facet/context/answer validation separately. [Results and source review](reports/t24-final-selection.md).
 
 ### Adopted filter optimization — T22 (implemented 2026-10-15)
 

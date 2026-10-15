@@ -1,0 +1,4188 @@
+{
+  "experiment": "T24 final passage selection on frozen NASA text",
+  "date": "2026-10-15",
+  "image": "sha256:d1ac1189a16525b461cdae2afd181ba1f717a7b2f02c0b9c44d12c1a1b0695c5",
+  "counts": {
+    "sources": 10,
+    "questions": 24,
+    "facts": 22,
+    "fact_requirements": 37,
+    "source_bytes": 97810
+  },
+  "ingestion": [
+    {
+      "elapsed_ms": 668.6632129999999,
+      "id": "mercury",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 32,
+        "revision": "8c91371c730f2de0f80b6ea46d7bac6263107b8cf9252db9cd08e84b06655ec6",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 1005.7715330000001,
+      "id": "earth",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 50,
+        "revision": "198cf83509349a2fa9c96a5b5aa9240693304cf5fb3c2054bd7fc6d41a3221ef",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 974.607537,
+      "id": "mars",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 46,
+        "revision": "130bba47dabc75d61f9450fb1bd856e8a8d47de66224a6beb6308a82265ac9c6",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 988.6298220000001,
+      "id": "jupiter",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 37,
+        "revision": "db7c86eb1d5d62c768b79587396c71a4bbbbf7bef5d2919b99a6637e9144f41a",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 807.667297,
+      "id": "saturn",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 33,
+        "revision": "42a508bbde0fb38c75ee19b3989cbee917d3e32f3529b5a124eb87013136ef51",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 779.36941,
+      "id": "uranus",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 30,
+        "revision": "8e9a01ba4e2a445394c17fa7f5260cbb408a772ba086df76258eac6105f2353c",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 823.163326,
+      "id": "neptune",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 31,
+        "revision": "97af82bc731fec18d2858f05c20dd3df0e032bc1899e62111325d648c49464e2",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 1393.271925,
+      "id": "sun",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 49,
+        "revision": "745b157fe76316381137b0c115b7236a0b83debe595154545eceec1ab53e8047",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 1116.183985,
+      "id": "moon",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 37,
+        "revision": "8d1fe976578230e6dab2b6d50e8fb22215983e53de3cc18a3abd9caccef31e1b",
+        "status": "ok"
+      }
+    },
+    {
+      "elapsed_ms": 1772.456155,
+      "id": "venus",
+      "kind": "ingestion",
+      "result": {
+        "chunks": 43,
+        "revision": "42c7c50e223d893a2fc00df8341841b28ec9a65f3f85851587807c7c0e69b394",
+        "status": "ok"
+      }
+    }
+  ],
+  "runs": [
+    {
+      "capture": "data/t24/final-v1/01-ranked.jsonl",
+      "requests": 24,
+      "errors": 0,
+      "stages": {
+        "raw": {
+          "complete": 20,
+          "positive_questions": 20,
+          "facts": 37,
+          "fact_requirements": 37,
+          "macro_recall": 1.0,
+          "hits": {
+            "n": 24,
+            "median": 62.0,
+            "p95": 150
+          }
+        },
+        "selected": {
+          "complete": 19,
+          "positive_questions": 20,
+          "facts": 36,
+          "fact_requirements": 37,
+          "macro_recall": 0.9875,
+          "hits": {
+            "n": 24,
+            "median": 20.0,
+            "p95": 20
+          }
+        },
+        "primary": {
+          "complete": 16,
+          "positive_questions": 20,
+          "facts": 32,
+          "fact_requirements": 37,
+          "macro_recall": 0.9333333333333333,
+          "hits": {
+            "n": 24,
+            "median": 5.0,
+            "p95": 5
+          }
+        }
+      },
+      "latency": {
+        "elapsed_ms": {
+          "n": 24,
+          "median": 685.0616789999999,
+          "p95": 764.195951
+        },
+        "embedding_ms": {
+          "n": 24,
+          "median": 24.351673499999997,
+          "p95": 76.21426200000002
+        },
+        "search_ms": {
+          "n": 24,
+          "median": 1.2015685,
+          "p95": 2.211385
+        },
+        "rerank_ms": {
+          "n": 24,
+          "median": 612.3132045,
+          "p95": 699.61461
+        },
+        "facet_rerank_ms": {
+          "n": 24,
+          "median": 0.000139,
+          "p95": 0.00034700000000000003
+        },
+        "selection_ms": {
+          "n": 24,
+          "median": 0.0035515,
+          "p95": 0.003982
+        }
+      },
+      "cases": [
+        {
+          "id": "S01",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 54,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1406.861594,
+            "embedding_ms": 18.724028,
+            "search_ms": 0.9913590000000001,
+            "rerank_ms": 1386.9903020000002
+          },
+          "probes": 2
+        },
+        {
+          "id": "S02",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 55,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 603.679879,
+            "embedding_ms": 15.719769999999999,
+            "search_ms": 0.956126,
+            "rerank_ms": 586.8282740000001
+          },
+          "probes": 2
+        },
+        {
+          "id": "S03",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 58,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 707.30284,
+            "embedding_ms": 69.951887,
+            "search_ms": 1.270025,
+            "rerank_ms": 635.8474269999999
+          },
+          "probes": 2
+        },
+        {
+          "id": "S04",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 59,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 577.2662819999999,
+            "embedding_ms": 72.212261,
+            "search_ms": 1.0844200000000002,
+            "rerank_ms": 503.79678400000006
+          },
+          "probes": 2
+        },
+        {
+          "id": "S05",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 58,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 694.239155,
+            "embedding_ms": 17.678433,
+            "search_ms": 1.165025,
+            "rerank_ms": 675.231294
+          },
+          "probes": 2
+        },
+        {
+          "id": "S06",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 68,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 589.777156,
+            "embedding_ms": 16.806289,
+            "search_ms": 1.1986850000000002,
+            "rerank_ms": 571.596593
+          },
+          "probes": 2
+        },
+        {
+          "id": "S07",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 608.221984,
+            "embedding_ms": 16.475648,
+            "search_ms": 1.045166,
+            "rerank_ms": 590.5668459999999
+          },
+          "probes": 2
+        },
+        {
+          "id": "S08",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 67,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 719.384657,
+            "embedding_ms": 18.434885,
+            "search_ms": 1.1647319999999999,
+            "rerank_ms": 699.61461
+          },
+          "probes": 2
+        },
+        {
+          "id": "S09",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 49,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 668.7430410000001,
+            "embedding_ms": 71.33418499999999,
+            "search_ms": 1.2044519999999999,
+            "rerank_ms": 595.971032
+          },
+          "probes": 2
+        },
+        {
+          "id": "S10",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 61,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 696.170709,
+            "embedding_ms": 15.339092999999998,
+            "search_ms": 1.0118230000000001,
+            "rerank_ms": 679.662422
+          },
+          "probes": 2
+        },
+        {
+          "id": "M01",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 87,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 614.2185470000001,
+            "embedding_ms": 10.446834999999998,
+            "search_ms": 1.089376,
+            "rerank_ms": 602.524662
+          },
+          "probes": 3
+        },
+        {
+          "id": "M02",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 79,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 592.586948,
+            "embedding_ms": 71.554799,
+            "search_ms": 1.360856,
+            "rerank_ms": 519.479294
+          },
+          "probes": 3
+        },
+        {
+          "id": "M03",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 85,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 698.0154779999999,
+            "embedding_ms": 74.272445,
+            "search_ms": 1.4311610000000001,
+            "rerank_ms": 622.1017469999999
+          },
+          "probes": 3
+        },
+        {
+          "id": "M04",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 88,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 702.4576860000001,
+            "embedding_ms": 75.82814499999999,
+            "search_ms": 1.677547,
+            "rerank_ms": 624.7660619999999
+          },
+          "probes": 3
+        },
+        {
+          "id": "M05",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 54,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 675.884203,
+            "embedding_ms": 72.857015,
+            "search_ms": 1.7034949999999998,
+            "rerank_ms": 601.114088
+          },
+          "probes": 3
+        },
+        {
+          "id": "M06",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 67,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 594.912175,
+            "embedding_ms": 18.903536,
+            "search_ms": 1.388833,
+            "rerank_ms": 574.3890630000001
+          },
+          "probes": 3
+        },
+        {
+          "id": "M07",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "earth_nitrogen",
+              "mars_spin"
+            ],
+            "hits": 150,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "earth_nitrogen",
+              "mars_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "mars_spin"
+            ],
+            "hits": 5,
+            "recall": 0.75,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 704.480636,
+            "embedding_ms": 28.029684999999997,
+            "search_ms": 2.211385,
+            "rerank_ms": 674.029037
+          },
+          "probes": 5
+        },
+        {
+          "id": "M08",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt",
+              "neptune_year"
+            ],
+            "hits": 147,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt",
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt"
+            ],
+            "hits": 5,
+            "recall": 0.75,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 719.4596049999999,
+            "embedding_ms": 20.673662,
+            "search_ms": 2.103128,
+            "rerank_ms": 696.489374
+          },
+          "probes": 5
+        },
+        {
+          "id": "M09",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "mercury_tilt",
+              "earth_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 112,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_tilt",
+              "earth_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 764.195951,
+            "embedding_ms": 76.21426200000002,
+            "search_ms": 1.917858,
+            "rerank_ms": 685.847981
+          },
+          "probes": 4
+        },
+        {
+          "id": "M10",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas",
+              "sun_poles",
+              "moon_radius"
+            ],
+            "hits": 163,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas",
+              "moon_radius"
+            ],
+            "hits": 20,
+            "recall": 0.75,
+            "complete": false
+          },
+          "primary": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas"
+            ],
+            "hits": 5,
+            "recall": 0.5,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 726.491485,
+            "embedding_ms": 85.369415,
+            "search_ms": 2.5736329999999996,
+            "rerank_ms": 638.32044
+          },
+          "probes": 5
+        },
+        {
+          "id": "N01",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 62,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 673.122808,
+            "embedding_ms": 70.439509,
+            "search_ms": 1.082335,
+            "rerank_ms": 601.422225
+          },
+          "probes": 2
+        },
+        {
+          "id": "N02",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 58,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 430.468376,
+            "embedding_ms": 17.890126000000002,
+            "search_ms": 0.907832,
+            "rerank_ms": 411.554352
+          },
+          "probes": 2
+        },
+        {
+          "id": "N03",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 60,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 706.505801,
+            "embedding_ms": 17.285833,
+            "search_ms": 0.950864,
+            "rerank_ms": 688.125872
+          },
+          "probes": 2
+        },
+        {
+          "id": "N04",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 62,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 609.4948489999999,
+            "embedding_ms": 30.037279,
+            "search_ms": 1.4622709999999999,
+            "rerank_ms": 577.854909
+          },
+          "probes": 3
+        }
+      ],
+      "worker_stats": {
+        "cache_hits": 15,
+        "cache_misses": 75,
+        "inference": {
+          "count": 0,
+          "embed": 51,
+          "generate": 0,
+          "rerank": 24
+        }
+      },
+      "pair_evaluations": 480,
+      "facet_calls": 0,
+      "single": {
+        "complete": 10,
+        "questions": 10,
+        "facts": 10,
+        "required": 10
+      },
+      "multi": {
+        "complete": 6,
+        "questions": 10,
+        "facts": 22,
+        "required": 27
+      }
+    },
+    {
+      "capture": "data/t24/final-v1/02-facets.jsonl",
+      "requests": 24,
+      "errors": 0,
+      "stages": {
+        "raw": {
+          "complete": 20,
+          "positive_questions": 20,
+          "facts": 37,
+          "fact_requirements": 37,
+          "macro_recall": 1.0,
+          "hits": {
+            "n": 24,
+            "median": 62.0,
+            "p95": 150
+          }
+        },
+        "selected": {
+          "complete": 19,
+          "positive_questions": 20,
+          "facts": 36,
+          "fact_requirements": 37,
+          "macro_recall": 0.9875,
+          "hits": {
+            "n": 24,
+            "median": 20.0,
+            "p95": 20
+          }
+        },
+        "primary": {
+          "complete": 18,
+          "positive_questions": 20,
+          "facts": 35,
+          "fact_requirements": 37,
+          "macro_recall": 0.9708333333333333,
+          "hits": {
+            "n": 24,
+            "median": 5.0,
+            "p95": 5
+          }
+        }
+      },
+      "latency": {
+        "elapsed_ms": {
+          "n": 24,
+          "median": 1436.9877395,
+          "p95": 2800.237471
+        },
+        "embedding_ms": {
+          "n": 24,
+          "median": 66.6500565,
+          "p95": 77.455306
+        },
+        "search_ms": {
+          "n": 24,
+          "median": 1.1883124999999999,
+          "p95": 2.248221
+        },
+        "rerank_ms": {
+          "n": 24,
+          "median": 602.3529679999999,
+          "p95": 714.1983309999999
+        },
+        "facet_rerank_ms": {
+          "n": 24,
+          "median": 632.926865,
+          "p95": 2111.549549
+        },
+        "selection_ms": {
+          "n": 24,
+          "median": 0.0413395,
+          "p95": 0.065857
+        }
+      },
+      "cases": [
+        {
+          "id": "S01",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 54,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2018.993225,
+            "embedding_ms": 19.227207,
+            "search_ms": 1.142488,
+            "rerank_ms": 1499.448213
+          },
+          "probes": 2
+        },
+        {
+          "id": "S02",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 55,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1026.19727,
+            "embedding_ms": 15.480264000000002,
+            "search_ms": 0.9627389999999999,
+            "rerank_ms": 522.343739
+          },
+          "probes": 2
+        },
+        {
+          "id": "S03",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 58,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1191.4250530000002,
+            "embedding_ms": 73.491759,
+            "search_ms": 1.046105,
+            "rerank_ms": 526.485584
+          },
+          "probes": 2
+        },
+        {
+          "id": "S04",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 59,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1100.772368,
+            "embedding_ms": 70.15518,
+            "search_ms": 0.997162,
+            "rerank_ms": 523.924626
+          },
+          "probes": 2
+        },
+        {
+          "id": "S05",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 58,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1108.309722,
+            "embedding_ms": 66.606403,
+            "search_ms": 1.0734,
+            "rerank_ms": 516.482027
+          },
+          "probes": 2
+        },
+        {
+          "id": "S06",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 68,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1187.460582,
+            "embedding_ms": 66.69371,
+            "search_ms": 1.071679,
+            "rerank_ms": 616.223961
+          },
+          "probes": 2
+        },
+        {
+          "id": "S07",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1271.2892490000002,
+            "embedding_ms": 67.60618,
+            "search_ms": 1.001839,
+            "rerank_ms": 603.984336
+          },
+          "probes": 2
+        },
+        {
+          "id": "S08",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 67,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1195.858374,
+            "embedding_ms": 16.933989,
+            "search_ms": 1.234137,
+            "rerank_ms": 600.7216
+          },
+          "probes": 2
+        },
+        {
+          "id": "S09",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 49,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1132.892375,
+            "embedding_ms": 17.347444,
+            "search_ms": 1.140395,
+            "rerank_ms": 584.566994
+          },
+          "probes": 2
+        },
+        {
+          "id": "S10",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 61,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1277.6169049999999,
+            "embedding_ms": 71.88162500000001,
+            "search_ms": 1.051341,
+            "rerank_ms": 689.636824
+          },
+          "probes": 2
+        },
+        {
+          "id": "M01",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 87,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1612.6331659999998,
+            "embedding_ms": 11.482069000000001,
+            "search_ms": 1.2734679999999998,
+            "rerank_ms": 574.269531
+          },
+          "probes": 3
+        },
+        {
+          "id": "M02",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 79,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1487.229478,
+            "embedding_ms": 67.26454899999999,
+            "search_ms": 1.614542,
+            "rerank_ms": 545.905512
+          },
+          "probes": 3
+        },
+        {
+          "id": "M03",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 85,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2112.107885,
+            "embedding_ms": 82.046804,
+            "search_ms": 1.912135,
+            "rerank_ms": 714.1983309999999
+          },
+          "probes": 3
+        },
+        {
+          "id": "M04",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 88,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1858.143185,
+            "embedding_ms": 74.95415600000001,
+            "search_ms": 2.100902,
+            "rerank_ms": 688.377439
+          },
+          "probes": 3
+        },
+        {
+          "id": "M05",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 54,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1634.660261,
+            "embedding_ms": 19.158309000000003,
+            "search_ms": 1.5544350000000002,
+            "rerank_ms": 580.866087
+          },
+          "probes": 3
+        },
+        {
+          "id": "M06",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 67,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 1704.5472350000002,
+            "embedding_ms": 76.323649,
+            "search_ms": 1.798205,
+            "rerank_ms": 618.2918229999999
+          },
+          "probes": 3
+        },
+        {
+          "id": "M07",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "earth_nitrogen",
+              "mars_spin"
+            ],
+            "hits": 150,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "earth_nitrogen",
+              "mars_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "earth_nitrogen",
+              "mars_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2843.942879,
+            "embedding_ms": 33.198122999999995,
+            "search_ms": 2.248221,
+            "rerank_ms": 617.5422040000001
+          },
+          "probes": 5
+        },
+        {
+          "id": "M08",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt",
+              "neptune_year"
+            ],
+            "hits": 147,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt",
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt",
+              "neptune_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2800.237471,
+            "embedding_ms": 75.865043,
+            "search_ms": 2.303033,
+            "rerank_ms": 610.2811310000001
+          },
+          "probes": 5
+        },
+        {
+          "id": "M09",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "mercury_tilt",
+              "earth_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 112,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_tilt",
+              "earth_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 2347.892688,
+            "embedding_ms": 30.086884999999995,
+            "search_ms": 2.171677,
+            "rerank_ms": 668.327944
+          },
+          "probes": 4
+        },
+        {
+          "id": "M10",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas",
+              "sun_poles",
+              "moon_radius"
+            ],
+            "hits": 163,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas",
+              "moon_radius"
+            ],
+            "hits": 20,
+            "recall": 0.75,
+            "complete": false
+          },
+          "primary": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas",
+              "moon_radius"
+            ],
+            "hits": 5,
+            "recall": 0.75,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 2715.923761,
+            "embedding_ms": 29.079305,
+            "search_ms": 2.2246270000000004,
+            "rerank_ms": 674.7949570000001
+          },
+          "probes": 5
+        },
+        {
+          "id": "N01",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 62,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 1203.440015,
+            "embedding_ms": 18.919314,
+            "search_ms": 1.012311,
+            "rerank_ms": 583.8352100000001
+          },
+          "probes": 2
+        },
+        {
+          "id": "N02",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 58,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 893.268478,
+            "embedding_ms": 76.645961,
+            "search_ms": 1.136358,
+            "rerank_ms": 414.396741
+          },
+          "probes": 2
+        },
+        {
+          "id": "N03",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 60,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 1386.7460010000002,
+            "embedding_ms": 77.455306,
+            "search_ms": 1.129337,
+            "rerank_ms": 641.538275
+          },
+          "probes": 2
+        },
+        {
+          "id": "N04",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 62,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 1628.148946,
+            "embedding_ms": 27.71832,
+            "search_ms": 1.4357710000000001,
+            "rerank_ms": 569.495958
+          },
+          "probes": 3
+        }
+      ],
+      "worker_stats": {
+        "cache_hits": 15,
+        "cache_misses": 117,
+        "inference": {
+          "count": 0,
+          "embed": 51,
+          "generate": 0,
+          "rerank": 66
+        }
+      },
+      "pair_evaluations": 1320,
+      "facet_calls": 42,
+      "single": {
+        "complete": 10,
+        "questions": 10,
+        "facts": 10,
+        "required": 10
+      },
+      "multi": {
+        "complete": 8,
+        "questions": 10,
+        "facts": 25,
+        "required": 27
+      }
+    },
+    {
+      "capture": "data/t24/final-v1/03-facets.jsonl",
+      "requests": 24,
+      "errors": 0,
+      "stages": {
+        "raw": {
+          "complete": 20,
+          "positive_questions": 20,
+          "facts": 37,
+          "fact_requirements": 37,
+          "macro_recall": 1.0,
+          "hits": {
+            "n": 24,
+            "median": 62.0,
+            "p95": 150
+          }
+        },
+        "selected": {
+          "complete": 19,
+          "positive_questions": 20,
+          "facts": 36,
+          "fact_requirements": 37,
+          "macro_recall": 0.9875,
+          "hits": {
+            "n": 24,
+            "median": 20.0,
+            "p95": 20
+          }
+        },
+        "primary": {
+          "complete": 18,
+          "positive_questions": 20,
+          "facts": 35,
+          "fact_requirements": 37,
+          "macro_recall": 0.9708333333333333,
+          "hits": {
+            "n": 24,
+            "median": 5.0,
+            "p95": 5
+          }
+        }
+      },
+      "latency": {
+        "elapsed_ms": {
+          "n": 24,
+          "median": 4.291882,
+          "p95": 8.71042
+        },
+        "embedding_ms": {
+          "n": 24,
+          "median": 2.0770584999999997,
+          "p95": 4.68153
+        },
+        "search_ms": {
+          "n": 24,
+          "median": 0.8177114999999999,
+          "p95": 1.615375
+        },
+        "rerank_ms": {
+          "n": 24,
+          "median": 0.42220599999999997,
+          "p95": 0.47104599999999996
+        },
+        "facet_rerank_ms": {
+          "n": 24,
+          "median": 0.5255595,
+          "p95": 1.700716
+        },
+        "selection_ms": {
+          "n": 24,
+          "median": 0.024087499999999998,
+          "p95": 0.037155
+        }
+      },
+      "cases": [
+        {
+          "id": "S01",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 54,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 873.371078,
+            "embedding_ms": 1.812946,
+            "search_ms": 0.800817,
+            "rerank_ms": 870.116036
+          },
+          "probes": 2
+        },
+        {
+          "id": "S02",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 55,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.842422,
+            "embedding_ms": 2.021798,
+            "search_ms": 0.821554,
+            "rerank_ms": 0.456849
+          },
+          "probes": 2
+        },
+        {
+          "id": "S03",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 58,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.712627,
+            "embedding_ms": 2.0046670000000004,
+            "search_ms": 0.711219,
+            "rerank_ms": 0.38099500000000003
+          },
+          "probes": 2
+        },
+        {
+          "id": "S04",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 59,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.4420140000000004,
+            "embedding_ms": 1.8283420000000001,
+            "search_ms": 0.616623,
+            "rerank_ms": 0.404637
+          },
+          "probes": 2
+        },
+        {
+          "id": "S05",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 58,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.648705,
+            "embedding_ms": 1.855559,
+            "search_ms": 0.813869,
+            "rerank_ms": 0.45471999999999996
+          },
+          "probes": 2
+        },
+        {
+          "id": "S06",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 68,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.580459,
+            "embedding_ms": 1.975417,
+            "search_ms": 0.663341,
+            "rerank_ms": 0.445604
+          },
+          "probes": 2
+        },
+        {
+          "id": "S07",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.605081,
+            "embedding_ms": 2.019299,
+            "search_ms": 0.6302700000000001,
+            "rerank_ms": 0.455357
+          },
+          "probes": 2
+        },
+        {
+          "id": "S08",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 67,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.624069,
+            "embedding_ms": 1.758705,
+            "search_ms": 0.783611,
+            "rerank_ms": 0.47104599999999996
+          },
+          "probes": 2
+        },
+        {
+          "id": "S09",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 49,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.53524,
+            "embedding_ms": 1.95738,
+            "search_ms": 0.603858,
+            "rerank_ms": 0.446317
+          },
+          "probes": 2
+        },
+        {
+          "id": "S10",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 61,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.783143,
+            "embedding_ms": 1.948179,
+            "search_ms": 0.678076,
+            "rerank_ms": 0.461246
+          },
+          "probes": 2
+        },
+        {
+          "id": "M01",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 87,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 4.741342,
+            "embedding_ms": 2.293723,
+            "search_ms": 1.0068380000000001,
+            "rerank_ms": 0.396295
+          },
+          "probes": 3
+        },
+        {
+          "id": "M02",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 79,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 5.490165,
+            "embedding_ms": 3.0053310000000004,
+            "search_ms": 1.012092,
+            "rerank_ms": 0.43919
+          },
+          "probes": 3
+        },
+        {
+          "id": "M03",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 85,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 5.073580000000001,
+            "embedding_ms": 2.670423,
+            "search_ms": 0.996679,
+            "rerank_ms": 0.398993
+          },
+          "probes": 3
+        },
+        {
+          "id": "M04",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 88,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 5.070411,
+            "embedding_ms": 2.7423849999999996,
+            "search_ms": 1.101167,
+            "rerank_ms": 0.369401
+          },
+          "probes": 3
+        },
+        {
+          "id": "M05",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 54,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 5.365222999999999,
+            "embedding_ms": 2.777917,
+            "search_ms": 1.091717,
+            "rerank_ms": 0.437251
+          },
+          "probes": 3
+        },
+        {
+          "id": "M06",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 67,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 5.0401609999999994,
+            "embedding_ms": 2.718816,
+            "search_ms": 1.009083,
+            "rerank_ms": 0.366712
+          },
+          "probes": 3
+        },
+        {
+          "id": "M07",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "earth_nitrogen",
+              "mars_spin"
+            ],
+            "hits": 150,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "earth_nitrogen",
+              "mars_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "earth_nitrogen",
+              "mars_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 8.587241,
+            "embedding_ms": 4.68153,
+            "search_ms": 1.615375,
+            "rerank_ms": 0.39135800000000004
+          },
+          "probes": 5
+        },
+        {
+          "id": "M08",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt",
+              "neptune_year"
+            ],
+            "hits": 147,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt",
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt",
+              "neptune_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 8.657253,
+            "embedding_ms": 4.755982,
+            "search_ms": 1.5840589999999999,
+            "rerank_ms": 0.47014300000000003
+          },
+          "probes": 5
+        },
+        {
+          "id": "M09",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "mercury_tilt",
+              "earth_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 112,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_tilt",
+              "earth_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 6.768596,
+            "embedding_ms": 3.886771,
+            "search_ms": 1.259698,
+            "rerank_ms": 0.38835299999999995
+          },
+          "probes": 4
+        },
+        {
+          "id": "M10",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas",
+              "sun_poles",
+              "moon_radius"
+            ],
+            "hits": 163,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas",
+              "moon_radius"
+            ],
+            "hits": 20,
+            "recall": 0.75,
+            "complete": false
+          },
+          "primary": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas",
+              "moon_radius"
+            ],
+            "hits": 5,
+            "recall": 0.75,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 8.71042,
+            "embedding_ms": 4.659752,
+            "search_ms": 1.6534040000000003,
+            "rerank_ms": 0.414097
+          },
+          "probes": 5
+        },
+        {
+          "id": "N01",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 62,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 3.767405,
+            "embedding_ms": 2.132319,
+            "search_ms": 0.670986,
+            "rerank_ms": 0.409849
+          },
+          "probes": 2
+        },
+        {
+          "id": "N02",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 58,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 3.3047380000000004,
+            "embedding_ms": 1.7907359999999999,
+            "search_ms": 0.655769,
+            "rerank_ms": 0.341049
+          },
+          "probes": 2
+        },
+        {
+          "id": "N03",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 60,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 3.4045400000000003,
+            "embedding_ms": 1.831636,
+            "search_ms": 0.5650109999999999,
+            "rerank_ms": 0.365398
+          },
+          "probes": 2
+        },
+        {
+          "id": "N04",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 62,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 5.030819,
+            "embedding_ms": 2.823036,
+            "search_ms": 0.8900049999999999,
+            "rerank_ms": 0.430315
+          },
+          "probes": 3
+        }
+      ],
+      "worker_stats": {
+        "cache_hits": 132,
+        "cache_misses": 0,
+        "inference": {
+          "count": 0,
+          "embed": 0,
+          "generate": 0
+        }
+      },
+      "pair_evaluations": 1320,
+      "facet_calls": 42,
+      "single": {
+        "complete": 10,
+        "questions": 10,
+        "facts": 10,
+        "required": 10
+      },
+      "multi": {
+        "complete": 8,
+        "questions": 10,
+        "facts": 25,
+        "required": 27
+      }
+    },
+    {
+      "capture": "data/t24/final-v1/04-ranked.jsonl",
+      "requests": 24,
+      "errors": 0,
+      "stages": {
+        "raw": {
+          "complete": 20,
+          "positive_questions": 20,
+          "facts": 37,
+          "fact_requirements": 37,
+          "macro_recall": 1.0,
+          "hits": {
+            "n": 24,
+            "median": 62.0,
+            "p95": 150
+          }
+        },
+        "selected": {
+          "complete": 19,
+          "positive_questions": 20,
+          "facts": 36,
+          "fact_requirements": 37,
+          "macro_recall": 0.9875,
+          "hits": {
+            "n": 24,
+            "median": 20.0,
+            "p95": 20
+          }
+        },
+        "primary": {
+          "complete": 16,
+          "positive_questions": 20,
+          "facts": 32,
+          "fact_requirements": 37,
+          "macro_recall": 0.9333333333333333,
+          "hits": {
+            "n": 24,
+            "median": 5.0,
+            "p95": 5
+          }
+        }
+      },
+      "latency": {
+        "elapsed_ms": {
+          "n": 24,
+          "median": 3.770834,
+          "p95": 7.191543
+        },
+        "embedding_ms": {
+          "n": 24,
+          "median": 2.1632575000000003,
+          "p95": 4.516456999999999
+        },
+        "search_ms": {
+          "n": 24,
+          "median": 0.8288674999999999,
+          "p95": 1.492727
+        },
+        "rerank_ms": {
+          "n": 24,
+          "median": 0.43851249999999997,
+          "p95": 0.5762579999999999
+        },
+        "facet_rerank_ms": {
+          "n": 24,
+          "median": 5.1e-05,
+          "p95": 0.000142
+        },
+        "selection_ms": {
+          "n": 24,
+          "median": 0.0015589999999999998,
+          "p95": 0.002016
+        }
+      },
+      "cases": [
+        {
+          "id": "S01",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 54,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 889.973948,
+            "embedding_ms": 2.042098,
+            "search_ms": 0.6433819999999999,
+            "rerank_ms": 887.145139
+          },
+          "probes": 2
+        },
+        {
+          "id": "S02",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 55,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "venus_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.707606,
+            "embedding_ms": 2.247144,
+            "search_ms": 0.903944,
+            "rerank_ms": 0.4172
+          },
+          "probes": 2
+        },
+        {
+          "id": "S03",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 58,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "earth_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.3853109999999997,
+            "embedding_ms": 2.066662,
+            "search_ms": 0.735978,
+            "rerank_ms": 0.453491
+          },
+          "probes": 2
+        },
+        {
+          "id": "S04",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 59,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mars_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.1272349999999998,
+            "embedding_ms": 1.884175,
+            "search_ms": 0.6907810000000001,
+            "rerank_ms": 0.44643200000000005
+          },
+          "probes": 2
+        },
+        {
+          "id": "S05",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 58,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.948108,
+            "embedding_ms": 1.7770000000000001,
+            "search_ms": 0.660522,
+            "rerank_ms": 0.410238
+          },
+          "probes": 2
+        },
+        {
+          "id": "S06",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 68,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "saturn_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.55355,
+            "embedding_ms": 2.079371,
+            "search_ms": 0.8884589999999999,
+            "rerank_ms": 0.466018
+          },
+          "probes": 2
+        },
+        {
+          "id": "S07",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 53,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "uranus_tilt"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.6585229999999997,
+            "embedding_ms": 1.58197,
+            "search_ms": 0.571151,
+            "rerank_ms": 0.412791
+          },
+          "probes": 2
+        },
+        {
+          "id": "S08",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 67,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "neptune_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.9632140000000002,
+            "embedding_ms": 1.8177159999999999,
+            "search_ms": 0.646324,
+            "rerank_ms": 0.405206
+          },
+          "probes": 2
+        },
+        {
+          "id": "S09",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 49,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "sun_equator"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.04672,
+            "embedding_ms": 1.7594859999999999,
+            "search_ms": 0.729042,
+            "rerank_ms": 0.447121
+          },
+          "probes": 2
+        },
+        {
+          "id": "S10",
+          "group": "single",
+          "error": false,
+          "required": 1,
+          "raw": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 61,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "moon_radius"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 2.797941,
+            "embedding_ms": 1.764133,
+            "search_ms": 0.542533,
+            "rerank_ms": 0.388314
+          },
+          "probes": 2
+        },
+        {
+          "id": "M01",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 87,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_spin",
+              "venus_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 3.834062,
+            "embedding_ms": 2.351903,
+            "search_ms": 0.9424649999999999,
+            "rerank_ms": 0.43600099999999997
+          },
+          "probes": 3
+        },
+        {
+          "id": "M02",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 79,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "earth_year",
+              "mars_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 4.629219,
+            "embedding_ms": 2.828035,
+            "search_ms": 1.1460080000000001,
+            "rerank_ms": 0.509367
+          },
+          "probes": 3
+        },
+        {
+          "id": "M03",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 85,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_spin",
+              "saturn_spin"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 4.144499000000001,
+            "embedding_ms": 2.660914,
+            "search_ms": 0.931954,
+            "rerank_ms": 0.44975499999999996
+          },
+          "probes": 3
+        },
+        {
+          "id": "M04",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 88,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "uranus_year",
+              "neptune_year"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 4.264646000000001,
+            "embedding_ms": 2.726009,
+            "search_ms": 1.025903,
+            "rerank_ms": 0.400324
+          },
+          "probes": 3
+        },
+        {
+          "id": "M05",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 54,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "sun_equator",
+              "sun_poles"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 4.32744,
+            "embedding_ms": 2.6434699999999998,
+            "search_ms": 1.128216,
+            "rerank_ms": 0.421662
+          },
+          "probes": 3
+        },
+        {
+          "id": "M06",
+          "group": "multi",
+          "error": false,
+          "required": 2,
+          "raw": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 67,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "moon_radius",
+              "moon_distance"
+            ],
+            "hits": 5,
+            "recall": 1.0,
+            "complete": true
+          },
+          "timings": {
+            "elapsed_ms": 4.452845000000001,
+            "embedding_ms": 2.8027719999999996,
+            "search_ms": 1.081703,
+            "rerank_ms": 0.44102399999999997
+          },
+          "probes": 3
+        },
+        {
+          "id": "M07",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "earth_nitrogen",
+              "mars_spin"
+            ],
+            "hits": 150,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "earth_nitrogen",
+              "mars_spin"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_year",
+              "venus_spin",
+              "mars_spin"
+            ],
+            "hits": 5,
+            "recall": 0.75,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 6.620909,
+            "embedding_ms": 4.516456999999999,
+            "search_ms": 1.4729269999999999,
+            "rerank_ms": 0.468337
+          },
+          "probes": 5
+        },
+        {
+          "id": "M08",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt",
+              "neptune_year"
+            ],
+            "hits": 147,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt",
+              "neptune_year"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "jupiter_year",
+              "saturn_spin",
+              "uranus_tilt"
+            ],
+            "hits": 5,
+            "recall": 0.75,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 7.191543,
+            "embedding_ms": 4.998333000000001,
+            "search_ms": 1.59757,
+            "rerank_ms": 0.459613
+          },
+          "probes": 5
+        },
+        {
+          "id": "M09",
+          "group": "multi",
+          "error": false,
+          "required": 3,
+          "raw": {
+            "covered": [
+              "mercury_tilt",
+              "earth_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 112,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_tilt",
+              "earth_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 20,
+            "recall": 1.0,
+            "complete": true
+          },
+          "primary": {
+            "covered": [
+              "mercury_tilt",
+              "uranus_tilt"
+            ],
+            "hits": 5,
+            "recall": 0.6666666666666666,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 6.398111,
+            "embedding_ms": 4.310513,
+            "search_ms": 1.343455,
+            "rerank_ms": 0.5762579999999999
+          },
+          "probes": 4
+        },
+        {
+          "id": "M10",
+          "group": "multi",
+          "error": false,
+          "required": 4,
+          "raw": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas",
+              "sun_poles",
+              "moon_radius"
+            ],
+            "hits": 163,
+            "recall": 1.0,
+            "complete": true
+          },
+          "selected": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas",
+              "moon_radius"
+            ],
+            "hits": 20,
+            "recall": 0.75,
+            "complete": false
+          },
+          "primary": {
+            "covered": [
+              "mercury_heat",
+              "venus_gas"
+            ],
+            "hits": 5,
+            "recall": 0.5,
+            "complete": false
+          },
+          "timings": {
+            "elapsed_ms": 6.2463120000000005,
+            "embedding_ms": 4.1879740000000005,
+            "search_ms": 1.492727,
+            "rerank_ms": 0.388318
+          },
+          "probes": 5
+        },
+        {
+          "id": "N01",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 62,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 3.340444,
+            "embedding_ms": 1.996229,
+            "search_ms": 0.6973090000000001,
+            "rerank_ms": 0.5383239999999999
+          },
+          "probes": 2
+        },
+        {
+          "id": "N02",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 58,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 2.855892,
+            "embedding_ms": 1.853681,
+            "search_ms": 0.5685880000000001,
+            "rerank_ms": 0.343907
+          },
+          "probes": 2
+        },
+        {
+          "id": "N03",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 60,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 2.8093380000000003,
+            "embedding_ms": 1.750994,
+            "search_ms": 0.581035,
+            "rerank_ms": 0.36981200000000003
+          },
+          "probes": 2
+        },
+        {
+          "id": "N04",
+          "group": "missing",
+          "error": false,
+          "required": 0,
+          "raw": {
+            "covered": [],
+            "hits": 62,
+            "recall": null,
+            "complete": null
+          },
+          "selected": {
+            "covered": [],
+            "hits": 20,
+            "recall": null,
+            "complete": null
+          },
+          "primary": {
+            "covered": [],
+            "hits": 5,
+            "recall": null,
+            "complete": null
+          },
+          "timings": {
+            "elapsed_ms": 3.900494,
+            "embedding_ms": 2.700626,
+            "search_ms": 0.769276,
+            "rerank_ms": 0.34887999999999997
+          },
+          "probes": 3
+        }
+      ],
+      "worker_stats": {
+        "cache_hits": 90,
+        "cache_misses": 0,
+        "inference": {
+          "count": 0,
+          "embed": 0,
+          "generate": 0
+        }
+      },
+      "pair_evaluations": 480,
+      "facet_calls": 0,
+      "single": {
+        "complete": 10,
+        "questions": 10,
+        "facts": 10,
+        "required": 10
+      },
+      "multi": {
+        "complete": 6,
+        "questions": 10,
+        "facts": 22,
+        "required": 27
+      }
+    }
+  ],
+  "comparison": {
+    "shortlist_matches": 72,
+    "repeat_matches": 48,
+    "unavailable": []
+  },
+  "production_defaults_changed": false,
+  "captures": {
+    "00-ingest.jsonl": "a6d7f4428b32c678638656f496884bba852145d1396a525b7970aeba65615ab4",
+    "00-ingest.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "00-process.json": "1c68f740949593366fa89d130e465ec4104e96166e4bced21e38ae6647f61bff",
+    "01-process.json": "7cdb4d8fe4483bf59a939a1d472f568ca279e10b00cd61975e3c4e5827da78fe",
+    "01-ranked.jsonl": "cc0c74623fff231b53bcf8ebf19ce8db8ecca4d886bca9485be8020de2959d0e",
+    "01-ranked.log": "e71b59509753903529df69f32607ca0107385366b6c8edae1d193ff2e64a3896",
+    "02-facets.jsonl": "320ab06132f081cd7215408b3edc607a569d3514ac92a3290d2de7266dce6bf0",
+    "02-facets.log": "449b9ba9936e5da9847f25f54d059bfdcdfd3ae6109b5cae4e8005dbe65e6432",
+    "02-process.json": "20921faf63aec0ebb649a9dc1501114e4e1f14b24c6bc7dbbd6e94d05fd978bd",
+    "03-facets.jsonl": "611067e57a4ec1898af89963c0b080680328c62c13934fca29451fd9a1dad41e",
+    "03-facets.log": "449b9ba9936e5da9847f25f54d059bfdcdfd3ae6109b5cae4e8005dbe65e6432",
+    "03-process.json": "bf389c7527370fa0a5013e228d0adf5a496fae6b4e778e93d11fcc213c3fa217",
+    "04-process.json": "254a61bfaad500c9ac42a843da09f5a828c6749b81220dfd1efb2efdfa9c5437",
+    "04-ranked.jsonl": "dfd5bb8d722ae9d12fd2c956844985b96a1b14d69e113fbb3dc24f17d6546cc5",
+    "04-ranked.log": "e71b59509753903529df69f32607ca0107385366b6c8edae1d193ff2e64a3896",
+    "comparison.json": "81116bcfc71b915b62eeb5b4fba84562c77df3813aa185e0fd0eb87023d77abd",
+    "execution-freeze.json": "00a7844c88e295b1ee05dc133c237357d9a865d54832596c1f386ebe22fbf0a5",
+    "scores.json": "8d8f745fd1c1c2a626224f3655439dfa3a21b6cd0a0b781fbb986a713dab5450"
+  },
+  "input_freeze_sha256": "09da78f81f1d058d394be46f5aa3e001372c188e77612dce75b3daad2cb7d397",
+  "execution_freeze_sha256": "00a7844c88e295b1ee05dc133c237357d9a865d54832596c1f386ebe22fbf0a5"
+}

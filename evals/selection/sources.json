@@ -1,0 +1,115 @@
+{
+  "extraction": "NASA article body to UTF-8 TXT; whitespace normalized, headings/lists retained; image/caption/script/navigation/form elements omitted; stop before related-resource sections; superscripts ^(...); modified 2026-10-15",
+  "sources": [
+    {
+      "id": "mercury",
+      "title": "Mercury Facts",
+      "url": "https://science.nasa.gov/mercury/facts/",
+      "retrieved_utc": "2026-10-15T16:15:31.702320+00:00",
+      "html_sha256": "80a00a881bfed4af68625a6d92a843f59cc5f09ffe4de45a4cedfbe06462fafc",
+      "text_sha256": "088b6100a41e404b613bfffee726632a735648a988cdefc9be1bf6e3e4894780",
+      "text_bytes": 6286,
+      "file": "fixtures/mercury.txt",
+      "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "id": "earth",
+      "title": "Earth",
+      "url": "https://science.nasa.gov/earth/facts/",
+      "retrieved_utc": "2026-10-15T16:15:32.025877+00:00",
+      "html_sha256": "87b20aaad46efda4c29d6d5d9a79e10e2b3846da35215df017b2e3a8635a66f4",
+      "text_sha256": "906a1d31d9adaaac04cf4865dd460d941cbe0fccaf29ed58014f41bcc28fae1f",
+      "text_bytes": 10545,
+      "file": "fixtures/earth.txt",
+      "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "id": "mars",
+      "title": "Mars Facts",
+      "url": "https://science.nasa.gov/mars/facts/",
+      "retrieved_utc": "2026-10-15T16:15:32.302579+00:00",
+      "html_sha256": "0472f1c78d0b3dba691925d0a9d4380738e416f62fe57a480f14981aa6ab438c",
+      "text_sha256": "805241fb4c714a91bdc35955b02c4c608d37e45c03a9819b60c07975598c0487",
+      "text_bytes": 8878,
+      "file": "fixtures/mars.txt",
+      "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "id": "jupiter",
+      "title": "Jupiter Facts",
+      "url": "https://science.nasa.gov/jupiter/facts/",
+      "retrieved_utc": "2026-10-15T16:15:33.133186+00:00",
+      "html_sha256": "dcd77d51a17ff34660d527f84bcc8d3b665ac2b4b810ef2764e4ec15f8369e32",
+      "text_sha256": "9e1ac3cf4cb7f4e5e43e40f551bf9b5f7cced1b097b5ea1755c4668e9dcb5346",
+      "text_bytes": 11395,
+      "file": "fixtures/jupiter.txt",
+      "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "id": "saturn",
+      "title": "Saturn Facts",
+      "url": "https://science.nasa.gov/saturn/facts/",
+      "retrieved_utc": "2026-10-15T16:15:33.412512+00:00",
+      "html_sha256": "9b55134beb36eec7d90c6335f7cd436d8c8c300d6cba9ae697a78da189111a65",
+      "text_sha256": "c9b698d8cebb97ea76eaab14915cf6952a0ca0436ee7358b0d138ec4af15c9be",
+      "text_bytes": 7787,
+      "file": "fixtures/saturn.txt",
+      "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "id": "uranus",
+      "title": "Uranus Facts",
+      "url": "https://science.nasa.gov/uranus/facts/",
+      "retrieved_utc": "2026-10-15T16:15:33.686800+00:00",
+      "html_sha256": "911ed999131256f5eb84d19ba8b7cb676c99fb716cf420bc463a6e1909b43f96",
+      "text_sha256": "7de65130e40223a2c642e4506d4880edab304a96de6bfcf1db6c9bc4d8b2c6ab",
+      "text_bytes": 6484,
+      "file": "fixtures/uranus.txt",
+      "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "id": "neptune",
+      "title": "Neptune Facts",
+      "url": "https://science.nasa.gov/neptune/facts/",
+      "retrieved_utc": "2026-10-15T16:15:34.655925+00:00",
+      "html_sha256": "80359ba80ed2dbc86fd2422e450e8b9de1aba7c5fab6724cbef6964a2fa19ca4",
+      "text_sha256": "c92d042044c1284ecfdd486c127d27b4153f74d298650ce8c06ef248e7c48aac",
+      "text_bytes": 7661,
+      "file": "fixtures/neptune.txt",
+      "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "id": "sun",
+      "title": "Our Sun: Facts",
+      "url": "https://science.nasa.gov/sun/facts/",
+      "retrieved_utc": "2026-10-15T16:15:34.946156+00:00",
+      "html_sha256": "e95d859433a02590c6724ef4cde3ee0c24184c80a22f051816d56b3c10807504",
+      "text_sha256": "35cae7f3217ce8b77c21fc62fd610dc64f69ac893a7b09b490c22c68d779f2a6",
+      "text_bytes": 15055,
+      "file": "fixtures/sun.txt",
+      "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "id": "moon",
+      "title": "Moon Facts",
+      "url": "https://science.nasa.gov/moon/facts/",
+      "retrieved_utc": "2026-10-15T16:15:35.226037+00:00",
+      "html_sha256": "e622d9a81becf8e9451ec893bada19a3092040d5c537e1f1647179b21f22b88e",
+      "text_sha256": "9b4a60238c0ecd95808d1e8bdac894ade0c6096b81491a6a3b164071afbe1b2d",
+      "text_bytes": 8772,
+      "file": "fixtures/moon.txt",
+      "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "id": "venus",
+      "title": "Venus Facts",
+      "url": "https://science.nasa.gov/venus/venus-facts/",
+      "retrieved_utc": "2026-10-15T16:15:35.501413+00:00",
+      "html_sha256": "a7199ba6559f0202f9a92f097daf037fa64842ac6e80d9eb6d6cd434d7529e7e",
+      "text_sha256": "71e35e01dbe1531bf20e0f1fafc513d8ad42421bd8bd9b96b08c63893fc980b3",
+      "text_bytes": 14947,
+      "file": "fixtures/venus.txt",
+      "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    }
+  ]
+}

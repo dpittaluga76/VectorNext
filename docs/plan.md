@@ -5,7 +5,8 @@ Design reference: [architecture.md](architecture.md).
 
 ## Current state
 
-- Phase: T01 through T23 complete. Architecture/task definitions were updated before implementation. Production retrieval defaults are unchanged after T23; scope final evidence selection on new data next.
+- Phase: T01 through T24 complete. Architecture/task definitions were updated before implementation. T24 remains an experimental selector; production ranked/coverage_v1 defaults are unchanged.
+- T24 complete: ten fresh NASA TXT sources / 388 chunks, 24 frozen questions and 96 successful CPU requests. Same shortlists/general scores across arms; final frozen coverage improves 16/20 → 18/20, with median initially-empty-cache latency 685 → 1,437 ms. Eight Rust/nine Python checks, source/hash validation, format/Clippy and separate synthetic smoke passed. [Results, cost and alternate-support limits](reports/t24-final-selection.md). All experiment containers exited; data/caches retained and normal services unchanged.
 - T23 complete: twelve fresh attributed NIST sources, 24 frozen questions and 96 offline CPU requests; 188 chunks admitted. Expanded candidates improve complete shortlist coverage 18/20 → 20/20, but final-five coverage remains 16/20 in both arms. Five scorer checks, one experimental Rust check, fixture/source freezes, format/Clippy and synthetic smoke passed. [Results and source-review limits](reports/t23-evidence.md). All experiment containers exited; data/caches retained, normal app unchanged.
 - T22 complete: immutable bounded scalar/document/media filter postings, exact scan fallback and unchanged search/API contracts. Verified 135 Rust checks, format/Clippy, 4,224 paired release requests, retained original volume hashes and offline production startup. [Results](reports/t22-filters.md). Compose selects built T22 API; normal app remains on T19.
 - T21 complete: bounded version-2 checkpoint stream with legacy reads, unchanged publication/journal/backup contracts and nine new regressions. Both formerly failing T20 states checkpoint/export/restore correctly on fresh copies; 132 Rust and 768 exact-query checks passed. Old-binary rollback requires a pre-upgrade copy; batch/job and total backup limits remain. [Results](reports/t21-checkpoints.md). T21 services stopped; original T20 data unchanged; normal app still running T19, with Compose selecting the built T21 API image for the next startup.
@@ -43,7 +44,7 @@ T02 subsequently demonstrated container GPU visibility and actual CUDA inference
 
 ## Next useful step
 
-Scope a fresh final evidence-selection experiment: T23 recovered evidence into the fixed reranker shortlist but lost it in the final five passages. Compare a bounded coverage/diversity policy against ranked selection on new frozen data, with explicit latency and source-support criteria, before any production change. Clarification/ambiguity remains a separate later proposal. Preserve all historical captures, the now-observed T23 corpus and the unused original holdout. No next implementation task is automatically authorized.
+Scope opt-in application integration of the T24 selector, including bounded automatic facets from field definitions, context-budget behavior and end-to-end answer verification on new frozen data. Preserve production defaults until that separate work is adopted. T23/T24 are now observed regression corpora; preserve all historical captures and the unused original holdout. Clarification/ambiguity remains separate. No further implementation is automatically authorized.
 
 ## Work queue
 
@@ -499,6 +500,19 @@ Status: complete (2026-10-15). Depends on T22. Authorized after the filter work.
 
 Completion evidence: all 12 sources admitted (188 chunks); 96/96 requests succeeded in baseline/expanded/expanded/baseline order, with identical paired ranking/score outputs. Fixed 20-input coverage improved 18/20 → 20/20 questions (31/34 → 34/34 fact requirements); final-five coverage stayed 16/20 and 28/34. Empty-cache medians were 624.6/619.0 ms; cached medians 1.52/3.35 ms. Five Python scorer tests, one experimental Rust test, Docker fixture validation, format/Clippy, release build and separate synthetic real-model smoke passed. Post-run alternative time support is documented without rewriting gold. Production defaults, historical evaluations and normal services are unchanged. New sources/code/image identities and all captures/volumes remain available.
 
+### T24 — Final passage selection with facet coverage
+
+Status: complete (2026-10-15). Depends on T23. Authorized by the user's request to target discarded final evidence. Architecture/plan updated before implementation. [Protocol](t24-protocol.md), [results](reports/t24-final-selection.md), [reproduction](../evals/selection/README.md).
+
+- Freeze new attributed reference documents, question-derived facets and separate source-bound evidence labels before retrieval. Preserve all historical inputs, holdouts, manifests, results and volumes.
+- Compare whole-question ranked selection with facet-focused round-robin selection on the same expanded maximum-20 shortlist and maximum-five primary budget. Candidate uses at most four explicit facets, excludes heading-only chunks and suppresses substantial original-span overlap within one document revision. Fill remaining slots from the original-question ranking; no cross-document deduplication or inferred filters.
+- Keep facet queries free of answer values/source IDs; use them alone for facet reranking so the full question does not drown out individual requests. Record general/facet ranks, exclusions, selection reasons, identities, actual token limits and extra pair evaluations. This is heuristic coverage, not semantic verification.
+- Implement and exercise isolated CPU tooling with the current real embeddings/reranker; preserve production ranked/coverage_v1 behavior, API/storage contracts and normal services. Use a separate synthetic smoke fixture and fresh Docker data/caches; no GPU/LLM generation.
+- Validate deterministic selection, ties, duplicate/overlap handling, source/revision boundaries, empty/heading-only cases and invalid model scores. Validate frozen sources/labels/scorer without regeneration. Compare paired runs with failure-inclusive positive denominators, undefined negative recall, candidate/final coverage, per-question changes and latency/cache distinctions.
+- Acceptance: reproducible completed comparison on fresh data, unchanged shortlists across arms, tested bounded selector, recorded source/code/image identities, honest results and updated handoff. Do not promote to production automatically, even if this set improves.
+
+Completion evidence: all ten sources admitted (388 chunks), 96/96 requests successful, 72 identical shortlist/general-score comparisons and 48 identical paired selection comparisons. Complete frozen final coverage improves 16/20 → 18/20, with 32/37 → 35/37 fact requirements; no measured coverage regressions. First-pass median latency 685.1 → 1,437.0 ms, cached 3.77 → 4.29 ms. Eight Rust/nine Python checks, format/Clippy, release build, frozen-source validation and separate real-model smoke passed. Alternate Earth-tilt/Sun-rotation support is recorded without revising labels/scores. Runtime/input freezes and captures retained; all experiment containers exited, normal app remains T19 and Compose remains T22. Prototype is isolated; no API/model/storage/default change or GPU inference.
+
 ### Later — Clarification and ambiguity evaluation
 
 Scope a separate clarification workflow and clearly worded ambiguity evaluation after T23. Candidate-retrieval evidence does not establish answerability or ambiguity quality. Keep production defaults and historical freezes intact.
@@ -506,6 +520,12 @@ Scope a separate clarification workflow and clearly worded ambiguity evaluation 
 ## Session handoff discipline
 
 Keep the Current state and Next useful step sections accurate. For each meaningful work session, add one concise entry below with changed files/capabilities, task IDs, verification actually performed, unresolved issues, and the next step. Do not paste full chat transcripts or command logs.
+
+### 2026-10-15 — T24 completed
+
+- Updated architecture/plan first; froze ten fresh NASA sources, 24 question/facet requests, source-bound labels and the comparison protocol before inference. Added the bounded experimental selector, auditable driver and source/comparison checks without changing production or historical execution code.
+- All 96 CPU requests completed. Final frozen coverage improved 16/20 → 18/20 on identical shortlists at roughly 2.10× median first-pass cost. Recorded source-review exceptions without changing frozen metrics. Eight Rust/nine Python checks, format/Clippy, source validation and real-model smoke passed.
+- All experiment containers exited; captures/data/caches remain. Normal services and production defaults are unchanged. Next scope opt-in integration and end-to-end answer verification on separate new data.
 
 ### 2026-10-15 — T23 completed
 

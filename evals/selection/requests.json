@@ -1,0 +1,188 @@
+[
+  {
+    "id": "S01",
+    "question": "How long does Mercury take to rotate once, in Earth days?",
+    "hints": [
+      "Mercury axial rotation period in Earth days"
+    ]
+  },
+  {
+    "id": "S02",
+    "question": "How many Earth days does one axial rotation of Venus take?",
+    "hints": [
+      "Venus axial rotation period in Earth days"
+    ]
+  },
+  {
+    "id": "S03",
+    "question": "How many days does Earth need to complete one orbit of the Sun, including the fractional day?",
+    "hints": [
+      "Earth orbital period in days including fraction"
+    ]
+  },
+  {
+    "id": "S04",
+    "question": "How long is one rotation of Mars in hours?",
+    "hints": [
+      "Mars axial rotation period in hours"
+    ]
+  },
+  {
+    "id": "S05",
+    "question": "What is Jupiter's rotation period in hours to the decimal precision stated in the facts page?",
+    "hints": [
+      "Jupiter rotation period in hours with decimal precision"
+    ]
+  },
+  {
+    "id": "S06",
+    "question": "About how many Earth years does Saturn take to orbit the Sun?",
+    "hints": [
+      "Saturn orbital period in Earth years"
+    ]
+  },
+  {
+    "id": "S07",
+    "question": "What numerical axial tilt is stated for Uranus in degrees?",
+    "hints": [
+      "Uranus axial tilt in degrees precise value"
+    ]
+  },
+  {
+    "id": "S08",
+    "question": "About how many Earth years does Neptune take to orbit the Sun?",
+    "hints": [
+      "Neptune orbital period in Earth years"
+    ]
+  },
+  {
+    "id": "S09",
+    "question": "What is the Sun's rotation period at the equator in Earth days?",
+    "hints": [
+      "Sun equatorial rotation period in Earth days"
+    ]
+  },
+  {
+    "id": "S10",
+    "question": "What is the approximate radius of the Moon in kilometers?",
+    "hints": [
+      "Moon radius in kilometers"
+    ]
+  },
+  {
+    "id": "M01",
+    "question": "Give the axial rotation periods of Mercury and Venus in Earth days.",
+    "hints": [
+      "Mercury axial rotation period in Earth days",
+      "Venus axial rotation period in Earth days"
+    ]
+  },
+  {
+    "id": "M02",
+    "question": "How long do Earth and Mars each take to orbit the Sun, expressed in Earth days?",
+    "hints": [
+      "Earth orbital period in days including fraction",
+      "Mars orbital period in Earth days"
+    ]
+  },
+  {
+    "id": "M03",
+    "question": "Compare the stated rotation periods of Jupiter and Saturn in hours, retaining their decimal precision.",
+    "hints": [
+      "Jupiter rotation period in hours with decimal precision",
+      "Saturn rotation period in hours"
+    ]
+  },
+  {
+    "id": "M04",
+    "question": "How many Earth years do Uranus and Neptune each need for one orbit of the Sun?",
+    "hints": [
+      "Uranus orbital period in Earth years",
+      "Neptune orbital period in Earth years"
+    ]
+  },
+  {
+    "id": "M05",
+    "question": "How does the Sun's rotation period at its equator compare with its poles, in Earth days?",
+    "hints": [
+      "Sun equatorial rotation period in Earth days",
+      "Sun polar rotation period in Earth days"
+    ]
+  },
+  {
+    "id": "M06",
+    "question": "Give the Moon's approximate radius and its orbital distance from Earth, both in kilometers.",
+    "hints": [
+      "Moon radius in kilometers",
+      "Moon orbital distance from Earth in kilometers"
+    ]
+  },
+  {
+    "id": "M07",
+    "question": "Make a comparison with Mercury's orbital period in Earth days, Venus's rotation period in Earth days, Earth's atmospheric nitrogen percentage, and Mars's rotation period in hours.",
+    "hints": [
+      "Mercury orbital period in Earth days",
+      "Venus axial rotation period in Earth days",
+      "Earth atmospheric nitrogen percentage",
+      "Mars axial rotation period in hours"
+    ]
+  },
+  {
+    "id": "M08",
+    "question": "For the outer planets, give Jupiter's year in Earth years, Saturn's rotation in hours, Uranus's axial tilt in degrees, and Neptune's year in Earth years.",
+    "hints": [
+      "Jupiter orbital period in Earth years",
+      "Saturn rotation period in hours",
+      "Uranus axial tilt in degrees precise value",
+      "Neptune orbital period in Earth years"
+    ]
+  },
+  {
+    "id": "M09",
+    "question": "What axial tilts in degrees are stated in the individual facts pages for Mercury, Earth, and Uranus?",
+    "hints": [
+      "Mercury axial tilt in degrees",
+      "Earth axial tilt in degrees",
+      "Uranus axial tilt in degrees precise value"
+    ]
+  },
+  {
+    "id": "M10",
+    "question": "List Mercury's maximum daytime temperature in Celsius, Venus's main atmospheric gas, the Sun's polar rotation period in Earth days, and the Moon's radius in kilometers.",
+    "hints": [
+      "Mercury maximum daytime surface temperature in Celsius",
+      "Venus main atmospheric gas",
+      "Sun polar rotation period in Earth days",
+      "Moon radius in kilometers"
+    ]
+  },
+  {
+    "id": "N01",
+    "question": "What temperature did the fictional Mercury station VX-731 record at noon on 15 October 2026?",
+    "hints": [
+      "Mercury station VX-731 temperature reading on 15 October 2026"
+    ]
+  },
+  {
+    "id": "N02",
+    "question": "How many passengers traveled on the fictional tourist ship VX-450 to Saturn?",
+    "hints": [
+      "Saturn tourist ship VX-450 passenger count"
+    ]
+  },
+  {
+    "id": "N03",
+    "question": "What is the diameter of the fictional newly named Venus crater Miralux-77?",
+    "hints": [
+      "Venus crater Miralux-77 diameter"
+    ]
+  },
+  {
+    "id": "N04",
+    "question": "What are the launch date and fuel mass of the fictional Neptune probe VX-620?",
+    "hints": [
+      "Neptune probe VX-620 launch date",
+      "Neptune probe VX-620 fuel mass"
+    ]
+  }
+]
