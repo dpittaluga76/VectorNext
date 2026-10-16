@@ -7,6 +7,45 @@ This archive preserves completed-task definitions, verification results, decisio
 
 The statuses, next steps, work queue and session-maintenance instructions below are historical snapshots. Use [the active tracker](plan.md) for current priorities and task-maintenance rules; an archived proposal does not authorize new work. Add future completed-task records here with their completion date, results, limitations and report links.
 
+## T38 — Safe offline compaction and garbage collection
+
+Status: complete (2026-10-16). Depends on: T21 checkpoint/export repair and T37 durable jobs. Design: [offline compaction and retention](architecture.md#offline-compaction-and-retention).
+
+Scope: add offline dry-run storage accounting and explicit compaction/GC to the Rust admin CLI. Preserve the complete logical state, all receipts/reserved revisions, byte-identical ingestion jobs, and their referenced originals/available artifacts. No age-based eviction or retry expiry. Leave answer jobs, browser history, caches, models and backups untouched. Compact into a verified sibling store and publish by atomic directory exchange while retaining one writer-lock inode; reclaim only proven obsolete files after durable publication. Keep the existing storage format and API behavior.
+
+Acceptance and verification:
+
+- Dry run changes no store files, rejects nonexistent/invalid paths and reports retention roots, journal size, unreferenced blobs and disk-space needs honestly.
+- Repeated replace/delete cycles reclaim journal payloads and unreferenced blobs; current search results, exact values, provenance, generation, model identities and saved ingestion states remain identical.
+- Identical/conflicting operation and ingestion retries, old revision reuse, PDF artifact retention and unfinished-job recovery preserve existing behavior after maintenance.
+- Exclusive locking, path/symlink/non-file rejection, insufficient-space/write/sync failures and interruption before/after publication fail safely. Restart yields the old or complete new store; no missing committed evidence or split checkpoint/journal pair.
+- Existing and legacy checkpoints remain readable; compacted stores accept subsequent commits/checkpoints and pass export/restore. Sibling answer-job records remain byte-identical.
+- Run focused isolated CPU durability/recovery tests, Rust all-target regressions, format/Clippy and appropriate CLI/HTTP compatibility checks. No GPU/quality reruns or historical fixture changes. Record actual reclamation measurements and limitations, update operations/README, then archive the completed task.
+
+Verification: 186 Rust checks, formatting and Clippy passed; twelve injected-error and twelve process-kill boundaries preserve state/retries. Four release CLI checks on isolated disk/low-space filesystems, 71 frozen HTTP cases, five browser boundaries, mocked launcher and prior-binary smoke passed. Synthetic churn reclaimed 4,225,194 of 4,513,752 logical bytes (93.6%). [Full report, commands, image identities, failed invocations and limitations](reports/t38-compaction.md).
+
+Delivery: API/client/admin now select the verified `:t38` image; normal services remain on their healthy previous `:t37-hybrid` images until a later Start/Rebuild. The user library was not compacted. Test containers and their scratch volume were removed. Full job/retry history has no expiry; no online maintenance, fixed disk bound or automatic abandoned-workspace deletion is promised. See [maintenance operations](maintenance.md).
+
+### Pre-compaction deployment handoff
+
+The following current-state snapshot preceded T38; its measured Hybrid results are unchanged:
+
+- **T01–T37 are complete.** Definitions, acceptance criteria and historical handoffs are in [tasks-done.md](tasks-done.md); detailed evidence remains in [reports/](reports/).
+- **Running defaults:** three-service `:t37-hybrid` deployment on localhost:8088. Hybrid uses repaired NuExtract3 first, with one queued Gemma 4 12B fallback. Forced Gemma/NuExtract modes are available. Two-call answering, f16 KV, MiniLM, structural ingestion and ranked 30/20/5 remain unchanged.
+- **Latest result:** all 24 integration cases passed the predeclared scoring rules (**8/8 per mode**, unchanged historical scorer **6/8**). Hybrid accepted all five supported NuExtract answers and fell back on two of seven admitted questions. Common-supported median attempt work: **3.62/3.54/12.55 s** for Hybrid/NuExtract/Gemma. This excludes queue/loading; the missing-evidence fallback took **90.29 s**, including **60.94 s** loading. [Results, interruption and limits](reports/t37-hybrid.md).
+- **Verified:** Rust regressions/format/Clippy; 89 Python checks; 71 frozen HTTP cases, five boundaries, three OpenAPI checks; six components and thirteen offline workspace plus two adapter/browser scenarios; launcher/scorer contracts and eleven retained CPU-profile checks. Six bounded live switching/cancellation/outage/restart checks passed; 236 process samples observed at most one backend. The PC-sleep observation stays in raw captures and correctness, excluded only from derived timing.
+- **Activation and preservation:** full-volume copy plus export/restore verified; original PDF, 35 chunks, revision and ingestion jobs unchanged. Hybrid readiness, source-linked browser answer, original PDF, reload and export passed. A final browser-only readiness amendment is separately verified; Rust binary and all non-UI files match the measured image retained as `:t37-measured`. Prior images, private backup, all data/caches/freezes and 189-file public pre-cleanup archive are retained. Test services are stopped; original holdout unused.
+
+### Completed repository and documentation cleanups
+
+**Repository configuration cleanup — complete.** Removed seven standalone experiment/verification Compose files; the README lists the five retained app/setup/developer configurations. [History and prior revision](tasks-done.md#experiment-compose-cleanup) preserve their purpose and recovery path, and affected guides identify deployment commands as historical. All five retained configurations passed `docker compose -f <file> config --quiet`; launcher references and 26 added local documentation links/anchors passed inspection. Supported configuration bytes, application code and frozen evaluation artifacts are unchanged; no services or GPU evaluations were run.
+
+**Development handoff cleanup — complete.** `AGENTS.md` now contains only current development instructions; its former summary and task notes are in the [historical handoff](tasks-done.md#historical-agentsmd-handoff). Verified text preservation with rebased links, 98 local links/anchors and a documentation-only diff. No active implementation work remains.
+
+**Architecture cleanup — complete.** The [architecture](architecture.md) describes the current system; completed-task specifications, comparisons, rollout notes and the decision record are in the [historical architecture handoff](tasks-done.md#historical-architecture-handoff). Checked current defaults/bounds against implementation/contracts, preserved all 102 task-numbered paragraphs and validated 103 links/anchors. Current contract references use named sections; frozen protocols/reports remain unchanged. Documentation-only diff; no runtime changes or model tests.
+
+**README cleanup — complete.** The entry page now focuses on current features, setup and usage, with a compact report index. Complete result tables and six historical notes are preserved in [historical README results](tasks-done.md#historical-readme-results). Verified text preservation, 128 local links/anchors, nine CLI argument examples, eight PowerShell blocks and a documentation-only diff. No services or model evaluations were run.
+
 ## Experiment Compose cleanup
 
 Requested 2026-10-16: remove standalone deployment YAML for completed experiments and verification runs from the current checkout. This includes the embedding/reranker pilot and Hybrid verification; their earlier retention is superseded. Keep the supported app, explicit model/PDF setup and general developer tooling.

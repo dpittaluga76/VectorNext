@@ -48,6 +48,10 @@ The export appears under the host's ignored `backups/my-backup/`. Restore verifi
 
 Stop this stack with `docker compose -f compose.app.yaml stop`; volumes and models remain. The earlier Compose files below are lower-level development tools. Their database-owning CLIs should not open the application volume while its API is running.
 
+## Offline storage maintenance
+
+For explicit offline storage accounting, compaction and garbage collection, use the [maintenance guide](maintenance.md). It documents retained history, disk-space requirements, backups, `storage-plan` / `compact --apply`, atomic publication and interrupted-workspace handling. No model service is needed; keep the API stopped while maintaining its store.
+
 ## Run the evaluation checks
 
 With Docker Desktop running Linux containers, run from the repository root:
@@ -95,7 +99,7 @@ docker volume create vectornext-core-checks
 docker compose run --rm -e TMPDIR=/storage -v vectornext-core-checks:/storage core
 ```
 
-During T03, all 18 storage tests passed both in memory-backed temporary storage and on a Docker disk volume. The suite creates and removes its own temporary databases inside that volume. Full truncation testing is slower on disk because it performs thousands of durable flushes. The volume can be reused. These are crash/I/O simulations, not a host power-loss certification. Journal/job frames still have a 64 MiB cap. T21 writes checkpoints as a [version-2 stream of bounded frames](storage.md#t21-bounded-checkpoint-stream), while accepting old snapshots. Export still has an 8 GiB total bound; the journal, old originals and retry history remain until future compaction work. Older binaries cannot read a new checkpoint: retain an untouched pre-upgrade copy for rollback. [Large-state verification commands](../experiments/t21/README.md).
+During T03, all 18 storage tests passed both in memory-backed temporary storage and on a Docker disk volume. The suite creates and removes its own temporary databases inside that volume. Full truncation testing is slower on disk because it performs thousands of durable flushes. The volume can be reused. These are crash/I/O simulations, not a host power-loss certification. Journal/job frames still have a 64 MiB cap. T21 writes checkpoints as a [version-2 stream of bounded frames](storage.md#t21-bounded-checkpoint-stream), while accepting old snapshots. Export still has an 8 GiB total bound. [Offline maintenance](maintenance.md) reclaims obsolete journal payloads and unreferenced blobs while preserving jobs and retry/revision history. Older binaries cannot read a new checkpoint: retain an untouched pre-upgrade copy for rollback. [Large-state verification commands](../experiments/t21/README.md).
 
 ## Ingest with real local models
 

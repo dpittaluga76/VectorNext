@@ -1,7 +1,7 @@
 name: vectornext
 services:
   vectornext:
-    image: vectornext-app:t37-hybrid
+    image: vectornext-app:t38
     build:
       context: .
       dockerfile: docker/app.Dockerfile
@@ -80,7 +80,7 @@ services:
       retries: 12
 
   client:
-    image: vectornext-app:t37-hybrid
+    image: vectornext-app:t38
     profiles: [tools]
     entrypoint: [python, -m, deployment.client]
     read_only: true
@@ -93,7 +93,7 @@ services:
     networks: [local]
 
   admin:
-    image: vectornext-app:t37-hybrid
+    image: vectornext-app:t38
     profiles: [tools]
     command: [inspect, /storage/db]
     read_only: true

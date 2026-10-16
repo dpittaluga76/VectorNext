@@ -17,6 +17,7 @@ use std::{
 };
 
 mod checkpoint;
+pub mod maintenance;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Receipt {
@@ -260,18 +261,26 @@ fn prefix_hash(file: &mut File, length: u64) -> Result<String> {
 
 impl Database {
     pub fn open(path: impl AsRef<Path>) -> Result<Self> {
+        Self::open_mode(path.as_ref(), false)
+    }
+
+    // Maintenance inspects a validated existing layout under the writer lock,
+    // without initialization, fsyncs or uncommitted-tail repair on the source.
+    fn open_mode(path: &Path, inspection: bool) -> Result<Self> {
         if !cfg!(target_os = "linux") {
             return Err(Error::UnsupportedPlatform);
         }
         let root = std::path::absolute(path)?;
-        ensure_dir(&root)?;
-        if let Some(parent) = root.parent() {
-            sync_dir(parent)?;
+        if !inspection {
+            ensure_dir(&root)?;
+            if let Some(parent) = root.parent() {
+                sync_dir(parent)?;
+            }
         }
         let lock = OpenOptions::new()
             .read(true)
-            .write(true)
-            .create(true)
+            .write(!inspection)
+            .create(!inspection)
             .truncate(false)
             .open(root.join("writer.lock"))?;
         lock.try_lock_exclusive().map_err(|e| {
@@ -287,7 +296,8 @@ impl Database {
             if fs::read(&manifest)? != b"VNXSTORE1\n" || !root.join("journal.bin").is_file() {
                 return Err(Error::Corrupt("invalid format or missing journal".into()));
             }
-        } else if root.join("snapshot.bin").exists()
+        } else if inspection
+            || root.join("snapshot.bin").exists()
             || fs::metadata(root.join("journal.bin")).is_ok_and(|m| m.len() > 0)
         {
             return Err(Error::Corrupt("missing storage format marker".into()));
@@ -295,12 +305,14 @@ impl Database {
         let blobs = LocalBlobStore::new(root.join("blobs"))?;
         let mut journal = OpenOptions::new()
             .read(true)
-            .write(true)
-            .create(true)
+            .write(!inspection)
+            .create(!inspection)
             .truncate(false)
             .open(root.join("journal.bin"))?;
-        journal.sync_all()?;
-        sync_dir(&root)?;
+        if !inspection {
+            journal.sync_all()?;
+            sync_dir(&root)?;
+        }
         if !manifest.exists() {
             let mut file = OpenOptions::new()
                 .create_new(true)
@@ -355,7 +367,7 @@ impl Database {
         }
         // Validate before repairing: do not modify a store whose committed data is invalid.
         state.validate(&blobs)?;
-        if journal.metadata()?.len() != offset {
+        if !inspection && journal.metadata()?.len() != offset {
             journal.set_len(offset)?;
             journal.sync_all()?;
         }
@@ -367,7 +379,8 @@ impl Database {
             blobs,
             state: Arc::new(state),
             committed_offset: offset,
-            poisoned: false,
+            // An inspection handle must never append beyond an unrepaired tail.
+            poisoned: inspection,
             #[cfg(test)]
             fail_at: None,
             #[cfg(test)]

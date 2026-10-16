@@ -15,7 +15,7 @@ The **Axum + utoipa API**, CPU document processor and GPU generation service run
 | Capability | What you can do |
 | --- | --- |
 | Document workspace | Upload, replace and remove TXT, PDF and JSON; inspect processing jobs and extraction warnings. |
-| Original vector database | Store documents, chunks, typed attributes and vectors with atomic revisions, crash recovery and verified export/restore. |
+| Original vector database | Store documents, chunks, typed attributes and vectors with atomic revisions, crash recovery, verified export/restore and offline compaction/GC. |
 | Hybrid retrieval | Combine exact cosine search, BM25, typed filters, reciprocal-rank fusion and CPU cross-encoder reranking. |
 | Source-linked answers | Ask ordinary questions or supply structured fields; inspect exact values, citations, JSON pointers and PDF page references. |
 | Local inference | Use Hybrid answering, force Gemma, or force NuExtract; only one model occupies the GPU at a time. |
@@ -181,7 +181,9 @@ Standalone experiment Compose files were removed from the active repository; the
 
 ## Limits and troubleshooting
 
-VectorNext targets **local, single-user operation**. Authentication and remote hosting are not included. Source validation does not establish general answer accuracy. Corpus-wide aggregation, approximate nearest-neighbor search, storage compaction, token streaming and integrated PDF bounding-box highlights remain outside the current app.
+VectorNext targets **local, single-user operation**. Authentication and remote hosting are not included. Source validation does not establish general answer accuracy. Corpus-wide aggregation, approximate nearest-neighbor search, token streaming and integrated PDF bounding-box highlights remain outside the current app.
+
+**Disk maintenance:** offline compaction reclaims obsolete journal data and unreferenced blobs while preserving ingestion history, provenance and retry receipts. Stop the API and run `admin storage-plan /storage/db` through Compose to inspect reclaimable space. Follow the [backup, apply and recovery guide](docs/maintenance.md) before applying changes. History has no automatic expiry, so compaction does not promise a fixed disk bound.
 
 - **Docker unavailable:** start Docker Desktop with Linux containers/WSL 2. Setup checks NVIDIA access inside Docker.
 - **Models loading or slow answers:** check capability indicators and job states. Model switches take time; competing GPU workloads and limited RAM can slow inference. Browsing remains available during loading.
@@ -204,6 +206,7 @@ Results belong to specific versions, datasets and hardware; they are not blanket
 | Answer quality | [Public NASA/USGS comparison](docs/reports/t11-independent.md), [evidence-coverage comparison](docs/reports/t14-evidence-coverage.md) and [development evaluation](docs/reports/t10-evaluation.md). |
 | Evidence selection | [Candidate retrieval](docs/reports/t23-evidence.md), [final passage selection](docs/reports/t24-final-selection.md) and [application integration](docs/reports/t25-facet-integration.md). |
 | Database performance | [PostgreSQL/pgvector comparison](docs/reports/t20-pgvector.md), [checkpoint repair](docs/reports/t21-checkpoints.md) and [filter indexing](docs/reports/t22-filters.md). |
+| Storage maintenance | [Offline compaction, retention and crash-recovery verification](docs/reports/t38-compaction.md). |
 | Embeddings and reranking | [CPU profile comparison](docs/reports/t32-replacements.md). |
 | Answer integrity | [Automatic field planning](docs/reports/t26-planning.md) and [numeric proof validation](docs/reports/t15-numeric-proofs.md). |
 | API and browser | [Axum/OpenAPI verification](docs/reports/t19-axum.md), [workspace and launcher](docs/reports/t16-t18-local-app.md) and [reliability checks](docs/reports/t13-reliability.md). |

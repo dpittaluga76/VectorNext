@@ -1,6 +1,6 @@
 use std::{env, path::Path};
 use vectornext::{
-    Database, Error, Result, backup,
+    Database, Error, Result, backup, maintenance,
     service::{Application, http, remote::Client},
 };
 fn run() -> Result<()> {
@@ -40,6 +40,14 @@ fn run() -> Result<()> {
             println!("{}", serde_json::to_string(&manifest)?);
             Ok(())
         }
+        Some("storage-plan") if args.len() == 2 => {
+            println!("{}", serde_json::to_string(&maintenance::inspect(Path::new(&args[1]))?)?);
+            Ok(())
+        }
+        Some("compact") if args.len() == 3 && args[2] == "--apply" => {
+            println!("{}", serde_json::to_string(&maintenance::compact(Path::new(&args[1]))?)?);
+            Ok(())
+        }
         Some("inspect") if args.len() == 2 => {
             let db = Database::open(&args[1])?;
             println!(
@@ -55,7 +63,7 @@ fn run() -> Result<()> {
             Ok(())
         }
         _ => Err(Error::Invalid(
-            "usage: vectornext serve | export DB NEW_BACKUP | restore BACKUP NEW_DB | inspect DB"
+            "usage: vectornext serve | export DB NEW_BACKUP | restore BACKUP NEW_DB | inspect DB | storage-plan DB | compact DB --apply"
                 .into(),
         )),
     }

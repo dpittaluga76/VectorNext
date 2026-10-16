@@ -1,0 +1,138 @@
+{
+  "task": "T38",
+  "status": "complete",
+  "date": "2026-10-16",
+  "baseline_commit": "5ec4329788b89208b890412a0e914645f3d787ed",
+  "policy": "preserve-history-v1",
+  "image": "vectornext-app:t38",
+  "image_id": "sha256:fafdb93ce19dae6f932dcf5c7717925bbcb7e3da26f4646cc8afa5f6a19fa60e",
+  "binary_sha256": "be4732555ba27af2539bc28c0d505e65299b57e8f02487aa5e574cffc492973b",
+  "previous_running_image": "vectornext-app:t37-hybrid",
+  "previous_image_id": "sha256:9a67837dfd711b4f73bc4d3fab47db55b52ffc987d57c34dd279155ca40f4c90",
+  "verification": {
+    "frozen_http_cases": 71,
+    "fault_boundaries": 12,
+    "release_maintenance_checks": 4,
+    "rust_fmt": "passed",
+    "openapi": "Additional module import failed: production image has no jsonschema. No OpenAPI/schema code changed; model-backed docs suite not rerun.",
+    "gpu_evaluation": "not required, not run",
+    "previous_binary": "reopen/export of a newly compacted empty store and current-binary restore passed",
+    "temporary_containers_removed": true,
+    "normal_library_maintenance": "not performed",
+    "killed_process_boundaries": 12,
+    "release_test_command": "python -m unittest deployment.test_maintenance deployment.test_http_compatibility deployment.test_browser_http -v",
+    "mocked_launcher": "passed",
+    "anonymous_scratch_volume_removed": true,
+    "rust_clippy": "passed",
+    "browser_boundary_checks": 5,
+    "rust_all_targets": {
+      "command": "cargo test --locked --offline --all-targets -- --nocapture",
+      "passed": 186,
+      "ignored_subprocess_helpers": 2
+    },
+    "compose_configuration": "passed"
+  },
+  "churn_fixture": {
+    "actual_reclaimed_bytes": 4225194,
+    "available_bytes": 532037632,
+    "database": "/tmp/.tmpTVE4oS/db",
+    "disposable_pending_bytes": 0,
+    "document_blobs": {
+      "bytes": 36436,
+      "files": 4
+    },
+    "documents": 4,
+    "enough_space": true,
+    "estimated_growth_bytes": 0,
+    "estimated_reclaimed_bytes": 4225194,
+    "generation": 68,
+    "history_only_blobs": {
+      "bytes": 0,
+      "files": 0
+    },
+    "journal_bytes": 3930766,
+    "leftover_workspaces": [],
+    "old_checkpoint_bytes": 0,
+    "policy": "preserve-history-v1",
+    "replacement_bytes": 288558,
+    "retained_ingestion_jobs": {
+      "bytes": 0,
+      "files": 0
+    },
+    "retained_receipts": 68,
+    "retained_revision_ids": 64,
+    "status": "compacted",
+    "store_bytes_before": 4513752,
+    "temporary_bytes_required": 67397422,
+    "uncommitted_tail_bytes": 0,
+    "unreferenced_blobs": {
+      "bytes": 546540,
+      "files": 60
+    }
+  },
+  "source_sha256": {
+    "src/storage.rs": "baf4d2364998cd5de5eecebe8e2d5fbf3c90c4f2d8602df854dac7a54db4ca99",
+    "src/storage/maintenance.rs": "c6abfeb201369b7c586ff023e6b35f87ca1e2a350b8c39258995c8984b20e071",
+    "src/storage/maintenance/tests.rs": "fb95bf731afaf867f5b27a264ceebe65a370e119f56c1be5df846a6026f2fd76",
+    "src/storage/checkpoint.rs": "81dac8f4b0def86dbbf2fbd9df516f2db8fe24b219977761c1cd93022e6e22a9",
+    "src/lib.rs": "1120f404e8c2795c8e256ee232e38fe1926dbf7b8a6f721eb8ee484941f800c3",
+    "src/bin/vectornext.rs": "1d18b6a4ac6892d1aee620ff016058efbb193fa4e0344c2f6d036e9ad6841c0f",
+    "tests/maintenance.rs": "5023612075e098a88a0fa9f063174fc32a7bf1b61063f3580af3ee95886735d7",
+    "deployment/test_maintenance.py": "84f24f4bad76d19e11b15c8b1576ba184218fbf7746a9299a6f45c7e11c56011",
+    "Cargo.toml": "e29c60a29ccf9136605787b811ab92461e45cf0dd9dd671655939d48305401a5",
+    "Cargo.lock": "d6178dbb48f1ca6b79e17d54b5dbb31e71738be51adf8dcfcfdb3b0b44d2ef6f",
+    "docker/core.Dockerfile": "c8070492cb5bb5e3b0655991ba2632109d47403959f0f03886e187b1740e4077",
+    "docker/app.Dockerfile": "7839e9be18f16b1547eb672bee20d65b7848ee2848fc2a77543953bdd761e125",
+    "compose.app.yaml": "68f8147e5192b5cd63e3f8f2018fffe77dc38da7aaefac2dad79984877346460"
+  },
+  "local_capture_sha256": {
+    "tmp/t38/app-build.log": {
+      "bytes": 9734,
+      "sha256": "a280d6bc8d8382371178893106ebb19023207fcad89ebaff534ff64e03f916ed"
+    },
+    "tmp/t38/build.log": {
+      "bytes": 10483,
+      "sha256": "74e4514e4daa901a4ddd5e7472cfa41973033a1384edb36604207c037e8e25b1"
+    },
+    "tmp/t38/clippy.log": {
+      "bytes": 4087,
+      "sha256": "6cc439ff52296cddc0e9409858d5f69ce3b9690e178444b578fc1173b15019ef"
+    },
+    "tmp/t38/focused-first.log": {
+      "bytes": 1315,
+      "sha256": "cc03e7e594bb66d8e8fe8c87c5e38e94ad0f76145c11a5dd8a323ca5eab5f641"
+    },
+    "tmp/t38/launcher-final.log": {
+      "bytes": 2041,
+      "sha256": "ee9df9d3f958abba4f719fa46921817c35e58d77f600ec719615c9467a3f2879"
+    },
+    "tmp/t38/previous-reader-final.log": {
+      "bytes": 100,
+      "sha256": "fbd4c523a8852cd0c7399a6ab180b609a96452701ff33a5e10faa0f73940ec7e"
+    },
+    "tmp/t38/previous-reader.log": {
+      "bytes": 627,
+      "sha256": "0c219867d0bf83cf48c9be02795fd1736c8f78ae8c23d773c58cace79681c7f2"
+    },
+    "tmp/t38/release-checks.log": {
+      "bytes": 2344,
+      "sha256": "36c66ef5342f79e72946f7ad1bffe14cf03390aa8c141d94483cf1b58e351409"
+    },
+    "tmp/t38/release-final.log": {
+      "bytes": 1628,
+      "sha256": "48324cb741be245435058b32fca760088297bfe06989cc8d18ab78776c044bb9"
+    },
+    "tmp/t38/rust-all.log": {
+      "bytes": 23119,
+      "sha256": "6c537969bc5192808ff194add0b6a69ecdabc2a6e82a48f48686a37a3320c9f6"
+    }
+  },
+  "limitations": [
+    "Logical bytes, not physical device reclamation or Docker disk shrinkage",
+    "All ingestion jobs/receipts/revision reservations retained indefinitely; no fixed disk bound",
+    "Offline Linux hard-link and renameat2 exchange required; 64 MiB temporary reserve",
+    "Interrupted workspaces reported but require explicit inspected cleanup",
+    "Crash/fault tests do not certify host power-loss behavior",
+    "Normal app still runs previous image; no production maintenance performed"
+  ]
+}

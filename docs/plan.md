@@ -6,27 +6,19 @@ Completed tasks and historical handoffs: [tasks-done.md](tasks-done.md).
 
 ## Current state
 
-- **T01–T37 are complete.** Definitions, acceptance criteria and historical handoffs are in [tasks-done.md](tasks-done.md); detailed evidence remains in [reports/](reports/).
-- **Running defaults:** three-service `:t37-hybrid` deployment on localhost:8088. Hybrid uses repaired NuExtract3 first, with one queued Gemma 4 12B fallback. Forced Gemma/NuExtract modes are available. Two-call answering, f16 KV, MiniLM, structural ingestion and ranked 30/20/5 remain unchanged.
-- **Latest result:** all 24 integration cases passed the predeclared scoring rules (**8/8 per mode**, unchanged historical scorer **6/8**). Hybrid accepted all five supported NuExtract answers and fell back on two of seven admitted questions. Common-supported median attempt work: **3.62/3.54/12.55 s** for Hybrid/NuExtract/Gemma. This excludes queue/loading; the missing-evidence fallback took **90.29 s**, including **60.94 s** loading. [Results, interruption and limits](reports/t37-hybrid.md).
-- **Verified:** Rust regressions/format/Clippy; 89 Python checks; 71 frozen HTTP cases, five boundaries, three OpenAPI checks; six components and thirteen offline workspace plus two adapter/browser scenarios; launcher/scorer contracts and eleven retained CPU-profile checks. Six bounded live switching/cancellation/outage/restart checks passed; 236 process samples observed at most one backend. The PC-sleep observation stays in raw captures and correctness, excluded only from derived timing.
-- **Activation and preservation:** full-volume copy plus export/restore verified; original PDF, 35 chunks, revision and ingestion jobs unchanged. Hybrid readiness, source-linked browser answer, original PDF, reload and export passed. A final browser-only readiness amendment is separately verified; Rust binary and all non-UI files match the measured image retained as `:t37-measured`. Prior images, private backup, all data/caches/freezes and 189-file public pre-cleanup archive are retained. Test services are stopped; original holdout unused.
+- **T01–T38 are complete.** Definitions and acceptance evidence are in [tasks-done.md](tasks-done.md); detailed results remain in [reports/](reports/).
+- **Running defaults:** the healthy three-service `:t37-hybrid` deployment remains on localhost:8088. Hybrid uses repaired NuExtract3 with one queued Gemma 4 12B fallback; forced modes, two-call answering, f16 KV, MiniLM, structural ingestion and ranked 30/20/5 remain unchanged. [Hybrid verification and rollback](reports/t37-hybrid.md).
+- **Available update:** API/client/admin now select the built `vectornext-app:t38`; processor/generator stay on `:t37-hybrid`. A later Start/Rebuild applies the new API. Normal services were not restarted, and the user library was not compacted during verification.
+- **Offline maintenance:** `storage-plan` and explicit `compact --apply` preserve full ingestion history, retry receipts, revision reservations and provenance. Synthetic churn reclaimed **93.6%** of logical bytes; that is not a real-library savings guarantee. [Retention, backup and recovery](maintenance.md).
+- **Verified:** 186 Rust checks, format/Clippy, twelve error and twelve process-kill boundaries, four isolated release CLI checks, 71 frozen HTTP cases, five browser boundaries, launcher and previous-binary smoke. Test containers/scratch volume removed; prior images and all user data retained. [Results and limitations](reports/t38-compaction.md).
 
 ## Active work
 
-T37's full handoff is in [the completed archive](tasks-done.md#t37--hybrid-answering-with-queued-gemma-fallback). Use [answer-job contracts](answer-jobs.md) and [rollout/rollback instructions](reports/t37-hybrid.md) when operating the app.
-
-**Repository configuration cleanup — complete.** Removed seven standalone experiment/verification Compose files; the README lists the five retained app/setup/developer configurations. [History and prior revision](tasks-done.md#experiment-compose-cleanup) preserve their purpose and recovery path, and affected guides identify deployment commands as historical. All five retained configurations passed `docker compose -f <file> config --quiet`; launcher references and 26 added local documentation links/anchors passed inspection. Supported configuration bytes, application code and frozen evaluation artifacts are unchanged; no services or GPU evaluations were run.
-
-**Development handoff cleanup — complete.** `AGENTS.md` now contains only current development instructions; its former summary and task notes are in the [historical handoff](tasks-done.md#historical-agentsmd-handoff). Verified text preservation with rebased links, 98 local links/anchors and a documentation-only diff. No active implementation work remains.
-
-**Architecture cleanup — complete.** The [architecture](architecture.md) describes the current system; completed-task specifications, comparisons, rollout notes and the decision record are in the [historical architecture handoff](tasks-done.md#historical-architecture-handoff). Checked current defaults/bounds against implementation/contracts, preserved all 102 task-numbered paragraphs and validated 103 links/anchors. Current contract references use named sections; frozen protocols/reports remain unchanged. Documentation-only diff; no runtime changes or model tests.
-
-**README cleanup — complete.** The entry page now focuses on current features, setup and usage, with a compact report index. Complete result tables and six historical notes are preserved in [historical README results](tasks-done.md#historical-readme-results). Verified text preservation, 128 local links/anchors, nine CLI argument examples, eight PowerShell blocks and a documentation-only diff. No services or model evaluations were run.
+No implementation task is active. T38's complete scope and handoff are in [the archive](tasks-done.md#t38--safe-offline-compaction-and-garbage-collection). Full ingestion history and receipt/revision metadata still grow; maintenance requires downtime and temporary disk headroom. Interrupted workspaces need explicit inspection. No model-quality suites or historical holdout were used.
 
 ## Next useful step
 
-Select and scope further quality/performance work; model-switch latency and broad semantic reliability remain explicit limitations.
+Use the documented offline dry run during planned downtime to assess real-library reclaimable bytes before scheduling compaction. Further quality/performance work requires a separately selected scope; model-switch latency and broad semantic reliability remain limitations. ANN and storage novelty are deferred pending measured workload need.
 
 The items below are **proposed**, not scheduled or started. Assign the next task ID and define its scope, dependencies and acceptance criteria when the user selects work.
 

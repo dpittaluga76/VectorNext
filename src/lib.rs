@@ -10,6 +10,7 @@ pub mod service;
 mod storage;
 
 pub use blob::{BlobStore, LocalBlobStore};
+pub use storage::maintenance;
 pub use storage::{Database, ReadSnapshot, Receipt};
 
 pub type Result<T> = std::result::Result<T, Error>;

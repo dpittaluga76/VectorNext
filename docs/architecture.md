@@ -52,7 +52,23 @@ An OS-held lock enforces one writer. Publication durably stores originals, write
 
 Recovery validates checksums and the checkpoint's retained journal prefix, trims incomplete journal tails and rejects complete corrupt frames. It restores persisted vectors without models. Version-2 checkpoints serialize through numbered 1 MiB segments with CRCs and a terminal length/count/SHA-256 manifest, then file-fsync, atomic rename and directory-fsync. Legacy checkpoints remain readable; older binaries reject the newer format and need an untouched pre-upgrade copy for rollback. Write/checkpoint failures require reopening rather than clearing poisoned state in place.
 
-This bounds checkpoint serialization buffers, not the full in-memory database. Individual journal/job frames retain their 64 MiB limit; database export retains an 8 GiB total limit. Journal/blob/receipt reclamation and compaction are not implemented. Durability requires Linux filesystem locking, fsync and atomic rename; native Windows storage is unsupported. [Storage contract](storage.md) · [Record types](../src/contracts.rs).
+This bounds checkpoint serialization buffers, not the full in-memory database. Individual journal/job frames retain their 64 MiB limit; database export retains an 8 GiB total limit. Explicit offline compaction reclaims obsolete journal payloads and unreferenced blobs under the retention rules below; receipts never expire. Durability requires Linux filesystem locking, fsync and atomic rename; native Windows storage is unsupported. [Storage contract](storage.md) · [Record types](../src/contracts.rs).
+
+### Offline compaction and retention
+
+The admin CLI provides `storage-plan DB` for dry-run accounting and `compact DB --apply` for offline compaction/GC. The API must be stopped; maintenance takes the same exclusive writer lock and invokes no model. A dry run validates an existing store without creating a database, repairing its journal, or deleting files. Follow the [maintenance guide](maintenance.md) for backup, apply and recovery. Search/index changes and ANN remain deferred until a representative workload establishes a bottleneck.
+
+Retention is reference-based, never age-based:
+
+- Preserve current document revisions, exact evidence/values/vectors, embedding identities and generation unchanged.
+- Preserve **all** operation receipts and reserved revision IDs indefinitely. Identical retries retain their original receipt; conflicting ID reuse and revision resurrection remain rejected. No retry-expiration window is introduced.
+- Preserve **all ingestion jobs byte-for-byte**, including completed, failed and unfinished jobs, their original blobs, and available PDF artifacts or other blob hashes referenced by their configuration/processing metadata. Historical ingestion job inspection and restart reconciliation remain unchanged.
+- Reclaim only blobs unreferenced by current documents or retained ingestion jobs/processing metadata. Replaced/deleted revisions retained only in the obsolete journal are not a supported historical-revision API; their operation receipts remain. Captured browser evidence and answer diagnostics keep their existing historical/stale-source behavior.
+- Leave the sibling answer-job store, browser history, caches, downloaded models and external backups untouched. Answer-job clearing remains its existing explicit operation.
+
+Compaction writes a fresh version-2 checkpoint with the same complete state and an empty journal, copies retained jobs/blobs into a sibling staging directory, verifies the replacement, then atomically exchanges directories on the same Linux filesystem. The replacement shares the original writer-lock inode, so publication cannot admit a second writer through a renamed lock. Sync the exchange before reclaiming the displaced files; no in-place journal truncation or multi-file publication window is allowed. Unsupported exchange/hard-link filesystems fail closed. The on-disk format and public HTTP contracts stay unchanged.
+
+Reports distinguish current data, retained history, unreferenced blobs, journal/pending bytes, replacement size and actual reclaimed bytes. Sufficient temporary disk space is required for a separate compacted copy. Interrupted attempts may leave explicitly reported sibling maintenance directories; do not automatically delete unknown or unverifiable leftovers. Preserve a verified backup before production maintenance. Full ingestion history and compact receipt/revision metadata still grow with accepted work: this feature reclaims obsolete payloads, not all historical information, and does not promise a fixed disk bound. Expiring history would require a separately approved retention/retry contract.
 
 ## Ingestion and contextualization
 
@@ -174,6 +190,6 @@ Keep queue, activation, attempt work, inference and total user-visible latency s
 
 ## Current limits and change discipline
 
-The implementation is local and single-user. Remote authentication/hosting, multi-user isolation, token streaming, integrated PDF highlighting, chart understanding, corpus aggregation, approximate/incremental indexes, compaction, replication and distributed storage are outside the current implementation. Broader OCR/language support, context-generation usefulness and semantic answer reliability remain limited; see [plan.md](plan.md) for proposed work rather than treating proposals as architecture.
+The implementation is local and single-user. Remote authentication/hosting, multi-user isolation, token streaming, integrated PDF highlighting, chart understanding, corpus aggregation, approximate/incremental indexes, online compaction, history expiry, replication and distributed storage are outside the current implementation. Broader OCR/language support, context-generation usefulness and semantic answer reliability remain limited; see [plan.md](plan.md) for proposed work rather than treating proposals as architecture.
 
 Any change to these contracts must be explicit and reflected here before implementation. Evaluation separates source fidelity, candidate/final evidence coverage, answer correctness/support, negative outcomes, stage/total latency, resources and recovery. Preserve frozen sources, labels, manifests, captures, failures and source-review exceptions; the original holdout remains unused. Do not promote experimental models or retrieval settings solely because they are available. Record completed experiments and dated decisions in [tasks-done.md](tasks-done.md), with detailed evidence in `docs/reports/`.
