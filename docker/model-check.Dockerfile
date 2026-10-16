@@ -4,6 +4,7 @@ WORKDIR /workspace
 COPY experiments/t02/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 COPY experiments ./experiments
+COPY model_worker ./model_worker
 COPY evals/dataset.json ./evals/dataset.json
 COPY evals/fixtures ./evals/fixtures
 CMD ["python", "-m", "experiments.t02.benchmark"]

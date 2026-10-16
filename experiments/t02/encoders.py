@@ -24,12 +24,28 @@ def mean_pool_normalize(hidden, mask):
     return (pooled / norms).astype(np.float32)
 
 
+def cls_pool_normalize(hidden):
+    if hidden.ndim != 3 or hidden.shape[1] == 0:
+        raise ValueError('CLS pooling requires token hidden states')
+    pooled = hidden[:, 0, :]
+    norms = np.linalg.norm(pooled, axis=1, keepdims=True)
+    if np.any(norms == 0) or not np.isfinite(norms).all() or not np.isfinite(pooled).all():
+        raise ValueError('Invalid CLS embedding norm')
+    return (pooled / norms).astype(np.float32)
+
+
 class Encoder:
     def __init__(self, role, root=Path("/models"), threads=4):
         if role not in {"embedding", "reranker"}:
             raise ValueError("Unknown encoder role")
         self.role = role
-        self.spec = json.loads(LOCK.read_text())["models"][role]
+        self.profile = None
+        if role == 'embedding':
+            from model_worker.embedding_profile import load
+            self.profile = load(LOCK)
+            self.spec = self.profile['spec']
+        else:
+            self.spec = json.loads(LOCK.read_text())["models"][role]
         for artifact in self.spec["files"]:
             if not verify(artifact_path(root, self.spec, artifact), artifact):
                 raise ValueError(f"Missing or corrupt {role} artifact: {artifact['path']}")
@@ -37,7 +53,15 @@ class Encoder:
         self.tokenizer = Tokenizer.from_file(str(directory / "tokenizer.json"))
         self.tokenizer.no_truncation()
         self.tokenizer.enable_padding(pad_id=0, pad_token="[PAD]")
-        self.max_tokens = 256 if role == "embedding" else 512
+        self.max_tokens = self.profile['max_tokens'] if self.profile else 512
+        if self.profile and self.profile['pooling'] == 'cls':
+            config = json.loads((directory/'config.json').read_bytes())
+            pooling = json.loads((directory/'1_Pooling/config.json').read_bytes())
+            if (config['hidden_size'] != self.profile['dimensions']
+                    or config['max_position_embeddings'] < self.max_tokens
+                    or not pooling.get('pooling_mode_cls_token')
+                    or pooling.get('pooling_mode_mean_tokens')):
+                raise ValueError('BGE model/pooling configuration does not match the selected profile')
         options = ort.SessionOptions()
         options.intra_op_num_threads = threads
         options.inter_op_num_threads = 1
@@ -61,7 +85,8 @@ class Encoder:
         feed = {item.name: tensors[item.name] for item in self.session.get_inputs()}
         outputs = self.session.run(None, feed)
         if self.role == "embedding":
-            values = mean_pool_normalize(outputs[0], tensors["attention_mask"])
+            values = (cls_pool_normalize(outputs[0]) if self.profile['pooling'] == 'cls'
+                      else mean_pool_normalize(outputs[0], tensors["attention_mask"]))
             if values.shape != (len(inputs), 384):
                 raise RuntimeError(f"Unexpected embedding shape {values.shape}")
         else:
@@ -77,12 +102,13 @@ class Encoder:
             "repo": self.spec["repo"], "revision": self.spec["revision"],
             "artifact_sha256": {f["path"]: f["sha256"] for f in self.spec["files"] if f["path"] in {"onnx/model.onnx", "tokenizer.json"}},
             "format": "publisher_fp32_onnx", "providers": self.session.get_providers(),
-            "preprocessing_version": "minilm-mask-mean-l2-v1" if self.role == "embedding" else "minilm-pair-raw-logit-v1",
+            "preprocessing_version": self.profile['preprocessing'] if self.profile else "minilm-pair-raw-logit-v1",
             "onnxruntime_version": ort.__version__,
             "max_tokens_including_special": self.max_tokens,
-            "query_prefix": "", "document_prefix": "",
+            "query_prefix": self.profile['query_prefix'] if self.profile else "", "document_prefix": "",
             "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
-            "pooling": "attention-mask mean then L2 normalization" if self.role == "embedding" else "none; raw relevance logit, higher is better, not a probability",
+            "pooling": (("CLS then L2 normalization" if self.profile['pooling'] == 'cls' else "attention-mask mean then L2 normalization")
+                        if self.profile else "none; raw relevance logit, higher is better, not a probability"),
             "dimensions": 384 if self.role == "embedding" else 1,
             "dtype": "float32", "truncation": "reject", "max_batch": 32,
         }

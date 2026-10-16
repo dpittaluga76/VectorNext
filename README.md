@@ -100,7 +100,7 @@ The Rust API is the sole database writer. Parsing and model calls run outside wr
 
 **Query flow:** original question → optional local field planning → embedding + keyword search → rank fusion → CPU reranking → source-context expansion → answerability assessment → typed extraction → validation and formatting. Field planning cannot invent answer values, filters, JSON pointers or a replacement search question.
 
-The versioned `field-planning-v3` operation uses only the original question and bounded conversation history. It defines the requested facts before evidence retrieval: reported counts and separate facts are allowed, calculations across records are unsupported, and unresolved references require clarification. Types are selected independently per field; ordinary missing evidence is not a nullable value. One schema-constrained Gemma call runs at temperature 0, with strict input/output bounds and no automatic retries or fallback fields. Diagnostics record the planner version, original-input hash, prompt/schema/model identities and timings. [Planner contracts](docs/browser-api.md) · [T26 verification](docs/reports/t26-planning.md).
+The versioned `field-planning-v3` operation uses only the original question and bounded conversation history. It defines the requested facts before evidence retrieval: reported counts and separate facts are allowed, calculations across records are unsupported, and unresolved references require clarification. Types are selected independently per field; ordinary missing evidence is not a nullable value. One schema-constrained Gemma call runs at temperature 0, with strict input/output bounds and no automatic retries or fallback fields. Diagnostics record the planner version, original-input hash, prompt/schema/model identities and timings. [Planner contracts](docs/browser-api.md) · [Planner verification](docs/reports/t26-planning.md).
 
 ### Storage, transactions and recovery
 
@@ -110,7 +110,7 @@ VectorNext owns the database and search algorithms. It does not wrap another vec
 - **Atomic publication:** a checksummed append-only journal records prepare/commit pairs, with file synchronization before acknowledging a generation. Complete revisions become searchable together; partial ingestion drafts do not. Expected-revision checks prevent stale replacement/removal.
 - **Consistent readers:** queries use immutable snapshots. Existing readers retain their generation while new readers see a complete committed replacement. A process-held writer lock protects the database directory.
 - **Recovery:** startup validates checkpoints, committed records and originals, then replays journal entries. Incomplete uncommitted tails can be repaired; complete corrupt frames fail closed. Stable operation receipts make publication retries idempotent.
-- **Streaming checkpoints:** T21 removes the aggregate 64 MiB snapshot limit with numbered 1 MiB segments, per-frame CRCs and a terminal SHA-256 manifest. Legacy snapshots remain readable; older binaries reject new snapshots. Verified checkpoint, forced-restart recovery and export/restore at both formerly failing T20 sizes. Individual journal/job frames still have a 64 MiB limit, and exports retain an 8 GiB total bound. [Format and rollback boundary](docs/storage.md#t21-bounded-checkpoint-stream) · [Verification](docs/reports/t21-checkpoints.md).
+- **Streaming checkpoints:** The checkpoint format removes the aggregate 64 MiB snapshot limit with numbered 1 MiB segments, per-frame CRCs and a terminal SHA-256 manifest. Legacy snapshots remain readable; older binaries reject new snapshots. Verified checkpoint, forced-restart recovery and export/restore at both formerly failing benchmark sizes. Individual journal/job frames still have a 64 MiB limit, and exports retain an 8 GiB total bound. [Format and rollback boundary](docs/storage.md#t21-bounded-checkpoint-stream) · [Verification](docs/reports/t21-checkpoints.md).
 - **Durable jobs:** stage state is stored in separate atomic checksummed files. Interrupted work can resume; saved failures require explicit retry. Checkpoints do not reclaim old journal entries, blobs or receipts; storage compaction remains future work.
 - **Portable backups:** offline export includes originals, records, vectors, jobs and an exact file/hash manifest. Restore validates into a new destination under the exclusive writer lock. Linux/Docker storage is supported; native Windows filesystem durability is not.
 
@@ -164,11 +164,11 @@ The API and CPU processor preserve separate interactive/background admission. A 
 
 Models are checksum-verified from local files. Bounded disposable disk caches key results by exact input and full model/configuration identity; corrupt entries become misses. Committed vectors and source evidence live in the database, so deleting a cache does not remove documents. There is no answer cache. The normal GPU service is the only component with NVIDIA access.
 
-**12B is the default after T28's 208-request evaluation.** Evidence-specific JSON pointer constraints recovered the lost T27 control cases and their validated source support. See the [12B/26B comparison, extraction changes and limitations](#gemma-12b-vs-26b) for the accuracy, latency and memory measurements behind that decision.
+**12B is the default after the 208-request pointer-constrained evaluation.** Evidence-specific JSON pointer constraints recovered the lost baseline control cases and their validated source support. See the [12B/26B comparison, extraction changes and limitations](#gemma-12b-vs-26b) for the accuracy, latency and memory measurements behind that decision.
 
 | Generation profile | Placement | Status |
 | --- | --- | --- |
-| `12b` | Full layer offload | **Default** after T28; verified on the 8 GB RTX 4060. |
+| `12b` | Full layer offload | **Default**; verified on the 8 GB RTX 4060. |
 | `26b-offload22` | 22 CPU expert layers | Optional compatibility/rollback profile; saved generation identities preserved. |
 | `26b-gpu` | Full layer offload | Optional 16–24 GB target, unverified on this machine. |
 
@@ -234,16 +234,16 @@ The CPU worker uses existing 420-second operation deadlines, extended to 720 sec
 
 ### Gemma 12B vs 26B
 
-**12B became the default after T28 recovered its JSON-answer failures while retaining most of its speed advantage.** T27 compared Gemma 4 26B A4B QAT Q4_0 with Gemma 4 12B QAT Q4_0 in 416 requests and initially rejected 12B's promotion. T28 changed the application's extraction constraints, kept the model weights unchanged, and completed a separate 208-request 12B evaluation against the retained T27 results.
+**12B became the default after pointer constraints recovered its JSON-answer failures while retaining most of its speed advantage.** The original comparison evaluated Gemma 4 26B A4B QAT Q4_0 with Gemma 4 12B QAT Q4_0 in 416 requests and initially rejected 12B's promotion. The follow-up changed the application's extraction constraints, kept the model weights unchanged, and completed a separate 208-request 12B evaluation against the retained baseline results.
 
-Answer scores and latency below use the default **five primary passages**. T14 contains 16 evidence-coverage questions; T11 contains 28 NASA/USGS questions. Accuracy was identical in both cache passes. Resource peaks cover all query blocks, including the other passage-selection strategies.
+Answer scores and latency below use the default **five primary passages**. The evidence-coverage suite contains 16 questions; the NASA/USGS suite contains 28 questions. Accuracy was identical in both cache passes. Resource peaks cover all query blocks, including the other passage-selection strategies.
 
-| Measurement | 26B — T27 baseline | 12B — before T28 | **12B — current** |
+| Measurement | 26B — baseline | 12B — before pointer constraints | **12B — current** |
 | --- | ---: | ---: | ---: |
-| T14: correct outcomes | **13/16** | 10/16 | **13/16** |
-| T11: correct outcomes | 16/28 | 14/28 | **18/28** |
-| T14 median latency, cold / warm | 29.51 / 28.44 s | 11.59 / 11.16 s | **11.16 / 10.57 s** |
-| T11 median latency, cold / warm | 20.86 / 21.23 s | **9.86 / 9.48 s** | 10.35 / 9.99 s |
+| Evidence coverage: correct outcomes | **13/16** | 10/16 | **13/16** |
+| NASA/USGS: correct outcomes | 16/28 | 14/28 | **18/28** |
+| Evidence-coverage median latency, cold / warm | 29.51 / 28.44 s | 11.59 / 11.16 s | **11.16 / 10.57 s** |
+| NASA/USGS median latency, cold / warm | 20.86 / 21.23 s | **9.86 / 9.48 s** | 10.35 / 9.99 s |
 | Previously correct 26B cases | Baseline | Some lost | **All preserved, including source support** |
 | Model placement | Experts from 22 layers on CPU | All layers on GPU | All layers on GPU |
 | Peak whole-device GPU use | **6,706 MiB** | 7,864 MiB | 7,880 MiB |
@@ -252,9 +252,9 @@ Answer scores and latency below use the default **five primary passages**. T14 c
 
 Cold/warm refers to persisted application caches; OS/backend caches were not globally flushed. Latencies include errors and abstentions, exclude model loading/warmup, and use explicit answer fields. Ordinary browser questions add a separate automatic field-planning call. Whole-device GPU measurements include desktop workloads; generator memory is container accounting including file cache, not process RSS.
 
-**What changed in T28:**
+**What pointer-constrained extraction changed:**
 
-| Area | Before T28 | After T28 |
+| Area | Before pointer constraints | With pointer constraints |
 | --- | --- | --- |
 | JSON path selection | Ranked extraction allowed unconstrained path strings. | The schema permits only existing, type-compatible RFC 6901 paths from admitted evidence records. |
 | Example failure | The model could emit `properties.mag`. | It must select an allowed pointer such as `/properties/mag`. |
@@ -266,17 +266,27 @@ Cold/warm refers to persisted application caches; OS/backend caches were not glo
 
 **Limitations and tradeoffs:**
 
-- **Comparison scope:** T28 reran 12B only. **26B with the new pointer constraints remains unmeasured.** These results compare application configurations on one RTX 4060, including 26B's CPU expert offload; they do not establish that 12B is intrinsically more capable. Full-GPU 26B on larger cards remains unverified.
-- **Speed and overhead:** current 12B reduced ranked-five median latency by **50.4–62.8%** versus retained 26B, exceeding the 20% promotion gate. The proposed 65–75% overall reduction was not achieved. T11 medians increased about **5%** versus the earlier 12B run. Catalog token accounting changed a prose neighbor in two of 208 requests, so evidence was not identical in every case.
+- **Comparison scope:** The follow-up reran 12B only. **26B with the new pointer constraints remains unmeasured.** These results compare application configurations on one RTX 4060, including 26B's CPU expert offload; they do not establish that 12B is intrinsically more capable. Full-GPU 26B on larger cards remains unverified.
+- **Speed and overhead:** current 12B reduced ranked-five median latency by **50.4–62.8%** versus retained 26B, exceeding the 20% promotion gate. The proposed 65–75% overall reduction was not achieved. NASA/USGS medians increased about **5%** versus the earlier 12B run. Catalog token accounting changed a prose neighbor in two of 208 requests, so evidence was not identical in every case.
 - **GPU headroom:** full GPU placement uses less system memory here but more VRAM than offloaded 26B. The current sampled peak was **7,880/8,188 MiB**, leaving only **308 MiB**. No OOM/backend failure was observed; Windows GPU page-outs remain unverified. Only this 8 GB card was tested, not the whole intended 8–12 GB range.
-- **Quality evidence:** these are 44 reused questions across strategies and passes, not independent proof of broad quality. T11 retains two PDF admission failures and their six dependent questions in every 28-question denominator. T28's 208 requests include six rejected responses; HTTP success is not the accuracy score. Original strict labels and separate source-review exceptions remain unchanged.
-- **Remaining failures:** a valid pointer can still select a semantically irrelevant field. PDF extraction failures, semantic mistakes and the existing rejection of year-range endpoints remain. Separate planner/source/browser checks passed, but their success does not guarantee correct answers to every ordinary question.
+- **Quality evidence:** these are 44 reused questions across strategies and passes, not independent proof of broad quality. The NASA/USGS suite retains two PDF admission failures and their six dependent questions in every 28-question denominator. The follow-up's 208 requests include six rejected responses; HTTP success is not the accuracy score. Original strict labels and separate source-review exceptions remain unchanged.
+- **Remaining failures:** a valid pointer can still select a semantically irrelevant field. PDF extraction failures and semantic mistakes remain; the measured release also rejected year-range endpoints. Separate planner/source/browser checks passed, but their success does not guarantee correct answers to every ordinary question.
 
-26B remains available as an optional compatibility and rollback profile. [T27 results and original promotion failure](docs/reports/t27-model-comparison.md) · [T28 complete results, p95, case changes and rollout](docs/reports/t28-ranked-pointers.md) · [Pointer and proof contract](docs/answers.md#ranked-json-pointer-constraints-t28).
+26B remains available as an optional compatibility and rollback profile. [Original model comparison and promotion failure](docs/reports/t27-model-comparison.md) · [Pointer-constrained results, p95, case changes and rollout](docs/reports/t28-ranked-pointers.md) · [Pointer and proof contract](docs/answers.md#ranked-json-pointer-constraints-t28).
+
+### Single-call answering experiment
+
+A separate 208-request comparison removed the preliminary assessment while keeping the extraction prompt, pointer schema, evidence and prompt caching unchanged. Ranked five preserved **13/16** and **18/28** correct outcomes, with **35.6–40.7% lower median latency**. Coverage mode fell from **12/16 to 10/16** in each pass, so the production **two-call default remains**. All 202 comparable successful responses had identical assembled evidence; failures stayed in the denominator. These are sequential comparisons on reused regression questions. [Results and case changes](docs/reports/t29-single-call.md) · [Reproduction](experiments/t29/README.md).
+
+### Memory and embedding experiments
+
+An independent 208-request Q8 KV-cache comparison saved **217.5 MiB** of GPU allocation, but lost a correct unknown-count classification in four ranked blocks. The default keeps **f16 KV storage**. Full-context/restart checks passed; sampled GPU use does not establish absence of Windows paging. [Memory results and limitations](docs/reports/t30-kv-cache.md) · [Reproduction](experiments/t30/README.md).
+
+The experimental **BGE-small-en-v1.5** CPU profile supports 512 tokens with CLS pooling and a query instruction included in its embedding-space identity. Across 192 retrieval requests, it improved NIST selected-20 coverage **18/20 → 19/20**, while final-five coverage stayed **16/20** on both NIST and NASA. Ingestion was **34–40% slower** at the unchanged 180-token chunk target. **MiniLM remains the default**; existing vectors are preserved. These TXT regression sets do not establish answer accuracy or long-record gains. [Embedding results](docs/reports/t31-embeddings.md) · [Explicit setup and reproduction](experiments/t31/README.md).
 
 ### Database comparison: PostgreSQL + pgvector
 
-T20 compares the existing VectorNext core with **PostgreSQL 18.6 + pgvector 0.8.7**, using identical synthetic 384-dimensional vectors and equal limits of **2 CPUs / 4 GiB per database**. PostgreSQL exact search was faster in all tested warm query groups; both exact engines returned correct results throughout.
+The database benchmark compares the existing VectorNext core with **PostgreSQL 18.6 + pgvector 0.8.7**, using identical synthetic 384-dimensional vectors and equal limits of **2 CPUs / 4 GiB per database**. PostgreSQL exact search was faster in all tested warm query groups; both exact engines returned correct results throughout.
 
 | Vectors | VectorNext exact median | PostgreSQL exact median | PostgreSQL HNSW median (ef=40) | HNSW recall@10 |
 | ---: | ---: | ---: | ---: | ---: |
@@ -285,21 +295,21 @@ T20 compares the existing VectorNext core with **PostgreSQL 18.6 + pgvector 0.8.
 
 These are **warm, unfiltered client timings**, with 32 independent query vectors repeated three times per corpus. The full run includes filtered and empty searches: 4,096 timed requests, no query errors, and 2,048/2,048 exact requests correct. This measures supplied-vector search/storage, not semantic relevance or end-to-end answer quality; HTTP/PostgreSQL protocols and storage schemas differ.
 
-**The benchmark exposed a checkpoint limit:** VectorNext's snapshot exceeded its 64 MiB frame at both sizes, while PostgreSQL checkpointed successfully. **T21 fixes that limit** with streamed checkpoints: fresh copies now checkpoint, recover after SIGKILL, export and restore, with 768/768 exact-query checks passing. The original T20 results remain unchanged; no new comparative speed claim follows. PostgreSQL remains benchmark tooling, not a production dependency. [T21 results and compatibility](docs/reports/t21-checkpoints.md).
+**The benchmark exposed a checkpoint limit:** VectorNext's snapshot exceeded its 64 MiB frame at both sizes, while PostgreSQL checkpointed successfully. **Streaming checkpoints fix that limit** with streamed checkpoints: fresh copies now checkpoint, recover after SIGKILL, export and restore, with 768/768 exact-query checks passing. The original benchmark results remain unchanged; no new comparative speed claim follows. PostgreSQL remains benchmark tooling, not a production dependency. [Checkpoint results and compatibility](docs/reports/t21-checkpoints.md).
 
 [Full results, filters and limitations](docs/reports/t20-pgvector.md) · [Measurements and hashes](docs/reports/t20-pgvector.json) · [Run the benchmark](experiments/t20/README.md)
 
 ### Indexed filter execution
 
-T22 profiles the same synthetic stores with baseline and optimized Rust release binaries. At 51,232 vectors, warm in-process scalar equality fell from **16.302 ms to 0.252 ms**, empty-result filtering from **16.693 ms to 0.059 ms**, and numeric-range queries from **25.177 ms to 1.024 ms**. All 4,224 requests matched complete response hashes across repeated groups. Index construction costs more; nested JSON/container predicates retain scan behavior. These exclude HTTP/serialization and are not new PostgreSQL comparison results. [Protocol, full measurements and limitations](docs/reports/t22-filters.md).
+The filter benchmark profiles the same synthetic stores with baseline and optimized Rust release binaries. At 51,232 vectors, warm in-process scalar equality fell from **16.302 ms to 0.252 ms**, empty-result filtering from **16.693 ms to 0.059 ms**, and numeric-range queries from **25.177 ms to 1.024 ms**. All 4,224 requests matched complete response hashes across repeated groups. Index construction costs more; nested JSON/container predicates retain scan behavior. These exclude HTTP/serialization and are not new PostgreSQL comparison results. [Protocol, full measurements and limitations](docs/reports/t22-filters.md).
 
-T23 tests evidence retrieval on **12 fresh NIST references / 188 chunks**, using real CPU embeddings and reranking. Across 96 successful requests, question-focused candidate expansion improved complete evidence coverage in the 20-passage shortlist from **18/20 to 20/20 questions**, but final-five coverage stayed **16/20**. Production defaults remain unchanged: this points to final evidence selection as the next experiment. These are agent-authored literal-source coverage measurements, not generated-answer accuracy or independent human adjudication. [Frozen protocol, results and limitations](docs/reports/t23-evidence.md) · [Reproduce](evals/evidence/README.md).
+The candidate-retrieval experiment tests evidence retrieval on **12 fresh NIST references / 188 chunks**, using real CPU embeddings and reranking. Across 96 successful requests, question-focused candidate expansion improved complete evidence coverage in the 20-passage shortlist from **18/20 to 20/20 questions**, but final-five coverage stayed **16/20**. This motivated the separate final-evidence selection experiment below. These are agent-authored literal-source coverage measurements, not generated-answer accuracy or independent human adjudication. [Frozen protocol, results and limitations](docs/reports/t23-evidence.md) · [Reproduce](evals/evidence/README.md).
 
-T24 holds the expanded shortlist constant and tests final passage selection on **10 fresh NASA references / 388 chunks**. Facet-focused selection improves complete frozen final evidence coverage from **16/20 to 18/20 questions**, with no measured regressions, but median uncached retrieval latency rises from **685 ms to 1,437 ms**. All 96 requests succeeded. T25 integrates this selector as an opt-in application mode; those frozen T24 scores measure authored facets and passage coverage, not the automatic app or generated-answer quality. [Results, cost and source-review limitations](docs/reports/t24-final-selection.md) · [Reproduce](evals/selection/README.md).
+The final-selection experiment holds the expanded shortlist constant and tests final passage selection on **10 fresh NASA references / 388 chunks**. Facet-focused selection improves complete frozen final evidence coverage from **16/20 to 18/20 questions**, with no measured regressions, but median uncached retrieval latency rises from **685 ms to 1,437 ms**. All 96 requests succeeded. The application exposes this selector as an opt-in mode; those frozen scores measure authored facets and passage coverage, not the automatic app or generated-answer quality. [Results, cost and source-review limitations](docs/reports/t24-final-selection.md) · [Reproduce](evals/selection/README.md).
 
 ### Automatic field-planning verification
 
-T26 repairs the follow-up/count failures exposed by T25, then separately addresses a mixed numeric-type failure discovered during verification. Its final `field-planning-v3` candidate passed:
+The planner repair addresses follow-up/count failures exposed during application integration, then separately addresses a mixed numeric-type failure discovered during verification. Its final `field-planning-v3` candidate passed:
 
 | Check | Result |
 | --- | --- |
@@ -314,7 +324,7 @@ The final planner's median call took **7.11 seconds** on its 12-case set. Ordina
 
 Measured on an **RTX 4060 with 8 GB VRAM, Ryzen 5 7600 and approximately 64 GB system RAM**, using Docker on Windows/WSL 2.
 
-**Public-source answer comparison: question-aware evidence coverage (T14).** Eight new NASA/USGS sources, 201 chunks and 16 frozen questions compare three strategies across 96 local requests:
+**Public-source answer comparison: question-aware evidence coverage.** Eight new NASA/USGS sources, 201 chunks and 16 frozen questions compare three strategies across 96 local requests:
 
 | Configuration | Exact outcomes, each pass | Median, cold / warm |
 | --- | --- | --- |
@@ -324,9 +334,9 @@ Measured on an **RTX 4060 with 8 GB VRAM, Ryzen 5 7600 and approximately 64 GB s
 
 Coverage reduced median latency by **43.5–44.4%**, but did not increase strict answer accuracy or clear the adoption gate. **Ranked five remains the default.** The experiment distinguishes missing candidates, evidence selection and quote-validation failures. One question also permits a reasonable interpretation different from its frozen ambiguity label; the score and source-review exception are both retained. This is a small diagnostic corpus, not an independently administered benchmark.
 
-T14 found numeric proof defects. **T15 repairs them:** exact English grouped numbers and named-month date years validate, while shortened numeric quotes are checked against the complete supplied passage. For example, `3,000` supports `3000`; clipping it to `3` cannot support `3`. Original quotes, exact values and historical scores are preserved. These mechanical checks do not guarantee factual correctness. [T15 verification and limits](docs/reports/t15-numeric-proofs.md) · [T14 results](docs/reports/t14-evidence-coverage.md) · [Readable coverage trace](docs/reports/t14-coverage-workflow.md) · [Try the experimental option](evals/coverage/README.md).
+The evidence-coverage experiment found numeric proof defects. **The numeric validator repairs them:** exact English grouped numbers and named-month date years validate, while shortened numeric quotes are checked against the complete supplied passage. For example, `3,000` supports `3000`; clipping it to `3` cannot support `3`. Original quotes, exact values and historical scores are preserved. These mechanical checks do not guarantee factual correctness. [Numeric-proof verification and limits](docs/reports/t15-numeric-proofs.md) · [Evidence-coverage results](docs/reports/t14-evidence-coverage.md) · [Readable coverage trace](docs/reports/t14-coverage-workflow.md) · [Try the experimental option](evals/coverage/README.md).
 
-**Earlier public-source comparison (T11):** **20 NASA/USGS documents and 28 questions**, with the same corpus, models and retrieval settings for both passage limits. Its corpus/annotation protocol differs from T14, so the answer rates are not directly comparable.
+**Earlier public-source comparison:** **20 NASA/USGS documents and 28 questions**, with the same corpus, models and retrieval settings for both passage limits. Its corpus/annotation protocol differs from the evidence-coverage suite, so the answer rates are not directly comparable.
 
 | Answer configuration | Median, cold cache | Median, warm cache | Correct outcomes / planned |
 | --- | --- | --- | --- |
@@ -339,7 +349,7 @@ Only **18/20 documents were admitted, producing 658 chunks**. One PDF failed str
 
 A separate **core-only capacity probe** searched **12,800 supplied 384-dimensional vectors across 400 synthetic documents** in **9.95 ms median**, with **79.3 MiB peak process RSS**. This measures hybrid search capacity; it excludes document parsing, embeddings and answer generation.
 
-T14 verification passed **217 automated checks** (101 Rust, 116 Python), plus formatting, lint and Compose validation. Those checks are separate from answer quality and the newly recorded numeric-boundary diagnostic. T13 also completed a CPU recovery/PDF drill; see [results](docs/reports/t13-reliability.md). T11 found and fixed a UTF-8 ingestion panic; the earlier failed attempt is retained.
+Evidence-coverage verification passed **217 automated checks** (101 Rust, 116 Python), plus formatting, lint and Compose validation. Those checks are separate from answer quality and the newly recorded numeric-boundary diagnostic. Reliability verification also completed a CPU recovery/PDF drill; see [results](docs/reports/t13-reliability.md). The earlier public-source evaluation found and fixed a UTF-8 ingestion panic; the earlier failed attempt is retained.
 
 The earlier synthetic development comparison passed 13/13 questions with both limits. Generated context increased its five-file ingestion from **24.76 s to 72.16 s** without improving final answers, so structural context remains the default. Broader quality and sustained-load performance remain open.
 
@@ -347,7 +357,7 @@ The earlier synthetic development comparison passed 13/13 questions with both li
 
 ## Quickstart
 
-Use Docker Desktop with WSL 2, Linux containers and NVIDIA GPU support. The tested PC has an RTX 4060 (8 GB VRAM) and about 64 GB RAM. The default 12B model file is **6.98 GB**; add space for CPU/PDF models, images and documents. T28's query blocks measured **10.19 GiB generator cgroup memory including file cache** and **7,880 MiB whole-device GPU use**. These observations are not minimum system requirements or a guarantee that concurrent GPU workloads fit. The optional offloaded 26B model uses a 14.44 GB file and considerably more system RAM.
+Use Docker Desktop with WSL 2, Linux containers and NVIDIA GPU support. The tested PC has an RTX 4060 (8 GB VRAM) and about 64 GB RAM. The default 12B model file is **6.98 GB**; add space for CPU/PDF models, images and documents. The current 12B query blocks measured **10.19 GiB generator cgroup memory including file cache** and **7,880 MiB whole-device GPU use**. These observations are not minimum system requirements or a guarantee that concurrent GPU workloads fit. The optional offloaded 26B model uses a 14.44 GB file and considerably more system RAM.
 
 ### Windows: setup once, then double-click
 
@@ -369,7 +379,7 @@ Open **Advanced answer controls → Evidence selection → Facet coverage (exper
 
 The API accepts `"options":{"evidence_strategy":"facet_coverage_v1"}` on `/v1/ui/ask` or `/v1/ask`; CLI users can add `--evidence-strategy facet_coverage_v1`. The mode requires 1–4 fields, reranking enabled, at most 20 reranker candidates and five primaries. It preserves explicit document scope, exact JSON values and source validation.
 
-Facet selection remains experimental: the T24 passage-coverage results do not establish end-to-end answer accuracy. T26 repairs the measured automatic-planning failures from its application integration; broader relevance and ambiguity handling still need evaluation. [T26 planning results](docs/reports/t26-planning.md) · [Historical T25 integration results](docs/reports/t25-facet-integration.md).
+Facet selection remains experimental: the final-selection passage-coverage results do not establish end-to-end answer accuracy. The planner repair addresses the measured automatic-planning failures from its application integration; broader relevance and ambiguity handling still need evaluation. [Planning results](docs/reports/t26-planning.md) · [Historical integration results](docs/reports/t25-facet-integration.md).
 
 ### Troubleshooting
 
@@ -377,7 +387,7 @@ Facet selection remains experimental: the T24 passage-coverage results do not es
 - **Models are still loading:** browse documents while the capability indicators update. GPU contention or insufficient system RAM can slow generation. Stop other GPU experiments before launching this stack.
 - **Upload is busy or interrupted:** the interface retains its upload identity, reconciles saved work and offers Retry. Saved processing failures require explicit retry. A failed replacement must finish before that document can be removed.
 - **PDF was rejected:** inspect the failure; strict extraction is the default. Enable partial extraction in Upload options only when incomplete extraction is acceptable. Warnings remain available with evidence.
-- **A year from a range is rejected:** the numeric validator deliberately rejects fragments of ranges. A correct model draft can still fail this check; inspect the source directly. T28 changes JSON pointer validity, not numeric range interpretation.
+- **A year from a range is rejected:** the installed release retains the earlier numeric validator. Current source adds exact endpoints from complete unsigned two-segment ranges, with guards for dates, signs, identifiers and clipped numbers; activate it through an explicit rebuild. Interior values and duration calculations remain unsupported. [Range rules and verification](docs/reports/range-endpoints.md).
 - **Question planning fails:** a clarification error asks for a subject and requested fact; an aggregation error means a calculation across records is unsupported. Ask for separately reported facts or supply fields in Advanced. Invalid plans fail explicitly. Supported results still require human semantic review.
 - **Browser storage failed:** keep the tab open and export conversations. Clear space or use a persistent browser profile; private mode/history deletion can remove saved conversations. Use one active tab to avoid competing workspace saves.
 - **Updated code is not visible:** choose Rebuild, then reload the browser. Start deliberately reuses installed images.
@@ -408,7 +418,7 @@ docker compose -f compose.app.yaml up -d --no-build --pull never
 docker compose -f compose.app.yaml run --rm client ready
 ```
 
-Repeat the readiness check until all capabilities are available. T28's normal Windows launcher activation reached readiness in **67 seconds**; its separate Linux model-volume restart took **7.48 seconds**. Different storage/loading paths make these noninterchangeable observations. The API listens at `http://127.0.0.1:8088`. Keep other VectorNext GPU experiments stopped while using this stack.
+Repeat the readiness check until all capabilities are available. The current release's normal Windows launcher activation reached readiness in **67 seconds**; its separate Linux model-volume restart took **7.48 seconds**. Different storage/loading paths make these noninterchangeable observations. The API listens at `http://127.0.0.1:8088`. Keep other VectorNext GPU experiments stopped while using this stack.
 
 #### 3. Ingest, search and ask
 
@@ -466,7 +476,7 @@ docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest evals
 docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest deployment.test_workflow -v
 ```
 
-These commands cover the 160 top-level Rust checks (including the T23/T24 experimental selectors), 54 original fixture/scorer/protocol checks and 27 workflow/client checks. T14 adds `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. T15 passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
+These commands cover the 163 top-level Rust checks (including the experimental candidate/final selectors), 54 original fixture/scorer/protocol checks and 27 workflow/client checks. Coverage checks include `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. Numeric-proof verification passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
 
 Browser verification runs entirely in Docker:
 
@@ -482,11 +492,11 @@ The planner/profile contract tests need no models or GPU calls. Once the process
 docker run --rm --network none vectornext-app-processor:t28-12b /opt/model-env/bin/python -m unittest model_worker.test_planning model_worker.test_generator_profile -v
 ```
 
-T28 verification passed **160 top-level Rust and 81 Python checks**, formatting/Clippy, 71 frozen HTTP cases, five browser boundaries, two OpenAPI checks, five components, 12 offline/adapter browser scenarios and two live model browser scenarios. All 25 original T26 planner/source/regression cases and 16 fresh fixed/source checks passed. Release selection added 35 focused Python checks and eight launcher contracts under both PowerShell variants. All **208 frozen regression requests** completed; the report retains six rejected responses, PDF admission failures, engineering failures and the normal-library numeric-range limitation. [Results and reproduction caveat](docs/reports/t28-ranked-pointers.md). Model checks use isolated data; no historical holdout was used.
+The current release verification passed **160 top-level Rust and 81 Python checks**, formatting/Clippy, 71 frozen HTTP cases, five browser boundaries, two OpenAPI checks, five components, 12 offline/adapter browser scenarios and two live model browser scenarios. All 25 original planner/source/regression cases and 16 fresh fixed/source checks passed. Release selection added 35 focused Python checks and eight launcher contracts under both PowerShell variants. All **208 frozen regression requests** completed; the report retains six rejected responses, PDF admission failures, engineering failures and the normal-library numeric-range limitation. [Results and reproduction caveat](docs/reports/t28-ranked-pointers.md). Model checks use isolated data; no historical holdout was used.
 
-T16–T18 passed 116 Rust, 118 Python unit/regression checks, five live HTTP checks, five frontend component checks, nine offline browser scenarios and a production-browser scenario with real Gemma. [Results, retained failures and limitations](docs/reports/t16-t18-local-app.md). These are operational checks, not a new retrieval-quality benchmark.
+Browser workspace and launcher verification passed 116 Rust, 118 Python unit/regression checks, five live HTTP checks, five frontend component checks, nine offline browser scenarios and a production-browser scenario with real Gemma. [Results, retained failures and limitations](docs/reports/t16-t18-local-app.md). These are operational checks, not a new retrieval-quality benchmark.
 
-T19 additionally passed the frozen 71-case HTTP comparison, two OpenAPI schema checks and two browser scenarios against the real Axum adapter, including exact numeric requests/responses. See [the migration report](docs/reports/t19-axum.md) for isolated reproduction commands, rollback and limitations.
+The Axum migration additionally passed the frozen 71-case HTTP comparison, two OpenAPI schema checks and two browser scenarios against the real Axum adapter, including exact numeric requests/responses. See [the migration report](docs/reports/t19-axum.md) for isolated reproduction commands, rollback and limitations.
 
 ## Explore the implementation
 
@@ -498,16 +508,16 @@ T19 additionally passed the frozen 71-case HTTP comparison, two OpenAPI schema c
 | [`src/answers.rs`](src/answers.rs) and [`model_worker/`](model_worker/) | Evidence assembly, local models, exact JSON reads and generation scheduling |
 | [`model_worker/planning.py`](model_worker/planning.py) and [`experiments/t26/`](experiments/t26/) | Field-only planning, strict output contracts, frozen checks and retained failures |
 | [`model_worker/generator_profiles.json`](model_worker/generator_profiles.json) and [`experiments/t27/`](experiments/t27/) | Pinned generation profiles, paired model comparison and promotion gates |
-| [`experiments/t28/`](experiments/t28/) and [T28 results](docs/reports/t28-ranked-pointers.md) | Frozen pointer-contract checks, 208-request replay and conditional 12B rollout |
+| [`experiments/t28/`](experiments/t28/) and [Pointer-constrained results](docs/reports/t28-ranked-pointers.md) | Frozen pointer-contract checks, 208-request replay and conditional 12B rollout |
 | [`src/service/`](src/service/) and [`deployment/`](deployment/) | Shared database ownership, API, CPU admission and client |
 | [`frontend/`](frontend/) and [browser contracts](docs/browser-api.md) | React workspace, browser-only history, exact text rendering and Playwright scenarios |
 | [`evals/`](evals/) and [public-source evaluation](docs/reports/t11-independent.md) | Frozen sources, paired comparisons, source-aware scoring, timings and retained failures |
 
 ## Project status and next steps
 
-T01–T28 are complete: storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection, numeric proof validation, a reproducible pgvector comparison, bounded large-state checkpoints/exports, indexed scalar filtering, candidate/final-evidence retrieval experiments, automatic field-planning repairs and a gated 12B/26B model comparison. The app is ready for local experimentation within its documented limits. The browser workspace, Windows launcher and Axum API with offline OpenAPI documentation are implemented. The public API is still evolving; multi-user authentication remains out of scope.
+Implemented capabilities include storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection, numeric proof validation, a reproducible pgvector comparison, bounded large-state checkpoints/exports, indexed scalar filtering, candidate/final-evidence retrieval experiments, automatic field-planning repairs and a gated 12B/26B model comparison. The app is ready for local experimentation within its documented limits. The browser workspace, Windows launcher and Axum API with offline OpenAPI documentation are implemented. The public API is still evolving; multi-user authentication remains out of scope.
 
-T13 adds coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). T22 adds bounded scalar/document/media filter indexes. T23/T24 complete fresh candidate and final-selection experiments; T25 integrates opt-in facet coverage and T26 repairs measured automatic-planning failures with source-linked browser/API verification. T27 adds shared model profiles and records 12B's initial correctness losses. T28 constrains ranked JSON pointers, recovers those losses and promotes 12B after 208 evaluated requests plus application/operational checks. Ranked 30/20/5 remains the default. Broader planning reliability, numeric-range interpretation and clearer ambiguity evaluation remain future quality work. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
+Recovery includes coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). Search includes bounded scalar/document/media filter indexes. Fresh candidate and final-selection experiments underpin opt-in facet coverage; automatic-planning repairs address measured failures with source-linked browser/API verification. The original model comparison introduced shared profiles and recorded 12B's initial correctness losses. Pointer-constrained extraction recovers those losses and enables the 12B default after 208 evaluated requests plus application/operational checks. Ranked 30/20/5 remains the default. Conservative range-endpoint validation is implemented in source and verified separately from the model experiments. Broader planning reliability, semantic range interpretation and clearer ambiguity evaluation remain future quality work. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
 
 For contributions, start with the [architecture](docs/architecture.md), [build plan](docs/plan.md) and [working instructions](AGENTS.md). Reproducible retrieval failures with shareable source files are especially useful.
 

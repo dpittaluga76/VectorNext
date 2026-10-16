@@ -16,6 +16,7 @@ def load(name=None):
     if name not in catalog['profiles']:
         raise ValueError('unknown generation profile: ' + name)
     entry = catalog['profiles'][name]
+    cache_types(entry)
     lock_path = (ROOT / entry['lock']).resolve()
     if not lock_path.is_relative_to(ROOT):
         raise ValueError('model lock escapes application root')
@@ -24,6 +25,15 @@ def load(name=None):
     if len(artifacts) != 1:
         raise ValueError('expected one generation artifact')
     return dict(entry, name=name, runtime=catalog['runtime'], spec=spec, artifact=artifacts[0])
+
+
+def cache_types(profile):
+    kinds = (profile.get('cache_type_k'), profile.get('cache_type_v'))
+    if kinds == (None, None):
+        return None
+    if any(kind not in ('f16', 'q8_0') for kind in kinds):
+        raise ValueError('both KV cache types must be explicitly f16 or q8_0')
+    return kinds
 
 
 def model_path(profile, root=Path('/models')):
@@ -54,6 +64,8 @@ def command(profile):
             '--n-gpu-layers', '99']
     if profile['cpu_moe']:
         args += ['--n-cpu-moe', str(profile['cpu_moe'])]
+    if kinds := cache_types(profile):
+        args += ['--cache-type-k', kinds[0], '--cache-type-v', kinds[1]]
     return args + ['--parallel', '1', '--n-predict', '256', '--batch-size', '512',
                    '--ubatch-size', '128', '--threads', '4', '--flash-attn', 'on',
                    '--jinja', '--reasoning', 'off', '--no-context-shift', '--no-ui',
@@ -69,5 +81,7 @@ def validate_command(profile, args):
 
 def runtime_identity(profile):
     # Preserve the existing identity byte-for-byte for saved 26B offload jobs.
-    return (profile['runtime'] + ';ctx4096;parallel1;reasoning-off;cpu-moe'
-            + str(profile['cpu_moe']))
+    identity = (profile['runtime'] + ';ctx4096;parallel1;reasoning-off;cpu-moe'
+                + str(profile['cpu_moe']))
+    kinds = cache_types(profile)
+    return identity + (';cache-k=' + kinds[0] + ';cache-v=' + kinds[1] if kinds else '')

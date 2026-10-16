@@ -1,6 +1,6 @@
 //! Mechanical prose support, using exact spellings rather than floating point.
 //! English comma grouping is the only numeric spelling transformation. Dates
-//! supply a boundary exception, not an inferred value or a source rewrite.
+//! and complete unsigned ranges supply boundary exceptions, never inferred values.
 use serde_json::Number;
 
 pub(super) fn supported(source: &str, quote: &str, value: &Number) -> bool {
@@ -14,9 +14,102 @@ pub(super) fn supported(source: &str, quote: &str, value: &Number) -> bool {
                 quote.match_indices(spelling).any(|(start, _)| {
                     let start = offset + start;
                     boundaries(source, start, start + spelling.len())
+                        || range_endpoint(source, start, start + spelling.len())
                 })
             })
     })
+}
+
+// Inspect full source spans, including characters clipped out of the proof quote.
+// Only two unsigned endpoints are admitted. Signs, identifiers, dates and longer
+// numeric chains fail the same outer-boundary checks as standalone numbers.
+fn range_endpoint(source: &str, start: usize, end: usize) -> bool {
+    source.char_indices().any(|(left, c)| {
+        if !c.is_ascii_digit()
+            || source[..left]
+                .chars()
+                .next_back()
+                .is_some_and(|p| word(p) || matches!(p, '.' | ','))
+        {
+            return false;
+        }
+        let left_end = unsigned_end(source, left);
+        let rest = &source[left_end..];
+        let trimmed = rest.trim_start_matches(horizontal);
+        let after_separator = if let Some(tail) = trimmed.strip_prefix(['-', '\u{2013}']) {
+            tail
+        } else if rest.len() != trimmed.len() {
+            match trimmed.strip_prefix("to") {
+                Some(tail) if tail.chars().next().is_some_and(horizontal) => tail,
+                _ => return false,
+            }
+        } else {
+            return false;
+        };
+        let right_text = after_separator.trim_start_matches(horizontal);
+        let right = source.len() - right_text.len();
+        let right_end = unsigned_end(source, right);
+        right_end > right
+            && ((start == left && end == left_end) || (start == right && end == right_end))
+            && boundaries(source, left, right_end)
+            && !word_range_before(&source[..left])
+            && !word_range_after(&source[right_end..])
+    })
+}
+
+fn unsigned_end(source: &str, start: usize) -> usize {
+    let bytes = source.as_bytes();
+    let mut end = start;
+    while bytes.get(end).is_some_and(u8::is_ascii_digit) {
+        end += 1;
+    }
+    if end == start {
+        return start;
+    }
+    // Grouped integers require a 1–3 digit first group and exactly three thereafter.
+    if end - start <= 3 {
+        while bytes.get(end) == Some(&b',')
+            && bytes
+                .get(end + 1..end + 4)
+                .is_some_and(|group| group.iter().all(u8::is_ascii_digit))
+            && !bytes.get(end + 4).is_some_and(u8::is_ascii_digit)
+        {
+            end += 4;
+        }
+    }
+    if bytes.get(end) == Some(&b'.') && bytes.get(end + 1).is_some_and(u8::is_ascii_digit) {
+        end += 1;
+        while bytes.get(end).is_some_and(u8::is_ascii_digit) {
+            end += 1;
+        }
+    }
+    end
+}
+
+fn word_range_before(before: &str) -> bool {
+    before
+        .trim_end_matches(horizontal)
+        .strip_suffix("to")
+        .is_some_and(|s| {
+            s.chars().next_back().is_some_and(horizontal)
+                && s.trim_end_matches(horizontal)
+                    .chars()
+                    .next_back()
+                    .is_some_and(char::is_numeric)
+        })
+}
+
+fn word_range_after(after: &str) -> bool {
+    after
+        .trim_start_matches(horizontal)
+        .strip_prefix("to")
+        .is_some_and(|s| {
+            s.chars().next().is_some_and(horizontal)
+                && s.trim_start_matches(horizontal)
+                    .chars()
+                    .next()
+                    .is_some_and(char::is_numeric)
+        })
 }
 
 fn grouped_spelling(literal: &str) -> Option<String> {
@@ -156,4 +249,67 @@ fn date_year(source: &str, start: usize, end: usize) -> bool {
     };
     let day: u8 = day.parse().unwrap();
     year != 0 && day > 0 && day <= max_day
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn check(source: &str, quote: &str, value: &str) -> bool {
+        supported(source, quote, &serde_json::from_str(value).unwrap())
+    }
+
+    #[test]
+    fn exact_unsigned_range_endpoints_preserve_quotes_and_values() {
+        for separator in ["-", "–", " - ", " – ", " to "] {
+            let source = format!("Mission operated (1977{separator}1980).");
+            for endpoint in ["1977", "1980"] {
+                assert!(check(&source, endpoint, endpoint), "{source}: {endpoint}");
+                assert!(check(&source, &source, endpoint));
+            }
+            assert!(!check(&source, "197", "197"));
+            assert!(!check(&source, &source, "1978"));
+        }
+        for (source, quote, value) in [
+            ("Range 0–3.", "0", "0"),
+            ("Range 1.25–2.75.", "2.75", "2.75"),
+            ("Range 1,000–2,000.", "1,000", "1000"),
+            (
+                "Range 9007199254740993–9007199254740999.",
+                "9007199254740993",
+                "9007199254740993",
+            ),
+        ] {
+            assert!(check(source, quote, value), "{source}");
+        }
+    }
+
+    #[test]
+    fn range_exceptions_do_not_admit_signs_dates_identifiers_or_clipped_numbers() {
+        for (source, quote, value) in [
+            ("-1977–1980", "1980", "1980"),
+            ("+1977–1980", "1977", "1977"),
+            ("−1977–1980", "1980", "1980"),
+            ("1977–-1980", "1977", "1977"),
+            ("-10--5", "5", "5"),
+            ("1977-01-01", "1977", "1977"),
+            ("1977-01-01", "01", "1"),
+            ("1977–1980–1982", "1980", "1980"),
+            ("1977–1980 to 1982", "1977", "1977"),
+            ("1970 to 1977–1980", "1980", "1980"),
+            ("ID1977–1980", "1980", "1980"),
+            ("1977–1980x", "1977", "1977"),
+            ("id_1977–1980", "1980", "1980"),
+            ("é1977–1980", "1980", "1980"),
+            ("1.25–2.75", "25", "25"),
+            ("1.25–2.75", "2", "2"),
+            ("1,000–2,000", "1", "1"),
+            ("1,00–2,000", "2,000", "2000"),
+            ("3e-4", "4", "4"),
+            ("1.2.3-4", "4", "4"),
+            ("1977–1980/2", "1977", "1977"),
+        ] {
+            assert!(!check(source, quote, value), "{source}: {quote} -> {value}");
+        }
+    }
 }

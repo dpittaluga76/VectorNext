@@ -287,8 +287,6 @@ fn numeric_quotes_cannot_clip_source_signs_digits_decimals_or_separators() {
         ("Value: 3/4.", "3", "3"),
         ("Value: 3/4.", "4", "4"),
         ("Time: 3:30.", "30", "30"),
-        ("Value: 3–5.", "3", "3"),
-        ("Value: 3–5.", "5", "5"),
         ("Value: 3'000.", "3", "3"),
         ("Value: 3’000.", "000", "0"),
         ("Value: 3 000.", "3", "3"),
@@ -306,6 +304,27 @@ fn numeric_quotes_cannot_clip_source_signs_digits_decimals_or_separators() {
             "{source} / {quote} / {value}"
         );
     }
+}
+
+#[test]
+fn complete_range_endpoints_validate_without_changing_the_proof() {
+    for source in ["Value: 3–5.", "Value: 3-5.", "Value: 3 to 5."] {
+        for value in ["3", "5"] {
+            assert!(numeric_proof(source, value, value).is_ok());
+        }
+        assert!(numeric_proof(source, source, "4").is_err());
+    }
+    for source in ["Date: 1977-01-01.", "ID: A1977-1980.", "Range: -1977–1980."] {
+        assert!(numeric_proof(source, "1977", "1977").is_err());
+    }
+    let evidence = vec![source_evidence("Years: 1977–1980.")];
+    let answer = supported(json!(1977), "1977", None);
+    let before = serde_json::to_string(&(&evidence, &answer)).unwrap();
+    validate_answer(&request().fields, &evidence, &answer).unwrap();
+    assert_eq!(
+        serde_json::to_string(&(&evidence, &answer)).unwrap(),
+        before
+    );
 }
 
 #[test]

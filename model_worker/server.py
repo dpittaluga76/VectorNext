@@ -17,6 +17,8 @@ SCHEMA = {"type": "object", "properties": {"context": {"type": ["string", "null"
 
 class Worker:
     def __init__(self):
+        from .answers import answer_mode
+        self.answer_mode = answer_mode()
         # Reuse the measured encoder, but never import benchmark prompts or labels.
         from experiments.t02.encoders import Encoder
         self.encoder = Encoder("embedding")
@@ -28,8 +30,9 @@ class Worker:
         self.space = {
             "model": spec["repo"], "revision": spec["revision"], "artifact_sha256": hashes["onnx/model.onnx"],
             "tokenizer": f"{hashes['tokenizer.json']};tokenizers={tokenizers.__version__};specials;no-truncation",
-            "preprocessing": f"minilm-mask-mean-l2-v1;onnxruntime={onnxruntime.__version__};numpy={numpy.__version__};cpu-fp32",
-            "dimensions": 384, "max_tokens": 256, "query_prefix": "", "document_prefix": "", "normalization": "L2",
+            "preprocessing": f"{self.encoder.profile['preprocessing']};onnxruntime={onnxruntime.__version__};numpy={numpy.__version__};cpu-fp32",
+            "dimensions": 384, "max_tokens": self.encoder.max_tokens,
+            "query_prefix": self.encoder.profile['query_prefix'], "document_prefix": "", "normalization": "L2",
         }
         self.generation_profile = load_generator_profile()
         self.generator_alias = self.generation_profile['alias']

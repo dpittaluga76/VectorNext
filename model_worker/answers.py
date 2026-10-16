@@ -2,6 +2,7 @@
 import json
 import hashlib
 import math
+import os
 import time
 from decimal import Decimal
 import jsonschema
@@ -16,6 +17,13 @@ ASSESS_PROMPT = """Classify whether the supplied evidence answers the original q
 supported: one identified event/record supports every requested field with the requested types. ambiguous: several events/records fit the question because it lacks a distinguishing constraint, such as a date. insufficient_evidence: the requested event or any requested fact is absent, or a requested numeric count is null/missing. An explicitly requested raw nullable JSON value may be supported by a stored null. Do not select the first of multiple events. Do not add values across events. Use only the provided evidence, not outside knowledge. Give the status and one short reason referring to the matching records or missing information."""
 ASSESS_SCHEMA = {"type": "object", "properties": {"status": {"enum": ["supported", "ambiguous", "insufficient_evidence"]}, "reason": {"type": "string"}},
                  "required": ["status", "reason"], "additionalProperties": False}
+
+
+def answer_mode():
+    mode = os.environ.get('VECTORNEXT_ANSWER_MODE', 'two_call')
+    if mode not in ('two_call', 'single_call_v1'):
+        raise ValueError('unknown answer mode: ' + mode)
+    return mode
 
 
 def object_schema(properties):
@@ -169,6 +177,11 @@ def handle(worker, op, value):
         msgs[0]["content"] = ASSESS_PROMPT
         return max(extraction_tokens, count_prompt(worker, msgs))
     if op == "answer":
+        if getattr(worker, 'answer_mode', 'two_call') == 'single_call_v1':
+            result, audit = generate(worker, messages(value),
+                schema(value['fields'], value['evidence'], value.get('constrain_pointers', False)), PROMPT)
+            audit.update(answer_mode='single_call_v1', assessment_skipped=True)
+            return {'answer': result, 'audit': audit}
         msgs = messages(value)
         msgs[0]["content"] = ASSESS_PROMPT
         decision, assessment_audit = generate(worker, msgs, ASSESS_SCHEMA, ASSESS_PROMPT, output_tokens=192)

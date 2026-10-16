@@ -13,6 +13,13 @@
       "alias": "vectornext-gemma4-12b",
       "cpu_moe": 0
     },
+    "12b-kv-q8": {
+      "lock": "experiments/t27/models.12b.lock.json",
+      "alias": "vectornext-gemma4-12b-kv-q8",
+      "cpu_moe": 0,
+      "cache_type_k": "q8_0",
+      "cache_type_v": "q8_0"
+    },
     "26b-gpu": {
       "lock": "experiments/t02/models.26b.lock.json",
       "alias": "vectornext-gemma4-26b-a4b",
