@@ -1,6 +1,6 @@
 # T04 retrieval contract
 
-Status: implemented and verified in T04. Design reference: [architecture.md](architecture.md), sections 3, 4, 6, and 7. Historical verification results are in the [completed-task archive](tasks-done.md) and [diagnostic report](reports/t04-retrieval.md).
+Status: implemented and verified in T04. Design reference: [stored data](architecture.md#stored-data-and-durability), [contextualization](architecture.md#ingestion-and-contextualization), [retrieval](architecture.md#retrieval-and-evidence-assembly) and [answers](architecture.md#answer-construction-and-validation). Historical verification results are in the [completed-task archive](tasks-done.md) and [diagnostic report](reports/t04-retrieval.md).
 
 ## Snapshot and space boundary
 

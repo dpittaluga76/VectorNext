@@ -20,6 +20,8 @@ T37's full handoff is in [the completed archive](tasks-done.md#t37--hybrid-answe
 
 **Development handoff cleanup — complete.** `AGENTS.md` now contains only current development instructions; its former summary and task notes are in the [historical handoff](tasks-done.md#historical-agentsmd-handoff). Verified text preservation with rebased links, 98 local links/anchors and a documentation-only diff. No active implementation work remains.
 
+**Architecture cleanup — complete.** The [architecture](architecture.md) describes the current system; completed-task specifications, comparisons, rollout notes and the decision record are in the [historical architecture handoff](tasks-done.md#historical-architecture-handoff). Checked current defaults/bounds against implementation/contracts, preserved all 102 task-numbered paragraphs and validated 103 links/anchors. Current contract references use named sections; frozen protocols/reports remain unchanged. Documentation-only diff; no runtime changes or model tests.
+
 ## Next useful step
 
 Select and scope further quality/performance work; model-switch latency and broad semantic reliability remain explicit limitations.

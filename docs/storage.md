@@ -1,7 +1,7 @@
 # Storage contract (journal format 1, checkpoint versions 1 and 2)
 
 Status: adopted implementation specification; verification results are recorded in the build plan.
-Design reference: [architecture.md](architecture.md), sections 3, 4, and 9.
+Design reference: [stored data and durability](architecture.md#stored-data-and-durability) and [operations](architecture.md#operations-caches-and-diagnostics).
 
 ## Scope and platform
 

@@ -1,6 +1,6 @@
 # T08 query, evidence, and answer contract
 
-Design reference: architecture sections 7 and 8. This describes the answer library and earlier CLI; T09 exposes the same contract through its [local API](deployment.md). Reads use one immutable committed index. Models run outside database transactions.
+Design reference: [answer construction](architecture.md#answer-construction-and-validation), [durable answer jobs](architecture.md#durable-answer-jobs-and-fallback) and [local model scheduling](architecture.md#local-models-and-gpu-ownership). This describes the answer library and earlier CLI; T09 exposes the same contract through its [local API](deployment.md). Reads use one immutable committed index. Models run outside database transactions.
 
 T37 wraps this unchanged answer library in [durable Hybrid routing](answer-jobs.md). Each attempt uses one model lease, original question/history/scope and bound revisions. Rust decides fallback only after final validation; forced modes do not cross models. The supported models are repaired NuExtract3 and Gemma 4 12B, with unchanged two-call answering and exact source rules.
 

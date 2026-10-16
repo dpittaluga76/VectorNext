@@ -4,7 +4,7 @@ T19 updated only the Rust HTTP adapter to Axum/Tokio, adds utoipa OpenAPI and lo
 
 Current deployment: all three services use `:t37-hybrid`, with Hybrid answering, durable answer jobs and a single-backend generation supervisor. See [answer-job storage/recovery/API contracts](answer-jobs.md) and [verified activation/rollback](reports/t37-hybrid.md). Setup prepares only the two supported generators; Start checks saved ingestion policies and performs no builds/downloads. Operational answer-job records at `db.answer-jobs` are excluded from database export and require a separate stopped-volume copy when preserving history.
 
-The original deployment was implemented and exercised on 2026-10-14. Design reference: architecture sections 2, 7–9 and T09 in the build plan. See [T09 results](reports/t09-deployment.md).
+The original deployment was implemented and exercised on 2026-10-14. Design reference: [components](architecture.md#components-and-ownership), [HTTP/browser interfaces](architecture.md#http-api-and-browser-workspace) and [operations](architecture.md#operations-caches-and-diagnostics); original task details are in the [completed archive](tasks-done.md). See [T09 results](reports/t09-deployment.md).
 
 The deployment has three long-running services. `vectornext` is the only database owner and exposes a localhost JSON API. It snapshots under a short mutex, then performs retrieval, deterministic parsing/chunking and model calls outside that mutex. A single ingestion coordinator advances durable stages and publishes complete revisions. Interrupted stages resume at startup; recorded failures require an explicit retry. Queries retain their original committed snapshot during concurrent ingestion.
 
