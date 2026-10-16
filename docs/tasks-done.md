@@ -7,6 +7,28 @@ This archive preserves the completed T01–T32 task definitions, verification re
 
 The statuses, next steps, work queue and session-maintenance instructions below are historical snapshots. Use [the active tracker](plan.md) for current priorities and task-maintenance rules; an archived proposal does not authorize new work. Add future completed-task records here with their completion date, results, limitations and report links.
 
+## Experiment Compose cleanup
+
+Requested 2026-10-16: remove standalone deployment YAML for completed experiments and verification runs from the current checkout. This includes the embedding/reranker pilot and Hybrid verification; their earlier retention is superseded. Keep the supported app, explicit model/PDF setup and general developer tooling.
+
+| Removed configuration | Historical purpose | Retained evidence |
+| --- | --- | --- |
+| `compose.eval.yaml` | Development answer/context comparisons (T10). | [Evaluation results](reports/t10-evaluation.md) |
+| `compose.independent.yaml` | NASA/USGS two-versus-five passage comparison (T11). | [Public-source results](reports/t11-independent.md) |
+| `compose.reliability.yaml` | Isolated ingestion/recovery drill (T13). | [Reliability verification](reports/t13-reliability.md) |
+| `compose.coverage.yaml` | Ranked versus evidence-coverage comparison (T14). | [Coverage results](reports/t14-evidence-coverage.md) |
+| `compose.benchmark.yaml` | VectorNext versus PostgreSQL/pgvector (T20). | [Database benchmark](reports/t20-pgvector.md) |
+| `compose.t32.yaml` | MiniLM/Nomic embeddings and MiniLM/Ettin reranking. | [Replacement pilot](reports/t32-replacements.md) |
+| `compose.t37.yaml` | Isolated Hybrid answering and live recovery verification. | [Hybrid verification](reports/t37-hybrid.md) |
+
+All seven final pre-cleanup files are available at [commit 818b61a](https://github.com/dpittaluga76/VectorNext/tree/818b61a3eafb305816dd4fa3c533b64003c3bd11). Older generator Compose files removed during Hybrid rollout are recorded in the [LLM archive](../archives/llm/README.md).
+
+For historical inspection, use a separate checkout of the referenced revision. For exact reproduction, use the particular experiment's recorded source archive/commit, image identities and execution freeze; the final pre-cleanup revision is not necessarily the measured runtime. Existing deployment commands and runners remain historical references and are not runnable unchanged from the current checkout. Never rewrite frozen manifests or restore historical runtime files over the supported installation.
+
+This cleanup preserves results, protocols, source fixtures, labels, scorers, manifests and existing archives. It does not start or stop services, remove Docker volumes/images, delete model files or change application behavior. The [README configuration guide](../README.md#compose-files) lists the five retained Compose files.
+
+Verification: `docker compose -f <file> config --quiet` passed for all five retained files; their contents are unchanged. Launcher file references, the seven historical Git paths and 26 added local documentation links/anchors were checked. The diff contains only documentation, removal of the seven YAML files and removal of the deleted coverage file's Git-attributes rule. No application/model regression rerun was needed for this configuration cleanup; no services were started or stopped.
+
 ---
 
 Last updated: 2026-10-16 (UTC).

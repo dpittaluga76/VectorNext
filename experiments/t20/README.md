@@ -1,5 +1,7 @@
 # VectorNext / PostgreSQL + pgvector benchmark
 
+**Historical deployment:** `compose.benchmark.yaml` has been removed from the current checkout. Deployment commands and the runner below require the recorded experiment source environment. See [configuration history and prior revision](../../docs/tasks-done.md#experiment-compose-cleanup). Frozen protocols, manifests and results are unchanged.
+
 This CPU-only experiment compares the existing Rust storage/search implementation with PostgreSQL 18 + pgvector 0.8.7. It does not use model inference, user documents, semantic labels or historical evaluation data. Read [the frozen protocol](../../docs/t20-protocol.md) and [checkpoint/recovery amendment](../../docs/t20-protocol-amendment-01.md) before interpreting timings.
 
 Two deterministic corpora contain 400 / 1,600 documents and 12,800 / 51,200 supplied 384-dimensional vectors. An independent float64 oracle checks top-10 cosine results. Exact results and pgvector HNSW profiles are reported separately, including filtered queries, recall, errors, latency, ingestion, resources and process-interruption recovery.

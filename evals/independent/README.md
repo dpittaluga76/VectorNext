@@ -1,5 +1,7 @@
 # T11: independent public-source comparison
 
+**Historical deployment:** `compose.independent.yaml` has been removed from the current checkout. Deployment commands and the runner below require the recorded experiment source environment. See [configuration history and prior revision](../../docs/tasks-done.md#experiment-compose-cleanup). Frozen fixtures, manifests and results are unchanged.
+
 A frozen comparison of **two versus five primary passages** on real NASA and USGS documents. It uses the existing local pipeline, structural context, MiniLM embedding/reranking and Gemma 4 26B A4B QAT. The experimental variable is `primary_limit`; candidates stay at 30 and reranking at 20.
 
 The corpus is independent of T01's synthetic soccer data. Codex authored the questions and inspected the sources before inference. This is **not an independently administered benchmark**, and public facts may have appeared in model training. Original source support is scored separately from answer values.

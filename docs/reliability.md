@@ -59,6 +59,8 @@ Diagnostics retain exact typed JSON values. Drafts larger than 32 KiB use a labe
 
 ## Reproduce the operational drill
 
+**Historical deployment:** `compose.reliability.yaml` has been removed from the current checkout. The commands and drill runner below require the recorded experiment source environment. See [configuration history and prior revision](tasks-done.md#experiment-compose-cleanup). The application recovery commands earlier in this guide still use the supported `compose.app.yaml`.
+
 The drill uses project `vectornext-t13`, port 8093, `/storage/reliability`, existing local model assets and a **fresh dedicated volume**. It refuses existing jobs/data or a reused capture directory. It stops/restarts only this project's API/CPU services and never removes volumes. Keep an earlier volume and its captures; use a separate checkout/environment for another clean run rather than deleting them.
 
 ```powershell

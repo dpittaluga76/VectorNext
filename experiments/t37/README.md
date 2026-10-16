@@ -1,5 +1,7 @@
 # Hybrid answer integration
 
+**Historical deployment:** `compose.t37.yaml` has been removed from the current checkout. Deployment commands and the runners below require the recorded verification source environment. See [configuration history and prior revision](../../docs/tasks-done.md#experiment-compose-cleanup). Frozen fixtures, manifests and results are unchanged. Start the supported app with `compose.app.yaml` or the Windows launcher.
+
 This bounded application check uses the eight retained cases and five source files from the NuExtract planning comparison. It does not rerun the historical large suites or use the original holdout. See the [frozen protocol](../../docs/t37-protocol.md), [results](../../docs/reports/t37-hybrid.md) and [answer-job contract](../../docs/answer-jobs.md).
 
 ## Reproduction

@@ -12,6 +12,8 @@ These attributed snapshots are not relicensed as AGPL code. Preserve publisher c
 
 ## Reproduce without changing the experiment
 
+**Historical deployment:** `compose.coverage.yaml` has been removed from the current checkout. The following reproduction commands require the recorded experiment source environment. See [configuration history and prior revision](../../docs/tasks-done.md#experiment-compose-cleanup). Frozen fixtures, manifests and results are unchanged; the current app still exposes the opt-in strategy described below.
+
 Use Python 3.12+, Docker Desktop with NVIDIA GPU support, and the existing pinned models under `models/`. No additional model downloads or cloud inference are required.
 
 **After T15:** run the following commands from the preserved T14 source tree, not current source. Before the repair, all 272 non-ignored repository files were saved byte-for-byte in local `backups/t14-source-before-t15.zip`; both frozen manifests were verified. Extract into a new directory and provide the existing model files separately. The archive hash and restoration details are in [T15 verification](../../docs/reports/t15-numeric-proofs.md). This ignored archive is local and is not included in a fresh Git clone. Current source intentionally fails the old execution check; never refresh that manifest to conceal a runtime change. Retained T14 image tags have not been overwritten.

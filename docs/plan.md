@@ -16,11 +16,13 @@ Completed tasks and historical handoffs: [tasks-done.md](tasks-done.md).
 
 T37's full handoff is in [the completed archive](tasks-done.md#t37--hybrid-answering-with-queued-gemma-fallback). Use [answer-job contracts](answer-jobs.md) and [rollout/rollback instructions](reports/t37-hybrid.md) when operating the app.
 
-**Open follow-up — disabled Ask button:** reported after activation. The API, all model capabilities and answer queue were ready, with zero unfinished jobs, at inspection. The current browser's document selection, question and history state have not been confirmed. Diagnosis was interrupted before any fix; do not treat the cause as established.
+**Repository configuration cleanup — complete.** Removed seven standalone experiment/verification Compose files; the README lists the five retained app/setup/developer configurations. [History and prior revision](tasks-done.md#experiment-compose-cleanup) preserve their purpose and recovery path, and affected guides identify deployment commands as historical. All five retained configurations passed `docker compose -f <file> config --quiet`; launcher references and 26 added local documentation links/anchors passed inspection. Supported configuration bytes, application code and frozen evaluation artifacts are unchanged; no services or GPU evaluations were run.
+
+No active implementation work. The user confirmed that the reported disabled Ask button was not an issue; no fix is needed.
 
 ## Next useful step
 
-Finish the Ask-button diagnosis by checking the selected document checkbox and the current conversation state, then fix any confirmed gating or explanation defect. Select and scope further quality/performance work separately; model-switch latency and broad semantic reliability remain explicit limitations.
+Select and scope further quality/performance work; model-switch latency and broad semantic reliability remain explicit limitations.
 
 The items below are **proposed**, not scheduled or started. Assign the next task ID and define its scope, dependencies and acceptance criteria when the user selects work.
 

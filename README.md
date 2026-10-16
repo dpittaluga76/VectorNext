@@ -359,6 +359,20 @@ Facet selection remains experimental: the final-selection passage-coverage resul
 - **Upgrade refused:** an unfinished ingestion job requires an old generator. Finish it with the previous deployment; its saved policy is never rewritten.
 - **Updated code is not visible:** choose Rebuild, then reload the browser. Start deliberately reuses installed images.
 
+### Compose files
+
+For everyday use, the Windows launcher selects [`compose.app.yaml`](compose.app.yaml). The current checkout keeps only application, setup and general developer configurations:
+
+| File | Purpose |
+| --- | --- |
+| [`compose.app.yaml`](compose.app.yaml) | The supported three-service app, with on-demand CLI and backup tools. |
+| [`compose.models.yaml`](compose.models.yaml) | Explicit supported-model downloads and GPU prerequisite checks. |
+| [`compose.processor.yaml`](compose.processor.yaml) | PDF model setup and offline CPU processing tools. |
+| [`compose.yaml`](compose.yaml) | Rust regression tests and evaluation-fixture checks; this is what bare `docker compose` selects. |
+| [`compose.ingestion.yaml`](compose.ingestion.yaml) | Lower-level ingestion/answer developer tools with separate storage. |
+
+Completed experiments no longer ship standalone Compose YAML files in the current tree. Their purposes and prior source revision are recorded in the [experiment configuration history](docs/tasks-done.md#experiment-compose-cleanup). Results, fixtures and frozen manifests remain available. Historical deployment commands and runners require their recorded source environment; they are not startup instructions for the current app.
+
 ### Command-line setup and automation
 
 The existing CLI and JSON API remain available. For manual setup:

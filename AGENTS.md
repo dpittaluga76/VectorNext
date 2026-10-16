@@ -10,6 +10,8 @@ VectorNext is an original vector database and local document-retrieval system. T
 
 Follow the current user request. This handoff does not itself authorize starting implementation, downloading models, or starting services. When implementation is requested, take the relevant task from the plan and carry it through verification.
 
+Completed experiment/verification Compose YAML files have been removed from the current tree at the user's request. The [configuration history](docs/tasks-done.md#experiment-compose-cleanup) records their purposes and prior revision. Historical deployment commands below require their recorded source checkout; preserve frozen manifests instead of recreating removed files in the active app. The [README](README.md#compose-files) lists supported app/setup/developer configurations.
+
 ## Design discipline
 
 - Explicit user instructions can change the design. Update the documents to reflect those changes.

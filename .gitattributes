@@ -12,7 +12,6 @@ processor/requirements.lock text eol=lf
 *.pdf binary
 # T14 manifests bind exact working-tree bytes, including acquisition line endings.
 evals/coverage/** -text
-compose.coverage.yaml -text
 # T28 freezes bind exact fixture/scorer/browser bytes across checkouts.
 experiments/t28/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 frontend/e2e/pointers-live.spec.ts -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

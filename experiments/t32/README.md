@@ -1,5 +1,7 @@
 # Nomic / Ettin replacement pilot
 
+**Historical deployment:** `compose.t32.yaml` has been removed from the current checkout. Deployment commands and the runner below require the recorded experiment source environment. See [configuration history and prior revision](../../docs/tasks-done.md#experiment-compose-cleanup). Frozen fixtures, manifests and results are unchanged; this pilot does not change supported application defaults.
+
 Six fixed questions × four embedding/reranking combinations = **24 scored requests**, one pass. Read the [protocol](protocol.md) and [results](../../docs/reports/t32-replacements.md). These fictional fixtures are an author-created engineering pilot, not independent quality validation. Do not change the input freeze or extend the batch based on observed answers.
 
 | Arm | Embedding | Reranking |

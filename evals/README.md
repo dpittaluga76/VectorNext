@@ -29,6 +29,8 @@ Validation returns exit code 0 for valid data and 1 for invalid data. It reports
 
 ## Integrated development comparison
 
+**Historical deployment:** `compose.eval.yaml` has been removed from the current checkout. The commands and runner in this section require the recorded experiment source environment. See [configuration history and prior revision](../docs/tasks-done.md#experiment-compose-cleanup). The offline fixture checks above still use the retained `compose.yaml`.
+
 Use the pinned models already set up for the application, Docker Desktop and a host Python with the standard library. The host runner measures API round trips and samples containers; all parsing, database work, CPU models and GPU inference run in Docker. It operates only the `vectornext-t10` project, on localhost port 8089, and never removes a volume. Initial setup is in the root README. This experiment runs the six holdout questions **zero times**.
 
 ```sh

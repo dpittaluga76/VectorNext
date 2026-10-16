@@ -7,6 +7,8 @@ This document condenses the project discussion into an implementation reference.
 
 Track current work and proposed next steps in [plan.md](plan.md). Completed task definitions, verification and historical handoffs are retained in [tasks-done.md](tasks-done.md); archived priorities do not override the active tracker or this design.
 
+**Repository configuration policy (adopted 2026-10-16):** keep Compose files for the supported application, model/PDF setup and general developer tooling. Per-experiment and completed verification-run Compose files are historical artifacts: remove their standalone YAML files from the current tree and record their purpose and prior Git revision in the task history. This user-requested cleanup also applies to embedding/reranker experiments and supersedes their earlier Compose-file retention. Preserve reports, fixtures, labels, scorers, frozen manifests and existing source archives; historical deployment commands require the recorded source environment rather than the current checkout. Application behavior, runtime images, stored data and running services are unchanged.
+
 ## 1. Confirmed requirements
 
 - Build our own vector database, including the storage/search core. Do not substitute an existing vector database as the product implementation.
