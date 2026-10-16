@@ -18,7 +18,7 @@ T37's full handoff is in [the completed archive](tasks-done.md#t37--hybrid-answe
 
 **Repository configuration cleanup — complete.** Removed seven standalone experiment/verification Compose files; the README lists the five retained app/setup/developer configurations. [History and prior revision](tasks-done.md#experiment-compose-cleanup) preserve their purpose and recovery path, and affected guides identify deployment commands as historical. All five retained configurations passed `docker compose -f <file> config --quiet`; launcher references and 26 added local documentation links/anchors passed inspection. Supported configuration bytes, application code and frozen evaluation artifacts are unchanged; no services or GPU evaluations were run.
 
-No active implementation work. The user confirmed that the reported disabled Ask button was not an issue; no fix is needed.
+**Development handoff cleanup — complete.** `AGENTS.md` now contains only current development instructions; its former summary and task notes are in the [historical handoff](tasks-done.md#historical-agentsmd-handoff). Verified text preservation with rebased links, 98 local links/anchors and a documentation-only diff. No active implementation work remains.
 
 ## Next useful step
 
