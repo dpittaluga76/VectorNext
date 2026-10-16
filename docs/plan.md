@@ -22,6 +22,8 @@ T37's full handoff is in [the completed archive](tasks-done.md#t37--hybrid-answe
 
 **Architecture cleanup — complete.** The [architecture](architecture.md) describes the current system; completed-task specifications, comparisons, rollout notes and the decision record are in the [historical architecture handoff](tasks-done.md#historical-architecture-handoff). Checked current defaults/bounds against implementation/contracts, preserved all 102 task-numbered paragraphs and validated 103 links/anchors. Current contract references use named sections; frozen protocols/reports remain unchanged. Documentation-only diff; no runtime changes or model tests.
 
+**README cleanup — complete.** The entry page now focuses on current features, setup and usage, with a compact report index. Complete result tables and six historical notes are preserved in [historical README results](tasks-done.md#historical-readme-results). Verified text preservation, 128 local links/anchors, nine CLI argument examples, eight PowerShell blocks and a documentation-only diff. No services or model evaluations were run.
+
 ## Next useful step
 
 Select and scope further quality/performance work; model-switch latency and broad semantic reliability remain explicit limitations.

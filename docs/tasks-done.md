@@ -3,7 +3,7 @@
 Archived: 2026-10-16 (UTC).
 Current tracker: [plan.md](plan.md). Design reference: [architecture.md](architecture.md).
 
-This archive preserves completed-task definitions, verification results, decisions and session handoffs from the former build plan, [historical AGENTS.md notes](#historical-agentsmd-handoff) and [historical architecture notes](#historical-architecture-handoff). Detailed reports and frozen evaluation artifacts remain at their existing paths.
+This archive preserves completed-task definitions, verification results, decisions and session handoffs from the former build plan, [historical AGENTS.md notes](#historical-agentsmd-handoff), [historical architecture notes](#historical-architecture-handoff) and [historical README results](#historical-readme-results). Detailed reports and frozen evaluation artifacts remain at their existing paths.
 
 The statuses, next steps, work queue and session-maintenance instructions below are historical snapshots. Use [the active tracker](plan.md) for current priorities and task-maintenance rules; an archived proposal does not authorize new work. Add future completed-task records here with their completion date, results, limitations and report links.
 
@@ -1522,3 +1522,110 @@ These references informed the proposal; their techniques are not proof of Vector
 - [Docker Desktop GPU support](https://docs.docker.com/desktop/features/gpu/)
 - [Compose GPU configuration](https://docs.docker.com/compose/how-tos/gpu-support/)
 - [HNSW original paper](https://arxiv.org/abs/1603.09320)
+
+## Historical README results
+
+Archived on 2026-10-16 from [the preceding README](https://github.com/dpittaluga76/VectorNext/blob/dfea2ab4c551a3a19768d46791784fde9cd4dc14/README.md). The entry page now focuses on current features, setup and usage. The original result tables, explanations, verification summaries and caveats below retain their wording; headings are nested and relative links are rebased for this archive. These are historical measurements of the recorded versions, not new measurements of the current application.
+
+Cleanup verification: the complete measured-results section and six historical notes match the preceding README after only heading/link adjustments. The current README, new archive links, plan links and incoming README anchors passed 128 local-link checks. Nine documented CLI examples passed argument parsing without executing application operations; all eight PowerShell blocks passed syntax checks. Setup services, bundled examples and check-module paths were inspected against repository configuration. Only Markdown documentation changed; no services, models, fixtures, captures or historical reports were modified or rerun.
+
+### Measured results
+
+#### Hybrid answering and model comparisons
+
+The supported app uses NuExtract3 first and queues one Gemma attempt when its factual result fails validation or does not answer the question. Forced Gemma and NuExtract modes make behavior explicit. The bounded integration check passed **8/8 cases in each mode**: five source-supported answers and three correct negative/API outcomes. Hybrid accepted all five supported NuExtract answers and used fallback for two of seven admitted questions. These are observed regression cases, not independent quality evidence.
+
+| Observed integration result | Hybrid | NuExtract only | Gemma only |
+| --- | ---: | ---: | ---: |
+| Correct cases under rules frozen before testing | 8/8 | 8/8 | 8/8 |
+| Median attempt work, five common supported answers | 3.62 s | 3.54 s | 12.55 s |
+| Model fallbacks | 2 | 0 | 0 |
+
+Attempt work excludes queueing and model loading and includes CPU retrieval. **Fallback is substantially slower:** the measured missing-evidence case took **90.29 s**, including 60.94 s loading Gemma. The batch timing comparison also includes cold switches and an overnight PC-sleep interruption, retained in raw captures and excluded from derived latency summaries. Live switching, backend failure and API restart checks passed with at most one backend observed across 236 samples. [Complete measurements, scoring corrections and limitations](reports/t37-hybrid.md) · [Frozen protocol](t37-protocol.md) · [Reproduce](../experiments/t37/README.md).
+
+The [historical model comparisons](../archives/llm/comparisons.md) retain the complete 12B/26B table, pointer-constraint changes, accuracy/latency measurements, NuExtract planning repair and limitations. Archived model experiments are not runtime choices. MiniLM remains the embedding/reranking default; [embedding/reranker measurements](reports/t32-replacements.md) remain separate from generation routing.
+
+#### Database comparison: PostgreSQL + pgvector
+
+The database benchmark compares the existing VectorNext core with **PostgreSQL 18.6 + pgvector 0.8.7**, using identical synthetic 384-dimensional vectors and equal limits of **2 CPUs / 4 GiB per database**. PostgreSQL exact search was faster in all tested warm query groups; both exact engines returned correct results throughout.
+
+| Vectors | VectorNext exact median | PostgreSQL exact median | PostgreSQL HNSW median (ef=40) | HNSW recall@10 |
+| ---: | ---: | ---: | ---: | ---: |
+| 12,800 | 8.818 ms | 5.673 ms | 0.586 ms | 100% |
+| 51,200 | 43.862 ms | 22.729 ms | 0.843 ms | 99.0625% |
+
+These are **warm, unfiltered client timings**, with 32 independent query vectors repeated three times per corpus. The full run includes filtered and empty searches: 4,096 timed requests, no query errors, and 2,048/2,048 exact requests correct. This measures supplied-vector search/storage, not semantic relevance or end-to-end answer quality; HTTP/PostgreSQL protocols and storage schemas differ.
+
+**The benchmark exposed a checkpoint limit:** VectorNext's snapshot exceeded its 64 MiB frame at both sizes, while PostgreSQL checkpointed successfully. **Streaming checkpoints fix that limit** with streamed checkpoints: fresh copies now checkpoint, recover after SIGKILL, export and restore, with 768/768 exact-query checks passing. The original benchmark results remain unchanged; no new comparative speed claim follows. PostgreSQL remains benchmark tooling, not a production dependency. [Checkpoint results and compatibility](reports/t21-checkpoints.md).
+
+[Full results, filters and limitations](reports/t20-pgvector.md) · [Measurements and hashes](reports/t20-pgvector.json) · [Run the benchmark](../experiments/t20/README.md)
+
+#### Indexed filter execution
+
+The filter benchmark profiles the same synthetic stores with baseline and optimized Rust release binaries. At 51,232 vectors, warm in-process scalar equality fell from **16.302 ms to 0.252 ms**, empty-result filtering from **16.693 ms to 0.059 ms**, and numeric-range queries from **25.177 ms to 1.024 ms**. All 4,224 requests matched complete response hashes across repeated groups. Index construction costs more; nested JSON/container predicates retain scan behavior. These exclude HTTP/serialization and are not new PostgreSQL comparison results. [Protocol, full measurements and limitations](reports/t22-filters.md).
+
+The candidate-retrieval experiment tests evidence retrieval on **12 fresh NIST references / 188 chunks**, using real CPU embeddings and reranking. Across 96 successful requests, question-focused candidate expansion improved complete evidence coverage in the 20-passage shortlist from **18/20 to 20/20 questions**, but final-five coverage stayed **16/20**. This motivated the separate final-evidence selection experiment below. These are agent-authored literal-source coverage measurements, not generated-answer accuracy or independent human adjudication. [Frozen protocol, results and limitations](reports/t23-evidence.md) · [Reproduce](../evals/evidence/README.md).
+
+The final-selection experiment holds the expanded shortlist constant and tests final passage selection on **10 fresh NASA references / 388 chunks**. Facet-focused selection improves complete frozen final evidence coverage from **16/20 to 18/20 questions**, with no measured regressions, but median uncached retrieval latency rises from **685 ms to 1,437 ms**. All 96 requests succeeded. The application exposes this selector as an opt-in mode; those frozen scores measure authored facets and passage coverage, not the automatic app or generated-answer quality. [Results, cost and source-review limitations](reports/t24-final-selection.md) · [Reproduce](../evals/selection/README.md).
+
+#### Automatic field-planning verification
+
+The planner repair addresses follow-up/count failures exposed during application integration, then separately addresses a mixed numeric-type failure discovered during verification. Its final `field-planning-v3` candidate passed:
+
+| Check | Result |
+| --- | --- |
+| Newly frozen planner cases | **12/12** — independent field types, counts, follow-ups, units/date constraints, raw nulls and appropriate refusals. |
+| Fresh source-backed API workflows | **8/8** — TXT/PDF/JSON, separate document counts, a conversational follow-up, exact decimal/zero/null values, missing evidence and invalid requests. |
+| Previously observed planner failures and controls | **5/5** — regression checks kept separate from the new cases. |
+| Live browser workflow | Automatic questions, history/scope handling, clickable sources, IndexedDB reload and exact diagnostic export passed. |
+
+The final planner's median call took **7.11 seconds** on its 12-case set. Ordinary questions add this one planning operation before retrieval and the existing answer operations; explicit fields bypass it. These small, agent-authored synthetic checks establish the tested integration behavior. Broad semantic accuracy remains unproven. The first candidate's decimal-type failure and all original scores remain recorded. [Results and retained failures](reports/t26-planning.md) · [Machine-readable results](reports/t26-planning.json) · [Reproduce with isolated data](../experiments/t26/README.md).
+
+#### Retrieval and answer evaluations
+
+Measured on an **RTX 4060 with 8 GB VRAM, Ryzen 5 7600 and approximately 64 GB system RAM**, using Docker on Windows/WSL 2.
+
+**Public-source answer comparison: question-aware evidence coverage.** Eight new NASA/USGS sources, 201 chunks and 16 frozen questions compare three strategies across 96 local requests:
+
+| Configuration | Exact outcomes, each pass | Median, cold / warm |
+| --- | --- | --- |
+| Ranked five — default | 8/16 | 29.18 / 28.53 s |
+| Ranked two | 7/16 | 18.19 / 17.34 s |
+| Field coverage — experimental | 8/16 | 16.50 / 15.86 s |
+
+Coverage reduced median latency by **43.5–44.4%**, but did not increase strict answer accuracy or clear the adoption gate. **Ranked five remains the default.** The experiment distinguishes missing candidates, evidence selection and quote-validation failures. One question also permits a reasonable interpretation different from its frozen ambiguity label; the score and source-review exception are both retained. This is a small diagnostic corpus, not an independently administered benchmark.
+
+The evidence-coverage experiment found numeric proof defects. **The numeric validator repairs them:** exact English grouped numbers and named-month date years validate, while shortened numeric quotes are checked against the complete supplied passage. For example, `3,000` supports `3000`; clipping it to `3` cannot support `3`. Original quotes, exact values and historical scores are preserved. These mechanical checks do not guarantee factual correctness. [Numeric-proof verification and limits](reports/t15-numeric-proofs.md) · [Evidence-coverage results](reports/t14-evidence-coverage.md) · [Readable coverage trace](reports/t14-coverage-workflow.md) · [Try the experimental option](../evals/coverage/README.md).
+
+**Earlier public-source comparison:** **20 NASA/USGS documents and 28 questions**, with the same corpus, models and retrieval settings for both passage limits. Its corpus/annotation protocol differs from the evidence-coverage suite, so the answer rates are not directly comparable.
+
+| Answer configuration | Median, cold cache | Median, warm cache | Correct outcomes / planned |
+| --- | --- | --- | --- |
+| Structural context, five primary passages — default | 22.27 s | 21.17 s | 16/28 in each pass |
+| Structural context, two primary passages — opt-in experiment | 11.08 s | 11.51 s | 15/28 in each pass |
+
+Two passages reduced median response time by **46–50%**, but lost a three-document answer and a conversational follow-up that five handled. It improved one answer by removing a numeric distractor. **Five remain the default.** Latencies include errors and abstentions; faster responses do not necessarily mean successful answers.
+
+Only **18/20 documents were admitted, producing 658 chunks**. One PDF failed strict partial-extraction admission; the other hit a busy processing lane. Their six questions remain in the denominator. This exposes real ingestion and evidence-selection gaps, and does not establish PDF retrieval quality. The 112 requests repeat 28 questions across four blocks. Codex authored and reviewed this public-source set; it is independent of the old synthetic corpus, not an independently administered benchmark. The original six holdout questions remain unused.
+
+A separate **core-only capacity probe** searched **12,800 supplied 384-dimensional vectors across 400 synthetic documents** in **9.95 ms median**, with **79.3 MiB peak process RSS**. This measures hybrid search capacity; it excludes document parsing, embeddings and answer generation.
+
+Evidence-coverage verification passed **217 automated checks** (101 Rust, 116 Python), plus formatting, lint and Compose validation. Those checks are separate from answer quality and the newly recorded numeric-boundary diagnostic. Reliability verification also completed a CPU recovery/PDF drill; see [results](reports/t13-reliability.md). The earlier public-source evaluation found and fixed a UTF-8 ingestion panic; the earlier failed attempt is retained.
+
+The earlier synthetic development comparison passed 13/13 questions with both limits. Generated context increased its five-file ingestion from **24.76 s to 72.16 s** without improving final answers, so structural context remains the default. Broader quality and sustained-load performance remain open.
+
+[Public-source evaluation and failures](reports/t11-independent.md) · [Machine-readable evidence](reports/t11-independent.json) · [Dataset and reproduction](../evals/independent/README.md) · [Earlier development/capacity results](reports/t10-evaluation.md)
+
+### Former verification, hardware and implementation notes
+
+Use Docker Desktop with WSL 2, Linux containers and NVIDIA GPU support. The tested PC has an RTX 4060 (8 GB VRAM) and about 64 GB RAM. Setup installs **both** supported GGUFs, plus CPU/PDF models; allow additional disk space for images and documents. The Hybrid integration run sampled **7,735 MiB whole-device GPU use**, leaving only 453 MiB at that sample. One model is loaded at a time. These observations are not minimum system requirements or a guarantee that concurrent GPU workloads fit; WDDM paging was not instrumented. See [artifact sizes and hashes](../model_assets/setup.lock.json) and [hardware measurements](reports/t37-hybrid.md).
+
+Facet selection remains experimental: the final-selection passage-coverage results do not establish end-to-end answer accuracy. The planner repair addresses the measured automatic-planning failures from its application integration; broader relevance and ambiguity handling still need evaluation. [Planning results](reports/t26-planning.md) · [Historical integration results](reports/t25-facet-integration.md).
+
+Hybrid verification passed Rust regressions and formatting/Clippy, **89 Python checks**, 71 frozen HTTP cases, five browser boundaries, three OpenAPI checks, six component checks and thirteen offline workspace scenarios, plus two real-adapter documentation/browser scenarios. The 24-question integration comparison and separate switching/outage drill are retained with their raw diagnostics. The existing library survived verified backup/restore and activation; a live source-linked browser answer, PDF opening, reload and export passed. [Verification, retained interruptions and rollback](reports/t37-hybrid.md). The original holdout remains unused.
+
+Browser workspace and launcher verification passed 116 Rust, 118 Python unit/regression checks, five live HTTP checks, five frontend component checks, nine offline browser scenarios and a production-browser scenario with real Gemma. [Results, retained failures and limitations](reports/t16-t18-local-app.md). These are operational checks, not a new retrieval-quality benchmark.
+
+The Axum migration additionally passed the frozen 71-case HTTP comparison, two OpenAPI schema checks and two browser scenarios against the real Axum adapter, including exact numeric requests/responses. See [the migration report](reports/t19-axum.md) for isolated reproduction commands, rollback and limitations.
+
+- **Streaming checkpoints:** The checkpoint format removes the aggregate 64 MiB snapshot limit with numbered 1 MiB segments, per-frame CRCs and a terminal SHA-256 manifest. Legacy snapshots remain readable; older binaries reject new snapshots. Verified checkpoint, forced-restart recovery and export/restore at both formerly failing benchmark sizes. Individual journal/job frames still have a 64 MiB limit, and exports retain an 8 GiB total bound. [Format and rollback boundary](storage.md#t21-bounded-checkpoint-stream) · [Verification](reports/t21-checkpoints.md).
