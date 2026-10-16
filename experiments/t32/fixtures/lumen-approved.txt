@@ -1,0 +1,9 @@
+# Lumen K7 pressure authorization
+Synthetic engineering fixture; all names and figures are fictional.
+
+## September 2031 final operating approval
+The approved continuous operating pressure of the Lumen K7 pump is 17.5 bar. This is the continuous limit for September 2031 service.
+The proof test pressure is 26 bar; proof testing is temporary and does not authorize continuous operation. The emergency relief valve opens at 21 bar.
+
+## Superseded proposal
+An earlier Lumen K7 proposal listed 19 bar for continuous use. That proposal was rejected before the September 2031 approval.

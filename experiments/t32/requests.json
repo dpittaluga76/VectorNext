@@ -1,0 +1,72 @@
+{
+  "pressure_revision": {
+    "question": "What is the approved continuous operating pressure, in bar, of the Lumen K7 pump for September 2031 service?",
+    "fields": {
+      "pressure_bar": {
+        "kind": "number",
+        "description": "Approved continuous operating pressure of Lumen K7 for September 2031 service in bar",
+        "nullable": false
+      }
+    }
+  },
+  "route_two_sources": {
+    "question": "For the accepted Norhaven Link route in August 2031, give its pier count and maximum authorized service load in tonnes.",
+    "fields": {
+      "piers": {
+        "kind": "integer",
+        "description": "Pier count of the accepted Norhaven Link route",
+        "nullable": false
+      },
+      "load_tonnes": {
+        "kind": "integer",
+        "description": "Maximum authorized service load in tonnes for that route",
+        "nullable": false
+      }
+    }
+  },
+  "long_exact_record": {
+    "question": "What exact checksum count was recorded for Aster vault run R-2031-06?",
+    "fields": {
+      "checksum_count": {
+        "kind": "integer",
+        "description": "Recorded checksum count for Aster vault run R-2031-06",
+        "nullable": false
+      }
+    }
+  },
+  "unknown_count": {
+    "question": "How many bypass alarms fired in Solace bank 3 during June 2031?",
+    "fields": {
+      "bypass_alarms": {
+        "kind": "integer",
+        "description": "Reported bypass alarm count for Solace bank 3 during June 2031; an unrecorded count is unknown, not zero",
+        "nullable": false
+      }
+    }
+  },
+  "pdf_correction": {
+    "question": "What is the final inspection interval in days for the Cedar type B manifold in the July 2031 audit?",
+    "fields": {
+      "interval_days": {
+        "kind": "integer",
+        "description": "Final manifold inspection interval in days for Cedar type B, July 2031",
+        "nullable": false
+      }
+    }
+  },
+  "pdf_separate_counts": {
+    "question": "For the Helio service vessel September 2031 transit certificate, give the certified passenger limit and the certified capacity of each lifeboat.",
+    "fields": {
+      "passengers": {
+        "kind": "integer",
+        "description": "Certified passenger limit, excluding crew",
+        "nullable": false
+      },
+      "per_lifeboat": {
+        "kind": "integer",
+        "description": "Certified persons per individual lifeboat, without summing boats",
+        "nullable": false
+      }
+    }
+  }
+}

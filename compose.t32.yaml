@@ -1,0 +1,49 @@
+name: vectornext-t32
+services:
+  api:
+    image: vectornext-app:t28-12b
+    init: true
+    read_only: true
+    cpus: 2
+    mem_limit: 4g
+    tmpfs: [/tmp:size=67108864]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      VECTORNEXT_DATA: /storage/${T32_EMBEDDING:-minilm}
+      VECTORNEXT_PROCESSOR_URL: http://t32-processor:8090
+    volumes: [data:/storage]
+    ports: ["127.0.0.1:8101:8088"]
+    networks: [local, ingress]
+  t32-processor:
+    image: vectornext-app-processor:t32
+    init: true
+    read_only: true
+    cpus: 4
+    mem_limit: 6g
+    tmpfs: [/tmp:size=1073741824]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      VECTORNEXT_EMBEDDING_PROFILE: ${T32_EMBEDDING:-minilm}
+      VECTORNEXT_RERANKER_PROFILE: ${T32_RERANKER:-minilm}
+      VECTORNEXT_CACHE: /cache/${T32_CACHE:-preflight}
+      VECTORNEXT_GENERATOR_PROFILE: 12b
+      VECTORNEXT_ANSWER_MODE: two_call
+      VECTORNEXT_LLM_URL: http://vectornext-llm-1:8080
+    volumes: ["./models:/models:ro", "cache:/cache"]
+    networks: [local, generation]
+networks:
+  local:
+    internal: true
+    ipam:
+      config: [{subnet: "10.254.35.0/24"}]
+  ingress:
+    ipam:
+      config: [{subnet: "10.254.36.0/24"}]
+  generation:
+    external: true
+    name: vectornext_local
+volumes:
+  data:
+  cache:

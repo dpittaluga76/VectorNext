@@ -31,8 +31,8 @@ class Worker:
             "model": spec["repo"], "revision": spec["revision"], "artifact_sha256": hashes["onnx/model.onnx"],
             "tokenizer": f"{hashes['tokenizer.json']};tokenizers={tokenizers.__version__};specials;no-truncation",
             "preprocessing": f"{self.encoder.profile['preprocessing']};onnxruntime={onnxruntime.__version__};numpy={numpy.__version__};cpu-fp32",
-            "dimensions": 384, "max_tokens": self.encoder.max_tokens,
-            "query_prefix": self.encoder.profile['query_prefix'], "document_prefix": "", "normalization": "L2",
+            "dimensions": self.encoder.profile['dimensions'], "max_tokens": self.encoder.max_tokens,
+            "query_prefix": self.encoder.profile['query_prefix'], "document_prefix": self.encoder.profile['document_prefix'], "normalization": "L2",
         }
         self.generation_profile = load_generator_profile()
         self.generator_alias = self.generation_profile['alias']
@@ -137,7 +137,7 @@ class Worker:
             self.cache.put(key, vector)
             self.calls["embed"] += 1
         import math
-        if len(vector) != 384 or not all(math.isfinite(x) for x in vector) or abs(sum(x*x for x in vector) - 1) > .002:
+        if len(vector) != self.space['dimensions'] or not all(math.isfinite(x) for x in vector) or abs(sum(x*x for x in vector) - 1) > .002:
             raise ValueError("invalid cached embedding")
         return vector
 

@@ -1,0 +1,6 @@
+# Norhaven Link traffic authorization
+Synthetic engineering fixture.
+
+## August 2031 accepted route
+The maximum authorized load for the accepted Norhaven Link route is 48 tonnes. This authorization applies to the completed eastern alignment.
+A design calculation used a 60 tonne test vehicle; that number is not the permitted service load. The canceled western alignment had a proposed limit of 40 tonnes.

@@ -1,0 +1,9 @@
+{
+  "project": "Solace",
+  "bank": 3,
+  "period": "June 2031",
+  "bypass_alarm_count": null,
+  "status": "not recorded",
+  "routine_alarm_count": 0,
+  "note": "Bypass alarm totals were not recorded for bank 3 in June 2031. Zero applies only to routine alarms."
+}

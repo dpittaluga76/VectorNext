@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "models": {
+    "embedding": {
+      "repo": "nomic-ai/nomic-embed-text-v1.5",
+      "revision": "e9b6763023c676ca8431644204f50c2b100d9aab",
+      "directory": "embedding-nomic-v1.5",
+      "files": [
+        {
+          "remote_path": "onnx/model.onnx",
+          "path": "onnx/model.onnx",
+          "size": 547310275,
+          "sha256": "147d5aa88c2101237358e17796cf3a227cead1ec304ec34b465bb08e9d952965"
+        },
+        {
+          "remote_path": "tokenizer.json",
+          "path": "tokenizer.json",
+          "size": 711396,
+          "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+        },
+        {
+          "remote_path": "config.json",
+          "path": "config.json",
+          "size": 2538,
+          "sha256": "9ab00bd92cee80a569f708140b7b6c1661a65891ff3765b1519e181ba2f2c92b"
+        },
+        {
+          "remote_path": "tokenizer_config.json",
+          "path": "tokenizer_config.json",
+          "size": 1191,
+          "sha256": "d7e0000bcc80134debd2222220427e6bf5fa20a669f40a0d0d1409cc18e0a9bc"
+        },
+        {
+          "remote_path": "1_Pooling/config.json",
+          "path": "1_Pooling/config.json",
+          "size": 286,
+          "sha256": "3d6180f7233df2f529d65ea60c8db4af614fb78cbe99fd81103dcfeb9f8166a5"
+        },
+        {
+          "remote_path": "modules.json",
+          "path": "modules.json",
+          "size": 255,
+          "sha256": "f93c503b32fa7bc2e186843f0add961caa14eb68f7be516e327df3cadbcd541a"
+        },
+        {
+          "remote_path": "sentence_bert_config.json",
+          "path": "sentence_bert_config.json",
+          "size": 58,
+          "sha256": "9ee3935137f87c9ce6662ae17fe7afb7c9c64744a41247359fd228dc37e627b3"
+        },
+        {
+          "remote_path": "config_sentence_transformers.json",
+          "path": "config_sentence_transformers.json",
+          "size": 140,
+          "sha256": "482f42ca954f5a8d55bccbb437b8d6eb721ce19059c78330c815045ddd1a87eb"
+        },
+        {
+          "remote_path": "README.md",
+          "path": "README.md",
+          "size": 71843,
+          "sha256": "4430178908fbd574fdb6457e302d23e643d733ed036b5777180b0806946767b2"
+        },
+        {
+          "remote_path": "special_tokens_map.json",
+          "path": "special_tokens_map.json",
+          "size": 695,
+          "sha256": "5d5b662e421ea9fac075174bb0688ee0d9431699900b90662acd44b2a350503a"
+        }
+      ]
+    },
+    "reranker": {
+      "repo": "cross-encoder/ettin-reranker-17m-v1",
+      "revision": "9e4aa35321a6dd1a43ca313f500c4b4f7cfb5cc6",
+      "directory": "reranker-ettin-17m",
+      "files": [
+        {
+          "remote_path": "onnx/model.onnx",
+          "path": "onnx/model.onnx",
+          "size": 67329240,
+          "sha256": "2a375ccea150a4df925a47884b510eeb4bd6227ca6fffdbbc62ca2284bfe6211"
+        },
+        {
+          "remote_path": "tokenizer.json",
+          "path": "tokenizer.json",
+          "size": 3583327,
+          "sha256": "28c5e078e4c52aa37cf0e6de1a212878f3dbd58dd1c70466298efe0b6b86db35"
+        },
+        {
+          "remote_path": "config.json",
+          "path": "config.json",
+          "size": 1657,
+          "sha256": "f83c222e8684701525bfa5e0aaa2371724974dc7fb728174cca02e280feda1ad"
+        },
+        {
+          "remote_path": "tokenizer_config.json",
+          "path": "tokenizer_config.json",
+          "size": 488,
+          "sha256": "2b85302525d8c528a9e1fbaea2733472bd00d4755eae881441c8c52b90e2d600"
+        },
+        {
+          "remote_path": "1_Pooling/config.json",
+          "path": "1_Pooling/config.json",
+          "size": 89,
+          "sha256": "343d502263e29ac81758d9d8f250e52d9420ecc3dfc771303e7d91f56bad5ef2"
+        },
+        {
+          "remote_path": "modules.json",
+          "path": "modules.json",
+          "size": 678,
+          "sha256": "d8394ab6c24cb0fb80229dafb886fac022ff489e757e3e6ed7d69603d5ae5942"
+        },
+        {
+          "remote_path": "sentence_bert_config.json",
+          "path": "sentence_bert_config.json",
+          "size": 241,
+          "sha256": "3084164002c0bca01b0259c5327123803fce32e660a57feb93184ffead186fc8"
+        },
+        {
+          "remote_path": "config_sentence_transformers.json",
+          "path": "config_sentence_transformers.json",
+          "size": 257,
+          "sha256": "58704a86e4fe20f511de172ce623498c68991abfa7b330740d642d8e049affb7"
+        },
+        {
+          "remote_path": "README.md",
+          "path": "README.md",
+          "size": 61550,
+          "sha256": "49ba569c156baeafdbe0ca6c902f0eee796bf8f597e607c4c16c1405f99d1a65"
+        },
+        {
+          "remote_path": "2_Dense/config.json",
+          "path": "2_Dense/config.json",
+          "size": 228,
+          "sha256": "acea183be3358e74570d01645bf1688fea67bd54cb3043b46c4a898950f43462"
+        },
+        {
+          "remote_path": "3_LayerNorm/config.json",
+          "path": "3_LayerNorm/config.json",
+          "size": 24,
+          "sha256": "d0db57df3d6d4cce730fd010f7dadbd6b3ad36277c9e66cb2077ebcbe68f8b75"
+        },
+        {
+          "remote_path": "4_Dense/config.json",
+          "path": "4_Dense/config.json",
+          "size": 213,
+          "sha256": "b6e9ce4b52d9801d2d2dcc9da7bbcfbb75aae11aefe616af75d1f58f8cc2482b"
+        },
+        {
+          "remote_path": "2_Dense/model.safetensors",
+          "path": "2_Dense/model.safetensors",
+          "size": 262232,
+          "sha256": "85e9596d9250a871deb159fb5db6979e910b4cf181d05c806733c49bc43d47c8"
+        },
+        {
+          "remote_path": "3_LayerNorm/model.safetensors",
+          "path": "3_LayerNorm/model.safetensors",
+          "size": 2200,
+          "sha256": "de99fa351fb4badb74b56e85fa70b5bbd3fcf4d0e74de79eb749dba1e9e28b4a"
+        },
+        {
+          "remote_path": "4_Dense/model.safetensors",
+          "path": "4_Dense/model.safetensors",
+          "size": 1172,
+          "sha256": "654827171b89c76d19d663162243f38d63d1ba812ac1ec9c1b36512f1a8e9ce8"
+        }
+      ]
+    }
+  }
+}

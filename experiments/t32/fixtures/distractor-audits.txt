@@ -1,0 +1,2 @@
+# Draft inspection and passenger schedules
+Synthetic fixture. The Cedar type A manifold has a 30 day inspection interval. The withdrawn Cedar type B draft used 90 days. The Helio service vessel carried 18 passengers in its prior configuration. A larger vessel named Helios has a passenger limit of 36 and 20 seats per lifeboat.

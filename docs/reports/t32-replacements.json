@@ -1,0 +1,2770 @@
+{
+  "requests": 24,
+  "arms": {
+    "minilm-minilm": {
+      "correct": 4,
+      "total": 6,
+      "latency_seconds": {
+        "n": 6,
+        "median": 12.804500000002008,
+        "p95": 19.968000000000757
+      },
+      "stage_medians_ms": {
+        "answer_model_calls": {
+          "n": 6,
+          "median": 12058.5180725,
+          "p95": 18979.375119
+        },
+        "answer_total": {
+          "n": 6,
+          "median": 12745.5253765,
+          "p95": 19853.792999
+        },
+        "application_total": {
+          "n": 6,
+          "median": 12747.234272500002,
+          "p95": 19855.402737999997
+        },
+        "assembly_and_model_tokenization": {
+          "n": 6,
+          "median": 464.6551685,
+          "p95": 557.865888
+        },
+        "query_embedding_and_tokens": {
+          "n": 6,
+          "median": 12.938958,
+          "p95": 14.721086
+        },
+        "reranking_with_preparation": {
+          "n": 6,
+          "median": 258.3815785,
+          "p95": 304.06424100000004
+        },
+        "resolution_validation": {
+          "n": 6,
+          "median": 0.0032040000000000003,
+          "p95": 0.044676
+        },
+        "search_dense": {
+          "n": 6,
+          "median": 0.0480345,
+          "p95": 0.11501
+        },
+        "search_filter_tokenize": {
+          "n": 6,
+          "median": 0.03132,
+          "p95": 0.063289
+        },
+        "search_fusion_dedup": {
+          "n": 6,
+          "median": 0.0403005,
+          "p95": 0.193114
+        },
+        "search_keyword": {
+          "n": 6,
+          "median": 0.027967,
+          "p95": 0.228524
+        },
+        "search_total": {
+          "n": 6,
+          "median": 0.15064300000000003,
+          "p95": 0.590502
+        },
+        "snapshot_index": {
+          "n": 6,
+          "median": 0.0084005,
+          "p95": 1.024528
+        },
+        "validation_and_presentation": {
+          "n": 6,
+          "median": 0.010873,
+          "p95": 0.079696
+        }
+      },
+      "coverage_complete": {
+        "raw": 5,
+        "selected": 5,
+        "ranked_five": 3,
+        "assembled": 4
+      },
+      "positive_denominator": 5,
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 200,
+          "seconds": 7.7189999999973224,
+          "error": null,
+          "response_sha256": "831a3d7525c7f1fda75e7a85202d07d59c3664b74da46c645b26460158d111e5",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "pressure_bar": "17.5"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 7146.970920000001,
+              "answer_total": 7745.695262,
+              "application_total": 7748.40863,
+              "assembly_and_model_tokenization": 418.779021,
+              "query_embedding_and_tokens": 13.563772,
+              "reranking_with_preparation": 165.552195,
+              "resolution_validation": 0.044676,
+              "search_dense": 0.11501,
+              "search_filter_tokenize": 0.052932,
+              "search_fusion_dedup": 0.193114,
+              "search_keyword": 0.228524,
+              "search_total": 0.590502,
+              "snapshot_index": 1.024528,
+              "validation_and_presentation": 0.079696
+            },
+            "prompt_tokens": 891,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+              "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "none; raw relevance logit, higher is better, not a probability",
+            "preprocessing_version": "minilm-pair-raw-logit-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+            "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+            "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 77,
+              "prompt_tokens": 891,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 968
+            },
+            "input_tokens": 891,
+            "elapsed_seconds": 4.292961801998899,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 50,
+                "prompt_tokens": 756,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 806
+              },
+              "input_tokens": 756,
+              "elapsed_seconds": 2.852154051004618
+            }
+          },
+          "max_pair_tokens": 110
+        },
+        {
+          "case": "route_two_sources",
+          "http_status": 200,
+          "seconds": 15.375,
+          "error": null,
+          "response_sha256": "a8924df60f94f857190958305fd18f2e21f5febdf869b0d7ac341384e4d4616c",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "load_tonnes": "48",
+              "piers": "12"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0,
+                1
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 14723.767942,
+              "answer_total": 15293.779746,
+              "application_total": 15295.331737,
+              "assembly_and_model_tokenization": 389.765434,
+              "query_embedding_and_tokens": 13.909885000000001,
+              "reranking_with_preparation": 166.157286,
+              "resolution_validation": 0.003055,
+              "search_dense": 0.046168999999999995,
+              "search_filter_tokenize": 0.021738,
+              "search_fusion_dedup": 0.040883,
+              "search_keyword": 0.033546,
+              "search_total": 0.142708,
+              "snapshot_index": 0.008392,
+              "validation_and_presentation": 0.012182
+            },
+            "prompt_tokens": 922,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+              "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "none; raw relevance logit, higher is better, not a probability",
+            "preprocessing_version": "minilm-pair-raw-logit-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+            "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+            "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 141,
+              "prompt_tokens": 922,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1063
+            },
+            "input_tokens": 922,
+            "elapsed_seconds": 10.365765278998879,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 63,
+                "prompt_tokens": 787,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 850
+              },
+              "input_tokens": 787,
+              "elapsed_seconds": 4.3559799430004205
+            }
+          },
+          "max_pair_tokens": 110
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 200,
+          "seconds": 16.54699999999866,
+          "error": null,
+          "response_sha256": "0505037678cfd87ffd526b603513102f1f820b95378b9d956b912777b5b891fe",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "checksum_count": "9007199254740993"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 15779.682195,
+              "answer_total": 16518.00695,
+              "application_total": 16519.65809,
+              "assembly_and_model_tokenization": 447.101588,
+              "query_embedding_and_tokens": 10.696324,
+              "reranking_with_preparation": 280.328488,
+              "resolution_validation": 0.0029960000000000004,
+              "search_dense": 0.050049,
+              "search_filter_tokenize": 0.040902,
+              "search_fusion_dedup": 0.044801,
+              "search_keyword": 0.022331,
+              "search_total": 0.15857800000000002,
+              "snapshot_index": 0.008858999999999999,
+              "validation_and_presentation": 0.009564
+            },
+            "prompt_tokens": 1673,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+              "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "none; raw relevance logit, higher is better, not a probability",
+            "preprocessing_version": "minilm-pair-raw-logit-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+            "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+            "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 72,
+              "prompt_tokens": 1673,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1745
+            },
+            "input_tokens": 1673,
+            "elapsed_seconds": 10.081184868999117,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 64,
+                "prompt_tokens": 1538,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1602
+              },
+              "input_tokens": 1538,
+              "elapsed_seconds": 5.696463000000222
+            }
+          },
+          "max_pair_tokens": 178
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 200,
+          "seconds": 6.578000000001339,
+          "error": null,
+          "response_sha256": "19287b9604cbb2f22506e51b2ddab7f12854d66479f91a90ac9d7fa9b56da022",
+          "score": {
+            "correct": true,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null
+              },
+              "selected": {
+                "found": [],
+                "complete": null
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null
+              },
+              "assembled": {
+                "found": [],
+                "complete": null
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null
+            },
+            "timings_ms": {
+              "answer_model_calls": 5808.001437,
+              "answer_total": 6541.514447,
+              "application_total": 6543.333917,
+              "assembly_and_model_tokenization": 482.208749,
+              "query_embedding_and_tokens": 14.721086,
+              "reranking_with_preparation": 236.43466899999999,
+              "resolution_validation": 0.0030740000000000003,
+              "search_dense": 0.048701,
+              "search_filter_tokenize": 0.016935,
+              "search_fusion_dedup": 0.039718,
+              "search_keyword": 0.015733,
+              "search_total": 0.12146799999999999,
+              "snapshot_index": 0.008252,
+              "validation_and_presentation": 0.00183
+            },
+            "prompt_tokens": 1743,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+              "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "none; raw relevance logit, higher is better, not a probability",
+            "preprocessing_version": "minilm-pair-raw-logit-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+            "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+            "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 71,
+                "prompt_tokens": 1608,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1679
+              },
+              "input_tokens": 1608,
+              "elapsed_seconds": 5.806114766004612
+            }
+          },
+          "max_pair_tokens": 174
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 200,
+          "seconds": 19.968000000000757,
+          "error": null,
+          "response_sha256": "49a20cbbbd36cfa3e40b3826702ec301b51b04578d2c24acbf377704a7de2e1f",
+          "score": {
+            "correct": false,
+            "status": "supported",
+            "values_text": {
+              "interval_days": "45"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 18979.375119,
+              "answer_total": 19853.792999,
+              "application_total": 19855.402737999997,
+              "assembly_and_model_tokenization": 557.865888,
+              "query_embedding_and_tokens": 12.314144,
+              "reranking_with_preparation": 304.06424100000004,
+              "resolution_validation": 0.003522,
+              "search_dense": 0.047368,
+              "search_filter_tokenize": 0.018621,
+              "search_fusion_dedup": 0.039608,
+              "search_keyword": 0.026001,
+              "search_total": 0.13198600000000002,
+              "snapshot_index": 0.008375,
+              "validation_and_presentation": 0.013899
+            },
+            "prompt_tokens": 1263,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+              "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "none; raw relevance logit, higher is better, not a probability",
+            "preprocessing_version": "minilm-pair-raw-logit-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+            "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+            "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 1263,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1353
+            },
+            "input_tokens": 1263,
+            "elapsed_seconds": 10.210659299002145,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 44,
+                "prompt_tokens": 1128,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1172
+              },
+              "input_tokens": 1128,
+              "elapsed_seconds": 8.766795716997876
+            }
+          },
+          "max_pair_tokens": 180
+        },
+        {
+          "case": "pdf_separate_counts",
+          "http_status": 200,
+          "seconds": 10.234000000004016,
+          "error": null,
+          "response_sha256": "a9717565271f64829dcd11f4c00e9aa3f1a4366744ab3e2bbc20053d291a00f8",
+          "score": {
+            "correct": false,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 9393.268203,
+              "answer_total": 10197.271007,
+              "application_total": 10199.136808000001,
+              "assembly_and_model_tokenization": 488.959,
+              "query_embedding_and_tokens": 12.092117,
+              "reranking_with_preparation": 302.748162,
+              "resolution_validation": 0.003334,
+              "search_dense": 0.044274,
+              "search_filter_tokenize": 0.063289,
+              "search_fusion_dedup": 0.03802,
+              "search_keyword": 0.029933,
+              "search_total": 0.175939,
+              "snapshot_index": 0.008409,
+              "validation_and_presentation": 0.00174
+            },
+            "prompt_tokens": 1122,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+              "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "none; raw relevance logit, higher is better, not a probability",
+            "preprocessing_version": "minilm-pair-raw-logit-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+            "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+            "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 67,
+                "prompt_tokens": 987,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1054
+              },
+              "input_tokens": 987,
+              "elapsed_seconds": 9.391671192999638
+            }
+          },
+          "max_pair_tokens": 184
+        }
+      ],
+      "gained": [],
+      "lost": [],
+      "reviewed_correct": 5,
+      "reviewed_support_exception": {
+        "case": "pdf_correction",
+        "applies": true,
+        "review": "docs/reports/t32-source-review.md"
+      },
+      "resources": {
+        "api": {
+          "samples": 19,
+          "peak_memory_mib": 5.57,
+          "peak_cpu_percent": 0.97
+        },
+        "t32-processor": {
+          "samples": 19,
+          "peak_memory_mib": 531.1,
+          "peak_cpu_percent": 38.12
+        }
+      },
+      "jointly_correct_seconds": {
+        "baseline": {
+          "n": 4,
+          "median": 11.546999999998661,
+          "p95": 16.54699999999866
+        },
+        "candidate": {
+          "n": 4,
+          "median": 11.546999999998661,
+          "p95": 16.54699999999866
+        }
+      },
+      "http_errors": 0,
+      "startup_seconds": 7.0789999999979045
+    },
+    "nomic-ettin": {
+      "correct": 1,
+      "total": 6,
+      "latency_seconds": {
+        "n": 6,
+        "median": 0.046999999998661224,
+        "p95": 10.43699999999808
+      },
+      "stage_medians_ms": {
+        "answer_model_calls": {
+          "n": 2,
+          "median": 9193.425525499999,
+          "p95": 9822.33159
+        },
+        "answer_total": {
+          "n": 2,
+          "median": 9791.655082000001,
+          "p95": 10318.470252000001
+        },
+        "application_total": {
+          "n": 2,
+          "median": 9793.720974,
+          "p95": 10320.582022
+        },
+        "assembly_and_model_tokenization": {
+          "n": 2,
+          "median": 484.5510325,
+          "p95": 595.671979
+        },
+        "query_embedding_and_tokens": {
+          "n": 2,
+          "median": 40.1872265,
+          "p95": 47.295288
+        },
+        "reranking_with_preparation": {
+          "n": 2,
+          "median": 73.3305695,
+          "p95": 75.251915
+        },
+        "resolution_validation": {
+          "n": 2,
+          "median": 0.0040149999999999995,
+          "p95": 0.0043479999999999994
+        },
+        "search_dense": {
+          "n": 2,
+          "median": 0.053001,
+          "p95": 0.053939
+        },
+        "search_filter_tokenize": {
+          "n": 2,
+          "median": 0.0180675,
+          "p95": 0.01893
+        },
+        "search_fusion_dedup": {
+          "n": 2,
+          "median": 0.028889,
+          "p95": 0.029954
+        },
+        "search_keyword": {
+          "n": 2,
+          "median": 0.024042,
+          "p95": 0.025064
+        },
+        "search_total": {
+          "n": 2,
+          "median": 0.1243025,
+          "p95": 0.126055
+        },
+        "snapshot_index": {
+          "n": 2,
+          "median": 0.2690025,
+          "p95": 0.49041999999999997
+        },
+        "validation_and_presentation": {
+          "n": 2,
+          "median": 0.011567000000000001,
+          "p95": 0.012357
+        }
+      },
+      "coverage_complete": {
+        "raw": 2,
+        "selected": 2,
+        "ranked_five": 2,
+        "assembled": 2
+      },
+      "positive_denominator": 5,
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 200,
+          "seconds": 10.43699999999808,
+          "error": null,
+          "response_sha256": "4fbe863aa798e1825e5c4771eb42d69db2de7766dab62ac1b89403392fa8f8d2",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "pressure_bar": "17.5"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 9822.33159,
+              "answer_total": 10318.470252000001,
+              "application_total": 10320.582022,
+              "assembly_and_model_tokenization": 373.430086,
+              "query_embedding_and_tokens": 47.295288,
+              "reranking_with_preparation": 75.251915,
+              "resolution_validation": 0.003682,
+              "search_dense": 0.053939,
+              "search_filter_tokenize": 0.01893,
+              "search_fusion_dedup": 0.027824,
+              "search_keyword": 0.025064,
+              "search_total": 0.126055,
+              "snapshot_index": 0.49041999999999997,
+              "validation_and_presentation": 0.010777
+            },
+            "prompt_tokens": 899,
+            "error": null
+          },
+          "embedding_space_id": "49e666edc3bb71763785862a688fb8d3b58d221944f9e03ad0313fceda68134e",
+          "reranker": {
+            "artifact_sha256": {
+              "1_Pooling/config.json": "343d502263e29ac81758d9d8f250e52d9420ecc3dfc771303e7d91f56bad5ef2",
+              "2_Dense/config.json": "acea183be3358e74570d01645bf1688fea67bd54cb3043b46c4a898950f43462",
+              "2_Dense/model.safetensors": "85e9596d9250a871deb159fb5db6979e910b4cf181d05c806733c49bc43d47c8",
+              "3_LayerNorm/config.json": "d0db57df3d6d4cce730fd010f7dadbd6b3ad36277c9e66cb2077ebcbe68f8b75",
+              "3_LayerNorm/model.safetensors": "de99fa351fb4badb74b56e85fa70b5bbd3fcf4d0e74de79eb749dba1e9e28b4a",
+              "4_Dense/config.json": "b6e9ce4b52d9801d2d2dcc9da7bbcfbb75aae11aefe616af75d1f58f8cc2482b",
+              "4_Dense/model.safetensors": "654827171b89c76d19d663162243f38d63d1ba812ac1ec9c1b36512f1a8e9ce8",
+              "README.md": "49ba569c156baeafdbe0ca6c902f0eee796bf8f597e607c4c16c1405f99d1a65",
+              "config.json": "f83c222e8684701525bfa5e0aaa2371724974dc7fb728174cca02e280feda1ad",
+              "config_sentence_transformers.json": "58704a86e4fe20f511de172ce623498c68991abfa7b330740d642d8e049affb7",
+              "modules.json": "d8394ab6c24cb0fb80229dafb886fac022ff489e757e3e6ed7d69603d5ae5942",
+              "onnx/model.onnx": "2a375ccea150a4df925a47884b510eeb4bd6227ca6fffdbbc62ca2284bfe6211",
+              "sentence_bert_config.json": "3084164002c0bca01b0259c5327123803fce32e660a57feb93184ffead186fc8",
+              "tokenizer.json": "28c5e078e4c52aa37cf0e6de1a212878f3dbd58dd1c70466298efe0b6b86db35",
+              "tokenizer_config.json": "2b85302525d8c528a9e1fbaea2733472bd00d4755eae881441c8c52b90e2d600"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "head_runtime": "numpy=2.5.4;math.erf;cpu-fp32",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "CLS then publisher Dense/GELU/LayerNorm/Dense; raw logit",
+            "preprocessing_version": "ettin-cls-dense-gelu-exact-layernorm-eps1e-5-dense-raw-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ettin-reranker-17m-v1",
+            "revision": "9e4aa35321a6dd1a43ca313f500c4b4f7cfb5cc6",
+            "tokenizer": "pinned tokenizer.json; publisher pair template and padding",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 899,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 989
+            },
+            "input_tokens": 899,
+            "elapsed_seconds": 6.832669123003143,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 50,
+                "prompt_tokens": 764,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 814
+              },
+              "input_tokens": 764,
+              "elapsed_seconds": 2.987884053000016
+            }
+          },
+          "max_pair_tokens": 103
+        },
+        {
+          "case": "route_two_sources",
+          "http_status": 503,
+          "seconds": 0.046999999998661224,
+          "error": null,
+          "response_sha256": "7f6b4b6450981323d454c003afad07c9717c8fd34082719ba400ffd78a1035d0",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": false
+              },
+              "selected": {
+                "found": [],
+                "complete": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "capability unavailable: model operation: \"ValueError: Input exceeds 512 tokens including special tokens; split before inference\""
+          }
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 503,
+          "seconds": 0.046999999998661224,
+          "error": null,
+          "response_sha256": "7f6b4b6450981323d454c003afad07c9717c8fd34082719ba400ffd78a1035d0",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": false
+              },
+              "selected": {
+                "found": [],
+                "complete": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "capability unavailable: model operation: \"ValueError: Input exceeds 512 tokens including special tokens; split before inference\""
+          }
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 503,
+          "seconds": 0.046999999998661224,
+          "error": null,
+          "response_sha256": "7f6b4b6450981323d454c003afad07c9717c8fd34082719ba400ffd78a1035d0",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null
+              },
+              "selected": {
+                "found": [],
+                "complete": null
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null
+              },
+              "assembled": {
+                "found": [],
+                "complete": null
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "capability unavailable: model operation: \"ValueError: Input exceeds 512 tokens including special tokens; split before inference\""
+          }
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 200,
+          "seconds": 9.219000000004598,
+          "error": null,
+          "response_sha256": "000a93c80a5ea9af84aec17546ffe664640ae73a2397348e8446606d60e7d865",
+          "score": {
+            "correct": false,
+            "status": "supported",
+            "values_text": {
+              "interval_days": "45"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 8564.519461,
+              "answer_total": 9264.839912,
+              "application_total": 9266.859926000001,
+              "assembly_and_model_tokenization": 595.671979,
+              "query_embedding_and_tokens": 33.079165,
+              "reranking_with_preparation": 71.409224,
+              "resolution_validation": 0.0043479999999999994,
+              "search_dense": 0.052063,
+              "search_filter_tokenize": 0.017204999999999998,
+              "search_fusion_dedup": 0.029954,
+              "search_keyword": 0.02302,
+              "search_total": 0.12254999999999999,
+              "snapshot_index": 0.047585,
+              "validation_and_presentation": 0.012357
+            },
+            "prompt_tokens": 1207,
+            "error": null
+          },
+          "embedding_space_id": "49e666edc3bb71763785862a688fb8d3b58d221944f9e03ad0313fceda68134e",
+          "reranker": {
+            "artifact_sha256": {
+              "1_Pooling/config.json": "343d502263e29ac81758d9d8f250e52d9420ecc3dfc771303e7d91f56bad5ef2",
+              "2_Dense/config.json": "acea183be3358e74570d01645bf1688fea67bd54cb3043b46c4a898950f43462",
+              "2_Dense/model.safetensors": "85e9596d9250a871deb159fb5db6979e910b4cf181d05c806733c49bc43d47c8",
+              "3_LayerNorm/config.json": "d0db57df3d6d4cce730fd010f7dadbd6b3ad36277c9e66cb2077ebcbe68f8b75",
+              "3_LayerNorm/model.safetensors": "de99fa351fb4badb74b56e85fa70b5bbd3fcf4d0e74de79eb749dba1e9e28b4a",
+              "4_Dense/config.json": "b6e9ce4b52d9801d2d2dcc9da7bbcfbb75aae11aefe616af75d1f58f8cc2482b",
+              "4_Dense/model.safetensors": "654827171b89c76d19d663162243f38d63d1ba812ac1ec9c1b36512f1a8e9ce8",
+              "README.md": "49ba569c156baeafdbe0ca6c902f0eee796bf8f597e607c4c16c1405f99d1a65",
+              "config.json": "f83c222e8684701525bfa5e0aaa2371724974dc7fb728174cca02e280feda1ad",
+              "config_sentence_transformers.json": "58704a86e4fe20f511de172ce623498c68991abfa7b330740d642d8e049affb7",
+              "modules.json": "d8394ab6c24cb0fb80229dafb886fac022ff489e757e3e6ed7d69603d5ae5942",
+              "onnx/model.onnx": "2a375ccea150a4df925a47884b510eeb4bd6227ca6fffdbbc62ca2284bfe6211",
+              "sentence_bert_config.json": "3084164002c0bca01b0259c5327123803fce32e660a57feb93184ffead186fc8",
+              "tokenizer.json": "28c5e078e4c52aa37cf0e6de1a212878f3dbd58dd1c70466298efe0b6b86db35",
+              "tokenizer_config.json": "2b85302525d8c528a9e1fbaea2733472bd00d4755eae881441c8c52b90e2d600"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "head_runtime": "numpy=2.5.4;math.erf;cpu-fp32",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "CLS then publisher Dense/GELU/LayerNorm/Dense; raw logit",
+            "preprocessing_version": "ettin-cls-dense-gelu-exact-layernorm-eps1e-5-dense-raw-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ettin-reranker-17m-v1",
+            "revision": "9e4aa35321a6dd1a43ca313f500c4b4f7cfb5cc6",
+            "tokenizer": "pinned tokenizer.json; publisher pair template and padding",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 1207,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1297
+            },
+            "input_tokens": 1207,
+            "elapsed_seconds": 5.089571968994278,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 44,
+                "prompt_tokens": 1072,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1116
+              },
+              "input_tokens": 1072,
+              "elapsed_seconds": 3.472973288000503
+            }
+          },
+          "max_pair_tokens": 101
+        },
+        {
+          "case": "pdf_separate_counts",
+          "http_status": 503,
+          "seconds": 0.046999999998661224,
+          "error": null,
+          "response_sha256": "7f6b4b6450981323d454c003afad07c9717c8fd34082719ba400ffd78a1035d0",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": false
+              },
+              "selected": {
+                "found": [],
+                "complete": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "capability unavailable: model operation: \"ValueError: Input exceeds 512 tokens including special tokens; split before inference\""
+          }
+        }
+      ],
+      "gained": [],
+      "lost": [
+        "route_two_sources",
+        "long_exact_record",
+        "unknown_count"
+      ],
+      "reviewed_correct": 2,
+      "reviewed_support_exception": {
+        "case": "pdf_correction",
+        "applies": true,
+        "review": "docs/reports/t32-source-review.md"
+      },
+      "resources": {
+        "api": {
+          "samples": 5,
+          "peak_memory_mib": 5.43,
+          "peak_cpu_percent": 2.45
+        },
+        "t32-processor": {
+          "samples": 5,
+          "peak_memory_mib": 1866.752,
+          "peak_cpu_percent": 2.63
+        }
+      },
+      "jointly_correct_seconds": {
+        "baseline": {
+          "n": 1,
+          "median": 7.7189999999973224,
+          "p95": 7.7189999999973224
+        },
+        "candidate": {
+          "n": 1,
+          "median": 10.43699999999808,
+          "p95": 10.43699999999808
+        }
+      },
+      "http_errors": 4,
+      "startup_seconds": 21.547000000005937
+    },
+    "nomic-minilm": {
+      "correct": 1,
+      "total": 6,
+      "latency_seconds": {
+        "n": 6,
+        "median": 0.03900000000066939,
+        "p95": 9.905999999995402
+      },
+      "stage_medians_ms": {
+        "answer_model_calls": {
+          "n": 2,
+          "median": 8382.0207815,
+          "p95": 9123.134586999999
+        },
+        "answer_total": {
+          "n": 2,
+          "median": 9076.5872355,
+          "p95": 9825.090602999999
+        },
+        "application_total": {
+          "n": 2,
+          "median": 9078.635914999999,
+          "p95": 9826.694422999999
+        },
+        "assembly_and_model_tokenization": {
+          "n": 2,
+          "median": 489.191368,
+          "p95": 526.2980699999999
+        },
+        "query_embedding_and_tokens": {
+          "n": 2,
+          "median": 46.0237275,
+          "p95": 56.387867
+        },
+        "reranking_with_preparation": {
+          "n": 2,
+          "median": 159.19086800000002,
+          "p95": 178.53947200000002
+        },
+        "resolution_validation": {
+          "n": 2,
+          "median": 0.003386,
+          "p95": 0.003941
+        },
+        "search_dense": {
+          "n": 2,
+          "median": 0.051288,
+          "p95": 0.052915
+        },
+        "search_filter_tokenize": {
+          "n": 2,
+          "median": 0.0187185,
+          "p95": 0.019564
+        },
+        "search_fusion_dedup": {
+          "n": 2,
+          "median": 0.0281595,
+          "p95": 0.028549
+        },
+        "search_keyword": {
+          "n": 2,
+          "median": 0.02501,
+          "p95": 0.026037
+        },
+        "search_total": {
+          "n": 2,
+          "median": 0.12349099999999999,
+          "p95": 0.12661899999999998
+        },
+        "snapshot_index": {
+          "n": 2,
+          "median": 0.3220565,
+          "p95": 0.6352410000000001
+        },
+        "validation_and_presentation": {
+          "n": 2,
+          "median": 0.012199,
+          "p95": 0.012868
+        }
+      },
+      "coverage_complete": {
+        "raw": 2,
+        "selected": 2,
+        "ranked_five": 2,
+        "assembled": 2
+      },
+      "positive_denominator": 5,
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 200,
+          "seconds": 8.328999999997905,
+          "error": null,
+          "response_sha256": "3c9f8365f5ecdd47b119533ce35a8b42523cee209e8a25f1b1365b1646015569",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "pressure_bar": "17.5"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 7640.906976,
+              "answer_total": 8328.083868,
+              "application_total": 8330.577407,
+              "assembly_and_model_tokenization": 452.084666,
+              "query_embedding_and_tokens": 56.387867,
+              "reranking_with_preparation": 178.53947200000002,
+              "resolution_validation": 0.003941,
+              "search_dense": 0.052915,
+              "search_filter_tokenize": 0.019564,
+              "search_fusion_dedup": 0.02777,
+              "search_keyword": 0.026037,
+              "search_total": 0.12661899999999998,
+              "snapshot_index": 0.6352410000000001,
+              "validation_and_presentation": 0.012868
+            },
+            "prompt_tokens": 899,
+            "error": null
+          },
+          "embedding_space_id": "49e666edc3bb71763785862a688fb8d3b58d221944f9e03ad0313fceda68134e",
+          "reranker": {
+            "artifact_sha256": {
+              "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+              "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "none; raw relevance logit, higher is better, not a probability",
+            "preprocessing_version": "minilm-pair-raw-logit-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+            "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+            "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 899,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 989
+            },
+            "input_tokens": 899,
+            "elapsed_seconds": 4.563359496998601,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 50,
+                "prompt_tokens": 764,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 814
+              },
+              "input_tokens": 764,
+              "elapsed_seconds": 3.0756198540038895
+            }
+          },
+          "max_pair_tokens": 110
+        },
+        {
+          "case": "route_two_sources",
+          "http_status": 503,
+          "seconds": 0.031000000002677552,
+          "error": null,
+          "response_sha256": "7f6b4b6450981323d454c003afad07c9717c8fd34082719ba400ffd78a1035d0",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": false
+              },
+              "selected": {
+                "found": [],
+                "complete": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "capability unavailable: model operation: \"ValueError: Input exceeds 512 tokens including special tokens; split before inference\""
+          }
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 503,
+          "seconds": 0.031000000002677552,
+          "error": null,
+          "response_sha256": "7f6b4b6450981323d454c003afad07c9717c8fd34082719ba400ffd78a1035d0",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": false
+              },
+              "selected": {
+                "found": [],
+                "complete": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "capability unavailable: model operation: \"ValueError: Input exceeds 512 tokens including special tokens; split before inference\""
+          }
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 503,
+          "seconds": 0.031000000002677552,
+          "error": null,
+          "response_sha256": "7f6b4b6450981323d454c003afad07c9717c8fd34082719ba400ffd78a1035d0",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null
+              },
+              "selected": {
+                "found": [],
+                "complete": null
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null
+              },
+              "assembled": {
+                "found": [],
+                "complete": null
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "capability unavailable: model operation: \"ValueError: Input exceeds 512 tokens including special tokens; split before inference\""
+          }
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 200,
+          "seconds": 9.905999999995402,
+          "error": null,
+          "response_sha256": "12bdbdf6eef8d31aae2d8657a77458f10b4e10be51fe431d6e2dba0523347e61",
+          "score": {
+            "correct": false,
+            "status": "supported",
+            "values_text": {
+              "interval_days": "45"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 9123.134586999999,
+              "answer_total": 9825.090602999999,
+              "application_total": 9826.694422999999,
+              "assembly_and_model_tokenization": 526.2980699999999,
+              "query_embedding_and_tokens": 35.659588,
+              "reranking_with_preparation": 139.842264,
+              "resolution_validation": 0.002831,
+              "search_dense": 0.049661,
+              "search_filter_tokenize": 0.017873,
+              "search_fusion_dedup": 0.028549,
+              "search_keyword": 0.023983,
+              "search_total": 0.120363,
+              "snapshot_index": 0.008872000000000001,
+              "validation_and_presentation": 0.01153
+            },
+            "prompt_tokens": 1232,
+            "error": null
+          },
+          "embedding_space_id": "49e666edc3bb71763785862a688fb8d3b58d221944f9e03ad0313fceda68134e",
+          "reranker": {
+            "artifact_sha256": {
+              "onnx/model.onnx": "5d3e70fd0c9ff14b9b5169a51e957b7a9c74897afd0a35ce4bd318150c1d4d4a",
+              "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "none; raw relevance logit, higher is better, not a probability",
+            "preprocessing_version": "minilm-pair-raw-logit-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+            "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+            "tokenizer": "pinned tokenizer.json; original WordPiece normalization",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 1232,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1322
+            },
+            "input_tokens": 1232,
+            "elapsed_seconds": 5.300740997001412,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 44,
+                "prompt_tokens": 1097,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1141
+              },
+              "input_tokens": 1097,
+              "elapsed_seconds": 3.820491699996637
+            }
+          },
+          "max_pair_tokens": 107
+        },
+        {
+          "case": "pdf_separate_counts",
+          "http_status": 503,
+          "seconds": 0.046999999998661224,
+          "error": null,
+          "response_sha256": "7f6b4b6450981323d454c003afad07c9717c8fd34082719ba400ffd78a1035d0",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": false
+              },
+              "selected": {
+                "found": [],
+                "complete": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "capability unavailable: model operation: \"ValueError: Input exceeds 512 tokens including special tokens; split before inference\""
+          }
+        }
+      ],
+      "gained": [],
+      "lost": [
+        "route_two_sources",
+        "long_exact_record",
+        "unknown_count"
+      ],
+      "reviewed_correct": 2,
+      "reviewed_support_exception": {
+        "case": "pdf_correction",
+        "applies": true,
+        "review": "docs/reports/t32-source-review.md"
+      },
+      "resources": {
+        "api": {
+          "samples": 5,
+          "peak_memory_mib": 5.68,
+          "peak_cpu_percent": 1.05
+        },
+        "t32-processor": {
+          "samples": 5,
+          "peak_memory_mib": 1881.088,
+          "peak_cpu_percent": 2.76
+        }
+      },
+      "jointly_correct_seconds": {
+        "baseline": {
+          "n": 1,
+          "median": 7.7189999999973224,
+          "p95": 7.7189999999973224
+        },
+        "candidate": {
+          "n": 1,
+          "median": 8.328999999997905,
+          "p95": 8.328999999997905
+        }
+      },
+      "http_errors": 4,
+      "startup_seconds": 15.281000000002678
+    },
+    "minilm-ettin": {
+      "correct": 5,
+      "total": 6,
+      "latency_seconds": {
+        "n": 6,
+        "median": 9.67949999999837,
+        "p95": 10.98399999999674
+      },
+      "stage_medians_ms": {
+        "answer_model_calls": {
+          "n": 6,
+          "median": 9027.2875945,
+          "p95": 10234.728452000001
+        },
+        "answer_total": {
+          "n": 6,
+          "median": 9643.216059,
+          "p95": 10860.564385
+        },
+        "application_total": {
+          "n": 6,
+          "median": 9644.823264999999,
+          "p95": 10862.220291
+        },
+        "assembly_and_model_tokenization": {
+          "n": 6,
+          "median": 457.9469225,
+          "p95": 531.173955
+        },
+        "query_embedding_and_tokens": {
+          "n": 6,
+          "median": 11.374433,
+          "p95": 14.749827
+        },
+        "reranking_with_preparation": {
+          "n": 6,
+          "median": 101.295111,
+          "p95": 107.689036
+        },
+        "resolution_validation": {
+          "n": 6,
+          "median": 0.0034375,
+          "p95": 0.004114
+        },
+        "search_dense": {
+          "n": 6,
+          "median": 0.0472665,
+          "p95": 0.048783
+        },
+        "search_filter_tokenize": {
+          "n": 6,
+          "median": 0.018984,
+          "p95": 0.022291000000000002
+        },
+        "search_fusion_dedup": {
+          "n": 6,
+          "median": 0.0394885,
+          "p95": 0.057080000000000006
+        },
+        "search_keyword": {
+          "n": 6,
+          "median": 0.026254,
+          "p95": 0.032343
+        },
+        "search_total": {
+          "n": 6,
+          "median": 0.137623,
+          "p95": 0.14316900000000002
+        },
+        "snapshot_index": {
+          "n": 6,
+          "median": 0.0167295,
+          "p95": 0.585217
+        },
+        "validation_and_presentation": {
+          "n": 6,
+          "median": 0.011871,
+          "p95": 0.014246
+        }
+      },
+      "coverage_complete": {
+        "raw": 5,
+        "selected": 5,
+        "ranked_five": 4,
+        "assembled": 5
+      },
+      "positive_denominator": 5,
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 200,
+          "seconds": 7.343000000000757,
+          "error": null,
+          "response_sha256": "169a0617c61eee881ca2be8e51d7bae0fc068a6c9a9ad167e9e4ade33f75afcc",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "pressure_bar": "17.5"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 6846.764249999999,
+              "answer_total": 7300.08635,
+              "application_total": 7302.300958,
+              "assembly_and_model_tokenization": 373.152348,
+              "query_embedding_and_tokens": 12.143899,
+              "reranking_with_preparation": 67.855169,
+              "resolution_validation": 0.003435,
+              "search_dense": 0.04833,
+              "search_filter_tokenize": 0.019160999999999997,
+              "search_fusion_dedup": 0.037833,
+              "search_keyword": 0.028768,
+              "search_total": 0.134492,
+              "snapshot_index": 0.585217,
+              "validation_and_presentation": 0.011334
+            },
+            "prompt_tokens": 891,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "1_Pooling/config.json": "343d502263e29ac81758d9d8f250e52d9420ecc3dfc771303e7d91f56bad5ef2",
+              "2_Dense/config.json": "acea183be3358e74570d01645bf1688fea67bd54cb3043b46c4a898950f43462",
+              "2_Dense/model.safetensors": "85e9596d9250a871deb159fb5db6979e910b4cf181d05c806733c49bc43d47c8",
+              "3_LayerNorm/config.json": "d0db57df3d6d4cce730fd010f7dadbd6b3ad36277c9e66cb2077ebcbe68f8b75",
+              "3_LayerNorm/model.safetensors": "de99fa351fb4badb74b56e85fa70b5bbd3fcf4d0e74de79eb749dba1e9e28b4a",
+              "4_Dense/config.json": "b6e9ce4b52d9801d2d2dcc9da7bbcfbb75aae11aefe616af75d1f58f8cc2482b",
+              "4_Dense/model.safetensors": "654827171b89c76d19d663162243f38d63d1ba812ac1ec9c1b36512f1a8e9ce8",
+              "README.md": "49ba569c156baeafdbe0ca6c902f0eee796bf8f597e607c4c16c1405f99d1a65",
+              "config.json": "f83c222e8684701525bfa5e0aaa2371724974dc7fb728174cca02e280feda1ad",
+              "config_sentence_transformers.json": "58704a86e4fe20f511de172ce623498c68991abfa7b330740d642d8e049affb7",
+              "modules.json": "d8394ab6c24cb0fb80229dafb886fac022ff489e757e3e6ed7d69603d5ae5942",
+              "onnx/model.onnx": "2a375ccea150a4df925a47884b510eeb4bd6227ca6fffdbbc62ca2284bfe6211",
+              "sentence_bert_config.json": "3084164002c0bca01b0259c5327123803fce32e660a57feb93184ffead186fc8",
+              "tokenizer.json": "28c5e078e4c52aa37cf0e6de1a212878f3dbd58dd1c70466298efe0b6b86db35",
+              "tokenizer_config.json": "2b85302525d8c528a9e1fbaea2733472bd00d4755eae881441c8c52b90e2d600"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "head_runtime": "numpy=2.5.4;math.erf;cpu-fp32",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "CLS then publisher Dense/GELU/LayerNorm/Dense; raw logit",
+            "preprocessing_version": "ettin-cls-dense-gelu-exact-layernorm-eps1e-5-dense-raw-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ettin-reranker-17m-v1",
+            "revision": "9e4aa35321a6dd1a43ca313f500c4b4f7cfb5cc6",
+            "tokenizer": "pinned tokenizer.json; publisher pair template and padding",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 77,
+              "prompt_tokens": 891,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 968
+            },
+            "input_tokens": 891,
+            "elapsed_seconds": 3.9622030110040214,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 50,
+                "prompt_tokens": 756,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 806
+              },
+              "input_tokens": 756,
+              "elapsed_seconds": 2.88274240699684
+            }
+          },
+          "max_pair_tokens": 103
+        },
+        {
+          "case": "route_two_sources",
+          "http_status": 200,
+          "seconds": 10.375,
+          "error": null,
+          "response_sha256": "49e1ec0fd88c39b5b74407e68326c3dc7cf1519f7777e02b4df9053a2ab9b0c3",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "load_tonnes": "48",
+              "piers": "12"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0,
+                1
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 9802.324293,
+              "answer_total": 10275.824016999999,
+              "application_total": 10277.535286999999,
+              "assembly_and_model_tokenization": 404.952432,
+              "query_embedding_and_tokens": 9.735804,
+              "reranking_with_preparation": 58.631885000000004,
+              "resolution_validation": 0.00344,
+              "search_dense": 0.046203,
+              "search_filter_tokenize": 0.022291000000000002,
+              "search_fusion_dedup": 0.039511000000000004,
+              "search_keyword": 0.032343,
+              "search_total": 0.140754,
+              "snapshot_index": 0.009902,
+              "validation_and_presentation": 0.014246
+            },
+            "prompt_tokens": 907,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "1_Pooling/config.json": "343d502263e29ac81758d9d8f250e52d9420ecc3dfc771303e7d91f56bad5ef2",
+              "2_Dense/config.json": "acea183be3358e74570d01645bf1688fea67bd54cb3043b46c4a898950f43462",
+              "2_Dense/model.safetensors": "85e9596d9250a871deb159fb5db6979e910b4cf181d05c806733c49bc43d47c8",
+              "3_LayerNorm/config.json": "d0db57df3d6d4cce730fd010f7dadbd6b3ad36277c9e66cb2077ebcbe68f8b75",
+              "3_LayerNorm/model.safetensors": "de99fa351fb4badb74b56e85fa70b5bbd3fcf4d0e74de79eb749dba1e9e28b4a",
+              "4_Dense/config.json": "b6e9ce4b52d9801d2d2dcc9da7bbcfbb75aae11aefe616af75d1f58f8cc2482b",
+              "4_Dense/model.safetensors": "654827171b89c76d19d663162243f38d63d1ba812ac1ec9c1b36512f1a8e9ce8",
+              "README.md": "49ba569c156baeafdbe0ca6c902f0eee796bf8f597e607c4c16c1405f99d1a65",
+              "config.json": "f83c222e8684701525bfa5e0aaa2371724974dc7fb728174cca02e280feda1ad",
+              "config_sentence_transformers.json": "58704a86e4fe20f511de172ce623498c68991abfa7b330740d642d8e049affb7",
+              "modules.json": "d8394ab6c24cb0fb80229dafb886fac022ff489e757e3e6ed7d69603d5ae5942",
+              "onnx/model.onnx": "2a375ccea150a4df925a47884b510eeb4bd6227ca6fffdbbc62ca2284bfe6211",
+              "sentence_bert_config.json": "3084164002c0bca01b0259c5327123803fce32e660a57feb93184ffead186fc8",
+              "tokenizer.json": "28c5e078e4c52aa37cf0e6de1a212878f3dbd58dd1c70466298efe0b6b86db35",
+              "tokenizer_config.json": "2b85302525d8c528a9e1fbaea2733472bd00d4755eae881441c8c52b90e2d600"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "head_runtime": "numpy=2.5.4;math.erf;cpu-fp32",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "CLS then publisher Dense/GELU/LayerNorm/Dense; raw logit",
+            "preprocessing_version": "ettin-cls-dense-gelu-exact-layernorm-eps1e-5-dense-raw-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ettin-reranker-17m-v1",
+            "revision": "9e4aa35321a6dd1a43ca313f500c4b4f7cfb5cc6",
+            "tokenizer": "pinned tokenizer.json; publisher pair template and padding",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 120,
+              "prompt_tokens": 907,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1027
+            },
+            "input_tokens": 907,
+            "elapsed_seconds": 6.01099047200114,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 63,
+                "prompt_tokens": 772,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 835
+              },
+              "input_tokens": 772,
+              "elapsed_seconds": 3.7895968059965526
+            }
+          },
+          "max_pair_tokens": 103
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 200,
+          "seconds": 9.81199999999808,
+          "error": null,
+          "response_sha256": "e171241695724cfb847bacfcdc9c6f75cc244f60c4f27db2765333951c50270e",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "checksum_count": "9007199254740993"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 9224.5476,
+              "answer_total": 9810.328969,
+              "application_total": 9811.933249,
+              "assembly_and_model_tokenization": 470.34667,
+              "query_embedding_and_tokens": 10.604967,
+              "reranking_with_preparation": 104.667709,
+              "resolution_validation": 0.004114,
+              "search_dense": 0.045306000000000006,
+              "search_filter_tokenize": 0.018807,
+              "search_fusion_dedup": 0.038287,
+              "search_keyword": 0.019341999999999998,
+              "search_total": 0.12212,
+              "snapshot_index": 0.008397,
+              "validation_and_presentation": 0.008371
+            },
+            "prompt_tokens": 1668,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "1_Pooling/config.json": "343d502263e29ac81758d9d8f250e52d9420ecc3dfc771303e7d91f56bad5ef2",
+              "2_Dense/config.json": "acea183be3358e74570d01645bf1688fea67bd54cb3043b46c4a898950f43462",
+              "2_Dense/model.safetensors": "85e9596d9250a871deb159fb5db6979e910b4cf181d05c806733c49bc43d47c8",
+              "3_LayerNorm/config.json": "d0db57df3d6d4cce730fd010f7dadbd6b3ad36277c9e66cb2077ebcbe68f8b75",
+              "3_LayerNorm/model.safetensors": "de99fa351fb4badb74b56e85fa70b5bbd3fcf4d0e74de79eb749dba1e9e28b4a",
+              "4_Dense/config.json": "b6e9ce4b52d9801d2d2dcc9da7bbcfbb75aae11aefe616af75d1f58f8cc2482b",
+              "4_Dense/model.safetensors": "654827171b89c76d19d663162243f38d63d1ba812ac1ec9c1b36512f1a8e9ce8",
+              "README.md": "49ba569c156baeafdbe0ca6c902f0eee796bf8f597e607c4c16c1405f99d1a65",
+              "config.json": "f83c222e8684701525bfa5e0aaa2371724974dc7fb728174cca02e280feda1ad",
+              "config_sentence_transformers.json": "58704a86e4fe20f511de172ce623498c68991abfa7b330740d642d8e049affb7",
+              "modules.json": "d8394ab6c24cb0fb80229dafb886fac022ff489e757e3e6ed7d69603d5ae5942",
+              "onnx/model.onnx": "2a375ccea150a4df925a47884b510eeb4bd6227ca6fffdbbc62ca2284bfe6211",
+              "sentence_bert_config.json": "3084164002c0bca01b0259c5327123803fce32e660a57feb93184ffead186fc8",
+              "tokenizer.json": "28c5e078e4c52aa37cf0e6de1a212878f3dbd58dd1c70466298efe0b6b86db35",
+              "tokenizer_config.json": "2b85302525d8c528a9e1fbaea2733472bd00d4755eae881441c8c52b90e2d600"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "head_runtime": "numpy=2.5.4;math.erf;cpu-fp32",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "CLS then publisher Dense/GELU/LayerNorm/Dense; raw logit",
+            "preprocessing_version": "ettin-cls-dense-gelu-exact-layernorm-eps1e-5-dense-raw-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ettin-reranker-17m-v1",
+            "revision": "9e4aa35321a6dd1a43ca313f500c4b4f7cfb5cc6",
+            "tokenizer": "pinned tokenizer.json; publisher pair template and padding",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 72,
+              "prompt_tokens": 1668,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1740
+            },
+            "input_tokens": 1668,
+            "elapsed_seconds": 5.123262054003135,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 62,
+                "prompt_tokens": 1533,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1595
+              },
+              "input_tokens": 1533,
+              "elapsed_seconds": 4.099232458996994
+            }
+          },
+          "max_pair_tokens": 170
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 200,
+          "seconds": 4.625,
+          "error": null,
+          "response_sha256": "d571bc6f04493a66451da6086213e392eca0ee0dd98516a69d2dfd42be04c51c",
+          "score": {
+            "correct": true,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null
+              },
+              "selected": {
+                "found": [],
+                "complete": null
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null
+              },
+              "assembled": {
+                "found": [],
+                "complete": null
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null
+            },
+            "timings_ms": {
+              "answer_model_calls": 4056.390198,
+              "answer_total": 4619.2496,
+              "application_total": 4621.0087570000005,
+              "assembly_and_model_tokenization": 445.54717500000004,
+              "query_embedding_and_tokens": 9.477462000000001,
+              "reranking_with_preparation": 107.689036,
+              "resolution_validation": 0.002874,
+              "search_dense": 0.048783,
+              "search_filter_tokenize": 0.015216,
+              "search_fusion_dedup": 0.039466,
+              "search_keyword": 0.015005,
+              "search_total": 0.118853,
+              "snapshot_index": 0.023557,
+              "validation_and_presentation": 0.001528
+            },
+            "prompt_tokens": 1235,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "1_Pooling/config.json": "343d502263e29ac81758d9d8f250e52d9420ecc3dfc771303e7d91f56bad5ef2",
+              "2_Dense/config.json": "acea183be3358e74570d01645bf1688fea67bd54cb3043b46c4a898950f43462",
+              "2_Dense/model.safetensors": "85e9596d9250a871deb159fb5db6979e910b4cf181d05c806733c49bc43d47c8",
+              "3_LayerNorm/config.json": "d0db57df3d6d4cce730fd010f7dadbd6b3ad36277c9e66cb2077ebcbe68f8b75",
+              "3_LayerNorm/model.safetensors": "de99fa351fb4badb74b56e85fa70b5bbd3fcf4d0e74de79eb749dba1e9e28b4a",
+              "4_Dense/config.json": "b6e9ce4b52d9801d2d2dcc9da7bbcfbb75aae11aefe616af75d1f58f8cc2482b",
+              "4_Dense/model.safetensors": "654827171b89c76d19d663162243f38d63d1ba812ac1ec9c1b36512f1a8e9ce8",
+              "README.md": "49ba569c156baeafdbe0ca6c902f0eee796bf8f597e607c4c16c1405f99d1a65",
+              "config.json": "f83c222e8684701525bfa5e0aaa2371724974dc7fb728174cca02e280feda1ad",
+              "config_sentence_transformers.json": "58704a86e4fe20f511de172ce623498c68991abfa7b330740d642d8e049affb7",
+              "modules.json": "d8394ab6c24cb0fb80229dafb886fac022ff489e757e3e6ed7d69603d5ae5942",
+              "onnx/model.onnx": "2a375ccea150a4df925a47884b510eeb4bd6227ca6fffdbbc62ca2284bfe6211",
+              "sentence_bert_config.json": "3084164002c0bca01b0259c5327123803fce32e660a57feb93184ffead186fc8",
+              "tokenizer.json": "28c5e078e4c52aa37cf0e6de1a212878f3dbd58dd1c70466298efe0b6b86db35",
+              "tokenizer_config.json": "2b85302525d8c528a9e1fbaea2733472bd00d4755eae881441c8c52b90e2d600"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "head_runtime": "numpy=2.5.4;math.erf;cpu-fp32",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "CLS then publisher Dense/GELU/LayerNorm/Dense; raw logit",
+            "preprocessing_version": "ettin-cls-dense-gelu-exact-layernorm-eps1e-5-dense-raw-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ettin-reranker-17m-v1",
+            "revision": "9e4aa35321a6dd1a43ca313f500c4b4f7cfb5cc6",
+            "tokenizer": "pinned tokenizer.json; publisher pair template and padding",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 63,
+                "prompt_tokens": 1100,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1163
+              },
+              "input_tokens": 1100,
+              "elapsed_seconds": 4.054418994994194
+            }
+          },
+          "max_pair_tokens": 167
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 200,
+          "seconds": 9.546999999998661,
+          "error": null,
+          "response_sha256": "cca0aaf0010fedb72a3261b5f3cbdc42f0982263a67ec302b8f7d1459fe1fcf4",
+          "score": {
+            "correct": false,
+            "status": "supported",
+            "values_text": {
+              "interval_days": "45"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 8830.027589,
+              "answer_total": 9476.103149,
+              "application_total": 9477.713281,
+              "assembly_and_model_tokenization": 531.173955,
+              "query_embedding_and_tokens": 13.798313,
+              "reranking_with_preparation": 100.92135300000001,
+              "resolution_validation": 0.003296,
+              "search_dense": 0.043838999999999996,
+              "search_filter_tokenize": 0.017493,
+              "search_fusion_dedup": 0.057080000000000006,
+              "search_keyword": 0.02374,
+              "search_total": 0.14253200000000002,
+              "snapshot_index": 0.040219000000000005,
+              "validation_and_presentation": 0.012408
+            },
+            "prompt_tokens": 1238,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "1_Pooling/config.json": "343d502263e29ac81758d9d8f250e52d9420ecc3dfc771303e7d91f56bad5ef2",
+              "2_Dense/config.json": "acea183be3358e74570d01645bf1688fea67bd54cb3043b46c4a898950f43462",
+              "2_Dense/model.safetensors": "85e9596d9250a871deb159fb5db6979e910b4cf181d05c806733c49bc43d47c8",
+              "3_LayerNorm/config.json": "d0db57df3d6d4cce730fd010f7dadbd6b3ad36277c9e66cb2077ebcbe68f8b75",
+              "3_LayerNorm/model.safetensors": "de99fa351fb4badb74b56e85fa70b5bbd3fcf4d0e74de79eb749dba1e9e28b4a",
+              "4_Dense/config.json": "b6e9ce4b52d9801d2d2dcc9da7bbcfbb75aae11aefe616af75d1f58f8cc2482b",
+              "4_Dense/model.safetensors": "654827171b89c76d19d663162243f38d63d1ba812ac1ec9c1b36512f1a8e9ce8",
+              "README.md": "49ba569c156baeafdbe0ca6c902f0eee796bf8f597e607c4c16c1405f99d1a65",
+              "config.json": "f83c222e8684701525bfa5e0aaa2371724974dc7fb728174cca02e280feda1ad",
+              "config_sentence_transformers.json": "58704a86e4fe20f511de172ce623498c68991abfa7b330740d642d8e049affb7",
+              "modules.json": "d8394ab6c24cb0fb80229dafb886fac022ff489e757e3e6ed7d69603d5ae5942",
+              "onnx/model.onnx": "2a375ccea150a4df925a47884b510eeb4bd6227ca6fffdbbc62ca2284bfe6211",
+              "sentence_bert_config.json": "3084164002c0bca01b0259c5327123803fce32e660a57feb93184ffead186fc8",
+              "tokenizer.json": "28c5e078e4c52aa37cf0e6de1a212878f3dbd58dd1c70466298efe0b6b86db35",
+              "tokenizer_config.json": "2b85302525d8c528a9e1fbaea2733472bd00d4755eae881441c8c52b90e2d600"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "head_runtime": "numpy=2.5.4;math.erf;cpu-fp32",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "CLS then publisher Dense/GELU/LayerNorm/Dense; raw logit",
+            "preprocessing_version": "ettin-cls-dense-gelu-exact-layernorm-eps1e-5-dense-raw-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ettin-reranker-17m-v1",
+            "revision": "9e4aa35321a6dd1a43ca313f500c4b4f7cfb5cc6",
+            "tokenizer": "pinned tokenizer.json; publisher pair template and padding",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 1238,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1328
+            },
+            "input_tokens": 1238,
+            "elapsed_seconds": 5.379228947000229,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 44,
+                "prompt_tokens": 1103,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1147
+              },
+              "input_tokens": 1103,
+              "elapsed_seconds": 3.449037544996827
+            }
+          },
+          "max_pair_tokens": 174
+        },
+        {
+          "case": "pdf_separate_counts",
+          "http_status": 200,
+          "seconds": 10.98399999999674,
+          "error": null,
+          "response_sha256": "c0c38f76133c9e7cf67d05b5e96060735fa7d38fd2fcdf0c2cc0abfbd63d6500",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "passengers": "20",
+              "per_lifeboat": "12"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0,
+                1
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 10234.728452000001,
+              "answer_total": 10860.564385,
+              "application_total": 10862.220291,
+              "assembly_and_model_tokenization": 509.232693,
+              "query_embedding_and_tokens": 14.749827,
+              "reranking_with_preparation": 101.668869,
+              "resolution_validation": 0.003624,
+              "search_dense": 0.04859,
+              "search_filter_tokenize": 0.020349000000000003,
+              "search_fusion_dedup": 0.042674,
+              "search_keyword": 0.031169,
+              "search_total": 0.14316900000000002,
+              "snapshot_index": 0.008993000000000001,
+              "validation_and_presentation": 0.01358
+            },
+            "prompt_tokens": 1205,
+            "error": null
+          },
+          "embedding_space_id": "6ca04c7e667b1b04520b78dea672c578bc93ff15ce7076b9e7362c1a609f0996",
+          "reranker": {
+            "artifact_sha256": {
+              "1_Pooling/config.json": "343d502263e29ac81758d9d8f250e52d9420ecc3dfc771303e7d91f56bad5ef2",
+              "2_Dense/config.json": "acea183be3358e74570d01645bf1688fea67bd54cb3043b46c4a898950f43462",
+              "2_Dense/model.safetensors": "85e9596d9250a871deb159fb5db6979e910b4cf181d05c806733c49bc43d47c8",
+              "3_LayerNorm/config.json": "d0db57df3d6d4cce730fd010f7dadbd6b3ad36277c9e66cb2077ebcbe68f8b75",
+              "3_LayerNorm/model.safetensors": "de99fa351fb4badb74b56e85fa70b5bbd3fcf4d0e74de79eb749dba1e9e28b4a",
+              "4_Dense/config.json": "b6e9ce4b52d9801d2d2dcc9da7bbcfbb75aae11aefe616af75d1f58f8cc2482b",
+              "4_Dense/model.safetensors": "654827171b89c76d19d663162243f38d63d1ba812ac1ec9c1b36512f1a8e9ce8",
+              "README.md": "49ba569c156baeafdbe0ca6c902f0eee796bf8f597e607c4c16c1405f99d1a65",
+              "config.json": "f83c222e8684701525bfa5e0aaa2371724974dc7fb728174cca02e280feda1ad",
+              "config_sentence_transformers.json": "58704a86e4fe20f511de172ce623498c68991abfa7b330740d642d8e049affb7",
+              "modules.json": "d8394ab6c24cb0fb80229dafb886fac022ff489e757e3e6ed7d69603d5ae5942",
+              "onnx/model.onnx": "2a375ccea150a4df925a47884b510eeb4bd6227ca6fffdbbc62ca2284bfe6211",
+              "sentence_bert_config.json": "3084164002c0bca01b0259c5327123803fce32e660a57feb93184ffead186fc8",
+              "tokenizer.json": "28c5e078e4c52aa37cf0e6de1a212878f3dbd58dd1c70466298efe0b6b86db35",
+              "tokenizer_config.json": "2b85302525d8c528a9e1fbaea2733472bd00d4755eae881441c8c52b90e2d600"
+            },
+            "dimensions": 1,
+            "document_prefix": "",
+            "dtype": "float32",
+            "format": "publisher_fp32_onnx",
+            "head_runtime": "numpy=2.5.4;math.erf;cpu-fp32",
+            "max_batch": 32,
+            "max_tokens_including_special": 512,
+            "onnxruntime_version": "1.31.0",
+            "pooling": "CLS then publisher Dense/GELU/LayerNorm/Dense; raw logit",
+            "preprocessing_version": "ettin-cls-dense-gelu-exact-layernorm-eps1e-5-dense-raw-v1",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "query_prefix": "",
+            "repo": "cross-encoder/ettin-reranker-17m-v1",
+            "revision": "9e4aa35321a6dd1a43ca313f500c4b4f7cfb5cc6",
+            "tokenizer": "pinned tokenizer.json; publisher pair template and padding",
+            "truncation": "reject"
+          },
+          "generation": {
+            "usage": {
+              "completion_tokens": 134,
+              "prompt_tokens": 1205,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1339
+            },
+            "input_tokens": 1205,
+            "elapsed_seconds": 6.3803750070001115,
+            "assessment": {
+              "usage": {
+                "completion_tokens": 64,
+                "prompt_tokens": 1070,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1134
+              },
+              "input_tokens": 1070,
+              "elapsed_seconds": 3.8526191849960014
+            }
+          },
+          "max_pair_tokens": 177
+        }
+      ],
+      "gained": [
+        "pdf_separate_counts"
+      ],
+      "lost": [],
+      "reviewed_correct": 6,
+      "reviewed_support_exception": {
+        "case": "pdf_correction",
+        "applies": true,
+        "review": "docs/reports/t32-source-review.md"
+      },
+      "resources": {
+        "api": {
+          "samples": 13,
+          "peak_memory_mib": 5.562,
+          "peak_cpu_percent": 0.63
+        },
+        "t32-processor": {
+          "samples": 13,
+          "peak_memory_mib": 451.2,
+          "peak_cpu_percent": 79.46
+        }
+      },
+      "jointly_correct_seconds": {
+        "baseline": {
+          "n": 4,
+          "median": 11.546999999998661,
+          "p95": 16.54699999999866
+        },
+        "candidate": {
+          "n": 4,
+          "median": 8.577499999999418,
+          "p95": 10.375
+        }
+      },
+      "http_errors": 0,
+      "startup_seconds": 7.061999999998079
+    }
+  },
+  "run": "data/t32/pilot-v1",
+  "identity": {
+    "images": {
+      "vectornext-app:t28-12b": "sha256:3c858fc267b0346c0cb3beeb32ea39d86aac32a3b4d9d4efa4acde65c2c87b86",
+      "vectornext-app-processor:t32": "sha256:75725679ac2d6da6b901279e295c30e592436d9051e3a7cf794bb5fb1c421240"
+    },
+    "generator_image": "sha256:8f63ff90a6ff7fd762ebacde912b203b738cb93015005f11dc9003886bfcbd7c",
+    "generator_entrypoint": [
+      "python",
+      "-m",
+      "model_worker.launch_llm"
+    ],
+    "generator_environment": [
+      "VECTORNEXT_GENERATOR_PROFILE=12b"
+    ],
+    "commit": "1c8a0a785c89d6e5b33e54f8256716edd0ea8b34",
+    "input_sha256": "327a7c77a7fff99aafb2fcd3e2ee04292663779bb777940adecbd93ca26735a9",
+    "freeze_sha256": "c21f5a8f67da7d240d7a5d079060181850d7a8595e3dff565151a57ff1dacc6a",
+    "archive_sha256": "0512fee456bd52c4a18a8ebf83fe959ed38c1dee12ec4bdab8b635c853b30db1"
+  },
+  "ingestion": {
+    "minilm": {
+      "admitted": 10,
+      "attempted": 10,
+      "seconds": 29.327999999994063,
+      "chunks": 49,
+      "chunks_per_document": {
+        "aster-long": 8,
+        "cedar-audit": 10,
+        "distractor-audits": 2,
+        "distractor-lumen": 2,
+        "distractor-routes": 2,
+        "helio-certificate": 10,
+        "lumen-approved": 6,
+        "norhaven-operations": 4,
+        "norhaven-structure": 4,
+        "solace-unknown": 1
+      },
+      "startup_seconds": 7.10899999999674,
+      "snapshot_sha256": "b5c6442c9181850eaadea9a382ebf90a3e1edd085449d3be72184b34ed6a5985"
+    },
+    "nomic-v1.5": {
+      "admitted": 10,
+      "attempted": 10,
+      "seconds": 30.7190000000046,
+      "chunks": 42,
+      "chunks_per_document": {
+        "aster-long": 1,
+        "cedar-audit": 10,
+        "distractor-audits": 2,
+        "distractor-lumen": 2,
+        "distractor-routes": 2,
+        "helio-certificate": 10,
+        "lumen-approved": 6,
+        "norhaven-operations": 4,
+        "norhaven-structure": 4,
+        "solace-unknown": 1
+      },
+      "startup_seconds": 18.42199999999866,
+      "snapshot_sha256": "fce11fd24d992993d02bac55732d97b7e47b4d41cca088bca3736ff5d4e8ae53"
+    }
+  },
+  "normal_library_unchanged": true,
+  "normal_ready_after": true,
+  "post_run_tokenizer_probe": {
+    "minilm": {
+      "pressure_revision": 575,
+      "route_two_sources": 575,
+      "long_exact_record": 570,
+      "unknown_count": 566,
+      "pdf_correction": 572,
+      "pdf_separate_counts": 576
+    },
+    "ettin-17m": {
+      "pressure_revision": 528,
+      "route_two_sources": 528,
+      "long_exact_record": 522,
+      "unknown_count": 519,
+      "pdf_correction": 526,
+      "pdf_separate_counts": 530
+    },
+    "nomic_embedding_tokens": 557
+  },
+  "decision": "Retain MiniLM defaults; no production activation or migration."
+}

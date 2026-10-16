@@ -1,0 +1,77 @@
+{
+  "pressure_revision": {
+    "status": "supported",
+    "values": {
+      "pressure_bar": 17.5
+    },
+    "facts": [
+      {
+        "document": "lumen-approved",
+        "text": "approved continuous operating pressure of the Lumen K7 pump is 17.5 bar"
+      }
+    ]
+  },
+  "route_two_sources": {
+    "status": "supported",
+    "values": {
+      "piers": 12,
+      "load_tonnes": 48
+    },
+    "facts": [
+      {
+        "document": "norhaven-structure",
+        "text": "accepted Norhaven Link route has 12 piers"
+      },
+      {
+        "document": "norhaven-operations",
+        "text": "maximum authorized load for the accepted Norhaven Link route is 48 tonnes"
+      }
+    ]
+  },
+  "long_exact_record": {
+    "status": "supported",
+    "values": {
+      "checksum_count": 9007199254740993
+    },
+    "facts": [
+      {
+        "document": "aster-long",
+        "text": "9007199254740993"
+      }
+    ]
+  },
+  "unknown_count": {
+    "status": "insufficient_evidence",
+    "values": {},
+    "facts": []
+  },
+  "pdf_correction": {
+    "status": "supported",
+    "values": {
+      "interval_days": 45
+    },
+    "facts": [
+      {
+        "document": "cedar-audit",
+        "text": "Type B manifold: inspect every 45 days"
+      }
+    ]
+  },
+  "pdf_separate_counts": {
+    "status": "supported",
+    "values": {
+      "passengers": 20,
+      "per_lifeboat": 12
+    },
+    "facts": [
+      {
+        "document": "helio-certificate",
+        "text": "certified passenger limit is 20 persons"
+      },
+      {
+        "document": "helio-certificate",
+        "text": "Each lifeboat has a certified capacity of 12 persons"
+      }
+    ]
+  }
+}

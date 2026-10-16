@@ -16,6 +16,7 @@ COPY --from=core /app/target/release/examples/ask /usr/local/bin/ask
 COPY experiments/t02/encoders.py experiments/t02/fetch_models.py experiments/t02/models.lock.json experiments/t02/models.26b.lock.json experiments/t02/
 COPY experiments/t27/models.12b.lock.json experiments/t27/
 COPY experiments/t31/models.bge.lock.json experiments/t31/
+COPY experiments/t32/models.lock.json experiments/t32/
 COPY model_worker/ model_worker/
 COPY evals/fixtures/ evals/fixtures/
 COPY tests/fixtures/pdf/ tests/fixtures/pdf/

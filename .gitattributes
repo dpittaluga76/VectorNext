@@ -16,3 +16,5 @@ compose.coverage.yaml -text
 # T28 freezes bind exact fixture/scorer/browser bytes across checkouts.
 experiments/t28/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 frontend/e2e/pointers-live.spec.ts -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# T32 hashes bind exact fixture and request bytes, including original line endings.
+experiments/t32/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

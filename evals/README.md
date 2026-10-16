@@ -119,4 +119,4 @@ docker compose run --rm --volume ./tmp/pdfs:/render evals pdftoppm -r 120 -png e
 docker compose run --rm --volume ./tmp/pdfs:/render evals pdftoppm -r 120 -png evals/fixtures/scanned_note.pdf /render/scan
 ```
 
-Create `tmp/pdfs` first. Generated previews are ignored by Git. Record review results and fixture revisions in the [build plan](../docs/plan.md). See [metrics.md](metrics.md) for the measurement contract that later implementation tasks must follow.
+Create `tmp/pdfs` first. Generated previews are ignored by Git. Record review progress in the [active plan](../docs/plan.md), then preserve final results and fixture revisions in the [completed-task archive](../docs/tasks-done.md) or the task's linked report. See [metrics.md](metrics.md) for the measurement contract that later implementation tasks must follow.

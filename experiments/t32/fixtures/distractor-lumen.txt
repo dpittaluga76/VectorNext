@@ -1,0 +1,2 @@
+# Lumen pump service index
+Synthetic fixture. The Lumen K6 continuous operating pressure is 18.5 bar. The Lumen K8 operating pressure is 17 bar. The canceled Lumen K7 June 2030 proposal used 22 bar; consult the final service approval for September 2031. The K7 shipment contains 17 spare seals and 5 spare valves.

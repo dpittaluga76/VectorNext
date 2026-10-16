@@ -5,6 +5,8 @@ Last updated: 2026-10-16 (UTC).
 
 This document condenses the project discussion into an implementation reference. It is not a claim that the system is implemented or that every proposed technology has been selected. Explicit user instructions can revise it.
 
+Track current work and proposed next steps in [plan.md](plan.md). Completed task definitions, verification and historical handoffs are retained in [tasks-done.md](tasks-done.md); archived priorities do not override the active tracker or this design.
+
 ## 1. Confirmed requirements
 
 - Build our own vector database, including the storage/search core. Do not substitute an existing vector database as the product implementation.
@@ -23,6 +25,20 @@ T01 evaluation fixtures/contracts, T02 local-model feasibility, T03's Rust stora
 T10 adds source/answer scoring, isolated cold/warm API comparisons, stage/queue/resource measurements, bounded answer options and independent keyword-field weights. The [evaluation report](reports/t10-evaluation.md) retains structural context and exact search as defaults. Two primary passages reduced median response time by 30–32% on the 13 development questions; the later [T11 public-source comparison](reports/t11-independent.md) found lost answers with two, so five remain the general default. Generated context did not improve final answers and cost substantially more to ingest. These results do not establish broad retrieval quality.
 
 ## 2. Integrated deployment
+
+### T32 — bounded embedding/reranker replacement pilot (implemented and measured)
+
+Authorized 2026-10-16: compare MiniLM/MiniLM, Nomic/MiniLM, MiniLM/Ettin-17M and Nomic/Ettin-17M in **24 scored end-to-end requests total** (six fixed questions per combination, one pass). This supersedes a larger replacement benchmark: do not run historical suites or extra quality batches. Freeze fresh synthetic TXT/PDF/JSON fixtures, questions, exact expected values/source support and scoring before model queries. Include distractors, multi-source evidence, a longer JSON record and an unknown-count negative; do not use the original holdout. Report this as a small engineering pilot, not independent proof or a promotion gate sufficient by itself.
+
+Pin publisher FP32 ONNX/tokenizer/config artifacts for nomic-ai/nomic-embed-text-v1.5 and cross-encoder/ettin-reranker-17m-v1 through explicit checksum-verified setup. Keep CPU-only inference, structural context, the 180-token chunk target, ranked 30/20/5, current two-call Gemma/temperature/seed and existing deadlines. Nomic initially uses 768 dimensions, masked mean pooling, layer normalization then L2, search_query/search_document prefixes and a conservative tested 1,024-token limit; no unverified 8K-export claim. Ettin uses raw logits and a 512-token pair admission cap for this comparison. Validate actual tokenizer padding/specials and graph inputs/outputs, not MiniLM-specific assumptions.
+
+Make embedding dimensions/prefixes/processing and reranker identity profile-driven while preserving default MiniLM space/cache identities exactly. No storage or public API schema change. Ingest once per embedding profile into fresh isolated storage; each reranker uses those same committed revisions/vectors. Separate query caches/processes per combination and counterbalance execution order. Use explicit answer fields to isolate retrieval from field planning; retain exact responses, candidate/final/source coverage, validated answer outcomes, failures, stage timings, CPU/RAM and model/image/source identities. Small synthetic preflight/unit checks are separate from the 24 scored requests. No tuning or retrying failed measured answers into success.
+
+Normal defaults, images, documents and GPU allocation remain unchanged. A dedicated API/processor pair may use the normal generator's existing bounded scheduler, one request at a time, without restarting it; verify readiness/library preservation and stop only experiment services afterward. Better final evidence/correctness with no lost baseline successes and acceptable measured cost justifies a follow-up recommendation; this six-question pilot alone does not activate a replacement. Preserve all attempts and historical freezes. Larger chunks, quantization and deployment migration remain separate work.
+
+Completed 2026-10-16: all 24 attempts retained. MiniLM/Ettin improved frozen correctness 4/6 → 5/6, assembled coverage 4/5 → 5/5 and median end-to-end latency 12.80 → 9.68 s, with no lost baseline success. A separately documented valid alternate PDF citation raises reviewed scores to 5/6 → 6/6 without changing gold. Both Nomic arms scored 1/6 frozen (2/6 reviewed), with four 503 failures each: the 557-token whole JSON record fits the new embedding cap but its 519–576-token query pairs exceed the unchanged 512-token reranker cap. Existing JSON preparation can exceed the ordinary 180-token target when a whole record fits the embedding space; future changes must reconcile all stage budgets rather than silently truncate or skip evidence. No model promotion or budget repair was made in this pilot.
+
+The publisher Ettin ONNX is a backbone, so its pinned CLS/Dense/GELU/LayerNorm/Dense head is included in the CPU implementation and cache identity. Profile-driven dimensions/prefixes, publisher tokenizer padding and preprocessing retain exact legacy identities. Verified 64 Python/163 top-level Rust checks, offline packaging and unchanged normal library/readiness. All ten sources admitted per embedder; paired rerankers share identical snapshots; experiment containers are stopped with data/caches retained. See [results, source review and reproduction](reports/t32-replacements.md). Normal MiniLM defaults remain; model selection here is an experimental worker/Compose option, not a new launcher feature.
 
 ### Completed follow-on work — documentation, range proofs, T29–T31
 
