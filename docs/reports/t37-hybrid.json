@@ -1,0 +1,805 @@
+{
+  "run": "pilot-v1",
+  "protocol": "docs/t37-protocol.md",
+  "frozen_summary_sha256": "6818118d17055ee60f6223ef61ce53eda460dda598dd6f5eda65dc0bbdfd09fe",
+  "execution_freeze_sha256": "4526c25500d03bceb27176c1ec4a337d93187e451dd5454e59c0b9cc26e0b3d3",
+  "source_zip_sha256": "86c57668690f85caaa0fe0431345c6153ececc08e13677fa1407b47d5a33199b",
+  "frozen_files": 150,
+  "images": {
+    "vectornext-app:t37-hybrid": "sha256:d3355718dcd09e897ed2bbcded032fab806bbf811d0e28802489df614cdf8c68",
+    "vectornext-app-processor:t37-hybrid": "sha256:55d666b66fdb18fcc5cd6b417759cf07a07a78688ae75280bf3bdf066638f16f",
+    "vectornext-app-llm:t37-hybrid": "sha256:e52df1937a26bdf0d66fbf1c7a0b8f2961442d42e131f892ea5317182c3b109d"
+  },
+  "gpu": "NVIDIA GeForce RTX 4060, 8188 MiB, 616.92",
+  "timing_exclusion": {
+    "mode": "hybrid",
+    "case": "unclear_subject",
+    "reason": "User confirmed overnight PC sleep. Original raw timing and accuracy denominator retained; only derived timing summaries exclude this turn."
+  },
+  "modes": {
+    "hybrid": {
+      "correct": 8,
+      "denominator": 8,
+      "unchanged_scorer_correct": 6,
+      "admitted": 7,
+      "fallbacks": 2,
+      "cases": [
+        {
+          "case": "constrained_count",
+          "status": 200,
+          "seconds": 4.3337085247039795,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 0.145,
+          "activation_seconds": 0.0,
+          "work_seconds": 3.702617907,
+          "observed_generation_seconds": 3.4189054499947815,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "pdf_pressure",
+          "status": 200,
+          "seconds": 7.9281532764434814,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 3.882,
+          "activation_seconds": 0.0,
+          "work_seconds": 3.617501204,
+          "observed_generation_seconds": 3.315903939997952,
+          "correct": true,
+          "original_correct": false
+        },
+        {
+          "case": "explicit_identifiers",
+          "status": 200,
+          "seconds": 13.59429669380188,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 7.537,
+          "activation_seconds": 0.0,
+          "work_seconds": 5.881285841,
+          "observed_generation_seconds": 5.584569370999816,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "followup_draft",
+          "status": 200,
+          "seconds": 17.185231924057007,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 13.556,
+          "activation_seconds": 0.0,
+          "work_seconds": 3.31056001,
+          "observed_generation_seconds": 3.0488233100040816,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "exact_sequence",
+          "status": 200,
+          "seconds": 20.75622010231018,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 16.908,
+          "activation_seconds": 0.0,
+          "work_seconds": 3.387944118,
+          "observed_generation_seconds": 3.130530110000109,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "missing_manual_count",
+          "status": 200,
+          "seconds": 90.291672706604,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 2,
+          "models": [
+            "nuextract",
+            "gemma"
+          ],
+          "fallback_reason": "insufficient_evidence",
+          "queue_seconds": 20.34,
+          "activation_seconds": 60.94171843200456,
+          "work_seconds": 8.424333365,
+          "observed_generation_seconds": 7.997714860000997,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "unclear_subject",
+          "status": 400,
+          "seconds": 19036.1243994236,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 2,
+          "models": [
+            "nuextract",
+            "gemma"
+          ],
+          "fallback_reason": "invalid record: question needs clarification: name the subject and requested fact, or specify fields in Advanced",
+          "queue_seconds": 89.987,
+          "activation_seconds": 92.57790616100101,
+          "work_seconds": 3.2185159930000005,
+          "observed_generation_seconds": 3.1083197980042314,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "aggregate_sum",
+          "status": 400,
+          "seconds": 0.00814056396484375,
+          "admitted": false,
+          "attempts": 0,
+          "models": [],
+          "fallback_reason": null,
+          "queue_seconds": 0.0,
+          "activation_seconds": 0.0,
+          "work_seconds": 0.0,
+          "observed_generation_seconds": null,
+          "correct": true,
+          "original_correct": false
+        }
+      ],
+      "admitted_sleep_excluded_timing": {
+        "seconds": {
+          "n": 6,
+          "median": 15.389764308929443,
+          "p95": 90.291672706604,
+          "min": 4.3337085247039795,
+          "max": 90.291672706604
+        },
+        "queue_seconds": {
+          "n": 6,
+          "median": 10.5465,
+          "p95": 20.34,
+          "min": 0.145,
+          "max": 20.34
+        },
+        "activation_seconds": {
+          "n": 6,
+          "median": 0.0,
+          "p95": 60.94171843200456,
+          "min": 0.0,
+          "max": 60.94171843200456
+        },
+        "work_seconds": {
+          "n": 6,
+          "median": 3.6600595555,
+          "p95": 8.424333365,
+          "min": 3.31056001,
+          "max": 8.424333365
+        },
+        "observed_generation_seconds": {
+          "n": 6,
+          "median": 3.3674046949963667,
+          "p95": 7.997714860000997,
+          "min": 3.0488233100040816,
+          "max": 7.997714860000997
+        }
+      },
+      "five_common_supported_timing": {
+        "seconds": {
+          "n": 5,
+          "median": 13.59429669380188,
+          "p95": 20.75622010231018,
+          "min": 4.3337085247039795,
+          "max": 20.75622010231018
+        },
+        "queue_seconds": {
+          "n": 5,
+          "median": 7.537,
+          "p95": 16.908,
+          "min": 0.145,
+          "max": 16.908
+        },
+        "activation_seconds": {
+          "n": 5,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "work_seconds": {
+          "n": 5,
+          "median": 3.617501204,
+          "p95": 5.881285841,
+          "min": 3.31056001,
+          "max": 5.881285841
+        },
+        "observed_generation_seconds": {
+          "n": 5,
+          "median": 3.315903939997952,
+          "p95": 5.584569370999816,
+          "min": 3.0488233100040816,
+          "max": 5.584569370999816
+        }
+      }
+    },
+    "nuextract": {
+      "correct": 8,
+      "denominator": 8,
+      "unchanged_scorer_correct": 6,
+      "admitted": 7,
+      "fallbacks": 0,
+      "cases": [
+        {
+          "case": "constrained_count",
+          "status": 200,
+          "seconds": 35.01738214492798,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 0.06,
+          "activation_seconds": 30.838332063998678,
+          "work_seconds": 3.542104109,
+          "observed_generation_seconds": 3.2675870040038717,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "pdf_pressure",
+          "status": 200,
+          "seconds": 38.65778660774231,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 34.556,
+          "activation_seconds": 0.0,
+          "work_seconds": 3.764460886,
+          "observed_generation_seconds": 3.477500673994655,
+          "correct": true,
+          "original_correct": false
+        },
+        {
+          "case": "explicit_identifiers",
+          "status": 200,
+          "seconds": 44.87555456161499,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 38.357,
+          "activation_seconds": 0.0,
+          "work_seconds": 6.029036411,
+          "observed_generation_seconds": 5.793574090996117,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "followup_draft",
+          "status": 200,
+          "seconds": 48.47560119628906,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 44.417,
+          "activation_seconds": 0.0,
+          "work_seconds": 3.4954792,
+          "observed_generation_seconds": 3.2420111370011,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "exact_sequence",
+          "status": 200,
+          "seconds": 51.5433394908905,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 47.94,
+          "activation_seconds": 0.0,
+          "work_seconds": 3.477229689,
+          "observed_generation_seconds": 3.2195262520035612,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "missing_manual_count",
+          "status": 200,
+          "seconds": 54.078230142593384,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 51.449,
+          "activation_seconds": 0.0,
+          "work_seconds": 2.504563337,
+          "observed_generation_seconds": 2.2834070559983957,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "unclear_subject",
+          "status": 400,
+          "seconds": 55.0902578830719,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "nuextract"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 53.987,
+          "activation_seconds": 0.0,
+          "work_seconds": 0.759743483,
+          "observed_generation_seconds": 0.71785839900258,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "aggregate_sum",
+          "status": 400,
+          "seconds": 0.00755763053894043,
+          "admitted": false,
+          "attempts": 0,
+          "models": [],
+          "fallback_reason": null,
+          "queue_seconds": 0.0,
+          "activation_seconds": 0.0,
+          "work_seconds": 0.0,
+          "observed_generation_seconds": null,
+          "correct": true,
+          "original_correct": false
+        }
+      ],
+      "admitted_sleep_excluded_timing": {
+        "seconds": {
+          "n": 7,
+          "median": 48.47560119628906,
+          "p95": 55.0902578830719,
+          "min": 35.01738214492798,
+          "max": 55.0902578830719
+        },
+        "queue_seconds": {
+          "n": 7,
+          "median": 44.417,
+          "p95": 53.987,
+          "min": 0.06,
+          "max": 53.987
+        },
+        "activation_seconds": {
+          "n": 7,
+          "median": 0.0,
+          "p95": 30.838332063998678,
+          "min": 0.0,
+          "max": 30.838332063998678
+        },
+        "work_seconds": {
+          "n": 7,
+          "median": 3.4954792,
+          "p95": 6.029036411,
+          "min": 0.759743483,
+          "max": 6.029036411
+        },
+        "observed_generation_seconds": {
+          "n": 7,
+          "median": 3.2420111370011,
+          "p95": 5.793574090996117,
+          "min": 0.71785839900258,
+          "max": 5.793574090996117
+        }
+      },
+      "five_common_supported_timing": {
+        "seconds": {
+          "n": 5,
+          "median": 44.87555456161499,
+          "p95": 51.5433394908905,
+          "min": 35.01738214492798,
+          "max": 51.5433394908905
+        },
+        "queue_seconds": {
+          "n": 5,
+          "median": 38.357,
+          "p95": 47.94,
+          "min": 0.06,
+          "max": 47.94
+        },
+        "activation_seconds": {
+          "n": 5,
+          "median": 0.0,
+          "p95": 30.838332063998678,
+          "min": 0.0,
+          "max": 30.838332063998678
+        },
+        "work_seconds": {
+          "n": 5,
+          "median": 3.542104109,
+          "p95": 6.029036411,
+          "min": 3.477229689,
+          "max": 6.029036411
+        },
+        "observed_generation_seconds": {
+          "n": 5,
+          "median": 3.2675870040038717,
+          "p95": 5.793574090996117,
+          "min": 3.2195262520035612,
+          "max": 5.793574090996117
+        }
+      }
+    },
+    "gemma": {
+      "correct": 8,
+      "denominator": 8,
+      "unchanged_scorer_correct": 6,
+      "admitted": 7,
+      "fallbacks": 0,
+      "cases": [
+        {
+          "case": "constrained_count",
+          "status": 200,
+          "seconds": 75.14446949958801,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "gemma"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 0.013,
+          "activation_seconds": 64.3879293219943,
+          "work_seconds": 10.524418353,
+          "observed_generation_seconds": 10.217972861006274,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "pdf_pressure",
+          "status": 200,
+          "seconds": 87.05522966384888,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "gemma"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 75.098,
+          "activation_seconds": 0.0,
+          "work_seconds": 11.556737752,
+          "observed_generation_seconds": 11.200758841005154,
+          "correct": true,
+          "original_correct": false
+        },
+        {
+          "case": "explicit_identifiers",
+          "status": 200,
+          "seconds": 105.1593222618103,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "gemma"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 86.693,
+          "activation_seconds": 0.0,
+          "work_seconds": 18.132609353,
+          "observed_generation_seconds": 17.80175863000477,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "followup_draft",
+          "status": 200,
+          "seconds": 118.0018253326416,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "gemma"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 104.897,
+          "activation_seconds": 0.0,
+          "work_seconds": 12.553868647,
+          "observed_generation_seconds": 12.270558990996506,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "exact_sequence",
+          "status": 200,
+          "seconds": 131.30188584327698,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "gemma"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 117.491,
+          "activation_seconds": 0.0,
+          "work_seconds": 13.324994904,
+          "observed_generation_seconds": 12.960065606006538,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "missing_manual_count",
+          "status": 200,
+          "seconds": 139.93237829208374,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "gemma"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 130.886,
+          "activation_seconds": 0.0,
+          "work_seconds": 8.668656941,
+          "observed_generation_seconds": 8.349310888996115,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "unclear_subject",
+          "status": 400,
+          "seconds": 141.9566023349762,
+          "admitted": true,
+          "state": "completed",
+          "attempts": 1,
+          "models": [
+            "gemma"
+          ],
+          "fallback_reason": null,
+          "queue_seconds": 139.621,
+          "activation_seconds": 0.0,
+          "work_seconds": 2.217415433,
+          "observed_generation_seconds": 2.1834861839961377,
+          "correct": true,
+          "original_correct": true
+        },
+        {
+          "case": "aggregate_sum",
+          "status": 400,
+          "seconds": 0.007787466049194336,
+          "admitted": false,
+          "attempts": 0,
+          "models": [],
+          "fallback_reason": null,
+          "queue_seconds": 0.0,
+          "activation_seconds": 0.0,
+          "work_seconds": 0.0,
+          "observed_generation_seconds": null,
+          "correct": true,
+          "original_correct": false
+        }
+      ],
+      "admitted_sleep_excluded_timing": {
+        "seconds": {
+          "n": 7,
+          "median": 118.0018253326416,
+          "p95": 141.9566023349762,
+          "min": 75.14446949958801,
+          "max": 141.9566023349762
+        },
+        "queue_seconds": {
+          "n": 7,
+          "median": 104.897,
+          "p95": 139.621,
+          "min": 0.013,
+          "max": 139.621
+        },
+        "activation_seconds": {
+          "n": 7,
+          "median": 0.0,
+          "p95": 64.3879293219943,
+          "min": 0.0,
+          "max": 64.3879293219943
+        },
+        "work_seconds": {
+          "n": 7,
+          "median": 11.556737752,
+          "p95": 18.132609353,
+          "min": 2.217415433,
+          "max": 18.132609353
+        },
+        "observed_generation_seconds": {
+          "n": 7,
+          "median": 11.200758841005154,
+          "p95": 17.80175863000477,
+          "min": 2.1834861839961377,
+          "max": 17.80175863000477
+        }
+      },
+      "five_common_supported_timing": {
+        "seconds": {
+          "n": 5,
+          "median": 105.1593222618103,
+          "p95": 131.30188584327698,
+          "min": 75.14446949958801,
+          "max": 131.30188584327698
+        },
+        "queue_seconds": {
+          "n": 5,
+          "median": 86.693,
+          "p95": 117.491,
+          "min": 0.013,
+          "max": 117.491
+        },
+        "activation_seconds": {
+          "n": 5,
+          "median": 0.0,
+          "p95": 64.3879293219943,
+          "min": 0.0,
+          "max": 64.3879293219943
+        },
+        "work_seconds": {
+          "n": 5,
+          "median": 12.553868647,
+          "p95": 18.132609353,
+          "min": 10.524418353,
+          "max": 18.132609353
+        },
+        "observed_generation_seconds": {
+          "n": 5,
+          "median": 12.270558990996506,
+          "p95": 17.80175863000477,
+          "min": 10.217972861006274,
+          "max": 17.80175863000477
+        }
+      }
+    }
+  },
+  "resources": {
+    "samples": 125,
+    "whole_device_gpu_peak_mib": 7735,
+    "minimum_host_available_ram_bytes": 16303087616,
+    "maximum_host_ram_load_percent": 75,
+    "limits": "Whole-device and host samples, not per-model allocations; WDDM paging was not instrumented. Sampling pauses during PC sleep."
+  },
+  "operational_drill": {
+    "checks": [
+      {
+        "id": "t37-switch-drill-00",
+        "models": [
+          "nuextract"
+        ],
+        "state": "completed",
+        "fallback_reason": null
+      },
+      {
+        "id": "t37-queued-cancellation",
+        "state": "cancelled",
+        "attempts": 0
+      },
+      {
+        "id": "t37-switch-drill-01",
+        "models": [
+          "gemma"
+        ],
+        "state": "completed",
+        "fallback_reason": null
+      },
+      {
+        "id": "t37-switch-drill-02",
+        "models": [
+          "nuextract"
+        ],
+        "state": "completed",
+        "fallback_reason": null
+      },
+      {
+        "id": "t37-backend-loss-hybrid",
+        "models": [
+          "nuextract",
+          "gemma"
+        ],
+        "state": "completed",
+        "fallback_reason": "capability unavailable: model operation: \"HTTPError: HTTP Error 503: Service Unavailable\""
+      },
+      {
+        "id": "t37-api-restart-hybrid",
+        "models": [
+          "nuextract",
+          "gemma"
+        ],
+        "state": "completed",
+        "fallback_reason": "NuExtract attempt interrupted; no replay; backend reconciliation required"
+      }
+    ],
+    "samples": 236,
+    "maximum_simultaneous_backends": 1
+  },
+  "ui_release_amendment": {
+    "measured_image": "sha256:d3355718dcd09e897ed2bbcded032fab806bbf811d0e28802489df614cdf8c68",
+    "release_image": "sha256:9a67837dfd711b4f73bc4d3fab47db55b52ffc987d57c34dd279155ca40f4c90",
+    "changed_image_files": [
+      "/app/ui/assets/index-CATHNRbt.js",
+      "/app/ui/assets/index-Ci4LH00R.css",
+      "/app/ui/assets/index-YRIRidh5.css",
+      "/app/ui/assets/index-ikawTT8r.js",
+      "/app/ui/index.html"
+    ],
+    "binary_and_non_ui_files_identical": true,
+    "changed_frozen_source_files": [
+      "frontend/src/App.tsx",
+      "frontend/src/style.css"
+    ]
+  },
+  "normal_browser_activation": {
+    "verified": true,
+    "mode": "hybrid",
+    "attempts": [
+      "nuextract"
+    ],
+    "source_link": true,
+    "revision_checked_pdf": true,
+    "reload": true,
+    "opaque_export": true,
+    "external_requests": 0,
+    "browser_errors": 0,
+    "total_ms": 4496
+  },
+  "final_release_browser": {
+    "verified": true,
+    "readiness": true,
+    "models_available": true,
+    "loaded_model": "nuextract",
+    "library_inspection": true,
+    "narrow_layout": true,
+    "new_inference_requests": 0,
+    "external_requests": 0,
+    "browser_errors": 0
+  },
+  "backup": {
+    "verified": true,
+    "restored_volume": "vectornext_t37_rollback_verified",
+    "generation": 1,
+    "documents": 1,
+    "jobs": 1,
+    "full_volume_tar_sha256": "0cfaae4ed3990d8ddb7901e5ac9da355ece0ddea02733229bc7d873e8d65da6b",
+    "export_manifest_sha256": "5be37b6d0c327258521a58c66e46ab22c65a9ba654da3333f21c303287ce837f"
+  }
+}

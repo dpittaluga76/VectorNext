@@ -6,24 +6,27 @@ Completed tasks and historical handoffs: [tasks-done.md](tasks-done.md).
 
 ## Current state
 
-- **T01–T32 are complete.** Their task definitions, acceptance criteria and verification history are in the completed-task archive; detailed measurements remain in [reports/](reports/).
-- **Running defaults:** three-service local deployment on `:t28-12b`, Gemma 4 12B, two-call answering, f16 KV, MiniLM embeddings and reranking, structural ingestion and ranked 30/20/5 retrieval. Facet coverage remains opt-in.
-- **Latest result:** the 24-request Nomic/Ettin pilot favors MiniLM embeddings with Ettin reranking for further confirmation. Frozen correctness improved 4/6 → 5/6 and median latency 12.80 → 9.68 s; six unique questions do not establish broad quality. Both Nomic arms encountered the 512-token reranker limit. [Results and separate source review](reports/t32-replacements.md).
-- **Verification:** T32 passed 64 Python and 163 top-level Rust checks plus offline packaging. The normal library is unchanged; experiment containers are stopped and captures/volumes retained.
-- **Deployment boundary:** experimental model profiles and the numeric-range repair in current source have not been activated in the normal app. Publishing source changes does not change the running deployment.
+- **T01–T37 are complete.** Definitions, acceptance criteria and historical handoffs are in [tasks-done.md](tasks-done.md); detailed evidence remains in [reports/](reports/).
+- **Running defaults:** three-service `:t37-hybrid` deployment on localhost:8088. Hybrid uses repaired NuExtract3 first, with one queued Gemma 4 12B fallback. Forced Gemma/NuExtract modes are available. Two-call answering, f16 KV, MiniLM, structural ingestion and ranked 30/20/5 remain unchanged.
+- **Latest result:** all 24 integration cases passed the predeclared scoring rules (**8/8 per mode**, unchanged historical scorer **6/8**). Hybrid accepted all five supported NuExtract answers and fell back on two of seven admitted questions. Common-supported median attempt work: **3.62/3.54/12.55 s** for Hybrid/NuExtract/Gemma. This excludes queue/loading; the missing-evidence fallback took **90.29 s**, including **60.94 s** loading. [Results, interruption and limits](reports/t37-hybrid.md).
+- **Verified:** Rust regressions/format/Clippy; 89 Python checks; 71 frozen HTTP cases, five boundaries, three OpenAPI checks; six components and thirteen offline workspace plus two adapter/browser scenarios; launcher/scorer contracts and eleven retained CPU-profile checks. Six bounded live switching/cancellation/outage/restart checks passed; 236 process samples observed at most one backend. The PC-sleep observation stays in raw captures and correctness, excluded only from derived timing.
+- **Activation and preservation:** full-volume copy plus export/restore verified; original PDF, 35 chunks, revision and ingestion jobs unchanged. Hybrid readiness, source-linked browser answer, original PDF, reload and export passed. A final browser-only readiness amendment is separately verified; Rust binary and all non-UI files match the measured image retained as `:t37-measured`. Prior images, private backup, all data/caches/freezes and 189-file public pre-cleanup archive are retained. Test services are stopped; original holdout unused.
 
 ## Active work
 
-No implementation or evaluation task is currently in progress. The plan/archive cleanup is complete. No new benchmark, model promotion or deployment is authorized by this tracker.
+T37's full handoff is in [the completed archive](tasks-done.md#t37--hybrid-answering-with-queued-gemma-fallback). Use [answer-job contracts](answer-jobs.md) and [rollout/rollback instructions](reports/t37-hybrid.md) when operating the app.
+
+**Open follow-up — disabled Ask button:** reported after activation. The API, all model capabilities and answer queue were ready, with zero unfinished jobs, at inspection. The current browser's document selection, question and history state have not been confirmed. Diagnosis was interrupted before any fix; do not treat the cause as established.
 
 ## Next useful step
 
-Recommended: scope a short, fresh confirmation of **MiniLM embeddings + Ettin-17M reranking**, comparing it with the current MiniLM baseline before deciding whether to promote Ettin. This replaces the reranker only; finding an embedding replacement remains separate work.
+Finish the Ask-button diagnosis by checking the selected document checkbox and the current conversation state, then fix any confirmed gating or explanation defect. Select and scope further quality/performance work separately; model-switch latency and broad semantic reliability remain explicit limitations.
 
 The items below are **proposed**, not scheduled or started. Assign the next task ID and define its scope, dependencies and acceptance criteria when the user selects work.
 
 | Proposed work | Depends on | Purpose / decision needed |
 | --- | --- | --- |
+| NuExtract assessment consistency | T35, T36 | Scope separately if fresh results confirm inconsistent missing-evidence classification; do not change assessment during the planning comparison. |
 | Confirm MiniLM / Ettin-17M | T32 | Check the observed evidence gain, negatives, ambiguity, format/token boundaries and latency on a small fresh set; keep defaults until a documented decision. |
 | Reconcile chunk and reranker budgets | T32 | Address whole JSON records that fit Nomic's embedding window but exceed reranker admission. Preserve exact source values/evidence and explicit failures; scope the design before another Nomic comparison. |
 | Clarification and ambiguity evaluation | Completed retrieval/answer work | Scope a separate clarification workflow and clearly worded ambiguity cases. Candidate retrieval coverage alone does not establish answerability. |

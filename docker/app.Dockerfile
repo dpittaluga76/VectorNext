@@ -16,6 +16,9 @@ WORKDIR /app
 COPY --from=build /app/target/release/vectornext /usr/local/bin/vectornext
 COPY --from=ui /ui/dist /app/ui
 COPY deployment/ deployment/
+COPY model_worker/__init__.py model_worker/server.py model_worker/cache.py model_worker/generator_profile.py model_worker/generator_profiles.json model_worker/
+COPY model_assets/gemma.lock.json model_assets/gemma.lock.json
+RUN python -c "import json; from model_worker.server import context_generator; open('/app/generator-policy.json','w').write(json.dumps(context_generator()))"
 COPY evals/fixtures/ evals/fixtures/
 COPY evals/independent/fixtures/voyager1.txt evals/independent/fixtures/voyager1.txt
 COPY tests/fixtures/answers/ tests/fixtures/answers/

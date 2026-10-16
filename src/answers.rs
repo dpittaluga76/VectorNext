@@ -334,8 +334,7 @@ pub fn ask_with_options(
     options: AnswerOptions,
 ) -> Result<AnswerReport> {
     let total = Instant::now();
-    options.validate()?;
-    validate_request(&request)?;
+    validate_request_options(&request, &options)?;
     let facet_queries = if options.evidence_strategy == EvidenceStrategy::FacetCoverageV1 {
         require(
             request.scope == Scope::Passage,
@@ -641,7 +640,12 @@ pub fn ask_with_options(
         report.formatted = Some(render(&report.answer, request.template.as_deref())?);
         if request.prose {
             let draft_start = Instant::now();
-            report.presentation_draft = Some(models.rewrite(&request.question, &report.answer)?);
+            match models.rewrite(&request.question, &report.answer) {
+                Ok(draft) => report.presentation_draft = Some(draft),
+                Err(error) => {
+                    report.audit["presentation_error"] = json!(error.to_string());
+                }
+            }
             report
                 .timings_ms
                 .insert("presentation_model_calls".into(), elapsed(draft_start));
@@ -654,6 +658,20 @@ pub fn ask_with_options(
         .timings_ms
         .insert("answer_total".into(), elapsed(total));
     Ok(report)
+}
+
+/// Deterministic request admission, also used before enqueueing any model work.
+pub fn validate_request_options(request: &AskRequest, options: &AnswerOptions) -> Result<()> {
+    options.validate()?;
+    validate_request(request)?;
+    if options.evidence_strategy == EvidenceStrategy::FacetCoverageV1 {
+        require(
+            request.scope == Scope::Passage,
+            "facet_coverage_v1 requires passage scope",
+        )?;
+        facets::queries(request)?;
+    }
+    Ok(())
 }
 
 fn rejected(report: &AnswerReport, evidence: &[Evidence], stage: &str, error: &Error) -> Error {

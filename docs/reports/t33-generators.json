@@ -1,0 +1,2979 @@
+{
+  "run": "data/t33/pilot-v3",
+  "scheduled": 24,
+  "arms": {
+    "12b": {
+      "correct": 6,
+      "reviewed_correct": 7,
+      "total": 8,
+      "http_errors": 0,
+      "preflight_blocked": 0,
+      "latency_seconds": {
+        "n": 8,
+        "median": 10.3595000000023,
+        "p95": 13.156000000002678
+      },
+      "peak_device_memory_mib": 7774.0,
+      "resources": {
+        "api": {
+          "peak_ram_mib": 5.375,
+          "samples": 51
+        },
+        "processor": {
+          "peak_ram_mib": 551.3,
+          "samples": 51
+        },
+        "llm": {
+          "peak_ram_mib": 14643.2,
+          "samples": 51
+        }
+      },
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 200,
+          "seconds": 8.203000000001339,
+          "error": null,
+          "response_sha256": "925337b5ed8e5cbfcbb39e5cf855f7487a7336d79116d69c491d2cd291aeb8d6",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "pressure_bar": "17.5"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 7648.271811,
+              "answer_total": 8189.5145330000005,
+              "application_total": 8192.324802,
+              "assembly_and_model_tokenization": 390.214725,
+              "query_embedding_and_tokens": 9.713037,
+              "reranking_with_preparation": 140.031811,
+              "resolution_validation": 0.068537,
+              "search_dense": 0.201896,
+              "search_filter_tokenize": 0.08648900000000001,
+              "search_fusion_dedup": 0.23769,
+              "search_keyword": 0.390511,
+              "search_total": 0.9177639999999999,
+              "snapshot_index": 1.127746,
+              "validation_and_presentation": 0.12834700000000002
+            },
+            "prompt_tokens": 894,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 894,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 984
+            },
+            "input_tokens": 894,
+            "elapsed_seconds": "4.921479179000016",
+            "assessment": {
+              "reason": "Document E1 explicitly states that the approved continuous operating pressure of the Lumen K7 pump for September 2031 service is 17.5 bar.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 50,
+                "prompt_tokens": 759,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 809
+              },
+              "input_tokens": 759,
+              "elapsed_seconds": "2.7250608050017036"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "route_two_sources",
+          "http_status": 200,
+          "seconds": 11.06199999999808,
+          "error": null,
+          "response_sha256": "837dc6abc959ec8f2291973666f34ce86fa41b7d06d4e4f5fe59c04a1c8a7e26",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "load_tonnes": "48",
+              "piers": "12"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0,
+                1
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 10403.12209,
+              "answer_total": 10960.812202,
+              "application_total": 10962.466045,
+              "assembly_and_model_tokenization": 410.46241100000003,
+              "query_embedding_and_tokens": 9.445591,
+              "reranking_with_preparation": 137.524554,
+              "resolution_validation": 0.003139,
+              "search_dense": 0.045535,
+              "search_filter_tokenize": 0.021164,
+              "search_fusion_dedup": 0.039936,
+              "search_keyword": 0.030978000000000002,
+              "search_total": 0.138012,
+              "snapshot_index": 0.009396,
+              "validation_and_presentation": 0.06179899999999999
+            },
+            "prompt_tokens": 925,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 141,
+              "prompt_tokens": 925,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1066
+            },
+            "input_tokens": 925,
+            "elapsed_seconds": "6.779138134996174",
+            "assessment": {
+              "reason": "Document E3 confirms the accepted Norhaven Link route has 12 piers, and document E1 confirms the maximum authorized load for the accepted route is 48 tonnes.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 58,
+                "prompt_tokens": 790,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 848
+              },
+              "input_tokens": 790,
+              "elapsed_seconds": "3.6212900429964066"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 200,
+          "seconds": 10.51600000000326,
+          "error": null,
+          "response_sha256": "806b1958ff516a8797b3de9b9f3c444e591d40e2d9ae49785923d7597184af5a",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "checksum_count": "9007199254740993"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 9736.260504,
+              "answer_total": 10472.015689,
+              "application_total": 10474.122695,
+              "assembly_and_model_tokenization": 469.138226,
+              "query_embedding_and_tokens": 14.13428,
+              "reranking_with_preparation": 252.03385900000004,
+              "resolution_validation": 0.018176,
+              "search_dense": 0.150395,
+              "search_filter_tokenize": 0.12076,
+              "search_fusion_dedup": 0.041965999999999996,
+              "search_keyword": 0.067543,
+              "search_total": 0.38133,
+              "snapshot_index": 0.009386,
+              "validation_and_presentation": 0.011125
+            },
+            "prompt_tokens": 1668,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 72,
+              "prompt_tokens": 1668,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1740
+            },
+            "input_tokens": 1668,
+            "elapsed_seconds": "5.285016287998587",
+            "assessment": {
+              "reason": "Evidence E1 contains the recorded_checksum_count of 9007199254740993 for the Aster vault project with run R-2031-06.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 62,
+                "prompt_tokens": 1533,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1595
+              },
+              "input_tokens": 1533,
+              "elapsed_seconds": "4.449169468003674"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 200,
+          "seconds": 5.921999999998661,
+          "error": null,
+          "response_sha256": "52c2d2bf8c0f07032399885b5f07118fcf060c0c1275c0293f419d10b0ce54a2",
+          "score": {
+            "correct": true,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null
+              },
+              "selected": {
+                "found": [],
+                "complete": null
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null
+              },
+              "assembled": {
+                "found": [],
+                "complete": null
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null
+            },
+            "timings_ms": {
+              "answer_model_calls": 5145.572102,
+              "answer_total": 5909.608338,
+              "application_total": 5911.37522,
+              "assembly_and_model_tokenization": 460.19753299999996,
+              "query_embedding_and_tokens": 9.646346,
+              "reranking_with_preparation": 293.998514,
+              "resolution_validation": 0.003473,
+              "search_dense": 0.050413,
+              "search_filter_tokenize": 0.019917,
+              "search_fusion_dedup": 0.043933,
+              "search_keyword": 0.050192,
+              "search_total": 0.164909,
+              "snapshot_index": 0.010579,
+              "validation_and_presentation": 0.0019379999999999998
+            },
+            "prompt_tokens": 1732,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "reason": "The evidence for Solace bank 3 in June 2031 (E1) explicitly states that the bypass alarm totals were not recorded and that a zero value only applies to routine alarms, making the count unknown.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 71,
+                "prompt_tokens": 1597,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1668
+              },
+              "input_tokens": 1597,
+              "elapsed_seconds": "5.143717380000453"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 200,
+          "seconds": 10.203000000001339,
+          "error": null,
+          "response_sha256": "a220d0c88f88573e506b95e603cb6934ed5edce2f9093bd5b0f3cd7f0c2dffa6",
+          "score": {
+            "correct": false,
+            "status": "supported",
+            "values_text": {
+              "interval_days": "45"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 9370.52553,
+              "answer_total": 10119.721861,
+              "application_total": 10121.278505,
+              "assembly_and_model_tokenization": 502.450688,
+              "query_embedding_and_tokens": 10.006294,
+              "reranking_with_preparation": 236.560302,
+              "resolution_validation": 0.003417,
+              "search_dense": 0.045697,
+              "search_filter_tokenize": 0.018763,
+              "search_fusion_dedup": 0.041770999999999996,
+              "search_keyword": 0.025825999999999998,
+              "search_total": 0.132457,
+              "snapshot_index": 0.008192999999999999,
+              "validation_and_presentation": 0.015826
+            },
+            "prompt_tokens": 1225,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 1225,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1315
+            },
+            "input_tokens": 1225,
+            "elapsed_seconds": "5.4257013620008365",
+            "assessment": {
+              "reason": "Document E1 explicitly states that the final July 2031 interval for the Cedar type B manifold is 45 days.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 44,
+                "prompt_tokens": 1090,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1134
+              },
+              "input_tokens": 1090,
+              "elapsed_seconds": "3.9429877229995327"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "pdf_separate_counts",
+          "http_status": 200,
+          "seconds": 5.671999999998661,
+          "error": null,
+          "response_sha256": "3f4689ab2608ee2e50f8878d0f09cc2e8c60e5b661ff94cfa46dc15a076f8abb",
+          "score": {
+            "correct": false,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 4792.035861,
+              "answer_total": 5599.072895,
+              "application_total": 5600.630136000001,
+              "assembly_and_model_tokenization": 477.536572,
+              "query_embedding_and_tokens": 14.197668,
+              "reranking_with_preparation": 315.01667100000003,
+              "resolution_validation": 0.003584,
+              "search_dense": 0.051467,
+              "search_filter_tokenize": 0.095986,
+              "search_fusion_dedup": 0.043011,
+              "search_keyword": 0.031306999999999995,
+              "search_total": 0.22231700000000001,
+              "snapshot_index": 0.008675,
+              "validation_and_presentation": 0.014025000000000001
+            },
+            "prompt_tokens": 1155,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "reason": "The evidence provides the certified passenger limit for the Helio service vessel (20 persons), but the lifeboat capacity of 20 seats per lifeboat refers to a different vessel named 'Helios'.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 60,
+                "prompt_tokens": 1020,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1080
+              },
+              "input_tokens": 1020,
+              "elapsed_seconds": "4.790046750000329"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "planned_piers",
+          "http_status": 200,
+          "seconds": 13.156000000002678,
+          "error": null,
+          "response_sha256": "863302b489687b7fa929dec11832e131b445e06e0af994464fad89a50ba1109b",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "norhaven_link_route_pier_count": "12"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 7541.681678,
+              "answer_total": 8067.297419999999,
+              "application_total": 13158.642606000001,
+              "assembly_and_model_tokenization": 411.821527,
+              "query_embedding_and_tokens": 23.84944,
+              "reranking_with_preparation": 89.762522,
+              "resolution_validation": 0.003359,
+              "search_dense": 0.01137,
+              "search_filter_tokenize": 0.067746,
+              "search_fusion_dedup": 0.016572,
+              "search_keyword": 0.027504999999999998,
+              "search_total": 0.12382499999999999,
+              "validation_and_presentation": 0.023855
+            },
+            "prompt_tokens": 746,
+            "error": null,
+            "planning_status": "ready",
+            "projection_exact": true
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 746,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 836
+            },
+            "input_tokens": 746,
+            "elapsed_seconds": "4.7007769030024065",
+            "assessment": {
+              "reason": "Document E1 explicitly states that the accepted Norhaven Link route has 12 piers as of August 2031.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 43,
+                "prompt_tokens": 611,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 654
+              },
+              "input_tokens": 611,
+              "elapsed_seconds": "2.8389895649961545"
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The number of piers on the accepted Norhaven Link route as of August 2031.",
+                  "kind": "integer",
+                  "name": "norhaven_link_route_pier_count",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 90,
+                "prompt_tokens": 538,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 628
+              },
+              "input_tokens": 538,
+              "elapsed_seconds": "5.075163909001276"
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "planned_followup",
+          "http_status": 200,
+          "seconds": 11.171999999998661,
+          "error": null,
+          "response_sha256": "5ef562683fd36b61415525e0b98308b502322cf9a0d1c7b565bc6c00f6b79233",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "maximum_authorized_service_load": "48"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 6691.041822,
+              "answer_total": 7163.235685,
+              "application_total": 11092.358049,
+              "assembly_and_model_tokenization": 339.321146,
+              "query_embedding_and_tokens": 36.490783,
+              "reranking_with_preparation": 96.234166,
+              "resolution_validation": 0.005011,
+              "search_dense": 0.00827,
+              "search_filter_tokenize": 0.056143,
+              "search_fusion_dedup": 0.010839999999999999,
+              "search_keyword": 0.022955999999999997,
+              "search_total": 0.098606,
+              "validation_and_presentation": 0.01211
+            },
+            "prompt_tokens": 772,
+            "error": null,
+            "planning_status": "ready",
+            "projection_exact": true
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 77,
+              "prompt_tokens": 772,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 849
+            },
+            "input_tokens": 772,
+            "elapsed_seconds": "3.937074200002826",
+            "assessment": {
+              "reason": "Document E1 explicitly states that the maximum authorized load for the accepted Norhaven Link route is 48 tonnes.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 46,
+                "prompt_tokens": 637,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 683
+              },
+              "input_tokens": 637,
+              "elapsed_seconds": "2.7522638980008196"
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The maximum authorized service load of the accepted Norhaven Link route in tonnes.",
+                  "kind": "number",
+                  "name": "maximum_authorized_service_load",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 82,
+                "prompt_tokens": 572,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 654
+              },
+              "input_tokens": 572,
+              "elapsed_seconds": "3.9254919350059936"
+            }
+          },
+          "reviewed_correct": true
+        }
+      ],
+      "startup_seconds": 63.437999999994645,
+      "restart_seconds": 63.375,
+      "gained": [],
+      "lost": [],
+      "common_success_seconds": {
+        "baseline": {
+          "n": 7,
+          "median": 10.51600000000326,
+          "p95": 13.156000000002678
+        },
+        "candidate": {
+          "n": 7,
+          "median": 10.51600000000326,
+          "p95": 13.156000000002678
+        }
+      }
+    },
+    "qwen35-9b-q4km": {
+      "correct": 4,
+      "reviewed_correct": 5,
+      "total": 8,
+      "http_errors": 2,
+      "preflight_blocked": 0,
+      "latency_seconds": {
+        "n": 8,
+        "median": 4.648499999999331,
+        "p95": 6.73399999999674
+      },
+      "peak_device_memory_mib": 5740.0,
+      "resources": {
+        "api": {
+          "peak_ram_mib": 5.176,
+          "samples": 37
+        },
+        "processor": {
+          "peak_ram_mib": 553.1,
+          "samples": 37
+        },
+        "llm": {
+          "peak_ram_mib": 7346.176,
+          "samples": 37
+        }
+      },
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 200,
+          "seconds": 5.938000000001921,
+          "error": null,
+          "response_sha256": "c4a4e9bfe20b10608483ee042ee08a46b76da77fd872792630fa8ea5c906b630",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "pressure_bar": "17.5"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 5231.525326,
+              "answer_total": 5852.991594,
+              "application_total": 5855.630929,
+              "assembly_and_model_tokenization": 422.015527,
+              "query_embedding_and_tokens": 10.08383,
+              "reranking_with_preparation": 189.037275,
+              "resolution_validation": 0.003913,
+              "search_dense": 0.07819599999999999,
+              "search_filter_tokenize": 0.05083,
+              "search_fusion_dedup": 0.037912,
+              "search_keyword": 0.059369,
+              "search_total": 0.22692299999999999,
+              "snapshot_index": 0.67327,
+              "validation_and_presentation": 0.029507000000000002
+            },
+            "prompt_tokens": 899,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+              "model": "unsloth/Qwen3.5-9B-GGUF",
+              "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 99,
+              "prompt_tokens": 899,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 998
+            },
+            "input_tokens": 899,
+            "elapsed_seconds": "3.0982175190001726",
+            "assessment": {
+              "reason": "The evidence in document E1 explicitly states that the approved continuous operating pressure of the Lumen K7 pump for September 2031 service is 17.5 bar, which satisfies the requested numeric field.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+                "model": "unsloth/Qwen3.5-9B-GGUF",
+                "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 62,
+                "prompt_tokens": 763,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 825
+              },
+              "input_tokens": 763,
+              "elapsed_seconds": "2.1314011180002126"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "route_two_sources",
+          "http_status": 200,
+          "seconds": 6.73399999999674,
+          "error": null,
+          "response_sha256": "fb51e2c1cff1c098e9417eaf479051f0daefb829e777b1dd4c7a16a717732ad6",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "load_tonnes": "48",
+              "piers": "12"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0,
+                1
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 6154.6706110000005,
+              "answer_total": 6691.78388,
+              "application_total": 6693.406954,
+              "assembly_and_model_tokenization": 392.989121,
+              "query_embedding_and_tokens": 10.836756,
+              "reranking_with_preparation": 133.125887,
+              "resolution_validation": 0.0032329999999999998,
+              "search_dense": 0.039602,
+              "search_filter_tokenize": 0.019965,
+              "search_fusion_dedup": 0.0339,
+              "search_keyword": 0.029288,
+              "search_total": 0.12306299999999999,
+              "snapshot_index": 0.009422,
+              "validation_and_presentation": 0.014201
+            },
+            "prompt_tokens": 930,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+              "model": "unsloth/Qwen3.5-9B-GGUF",
+              "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 137,
+              "prompt_tokens": 930,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1067
+            },
+            "input_tokens": 930,
+            "elapsed_seconds": "4.05518514400319",
+            "assessment": {
+              "reason": "The evidence explicitly states that the accepted August 2031 route has 12 piers (E3) and a maximum authorized load of 48 tonnes (E1), satisfying both requested fields.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+                "model": "unsloth/Qwen3.5-9B-GGUF",
+                "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 61,
+                "prompt_tokens": 794,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 855
+              },
+              "input_tokens": 794,
+              "elapsed_seconds": "2.0974018210035865"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 200,
+          "seconds": 6.577999999994063,
+          "error": null,
+          "response_sha256": "539e865a4bceab808583d783e866d92c4fa2ece8e0e85c6ae9b890107b1ff2f1",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "checksum_count": "9007199254740993"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 5874.421849,
+              "answer_total": 6597.221769,
+              "application_total": 6598.961361,
+              "assembly_and_model_tokenization": 426.170341,
+              "query_embedding_and_tokens": 9.595665,
+              "reranking_with_preparation": 286.831617,
+              "resolution_validation": 0.0033680000000000003,
+              "search_dense": 0.044198,
+              "search_filter_tokenize": 0.057842,
+              "search_fusion_dedup": 0.040059,
+              "search_keyword": 0.020176000000000003,
+              "search_total": 0.162783,
+              "snapshot_index": 0.022774,
+              "validation_and_presentation": 0.008785
+            },
+            "prompt_tokens": 1654,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+              "model": "unsloth/Qwen3.5-9B-GGUF",
+              "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 67,
+              "prompt_tokens": 1654,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1721
+            },
+            "input_tokens": 1654,
+            "elapsed_seconds": "2.7857617019981262",
+            "assessment": {
+              "reason": "Evidence E1 explicitly contains the record for 'Aster vault' run 'R-2031-06' and provides the specific integer value for 'recorded_checksum_count' (9007199254740993), satisfying the request for an exact non-nullable integer.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+                "model": "unsloth/Qwen3.5-9B-GGUF",
+                "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 85,
+                "prompt_tokens": 1518,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1603
+              },
+              "input_tokens": 1518,
+              "elapsed_seconds": "3.0866768039995804"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 200,
+          "seconds": 3.297000000005937,
+          "error": null,
+          "response_sha256": "84c151cec7417eb9586e6f552015ac20056d2d10b87e76bf4ded5637649aeb2c",
+          "score": {
+            "correct": true,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null
+              },
+              "selected": {
+                "found": [],
+                "complete": null
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null
+              },
+              "assembled": {
+                "found": [],
+                "complete": null
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null
+            },
+            "timings_ms": {
+              "answer_model_calls": 2560.906798,
+              "answer_total": 3254.456394,
+              "application_total": 3256.0413009999997,
+              "assembly_and_model_tokenization": 430.508758,
+              "query_embedding_and_tokens": 9.266999,
+              "reranking_with_preparation": 253.632939,
+              "resolution_validation": 0.002661,
+              "search_dense": 0.045896,
+              "search_filter_tokenize": 0.01621,
+              "search_fusion_dedup": 0.037141999999999994,
+              "search_keyword": 0.014849,
+              "search_total": 0.114477,
+              "snapshot_index": 0.008806,
+              "validation_and_presentation": 0.001635
+            },
+            "prompt_tokens": 1728,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "reason": "The only record for Solace bank 3 in June 2031 (E1) explicitly states that bypass alarm totals were not recorded, providing a null value rather than the requested integer count.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+                "model": "unsloth/Qwen3.5-9B-GGUF",
+                "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 62,
+                "prompt_tokens": 1592,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1654
+              },
+              "input_tokens": 1592,
+              "elapsed_seconds": "2.5592074410014902"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 200,
+          "seconds": 6.3439999999973224,
+          "error": null,
+          "response_sha256": "7fbcd259cc5d9875edff25151f64f900cfa8fd7600254d8bf273e6aeb4cda1fa",
+          "score": {
+            "correct": false,
+            "status": "supported",
+            "values_text": {
+              "interval_days": "45"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 5449.889367,
+              "answer_total": 6275.759292,
+              "application_total": 6277.457007999999,
+              "assembly_and_model_tokenization": 576.002389,
+              "query_embedding_and_tokens": 9.662707,
+              "reranking_with_preparation": 240.009859,
+              "resolution_validation": 0.00314,
+              "search_dense": 0.059385,
+              "search_filter_tokenize": 0.019004,
+              "search_fusion_dedup": 0.045815,
+              "search_keyword": 0.029922,
+              "search_total": 0.15471500000000002,
+              "snapshot_index": 0.008185999999999999,
+              "validation_and_presentation": 0.01189
+            },
+            "prompt_tokens": 1216,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+              "model": "unsloth/Qwen3.5-9B-GGUF",
+              "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 84,
+              "prompt_tokens": 1216,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1300
+            },
+            "input_tokens": 1216,
+            "elapsed_seconds": "2.9086641569956555",
+            "assessment": {
+              "reason": "Evidence E1 explicitly states that the final July 2031 interval for the Cedar type B manifold is 45 days, and Evidence E3 confirms the Type B manifold inspection is every 45 days, satisfying the request for a non-null integer.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+                "model": "unsloth/Qwen3.5-9B-GGUF",
+                "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 71,
+                "prompt_tokens": 1080,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1151
+              },
+              "input_tokens": 1080,
+              "elapsed_seconds": "2.5394369140049093"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "pdf_separate_counts",
+          "http_status": 200,
+          "seconds": 3.3589999999967404,
+          "error": null,
+          "response_sha256": "7a952835c041b70410ca747f1ea2e926b82d346c3d6558e28ed0747f05cd7d84",
+          "score": {
+            "correct": false,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 2584.1113560000003,
+              "answer_total": 3311.919887,
+              "application_total": 3313.495474,
+              "assembly_and_model_tokenization": 437.236974,
+              "query_embedding_and_tokens": 11.036707,
+              "reranking_with_preparation": 279.350895,
+              "resolution_validation": 0.002851,
+              "search_dense": 0.042960000000000005,
+              "search_filter_tokenize": 0.042842,
+              "search_fusion_dedup": 0.041430999999999996,
+              "search_keyword": 0.030406,
+              "search_total": 0.158145,
+              "snapshot_index": 0.007718,
+              "validation_and_presentation": 0.001706
+            },
+            "prompt_tokens": 1171,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "reason": "While the evidence provides the certified passenger limit (20) in E5, it does not contain the certified capacity per individual lifeboat; E2 mentions a limit for a different vessel (Helios) and E7 is titled 'Lifeboat rating' but contains no text data.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+                "model": "unsloth/Qwen3.5-9B-GGUF",
+                "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 78,
+                "prompt_tokens": 1035,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1113
+              },
+              "input_tokens": 1035,
+              "elapsed_seconds": "2.582563833995664"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "planned_piers",
+          "http_status": 400,
+          "seconds": 1.062000000005355,
+          "error": null,
+          "response_sha256": "a616b1a697bdedffacb00858da9b8a991a4b0aec88f22093ce007ad491fffa6e",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": false
+              },
+              "selected": {
+                "found": [],
+                "complete": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null,
+            "planning_status": null,
+            "projection_exact": false
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "planned_followup",
+          "http_status": 400,
+          "seconds": 0.9219999999986612,
+          "error": null,
+          "response_sha256": "7a3d47adc4521cd5bed91b610a1a272b1ba9e109172502ebff93fd35f3bbd8f6",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": false
+              },
+              "selected": {
+                "found": [],
+                "complete": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null,
+            "planning_status": null,
+            "projection_exact": false
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        }
+      ],
+      "startup_seconds": 55.25,
+      "restart_seconds": 52.57800000000134,
+      "gained": [],
+      "lost": [
+        "planned_piers",
+        "planned_followup"
+      ],
+      "common_success_seconds": {
+        "baseline": {
+          "n": 5,
+          "median": 10.203000000001339,
+          "p95": 11.06199999999808
+        },
+        "candidate": {
+          "n": 5,
+          "median": 6.3439999999973224,
+          "p95": 6.73399999999674
+        }
+      }
+    },
+    "granite42-8b-q4km": {
+      "correct": 6,
+      "reviewed_correct": 6,
+      "total": 8,
+      "http_errors": 1,
+      "preflight_blocked": 0,
+      "latency_seconds": {
+        "n": 8,
+        "median": 5.078000000001339,
+        "p95": 6.5310000000026776
+      },
+      "peak_device_memory_mib": 6361.0,
+      "resources": {
+        "api": {
+          "peak_ram_mib": 5.191,
+          "samples": 35
+        },
+        "processor": {
+          "peak_ram_mib": 552.5,
+          "samples": 35
+        },
+        "llm": {
+          "peak_ram_mib": 6772.736,
+          "samples": 35
+        }
+      },
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 200,
+          "seconds": 4.734000000004016,
+          "error": null,
+          "response_sha256": "786e9a84f6d2b42fddb4a5b36d1f9d75a168d415bc3c948d70c63f8c55abc2b4",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "pressure_bar": "17.5"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 4093.3801350000003,
+              "answer_total": 4690.601318999999,
+              "application_total": 4692.632407,
+              "assembly_and_model_tokenization": 429.376467,
+              "query_embedding_and_tokens": 10.858296999999999,
+              "reranking_with_preparation": 156.833191,
+              "resolution_validation": 0.003836,
+              "search_dense": 0.040331,
+              "search_filter_tokenize": 0.017017,
+              "search_fusion_dedup": 0.030338,
+              "search_keyword": 0.025047,
+              "search_total": 0.113033,
+              "snapshot_index": 0.444251,
+              "validation_and_presentation": 0.014587
+            },
+            "prompt_tokens": 826,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+              "model": "ibm-granite/granite-4.2-8b-GGUF",
+              "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 85,
+              "prompt_tokens": 826,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 911
+            },
+            "input_tokens": 826,
+            "elapsed_seconds": "2.533926183998119",
+            "assessment": {
+              "reason": "E1 contains the exact statement: 'The approved continuous operating pressure of the Lumen K7 pump is 17.5 bar. This is the continuous limit for September 2031 service.'",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+                "model": "ibm-granite/granite-4.2-8b-GGUF",
+                "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 49,
+                "prompt_tokens": 691,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 740
+              },
+              "input_tokens": 691,
+              "elapsed_seconds": "1.5577339379960904"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "route_two_sources",
+          "http_status": 200,
+          "seconds": 5.75,
+          "error": null,
+          "response_sha256": "07b763c452b774fb2e467710c028c4e96e928ae66075668629d06160742c7d2a",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "load_tonnes": "48",
+              "piers": "12"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0,
+                1
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 5169.546944000001,
+              "answer_total": 5680.53419,
+              "application_total": 5682.15667,
+              "assembly_and_model_tokenization": 358.51370199999997,
+              "query_embedding_and_tokens": 9.596594999999999,
+              "reranking_with_preparation": 142.693886,
+              "resolution_validation": 0.00321,
+              "search_dense": 0.044934,
+              "search_filter_tokenize": 0.020728,
+              "search_fusion_dedup": 0.039081,
+              "search_keyword": 0.030814,
+              "search_total": 0.135985,
+              "snapshot_index": 0.008138000000000001,
+              "validation_and_presentation": 0.016469
+            },
+            "prompt_tokens": 861,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+              "model": "ibm-granite/granite-4.2-8b-GGUF",
+              "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 135,
+              "prompt_tokens": 861,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 996
+            },
+            "input_tokens": 861,
+            "elapsed_seconds": "3.659813165999367",
+            "assessment": {
+              "reason": "E3 states the accepted Norhaven Link route has 12 piers. E1 states the maximum authorized load for the accepted Norhaven Link route is 48 tonnes.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+                "model": "ibm-granite/granite-4.2-8b-GGUF",
+                "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 44,
+                "prompt_tokens": 726,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 770
+              },
+              "input_tokens": 726,
+              "elapsed_seconds": "1.5077844650004408"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 200,
+          "seconds": 5.421999999998661,
+          "error": null,
+          "response_sha256": "6fa23b3d08139548e5827ae44fd703eac7b9aaea38d19061e765ca1310d48f54",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "checksum_count": "9007199254740993"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 4693.166168000001,
+              "answer_total": 5355.744919,
+              "application_total": 5357.3829240000005,
+              "assembly_and_model_tokenization": 413.97720999999996,
+              "query_embedding_and_tokens": 10.200389000000001,
+              "reranking_with_preparation": 238.245369,
+              "resolution_validation": 0.003314,
+              "search_dense": 0.045082,
+              "search_filter_tokenize": 0.01503,
+              "search_fusion_dedup": 0.039327,
+              "search_keyword": 0.017560000000000003,
+              "search_total": 0.117387,
+              "snapshot_index": 0.006945000000000001,
+              "validation_and_presentation": 0.009183
+            },
+            "prompt_tokens": 1527,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+              "model": "ibm-granite/granite-4.2-8b-GGUF",
+              "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 70,
+              "prompt_tokens": 1527,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1597
+            },
+            "input_tokens": 1527,
+            "elapsed_seconds": "2.7654392600015854",
+            "assessment": {
+              "reason": "E1 provides recorded_checksum_count=9007199254740993 for Aster vault run R-2031-06, matching the requested checksum count for the run.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+                "model": "ibm-granite/granite-4.2-8b-GGUF",
+                "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 46,
+                "prompt_tokens": 1392,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1438
+              },
+              "input_tokens": 1392,
+              "elapsed_seconds": "1.925798420998035"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 200,
+          "seconds": 3.936999999998079,
+          "error": null,
+          "response_sha256": "5eca172bded840a4d461bc91ac738970e04a074ac7bbaa7875a8832f1b2be8a4",
+          "score": {
+            "correct": true,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null
+              },
+              "selected": {
+                "found": [],
+                "complete": null
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null
+              },
+              "assembled": {
+                "found": [],
+                "complete": null
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null
+            },
+            "timings_ms": {
+              "answer_model_calls": 3258.142613,
+              "answer_total": 3945.6359469999998,
+              "application_total": 3947.16473,
+              "assembly_and_model_tokenization": 418.945711,
+              "query_embedding_and_tokens": 10.185696,
+              "reranking_with_preparation": 258.23363,
+              "resolution_validation": 0.003173,
+              "search_dense": 0.040055999999999994,
+              "search_filter_tokenize": 0.01443,
+              "search_fusion_dedup": 0.033976,
+              "search_keyword": 0.014192000000000001,
+              "search_total": 0.10299,
+              "snapshot_index": 0.008062,
+              "validation_and_presentation": 0.001619
+            },
+            "prompt_tokens": 1595,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "reason": "The evidence does not provide a numeric bypass_alarm_count for Solace bank 3 in June 2031. E1 states 'bypass_alarm_count':null and note 'Bypass alarm totals were not recorded for bank 3 in June 2031. Zero applies only to routine alarms.' No other evidence mentions bypass alarms for Solace bank 3 in June 2031.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+                "model": "ibm-granite/granite-4.2-8b-GGUF",
+                "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 95,
+                "prompt_tokens": 1460,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1555
+              },
+              "input_tokens": 1460,
+              "elapsed_seconds": "3.2565533149972907"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 200,
+          "seconds": 6.063000000001921,
+          "error": null,
+          "response_sha256": "bfbb3b0de4fb54745b13f210169baf0636c246a40366260689da138d85f338af",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "interval_days": "45"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 5284.3749,
+              "answer_total": 6059.384792000001,
+              "application_total": 6061.0234,
+              "assembly_and_model_tokenization": 530.529129,
+              "query_embedding_and_tokens": 14.238106,
+              "reranking_with_preparation": 230.07161200000002,
+              "resolution_validation": 0.003501,
+              "search_dense": 0.046965999999999994,
+              "search_filter_tokenize": 0.018444000000000002,
+              "search_fusion_dedup": 0.040085,
+              "search_keyword": 0.025668,
+              "search_total": 0.131557,
+              "snapshot_index": 0.009531000000000001,
+              "validation_and_presentation": 0.011822
+            },
+            "prompt_tokens": 1080,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+              "model": "ibm-granite/granite-4.2-8b-GGUF",
+              "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 75,
+              "prompt_tokens": 1080,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1155
+            },
+            "input_tokens": 1080,
+            "elapsed_seconds": "2.46393791599985",
+            "assessment": {
+              "reason": "E1 and E3 (both from cedar-audit) state the final July 2031 interval for Cedar type B manifold is 45 days. E3 explicitly says 'Type B manifold: inspect every 45 days.' E1 says 'final July 2031 interval for the Cedar type B manifold is 45 days.' The earlier 90 day draft is withdrawn and must not be used.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+                "model": "ibm-granite/granite-4.2-8b-GGUF",
+                "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 90,
+                "prompt_tokens": 945,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1035
+              },
+              "input_tokens": 945,
+              "elapsed_seconds": "2.8185388239944587"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "pdf_separate_counts",
+          "http_status": 200,
+          "seconds": 2.7960000000020955,
+          "error": null,
+          "response_sha256": "a31a49b6c8271b717e2aa8e9fc967b691618d1e9d41225b040e9e29a09443757",
+          "score": {
+            "correct": false,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0,
+                  1
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 2014.984749,
+              "answer_total": 2778.914026,
+              "application_total": 2780.3650470000002,
+              "assembly_and_model_tokenization": 471.360915,
+              "query_embedding_and_tokens": 11.40802,
+              "reranking_with_preparation": 281.00951699999996,
+              "resolution_validation": 0.0029809999999999997,
+              "search_dense": 0.038558,
+              "search_filter_tokenize": 0.017953,
+              "search_fusion_dedup": 0.035797,
+              "search_keyword": 0.028365,
+              "search_total": 0.121033,
+              "snapshot_index": 0.008872000000000001,
+              "validation_and_presentation": 0.002144
+            },
+            "prompt_tokens": 1046,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "reason": "The E5 document states the certified passenger limit is 20 persons (excluding crew). No document provides certified persons per individual lifeboat; E7 mentions lifeboat rating but does not specify a numeric certified capacity per lifeboat.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+                "model": "ibm-granite/granite-4.2-8b-GGUF",
+                "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 59,
+                "prompt_tokens": 911,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 970
+              },
+              "input_tokens": 911,
+              "elapsed_seconds": "2.0131839309979114"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "planned_piers",
+          "http_status": 200,
+          "seconds": 6.5310000000026776,
+          "error": null,
+          "response_sha256": "4e43fffd9f7f4680153311fb6c7ec308d602505a729eda293e751598cc0d047a",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "nornhaven_link_route_piers": "12"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 3774.655429,
+              "answer_total": 4131.795212,
+              "application_total": 6479.426597,
+              "assembly_and_model_tokenization": 296.228985,
+              "query_embedding_and_tokens": 13.436116,
+              "reranking_with_preparation": 47.383691999999996,
+              "resolution_validation": 0.0027089999999999996,
+              "search_dense": 0.008195000000000001,
+              "search_filter_tokenize": 0.016787,
+              "search_fusion_dedup": 0.015801,
+              "search_keyword": 0.020471,
+              "search_total": 0.061643,
+              "validation_and_presentation": 0.011812
+            },
+            "prompt_tokens": 700,
+            "error": null,
+            "planning_status": "ready",
+            "projection_exact": true
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+              "model": "ibm-granite/granite-4.2-8b-GGUF",
+              "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 83,
+              "prompt_tokens": 700,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 783
+            },
+            "input_tokens": 700,
+            "elapsed_seconds": "2.3851155930024106",
+            "assessment": {
+              "reason": "E1 states 'The accepted Norhaven Link route has 12 piers.' E2 does not mention piers.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+                "model": "ibm-granite/granite-4.2-8b-GGUF",
+                "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 43,
+                "prompt_tokens": 565,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 608
+              },
+              "input_tokens": 565,
+              "elapsed_seconds": "1.3879534480001894"
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "Number of piers associated with the accepted Norhaven Link route in August 2031",
+                  "kind": "integer",
+                  "name": "nornhaven_link_route_piers",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311",
+                "model": "ibm-granite/granite-4.2-8b-GGUF",
+                "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 83,
+                "prompt_tokens": 534,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 617
+              },
+              "input_tokens": 534,
+              "elapsed_seconds": "2.3336781059988425"
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "planned_followup",
+          "http_status": 400,
+          "seconds": 0.9689999999973224,
+          "error": null,
+          "response_sha256": "7a3d47adc4521cd5bed91b610a1a272b1ba9e109172502ebff93fd35f3bbd8f6",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": false
+              },
+              "selected": {
+                "found": [],
+                "complete": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null,
+            "planning_status": null,
+            "projection_exact": false
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        }
+      ],
+      "startup_seconds": 49.35899999999674,
+      "restart_seconds": 48.828999999997905,
+      "gained": [],
+      "lost": [
+        "planned_followup"
+      ],
+      "common_success_seconds": {
+        "baseline": {
+          "n": 6,
+          "median": 10.3595000000023,
+          "p95": 13.156000000002678
+        },
+        "candidate": {
+          "n": 6,
+          "median": 5.585999999999331,
+          "p95": 6.5310000000026776
+        }
+      }
+    }
+  },
+  "execution_freeze_sha256": "4c72e3e96ec3fdd1c93d0c82ddbf2b06d7a533d7a936e8d3a3602a8551a7a802",
+  "source_archive_sha256": "f84d01c3624cd83938787220fc4f1041563631a5bc9dcfdafaad1682a2a8b457",
+  "corpus_sha256": "78014496c5601d8b42b20b8953b811aa971c74d09924ae9bba87650d7d6c5415",
+  "ingestion": [
+    {
+      "document": "aster-long",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "aster-long",
+        "failure_count": 0,
+        "job_id": "t33-aster-long",
+        "last_failure": null,
+        "receipt": {
+          "generation": 1,
+          "request_sha256": "584d51219972e76587da8615079e7b563165668792e2362a4d033b1fb8c1812a"
+        },
+        "revision": "4a31ad4358bbf9b948ad5ba41ce24f3d50ca7c4bf51f8831783e5941a52e8186",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 3.561999999998079
+    },
+    {
+      "document": "cedar-audit",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "cedar-audit",
+        "failure_count": 0,
+        "job_id": "t33-cedar-audit",
+        "last_failure": null,
+        "pdf_diagnostics": {
+          "allow_partial": false,
+          "artifact_sha256": "a440a1acf513e8ff5c5be23cf35a6aaedcf92c4044105398b9dd169e3cabcbab",
+          "items": 11,
+          "next_action": "Review page warnings and extraction coverage; illustrations are not interpreted.",
+          "pages": [
+            {
+              "height": 841.8898,
+              "native_cells": 14,
+              "ocr_cells": 0,
+              "ocr_mean_confidence": null,
+              "page": 1,
+              "width": 595.2756
+            }
+          ],
+          "source_sha256": "d718f78196f0b4372e6b0e584f630e960194357c74af2f4d28bc00519d3427cd",
+          "status": "complete",
+          "warning_count": 0,
+          "warnings": [],
+          "warnings_truncated": false
+        },
+        "receipt": {
+          "generation": 2,
+          "request_sha256": "971a457e0963c3cc9d3c46f62d8f00742dd1baa54ed1132564a1c6a0e1f2cd81"
+        },
+        "revision": "bd6f6dd86b457da7fecf47bc3df166ec33e37f8ae2f783aa9688913b1f14a1f5",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 11.484000000004016
+    },
+    {
+      "document": "distractor-audits",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "distractor-audits",
+        "failure_count": 0,
+        "job_id": "t33-distractor-audits",
+        "last_failure": null,
+        "receipt": {
+          "generation": 3,
+          "request_sha256": "675baf21ac9bb39a17c3af259a73ae0bc5c78ee5b1803694c7e22404534eba47"
+        },
+        "revision": "db62c0fd2bb978281568740ff43ef6d892265ab135e0ce97f2ede723d7e739c7",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5319999999992433
+    },
+    {
+      "document": "distractor-lumen",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "distractor-lumen",
+        "failure_count": 0,
+        "job_id": "t33-distractor-lumen",
+        "last_failure": null,
+        "receipt": {
+          "generation": 4,
+          "request_sha256": "d498511da864c8b9fbaf93fd3ceee278b46b406216f6b2f2c305a63d5b8bbbf2"
+        },
+        "revision": "2e4e330c6861196d715d311fd8bcb9976b186c8a6bf70e43bd845cd3950bae7d",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5309999999954016
+    },
+    {
+      "document": "distractor-routes",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "distractor-routes",
+        "failure_count": 0,
+        "job_id": "t33-distractor-routes",
+        "last_failure": null,
+        "receipt": {
+          "generation": 5,
+          "request_sha256": "65572abfef65f4a229a28bc5fad05ee12601bbdca277b1b75c82503b8402a67b"
+        },
+        "revision": "c4f4d96ec2ee88a870613d7d50d16c1eed024c721877884a4e0fbf277d96f746",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5310000000026776
+    },
+    {
+      "document": "helio-certificate",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "helio-certificate",
+        "failure_count": 0,
+        "job_id": "t33-helio-certificate",
+        "last_failure": null,
+        "pdf_diagnostics": {
+          "allow_partial": false,
+          "artifact_sha256": "7ac434a0d2a2602bfd6ab440c0e7f5a4dbb36949c43d17ed4ac2b0d0708a3e5e",
+          "items": 11,
+          "next_action": "Review page warnings and extraction coverage; illustrations are not interpreted.",
+          "pages": [
+            {
+              "height": 841.8898,
+              "native_cells": 14,
+              "ocr_cells": 0,
+              "ocr_mean_confidence": null,
+              "page": 1,
+              "width": 595.2756
+            }
+          ],
+          "source_sha256": "7b50e5f44c2cf863369ee08e10188ee105e801efcf0aba3058838fddaa877fdc",
+          "status": "complete",
+          "warning_count": 0,
+          "warnings": [],
+          "warnings_truncated": false
+        },
+        "receipt": {
+          "generation": 6,
+          "request_sha256": "54429638da381f028e917ba9f652afe52afdce3b1b4349a143bc73e438f41e52"
+        },
+        "revision": "db8dcf81abbe12225b6a0d5a3f3262e864110b3e8d3a83e7b06e8f862b765bd9",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 9.639999999999418
+    },
+    {
+      "document": "lumen-approved",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "lumen-approved",
+        "failure_count": 0,
+        "job_id": "t33-lumen-approved",
+        "last_failure": null,
+        "receipt": {
+          "generation": 7,
+          "request_sha256": "7bfbde97e74e4573ee4b5837e493094fd700571c9fb2a09c937695476cbb8efd"
+        },
+        "revision": "ff94907faadf2f4903f27585fb722ecd72da271ac0c5ea4558cd530b1457026d",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5310000000026776
+    },
+    {
+      "document": "norhaven-operations",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "norhaven-operations",
+        "failure_count": 0,
+        "job_id": "t33-norhaven-operations",
+        "last_failure": null,
+        "receipt": {
+          "generation": 8,
+          "request_sha256": "5f573f5d782bd56c6868e3e51bc610ee17b68b9de00f320fd44bda89be192965"
+        },
+        "revision": "d2015191be60c03b2543ef50b83fd24f6f0e2a7e786e48181c3ec4c2897758f4",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 1.0469999999986612
+    },
+    {
+      "document": "norhaven-structure",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "norhaven-structure",
+        "failure_count": 0,
+        "job_id": "t33-norhaven-structure",
+        "last_failure": null,
+        "receipt": {
+          "generation": 9,
+          "request_sha256": "a3ce3597d1052d6bf939ac57ed8e64d76400d98b2ed7481b244ac8f6b6572ecb"
+        },
+        "revision": "ab291b87ca8c5a6ea1477b2660999c1fca408b42d524fe4b8f5ce917861772f4",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5469999999986612
+    },
+    {
+      "document": "solace-unknown",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "solace-unknown",
+        "failure_count": 0,
+        "job_id": "t33-solace-unknown",
+        "last_failure": null,
+        "receipt": {
+          "generation": 10,
+          "request_sha256": "ca90aefdab9aa3593c9024eb61a5d0c70df5b3caea1e069b07199f9288e392c2"
+        },
+        "revision": "72a60b1ff5d9386523c007263f1d1d14a47cd44be0613a65a563856f2e898039",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5310000000026776
+    }
+  ],
+  "review_reference": "docs/reports/t32-source-review.md",
+  "normal_unchanged": true,
+  "normal_ready": true
+}

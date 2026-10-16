@@ -1,20 +1,20 @@
 # Contract checks with Docker/HTTP/model-file metadata stubs. No services or models are touched.
 $ErrorActionPreference = 'Stop'
 $repository = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$testRoot = Join-Path $repository ('data/t28/launcher-' + [guid]::NewGuid().ToString('N'))
+$testRoot = Join-Path $repository ('data/t37/launcher-' + [guid]::NewGuid().ToString('N'))
 $mockModels = Join-Path $testRoot 'models'
 $mockSizes = @{}
 $calls = [System.Collections.Generic.List[object]]::new()
 $checkedModels = [System.Collections.Generic.List[string]]::new()
-$previousProfile = $env:VECTORNEXT_GENERATOR_PROFILE
+$previousProfile = $env:VECTORNEXT_DEFAULT_ANSWER_MODE
 
 foreach ($file in @('deployment/VectorNext.ps1', 'model_worker/generator_profiles.json',
-    'experiments/t02/models.26b.lock.json', 'experiments/t27/models.12b.lock.json', 'processor/models.lock.json')) {
+    'model_assets/setup.lock.json', 'processor/models.lock.json')) {
     $destination = Join-Path $testRoot $file
     New-Item -ItemType Directory -Force -Path (Split-Path -Parent $destination) | Out-Null
     Copy-Item -LiteralPath (Join-Path $repository $file) -Destination $destination
 }
-foreach ($file in @('experiments/t02/models.26b.lock.json', 'experiments/t27/models.12b.lock.json')) {
+foreach ($file in @('model_assets/setup.lock.json')) {
     $lock = Get-Content -LiteralPath (Join-Path $repository $file) -Raw | ConvertFrom-Json
     foreach ($model in $lock.models.PSObject.Properties.Value) {
         foreach ($artifact in $model.files) {
@@ -56,44 +56,33 @@ function Assert-Contract { param([bool]$Condition, [string]$Message); if (-not $
 function Run-Action {
     param([string]$Action, [string]$Profile = '')
     $calls.Clear()
-    & (Join-Path $testRoot 'deployment/VectorNext.ps1') -Action $Action -ModelProfile $Profile -NoBrowser
+    & (Join-Path $testRoot 'deployment/VectorNext.ps1') -Action $Action -AnswerMode $Profile -NoBrowser
     Assert-Contract ($LASTEXITCODE -eq 0) ('Launcher failed: ' + $Action)
 }
 try {
-    $env:VECTORNEXT_GENERATOR_PROFILE = $null
+    $env:VECTORNEXT_DEFAULT_ANSWER_MODE = $null
+    $legacy = Join-Path $testRoot 'data/launcher/model-profile.txt'
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $legacy) | Out-Null
+    Set-Content -LiteralPath $legacy -Value '26b-offload22'
     Run-Action 'Start'
-    Assert-Contract (@($checkedModels | Where-Object { $_ -like '*generator-12b*' }).Count -gt 0) 'Default Start did not check 12B files'
-    Assert-Contract (@($checkedModels | Where-Object { $_ -like '*generator-26b*' }).Count -eq 0) 'Default Start required optional 26B files'
-    Assert-Contract (@($calls | Where-Object { $_ -contains 'build' -or $_ -contains 'run' }).Count -eq 0) 'Default Start built/downloaded models'
+    Assert-Contract ($env:VECTORNEXT_DEFAULT_ANSWER_MODE -eq 'hybrid') 'Legacy selection did not migrate to Hybrid'
+    Assert-Contract (@($checkedModels | Where-Object { $_ -like '*generator-12b*' }).Count -gt 0) 'Start did not check Gemma'
+    Assert-Contract (@($checkedModels | Where-Object { $_ -like '*nuextract*' }).Count -gt 0) 'Start did not check NuExtract'
+    Assert-Contract (@($calls | Where-Object { $_ -contains 'build' -or (($_ -contains 'run') -and ($_ -notcontains 'check-generator')) }).Count -eq 0) 'Start built/downloaded models'
+    Assert-Contract (@($calls | Where-Object { $_ -contains 'check-generator' -and $_ -contains 'never' }).Count -eq 1) 'Start skipped offline unfinished-ingestion guard'
+    Assert-Contract (@($calls | Where-Object { $_ -contains '--no-build' -and $_ -contains 'never' }).Count -eq 1) 'Start did not enforce offline image reuse'
     Run-Action 'Setup'
-    Assert-Contract (@($calls | Where-Object { $_ -contains 'model-download' -and $_ -contains (Join-Path $testRoot 'compose.models.12b.yaml') }).Count -eq 2) 'Default Setup did not use the 12B lock'
-    Run-Action 'Start' '12b'
-    Assert-Contract (@($calls | Where-Object { $_ -contains 'build' -or $_ -contains 'run' }).Count -eq 0) 'Start built/downloaded models'
-    $up = @($calls | Where-Object { $_ -contains 'up' })
-    Assert-Contract ($up.Count -eq 1 -and $up[0] -contains '--no-build' -and $up[0] -contains 'never') 'Start lost offline flags'
-    $saved = Join-Path $testRoot 'data/launcher/model-profile.txt'
-    Assert-Contract ((Get-Content -LiteralPath $saved -Raw).Trim() -eq '12b') 'Profile was not saved'
-
-    $env:VECTORNEXT_GENERATOR_PROFILE = $null
+    Assert-Contract (@($calls | Where-Object { $_ -contains 'model-download' }).Count -eq 2) 'Setup must build and run the combined verified model setup'
+    Run-Action 'Start' 'gemma'
+    Assert-Contract ($env:VECTORNEXT_DEFAULT_ANSWER_MODE -eq 'gemma') 'Explicit Gemma selection lost'
     Run-Action 'Start'
-    Assert-Contract ($env:VECTORNEXT_GENERATOR_PROFILE -eq '12b') 'Routine Start forgot the saved model'
-    Assert-Contract (@($calls | Where-Object { $_ -contains (Join-Path $testRoot 'compose.app.models.yaml') }).Count -gt 0) 'Saved profile omitted the app override'
-
-    Run-Action 'Setup' '12b'
-    Assert-Contract (@($calls | Where-Object { $_ -contains 'model-download' -and $_ -contains (Join-Path $testRoot 'compose.models.12b.yaml') }).Count -eq 2) 'Setup used the wrong download lock'
-    Run-Action 'Rebuild'
-    Assert-Contract (@($calls | Where-Object { $_ -contains 'build' }).Count -eq 1) 'Rebuild did not explicitly build'
-    Assert-Contract (@($calls | Where-Object { $_ -contains 'model-download' }).Count -eq 0) 'Rebuild downloaded model weights'
-
+    Assert-Contract ($env:VECTORNEXT_DEFAULT_ANSWER_MODE -eq 'gemma') 'New mode was not persisted'
+    Run-Action 'Start' 'nuextract'
+    Assert-Contract ($env:VECTORNEXT_DEFAULT_ANSWER_MODE -eq 'nuextract') 'Explicit NuExtract selection lost'
     Run-Action 'Stop'
-    $stop = @($calls | Where-Object { $_ -contains 'stop' })
-    Assert-Contract ($stop.Count -eq 1 -and $stop[0] -contains 'vectornext' -and $stop[0] -contains 'processor' -and $stop[0] -contains 'llm') 'Stop has the wrong scope'
-    Assert-Contract (@($calls | Where-Object { $_ -contains 'down' -or $_ -contains '--volumes' -or $_ -contains 'prune' }).Count -eq 0) 'Stop removed storage'
-    Assert-Contract ((Get-Content -LiteralPath $saved -Raw).Trim() -eq '12b') 'Stop changed model selection'
-
-    Run-Action 'Start' '26b-offload22'
-    Assert-Contract ((Get-Content -LiteralPath $saved -Raw).Trim() -eq '26b-offload22') 'Explicit rollback did not persist'
-    Write-Output 'PASS: eight launcher contracts; all Docker, HTTP and model metadata calls were stubbed.'
+    Assert-Contract (@($calls | Where-Object { $_ -contains 'stop' -and $_ -contains 'vectornext' -and $_ -contains 'processor' -and $_ -contains 'llm' }).Count -eq 1) 'Stop must target only normal services'
+    Assert-Contract (@($calls | Where-Object { $_ -contains 'down' -or $_ -contains '-v' }).Count -eq 0) 'Stop deleted state'
+    Write-Host 'T37 launcher contracts passed.' -ForegroundColor Green
 } finally {
-    $env:VECTORNEXT_GENERATOR_PROFILE = $previousProfile
+    $env:VECTORNEXT_DEFAULT_ANSWER_MODE = $previousProfile
 }

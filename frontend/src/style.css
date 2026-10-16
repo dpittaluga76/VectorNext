@@ -604,6 +604,12 @@ i.ok {
 .composer {
   margin-top: auto;
 }
+.model-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 10px;
+}
 .composer form {
   position: relative;
   margin-top: 12px;
@@ -812,14 +818,18 @@ i.ok {
 }
 @media (max-width: 700px) {
   .topbar {
-    padding: 0 16px;
-    height: 70px;
+    padding: 14px 16px;
+    min-height: 70px;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 14px;
   }
   .brand {
     font-size: 19px;
   }
   .top-actions {
     gap: 9px;
+    flex-wrap: wrap;
   }
   .connection {
     font-size: 10px;

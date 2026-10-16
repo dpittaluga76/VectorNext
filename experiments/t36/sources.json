@@ -1,0 +1,25 @@
+{
+  "provenance": "New synthetic fixtures authored for T36 on 2026-10-16; no external source or historical holdout. Do not regenerate during tests.",
+  "sources": [
+    {
+      "id": "bayport",
+      "file": "fixtures/bayport.txt"
+    },
+    {
+      "id": "depot",
+      "file": "fixtures/depot.txt"
+    },
+    {
+      "id": "archive",
+      "file": "fixtures/archive.json"
+    },
+    {
+      "id": "missing",
+      "file": "fixtures/missing.json"
+    },
+    {
+      "id": "vela",
+      "file": "fixtures/vela-certificate.pdf"
+    }
+  ]
+}

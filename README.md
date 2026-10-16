@@ -4,7 +4,7 @@
 
 Drop in TXT, PDF and JSON documents, type a question, and follow each answer back to its source. A local browser workspace brings the document library, conversation and original evidence together.
 
-VectorNext implements its own storage engine, exact vector search, BM25 keyword index and ranking fusion in Rust. A three-service Docker deployment connects that core to local document processing and Gemma 4 generation. After setup, document processing and inference run offline.
+VectorNext implements its own storage engine, exact vector search, BM25 keyword index and ranking fusion in Rust. A three-service Docker deployment connects that core to local document processing and Hybrid NuExtract3/Gemma 4 answering. After setup, document processing and inference run offline.
 
 The Rust API uses **Axum + utoipa**, with interactive documentation bundled locally. Once the app is running, open [API docs](http://localhost:8088/docs) to inspect endpoints and try requests, or download the [OpenAPI specification](http://localhost:8088/openapi.json). You can also use the **API docs** link in the workspace. Upload and removal requests in the documentation act on your local collection; response displays and downloads preserve exact numeric text.
 
@@ -51,6 +51,7 @@ The response also includes retrieved passages, source locations, field proofs an
 | **Document-aware ingestion** | TXT passages with byte mappings; PDF text, tables and OCR with page coordinates; JSON records with exact types and pointers. |
 | **Local contextual retrieval** | Plain, structural and optional generated context, followed by CPU reranking and evidence expansion within token budgets. |
 | **Automatic question planning** | One local model call proposes bounded fields from the original question/history, with reported counts, follow-ups, independent numeric types and explicit clarification/aggregation errors. Advanced fields bypass planning. |
+| **Hybrid answers with durable jobs** | NuExtract first, one queued Gemma fallback when needed, or a forced model. Stable request IDs, revision-bound attempts, cancellation, reload recovery and exact diagnostic exports. |
 | **Experimental evidence selection** | Opt-in `facet_coverage_v1` expands candidates with up to four field queries and selects complementary passages. Earlier `coverage_v1` remains available; ranked 30/20/5 stays the default. Both experiments retain their frozen results and failures. |
 | **Answers with inspectable sources** | Typed fields, exact quotes or JSON pointers, deterministic templates, conversational context and separate presentation drafts. |
 | **Readable workflow reports** | CLI commands, high-level function references and readable ingestion/search/answer steps, with saved Markdown and offline capture replay. |
@@ -71,10 +72,10 @@ These are the versions pinned in this repository, not a claim about the latest u
 | Browser workspace | **React 19.3.1**, **TypeScript 7.0.2**, **Vite 8.3.4**, **Tailwind CSS 4.3.3**, shadcn/ui components built on Radix UI, Lucide icons | Document library, conversations, exact evidence inspection, accessible controls and themes. |
 | CPU model workers | **Python 3.12**, **ONNX Runtime 1.31.0**, **Tokenizers 0.23.3**, NumPy | Actual token counting, MiniLM embeddings and cross-encoder reranking. |
 | PDF processing | **Docling Slim 2.139.0**, Heron layout, TableFormer, **Tesseract 5.5.0**, CPU PyTorch and Poppler | Reading order, tables, native text/OCR, page regions and extraction diagnostics. |
-| Local generation | **llama.cpp b11617**, CUDA **12.8**, GGUF Gemma weights, Python admission wrapper | Schema-constrained field planning, optional contextual annotations, answerability assessment, extraction and optional prose. |
+| Local generation | **llama.cpp b11617**, CUDA **12.8**, two pinned GGUF models, Python supervisor and admission wrapper | Schema-constrained field planning, optional contextual annotations, answerability assessment, extraction and optional prose. |
 | Packaging and checks | Docker Compose; Rust tests/Clippy, Python unittest/JSON Schema, **Vitest 5.0.4**, **Playwright 1.64.1** | Three runtime services, offline regression checks and browser verification. |
 
-Dependency and artifact sources: [Cargo.toml](Cargo.toml), [Cargo.lock](Cargo.lock), [frontend package manifest](frontend/package.json), [CPU model dependencies](experiments/t02/requirements.txt), [PDF dependency lock](processor/requirements.lock), [model artifact lock](experiments/t02/models.26b.lock.json) and [Docker build definitions](docker/). `tiny_http` remains only as a development dependency for test servers; production traffic uses Axum.
+Dependency and artifact sources: [Cargo.toml](Cargo.toml), [Cargo.lock](Cargo.lock), [frontend package manifest](frontend/package.json), [CPU model dependencies](model_assets/requirements.txt), [PDF dependency lock](processor/requirements.lock), [supported artifact lock](model_assets/setup.lock.json) and [Docker build definitions](docker/). `tiny_http` remains only as a development dependency for test servers; production traffic uses Axum.
 
 ## Architecture
 
@@ -86,7 +87,7 @@ flowchart LR
     subgraph Local["Local Docker deployment"]
         Core["Rust + Axum + Tokio<br/>Storage · hybrid search · jobs<br/>React assets · OpenAPI docs"]
         CPU["CPU processor<br/>PDF / OCR · embeddings · reranking"]
-        GPU["GPU model service<br/>Gemma 4 · llama.cpp · priority queue"]
+        GPU["GPU model service<br/>NuExtract3 / Gemma 4 · one loaded model · leases"]
         Data[("Documents + vectors + journal")]
         Cache[("Disposable processing cache")]
         Core <--> CPU
@@ -100,7 +101,7 @@ The Rust API is the sole database writer. Parsing and model calls run outside wr
 
 **Query flow:** original question → optional local field planning → embedding + keyword search → rank fusion → CPU reranking → source-context expansion → answerability assessment → typed extraction → validation and formatting. Field planning cannot invent answer values, filters, JSON pointers or a replacement search question.
 
-The versioned `field-planning-v3` operation uses only the original question and bounded conversation history. It defines the requested facts before evidence retrieval: reported counts and separate facts are allowed, calculations across records are unsupported, and unresolved references require clarification. Types are selected independently per field; ordinary missing evidence is not a nullable value. One schema-constrained Gemma call runs at temperature 0, with strict input/output bounds and no automatic retries or fallback fields. Diagnostics record the planner version, original-input hash, prompt/schema/model identities and timings. [Planner contracts](docs/browser-api.md) · [Planner verification](docs/reports/t26-planning.md).
+The versioned `field-planning-v3` operation uses only the original question and bounded conversation history. It defines the requested facts before evidence retrieval: reported counts and separate facts are allowed, calculations across records are unsupported, and unresolved references require clarification. Types are selected independently per field; ordinary missing evidence is not a nullable value. Each attempt plans fields independently with strict input/output bounds. Hybrid starts with NuExtract at temperature 0.2 and allows one Gemma attempt at temperature 0 when the result is not supported and validated; it never invents fallback fields or uses a rejected answer as evidence. Diagnostics record the planner version, original-input hash, prompt/schema/model identities and timings. [Planner contracts](docs/browser-api.md) · [Planner verification](docs/reports/t26-planning.md).
 
 ### Storage, transactions and recovery
 
@@ -112,7 +113,7 @@ VectorNext owns the database and search algorithms. It does not wrap another vec
 - **Recovery:** startup validates checkpoints, committed records and originals, then replays journal entries. Incomplete uncommitted tails can be repaired; complete corrupt frames fail closed. Stable operation receipts make publication retries idempotent.
 - **Streaming checkpoints:** The checkpoint format removes the aggregate 64 MiB snapshot limit with numbered 1 MiB segments, per-frame CRCs and a terminal SHA-256 manifest. Legacy snapshots remain readable; older binaries reject new snapshots. Verified checkpoint, forced-restart recovery and export/restore at both formerly failing benchmark sizes. Individual journal/job frames still have a 64 MiB limit, and exports retain an 8 GiB total bound. [Format and rollback boundary](docs/storage.md#t21-bounded-checkpoint-stream) · [Verification](docs/reports/t21-checkpoints.md).
 - **Durable jobs:** stage state is stored in separate atomic checksummed files. Interrupted work can resume; saved failures require explicit retry. Checkpoints do not reclaim old journal entries, blobs or receipts; storage compaction remains future work.
-- **Portable backups:** offline export includes originals, records, vectors, jobs and an exact file/hash manifest. Restore validates into a new destination under the exclusive writer lock. Linux/Docker storage is supported; native Windows filesystem durability is not.
+- **Portable backups:** offline export includes originals, records, vectors, ingestion jobs and an exact file/hash manifest. Operational answer-job history needs a separate stopped-volume copy; browser conversations have their own export. Restore validates into a new destination under the exclusive writer lock. Linux/Docker storage is supported; native Windows filesystem durability is not.
 
 Vectors are stored as `float32`; exact cosine accumulates in `float64`. Each embedding space hashes the model artifact, tokenizer, preprocessing, dimensions, limits, prefixes and normalization. Equal vector dimensions do not make two spaces interchangeable. Disposable in-memory indexes are built from a committed snapshot and space identity; the application caches up to four spaces and rebuilds for a new generation. There is no approximate nearest-neighbor index yet.
 
@@ -136,11 +137,11 @@ Context policies are `plain` (evidence), `structural` (structure plus evidence, 
 
 ### Retrieval and answer integrity
 
-1. **Preserve the request.** Ordinary browser questions add one schema-constrained Gemma call to propose field names/types. Explicit fields bypass it. The original question, bounded history and caller-selected document scope remain authoritative.
+1. **Preserve the request.** Each ordinary-question attempt adds one schema-constrained call to its selected model to propose field names/types. Explicit fields bypass it. The original question, bounded history and caller-selected document scope remain authoritative.
 2. **Retrieve candidates.** Exact cosine and our own per-field BM25 index run over the selected snapshot/space. Explicit typed filters apply before branch selection. Numeric filters use exact decimal comparisons; missing values, nulls, strings and numbers have distinct semantics.
 3. **Fuse and rerank.** Weighted reciprocal rank fusion combines branch ranks, followed by conservative source-preserving deduplication and CPU cross-encoder reranking. Default answer budgets are **30 candidates per branch / 20 reranked / 5 primary passages**.
 4. **Assemble evidence.** Include original spans, required headings/table labels, complete JSON records and eligible neighbors within the rendered prompt budget: **3,328 input tokens + 768 reserved output tokens** in a 4,096-token context. Skipped expansions are recorded.
-5. **Assess and extract.** Gemma separately assesses answerability, then extracts schema-constrained fields for supported requests. Ambiguous and insufficient-evidence outcomes remain explicit; invalid proofs are rejected.
+5. **Assess and extract.** The selected model separately assesses answerability, then extracts schema-constrained fields for supported requests. Ambiguous and insufficient-evidence outcomes remain explicit; invalid proofs are rejected.
 6. **Resolve and validate.** For JSON evidence, the model selects an existing record/pointer and Rust materializes the exact source value. For prose, Rust checks typed values, quoted evidence and numeric boundaries against the supplied source. Templates format validated values; optional generated prose stays a labelled draft.
 
 Opt-in facet coverage adds field-derived candidate searches and replaces the final passage selector. It keeps at most 20 reranker candidates and five primaries, suppresses heading-only/substantially overlapping passages, and records planned versus admitted evidence. Neighbor expansion is disabled for this mode; required source labels and complete JSON records still accompany admitted evidence. [Facet selection contract](docs/answers.md#facet-coverage-t25-opt-in).
@@ -153,26 +154,23 @@ An explicit `structured_lookup` request can scan selected JSON records and mater
 
 ### Local models and scheduling
 
-| Operation | Pinned model/runtime | Current configuration |
+| Component | Pinned choice | Execution |
 | --- | --- | --- |
-| Embeddings | `sentence-transformers/all-MiniLM-L6-v2`, ONNX CPU | 384 dimensions, attention-mask mean pooling, L2 normalization, 256-token input limit. |
-| Reranking | `cross-encoder/ms-marco-MiniLM-L6-v2`, ONNX CPU | Question/passage pair scoring; raw logits are ranking scores, not confidence probabilities. |
-| Planning, context and answers | **Gemma 4 12B QAT Q4_0**, llama.cpp CUDA | 4,096-token context, one inference slot, full layer offload, temperature 0, seed 42, reasoning disabled and schema-constrained outputs. |
-| PDF extraction | Heron layout, accurate TableFormer, English Tesseract | CPU processing; native/OCR provenance, layout/table structure and quality diagnostics. |
+| Embeddings | all-MiniLM-L6-v2 | CPU ONNX; 384 dimensions, 256-token encoder limit. |
+| Reranking | ms-marco-MiniLM-L-6-v2 | CPU ONNX cross encoder. |
+| First attempt | NuExtract3 Q4_K_M, requested-facts-v1 | GPU, temperature 0.2. |
+| Fallback / optional enrichment | Gemma 4 12B QAT Q4_0 | GPU, temperature 0. |
+| PDF extraction | Heron, accurate TableFormer, English Tesseract | CPU with extraction/OCR provenance and diagnostics. |
 
-The API and CPU processor preserve separate interactive/background admission. A bounded queue in the GPU service prioritizes waiting interactive generation over background enrichment, with FIFO ordering within each class. Active inference is non-preemptive. Backend uncertainty closes generation admission until restart, preventing a timed-out request from overlapping new work.
+**Hybrid is the default answer mode.** It accepts NuExtract only after a supported factual answer passes schema, exact-value and source-proof checks. Otherwise it queues one independent Gemma attempt using the original question, history, scope and retrieval settings. Gemma's final outcome can legitimately be ambiguous or insufficient evidence. Invalid requests, pre-inference aggregation rejection, stale bindings, cancellation and admission failures do not trigger fallback. Optional prose failure does not discard validated facts. Mechanical validation is not a guarantee of semantic correctness.
 
-Models are checksum-verified from local files. Bounded disposable disk caches key results by exact input and full model/configuration identity; corrupt entries become misses. Committed vectors and source evidence live in the database, so deleting a cache does not remove documents. There is no answer cache. The normal GPU service is the only component with NVIDIA access.
+Choose **Gemma only** or **NuExtract only** to disable fallback. These are the only two supported models. Both retain 4,096-token context, one inference slot, f16 KV, seed 42, disabled reasoning, two-call assessment/extraction and `cache_prompt: false`. Retrieval remains ranked 30/20/5. Generated ingestion context always uses its saved Gemma policy, independently of answer mode.
 
-**12B is the default after the 208-request pointer-constrained evaluation.** Evidence-specific JSON pointer constraints recovered the lost baseline control cases and their validated source support. See the [12B/26B comparison, extraction changes and limitations](#gemma-12b-vs-26b) for the accuracy, latency and memory measurements behind that decision.
+The durable Rust coordinator admits at most **16 unfinished answer jobs** and reserves diagnostic capacity inside a **256 MiB** retention limit. Completed records stay until explicitly cleared. Work is grouped by model; the coordinator hands off when that queue empties, after four attempts with opposite-model work waiting, or after an opposite-model wait of 30 seconds once active work finishes. A next-attempt wait of 15 minutes expires visibly. Model loading is additional latency, especially for fallback on an 8 GB GPU.
 
-| Generation profile | Placement | Status |
-| --- | --- | --- |
-| `12b` | Full layer offload | **Default**; verified on the 8 GB RTX 4060. |
-| `26b-offload22` | 22 CPU expert layers | Optional compatibility/rollback profile; saved generation identities preserved. |
-| `26b-gpu` | Full layer offload | Optional 16–24 GB target, unverified on this machine. |
+The generation supervisor owns one llama.cpp backend. A model lease spans planning, template rendering, token counting, assessment, extraction and optional prose. Switching stops and reaps the old backend before loading/verifying the next, with a 240-second activation budget. Interactive work takes priority over waiting enrichment; active inference is not interrupted. Cancellation blocks subsequent generation stages. Uncertain attempts are never silently replayed after restart.
 
-Profiles are shared by the worker, validating GPU launcher and scheduler. Model/runtime identities separate generated-context caches; unfinished jobs keep their original generator policies and reject mismatched profiles. Fresh setup defaults to `12b`. Existing saved choices are respected: migrate explicitly with `./deployment/VectorNext.ps1 -Action Setup -ModelProfile 12b`, or use Start if the release images/files are installed. Selection persists for later Start/Setup/Rebuild. Return with `./deployment/VectorNext.ps1 -Action Start -ModelProfile 26b-offload22` after installing that profile's files. Routine Start remains offline. Direct Compose users apply `compose.app.models.yaml` after `compose.app.yaml` and set `VECTORNEXT_GENERATOR_PROFILE` consistently. The optional `26b-gpu` profile targets larger cards; neither 26B profile adds corpus-wide aggregation. [Profiles, rollback and frozen reproduction](docs/reports/t28-ranked-pointers.md#reproduction-profiles-and-rollback).
+Production locks and verified download/encoder utilities live in [`model_assets/`](model_assets/). Exact model/runtime identities separate caches and audits. Setup prepares both generators. Old alternative generators, temperature/KV/single-call switches and their runners are preserved through the [historical source archive](archives/llm/README.md), outside the supported app.
 
 ### HTTP API and OpenAPI
 
@@ -184,11 +182,13 @@ Profiles are shared by the worker, validating GPU launcher and scheduler. Model/
 | --- | --- |
 | Health and diagnostics | `GET /healthz`, `GET /readyz`, `GET /v1/metrics` |
 | CLI document ingestion/inspection | `POST /v1/ingest`, `GET /v1/documents`, `POST /v1/document` |
-| Durable jobs | `GET /v1/jobs`, `POST /v1/job`, `POST /v1/retry` |
+| Durable ingestion jobs | `GET /v1/jobs`, `POST /v1/job`, `POST /v1/retry` |
 | Search and explicit-field answers | `POST /v1/search`, `POST /v1/ask` |
 | Browser library and multipart uploads | `GET /v1/ui/library`, `POST /v1/ui/upload`, `POST /v1/ui/upload-status` |
 | Revision-bound changes and evidence | `POST /v1/ui/remove`, `POST /v1/ui/source`, `GET /v1/ui/original` |
-| Ordinary browser questions | `POST /v1/ui/ask` |
+| Compatibility questions | `POST /v1/ui/ask`, `POST /v1/ask` (same durable coordinator; omitted mode is Hybrid) |
+| Durable answers | `POST /v1/answer-jobs`, `GET /v1/answer-jobs`, `GET /v1/answer-jobs/{request_id}` |
+| Answer cancellation / explicit clearing | `POST /v1/answer-jobs/{request_id}/cancel`, `POST /v1/answer-jobs/{request_id}/clear` |
 | Local documentation | `GET /openapi.json`, `GET /docs` and bundled assets under `/docs/` |
 
 All POST requests require `X-VectorNext-Client: 1`, a positive `Content-Length` and the documented content type. JSON is limited to **64 KiB**, except base64 ingestion at **23 MiB**. Multipart upload requires exactly one `metadata` JSON-text field (up to 8 KiB) and one binary `file` (up to 16 MiB), within a 16 MiB + 16 KiB envelope. Browser origins must match the loopback host exactly; CLI clients can omit Origin. The adapter explicitly preserves existing method/query/error behavior rather than inheriting Axum's default rejections or automatic HEAD success.
@@ -203,7 +203,7 @@ Replacement supplies the current revision through upload metadata; removal also 
 
 The three-panel workspace contains the library, conversation and source evidence. Vite builds the React/TypeScript assets in a Docker stage; the API image serves them with local fonts/icons/assets. Normal use needs no Node process, frontend server or external CDN. shadcn/ui/Radix controls provide the interaction primitives; Tailwind handles layout and light/dark styling.
 
-IndexedDB stores conversations, captured evidence, upload-recovery state and theme in the current browser/origin. There is no server-side chat store. Only the last four complete supported exchanges enter request history, with a 4-KiB limit per turn and no silent shortening. Scope changes start a new conversation. Historical evidence remains captured after replacement/removal; it is never silently substituted with the latest document revision. Processing views show actual state and elapsed time, not estimated stage percentages.
+IndexedDB stores conversations, captured evidence, upload/answer recovery IDs, answer mode and theme in the current browser/origin. There is no server-side chat store. Operational answer jobs, including their original requests and exact diagnostics, live beside the database at `/storage/db.answer-jobs`; database exports exclude that history. One pending turn per conversation is reserved in IndexedDB, including across tabs. Other conversations and callers can queue concurrently. Only the last four complete supported exchanges enter request history, with a 4-KiB limit per turn and no silent shortening. Scope changes start a new conversation. Historical evidence remains captured after replacement/removal; it is never silently substituted with the latest document revision. Processing views show actual state and elapsed time, not estimated stage percentages.
 
 ### Deployment, isolation and configuration
 
@@ -211,15 +211,16 @@ The normal Compose project runs these three services:
 
 | Service | Image | Resource limits | Data access |
 | --- | --- | --- | --- |
-| `vectornext` | `vectornext-app:t28-12b` | 2 CPUs, 4 GiB RAM | Sole read/write mount of the `data` volume at `/storage`; API, React and docs on host loopback port 8088. |
-| `processor` | `vectornext-app-processor:t28-12b` | 4 CPUs, 6 GiB RAM | Read-only model files and disposable `cache` volume; no database mount or GPU. |
-| `llm` | `vectornext-app-llm:t28-12b` | 8 CPUs, 32 GiB RAM, NVIDIA GPU | Read-only GGUF weights; internal network endpoint with the llama.cpp backend behind the scheduler. |
+| `vectornext` | `vectornext-app:t37-hybrid` | 2 CPUs, 4 GiB RAM | Sole read/write mount of the `data` volume at `/storage`; API, React and docs on host loopback port 8088. |
+| `processor` | `vectornext-app-processor:t37-hybrid` | 4 CPUs, 6 GiB RAM | Read-only model files and disposable `cache` volume; no database mount or GPU. |
+| `llm` | `vectornext-app-llm:t37-hybrid` | 8 CPUs, 32 GiB RAM, NVIDIA GPU | Read-only GGUF weights; internal network endpoint with the llama.cpp backend behind the scheduler. |
 
 These are configured limits, not typical utilization. Containers use read-only root filesystems, bounded temporary storage, dropped capabilities and `no-new-privileges`. Processor/generator communication stays on an internal Docker network; only the API publishes a host port. CLI and offline-admin containers run on demand through the `tools` profile. The admin tool has no network and requires exclusive database ownership for export/restore.
 
 | Setting | Default | Meaning |
 | --- | --- | --- |
 | `VECTORNEXT_PORT` | `8088` | Host loopback port for the workspace/API. |
+| `VECTORNEXT_DEFAULT_ANSWER_MODE` | `hybrid` | Initial mode for a browser without a saved choice: `hybrid`, `gemma` or `nuextract`. |
 | `VECTORNEXT_DATA` | `/storage/db` | Database directory inside the persistent data mount. |
 | `VECTORNEXT_MODELS_DIR` | `./models` | Host model directory mounted read-only. |
 | `VECTORNEXT_BACKUPS_DIR` | `./backups` | Host export/restore directory for the admin container. |
@@ -232,59 +233,19 @@ The CPU worker uses existing 420-second operation deadlines, extended to 720 sec
 
 ## Measured results
 
-### Gemma 12B vs 26B
+### Hybrid answering and model comparisons
 
-**12B became the default after pointer constraints recovered its JSON-answer failures while retaining most of its speed advantage.** The original comparison evaluated Gemma 4 26B A4B QAT Q4_0 with Gemma 4 12B QAT Q4_0 in 416 requests and initially rejected 12B's promotion. The follow-up changed the application's extraction constraints, kept the model weights unchanged, and completed a separate 208-request 12B evaluation against the retained baseline results.
+The supported app uses NuExtract3 first and queues one Gemma attempt when its factual result fails validation or does not answer the question. Forced Gemma and NuExtract modes make behavior explicit. The bounded integration check passed **8/8 cases in each mode**: five source-supported answers and three correct negative/API outcomes. Hybrid accepted all five supported NuExtract answers and used fallback for two of seven admitted questions. These are observed regression cases, not independent quality evidence.
 
-Answer scores and latency below use the default **five primary passages**. The evidence-coverage suite contains 16 questions; the NASA/USGS suite contains 28 questions. Accuracy was identical in both cache passes. Resource peaks cover all query blocks, including the other passage-selection strategies.
-
-| Measurement | 26B — baseline | 12B — before pointer constraints | **12B — current** |
+| Observed integration result | Hybrid | NuExtract only | Gemma only |
 | --- | ---: | ---: | ---: |
-| Evidence coverage: correct outcomes | **13/16** | 10/16 | **13/16** |
-| NASA/USGS: correct outcomes | 16/28 | 14/28 | **18/28** |
-| Evidence-coverage median latency, cold / warm | 29.51 / 28.44 s | 11.59 / 11.16 s | **11.16 / 10.57 s** |
-| NASA/USGS median latency, cold / warm | 20.86 / 21.23 s | **9.86 / 9.48 s** | 10.35 / 9.99 s |
-| Previously correct 26B cases | Baseline | Some lost | **All preserved, including source support** |
-| Model placement | Experts from 22 layers on CPU | All layers on GPU | All layers on GPU |
-| Peak whole-device GPU use | **6,706 MiB** | 7,864 MiB | 7,880 MiB |
-| Peak generator memory, including file cache | 19.81 GiB | 11.82 GiB | **10.19 GiB** |
-| Decision | Previous default | Failed promotion gates | **Current default** |
+| Correct cases under rules frozen before testing | 8/8 | 8/8 | 8/8 |
+| Median attempt work, five common supported answers | 3.62 s | 3.54 s | 12.55 s |
+| Model fallbacks | 2 | 0 | 0 |
 
-Cold/warm refers to persisted application caches; OS/backend caches were not globally flushed. Latencies include errors and abstentions, exclude model loading/warmup, and use explicit answer fields. Ordinary browser questions add a separate automatic field-planning call. Whole-device GPU measurements include desktop workloads; generator memory is container accounting including file cache, not process RSS.
+Attempt work excludes queueing and model loading and includes CPU retrieval. **Fallback is substantially slower:** the measured missing-evidence case took **90.29 s**, including 60.94 s loading Gemma. The batch timing comparison also includes cold switches and an overnight PC-sleep interruption, retained in raw captures and excluded from derived latency summaries. Live switching, backend failure and API restart checks passed with at most one backend observed across 236 samples. [Complete measurements, scoring corrections and limitations](docs/reports/t37-hybrid.md) · [Frozen protocol](docs/t37-protocol.md) · [Reproduce](experiments/t37/README.md).
 
-**What pointer-constrained extraction changed:**
-
-| Area | Before pointer constraints | With pointer constraints |
-| --- | --- | --- |
-| JSON path selection | Ranked extraction allowed unconstrained path strings. | The schema permits only existing, type-compatible RFC 6901 paths from admitted evidence records. |
-| Example failure | The model could emit `properties.mag`. | It must select an allowed pointer such as `/properties/mag`. |
-| Evidence association | Invalid record/path combinations could reach validation and be rejected. | Schema branches bind each permitted pointer to its specific evidence record. |
-| Actual answer value | Rust read the original JSON value and validated it. | **Unchanged.** The model does not transcribe the numeric value; exact values, zero, raw null and missing fields retain their distinctions. |
-| Prompt budgeting | Ranked extraction lacked the pointer catalog. | Catalog tokens count toward the budget and can displace other evidence. Rejected additions restore the prior constraint state. |
-| Inference calls | Existing assessment/extraction calls. | **No additional calls or repair retries.** |
-| Other settings | Pinned models and runtime, existing context and retrieval configuration. | **Unchanged:** model weights, embeddings, reranker, 4,096-token context, temperature zero, seed 42 and ranked 30/20/5. |
-
-**Limitations and tradeoffs:**
-
-- **Comparison scope:** The follow-up reran 12B only. **26B with the new pointer constraints remains unmeasured.** These results compare application configurations on one RTX 4060, including 26B's CPU expert offload; they do not establish that 12B is intrinsically more capable. Full-GPU 26B on larger cards remains unverified.
-- **Speed and overhead:** current 12B reduced ranked-five median latency by **50.4–62.8%** versus retained 26B, exceeding the 20% promotion gate. The proposed 65–75% overall reduction was not achieved. NASA/USGS medians increased about **5%** versus the earlier 12B run. Catalog token accounting changed a prose neighbor in two of 208 requests, so evidence was not identical in every case.
-- **GPU headroom:** full GPU placement uses less system memory here but more VRAM than offloaded 26B. The current sampled peak was **7,880/8,188 MiB**, leaving only **308 MiB**. No OOM/backend failure was observed; Windows GPU page-outs remain unverified. Only this 8 GB card was tested, not the whole intended 8–12 GB range.
-- **Quality evidence:** these are 44 reused questions across strategies and passes, not independent proof of broad quality. The NASA/USGS suite retains two PDF admission failures and their six dependent questions in every 28-question denominator. The follow-up's 208 requests include six rejected responses; HTTP success is not the accuracy score. Original strict labels and separate source-review exceptions remain unchanged.
-- **Remaining failures:** a valid pointer can still select a semantically irrelevant field. PDF extraction failures and semantic mistakes remain; the measured release also rejected year-range endpoints. Separate planner/source/browser checks passed, but their success does not guarantee correct answers to every ordinary question.
-
-26B remains available as an optional compatibility and rollback profile. [Original model comparison and promotion failure](docs/reports/t27-model-comparison.md) · [Pointer-constrained results, p95, case changes and rollout](docs/reports/t28-ranked-pointers.md) · [Pointer and proof contract](docs/answers.md#ranked-json-pointer-constraints-t28).
-
-### Single-call answering experiment
-
-A separate 208-request comparison removed the preliminary assessment while keeping the extraction prompt, pointer schema, evidence and prompt caching unchanged. Ranked five preserved **13/16** and **18/28** correct outcomes, with **35.6–40.7% lower median latency**. Coverage mode fell from **12/16 to 10/16** in each pass, so the production **two-call default remains**. All 202 comparable successful responses had identical assembled evidence; failures stayed in the denominator. These are sequential comparisons on reused regression questions. [Results and case changes](docs/reports/t29-single-call.md) · [Reproduction](experiments/t29/README.md).
-
-### Memory and embedding experiments
-
-An independent 208-request Q8 KV-cache comparison saved **217.5 MiB** of GPU allocation, but lost a correct unknown-count classification in four ranked blocks. The default keeps **f16 KV storage**. Full-context/restart checks passed; sampled GPU use does not establish absence of Windows paging. [Memory results and limitations](docs/reports/t30-kv-cache.md) · [Reproduction](experiments/t30/README.md).
-
-The experimental **BGE-small-en-v1.5** CPU profile supports 512 tokens with CLS pooling and a query instruction included in its embedding-space identity. Across 192 retrieval requests, it improved NIST selected-20 coverage **18/20 → 19/20**, while final-five coverage stayed **16/20** on both NIST and NASA. Ingestion was **34–40% slower** at the unchanged 180-token chunk target. **MiniLM remains the default**; existing vectors are preserved. These TXT regression sets do not establish answer accuracy or long-record gains. [Embedding results](docs/reports/t31-embeddings.md) · [Explicit setup and reproduction](experiments/t31/README.md).
-
-A separate **24-request TXT/PDF/JSON pilot** compared Nomic embeddings and Ettin-17M reranking in four combinations. MiniLM embeddings with Ettin improved frozen correctness **4/6 → 5/6**, recovered the missing lifeboat evidence and reduced median end-to-end latency **12.80 → 9.68 s**. A separately reviewed valid PDF citation raises both counts to **5/6 → 6/6**; frozen labels remain unchanged. Nomic admitted a 557-token JSON record, but it exceeded the existing 512-token reranker budget and caused four failures in each Nomic arm. This exposes a pipeline compatibility gap, not a reliable Nomic quality comparison. **Both MiniLM defaults remain** pending further evidence. The new CPU profiles are experimental and require compatible fresh ingestion; six synthetic questions do not justify promotion. [Four-combination results and limitations](docs/reports/t32-replacements.md) · [Setup and reproduction](experiments/t32/README.md).
+The [historical model comparisons](archives/llm/comparisons.md) retain the complete 12B/26B table, pointer-constraint changes, accuracy/latency measurements, NuExtract planning repair and limitations. Archived model experiments are not runtime choices. MiniLM remains the embedding/reranking default; [embedding/reranker measurements](docs/reports/t32-replacements.md) remain separate from generation routing.
 
 ### Database comparison: PostgreSQL + pgvector
 
@@ -359,7 +320,7 @@ The earlier synthetic development comparison passed 13/13 questions with both li
 
 ## Quickstart
 
-Use Docker Desktop with WSL 2, Linux containers and NVIDIA GPU support. The tested PC has an RTX 4060 (8 GB VRAM) and about 64 GB RAM. The default 12B model file is **6.98 GB**; add space for CPU/PDF models, images and documents. The current 12B query blocks measured **10.19 GiB generator cgroup memory including file cache** and **7,880 MiB whole-device GPU use**. These observations are not minimum system requirements or a guarantee that concurrent GPU workloads fit. The optional offloaded 26B model uses a 14.44 GB file and considerably more system RAM.
+Use Docker Desktop with WSL 2, Linux containers and NVIDIA GPU support. The tested PC has an RTX 4060 (8 GB VRAM) and about 64 GB RAM. Setup installs **both** supported GGUFs, plus CPU/PDF models; allow additional disk space for images and documents. The Hybrid integration run sampled **7,735 MiB whole-device GPU use**, leaving only 453 MiB at that sample. One model is loaded at a time. These observations are not minimum system requirements or a guarantee that concurrent GPU workloads fit; WDDM paging was not instrumented. See [artifact sizes and hashes](model_assets/setup.lock.json) and [hardware measurements](docs/reports/t37-hybrid.md).
 
 ### Windows: setup once, then double-click
 
@@ -389,9 +350,13 @@ Facet selection remains experimental: the final-selection passage-coverage resul
 - **Models are still loading:** browse documents while the capability indicators update. GPU contention or insufficient system RAM can slow generation. Stop other GPU experiments before launching this stack.
 - **Upload is busy or interrupted:** the interface retains its upload identity, reconciles saved work and offers Retry. Saved processing failures require explicit retry. A failed replacement must finish before that document can be removed.
 - **PDF was rejected:** inspect the failure; strict extraction is the default. Enable partial extraction in Upload options only when incomplete extraction is acceptable. Warnings remain available with evidence.
-- **A year from a range is rejected:** the installed release retains the earlier numeric validator. Current source adds exact endpoints from complete unsigned two-segment ranges, with guards for dates, signs, identifiers and clipped numbers; activate it through an explicit rebuild. Interior values and duration calculations remain unsupported. [Range rules and verification](docs/reports/range-endpoints.md).
+- **A year from a range is rejected:** only exact endpoints from complete unsigned two-segment ranges are accepted, with guards for dates, signs, identifiers and clipped numbers. Interior values and duration calculations remain unsupported. [Range rules and verification](docs/reports/range-endpoints.md).
 - **Question planning fails:** a clarification error asks for a subject and requested fact; an aggregation error means a calculation across records is unsupported. Ask for separately reported facts or supply fields in Advanced. Invalid plans fail explicitly. Supported results still require human semantic review.
 - **Browser storage failed:** keep the tab open and export conversations. Clear space or use a persistent browser profile; private mode/history deletion can remove saved conversations. Use one active tab to avoid competing workspace saves.
+- **Answer is waiting or loading:** inspect Answer jobs for queue state, model loading, fallback reason and both attempts. Switching models costs time beyond inference. Cancellation stops queued work immediately and prevents the next stage after an active call.
+- **Answer history is full:** export and explicitly clear terminal answer-job records. No diagnostic history is silently evicted.
+- **Interrupted answer:** reload to poll its saved ID. An uncertain NuExtract attempt in Hybrid may use its remaining Gemma attempt after backend reconciliation; uncertain Gemma/forced attempts require explicit resubmission.
+- **Upgrade refused:** an unfinished ingestion job requires an old generator. Finish it with the previous deployment; its saved policy is never rewritten.
 - **Updated code is not visible:** choose Rebuild, then reload the browser. Start deliberately reuses installed images.
 
 ### Command-line setup and automation
@@ -410,7 +375,7 @@ docker compose -f compose.processor.yaml build processor
 docker compose -f compose.processor.yaml run --rm pdf-setup
 ```
 
-Initial setup needs network access. `compose.models.yaml` selects the pinned 12B artifact by default; `compose.models.26b.yaml` is an explicit offload22 override and `compose.models.26b-gpu.yaml` provides optional full-GPU placement. Model downloads are checksum-verified and reused when already present. Weights stay outside images in `models/`; normal operation uses local files. If a shell has `VECTORNEXT_GENERATOR_PROFILE` set, it overrides the application default; use the same profile for setup and runtime.
+Initial setup needs network access and verifies both supported generators plus CPU assets. Existing checksum-valid files are reused. Weights stay outside images in `models/`; normal Start uses local files without builds or downloads. Legacy launcher model selection upgrades visibly to Hybrid. Use `./deployment/VectorNext.ps1 -Action Start -AnswerMode hybrid` (or `gemma` / `nuextract`) to choose the initial mode for new browser workspaces. Existing browser selections remain remembered.
 
 #### 2. Start the application
 
@@ -420,7 +385,7 @@ docker compose -f compose.app.yaml up -d --no-build --pull never
 docker compose -f compose.app.yaml run --rm client ready
 ```
 
-Repeat the readiness check until all capabilities are available. The current release's normal Windows launcher activation reached readiness in **67 seconds**; its separate Linux model-volume restart took **7.48 seconds**. Different storage/loading paths make these noninterchangeable observations. The API listens at `http://127.0.0.1:8088`. Keep other VectorNext GPU experiments stopped while using this stack.
+Repeat the readiness check until the queue and model capabilities are available. Loading time depends on the selected model and storage; inspect the recorded activation time rather than treating warm inference as startup latency. The API listens at `http://127.0.0.1:8088`. Keep other VectorNext GPU experiments stopped while using this stack.
 
 #### 3. Ingest, search and ask
 
@@ -430,7 +395,7 @@ docker compose -f compose.app.yaml run --rm client search "Voyager 1 launch Jupi
 docker compose -f compose.app.yaml run --rm client ask /app/tests/fixtures/answers/voyager.json
 ```
 
-The last command returns the full JSON answer report. In PowerShell, display just the formatted answer:
+The last command submits a durable Hybrid answer job, prints its ID to stderr, reconciles uncertain acknowledgement and returns the exact full JSON report. Add `--answer-mode gemma` or `--answer-mode nuextract` to force a model. Inspect/resume with `client answer-job ID`; list with `client answer-jobs`, cancel with `client cancel-answer ID`, and explicitly clear a terminal record with `client clear-answer ID`. [Job API, timing and recovery contracts](docs/answer-jobs.md). In PowerShell, display just the formatted answer:
 
 ```powershell
 $result = docker compose -f compose.app.yaml run --rm client ask /app/tests/fixtures/answers/voyager.json | ConvertFrom-Json
@@ -478,23 +443,23 @@ docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest evals
 docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest deployment.test_workflow -v
 ```
 
-These commands cover the 163 top-level Rust checks (including the experimental candidate/final selectors), 54 original fixture/scorer/protocol checks and 27 workflow/client checks. Coverage checks include `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. Numeric-proof verification passed 108 Rust/90 Python checks plus format/lint, its deterministic numeric probe and a release API startup check; no GPU benchmark was needed. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
+These commands cover Rust storage/retrieval/application regressions, fixture/scorer integrity and workflow/client contracts. Coverage checks include `evals.coverage.test_coverage` and `model_worker.test_coverage`; reliability checks are in `deployment.test_reliability`. The final two commands mount the repository read-only and work in PowerShell or a POSIX shell. Model-worker checks, disk-volume recovery tests and live inference experiments have their own setup in the [developer guide](docs/development.md) and [evaluation guide](evals/README.md). Tests never regenerate sources or gold labels automatically.
 
 Browser verification runs entirely in Docker:
 
 ```sh
-docker build -f docker/ui-test.Dockerfile -t vectornext-ui-test:t28 .
-docker run --rm --network none vectornext-ui-test:t28 npm test
-docker run --rm --network none --ipc=host vectornext-ui-test:t28 npm run e2e -- workspace.spec.ts
+docker build -f docker/ui-test.Dockerfile -t vectornext-ui-test:t37 .
+docker run --rm --network none vectornext-ui-test:t37 npm test
+docker run --rm --network none --ipc=host vectornext-ui-test:t37 npm run e2e -- workspace.spec.ts
 ```
 
 The planner/profile contract tests need no models or GPU calls. Once the processor image is built:
 
 ```sh
-docker run --rm --network none vectornext-app-processor:t28-12b /opt/model-env/bin/python -m unittest model_worker.test_planning model_worker.test_generator_profile -v
+docker run --rm --network none vectornext-app-processor:t37-hybrid /opt/model-env/bin/python -m unittest model_worker.test_planning model_worker.test_generator_profile -v
 ```
 
-The current release verification passed **160 top-level Rust and 81 Python checks**, formatting/Clippy, 71 frozen HTTP cases, five browser boundaries, two OpenAPI checks, five components, 12 offline/adapter browser scenarios and two live model browser scenarios. All 25 original planner/source/regression cases and 16 fresh fixed/source checks passed. Release selection added 35 focused Python checks and eight launcher contracts under both PowerShell variants. All **208 frozen regression requests** completed; the report retains six rejected responses, PDF admission failures, engineering failures and the normal-library numeric-range limitation. [Results and reproduction caveat](docs/reports/t28-ranked-pointers.md). Model checks use isolated data; no historical holdout was used.
+Hybrid verification passed Rust regressions and formatting/Clippy, **89 Python checks**, 71 frozen HTTP cases, five browser boundaries, three OpenAPI checks, six component checks and thirteen offline workspace scenarios, plus two real-adapter documentation/browser scenarios. The 24-question integration comparison and separate switching/outage drill are retained with their raw diagnostics. The existing library survived verified backup/restore and activation; a live source-linked browser answer, PDF opening, reload and export passed. [Verification, retained interruptions and rollback](docs/reports/t37-hybrid.md). The original holdout remains unused.
 
 Browser workspace and launcher verification passed 116 Rust, 118 Python unit/regression checks, five live HTTP checks, five frontend component checks, nine offline browser scenarios and a production-browser scenario with real Gemma. [Results, retained failures and limitations](docs/reports/t16-t18-local-app.md). These are operational checks, not a new retrieval-quality benchmark.
 
@@ -509,7 +474,7 @@ The Axum migration additionally passed the frozen 71-case HTTP comparison, two O
 | [`src/ingestion/`](src/ingestion/) and [`processor/`](processor/) | Durable stages, format-aware chunking and source mappings |
 | [`src/answers.rs`](src/answers.rs) and [`model_worker/`](model_worker/) | Evidence assembly, local models, exact JSON reads and generation scheduling |
 | [`model_worker/planning.py`](model_worker/planning.py) and [`experiments/t26/`](experiments/t26/) | Field-only planning, strict output contracts, frozen checks and retained failures |
-| [`model_worker/generator_profiles.json`](model_worker/generator_profiles.json) and [`experiments/t27/`](experiments/t27/) | Pinned generation profiles, paired model comparison and promotion gates |
+| [`model_worker/generator_profiles.json`](model_worker/generator_profiles.json) and [`model_assets/`](model_assets/) | The two supported generator profiles, immutable locks and download/encoder utilities |
 | [`experiments/t28/`](experiments/t28/) and [Pointer-constrained results](docs/reports/t28-ranked-pointers.md) | Frozen pointer-contract checks, 208-request replay and conditional 12B rollout |
 | [`src/service/`](src/service/) and [`deployment/`](deployment/) | Shared database ownership, API, CPU admission and client |
 | [`frontend/`](frontend/) and [browser contracts](docs/browser-api.md) | React workspace, browser-only history, exact text rendering and Playwright scenarios |
@@ -519,7 +484,7 @@ The Axum migration additionally passed the frozen 71-case HTTP comparison, two O
 
 Implemented capabilities include storage, retrieval, TXT/JSON/PDF ingestion, local models, answers, Docker deployment, frozen evaluations, readable workflow reports, recovery diagnostics, experimental field-aware evidence selection, numeric proof validation, a reproducible pgvector comparison, bounded large-state checkpoints/exports, indexed scalar filtering, candidate/final-evidence retrieval experiments, automatic field-planning repairs and a gated 12B/26B model comparison. The app is ready for local experimentation within its documented limits. The browser workspace, Windows launcher and Axum API with offline OpenAPI documentation are implemented. The public API is still evolving; multi-user authentication remains out of scope.
 
-Recovery includes coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics; see the [recovery guide](docs/reliability.md) and [verified operational workflow](docs/reports/t13-operational-workflow.md). Search includes bounded scalar/document/media filter indexes. Fresh candidate and final-selection experiments underpin opt-in facet coverage; automatic-planning repairs address measured failures with source-linked browser/API verification. The original model comparison introduced shared profiles and recorded 12B's initial correctness losses. Pointer-constrained extraction recovers those losses and enables the 12B default after 208 evaluated requests plus application/operational checks. Ranked 30/20/5 remains the default. Conservative range-endpoint validation is implemented in source and verified separately from the model experiments. Broader planning reliability, semantic range interpretation and clearer ambiguity evaluation remain future quality work. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
+Recovery includes coordinator supervision, PDF diagnostics before publication, bounded busy retries and rejected-answer diagnostics. Hybrid is the active default, with durable answer jobs and a single GPU backend switching between NuExtract and Gemma. Search includes bounded filter indexes and opt-in facet coverage; ranked 30/20/5 and MiniLM remain defaults. Pointer-constrained JSON extraction and conservative numeric range endpoints preserve exact source proofs. Historical model and retrieval comparisons remain linked with their failures. Broader planning reliability, semantic range interpretation and clearer ambiguity evaluation remain future quality work. Corpus-wide aggregation, storage compaction and approximate indexes remain outside the implemented scope; measured need should determine when they are added.
 
 For contributions, start with the [architecture](docs/architecture.md), [active task tracker](docs/plan.md) and [working instructions](AGENTS.md). Completed task definitions, verification and historical handoffs are in the [task archive](docs/tasks-done.md). Reproducible retrieval failures with shareable source files are especially useful.
 

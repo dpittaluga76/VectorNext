@@ -7,6 +7,8 @@ import time
 from decimal import Decimal
 import jsonschema
 from .cache import canonical, digest
+from .generator_profile import answer_temperature
+from .extraction_template import options as template_options
 
 OUTPUT_TOKENS = 768
 INPUT_TOKENS = 4096 - OUTPUT_TOKENS
@@ -21,8 +23,8 @@ ASSESS_SCHEMA = {"type": "object", "properties": {"status": {"enum": ["supported
 
 def answer_mode():
     mode = os.environ.get('VECTORNEXT_ANSWER_MODE', 'two_call')
-    if mode not in ('two_call', 'single_call_v1'):
-        raise ValueError('unknown answer mode: ' + mode)
+    if mode != 'two_call':
+        raise ValueError('experimental answering switches are no longer supported')
     return mode
 
 
@@ -119,21 +121,28 @@ def messages(value):
     return [{"role": "system", "content": PROMPT}, {"role": "user", "content": canonical(user).decode()}]
 
 
-def count_prompt(worker, msgs):
-    template = worker.http("/apply-template", {"messages": msgs, "reasoning": "off"}, priority="interactive")
+def count_prompt(worker, msgs, output_schema=None):
+    options = template_options(getattr(worker, 'generation_profile', {}), output_schema)
+    template = worker.http("/apply-template", {"messages": msgs, "reasoning": "off", **options}, priority="interactive")
     return len(worker.http("/tokenize", {"content": template["prompt"], "add_special": True}, priority="interactive")["tokens"])
 
 
 def generate(worker, msgs, output_schema, prompt, output_tokens=OUTPUT_TOKENS):
     started = time.monotonic()
-    tokens = count_prompt(worker, msgs)
+    profile = getattr(worker, 'generation_profile', {})
+    temperature = answer_temperature(profile)
+    options = template_options(profile, output_schema)
+    tokens = count_prompt(worker, msgs, output_schema)
     if tokens > INPUT_TOKENS:
         raise ValueError("answer prompt exceeds reserved context budget")
+    inference_started = time.monotonic()
     response = worker.http("/v1/chat/completions", {
-        "model": worker.generator_alias, "messages": msgs, "temperature": 0, "seed": 42,
+        "model": worker.generator_alias, "messages": msgs, "temperature": temperature, "seed": 42,
         "max_tokens": output_tokens, "cache_prompt": False, "reasoning": "off",
         "response_format": {"type": "json_schema", "json_schema": {"name": "answer", "strict": True, "schema": output_schema}},
+        **options,
     }, priority="interactive")
+    inference_seconds = time.monotonic() - inference_started
     choice = response["choices"][0]
     if choice.get("finish_reason") != "stop":
         raise ValueError("answer generation did not finish normally")
@@ -141,17 +150,19 @@ def generate(worker, msgs, output_schema, prompt, output_tokens=OUTPUT_TOKENS):
     jsonschema.Draft202012Validator(output_schema).validate(result)
     worker.calls["answer"] = worker.calls.get("answer", 0) + 1
     return result, {"model": {k: worker.generator[k] for k in ("model", "revision", "artifact_sha256", "runtime")},
-                    "prompt_sha256": digest(prompt), "request_sha256": digest(msgs),
+                    "prompt_sha256": digest(prompt), "request_sha256": digest({'messages': msgs, **options} if options else msgs),
+                    **({'template_adapter': profile['answer_adapter'], 'template_sha256': digest(options)} if options else {}),
                     "schema_sha256": hashlib.sha256(json.dumps(output_schema, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest(),
                     "wire_schema_order": "status-first-v1",
-                    "schema": output_schema, "temperature": 0, "seed": 42, "input_tokens": tokens,
+                    "schema": output_schema, "temperature": temperature, "seed": 42, "input_tokens": tokens,
                     "output_limit": output_tokens, "context_window": 4096, "elapsed_seconds": time.monotonic() - started,
+                    "inference_seconds": inference_seconds, "backend_timings": response.get("timings"),
                     "usage": response.get("usage"), "schema_validation": "passed"}
 
 
 def handle(worker, op, value):
     if op == "rerank":
-        from experiments.t02.encoders import Encoder
+        from model_assets.encoders import Encoder
         if not hasattr(worker, "reranker"):
             worker.reranker = Encoder("reranker")
         query, passages = value["query"], value["passages"]
@@ -173,15 +184,10 @@ def handle(worker, op, value):
     if op == "answer_tokens":
         # The extraction system prompt is longer; verify both rather than rely on that fact.
         msgs = messages(value)
-        extraction_tokens = count_prompt(worker, msgs)
+        extraction_tokens = count_prompt(worker, msgs, schema(value['fields'], value['evidence'], value.get('constrain_pointers', False)))
         msgs[0]["content"] = ASSESS_PROMPT
-        return max(extraction_tokens, count_prompt(worker, msgs))
+        return max(extraction_tokens, count_prompt(worker, msgs, ASSESS_SCHEMA))
     if op == "answer":
-        if getattr(worker, 'answer_mode', 'two_call') == 'single_call_v1':
-            result, audit = generate(worker, messages(value),
-                schema(value['fields'], value['evidence'], value.get('constrain_pointers', False)), PROMPT)
-            audit.update(answer_mode='single_call_v1', assessment_skipped=True)
-            return {'answer': result, 'audit': audit}
         msgs = messages(value)
         msgs[0]["content"] = ASSESS_PROMPT
         decision, assessment_audit = generate(worker, msgs, ASSESS_SCHEMA, ASSESS_PROMPT, output_tokens=192)

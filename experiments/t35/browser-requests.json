@@ -1,0 +1,14 @@
+{
+  "planned_piers": {
+    "question": "How many piers does the accepted Norhaven Link route have in August 2031?",
+    "document_ids": ["norhaven-structure", "norhaven-operations"]
+  },
+  "planned_followup": {
+    "question": "What is its maximum authorized service load in tonnes?",
+    "document_ids": ["norhaven-structure", "norhaven-operations"],
+    "history": [
+      {"role": "user", "text": "How many piers does the accepted Norhaven Link route have in August 2031?"},
+      {"role": "assistant", "text": "pier_count: 12 (integer)"}
+    ]
+  }
+}

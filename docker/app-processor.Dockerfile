@@ -10,13 +10,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 COPY processor/requirements.lock /tmp/requirements.lock
 RUN pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu -r /tmp/requirements.lock
-COPY experiments/t02/requirements.txt /tmp/model-requirements.txt
+COPY model_assets/requirements.txt /tmp/model-requirements.txt
 RUN python -m venv /opt/model-env && /opt/model-env/bin/pip install --no-cache-dir -r /tmp/model-requirements.txt
 ENV HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 PYTHONPATH=/app
 COPY processor/ processor/
 COPY model_worker/ model_worker/
-COPY experiments/t02/encoders.py experiments/t02/fetch_models.py experiments/t02/models.lock.json experiments/t02/models.26b.lock.json experiments/t02/
-COPY experiments/t27/models.12b.lock.json experiments/t27/
+COPY model_assets/ model_assets/
 COPY experiments/t31/models.bge.lock.json experiments/t31/
 COPY experiments/t32/models.lock.json experiments/t32/
 COPY deployment/ deployment/

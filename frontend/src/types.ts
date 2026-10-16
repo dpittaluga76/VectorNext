@@ -58,6 +58,21 @@ export type Exchange = {
   answer?: Answer
   error?: string
   pending?: boolean
+  job_id?: string
+  mode?: AnswerMode
+  job_state?: string
+  started_ms?: number
+  fallback_reason?: string
+  job_request?: AnswerSubmission
+}
+export type AnswerMode = 'hybrid' | 'gemma' | 'nuextract'
+export type AnswerSubmission = { request_id: string; mode: AnswerMode; kind: 'ui'; payload: unknown }
+export type AnswerJob = {
+  request_id: string; mode: AnswerMode; state: string; terminal: boolean;
+  created_ms: number; updated_ms: number; fallback_reason?: string; error?: string;
+  result?: Answer | { error: { message: string } }; status_code?: number;
+  response_text?: string; diagnostics_text?: string;
+  attempts?: { model: string; state: string; queue_ms: number; activation_ms: number; work_ms: number; response_text?: string }[]
 }
 export type Conversation = {
   id: string
@@ -83,4 +98,5 @@ export type Workspace = {
   current: string
   uploads: Upload[]
   theme: 'light' | 'dark'
+  answer_mode?: AnswerMode
 }

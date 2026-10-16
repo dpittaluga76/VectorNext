@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "models": {
+    "generator": {
+      "repo": "unsloth/Phi-4-mini-instruct-GGUF",
+      "revision": "78eb92a46fc37e6b524df991ed9aca9bc6aa7b80",
+      "directory": "generator-phi4-mini-q4km",
+      "files": [
+        {
+          "remote_path": "Phi-4-mini-instruct-Q4_K_M.gguf",
+          "path": "Phi-4-mini-instruct-Q4_K_M.gguf",
+          "size": 2491874272,
+          "sha256": "88c00229914083cd112853aab84ed51b87bdf6b9ce42f532d8c85c7c63b1730a"
+        }
+      ]
+    }
+  }
+}

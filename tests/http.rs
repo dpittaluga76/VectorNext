@@ -125,6 +125,11 @@ impl Processor {
                         json!({"capabilities":{"embedding":true,"generation":true,"pdf":true,"reranking":true}})
                     } else {
                         let value: Value = serde_json::from_reader(req.as_reader()).unwrap();
+                        if req.url().starts_with("/generation/") {
+                            let output=json!({"model":value["model"],"token":value["token"],"activation_seconds":0,"reconciled":true});
+                            let _=req.respond(tiny_http::Response::from_string(output.to_string()));
+                            return;
+                        }
                         let input = &value["input"];
                         let encoder = TestEncoder::default();
                         let result = match value["op"].as_str().unwrap() {
@@ -470,7 +475,7 @@ async fn documentation_routes_and_explicit_method_rejections() {
     let (status, raw) = get(&router, "/openapi.json").await;
     assert_eq!(status, 200);
     let spec: Value = serde_json::from_str(&raw).unwrap();
-    assert_eq!(spec["paths"].as_object().unwrap().len(), 18);
+    assert_eq!(spec["paths"].as_object().unwrap().len(), 22);
     assert_eq!(
         spec["components"]["schemas"]["AnswerOptions"]["properties"]["primary_limit"]["default"],
         5

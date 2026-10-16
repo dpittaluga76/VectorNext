@@ -1,0 +1,137 @@
+{
+  "constrained_count": {
+    "plan": "ready",
+    "outcome": "supported",
+    "fields": [
+      {
+        "kind": "integer",
+        "nullable": false,
+        "value": 18,
+        "meaning": "berth",
+        "facts": [
+          {
+            "document": "bayport",
+            "text": "approved Bayport terminal has 18 berths in November 2034"
+          }
+        ]
+      }
+    ]
+  },
+  "pdf_pressure": {
+    "plan": "ready",
+    "outcome": "supported",
+    "fields": [
+      {
+        "kind": "number",
+        "nullable": false,
+        "value": 6.25,
+        "meaning": "pressure",
+        "facts": [
+          {
+            "document": "vela",
+            "text": "at Redwater plant is 6.25 bar"
+          }
+        ]
+      }
+    ]
+  },
+  "explicit_identifiers": {
+    "plan": "ready",
+    "outcome": "supported",
+    "fields": [
+      {
+        "kind": "string",
+        "nullable": false,
+        "value": "Northbank",
+        "meaning": "depot",
+        "facts": [
+          {
+            "document": "depot",
+            "text": "depot as Northbank"
+          }
+        ]
+      },
+      {
+        "kind": "integer",
+        "nullable": false,
+        "value": 2036,
+        "meaning": "year",
+        "facts": [
+          {
+            "document": "depot",
+            "text": "inspection year recorded in report R17 is 2036"
+          }
+        ]
+      },
+      {
+        "kind": "integer",
+        "nullable": false,
+        "value": 7,
+        "meaning": "bay",
+        "facts": [
+          {
+            "document": "depot",
+            "text": "loading-bay count in report R17 is 7"
+          }
+        ]
+      }
+    ]
+  },
+  "followup_draft": {
+    "plan": "ready",
+    "outcome": "supported",
+    "fields": [
+      {
+        "kind": "number",
+        "nullable": false,
+        "value": 11.75,
+        "meaning": "draft",
+        "facts": [
+          {
+            "document": "bayport",
+            "text": "maximum permitted vessel draft at the approved Bayport terminal is 11.75 metres"
+          }
+        ]
+      }
+    ]
+  },
+  "exact_sequence": {
+    "plan": "ready",
+    "outcome": "supported",
+    "fields": [
+      {
+        "kind": "integer",
+        "nullable": false,
+        "value": 9007199254741237,
+        "meaning": "sequence",
+        "facts": [
+          {
+            "document": "archive",
+            "text": "9007199254741237"
+          }
+        ]
+      }
+    ]
+  },
+  "missing_manual_count": {
+    "plan": "ready",
+    "outcome": "insufficient_evidence",
+    "fields": [
+      {
+        "kind": "integer",
+        "nullable": false,
+        "value": null,
+        "meaning": "manual.*reset|reset.*manual",
+        "facts": []
+      }
+    ]
+  },
+  "unclear_subject": {
+    "plan": "needs_clarification",
+    "error_contains": "question needs clarification:"
+  },
+  "aggregate_sum": {
+    "plan": "unsupported",
+    "error_contains": "automatic planning does not support calculations across records"
+  }
+}

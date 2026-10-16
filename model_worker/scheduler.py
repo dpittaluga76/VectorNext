@@ -144,7 +144,7 @@ def backend_request(path, body=None):
         raise BackendUncertain("backend disconnected or timed out; restart required") from error
 
 
-def validate(path, body, priority, model_alias="vectornext-gemma4-26b-a4b"):
+def validate(path, body, priority, model_alias="vectornext-gemma4-26b-a4b", answer_temperature=0, answer_adapter=None):
     if path not in {"/apply-template", "/tokenize", "/v1/chat/completions"}:
         raise Rejected("unsupported model endpoint")
     data = json.loads(body)
@@ -153,10 +153,21 @@ def validate(path, body, priority, model_alias="vectornext-gemma4-26b-a4b"):
         limit = 768 if priority == "interactive" else 256
         if (data.get("model") != model_alias or type(data.get("max_tokens")) is not int
                 or not 1 <= data["max_tokens"] <= limit or data.get("stream", False) is not False
-                or data.get("n", 1) != 1 or data.get("temperature") != 0):
+                or data.get("n", 1) != 1 or type(data.get("temperature")) not in (int, float)
+                or data.get("temperature") != (answer_temperature if priority == 'interactive' else 0)):
             raise Rejected("invalid model, output budget, streaming, sample count, or temperature")
         allowed = {"model", "messages", "temperature", "seed", "max_tokens", "cache_prompt", "reasoning", "response_format", "stream", "n"}
+        if answer_adapter == 'nuextract3-v1':
+            allowed.add('chat_template_kwargs')
         if set(data) - allowed: raise Rejected("unsupported generation option")
+    if 'chat_template_kwargs' in data:
+        options = data['chat_template_kwargs']
+        if (answer_adapter != 'nuextract3-v1' or not isinstance(options, dict)
+                or set(options) != {'enable_thinking', 'template'} or options['enable_thinking'] is not False
+                or not isinstance(options['template'], str) or len(options['template'].encode()) > 65536):
+            raise Rejected('unsupported extraction template options')
+        if not isinstance(json.loads(options['template']), dict):
+            raise Rejected('extraction template must be an object')
     return data
 
 
@@ -164,9 +175,12 @@ class Server(ThreadingHTTPServer):
     daemon_threads = True
     request_queue_size = 32
 
-    def __init__(self, scheduler, address=("0.0.0.0", 8080), model_alias="vectornext-gemma4-26b-a4b"):
+    def __init__(self, scheduler, address=("0.0.0.0", 8080), model_alias="vectornext-gemma4-12b", answer_temperature=0, answer_adapter=None, manager=None):
+        self.manager = manager
         self.scheduler = scheduler
         self.model_alias = model_alias
+        self.answer_temperature = answer_temperature
+        self.answer_adapter = answer_adapter
         self.slots = threading.BoundedSemaphore(32)
         super().__init__(address, Handler)
 
@@ -205,6 +219,11 @@ class Handler(BaseHTTPRequestHandler):
         except (OSError, TimeoutError): pass
 
     def do_GET(self):
+        if self.server.manager:
+            state = self.server.manager.status()
+            if self.path == '/scheduler': return self.reply(200, state)
+            if self.path == '/health': return self.reply(200 if state['queue_ready'] else 503, state)
+            return self.reply(404, {'error': 'unknown endpoint'})
         state = self.server.scheduler.status()
         if self.path == "/scheduler": return self.reply(200, state)
         if self.path != "/health": return self.reply(404, {"error": "unknown endpoint"})
@@ -220,11 +239,22 @@ class Handler(BaseHTTPRequestHandler):
             body = self.rfile.read(size)
             if len(body) != size: raise Rejected("incomplete request")
             priority = self.headers.get("X-VectorNext-Priority", "background")
-            validate(self.path, body, priority, self.server.model_alias)
+            if self.server.manager:
+                manager = self.server.manager
+                if self.path.startswith('/control/'):
+                    operations = {'acquire': manager.acquire, 'release': manager.release, 'reconcile': manager.reconcile, 'cancel': manager.cancel}
+                    operation = operations.get(self.path.removeprefix('/control/'))
+                    if operation is None: raise Rejected('unknown control operation')
+                    return self.reply(200, operation(json.loads(body)))
+                return self.reply(*manager.submit(self.path, body, priority,
+                    self.headers.get('X-VectorNext-Lease'), self.headers.get('X-VectorNext-Model')))
+            validate(self.path, body, priority, self.server.model_alias,
+                     self.server.answer_temperature, self.server.answer_adapter)
             code, response = self.server.scheduler.submit(self.path, body, priority)
             self.reply(code, response)
         except (Rejected, BackendUncertain) as error:
-            self.reply(503, {"error": str(error)})
+            busy = isinstance(error, Rejected) and any(s in str(error) for s in ('admission busy', 'queue full', 'queue wait deadline'))
+            self.reply(503, {"code": 'busy' if busy else 'capability_unavailable', "error": str(error)})
         except (ValueError, OSError) as error:
             self.reply(400, {"error": type(error).__name__})
         except Exception:

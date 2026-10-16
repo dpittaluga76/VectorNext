@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "models": {
+    "generator": {
+      "repo": "ibm-granite/granite-4.2-8b-GGUF",
+      "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+      "directory": "generator-granite-q4km",
+      "files": [
+        {
+          "remote_path": "granite-4.2-8b-Q4_K_M.gguf",
+          "path": "granite-4.2-8b-Q4_K_M.gguf",
+          "size": 5347917952,
+          "sha256": "16a9369d0805f80b7377d25d87f937a90c05dc04ad79173a52001e42c9aab311"
+        }
+      ]
+    }
+  }
+}

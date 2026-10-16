@@ -16,6 +16,10 @@ evals/**/__pycache__/
 !deployment/**
 deployment/**/__pycache__/
 !model_worker/
+!model_assets/
+!model_assets/**
+model_assets/**/__pycache__/
+!docker/model-setup.Dockerfile
 !model_worker/**
 model_worker/**/__pycache__/
 !processor/

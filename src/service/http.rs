@@ -60,8 +60,37 @@ fn field<'a>(body: &'a Value, name: &str) -> Result<&'a str> {
         .and_then(Value::as_str)
         .ok_or_else(|| Error::Invalid(format!("missing {name}")))
 }
-pub fn dispatch(app: &Application, method: &str, path: &str, input: Value) -> Result<(u16, Value)> {
+pub fn dispatch(
+    app: &Application,
+    method: &str,
+    path: &str,
+    mut input: Value,
+) -> Result<(u16, Value)> {
+    if let Some(id) = path.strip_prefix("/v1/answer-jobs/") {
+        if method == "GET" && !id.contains('/') {
+            return match app.answer_job(id) {
+                Ok(value) => Ok((200, value)),
+                Err(Error::Invalid(message)) if message == "answer job not found" => Ok((
+                    404,
+                    json!({"error":{"code":"answer_job_not_found","message":message}}),
+                )),
+                Err(error) => Err(error),
+            };
+        }
+        if method == "POST" {
+            if let Some(id) = id.strip_suffix("/cancel") {
+                return Ok((200, app.cancel_answer(id)?));
+            }
+            if let Some(id) = id.strip_suffix("/clear") {
+                return Ok((200, app.clear_answer(id)?));
+            }
+        }
+    }
     match (method, path) {
+        ("POST", "/v1/answer-jobs") => {
+            Ok((202, app.submit_answer(serde_json::from_value(input)?)?))
+        }
+        ("GET", "/v1/answer-jobs") => Ok((200, app.answer_jobs()?)),
         ("GET", "/v1/ui/library") => Ok((200, app.ui_library()?)),
         ("POST", "/v1/ui/upload-status") => {
             Ok((200, app.ui_upload_status(field(&input, "upload_id")?)?))
@@ -74,7 +103,23 @@ pub fn dispatch(app: &Application, method: &str, path: &str, input: Value) -> Re
             200,
             app.ui_source(field(&input, "document_id")?, field(&input, "revision")?)?,
         )),
-        ("POST", "/v1/ui/ask") => Ok((200, app.ui_ask(serde_json::from_value(input)?)?)),
+        ("POST", "/v1/ui/ask") | ("POST", "/v1/ask") => {
+            let mode = input
+                .as_object_mut()
+                .and_then(|o| o.remove("mode"))
+                .map(serde_json::from_value)
+                .transpose()?
+                .unwrap_or_default();
+            app.answer_sync_response(
+                if path == "/v1/ui/ask" {
+                    answer_jobs::Kind::Ui
+                } else {
+                    answer_jobs::Kind::Structured
+                },
+                input,
+                mode,
+            )
+        }
         ("GET", "/healthz") => Ok((200, app.storage_status()?)),
         ("GET", "/readyz") => {
             let value = app.ready()?;
@@ -88,7 +133,6 @@ pub fn dispatch(app: &Application, method: &str, path: &str, input: Value) -> Re
         ("POST", "/v1/job") => Ok((200, app.job(field(&input, "job_id")?)?)),
         ("POST", "/v1/retry") => Ok((202, app.retry(field(&input, "job_id")?)?)),
         ("POST", "/v1/search") => Ok((200, app.search(serde_json::from_value(input)?)?)),
-        ("POST", "/v1/ask") => Ok((200, app.ask(serde_json::from_value(input)?)?)),
         _ => Ok((
             404,
             json!({"error":{"code":"not_found","message":"unknown endpoint"}}),
@@ -101,7 +145,9 @@ pub fn error_response(error: &Error) -> (u16, Value) {
         Error::AnswerRejected { .. } => (400, "answer_rejected"),
         Error::Unavailable(_) | Error::Poisoned => (503, "capability_unavailable"),
         Error::Conflict(_) | Error::RetryConflict | Error::Locked => (409, "conflict"),
-        Error::Invalid(_) | Error::Json(_) => (400, "invalid_request"),
+        Error::Invalid(_) | Error::Json(_) | Error::PlanningRejected { .. } => {
+            (400, "invalid_request")
+        }
         _ => (500, "storage_or_internal_error"),
     };
     let mut value = json!({"error":{"code":code,"message":error.to_string()}});

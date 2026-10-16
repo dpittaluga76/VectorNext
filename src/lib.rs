@@ -16,6 +16,8 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
+    #[error("invalid record: {message}")]
+    PlanningRejected { message: String },
     #[error("admission busy: {0}")]
     Busy(String),
     #[error("answer rejected: {message}")]

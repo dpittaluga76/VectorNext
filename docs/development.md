@@ -4,11 +4,11 @@ Detailed setup, backup, verification and lower-level experiment commands for Vec
 
 ## Run the integrated local application
 
-Use Docker Desktop with Linux containers/WSL 2 and NVIDIA GPU support. Setup needs network access and disk space for images plus the pinned Gemma 4 26B weights (about 14.44 GB), CPU models and PDF assets. Normal operation uses local files. If T02/T06 models already exist, the setup tools verify and reuse them:
+Use Docker Desktop with Linux containers/WSL 2 and NVIDIA GPU support. The Windows launcher is the normal setup/start path. Setup needs network access and disk space for both pinned Gemma 4 12B and NuExtract3 weights, CPU models and PDF assets. Normal operation uses local files. Existing valid files are verified and reused:
 
 ```sh
-docker compose -f compose.models.yaml -f compose.models.26b.yaml build model-download
-docker compose -f compose.models.yaml -f compose.models.26b.yaml run --rm --no-deps model-download
+docker compose -f compose.models.yaml build model-download
+docker compose -f compose.models.yaml run --rm --no-deps model-download
 docker compose -f compose.processor.yaml build processor
 docker compose -f compose.processor.yaml run --rm pdf-setup
 docker compose -f compose.app.yaml build
@@ -16,7 +16,7 @@ docker compose -f compose.app.yaml up -d
 docker compose -f compose.app.yaml run --rm client ready
 ```
 
-Readiness initially returns a nonzero exit code while models load; retry until all capabilities are ready (the T10 model restart took about 137 seconds on this host; startup varies). The API is available at `http://127.0.0.1:8088`; the CPU processor and GPU runtime have no published ports. Only the GPU runtime requests NVIDIA access. Avoid running the older experiment GPU service concurrently.
+Readiness initially returns a nonzero exit code while models load. The API/browser is available at `http://127.0.0.1:8088`; the CPU processor and GPU runtime have no published ports. Only the GPU runtime requests NVIDIA access. Hybrid starts with NuExtract and switches to Gemma for queued fallback; see [model/queue readiness and recovery](answer-jobs.md). Do not run an archived experiment GPU service concurrently. For an existing installation use `deployment/VectorNext.ps1 -Action Start`: it checks saved ingestion generator policies before replacing services, without builds/downloads.
 
 Ingest the supplied fictional TXT/JSON/PDF examples and ask the original Pele question:
 
@@ -31,7 +31,7 @@ docker compose -f compose.app.yaml run --rm client jobs
 
 Structural context is the default; add `--policy generated` for local Gemma contextual enrichment. Failed jobs stay inspectable: `client job JOB_ID`, then `client retry JOB_ID` and `client wait JOB_ID` after the dependency recovers. Identical uploads with the same job ID reuse the original receipt. Replace a document with a new job ID and `--expected-revision CURRENT_REVISION`. Busy model lanes return a retryable error; source inspection/keyword search can continue during ingestion.
 
-For your own files, use the standard-library host client (`python -m deployment.client ingest path/to/file.pdf --document my-file --job my-file-v1 --wait`) or mount an input directory read-only into the containerized client. `client document DOCUMENT_ID` inspects the complete revision and source locations. The CLI preserves exact JSON numeric literals. This initial interface is intended for a local single user and has no web UI/authentication. See [the deployment contract](deployment.md) for API schemas, limits and failure behavior.
+For your own files, use the browser or standard-library host client (`python -m deployment.client ingest path/to/file.pdf --document my-file --job my-file-v1 --wait`). `client document DOCUMENT_ID` inspects the complete revision and source locations. The CLI preserves exact JSON numeric literals and reconciles answer jobs by stable request ID. The app targets one local user and has no authentication. See [the deployment contract](deployment.md) and [answer-job API](answer-jobs.md) for limits and failure behavior.
 
 Data and cache use separate persistent Docker volumes; weights stay in ignored `models/`. Configure `VECTORNEXT_MODELS_DIR`, `VECTORNEXT_PORT`, `VECTORNEXT_BACKUPS_DIR` or `VECTORNEXT_DATA` before invoking Compose when different paths/ports are needed. Rebuilding images and recreating containers preserve these mounts. Do not use `down -v` on data you want to keep.
 
@@ -44,7 +44,7 @@ docker compose -f compose.app.yaml run --rm admin restore /backups/my-backup /st
 docker compose -f compose.app.yaml run --rm admin inspect /storage/restored
 ```
 
-The export appears under the host's ignored `backups/my-backup/`. Restore verifies the complete file manifest, exact records, jobs and receipts, and refuses to overwrite an existing database. Set `VECTORNEXT_DATA=/storage/restored` in your shell (PowerShell: `$env:VECTORNEXT_DATA='/storage/restored'`) before `docker compose -f compose.app.yaml up -d vectornext` to serve the restored copy. Retain that setting for subsequent recreations. Without it, `/storage/db` remains the default. Keep a separate copy of the backup outside the original disk when protecting against disk failure.
+The export appears under the host's ignored `backups/my-backup/`. Restore verifies the complete file manifest, exact records, ingestion jobs and receipts, and refuses to overwrite an existing database. **Operational answer-job history is excluded:** preserve `/storage/db.answer-jobs` separately with a stopped-volume copy if needed. Conversations stay in browser IndexedDB and have their own export. Set `VECTORNEXT_DATA=/storage/restored` in your shell (PowerShell: `$env:VECTORNEXT_DATA='/storage/restored'`) before `docker compose -f compose.app.yaml up -d vectornext` to serve the restored copy. Retain that setting for subsequent recreations. Without it, `/storage/db` remains the default. Keep a separate copy of the backup outside the original disk when protecting against disk failure.
 
 Stop this stack with `docker compose -f compose.app.yaml stop`; volumes and models remain. The earlier Compose files below are lower-level development tools. Their database-owning CLIs should not open the application volume while its API is running.
 

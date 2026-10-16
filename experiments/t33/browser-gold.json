@@ -1,0 +1,14 @@
+{
+  "planned_piers": {
+    "status": "supported",
+    "value": 12,
+    "kind": "integer",
+    "facts": [{"document": "norhaven-structure", "text": "accepted Norhaven Link route has 12 piers"}]
+  },
+  "planned_followup": {
+    "status": "supported",
+    "value": 48,
+    "kind": "number",
+    "facts": [{"document": "norhaven-operations", "text": "maximum authorized load for the accepted Norhaven Link route is 48 tonnes"}]
+  }
+}

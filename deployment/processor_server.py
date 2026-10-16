@@ -187,6 +187,21 @@ class Handler(BaseHTTPRequestHandler):
         self.reply(404, {'error':'unknown endpoint'})
     def do_POST(self):
         try:
+            if self.path in ('/generation/acquire', '/generation/release', '/generation/reconcile', '/generation/cancel'):
+                size = int(self.headers.get('Content-Length', '0'))
+                if self.headers.get('Transfer-Encoding') or not 0 < size <= 4096:
+                    raise ValueError('invalid generation control request')
+                body = self.rfile.read(size)
+                if len(body) != size: raise ValueError('incomplete control request')
+                url = os.environ.get('VECTORNEXT_LLM_URL', 'http://llm:8080') + self.path.replace('/generation/', '/control/')
+                req = urllib.request.Request(url, data=body, headers={'Content-Type':'application/json'})
+                opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+                try:
+                    response = opener.open(req, timeout=285)
+                except urllib.error.HTTPError as error:
+                    response = error
+                with response:
+                    return self.reply(response.status, response.read(65537))
             is_pdf = self.path == '/pdf'
             if not is_pdf and self.path not in ('/rpc/interactive','/rpc/background'): return self.reply(404, {'error':'unknown endpoint'})
             size = int(self.headers.get('Content-Length','0'))

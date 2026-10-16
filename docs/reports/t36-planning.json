@@ -1,0 +1,3276 @@
+{
+  "run": "data/t36/pilot-v1",
+  "scheduled": 24,
+  "arms": {
+    "12b": {
+      "correct": 6,
+      "planning_correct": 7,
+      "total": 8,
+      "http_errors": 2,
+      "expected_declines": 1,
+      "preflight_blocked": 0,
+      "latency_seconds": {
+        "n": 8,
+        "median": 10.14849999999933,
+        "p95": 17.95300000000134
+      },
+      "peak_device_memory_mib": 7728.0,
+      "resources": {
+        "api": {
+          "peak_ram_mib": 3.711
+        },
+        "processor": {
+          "peak_ram_mib": 448.2
+        },
+        "llm": {
+          "peak_ram_mib": 8386.56
+        }
+      },
+      "cases": [
+        {
+          "case": "constrained_count",
+          "http_status": 200,
+          "seconds": 10.264999999999418,
+          "error": null,
+          "response_sha256": "fe20e8b5c9fc169048c89d2132397ef190cf648f23f15d4ba2d487f542491534",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "bayport_terminal_berth_count": "18"
+            },
+            "timings_ms": {
+              "answer_model_calls": "6307.586271",
+              "answer_total": "6476.676377999999",
+              "application_total": "10220.089978",
+              "assembly_and_model_tokenization": "146.95071900000002",
+              "query_embedding_and_tokens": "10.393259",
+              "reranking_with_preparation": "11.664606",
+              "resolution_validation": "0.0028499999999999997",
+              "search_dense": "0.002046",
+              "search_filter_tokenize": "0.018062",
+              "search_fusion_dedup": "0.00704",
+              "search_keyword": "0.008946999999999998",
+              "search_total": "0.036511",
+              "validation_and_presentation": "0.013742"
+            },
+            "prompt_tokens": 545,
+            "matched_names": [
+              "bayport_terminal_berth_count"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 97,
+              "prompt_tokens": 545,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 642
+            },
+            "input_tokens": 545,
+            "elapsed_seconds": "4.071978143998422",
+            "temperature": 0,
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The document explicitly states that the approved Bayport terminal has 18 berths in November 2034.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 40,
+                "prompt_tokens": 410,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 450
+              },
+              "input_tokens": 410,
+              "elapsed_seconds": "2.2340878039976815",
+              "temperature": 0,
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The number of berths at the approved Bayport terminal in November 2034.",
+                  "kind": "integer",
+                  "name": "bayport_terminal_berth_count",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 87,
+                "prompt_tokens": 537,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 624
+              },
+              "input_tokens": 537,
+              "elapsed_seconds": "3.738014586000645",
+              "temperature": 0,
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "60ae9ad31db567a84f7cb65a319de3eef40a7c1a29241ea2cfc66407015aecfd",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "pdf_pressure",
+          "http_status": 200,
+          "seconds": 11.235000000000582,
+          "error": null,
+          "response_sha256": "c20def95208943cf020e951c3b268588564b5d4166bda361127decf1fd038f1d",
+          "score": {
+            "correct": false,
+            "planning_correct": true,
+            "answer_correct": false,
+            "projection_exact": true,
+            "citations_correct": false,
+            "error": null,
+            "values_text": {
+              "approved_pressure": "6.25"
+            },
+            "timings_ms": {
+              "answer_model_calls": "7009.233181",
+              "answer_total": "7257.091918",
+              "application_total": "11214.367326",
+              "assembly_and_model_tokenization": "214.840027",
+              "query_embedding_and_tokens": "11.760204",
+              "reranking_with_preparation": "21.149023",
+              "resolution_validation": "0.0029349999999999997",
+              "search_dense": "0.0028339999999999997",
+              "search_filter_tokenize": "0.022036",
+              "search_fusion_dedup": "0.007382",
+              "search_keyword": "0.012751",
+              "search_total": "0.045353",
+              "validation_and_presentation": "0.029397999999999997"
+            },
+            "prompt_tokens": 643,
+            "matched_names": [
+              "approved_pressure"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 96,
+              "prompt_tokens": 643,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 739
+            },
+            "input_tokens": 643,
+            "elapsed_seconds": "4.319785019994015",
+            "temperature": 0,
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "Document E1 explicitly states that the approved pressure for valve Vela-X in service cycle C9 at Redwater plant is 6.25 bar.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 48,
+                "prompt_tokens": 508,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 556
+              },
+              "input_tokens": 508,
+              "elapsed_seconds": "2.687487488001352",
+              "temperature": 0,
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The approved pressure for valve Vela-X in service cycle C9 at the Redwater plant, measured in bar.",
+                  "kind": "number",
+                  "name": "approved_pressure",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 86,
+                "prompt_tokens": 541,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 627
+              },
+              "input_tokens": 541,
+              "elapsed_seconds": "3.953926850001153",
+              "temperature": 0,
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "763096c85bc660aaf2b00827e3ccf365d249983ec2ac6b093fac0c18929c7dc6",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": "pdf_pressure",
+          "planner_observed": true
+        },
+        {
+          "case": "explicit_identifiers",
+          "http_status": 200,
+          "seconds": 17.95300000000134,
+          "error": null,
+          "response_sha256": "4675934a7762f55dda9f57b58837c5845d85b7da568277ee9e47ae730204d3bd",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "depot_name": "Northbank",
+              "inspection_year": "2036",
+              "reported_loading_bay_count": "7"
+            },
+            "timings_ms": {
+              "answer_model_calls": "10663.673332",
+              "answer_total": "10836.636538",
+              "application_total": "17861.406741",
+              "assembly_and_model_tokenization": "145.184194",
+              "query_embedding_and_tokens": "15.924913999999998",
+              "reranking_with_preparation": "11.730179",
+              "resolution_validation": "0.002653",
+              "search_dense": "0.0023250000000000002",
+              "search_filter_tokenize": "0.041195",
+              "search_fusion_dedup": "0.00459",
+              "search_keyword": "0.012371",
+              "search_total": "0.061008",
+              "validation_and_presentation": "0.044981"
+            },
+            "prompt_tokens": 579,
+            "matched_names": [
+              "depot_name",
+              "inspection_year",
+              "reported_loading_bay_count"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 203,
+              "prompt_tokens": 579,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 782
+            },
+            "input_tokens": 579,
+            "elapsed_seconds": "8.038242561000516",
+            "temperature": 0,
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "Report R17 contains the depot name (Northbank), the inspection year (2036), and the loading-bay count (7).",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 47,
+                "prompt_tokens": 444,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 491
+              },
+              "input_tokens": 444,
+              "elapsed_seconds": "2.623824196001806",
+              "temperature": 0,
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The name of the depot associated with report R17.",
+                  "kind": "string",
+                  "name": "depot_name",
+                  "nullable": false
+                },
+                {
+                  "description": "The year the inspection was conducted for report R17.",
+                  "kind": "integer",
+                  "name": "inspection_year",
+                  "nullable": false
+                },
+                {
+                  "description": "The number of loading bays reported in report R17.",
+                  "kind": "integer",
+                  "name": "reported_loading_bay_count",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 178,
+                "prompt_tokens": 540,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 718
+              },
+              "input_tokens": 540,
+              "elapsed_seconds": "7.021706382998673",
+              "temperature": 0,
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "2eb00bcfa9d343f0dcb64f2e5f59cc9ae2de54af4e5ab1ef24d80ffccb50ed14",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "followup_draft",
+          "http_status": 200,
+          "seconds": 10.594000000004598,
+          "error": null,
+          "response_sha256": "5c4f03dacb3f3c88ac5baaa36aceb906b2934d4501d4548453d8259fb13e6d58",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "maximum_permitted_vessel_draft": "11.75"
+            },
+            "timings_ms": {
+              "answer_model_calls": "6326.692788",
+              "answer_total": "6521.157305",
+              "application_total": "10593.949330000001",
+              "assembly_and_model_tokenization": "158.95909899999998",
+              "query_embedding_and_tokens": "19.004237",
+              "reranking_with_preparation": "16.423803",
+              "resolution_validation": "0.005397",
+              "search_dense": "0.002277",
+              "search_filter_tokenize": "0.030731",
+              "search_fusion_dedup": "0.004595",
+              "search_keyword": "0.010043",
+              "search_total": "0.048038000000000004",
+              "validation_and_presentation": "0.011678000000000001"
+            },
+            "prompt_tokens": 575,
+            "matched_names": [
+              "maximum_permitted_vessel_draft"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 84,
+              "prompt_tokens": 575,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 659
+            },
+            "input_tokens": 575,
+            "elapsed_seconds": "3.8260786309983814",
+            "temperature": 0,
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence explicitly states that the maximum permitted vessel draft at the approved Bayport terminal is 11.75 metres.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 42,
+                "prompt_tokens": 440,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 482
+              },
+              "input_tokens": 440,
+              "elapsed_seconds": "2.499183127001743",
+              "temperature": 0,
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The maximum permitted vessel draft for the approved Bayport terminal in metres.",
+                  "kind": "number",
+                  "name": "maximum_permitted_vessel_draft",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 82,
+                "prompt_tokens": 572,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 654
+              },
+              "input_tokens": 572,
+              "elapsed_seconds": "4.069363278002129",
+              "temperature": 0,
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "a60bfa7f6078d76bd7611a446e2d156e8264efe5bdfda7445521d40824c217dc",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "exact_sequence",
+          "http_status": 200,
+          "seconds": 10.031999999999243,
+          "error": null,
+          "response_sha256": "7f1191b1653863bd691ef55a62cddcb847038795620c812f78d02ed3da72eae5",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "sequence_number": "9007199254741237"
+            },
+            "timings_ms": {
+              "answer_model_calls": "5990.985433",
+              "answer_total": "6195.778385",
+              "application_total": "9951.422074",
+              "assembly_and_model_tokenization": "179.05825000000002",
+              "query_embedding_and_tokens": "13.813011999999999",
+              "reranking_with_preparation": "11.854811",
+              "resolution_validation": "0.002456",
+              "search_dense": "0.00178",
+              "search_filter_tokenize": "0.016965",
+              "search_fusion_dedup": "0.006971",
+              "search_keyword": "0.009646",
+              "search_total": "0.035639000000000004",
+              "validation_and_presentation": "0.009158"
+            },
+            "prompt_tokens": 530,
+            "matched_names": [
+              "sequence_number"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 68,
+              "prompt_tokens": 530,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 598
+            },
+            "input_tokens": 530,
+            "elapsed_seconds": "3.1594249370027683",
+            "temperature": 0,
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The record for archive 'Crescent' and batch 'AX7' contains the sequence number 9007199254741237.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 55,
+                "prompt_tokens": 395,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 450
+              },
+              "input_tokens": 395,
+              "elapsed_seconds": "2.829948909005907",
+              "temperature": 0,
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The recorded sequence number for batch AX7 at the Crescent archive.",
+                  "kind": "integer",
+                  "name": "sequence_number",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 76,
+                "prompt_tokens": 539,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 615
+              },
+              "input_tokens": 539,
+              "elapsed_seconds": "3.752661098005774",
+              "temperature": 0,
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "3ece5b97b72b68a81d0d42dfe12896f31a52ffc24758031a9361db8b51cac0b5",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "missing_manual_count",
+          "http_status": 200,
+          "seconds": 7.046999999998661,
+          "error": null,
+          "response_sha256": "7510bad107e0461367e5e2a515f7991ef4728c8862ab7b60b78bcfee2d36620d",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": false,
+            "error": null,
+            "values_text": {},
+            "timings_ms": {
+              "answer_model_calls": "2449.8283509999997",
+              "answer_total": "2658.510974",
+              "application_total": "6974.5996000000005",
+              "assembly_and_model_tokenization": "177.285067",
+              "query_embedding_and_tokens": "16.980197",
+              "reranking_with_preparation": "14.307068",
+              "resolution_validation": "0.002641",
+              "search_dense": "0.002045",
+              "search_filter_tokenize": "0.034501000000000004",
+              "search_fusion_dedup": "0.004398",
+              "search_keyword": "0.027234",
+              "search_total": "0.068684",
+              "validation_and_presentation": "0.025692"
+            },
+            "prompt_tokens": 561,
+            "matched_names": [
+              "manual_reset_count"
+            ],
+            "status": "insufficient_evidence"
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "temperature": null,
+            "planning_version": null,
+            "prompt_sha256": null,
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The manual_reset_count is null and the note explicitly states that manual resets were not recorded.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 40,
+                "prompt_tokens": 426,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 466
+              },
+              "input_tokens": 426,
+              "elapsed_seconds": "2.448405051000009",
+              "temperature": 0,
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The number of manual resets recorded at Riverbend station during week 2034-W19.",
+                  "kind": "integer",
+                  "name": "manual_reset_count",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 87,
+                "prompt_tokens": 541,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 628
+              },
+              "input_tokens": 541,
+              "elapsed_seconds": "4.312878289005312",
+              "temperature": 0,
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "44cdd80126f5495c05d7ab14d2cf2b9be14ea1ae2be8dcc64fd8bdf23ac1ef0d",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "unclear_subject",
+          "http_status": 400,
+          "seconds": 1.889999999999418,
+          "error": null,
+          "response_sha256": "7a3d47adc4521cd5bed91b610a1a272b1ba9e109172502ebff93fd35f3bbd8f6",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": false,
+            "projection_exact": false,
+            "citations_correct": false,
+            "error": "invalid record: question needs clarification: name the subject and requested fact, or specify fields in Advanced",
+            "values_text": {},
+            "timings_ms": {},
+            "decline_observed": "needs_clarification"
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "temperature": null,
+            "planning_version": null,
+            "prompt_sha256": null,
+            "input_sha256": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "aggregate_sum",
+          "http_status": 400,
+          "seconds": 0.0,
+          "error": null,
+          "response_sha256": "41ef303579edabe1ff5f98751a11c6c731f214e187af258f3524bbd8dc2ccb0a",
+          "score": {
+            "correct": false,
+            "planning_correct": false,
+            "answer_correct": false,
+            "projection_exact": false,
+            "citations_correct": false,
+            "error": "invalid record: aggregate question requires an unsupported corpus aggregation operation",
+            "values_text": {},
+            "timings_ms": {},
+            "decline_observed": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "temperature": null,
+            "planning_version": null,
+            "prompt_sha256": null,
+            "input_sha256": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": "aggregate_sum",
+          "planner_observed": false
+        }
+      ],
+      "startup_seconds": 63.328999999997905,
+      "restart_seconds": 65.60899999999674,
+      "comparisons": {
+        "12b": {
+          "gained": [],
+          "lost": [],
+          "common_correct_seconds": {
+            "control": {
+              "n": 6,
+              "median": 10.14849999999933,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 6,
+              "median": 10.14849999999933,
+              "p95": 17.95300000000134
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 4,
+              "median": 10.429500000002008,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 4,
+              "median": 10.429500000002008,
+              "p95": 17.95300000000134
+            }
+          }
+        },
+        "nuextract3-q4km": {
+          "gained": [
+            "constrained_count",
+            "unclear_subject"
+          ],
+          "lost": [],
+          "common_correct_seconds": {
+            "control": {
+              "n": 4,
+              "median": 3.4684999999990396,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 4,
+              "median": 10.31300000000192,
+              "p95": 17.95300000000134
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 3,
+              "median": 3.6089999999967404,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 3,
+              "median": 10.594000000004598,
+              "p95": 17.95300000000134
+            }
+          }
+        }
+      },
+      "reviewed_correct": 8,
+      "planner_correct_excluding_api_aggregate": 7,
+      "planner_denominator": 7,
+      "reviewed_comparisons": {
+        "12b": {
+          "gained": [],
+          "lost": [],
+          "common_correct_seconds": {
+            "control": {
+              "n": 8,
+              "median": 10.14849999999933,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 8,
+              "median": 10.14849999999933,
+              "p95": 17.95300000000134
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 5,
+              "median": 10.594000000004598,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 5,
+              "median": 10.594000000004598,
+              "p95": 17.95300000000134
+            }
+          }
+        },
+        "nuextract3-q4km": {
+          "gained": [
+            "constrained_count",
+            "pdf_pressure",
+            "unclear_subject"
+          ],
+          "lost": [],
+          "common_correct_seconds": {
+            "control": {
+              "n": 5,
+              "median": 3.3280000000013388,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 5,
+              "median": 10.031999999999243,
+              "p95": 17.95300000000134
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 3,
+              "median": 3.6089999999967404,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 3,
+              "median": 10.594000000004598,
+              "p95": 17.95300000000134
+            }
+          }
+        }
+      }
+    },
+    "nuextract3-q4km": {
+      "correct": 4,
+      "planning_correct": 4,
+      "total": 8,
+      "http_errors": 1,
+      "expected_declines": 0,
+      "preflight_blocked": 0,
+      "latency_seconds": {
+        "n": 8,
+        "median": 3.4684999999990396,
+        "p95": 6.546999999998661
+      },
+      "peak_device_memory_mib": 3402.0,
+      "resources": {
+        "api": {
+          "peak_ram_mib": 3.699
+        },
+        "processor": {
+          "peak_ram_mib": 448.7
+        },
+        "llm": {
+          "peak_ram_mib": 3103.744
+        }
+      },
+      "cases": [
+        {
+          "case": "constrained_count",
+          "http_status": 200,
+          "seconds": 5.936999999998079,
+          "error": null,
+          "response_sha256": "d243e2b4f1695a8cdc125a5c7811206eb60533a13993a3eea1e4cc0134c19e9f",
+          "score": {
+            "correct": false,
+            "planning_correct": false,
+            "answer_correct": false,
+            "projection_exact": false,
+            "citations_correct": false,
+            "error": null,
+            "values_text": {
+              "berths": "18",
+              "month": "November",
+              "terminal": "Bayport",
+              "year": "2034"
+            },
+            "timings_ms": {
+              "answer_model_calls": "3481.816277",
+              "answer_total": "3668.084224",
+              "application_total": "5883.281946",
+              "assembly_and_model_tokenization": "165.023125",
+              "query_embedding_and_tokens": "9.428941",
+              "reranking_with_preparation": "11.757069",
+              "resolution_validation": "0.002755",
+              "search_dense": "0.002079",
+              "search_filter_tokenize": "0.014452",
+              "search_fusion_dedup": "0.006973",
+              "search_keyword": "0.007212",
+              "search_total": "0.031142",
+              "validation_and_presentation": "0.013901"
+            },
+            "prompt_tokens": 729,
+            "matched_names": null,
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+              "model": "numind/NuExtract3-GGUF",
+              "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 139,
+              "prompt_tokens": 729,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 868
+            },
+            "input_tokens": 729,
+            "elapsed_seconds": "2.428211865000776",
+            "temperature": "0.2",
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence record E1 explicitly states that the approved Bayport terminal has 18 berths in November 2034, which directly matches all requested fields.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 46,
+                "prompt_tokens": 505,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 551
+              },
+              "input_tokens": 505,
+              "elapsed_seconds": "1.0520529049972538",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The number of berths at the approved Bayport terminal.",
+                  "kind": "integer",
+                  "name": "berths",
+                  "nullable": false
+                },
+                {
+                  "description": "The approved Bayport terminal.",
+                  "kind": "string",
+                  "name": "terminal",
+                  "nullable": false
+                },
+                {
+                  "description": "The month of November.",
+                  "kind": "string",
+                  "name": "month",
+                  "nullable": false
+                },
+                {
+                  "description": "The year 2034.",
+                  "kind": "integer",
+                  "name": "year",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 131,
+                "prompt_tokens": 592,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 723
+              },
+              "input_tokens": 592,
+              "elapsed_seconds": "2.209812637003779",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "60ae9ad31db567a84f7cb65a319de3eef40a7c1a29241ea2cfc66407015aecfd",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": false,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "pdf_pressure",
+          "http_status": 200,
+          "seconds": 6.546999999998661,
+          "error": null,
+          "response_sha256": "0fcd4f0a9125c887d162a105d001c7b786f4ad8bc430f687b82bd7c1fa4530aa",
+          "score": {
+            "correct": false,
+            "planning_correct": false,
+            "answer_correct": false,
+            "projection_exact": false,
+            "citations_correct": false,
+            "error": null,
+            "values_text": {
+              "approved_pressure": "6.25",
+              "plant_location": "Redwater",
+              "service_cycle": "C9",
+              "valve_id": "Vela-X"
+            },
+            "timings_ms": {
+              "answer_model_calls": "3738.595316",
+              "answer_total": "3971.756893",
+              "application_total": "6482.141782000001",
+              "assembly_and_model_tokenization": "199.70922099999999",
+              "query_embedding_and_tokens": "13.750198",
+              "reranking_with_preparation": "19.630907",
+              "resolution_validation": "0.002821",
+              "search_dense": "0.00304",
+              "search_filter_tokenize": "0.018485",
+              "search_fusion_dedup": "0.007201",
+              "search_keyword": "0.013042",
+              "search_total": "0.042165",
+              "validation_and_presentation": "0.012649"
+            },
+            "prompt_tokens": 856,
+            "matched_names": null,
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+              "model": "numind/NuExtract3-GGUF",
+              "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 153,
+              "prompt_tokens": 856,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1009
+            },
+            "input_tokens": 856,
+            "elapsed_seconds": "2.6685183469962794",
+            "temperature": "0.2",
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence E1 explicitly states the approved pressure for valve Vela-X in service cycle C9 at the Redwater plant is 6.25 bar.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 44,
+                "prompt_tokens": 616,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 660
+              },
+              "input_tokens": 616,
+              "elapsed_seconds": "1.0684735750037362",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The approved pressure in bar for valve Vela-X in service cycle C9 at Redwater plant.",
+                  "kind": "number",
+                  "name": "approved_pressure",
+                  "nullable": false
+                },
+                {
+                  "description": "The identifier of the valve, Vela-X.",
+                  "kind": "string",
+                  "name": "valve_id",
+                  "nullable": false
+                },
+                {
+                  "description": "The service cycle, C9.",
+                  "kind": "string",
+                  "name": "service_cycle",
+                  "nullable": false
+                },
+                {
+                  "description": "The plant location, Redwater.",
+                  "kind": "string",
+                  "name": "plant_location",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 148,
+                "prompt_tokens": 595,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 743
+              },
+              "input_tokens": 595,
+              "elapsed_seconds": "2.5073214069998357",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "763096c85bc660aaf2b00827e3ccf365d249983ec2ac6b093fac0c18929c7dc6",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": false,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "explicit_identifiers",
+          "http_status": 200,
+          "seconds": 6.155999999995402,
+          "error": null,
+          "response_sha256": "d14036360929ee8fd9fd501ed8f095b2428ad7827ea3e96c7ed05625f0c1a372",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "depot_name": "Northbank",
+              "inspection_year": "2036",
+              "loading_bay_count": "7"
+            },
+            "timings_ms": {
+              "answer_model_calls": "3843.138373",
+              "answer_total": "4006.1639959999998",
+              "application_total": "6165.3905780000005",
+              "assembly_and_model_tokenization": "140.51891999999998",
+              "query_embedding_and_tokens": "11.000081",
+              "reranking_with_preparation": "11.44032",
+              "resolution_validation": "0.00276",
+              "search_dense": "0.001776",
+              "search_filter_tokenize": "0.017391",
+              "search_fusion_dedup": "0.004368",
+              "search_keyword": "0.010661",
+              "search_total": "0.034634",
+              "validation_and_presentation": "0.015613000000000002"
+            },
+            "prompt_tokens": 680,
+            "matched_names": [
+              "depot_name",
+              "inspection_year",
+              "loading_bay_count"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+              "model": "numind/NuExtract3-GGUF",
+              "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 143,
+              "prompt_tokens": 680,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 823
+            },
+            "input_tokens": 680,
+            "elapsed_seconds": "2.504032600001665",
+            "temperature": "0.2",
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence provides a single record (E1) that contains all three requested fields for report R17: the depot name is 'Northbank', the inspection year is 2036, and the loading-bay count is 7.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 62,
+                "prompt_tokens": 473,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 535
+              },
+              "input_tokens": 473,
+              "elapsed_seconds": "1.3373625070016715",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The name of the depot for report R17.",
+                  "kind": "string",
+                  "name": "depot_name",
+                  "nullable": false
+                },
+                {
+                  "description": "The year of the inspection for report R17.",
+                  "kind": "integer",
+                  "name": "inspection_year",
+                  "nullable": false
+                },
+                {
+                  "description": "The reported count of loading bays for report R17.",
+                  "kind": "integer",
+                  "name": "loading_bay_count",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 118,
+                "prompt_tokens": 594,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 712
+              },
+              "input_tokens": 594,
+              "elapsed_seconds": "2.1557984159953776",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "2eb00bcfa9d343f0dcb64f2e5f59cc9ae2de54af4e5ab1ef24d80ffccb50ed14",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "followup_draft",
+          "http_status": 200,
+          "seconds": 3.3280000000013388,
+          "error": null,
+          "response_sha256": "735670948c81dfb02a478b914607077844af4b3b3d2811a0d270dc1127a9f948",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "maximum_vessel_draft": "11.75"
+            },
+            "timings_ms": {
+              "answer_model_calls": "2089.416954",
+              "answer_total": "2263.072419",
+              "application_total": "3328.838277",
+              "assembly_and_model_tokenization": "144.780753",
+              "query_embedding_and_tokens": "14.256685",
+              "reranking_with_preparation": "14.534929",
+              "resolution_validation": "0.005245",
+              "search_dense": "0.0016610000000000001",
+              "search_filter_tokenize": "0.037776",
+              "search_fusion_dedup": "0.004419",
+              "search_keyword": "0.009814",
+              "search_total": "0.054053",
+              "validation_and_presentation": "0.011503"
+            },
+            "prompt_tokens": 630,
+            "matched_names": [
+              "maximum_vessel_draft"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+              "model": "numind/NuExtract3-GGUF",
+              "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 51,
+              "prompt_tokens": 630,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 681
+            },
+            "input_tokens": 630,
+            "elapsed_seconds": "1.1916727930001798",
+            "temperature": "0.2",
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence explicitly states that the maximum permitted vessel draft at the approved Bayport terminal is 11.75 metres.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 37,
+                "prompt_tokens": 470,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 507
+              },
+              "input_tokens": 470,
+              "elapsed_seconds": "0.8962538999985554",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The maximum permitted vessel draft in metres.",
+                  "kind": "number",
+                  "name": "maximum_vessel_draft",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 44,
+                "prompt_tokens": 626,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 670
+              },
+              "input_tokens": 626,
+              "elapsed_seconds": "1.0627120669960277",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "a60bfa7f6078d76bd7611a446e2d156e8264efe5bdfda7445521d40824c217dc",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "exact_sequence",
+          "http_status": 200,
+          "seconds": 3.6089999999967404,
+          "error": null,
+          "response_sha256": "22f727988399dca8074b9fb7053a132908346d58257f6446e8212289d43dbc8e",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "sequence_number": "9007199254741237"
+            },
+            "timings_ms": {
+              "answer_model_calls": "2389.370868",
+              "answer_total": "2573.209563",
+              "application_total": "3595.8307659999996",
+              "assembly_and_model_tokenization": "157.66913",
+              "query_embedding_and_tokens": "15.319026",
+              "reranking_with_preparation": "10.780016999999999",
+              "resolution_validation": "0.0040609999999999995",
+              "search_dense": "0.0019709999999999997",
+              "search_filter_tokenize": "0.017156",
+              "search_fusion_dedup": "0.006793",
+              "search_keyword": "0.007422000000000001",
+              "search_total": "0.033722",
+              "validation_and_presentation": "0.012310999999999999"
+            },
+            "prompt_tokens": 591,
+            "matched_names": [
+              "sequence_number"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+              "model": "numind/NuExtract3-GGUF",
+              "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 40,
+              "prompt_tokens": 591,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 631
+            },
+            "input_tokens": 591,
+            "elapsed_seconds": "1.0417155339964665",
+            "temperature": "0.2",
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence record E1 contains the required fields: 'archive' is 'Crescent', 'batch' is 'AX7', and 'sequence' is 9007199254741237, which matches the requested integer type.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 69,
+                "prompt_tokens": 430,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 499
+              },
+              "input_tokens": 430,
+              "elapsed_seconds": "1.3458519100022386",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The recorded sequence number for batch AX7 at Crescent archive.",
+                  "kind": "integer",
+                  "name": "sequence_number",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 46,
+                "prompt_tokens": 593,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 639
+              },
+              "input_tokens": 593,
+              "elapsed_seconds": "1.0195727870013798",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "3ece5b97b72b68a81d0d42dfe12896f31a52ffc24758031a9361db8b51cac0b5",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "missing_manual_count",
+          "http_status": 200,
+          "seconds": 2.4219999999986612,
+          "error": null,
+          "response_sha256": "29a61fe5b49bde75ba0b4faa0e7454c5e68fcee776db6f56aa9c424a72587d42",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": false,
+            "error": null,
+            "values_text": {},
+            "timings_ms": {
+              "answer_model_calls": "965.9980310000001",
+              "answer_total": "1168.1316219999999",
+              "application_total": "2398.973628",
+              "assembly_and_model_tokenization": "176.400832",
+              "query_embedding_and_tokens": "10.494066",
+              "reranking_with_preparation": "15.18895",
+              "resolution_validation": "0.0025220000000000004",
+              "search_dense": "0.002293",
+              "search_filter_tokenize": "0.01645",
+              "search_fusion_dedup": "0.004517",
+              "search_keyword": "0.010498",
+              "search_total": "0.034106000000000004",
+              "validation_and_presentation": "0.001544"
+            },
+            "prompt_tokens": 622,
+            "matched_names": [
+              "manual_reset_count"
+            ],
+            "status": "insufficient_evidence"
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "temperature": null,
+            "planning_version": null,
+            "prompt_sha256": null,
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The requested field 'manual_reset_count' is null in the provided evidence record E1, and the note explicitly states that manual resets were not recorded.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 45,
+                "prompt_tokens": 456,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 501
+              },
+              "input_tokens": 456,
+              "elapsed_seconds": "0.9646550160032348",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The number of manual resets recorded at Riverbend station in week 2034-W19.",
+                  "kind": "integer",
+                  "name": "manual_reset_count",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 57,
+                "prompt_tokens": 595,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 652
+              },
+              "input_tokens": 595,
+              "elapsed_seconds": "1.2271401299949503",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3",
+              "prompt_sha256": "222970bfc5a339c9cdb430d31e498460a8c5d96160349c927b1a649d360ed5a3",
+              "input_sha256": "44cdd80126f5495c05d7ab14d2cf2b9be14ea1ae2be8dcc64fd8bdf23ac1ef0d",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "unclear_subject",
+          "http_status": 200,
+          "seconds": 2.3590000000040163,
+          "error": null,
+          "response_sha256": "f73c37c13347ef36f6d2eaae9083713d009e3d99687ed54401088ea4d696099d",
+          "score": {
+            "correct": false,
+            "planning_correct": false,
+            "answer_correct": false,
+            "projection_exact": false,
+            "citations_correct": false,
+            "error": null,
+            "values_text": {},
+            "timings_ms": {},
+            "decline_observed": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "temperature": null,
+            "planning_version": null,
+            "prompt_sha256": null,
+            "input_sha256": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "reviewed_correct": false,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "aggregate_sum",
+          "http_status": 400,
+          "seconds": 0.01599999999598367,
+          "error": null,
+          "response_sha256": "41ef303579edabe1ff5f98751a11c6c731f214e187af258f3524bbd8dc2ccb0a",
+          "score": {
+            "correct": false,
+            "planning_correct": false,
+            "answer_correct": false,
+            "projection_exact": false,
+            "citations_correct": false,
+            "error": "invalid record: aggregate question requires an unsupported corpus aggregation operation",
+            "values_text": {},
+            "timings_ms": {},
+            "decline_observed": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "temperature": null,
+            "planning_version": null,
+            "prompt_sha256": null,
+            "input_sha256": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": "aggregate_sum",
+          "planner_observed": false
+        }
+      ],
+      "startup_seconds": 26.93699999999808,
+      "restart_seconds": 27.406000000002678,
+      "comparisons": {
+        "12b": {
+          "gained": [],
+          "lost": [
+            "constrained_count",
+            "unclear_subject"
+          ],
+          "common_correct_seconds": {
+            "control": {
+              "n": 4,
+              "median": 10.31300000000192,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 4,
+              "median": 3.4684999999990396,
+              "p95": 6.155999999995402
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 3,
+              "median": 10.594000000004598,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 3,
+              "median": 3.6089999999967404,
+              "p95": 6.155999999995402
+            }
+          }
+        },
+        "nuextract3-q4km": {
+          "gained": [],
+          "lost": [],
+          "common_correct_seconds": {
+            "control": {
+              "n": 4,
+              "median": 3.4684999999990396,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 4,
+              "median": 3.4684999999990396,
+              "p95": 6.155999999995402
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 3,
+              "median": 3.6089999999967404,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 3,
+              "median": 3.6089999999967404,
+              "p95": 6.155999999995402
+            }
+          }
+        }
+      },
+      "reviewed_correct": 5,
+      "planner_correct_excluding_api_aggregate": 4,
+      "planner_denominator": 7,
+      "reviewed_comparisons": {
+        "12b": {
+          "gained": [],
+          "lost": [
+            "constrained_count",
+            "pdf_pressure",
+            "unclear_subject"
+          ],
+          "common_correct_seconds": {
+            "control": {
+              "n": 5,
+              "median": 10.031999999999243,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 5,
+              "median": 3.3280000000013388,
+              "p95": 6.155999999995402
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 3,
+              "median": 10.594000000004598,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 3,
+              "median": 3.6089999999967404,
+              "p95": 6.155999999995402
+            }
+          }
+        },
+        "nuextract3-q4km": {
+          "gained": [],
+          "lost": [],
+          "common_correct_seconds": {
+            "control": {
+              "n": 5,
+              "median": 3.3280000000013388,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 5,
+              "median": 3.3280000000013388,
+              "p95": 6.155999999995402
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 3,
+              "median": 3.6089999999967404,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 3,
+              "median": 3.6089999999967404,
+              "p95": 6.155999999995402
+            }
+          }
+        }
+      }
+    },
+    "nuextract3-requested-facts-v1": {
+      "correct": 6,
+      "planning_correct": 7,
+      "total": 8,
+      "http_errors": 2,
+      "expected_declines": 1,
+      "preflight_blocked": 0,
+      "latency_seconds": {
+        "n": 8,
+        "median": 3.5854999999974098,
+        "p95": 6.094000000004598
+      },
+      "peak_device_memory_mib": 3390.0,
+      "resources": {
+        "api": {
+          "peak_ram_mib": 4.406
+        },
+        "processor": {
+          "peak_ram_mib": 437.3
+        },
+        "llm": {
+          "peak_ram_mib": 3100.672
+        }
+      },
+      "cases": [
+        {
+          "case": "constrained_count",
+          "http_status": 200,
+          "seconds": 3.686999999998079,
+          "error": null,
+          "response_sha256": "79f0778596dbd66c2c8db4dea6bcdead4dbfefaa4c7bc5fd09f968529499b227",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "berths": "18"
+            },
+            "timings_ms": {
+              "answer_model_calls": "2239.743765",
+              "answer_total": "2419.339577",
+              "application_total": "3645.750751",
+              "assembly_and_model_tokenization": "152.650003",
+              "query_embedding_and_tokens": "15.030532",
+              "reranking_with_preparation": "11.854293",
+              "resolution_validation": "0.002692",
+              "search_dense": "0.001957",
+              "search_filter_tokenize": "0.016290000000000002",
+              "search_fusion_dedup": "0.007212",
+              "search_keyword": "0.007241",
+              "search_total": "0.033125",
+              "validation_and_presentation": "0.012512"
+            },
+            "prompt_tokens": 603,
+            "matched_names": [
+              "berths"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+              "model": "numind/NuExtract3-GGUF",
+              "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 58,
+              "prompt_tokens": 603,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 661
+            },
+            "input_tokens": 603,
+            "elapsed_seconds": "1.265526322000369",
+            "temperature": "0.2",
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence explicitly states that the approved Bayport terminal has 18 berths in November 2034, which directly answers the question.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 42,
+                "prompt_tokens": 445,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 487
+              },
+              "input_tokens": 445,
+              "elapsed_seconds": "0.972669399001461",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The number of berths at the approved Bayport terminal in November 2034.",
+                  "kind": "integer",
+                  "name": "berths",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 53,
+                "prompt_tokens": 850,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 903
+              },
+              "input_tokens": 850,
+              "elapsed_seconds": "1.2208870129979914",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3;requested-facts-v1",
+              "prompt_sha256": "2309583995b2e6ec4ad860f90e6ee95caca0c7d0215b413e64f294021be68d17",
+              "input_sha256": "60ae9ad31db567a84f7cb65a319de3eef40a7c1a29241ea2cfc66407015aecfd",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "pdf_pressure",
+          "http_status": 200,
+          "seconds": 3.8280000000013388,
+          "error": null,
+          "response_sha256": "63ec5b2916f4f1da476a39214f3a626c80805527811602a640e27875b445d8cf",
+          "score": {
+            "correct": false,
+            "planning_correct": true,
+            "answer_correct": false,
+            "projection_exact": true,
+            "citations_correct": false,
+            "error": null,
+            "values_text": {
+              "approved_pressure": "6.25"
+            },
+            "timings_ms": {
+              "answer_model_calls": "2243.243858",
+              "answer_total": "2490.739536",
+              "application_total": "3786.175891",
+              "assembly_and_model_tokenization": "208.612493",
+              "query_embedding_and_tokens": "13.141297999999999",
+              "reranking_with_preparation": "25.675566",
+              "resolution_validation": "0.00409",
+              "search_dense": "0.0026709999999999998",
+              "search_filter_tokenize": "0.017156",
+              "search_fusion_dedup": "0.0056300000000000005",
+              "search_keyword": "0.010971",
+              "search_total": "0.036745",
+              "validation_and_presentation": "0.012490000000000001"
+            },
+            "prompt_tokens": 701,
+            "matched_names": [
+              "approved_pressure"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+              "model": "numind/NuExtract3-GGUF",
+              "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 47,
+              "prompt_tokens": 701,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 748
+            },
+            "input_tokens": 701,
+            "elapsed_seconds": "1.2062324459984666",
+            "temperature": "0.2",
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence in record E1 explicitly states that the approved pressure for valve Vela-X in service cycle C9 at the Redwater plant is 6.25 bar.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 47,
+                "prompt_tokens": 540,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 587
+              },
+              "input_tokens": 540,
+              "elapsed_seconds": "1.035361415000807",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The approved pressure in bar for valve Vela-X in service cycle C9 at Redwater plant.",
+                  "kind": "number",
+                  "name": "approved_pressure",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 54,
+                "prompt_tokens": 853,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 907
+              },
+              "input_tokens": 853,
+              "elapsed_seconds": "1.292257253000571",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3;requested-facts-v1",
+              "prompt_sha256": "2309583995b2e6ec4ad860f90e6ee95caca0c7d0215b413e64f294021be68d17",
+              "input_sha256": "763096c85bc660aaf2b00827e3ccf365d249983ec2ac6b093fac0c18929c7dc6",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": "pdf_pressure",
+          "planner_observed": true
+        },
+        {
+          "case": "explicit_identifiers",
+          "http_status": 200,
+          "seconds": 6.094000000004598,
+          "error": null,
+          "response_sha256": "ae60f1da5b14a8c1e99373e5252a59d8faa3a94808e2364d2e446e6b3b92e309",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "depot_name": "Northbank",
+              "inspection_year": "2036",
+              "loading_bay_count": "7"
+            },
+            "timings_ms": {
+              "answer_model_calls": "3790.8642339999997",
+              "answer_total": "3951.564789",
+              "application_total": "6106.762233",
+              "assembly_and_model_tokenization": "129.822927",
+              "query_embedding_and_tokens": "18.671018",
+              "reranking_with_preparation": "12.141307000000001",
+              "resolution_validation": "0.002835",
+              "search_dense": "0.0019309999999999998",
+              "search_filter_tokenize": "0.017241",
+              "search_fusion_dedup": "0.004532",
+              "search_keyword": "0.011197",
+              "search_total": "0.035327000000000004",
+              "validation_and_presentation": "0.015124"
+            },
+            "prompt_tokens": 680,
+            "matched_names": [
+              "depot_name",
+              "inspection_year",
+              "loading_bay_count"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+              "model": "numind/NuExtract3-GGUF",
+              "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 143,
+              "prompt_tokens": 680,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 823
+            },
+            "input_tokens": 680,
+            "elapsed_seconds": "2.470210275001591",
+            "temperature": "0.2",
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence provides a single record (E1) that contains all three requested fields for report R17: the depot name is 'Northbank', the inspection year is 2036, and the loading-bay count is 7.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 62,
+                "prompt_tokens": 473,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 535
+              },
+              "input_tokens": 473,
+              "elapsed_seconds": "1.3191099319956265",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The name of the depot for report R17.",
+                  "kind": "string",
+                  "name": "depot_name",
+                  "nullable": false
+                },
+                {
+                  "description": "The year of the inspection for report R17.",
+                  "kind": "integer",
+                  "name": "inspection_year",
+                  "nullable": false
+                },
+                {
+                  "description": "The reported count of loading bays for report R17.",
+                  "kind": "integer",
+                  "name": "loading_bay_count",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 118,
+                "prompt_tokens": 852,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 970
+              },
+              "input_tokens": 852,
+              "elapsed_seconds": "2.152187519001018",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3;requested-facts-v1",
+              "prompt_sha256": "2309583995b2e6ec4ad860f90e6ee95caca0c7d0215b413e64f294021be68d17",
+              "input_sha256": "2eb00bcfa9d343f0dcb64f2e5f59cc9ae2de54af4e5ab1ef24d80ffccb50ed14",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "followup_draft",
+          "http_status": 200,
+          "seconds": 3.4839999999967404,
+          "error": null,
+          "response_sha256": "2ee1c92984aca026d73a023af8ddf01badb2f4b79f30a038f5d28bfbffc2ba35",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "maximum_permitted_vessel_draft": "11.75"
+            },
+            "timings_ms": {
+              "answer_model_calls": "2125.9170599999998",
+              "answer_total": "2299.167293",
+              "application_total": "3480.84601",
+              "assembly_and_model_tokenization": "142.346585",
+              "query_embedding_and_tokens": "15.935564",
+              "reranking_with_preparation": "14.87578",
+              "resolution_validation": "0.0051730000000000005",
+              "search_dense": "0.00234",
+              "search_filter_tokenize": "0.043932",
+              "search_fusion_dedup": "0.00453",
+              "search_keyword": "0.010115",
+              "search_total": "0.061308",
+              "validation_and_presentation": "0.012405000000000001"
+            },
+            "prompt_tokens": 634,
+            "matched_names": [
+              "maximum_permitted_vessel_draft"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+              "model": "numind/NuExtract3-GGUF",
+              "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 53,
+              "prompt_tokens": 634,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 687
+            },
+            "input_tokens": 634,
+            "elapsed_seconds": "1.2317636029983987",
+            "temperature": "0.2",
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence explicitly states that the maximum permitted vessel draft at the approved Bayport terminal is 11.75 metres.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 37,
+                "prompt_tokens": 472,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 509
+              },
+              "input_tokens": 472,
+              "elapsed_seconds": "0.8926410480053164",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The maximum permitted vessel draft in metres.",
+                  "kind": "number",
+                  "name": "maximum_permitted_vessel_draft",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 46,
+                "prompt_tokens": 884,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 930
+              },
+              "input_tokens": 884,
+              "elapsed_seconds": "1.1784659690019907",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3;requested-facts-v1",
+              "prompt_sha256": "2309583995b2e6ec4ad860f90e6ee95caca0c7d0215b413e64f294021be68d17",
+              "input_sha256": "a60bfa7f6078d76bd7611a446e2d156e8264efe5bdfda7445521d40824c217dc",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "exact_sequence",
+          "http_status": 200,
+          "seconds": 3.735000000000582,
+          "error": null,
+          "response_sha256": "b4687340b86ad0884a9db28cf521967aecbe1e0ac8a04a243d096062e630095f",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": true,
+            "error": null,
+            "values_text": {
+              "sequence_number": "9007199254741237"
+            },
+            "timings_ms": {
+              "answer_model_calls": "2422.686912",
+              "answer_total": "2607.3824710000004",
+              "application_total": "3715.3354489999997",
+              "assembly_and_model_tokenization": "158.290103",
+              "query_embedding_and_tokens": "15.27277",
+              "reranking_with_preparation": "11.071488",
+              "resolution_validation": "0.002389",
+              "search_dense": "0.001949",
+              "search_filter_tokenize": "0.017838",
+              "search_fusion_dedup": "0.004358",
+              "search_keyword": "0.0073950000000000005",
+              "search_total": "0.03197",
+              "validation_and_presentation": "0.008531"
+            },
+            "prompt_tokens": 591,
+            "matched_names": [
+              "sequence_number"
+            ],
+            "status": "supported"
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+              "model": "numind/NuExtract3-GGUF",
+              "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 40,
+              "prompt_tokens": 591,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 631
+            },
+            "input_tokens": 591,
+            "elapsed_seconds": "1.029100270003255",
+            "temperature": "0.2",
+            "planning_version": null,
+            "prompt_sha256": "56f87d9318889aacd9c35dc6f8374941e26c80efa2846b71b8963d9e74c05f70",
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence record E1 contains the required fields: 'archive' is 'Crescent', 'batch' is 'AX7', and 'sequence' is 9007199254741237, which matches the requested integer type.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 69,
+                "prompt_tokens": 430,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 499
+              },
+              "input_tokens": 430,
+              "elapsed_seconds": "1.3920929840023746",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The recorded sequence number for batch AX7 at Crescent archive.",
+                  "kind": "integer",
+                  "name": "sequence_number",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 46,
+                "prompt_tokens": 851,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 897
+              },
+              "input_tokens": 851,
+              "elapsed_seconds": "1.1047337999989395",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3;requested-facts-v1",
+              "prompt_sha256": "2309583995b2e6ec4ad860f90e6ee95caca0c7d0215b413e64f294021be68d17",
+              "input_sha256": "3ece5b97b72b68a81d0d42dfe12896f31a52ffc24758031a9361db8b51cac0b5",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "missing_manual_count",
+          "http_status": 200,
+          "seconds": 2.3910000000032596,
+          "error": null,
+          "response_sha256": "bacd3ac557fcdb397cf516db72d4a1e92a1c5885d68685070c662f459f7497c0",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": true,
+            "projection_exact": true,
+            "citations_correct": false,
+            "error": null,
+            "values_text": {},
+            "timings_ms": {
+              "answer_model_calls": "867.43272",
+              "answer_total": "1061.8322440000002",
+              "application_total": "2367.496377",
+              "assembly_and_model_tokenization": "164.372478",
+              "query_embedding_and_tokens": "15.545352",
+              "reranking_with_preparation": "14.428474",
+              "resolution_validation": "0.0025900000000000003",
+              "search_dense": "0.002142",
+              "search_filter_tokenize": "0.017426",
+              "search_fusion_dedup": "0.00814",
+              "search_keyword": "0.009505",
+              "search_total": "0.037531999999999996",
+              "validation_and_presentation": "0.001643"
+            },
+            "prompt_tokens": 622,
+            "matched_names": [
+              "manual_resets"
+            ],
+            "status": "insufficient_evidence"
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "temperature": null,
+            "planning_version": null,
+            "prompt_sha256": null,
+            "input_sha256": null,
+            "assessment": {
+              "reason": "The evidence record E1 contains a null value for manual_reset_count, which does not satisfy the requested integer type.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 38,
+                "prompt_tokens": 456,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 494
+              },
+              "input_tokens": 456,
+              "elapsed_seconds": "0.8661493019972113",
+              "temperature": "0.2",
+              "planning_version": null,
+              "prompt_sha256": "6aaa29549daa72596c48051c829b4c42f3a6e482438aa6e4a4b28c3c51f74519",
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The number of manual resets recorded at Riverbend station in week 2034-W19.",
+                  "kind": "integer",
+                  "name": "manual_resets",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e",
+                "model": "numind/NuExtract3-GGUF",
+                "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;chat-template-kwargs={\"enable_thinking\":false};answer-temperature=0.2;answer-adapter=nuextract3-v1;planning-variant=requested-facts-v1;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 57,
+                "prompt_tokens": 853,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 910
+              },
+              "input_tokens": 853,
+              "elapsed_seconds": "1.302478219004115",
+              "temperature": "0.2",
+              "planning_version": "field-planning-v3;requested-facts-v1",
+              "prompt_sha256": "2309583995b2e6ec4ad860f90e6ee95caca0c7d0215b413e64f294021be68d17",
+              "input_sha256": "44cdd80126f5495c05d7ab14d2cf2b9be14ea1ae2be8dcc64fd8bdf23ac1ef0d",
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "unclear_subject",
+          "http_status": 400,
+          "seconds": 0.7649999999994179,
+          "error": null,
+          "response_sha256": "7a3d47adc4521cd5bed91b610a1a272b1ba9e109172502ebff93fd35f3bbd8f6",
+          "score": {
+            "correct": true,
+            "planning_correct": true,
+            "answer_correct": false,
+            "projection_exact": false,
+            "citations_correct": false,
+            "error": "invalid record: question needs clarification: name the subject and requested fact, or specify fields in Advanced",
+            "values_text": {},
+            "timings_ms": {},
+            "decline_observed": "needs_clarification"
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "temperature": null,
+            "planning_version": null,
+            "prompt_sha256": null,
+            "input_sha256": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": null,
+          "planner_observed": true
+        },
+        {
+          "case": "aggregate_sum",
+          "http_status": 400,
+          "seconds": 0.0,
+          "error": null,
+          "response_sha256": "41ef303579edabe1ff5f98751a11c6c731f214e187af258f3524bbd8dc2ccb0a",
+          "score": {
+            "correct": false,
+            "planning_correct": false,
+            "answer_correct": false,
+            "projection_exact": false,
+            "citations_correct": false,
+            "error": "invalid record: aggregate question requires an unsupported corpus aggregation operation",
+            "values_text": {},
+            "timings_ms": {},
+            "decline_observed": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "temperature": null,
+            "planning_version": null,
+            "prompt_sha256": null,
+            "input_sha256": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null,
+              "temperature": null,
+              "planning_version": null,
+              "prompt_sha256": null,
+              "input_sha256": null,
+              "assessment": null
+            }
+          },
+          "reviewed_correct": true,
+          "review_exception": "aggregate_sum",
+          "planner_observed": false
+        }
+      ],
+      "startup_seconds": 28.093000000000757,
+      "restart_seconds": 28.60899999999674,
+      "comparisons": {
+        "12b": {
+          "gained": [],
+          "lost": [],
+          "common_correct_seconds": {
+            "control": {
+              "n": 6,
+              "median": 10.14849999999933,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 6,
+              "median": 3.5854999999974098,
+              "p95": 6.094000000004598
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 4,
+              "median": 10.429500000002008,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 4,
+              "median": 3.7109999999993306,
+              "p95": 6.094000000004598
+            }
+          }
+        },
+        "nuextract3-q4km": {
+          "gained": [
+            "constrained_count",
+            "unclear_subject"
+          ],
+          "lost": [],
+          "common_correct_seconds": {
+            "control": {
+              "n": 4,
+              "median": 3.4684999999990396,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 4,
+              "median": 3.6094999999986612,
+              "p95": 6.094000000004598
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 3,
+              "median": 3.6089999999967404,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 3,
+              "median": 3.735000000000582,
+              "p95": 6.094000000004598
+            }
+          }
+        }
+      },
+      "reviewed_correct": 8,
+      "planner_correct_excluding_api_aggregate": 7,
+      "planner_denominator": 7,
+      "reviewed_comparisons": {
+        "12b": {
+          "gained": [],
+          "lost": [],
+          "common_correct_seconds": {
+            "control": {
+              "n": 8,
+              "median": 10.14849999999933,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 8,
+              "median": 3.5854999999974098,
+              "p95": 6.094000000004598
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 5,
+              "median": 10.594000000004598,
+              "p95": 17.95300000000134
+            },
+            "candidate": {
+              "n": 5,
+              "median": 3.735000000000582,
+              "p95": 6.094000000004598
+            }
+          }
+        },
+        "nuextract3-q4km": {
+          "gained": [
+            "constrained_count",
+            "pdf_pressure",
+            "unclear_subject"
+          ],
+          "lost": [],
+          "common_correct_seconds": {
+            "control": {
+              "n": 5,
+              "median": 3.3280000000013388,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 5,
+              "median": 3.4839999999967404,
+              "p95": 6.094000000004598
+            }
+          },
+          "common_supported_seconds": {
+            "control": {
+              "n": 3,
+              "median": 3.6089999999967404,
+              "p95": 6.155999999995402
+            },
+            "candidate": {
+              "n": 3,
+              "median": 3.735000000000582,
+              "p95": 6.094000000004598
+            }
+          }
+        }
+      }
+    }
+  },
+  "execution_freeze_sha256": "34ef0bafff30e3ad23959c7a1586e7c48c2ac3fc0cc1a2435772d1fbb20b4449",
+  "source_archive_sha256": "71c82f492fce94454fdbceee164cce5a412042ee9d1ece6c9a778cdb58dae3b7",
+  "corpus_sha256": "6c4cdedba50ed1422d5781c39e4658030e7b861b2b624572ac8267d4b86fe146",
+  "ingestion": [
+    {
+      "document": "bayport",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "bayport",
+        "failure_count": 0,
+        "job_id": "t36-bayport",
+        "last_failure": null,
+        "receipt": {
+          "generation": 1,
+          "request_sha256": "07fb2f2b4a284cad3f7c824fb4c6affa942450016f7af71e6d705c2d9e4b9e34"
+        },
+        "revision": "b7cf57179caa89a71a12d46a0204733431aee83527b44ab09f3d08df0f5da2e2",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5310000000026776
+    },
+    {
+      "document": "depot",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "depot",
+        "failure_count": 0,
+        "job_id": "t36-depot",
+        "last_failure": null,
+        "receipt": {
+          "generation": 2,
+          "request_sha256": "0ef38f2b3c43e1ac975dc5b0239557007f26d7bc4614f9f023e79739107ea4a8"
+        },
+        "revision": "913db4a8e6183be2d26b3d1523a652b29f19de865a6bd0e701d4385bb6a8daf7",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5319999999992433
+    },
+    {
+      "document": "archive",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "archive",
+        "failure_count": 0,
+        "job_id": "t36-archive",
+        "last_failure": null,
+        "receipt": {
+          "generation": 3,
+          "request_sha256": "1034bf9f5843a1d0cf8ce44713c979573f51d64da1e8f3a6dc28f1c18b868ab6"
+        },
+        "revision": "b77860ccee27e063a0103db144b3eb0a9cacf6919b3c36744435b7b3c041491b",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5309999999954016
+    },
+    {
+      "document": "missing",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "missing",
+        "failure_count": 0,
+        "job_id": "t36-missing",
+        "last_failure": null,
+        "receipt": {
+          "generation": 4,
+          "request_sha256": "c1e3dcc9582b347c83162ec340989323162168a073632535aa48c9fd0ac363e8"
+        },
+        "revision": "e892e8e22def315f5b44d59ff42805f43149d208c0c478122b6dbafd807006d0",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5310000000026776
+    },
+    {
+      "document": "vela",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "vela",
+        "failure_count": 0,
+        "job_id": "t36-vela",
+        "last_failure": null,
+        "pdf_diagnostics": {
+          "allow_partial": false,
+          "artifact_sha256": "4a62c277645d24c4dc12a0df8113daee07337ae76cb5b8d0ce6b879b994845d6",
+          "items": 4,
+          "next_action": "Review page warnings and extraction coverage; illustrations are not interpreted.",
+          "pages": [
+            {
+              "height": 841.8898,
+              "native_cells": 7,
+              "ocr_cells": 0,
+              "ocr_mean_confidence": null,
+              "page": 1,
+              "width": 595.2756
+            }
+          ],
+          "source_sha256": "4679ddc960917334baedb22a37d3ac6da5ca491a89f18d051605b1de7a4fc5f0",
+          "status": "complete",
+          "warning_count": 0,
+          "warnings": [],
+          "warnings_truncated": false
+        },
+        "receipt": {
+          "generation": 5,
+          "request_sha256": "462487a441e6be35ee7e6dba01617bb29c08ac0e3493cab5e8bd7ce0c2c090cf"
+        },
+        "revision": "88d7849cc1d0c091ed5d6121f5260d400da9065b1c9036ff906d0523ba3c0c4d",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 10.735000000000582
+    }
+  ],
+  "normal_unchanged": true,
+  "normal_ready": true,
+  "reporter_sha256": "e4072e5594ab67d30100a4b06b09cf3950f62d15a5b5d586e569d96f8b055e60",
+  "review_reference": "docs/reports/t36-source-review.md",
+  "reviewer_sha256": "2c7404ab44119816f8046fff57cf7310f5ed8cf248ea137cd77a918ac0a624f2"
+}

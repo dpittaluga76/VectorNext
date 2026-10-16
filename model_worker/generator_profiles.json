@@ -3,27 +3,21 @@
   "default": "12b",
   "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695",
   "profiles": {
-    "26b-offload22": {
-      "lock": "experiments/t02/models.26b.lock.json",
-      "alias": "vectornext-gemma4-26b-a4b",
-      "cpu_moe": 22
-    },
     "12b": {
-      "lock": "experiments/t27/models.12b.lock.json",
+      "lock": "model_assets/gemma.lock.json",
       "alias": "vectornext-gemma4-12b",
       "cpu_moe": 0
     },
-    "12b-kv-q8": {
-      "lock": "experiments/t27/models.12b.lock.json",
-      "alias": "vectornext-gemma4-12b-kv-q8",
+    "nuextract3-requested-facts-v1": {
+      "lock": "model_assets/nuextract.lock.json",
+      "alias": "vectornext-nuextract3-requested-facts-v1",
       "cpu_moe": 0,
-      "cache_type_k": "q8_0",
-      "cache_type_v": "q8_0"
-    },
-    "26b-gpu": {
-      "lock": "experiments/t02/models.26b.lock.json",
-      "alias": "vectornext-gemma4-26b-a4b",
-      "cpu_moe": 0
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "answer_temperature": 0.2,
+      "answer_adapter": "nuextract3-v1",
+      "planning_variant": "requested-facts-v1"
     }
   }
 }

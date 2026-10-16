@@ -118,8 +118,33 @@ fn compatible(
     route
 }
 
+#[utoipa::path(post, path = "/v1/answer-jobs", tag = "Answer jobs", responses((status = 202, description = "Admit or reconcile a durable answer job")))]
+async fn answer_submit(state: State<Arc<HttpState>>, request: Request) -> Response {
+    handle(state, request).await
+}
+#[utoipa::path(get, path = "/v1/answer-jobs", tag = "Answer jobs", responses((status = 200, description = "List retained jobs and queue capacity")))]
+async fn answer_list(state: State<Arc<HttpState>>, request: Request) -> Response {
+    handle(state, request).await
+}
+#[utoipa::path(get, path = "/v1/answer-jobs/{request_id}", tag = "Answer jobs", responses((status = 200, description = "Inspect state, exact attempts and final result")))]
+async fn answer_status(state: State<Arc<HttpState>>, request: Request) -> Response {
+    handle(state, request).await
+}
+#[utoipa::path(post, path = "/v1/answer-jobs/{request_id}/cancel", tag = "Answer jobs", responses((status = 200, description = "Cancel queued work or stop after the active call")))]
+async fn answer_cancel(state: State<Arc<HttpState>>, request: Request) -> Response {
+    handle(state, request).await
+}
+#[utoipa::path(post, path = "/v1/answer-jobs/{request_id}/clear", tag = "Answer jobs", responses((status = 200, description = "Explicitly clear a terminal record")))]
+async fn answer_clear(state: State<Arc<HttpState>>, request: Request) -> Response {
+    handle(state, request).await
+}
+
 pub(super) fn routes() -> (Router<Arc<HttpState>>, Value) {
     let routes = OpenApiRouter::<Arc<HttpState>>::new()
+        .routes(compatible(routes!(answer_submit, answer_list)))
+        .routes(compatible(routes!(answer_status)))
+        .routes(compatible(routes!(answer_cancel)))
+        .routes(compatible(routes!(answer_clear)))
         .routes(compatible(routes!(health)))
         .routes(compatible(routes!(ready)))
         .routes(compatible(routes!(metrics)))
@@ -145,6 +170,35 @@ pub(super) fn routes() -> (Router<Arc<HttpState>>, Value) {
     spec["servers"] = json!([{"url":"/", "description":"This local VectorNext instance"}]);
     spec["components"]["schemas"] = serde_json::from_str(include_str!("schemas.json")).unwrap();
     for (path, method, request, response, status) in [
+        (
+            "/v1/answer-jobs",
+            "post",
+            "AnswerSubmission",
+            "AnswerJob",
+            "202",
+        ),
+        ("/v1/answer-jobs", "get", "", "AnswerJobs", "200"),
+        (
+            "/v1/answer-jobs/{request_id}",
+            "get",
+            "",
+            "AnswerJob",
+            "200",
+        ),
+        (
+            "/v1/answer-jobs/{request_id}/cancel",
+            "post",
+            "EmptyObject",
+            "AnswerJob",
+            "200",
+        ),
+        (
+            "/v1/answer-jobs/{request_id}/clear",
+            "post",
+            "EmptyObject",
+            "AnswerCleared",
+            "200",
+        ),
         ("/healthz", "get", "", "Health", "200"),
         ("/readyz", "get", "", "Readiness", "200"),
         ("/v1/metrics", "get", "", "Metrics", "200"),
@@ -195,6 +249,13 @@ pub(super) fn routes() -> (Router<Arc<HttpState>>, Value) {
             };
             operation["requestBody"] = json!({"required":true,"content":{content_type:{"schema":{"$ref":format!("#/components/schemas/{request}")}}}});
             operation["parameters"] = json!([{"name":"X-VectorNext-Client","in":"header","required":true,"schema":{"type":"string","enum":["1"],"default":"1"}}]);
+        }
+        if path.contains("{request_id}") {
+            if !operation["parameters"].is_array() {
+                operation["parameters"] = json!([]);
+            }
+            operation["parameters"].as_array_mut().unwrap().push(json!({"name":"request_id","in":"path","required":true,"schema":{"type":"string","minLength":16,"maxLength":128}}));
+            operation["responses"]["404"] = json!({"description":"Unknown answer request ID","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Error"}}}});
         }
     }
     // Readiness 503 is a capability report, while admission can still return Error.

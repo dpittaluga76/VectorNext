@@ -13,22 +13,22 @@ from .scheduler import validate, Rejected
 
 
 class GeneratorProfileTests(unittest.TestCase):
-    def test_promoted_default_is_12b_and_explicit_rollback_remains_available(self):
+    def test_only_two_supported_profiles_and_stable_gemma_identity(self):
         with patch.dict(os.environ, {}, clear=True):
             self.assertEqual(profiles.load()['name'], '12b')
-            self.assertEqual(profiles.load('26b-offload22')['cpu_moe'], 22)
+            with self.assertRaises(ValueError): profiles.load('26b-offload22')
 
     def test_legacy_identity_and_cpu_models_unchanged(self):
-        old = profiles.load('26b-offload22')
+        old = profiles.load('12b')
         self.assertEqual(profiles.runtime_identity(old),
-            'llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe22')
+            'llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0')
         original = json.loads((profiles.ROOT / old['lock']).read_bytes())
         candidate = json.loads((profiles.ROOT / profiles.load('12b')['lock']).read_bytes())
         for role in ('embedding', 'reranker'):
             self.assertEqual(original['models'][role], candidate['models'][role])
 
     def test_full_gpu_and_offload_commands_are_bound(self):
-        for name in ('12b', '26b-gpu', '26b-offload22'):
+        for name in ('12b', 'nuextract3-requested-facts-v1'):
             profile = profiles.load(name)
             args = profiles.command(profile)
             self.assertEqual(profiles.validate_command(profile, []), args)
@@ -43,11 +43,11 @@ class GeneratorProfileTests(unittest.TestCase):
                 profiles.load()
 
     def test_scheduler_only_accepts_selected_alias(self):
-        for name in ('12b', '26b-offload22'):
+        for name in ('12b', 'nuextract3-requested-facts-v1'):
             alias = profiles.load(name)['alias']
-            request = {'model': alias, 'max_tokens': 768, 'temperature': 0}
-            validate('/v1/chat/completions', json.dumps(request), 'interactive', alias)
-            wrong = profiles.load('12b' if name != '12b' else '26b-offload22')['alias']
+            request = {'model': alias, 'max_tokens': 768, 'temperature': profiles.answer_temperature(profiles.load(name))}
+            validate('/v1/chat/completions', json.dumps(request), 'interactive', alias, profiles.answer_temperature(profiles.load(name)))
+            wrong = profiles.load('12b' if name != '12b' else 'nuextract3-requested-facts-v1')['alias']
             with self.assertRaises(Rejected):
                 validate('/v1/chat/completions', json.dumps(request), 'interactive', wrong)
             with self.assertRaises(Rejected):
@@ -74,14 +74,14 @@ class GeneratorProfileTests(unittest.TestCase):
 
     def test_generation_cache_identity_separates_models_and_placement(self):
         identities = []
-        for name in ('12b', '26b-offload22', '26b-gpu'):
+        for name in ('12b', 'nuextract3-requested-facts-v1'):
             profile = profiles.load(name)
             identities.append({'model': profile['spec']['repo'],
                 'revision': profile['spec']['revision'],
                 'artifact_sha256': profile['artifact']['sha256'],
                 'runtime': profiles.runtime_identity(profile)})
         self.assertEqual(len({digest({'operation': 'context-v1', 'input': {'config': {'generator': i}}})
-                              for i in identities}), 3)
+                              for i in identities}), 2)
 
 
 if __name__ == '__main__':

@@ -25,6 +25,8 @@ fn run() -> Result<()> {
                 structural,
                 weight,
             )?;
+            let policy = std::fs::read("/app/generator-policy.json")?;
+            app.check_ingestion_generator(&serde_json::from_slice(&policy)?)?;
             let _worker = app.start();
             http::serve(app, &address)
         }
@@ -44,6 +46,12 @@ fn run() -> Result<()> {
                 "{}",
                 serde_json::json!({"generation":db.snapshot().generation(),"documents":db.snapshot().documents().collect::<Vec<_>>(),"jobs":db.ingestion_jobs()?})
             );
+            Ok(())
+        }
+        Some("check-generator") if args.len() == 3 => {
+            let app = Application::open(Path::new(&args[1]), Client::new("http://unused".into()))?;
+            app.check_ingestion_generator(&serde_json::from_slice(&std::fs::read(&args[2])?)?)?;
+            println!("{{\"compatible\":true}}");
             Ok(())
         }
         _ => Err(Error::Invalid(

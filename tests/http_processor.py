@@ -26,6 +26,9 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         value = json.loads(self.rfile.read(int(self.headers['Content-Length'])))
+        if self.path.startswith('/generation/'):
+            return self.reply({**value, 'reconciled': True, 'released': True, 'activation_seconds': 0,
+                               'alias': 'synthetic', 'runtime': 'synthetic', 'artifact_sha256': 'a'*64})
         op, data = value['op'], value.get('input')
         if op == 'profile':
             prompt = 'synthetic HTTP browser fixture'

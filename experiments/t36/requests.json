@@ -1,0 +1,61 @@
+{
+  "constrained_count": {
+    "question": "How many berths does the approved Bayport terminal have in November 2034?",
+    "document_ids": [
+      "bayport"
+    ]
+  },
+  "pdf_pressure": {
+    "question": "What is the approved pressure in bar for valve Vela-X in service cycle C9 at Redwater plant?",
+    "document_ids": [
+      "vela"
+    ]
+  },
+  "explicit_identifiers": {
+    "question": "For report R17, give the depot name, inspection year, and reported loading-bay count.",
+    "document_ids": [
+      "depot"
+    ]
+  },
+  "followup_draft": {
+    "question": "What is its maximum permitted vessel draft in metres?",
+    "document_ids": [
+      "bayport"
+    ],
+    "history": [
+      {
+        "role": "user",
+        "text": "How many berths does the approved Bayport terminal have in November 2034?"
+      },
+      {
+        "role": "assistant",
+        "text": "berth_count: 18 (integer)"
+      }
+    ]
+  },
+  "exact_sequence": {
+    "question": "What is the recorded sequence number for batch AX7 at Crescent archive? Return it as an integer.",
+    "document_ids": [
+      "archive"
+    ]
+  },
+  "missing_manual_count": {
+    "question": "How many manual resets were recorded at Riverbend station in week 2034-W19?",
+    "document_ids": [
+      "missing"
+    ]
+  },
+  "unclear_subject": {
+    "question": "How many does it have?",
+    "document_ids": [
+      "bayport",
+      "depot"
+    ]
+  },
+  "aggregate_sum": {
+    "question": "Compute the sum of reported berth counts across all terminal records.",
+    "document_ids": [
+      "bayport"
+    ]
+  }
+}

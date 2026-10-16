@@ -21,12 +21,15 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { api } from './lib/api'
+import { api, ApiError } from './lib/api'
 import { bytes, context } from './lib/history'
-import { download, load, save } from './lib/store'
+import { download, load, save, reserveTurn, releaseTurn } from './lib/store'
 import { reconcile, transfer } from './lib/uploads'
 import type {
   Answer,
+  AnswerJob,
+  AnswerMode,
+  AnswerSubmission,
   Conversation,
   DocumentInfo,
   Evidence,
@@ -58,7 +61,9 @@ const message = (error: unknown) =>
 type Library = { documents: DocumentInfo[]; jobs: Job[] }
 type Readiness = {
   ready: boolean
-  processor?: { capabilities?: Record<string, boolean>; error?: string }
+  default_answer_mode?: AnswerMode
+  answer_queue?: { ready: boolean; unfinished: number; capacity: number; error?: string }
+  processor?: { capabilities?: Record<string, boolean>; error?: string; generation?: { scheduler?: { loaded_model?: string; loading_model?: string; models?: Record<string, boolean> } } }
   storage?: { coordinator?: { state: string; last_error?: string } }
 }
 export default function App() {
@@ -72,7 +77,6 @@ export default function App() {
     [readiness, setReadiness] = useState<Readiness>(),
     [online, setOnline] = useState(false)
   const [question, setQuestion] = useState(''),
-    [asking, setAsking] = useState(false),
     [elapsed, setElapsed] = useState(0)
   const [selected, setSelected] = useState<Evidence>(),
     [sourceInfo, setSourceInfo] = useState(''),
@@ -90,7 +94,8 @@ export default function App() {
     [primary, setPrimary] = useState(5)
   const [strategy, setStrategy] = useState('ranked')
   const uploading = useRef(false),
-    askLock = useRef(false),
+    askLock = useRef(new Set<string>()),
+    polling = useRef(false),
     fileInput = useRef<HTMLInputElement>(null),
     replaceInput = useRef<HTMLInputElement>(null),
     replaceTarget = useRef<DocumentInfo | undefined>(undefined)
@@ -99,6 +104,10 @@ export default function App() {
   const chat =
     workspace.conversations.find((c) => c.id === workspace.current) ??
     workspace.conversations[0]
+  const asking = chat.exchanges.some((e) => e.pending)
+  const [answerJobs, setAnswerJobs] = useState<AnswerJob[]>([])
+  const [jobHistory, setJobHistory] = useState(false)
+  const [inspectedJob, setInspectedJob] = useState<AnswerJob>()
   const activeDocument =
     selected &&
     library.documents.find(
@@ -112,6 +121,7 @@ export default function App() {
     capabilities.embedding &&
     capabilities.reranking &&
     capabilities.generation &&
+    readiness?.answer_queue?.ready !== false &&
     chat.scope.length > 0 &&
     chat.scope.every((id) =>
       library.documents.some((d) => d.document_id === id),
@@ -133,7 +143,7 @@ export default function App() {
             conversations: saved.conversations.map((c) => ({
               ...c,
               exchanges: c.exchanges.map((e) =>
-                e.pending
+                e.pending && !e.job_id
                   ? {
                       ...e,
                       pending: false,
@@ -181,7 +191,9 @@ export default function App() {
       setOnline(false)
     }
     try {
-      setReadiness(await api<Readiness>('/readyz'))
+      const state = await api<Readiness>('/readyz')
+      setReadiness(state)
+      if (state.default_answer_mode) setWorkspace((w) => w.answer_mode ? w : { ...w, answer_mode: state.default_answer_mode })
     } catch {
       setReadiness(undefined)
     }
@@ -196,13 +208,13 @@ export default function App() {
       setElapsed(0)
       return
     }
-    const started = Date.now()
+    const started = chat.exchanges.find((e) => e.pending)?.started_ms ?? Date.now()
     const timer = setInterval(
       () => setElapsed(Math.floor((Date.now() - started) / 1000)),
       1000,
     )
     return () => clearInterval(timer)
-  }, [asking])
+  }, [asking, chat.id])
   function changeUpload(id: string, change: Partial<Upload>) {
     setWorkspace((w) => ({
       ...w,
@@ -341,109 +353,110 @@ export default function App() {
     }
     setWorkspace((w) => ({ ...w, uploads: [...w.uploads, ...additions] }))
   }
+  function applyAnswerJob(job: AnswerJob) {
+    if (job.terminal) void releaseTurn(job.request_id).catch((e) => setStorageError(message(e)))
+    const answer = job.status_code === 200 && job.result && 'outcome' in job.result ? job.result : undefined
+    if (answer) answer.evidence = answer.evidence.map((e) => ({ ...e,
+      filename: library.documents.find((d) => d.document_id === e.key.document_id && d.revision === e.key.revision)?.filename,
+    }))
+    const failure = job.result && 'error' in job.result ? job.result.error.message : job.error
+    setWorkspace((w) => ({ ...w, conversations: w.conversations.map((c) => ({ ...c,
+      exchanges: c.exchanges.map((e) => e.job_id === job.request_id ? {
+        ...e, pending: !job.terminal, job_state: job.state,
+        fallback_reason: job.fallback_reason, answer: answer ?? e.answer,
+        error: job.terminal && !answer ? failure ?? `Job ${job.state}` : undefined,
+      } : e),
+    })) }))
+    if (answer?.evidence[0] && current.current.conversations.find((c) => c.id === current.current.current)?.exchanges.some((e) => e.job_id === job.request_id))
+      setSelected(answer.evidence[0])
+  }
+  async function reconcileAnswer(id: string) {
+    try { applyAnswerJob(await api<AnswerJob>(`/v1/answer-jobs/${id}`)) }
+    catch (e) {
+      if (message(e) === 'answer job not found') setWorkspace((w) => ({ ...w, conversations: w.conversations.map((c) => ({ ...c,
+        exchanges: c.exchanges.map((t) => t.job_id === id ? { ...t, job_state: 'unacknowledged' } : t),
+      })) }))
+      else setError(`Cannot reconcile answer ${id}: ${message(e)}. The question has not been resubmitted.`)
+    }
+  }
+  useEffect(() => {
+    if (!loaded) return
+    let live = true
+    const poll = async () => {
+      if (polling.current) return
+      polling.current = true
+      try {
+        for (const c of current.current.conversations) for (const e of c.exchanges) {
+          if (e.pending && e.job_id && live) await reconcileAnswer(e.job_id)
+        }
+        if (live) setAnswerJobs((await api<{ jobs: AnswerJob[] }>('/v1/answer-jobs')).jobs)
+      } catch { /* The connection indicator reports offline state; retain pending IDs. */ }
+      finally { polling.current = false }
+    }
+    void poll()
+    const timer = setInterval(() => void poll(), 1500)
+    return () => { live = false; clearInterval(timer) }
+  }, [loaded])
+  async function submitSaved(submission: AnswerSubmission) {
+    try { applyAnswerJob(await api<AnswerJob>('/v1/answer-jobs', submission)) }
+    catch (e) {
+      if (e instanceof ApiError && ['invalid_request', 'busy', 'origin_forbidden'].includes(e.code)) {
+        applyAnswerJob({ request_id: submission.request_id, mode: submission.mode, terminal: true,
+          state: 'rejected_before_admission', created_ms: Date.now(), updated_ms: Date.now(), error: message(e) })
+        return
+      }
+      // Never resend an uncertain POST. The same identity remains inspectable after reload.
+      try { applyAnswerJob(await api<AnswerJob>(`/v1/answer-jobs/${submission.request_id}`)) }
+      catch {
+        setWorkspace((w) => ({ ...w, conversations: w.conversations.map((c) => ({ ...c,
+          exchanges: c.exchanges.map((t) => t.job_id === submission.request_id ? { ...t,
+            pending: true, error: `Submission not acknowledged: ${message(e)}. Reconcile before retrying.`, job_state: 'unacknowledged' } : t),
+        })) }))
+      }
+    }
+  }
+  async function retrySubmission(submission: AnswerSubmission) {
+    try { applyAnswerJob(await api<AnswerJob>(`/v1/answer-jobs/${submission.request_id}`)) }
+    catch (e) {
+      if (e instanceof Error && e.message === 'answer job not found') await submitSaved(submission)
+      else setError(message(e))
+    }
+  }
   async function ask() {
-    if (askLock.current) return
+    if (askLock.current.has(chat.id) || asking) return
     setError('')
     try {
-      if (!readyToAsk)
-        throw new Error(
-          'Select available documents and wait for the answer models to be ready.',
-        )
-      if (!question.trim() || bytes(question) > 4096)
-        throw new Error(
-          'Enter a question up to 4 KiB. Oversized turns are not shortened.',
-        )
+      if (!readyToAsk) throw new Error('Select available documents and wait for the answer queue to be ready.')
+      if (!question.trim() || bytes(question) > 4096) throw new Error('Enter a question up to 4 KiB. Oversized turns are not shortened.')
       const turns = context(chat)
       const fields = fieldJson.trim() ? JSON.parse(fieldJson) : undefined
-      if (
-        strategy === 'facet_coverage_v1' &&
-        (primary > 5 ||
-          rerank > 20 ||
-          (fields && Object.keys(fields).length > 4))
-      )
-        throw new Error(
-          'Facet coverage supports up to 4 fields, 20 candidates to rerank and 5 passages. Reduce these controls or choose Ranked.',
-        )
-      const chatId = chat.id,
-        id = crypto.randomUUID(),
-        text = question
-      askLock.current = true
-      setAsking(true)
+      if (strategy === 'facet_coverage_v1' && (primary > 5 || rerank > 20 || (fields && Object.keys(fields).length > 4)))
+        throw new Error('Facet coverage supports up to 4 fields, 20 candidates to rerank and 5 passages.')
+      const id = crypto.randomUUID(), text = question, chatId = chat.id
+      const submission: AnswerSubmission = { request_id: id, mode: workspace.answer_mode ?? 'hybrid', kind: 'ui',
+        payload: { question: text, document_ids: chat.scope, history: turns, fields, template: template || undefined, prose,
+          options: { candidates, rerank_limit: rerank, primary_limit: primary, evidence_strategy: strategy } } }
+      askLock.current.add(chatId)
+      await saveChain.current
+      const next: Workspace = { ...current.current, conversations: current.current.conversations.map((c) => c.id === chatId ? {
+        ...c, exchanges: [...c.exchanges, { id, question: text, pending: true, job_id: id,
+          mode: submission.mode, job_request: submission, started_ms: Date.now(), job_state: 'submitting' }],
+      } : c) }
+      // Persist identity and original payload before sending; storage failure cannot create an orphan request.
+      await reserveTurn(next, chatId)
+      current.current = next
+      setWorkspace(next)
       setQuestion('')
-      setWorkspace((w) => ({
-        ...w,
-        conversations: w.conversations.map((c) =>
-          c.id === chatId
-            ? {
-                ...c,
-                exchanges: [
-                  ...c.exchanges,
-                  { id, question: text, pending: true },
-                ],
-              }
-            : c,
-        ),
-      }))
-      try {
-        const answer = await api<Answer>('/v1/ui/ask', {
-          question: text,
-          document_ids: chat.scope,
-          history: turns,
-          fields,
-          template: template || undefined,
-          prose,
-          options: {
-            candidates,
-            rerank_limit: rerank,
-            primary_limit: primary,
-            evidence_strategy: strategy,
-          },
-        })
-        answer.evidence = answer.evidence.map((e) => ({
-          ...e,
-          filename: library.documents.find(
-            (d) =>
-              d.document_id === e.key.document_id &&
-              d.revision === e.key.revision,
-          )?.filename,
-        }))
-        setWorkspace((w) => ({
-          ...w,
-          conversations: w.conversations.map((c) =>
-            c.id === chatId
-              ? {
-                  ...c,
-                  exchanges: c.exchanges.map((e) =>
-                    e.id === id ? { ...e, pending: false, answer } : e,
-                  ),
-                }
-              : c,
-          ),
-        }))
-        if (answer.evidence[0]) setSelected(answer.evidence[0])
-      } catch (e) {
-        setWorkspace((w) => ({
-          ...w,
-          conversations: w.conversations.map((c) =>
-            c.id === chatId
-              ? {
-                  ...c,
-                  exchanges: c.exchanges.map((t) =>
-                    t.id === id
-                      ? { ...t, pending: false, error: message(e) }
-                      : t,
-                  ),
-                }
-              : c,
-          ),
-        }))
-      } finally {
-        askLock.current = false
-        setAsking(false)
-      }
-    } catch (e) {
-      setError(message(e))
-    }
+      try { await submitSaved(submission) } finally { askLock.current.delete(chatId) }
+    } catch (e) { askLock.current.delete(chat.id); setError(message(e)) }
+  }
+  async function manageAnswer(id: string, action: 'cancel' | 'clear') {
+    try {
+      const result = await api<AnswerJob>(`/v1/answer-jobs/${id}/${action}`, {})
+      if (action === 'cancel') applyAnswerJob(result)
+      else setInspectedJob(undefined)
+      setAnswerJobs((await api<{ jobs: AnswerJob[] }>('/v1/answer-jobs')).jobs)
+    } catch (e) { setError(message(e)) }
   }
   async function confirmRemove() {
     if (!remove) return
@@ -481,6 +494,26 @@ export default function App() {
     )
   return (
     <div className="shell">
+      <Dialog open={jobHistory} onOpenChange={setJobHistory}>
+        <DialogContent className="answer-job-history">
+          <DialogHeader><DialogTitle>Answer jobs</DialogTitle><DialogDescription>Saved on this device's API volume until explicitly cleared. Database exports exclude this history.</DialogDescription></DialogHeader>
+          <div style={{ maxHeight: '65vh', overflow: 'auto' }}>
+            {answerJobs.map((j) => <article className="job" key={j.request_id}>
+              <strong>{j.mode} · {j.state.replaceAll('_', ' ')}</strong><small>{j.request_id}</small>
+              <button onClick={() => void api<AnswerJob>(`/v1/answer-jobs/${j.request_id}`).then(setInspectedJob).catch((e) => setError(message(e)))}>Inspect attempts</button>
+              {!j.terminal ? <button onClick={() => void manageAnswer(j.request_id, 'cancel')}>Cancel</button> :
+                <button onClick={() => void manageAnswer(j.request_id, 'clear')}>Clear record</button>}
+            </article>)}
+            {inspectedJob && <section><h3>{inspectedJob.state.replaceAll('_', ' ')}</h3>
+              {inspectedJob.fallback_reason && <p>Fallback: {inspectedJob.fallback_reason}</p>}
+              {inspectedJob.attempts?.map((a, i) => <details key={i}><summary>{a.model} · {a.state}</summary>
+                <p>Queue: {(a.queue_ms / 1000).toFixed(1)}s · Loading: {(a.activation_ms / 1000).toFixed(1)}s · Attempt work: {(a.work_ms / 1000).toFixed(1)}s</p>
+                <pre>{a.response_text}</pre></details>)}
+              <button onClick={() => download(`answer-${inspectedJob.request_id}.json`, inspectedJob.diagnostics_text ?? '{}')}>Export exact diagnostics</button>
+            </section>}
+          </div>
+        </DialogContent>
+      </Dialog>
       <header className="topbar">
         <a className="brand" href="/" aria-label="VectorNext home">
           <span className="brand-mark">
@@ -494,6 +527,7 @@ export default function App() {
           <a href="/docs" target="_blank" rel="noreferrer">
             API docs
           </a>
+          <Button variant="ghost" onClick={() => setJobHistory(true)}>Answer jobs</Button>
           <span className={`connection ${online ? 'connected' : ''}`}>
             <i />
             {online ? 'Local connection' : 'API offline'}
@@ -520,15 +554,23 @@ export default function App() {
             {key === 'pdf'
               ? 'PDF preparation'
               : key === 'generation'
-                ? 'Local Gemma'
+                ? 'Local models'
                 : key[0].toUpperCase() + key.slice(1)}{' '}
             <b>{capabilities[key] ? 'ready' : 'unavailable / loading'}</b>
           </span>
         ))}
+        <span>
+          <i className={readiness?.answer_queue?.ready ? 'ok' : ''} />
+          Answer queue <b>{readiness?.answer_queue?.ready ? 'ready' : 'unavailable'}</b>
+          {readiness?.answer_queue && ` · ${readiness.answer_queue.unfinished}/${readiness.answer_queue.capacity} unfinished`}
+        </span>
         <span className="readiness-note">
           Your files stay on this computer.
         </span>
       </div>
+      {readiness?.answer_queue?.error && (
+        <div role="alert" className="notice error">Answer processing stopped. Restart VectorNext. {readiness.answer_queue.error}</div>
+      )}
       {readiness?.storage?.coordinator?.state === 'failed' && (
         <div role="alert" className="notice error">
           Document processing stopped. Restart VectorNext.{' '}
@@ -793,7 +835,6 @@ export default function App() {
             <Button
               variant="outline"
               size="sm"
-              disabled={asking}
               onClick={() => startChat()}
             >
               <Plus /> New
@@ -806,7 +847,6 @@ export default function App() {
             <select
               id="conversation-select"
               value={chat.id}
-              disabled={asking}
               onChange={(e) => {
                 setWorkspace((w) => ({ ...w, current: e.target.value }))
                 setSelected(undefined)
@@ -833,7 +873,7 @@ export default function App() {
             >
               Export
             </button>
-            <button disabled={asking} onClick={() => setClearing(true)}>
+            <button disabled={workspace.conversations.some((c) => c.exchanges.some((e) => e.pending))} onClick={() => setClearing(true)}>
               Clear history
             </button>
           </div>
@@ -881,13 +921,16 @@ export default function App() {
                 </div>
                 {exchange.pending ? (
                   <div className="working" role="status">
-                    <LoaderCircle className="animate-spin" size={16} /> Awaiting
-                    local answer · {elapsed}s<br />
-                    The request is running; stage progress is not streamed.
+                    <LoaderCircle className="animate-spin" size={16} /> {exchange.job_state?.replaceAll('_', ' ') ?? 'Awaiting local answer'} · {elapsed}s<br />
+                    Mode: {exchange.mode ?? 'hybrid'}
+                    {exchange.fallback_reason && <p>Fallback: {exchange.fallback_reason}</p>}
+                    {exchange.job_state === 'unacknowledged' && exchange.job_request && <button onClick={() => void retrySubmission(exchange.job_request!)}>Reconcile / retry submission</button>}
+                    {exchange.job_id && <button onClick={() => void manageAnswer(exchange.job_id!, 'cancel')}>Cancel answer</button>}
                   </div>
                 ) : exchange.error ? (
                   <div className="answer-error" role="alert">
                     {exchange.error}
+                    {exchange.job_state === 'unacknowledged' && exchange.job_request && <button onClick={() => void retrySubmission(exchange.job_request!)}>Reconcile / retry submission</button>}
                     <button onClick={() => setQuestion(exchange.question)}>
                       Use question again
                     </button>
@@ -904,6 +947,20 @@ export default function App() {
             ))}
           </div>
           <div className="composer">
+            <div className="model-status" aria-label="Model availability">
+              {(['nuextract', 'gemma'] as const).map((model) => <small key={model}>
+                {model === 'gemma' ? 'Gemma' : 'NuExtract'}: {readiness?.processor?.generation?.scheduler?.models?.[model] ? 'available' : 'unavailable / checking'}
+              </small>)}
+              <small>Loaded model: {readiness?.processor?.generation?.scheduler?.loaded_model ?? 'none'}
+              {readiness?.processor?.generation?.scheduler?.loading_model && ` · Loading ${readiness.processor.generation.scheduler.loading_model}`}
+              </small>
+            </div>
+            <label>Answer mode <select aria-label="Answer mode" value={workspace.answer_mode ?? 'hybrid'}
+              onChange={(e) => setWorkspace((w) => ({ ...w, answer_mode: e.target.value as AnswerMode }))}>
+              <option value="hybrid">Hybrid — NuExtract, then Gemma if needed</option>
+              <option value="gemma">Gemma only</option><option value="nuextract">NuExtract only</option>
+            </select></label>
+
             <details className="context">
               <summary>
                 Context window: {history.length / 2} of 4 completed exchanges

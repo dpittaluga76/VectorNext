@@ -15,7 +15,7 @@ pub struct UploadMetadata {
     #[serde(default)]
     pub allow_partial: bool,
 }
-#[derive(Deserialize)]
+#[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct UiQuestion {
     pub question: String,
@@ -202,6 +202,13 @@ impl Application {
         db.originals().get(&doc.original)
     }
     pub fn ui_ask(&self, input: UiQuestion) -> Result<Value> {
+        self.answer_sync(
+            answer_jobs::Kind::Ui,
+            serde_json::to_value(input)?,
+            answer_jobs::Mode::Hybrid,
+        )
+    }
+    pub(super) fn prepare_ui(input: &UiQuestion) -> Result<(AskRequest, bool)> {
         require(
             !input.document_ids.is_empty() && input.document_ids.len() <= 400,
             "select 1..400 documents",
@@ -215,10 +222,10 @@ impl Application {
         )?;
         // Validate all non-planning bounds before consuming inference capacity.
         let automatic = input.fields.is_none();
-        let mut request = AskRequest {
-            question: input.question,
-            history: input.history,
-            fields: input.fields.unwrap_or_else(|| {
+        let request = AskRequest {
+            question: input.question.clone(),
+            history: input.history.clone(),
+            fields: input.fields.clone().unwrap_or_else(|| {
                 BTreeMap::from([(
                     "answer".into(),
                     FieldSpec {
@@ -231,23 +238,21 @@ impl Application {
             }),
             filter: Filter::DocumentIds(input.document_ids.clone()),
             scope: Scope::Passage,
-            template: input.template,
+            template: input.template.clone(),
             prose: input.prose,
         };
-        answers::validate_request(&request)?;
-        input.options.validate()?;
+        answers::validate_request_options(&request, &input.options)?;
+        Ok((request, automatic))
+    }
+    pub(super) fn ui_ask_attempt(
+        &self,
+        input: UiQuestion,
+        index: Arc<SearchIndex>,
+        space: EmbeddingSpace,
+        models: &RemoteModels,
+    ) -> Result<Value> {
+        let (mut request, automatic) = Self::prepare_ui(&input)?;
         let started = Instant::now();
-        let (index, space) = self.index(None)?;
-        let snapshot = self.snapshot()?;
-        require(
-            input
-                .document_ids
-                .iter()
-                .all(|id| snapshot.document(id).is_some()),
-            "selected document is no longer available; refresh scope",
-        )?;
-        let _interactive = busy(&self.interactive)?;
-        let models = RemoteModels::connect(self.processor.clone(), "interactive")?;
         require(
             models.space() == space,
             "processor/index embedding spaces differ",
@@ -258,10 +263,15 @@ impl Application {
                 "plan_fields",
                 json!({"question":request.question,"history":request.history}),
             )?;
-            request.fields = parse_plan(&planning)?;
+            request.fields = parse_plan(&planning).map_err(|error| Error::PlanningRejected {
+                message: match error {
+                    Error::Invalid(message) => message,
+                    other => other.to_string(),
+                },
+            })?;
             answers::validate_request(&request)?;
         }
-        let report = answers::ask_with_options(&index, &models, request, input.options);
+        let report = answers::ask_with_options(&index, models, request, input.options);
         let mut raw = match report {
             Ok(report) => serde_json::to_value(report)?,
             Err(Error::AnswerRejected {

@@ -1,0 +1,11 @@
+{
+  "experiments/t36/development-requests.json": "0ec6f8fa4ff16595ffde9a2785cbe35921ad3f1d0cd41a1a24cbacd58071b545",
+  "experiments/t36/fixtures/archive.json": "2b95cc0152430ead2ccd1b92568b3c314455871e7b8d592009fa34be2d1b11c9",
+  "experiments/t36/fixtures/bayport.txt": "7ece83bb495225b97d4f906e582ea2c3d9e3f21b1b234f8c534e20d93a9c7c5c",
+  "experiments/t36/fixtures/depot.txt": "29f7e5c3ff4e1d28a91a1b65fd8c93ab4fb93ddcbc4a6093a413244c3e1f75bc",
+  "experiments/t36/fixtures/missing.json": "c96c8bf3abc211fe240fb16046e98bbaa29f1e7dd9a8fb5d7690216f402985af",
+  "experiments/t36/fixtures/vela-certificate.pdf": "4679ddc960917334baedb22a37d3ac6da5ca491a89f18d051605b1de7a4fc5f0",
+  "experiments/t36/gold.json": "6332fa5774772346a2af2868e1ae6b58828e2b1417764e9376e10a1a38572baa",
+  "experiments/t36/requests.json": "387fb9618f8ed61b38b06bc5f02516f0dc9b84717cc9aa3c1e4c56b904580a0c",
+  "experiments/t36/sources.json": "443847533e48423e0206f6b02e7112c2357d15426e92f3fd43b547d2dc5095bb"
+}

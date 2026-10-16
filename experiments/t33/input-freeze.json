@@ -1,0 +1,19 @@
+{
+  "experiments/t32/fixtures/aster-long.json": "57f78214b46c0e8fab9b6bc932d0ab39224c0549c65a1b82b84b639d726caf9e",
+  "experiments/t32/fixtures/cedar-audit.pdf": "d718f78196f0b4372e6b0e584f630e960194357c74af2f4d28bc00519d3427cd",
+  "experiments/t32/fixtures/distractor-audits.txt": "3ba42d30c5632dff86d4b78935bbcaa31714d4d057ce1ebb6526d5cf29b0edbf",
+  "experiments/t32/fixtures/distractor-lumen.txt": "1f4770379def854c25326164285e746dbcc69cf789bc332c77c344473c644613",
+  "experiments/t32/fixtures/distractor-routes.txt": "557f2b42a44104eceed7f88afcea6b4f91a01184d19689b1a8a4c54aec589217",
+  "experiments/t32/fixtures/helio-certificate.pdf": "7b50e5f44c2cf863369ee08e10188ee105e801efcf0aba3058838fddaa877fdc",
+  "experiments/t32/fixtures/lumen-approved.txt": "3fe0f57e05e40457c8df31380ba9048f5e3ff99d08d61a4225a53ca84a930ee0",
+  "experiments/t32/fixtures/norhaven-operations.txt": "ae8f97a8e4d7c80ddf5d69b06989786f4a32a507df0e67f8ed2eefbf3c8f9365",
+  "experiments/t32/fixtures/norhaven-structure.txt": "67078bd9d33cd21a79e8477db3398182df9d0898cac7cb586948c72413a34043",
+  "experiments/t32/fixtures/solace-unknown.json": "6cfca046e04af1427bcec34146d4a2ac02aa75068455e3094f662e325b7e94d8",
+  "experiments/t32/gold.json": "b3a754c4e51c7d8d09468ec838b7c2866095be635386bcb6bb2db7d921ea11e4",
+  "experiments/t32/requests.json": "57b795e8455f9539bd58966a63aefbabe5e03f0cd4624ed0275f6a2bcdefd1b4",
+  "experiments/t32/score.py": "5103abc6dcf9c885cd92e4c6f7b3610f036a76afa7d6f97013a5a72ab232b245",
+  "experiments/t32/sources.json": "848ab5bacf48c8dcac406115417dc466485729ba6da7716f0b22b0e65cd0a8a6",
+  "experiments/t33/browser-gold.json": "42bc6793708a31ef87f4f4ccd9b5cc1077dbbb4fc53490da4238a996c3e478fb",
+  "experiments/t33/browser-requests.json": "5812ea861a352e3d25eb608e93673de4400dd3c6e7f3070f3d8fe441fba6ce56",
+  "experiments/t33/score.py": "d6e2b048cc1fca49f68bc483d0d3e39d3e5971317c4a5ec02066f5af6476f62b"
+}

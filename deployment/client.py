@@ -8,6 +8,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+import uuid
 
 
 class Client:
@@ -50,11 +51,43 @@ class Client:
             time.sleep(.5)
         raise TimeoutError('job wait expired; the durable job remains available')
 
+    def answer(self, payload_text, mode='hybrid', request_id=None):
+        request_id = request_id or str(uuid.uuid4())
+        if not 16 <= len(request_id) <= 128 or not all(c.isascii() and (c.isalnum() or c == '-') for c in request_id):
+            raise ValueError('invalid answer request ID')
+        print(f'Answer job: {request_id}. Resume with answer-job {request_id}.', file=sys.stderr, flush=True)
+        path = '/v1/answer-jobs/' + request_id
+        # Submitting the same identity is safe only with identical exact payload bytes.
+        envelope = ('{"request_id":'+json.dumps(request_id)+',"mode":'+json.dumps(mode)+
+                    ',"kind":"structured","payload":'+payload_text+'}').encode()
+        req = urllib.request.Request(self.url+'/v1/answer-jobs', data=envelope,
+                                     headers={'Content-Type':'application/json','X-VectorNext-Client':'1'})
+        try:
+            try: response = self.opener.open(req, timeout=30)
+            except urllib.error.HTTPError as error: response = error
+            with response:
+                self.raw = response.read(); status, job = response.status, json.loads(self.raw)
+            if status != 202: return status, job
+        except (OSError, TimeoutError):
+            status, job = self.request_once(path, timeout=30)
+            if status != 200:
+                raise OSError(f'Submission outcome uncertain. No question was resent. Reconcile answer-job {request_id}; reuse --request-id only with the same request.')
+        while not job.get('terminal'):
+            time.sleep(.5)
+            status, job = self.request_once(path, timeout=30)
+            if status != 200: return status, job
+        if 'response_text' in job:
+            self.raw = job['response_text'].encode('utf-8')
+            return job['status_code'], json.loads(self.raw)
+        return 503, job
+
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument('--url')
     sub=p.add_subparsers(dest='command',required=True)
-    for name in ('health','ready','documents','jobs'): sub.add_parser(name)
+    for name in ('health','ready','documents','jobs','answer-jobs'): sub.add_parser(name)
+    for name in ('answer-job','cancel-answer','clear-answer'):
+        sub.add_parser(name).add_argument('id')
     for name in ('job','retry','wait','document'):
         s=sub.add_parser(name); s.add_argument('id')
         if name!='document': workflow_options(s)
@@ -67,6 +100,8 @@ def main():
     s=sub.add_parser('search'); s.add_argument('text'); s.add_argument('--mode',choices=['keyword','hybrid'],default='hybrid'); s.add_argument('--space-id'); s.add_argument('--limit',type=int,default=10)
     workflow_options(s)
     s=sub.add_parser('ask'); s.add_argument('request',type=Path); s.add_argument('--space-id')
+    s.add_argument('--answer-mode', choices=['hybrid','gemma','nuextract'], default='hybrid')
+    s.add_argument('--request-id', help='retain/reuse this identity to reconcile an interrupted submission')
     s.add_argument('--evidence-strategy', choices=['ranked', 'coverage_v1', 'facet_coverage_v1'], help='opt-in field/facet coverage; ranked is the default')
     workflow_options(s)
     s=sub.add_parser('explain',help='render saved workflow captures without calling the API or a model')
@@ -145,6 +180,11 @@ def save_text(path,content):
 
 
 def execute(a,client):
+    if a.command == 'answer-jobs': return client.request('/v1/answer-jobs')
+    if a.command in ('answer-job','cancel-answer','clear-answer'):
+        if not 16 <= len(a.id) <= 128 or not all(c.isascii() and (c.isalnum() or c=='-') for c in a.id): raise ValueError('invalid answer job ID')
+        suffix = {'answer-job':'','cancel-answer':'/cancel','clear-answer':'/clear'}[a.command]
+        return client.request('/v1/answer-jobs/'+a.id+suffix, None if not suffix else {})
     if a.command in ('health','ready','documents','jobs'):
         status,result=client.request({'health':'/healthz','ready':'/readyz','documents':'/v1/documents','jobs':'/v1/jobs'}[a.command])
     elif a.command == 'wait': status,result=client.wait(a.id)
@@ -164,14 +204,8 @@ def execute(a,client):
         # Preserve exact JSON numeric literals in caller filters rather than re-encoding through floats.
         raw=a.request.read_text(encoding='utf-8-sig'); json.loads(raw)
         options = ',"options":'+json.dumps({'evidence_strategy':a.evidence_strategy}) if getattr(a,'evidence_strategy',None) else ''
-        payload=('{"request":'+raw+',"space_id":'+json.dumps(a.space_id)+options+'}').encode()
-        request=urllib.request.Request(client.url+'/v1/ask',data=payload,headers={'Content-Type':'application/json','X-VectorNext-Client':'1'})
-        try:
-            with client.opener.open(request,timeout=900) as response:
-                client.raw=response.read(); status,result=response.status,json.loads(client.raw)
-        except urllib.error.HTTPError as error:
-            with error:
-                client.raw=error.read(); status,result=error.code,json.loads(client.raw)
+        payload='{"request":'+raw+',"space_id":'+json.dumps(a.space_id)+options+'}'
+        status,result=client.answer(payload,getattr(a,'answer_mode','hybrid'),getattr(a,'request_id',None))
     return status,result
 
 if __name__ == '__main__': main()

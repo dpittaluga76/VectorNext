@@ -68,6 +68,14 @@ impl Client {
             &self.request("/health", None, 3, 65536)?,
         )?)
     }
+    pub fn generation(&self, operation: &str, value: Value) -> Result<Value> {
+        Ok(serde_json::from_slice(&self.request(
+            &format!("/generation/{operation}"),
+            Some(&serde_json::to_vec(&value)?),
+            300,
+            65536,
+        )?)?)
+    }
     pub fn rpc(&self, lane: &str, value: Value) -> Result<Value> {
         let body = serde_json::to_vec(&value)?;
         require(body.len() <= 4 * 1024 * 1024, "model request exceeds 4 MiB")?;
@@ -99,6 +107,9 @@ pub struct RemoteModels {
     pub client: Client,
     pub lane: &'static str,
     pub profile: ModelProfile,
+    pub lease: Option<Value>,
+    pub check: Option<std::sync::Arc<dyn Fn() -> Result<()> + Send + Sync>>,
+    pub operations: std::sync::Mutex<Vec<Value>>,
 }
 impl RemoteModels {
     pub fn connect(client: Client, lane: &'static str) -> Result<Self> {
@@ -111,10 +122,33 @@ impl RemoteModels {
             client,
             lane,
             profile,
+            lease: None,
+            check: None,
+            operations: std::sync::Mutex::new(vec![]),
         })
     }
     pub(crate) fn call(&self, op: &str, input: Value) -> Result<Value> {
-        self.client.rpc(self.lane, json!({"op":op,"input":input}))
+        if let Some(check) = &self.check {
+            check()?;
+        }
+        let start = std::time::Instant::now();
+        let result = self
+            .client
+            .rpc(self.lane, json!({"op":op,"input":input,"lease":self.lease}));
+        if let Ok(mut operations) = self.operations.lock() {
+            let mut record =
+                json!({"operation":op,"milliseconds":start.elapsed().as_secs_f64()*1000.0});
+            if op == "plan_fields" {
+                if let Ok(value) = &result {
+                    record["response_text"] = json!(value.to_string());
+                }
+            }
+            if let Err(error) = &result {
+                record["error"] = json!(error.to_string());
+            }
+            operations.push(record);
+        }
+        result
     }
 }
 impl Encoder for RemoteModels {

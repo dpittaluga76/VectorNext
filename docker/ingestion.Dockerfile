@@ -9,15 +9,14 @@ RUN cargo build --release --locked --offline --example model_ingest --example as
 FROM python:3.12-slim@sha256:57cd7c3a7a273101a6485ba99423ee568157882804b1124b4dd04266317710de
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1 TOKENIZERS_PARALLELISM=false
 WORKDIR /workspace
-COPY experiments/t02/requirements.txt /tmp/requirements.txt
+COPY model_assets/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 COPY --from=core /app/target/release/examples/model_ingest /usr/local/bin/model_ingest
 COPY --from=core /app/target/release/examples/ask /usr/local/bin/ask
-COPY experiments/t02/encoders.py experiments/t02/fetch_models.py experiments/t02/models.lock.json experiments/t02/models.26b.lock.json experiments/t02/
-COPY experiments/t27/models.12b.lock.json experiments/t27/
 COPY experiments/t31/models.bge.lock.json experiments/t31/
 COPY experiments/t32/models.lock.json experiments/t32/
 COPY model_worker/ model_worker/
+COPY model_assets/ model_assets/
 COPY evals/fixtures/ evals/fixtures/
 COPY tests/fixtures/pdf/ tests/fixtures/pdf/
 COPY tests/fixtures/answers/ tests/fixtures/answers/

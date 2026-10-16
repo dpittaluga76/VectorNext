@@ -1,0 +1,2672 @@
+{
+  "run": "data/t34/pilot-v1",
+  "scheduled": 24,
+  "arms": {
+    "12b": {
+      "correct": 5,
+      "reviewed_correct": 6,
+      "total": 6,
+      "http_errors": 0,
+      "preflight_blocked": 0,
+      "latency_seconds": {
+        "n": 6,
+        "median": 10.437000000001717,
+        "p95": 12.031999999999243
+      },
+      "peak_device_memory_mib": 7838.0,
+      "resources": {
+        "api": {
+          "peak_ram_mib": 5.18,
+          "samples": 48
+        },
+        "processor": {
+          "peak_ram_mib": 544.8,
+          "samples": 48
+        },
+        "llm": {
+          "peak_ram_mib": 14305.28,
+          "samples": 48
+        }
+      },
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 200,
+          "seconds": 8.827999999994063,
+          "error": null,
+          "response_sha256": "aae5abe5365f6a5707eaf94ec620bd7bb744cc78e37c4f4df053fac48e64ee1b",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "pressure_bar": "17.5"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 8083.994315,
+              "answer_total": 8779.800464999998,
+              "application_total": 8782.471620999999,
+              "assembly_and_model_tokenization": 472.82991499999997,
+              "query_embedding_and_tokens": 21.205583999999998,
+              "reranking_with_preparation": 201.377076,
+              "resolution_validation": 0.0052580000000000005,
+              "search_dense": 0.086329,
+              "search_filter_tokenize": 0.022064,
+              "search_fusion_dedup": 0.078046,
+              "search_keyword": 0.11057600000000001,
+              "search_total": 0.29768900000000004,
+              "snapshot_index": 0.546172,
+              "validation_and_presentation": 0.01252
+            },
+            "prompt_tokens": 901,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 77,
+              "prompt_tokens": 901,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 978
+            },
+            "input_tokens": 901,
+            "elapsed_seconds": "4.728822276003484",
+            "assessment": {
+              "reason": "Document E1 explicitly states that the approved continuous operating pressure of the Lumen K7 pump for September 2031 service is 17.5 bar.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 56,
+                "prompt_tokens": 766,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 822
+              },
+              "input_tokens": 766,
+              "elapsed_seconds": "3.3532544619956752"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 200,
+          "seconds": 11.031000000002678,
+          "error": null,
+          "response_sha256": "38460ee7880befb52d3f4077d9403a33be8a1dcd4fff713f0e7e8fcded363792",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "checksum_count": "9007199254740993"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 10238.906456,
+              "answer_total": 11020.800608,
+              "application_total": 11022.633768,
+              "assembly_and_model_tokenization": 475.999368,
+              "query_embedding_and_tokens": 12.145520999999999,
+              "reranking_with_preparation": 293.543116,
+              "resolution_validation": 0.003954,
+              "search_dense": 0.09045199999999999,
+              "search_filter_tokenize": 0.019326,
+              "search_fusion_dedup": 0.034415,
+              "search_keyword": 0.01791,
+              "search_total": 0.16271999999999998,
+              "snapshot_index": 0.020419,
+              "validation_and_presentation": 0.009611
+            },
+            "prompt_tokens": 1673,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 72,
+              "prompt_tokens": 1673,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1745
+            },
+            "input_tokens": 1673,
+            "elapsed_seconds": "5.331108560996654",
+            "assessment": {
+              "reason": "Evidence E1 identifies the 'Aster vault' project with run 'R-2031-06' and provides a 'recorded_checksum_count' of 9007199254740993.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 69,
+                "prompt_tokens": 1538,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1607
+              },
+              "input_tokens": 1538,
+              "elapsed_seconds": "4.905834197998047"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 200,
+          "seconds": 6.030999999995402,
+          "error": null,
+          "response_sha256": "b5c1c88b43b7abb0b3c59a6877c0c0799cd7debc17db01308747bc10eecfec0b",
+          "score": {
+            "correct": true,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null
+              },
+              "selected": {
+                "found": [],
+                "complete": null
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null
+              },
+              "assembled": {
+                "found": [],
+                "complete": null
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null
+            },
+            "timings_ms": {
+              "answer_model_calls": 5212.6812549999995,
+              "answer_total": 5979.903638,
+              "application_total": 5981.496942,
+              "assembly_and_model_tokenization": 465.73726500000004,
+              "query_embedding_and_tokens": 11.152174,
+              "reranking_with_preparation": 290.16280700000004,
+              "resolution_validation": 0.004064000000000001,
+              "search_dense": 0.054527,
+              "search_filter_tokenize": 0.019202,
+              "search_fusion_dedup": 0.043283,
+              "search_keyword": 0.018843,
+              "search_total": 0.136295,
+              "snapshot_index": 0.007998,
+              "validation_and_presentation": 0.002086
+            },
+            "prompt_tokens": 1745,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "reason": "The evidence for Solace bank 3 in June 2031 (E1) explicitly states that the bypass alarm totals were 'not recorded' and that a zero value only applies to routine alarms, making the count unknown.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 73,
+                "prompt_tokens": 1610,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1683
+              },
+              "input_tokens": 1610,
+              "elapsed_seconds": "5.210781975998543"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 200,
+          "seconds": 9.843000000000757,
+          "error": null,
+          "response_sha256": "d46aab2387a180e372b8e84ade4e398a6651d3c4aa8d3f564304274547dfd2fb",
+          "score": {
+            "correct": false,
+            "status": "supported",
+            "values_text": {
+              "interval_days": "45"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 8980.435943,
+              "answer_total": 9739.486033000001,
+              "application_total": 9740.955264,
+              "assembly_and_model_tokenization": 505.078417,
+              "query_embedding_and_tokens": 10.925519999999999,
+              "reranking_with_preparation": 242.878376,
+              "resolution_validation": 0.0028799999999999997,
+              "search_dense": 0.042147000000000004,
+              "search_filter_tokenize": 0.018138,
+              "search_fusion_dedup": 0.040518,
+              "search_keyword": 0.02831,
+              "search_total": 0.129531,
+              "snapshot_index": 0.008274,
+              "validation_and_presentation": 0.012667
+            },
+            "prompt_tokens": 1250,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 1250,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1340
+            },
+            "input_tokens": 1250,
+            "elapsed_seconds": "5.359869363004691",
+            "assessment": {
+              "reason": "Document E1 explicitly states that the final July 2031 interval for the Cedar type B manifold is 45 days.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 44,
+                "prompt_tokens": 1115,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1159
+              },
+              "input_tokens": 1115,
+              "elapsed_seconds": "3.6188363779947395"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "planned_piers",
+          "http_status": 200,
+          "seconds": 12.031999999999243,
+          "error": null,
+          "response_sha256": "5e12414cc17c2d1b215d1ff12ce5a46c83e0a358a62cd47736e4d974245223e5",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "norhaven_link_route_pier_count": "12"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 6953.895398000001,
+              "answer_total": 7311.434743999999,
+              "application_total": 12051.807001000001,
+              "assembly_and_model_tokenization": 296.621166,
+              "query_embedding_and_tokens": 14.780948,
+              "reranking_with_preparation": 46.010000000000005,
+              "resolution_validation": 0.0025629999999999997,
+              "search_dense": 0.008525000000000001,
+              "search_filter_tokenize": 0.017252,
+              "search_fusion_dedup": 0.012086999999999999,
+              "search_keyword": 0.018644,
+              "search_total": 0.056902,
+              "validation_and_presentation": 0.025911999999999998
+            },
+            "prompt_tokens": 737,
+            "error": null,
+            "planning_status": "ready",
+            "projection_exact": true
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 90,
+              "prompt_tokens": 737,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 827
+            },
+            "input_tokens": 737,
+            "elapsed_seconds": "4.3810755489976145",
+            "assessment": {
+              "reason": "Document E1 explicitly states that the accepted Norhaven Link route has 12 piers as of August 2031.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 43,
+                "prompt_tokens": 602,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 645
+              },
+              "input_tokens": 602,
+              "elapsed_seconds": "2.570922471000813"
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The number of piers on the accepted Norhaven Link route as of August 2031.",
+                  "kind": "integer",
+                  "name": "norhaven_link_route_pier_count",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 90,
+                "prompt_tokens": 538,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 628
+              },
+              "input_tokens": 538,
+              "elapsed_seconds": "4.735098065000784"
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "planned_followup",
+          "http_status": 200,
+          "seconds": 11.265999999995984,
+          "error": null,
+          "response_sha256": "5ed5d722d45254efacd08c2a6770d064e3cb1951c12e3b5b567cd62ecde80f4f",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "maximum_authorized_service_load": "48"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 6469.610248999999,
+              "answer_total": 6980.6483769999995,
+              "application_total": 11173.694355,
+              "assembly_and_model_tokenization": 404.769434,
+              "query_embedding_and_tokens": 19.259384,
+              "reranking_with_preparation": 86.90907200000001,
+              "resolution_validation": 0.004686,
+              "search_dense": 0.008117999999999998,
+              "search_filter_tokenize": 0.025049000000000002,
+              "search_fusion_dedup": 0.010376,
+              "search_keyword": 0.022503000000000002,
+              "search_total": 0.066364,
+              "validation_and_presentation": 0.011803000000000001
+            },
+            "prompt_tokens": 763,
+            "error": null,
+            "planning_status": "ready",
+            "projection_exact": true
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+              "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+              "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 77,
+              "prompt_tokens": 763,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 840
+            },
+            "input_tokens": 763,
+            "elapsed_seconds": "3.7760307690041373",
+            "assessment": {
+              "reason": "Document E1 explicitly states that the maximum authorized load for the accepted Norhaven Link route is 48 tonnes.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 46,
+                "prompt_tokens": 628,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 674
+              },
+              "input_tokens": 628,
+              "elapsed_seconds": "2.6915978780016303"
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The maximum authorized service load of the accepted Norhaven Link route in tonnes.",
+                  "kind": "number",
+                  "name": "maximum_authorized_service_load",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "93567e57a8fe10b23569b9d9ec38cd005deedf71e29477c421a4b83f418a538b",
+                "model": "google/gemma-4-12B-it-qat-q4_0-gguf",
+                "revision": "29d097773436b69ff9feafd636ab4cf873786537",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 82,
+                "prompt_tokens": 572,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 654
+              },
+              "input_tokens": 572,
+              "elapsed_seconds": "4.189522469001531"
+            }
+          },
+          "reviewed_correct": true
+        }
+      ],
+      "startup_seconds": 63.31199999999808,
+      "restart_seconds": 64.51499999999942,
+      "gained": [],
+      "lost": [],
+      "common_success_seconds": {
+        "baseline": {
+          "n": 6,
+          "median": 10.437000000001717,
+          "p95": 12.031999999999243
+        },
+        "candidate": {
+          "n": 6,
+          "median": 10.437000000001717,
+          "p95": 12.031999999999243
+        }
+      }
+    },
+    "ministral3-8b-q4km": {
+      "correct": 2,
+      "reviewed_correct": 2,
+      "total": 6,
+      "http_errors": 3,
+      "preflight_blocked": 0,
+      "latency_seconds": {
+        "n": 6,
+        "median": 4.569999999999709,
+        "p95": 5.656999999999243
+      },
+      "peak_device_memory_mib": 5889.0,
+      "resources": {
+        "api": {
+          "peak_ram_mib": 5.059,
+          "samples": 32
+        },
+        "processor": {
+          "peak_ram_mib": 543.6,
+          "samples": 32
+        },
+        "llm": {
+          "peak_ram_mib": 6333.44,
+          "samples": 32
+        }
+      },
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 400,
+          "seconds": 4.734000000004016,
+          "error": null,
+          "response_sha256": "82627869704c1e2ab75cfab742b6beaae05956a9f1101755157113ebc77ab8ca",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "answer rejected: invalid record: prose proof must quote supplied source evidence exactly"
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 200,
+          "seconds": 5.656999999999243,
+          "error": null,
+          "response_sha256": "627e036ae86c8b24390102215994729a5c955ddf48718b317ddc851f46f9a32e",
+          "score": {
+            "correct": true,
+            "status": "supported",
+            "values_text": {
+              "checksum_count": "9007199254740993"
+            },
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": false
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [
+                0
+              ],
+              "complete": true
+            },
+            "timings_ms": {
+              "answer_model_calls": 4815.122606,
+              "answer_total": 5582.233074999999,
+              "application_total": 5583.856676,
+              "assembly_and_model_tokenization": 447.064242,
+              "query_embedding_and_tokens": 15.197795,
+              "reranking_with_preparation": 304.686122,
+              "resolution_validation": 0.00317,
+              "search_dense": 0.046106,
+              "search_filter_tokenize": 0.015521,
+              "search_fusion_dedup": 0.039687,
+              "search_keyword": 0.018959,
+              "search_total": 0.120651,
+              "snapshot_index": 0.012918,
+              "validation_and_presentation": 0.009598
+            },
+            "prompt_tokens": 1707,
+            "error": null
+          },
+          "generation": {
+            "model": {
+              "artifact_sha256": "33e7a72cf5e6e2cfc2f2847075acc013d68bba023e35310cef86b5cf8fdca761",
+              "model": "mistralai/Ministral-3-8B-Instruct-2512-GGUF",
+              "revision": "0102285ad796bd99af90f58de616092e5630e970",
+              "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+            },
+            "usage": {
+              "completion_tokens": 63,
+              "prompt_tokens": 1707,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 1770
+            },
+            "input_tokens": 1707,
+            "elapsed_seconds": "2.455295853993448",
+            "assessment": {
+              "reason": "E1 provides the exact recorded checksum count (9007199254740993) for Aster vault run R-2031-06.",
+              "status": "supported"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "33e7a72cf5e6e2cfc2f2847075acc013d68bba023e35310cef86b5cf8fdca761",
+                "model": "mistralai/Ministral-3-8B-Instruct-2512-GGUF",
+                "revision": "0102285ad796bd99af90f58de616092e5630e970",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 64,
+                "prompt_tokens": 1560,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1624
+              },
+              "input_tokens": 1560,
+              "elapsed_seconds": "2.3578615540027386"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 200,
+          "seconds": 3.1089999999967404,
+          "error": null,
+          "response_sha256": "d510e243115837aa17e97925c7f2d423fd17d77d04b0bb45aa4ad82f458fcb49",
+          "score": {
+            "correct": true,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null
+              },
+              "selected": {
+                "found": [],
+                "complete": null
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null
+              },
+              "assembled": {
+                "found": [],
+                "complete": null
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null
+            },
+            "timings_ms": {
+              "answer_model_calls": 2369.237819,
+              "answer_total": 3064.4956589999997,
+              "application_total": 3066.08088,
+              "assembly_and_model_tokenization": 407.113695,
+              "query_embedding_and_tokens": 14.672061,
+              "reranking_with_preparation": 273.32881799999996,
+              "resolution_validation": 0.00265,
+              "search_dense": 0.047085,
+              "search_filter_tokenize": 0.016515000000000002,
+              "search_fusion_dedup": 0.03855,
+              "search_keyword": 0.014759000000000001,
+              "search_total": 0.117286,
+              "snapshot_index": 0.0077020000000000005,
+              "validation_and_presentation": 0.0018160000000000001
+            },
+            "prompt_tokens": 1780,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "reason": "The requested bypass alarm count for Solace bank 3 in June 2031 is explicitly marked as 'not recorded' in E1, and no alternative evidence supports a numeric value.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "33e7a72cf5e6e2cfc2f2847075acc013d68bba023e35310cef86b5cf8fdca761",
+                "model": "mistralai/Ministral-3-8B-Instruct-2512-GGUF",
+                "revision": "0102285ad796bd99af90f58de616092e5630e970",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 62,
+                "prompt_tokens": 1633,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 1695
+              },
+              "input_tokens": 1633,
+              "elapsed_seconds": "2.3674249699979555"
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": true
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 400,
+          "seconds": 5.60899999999674,
+          "error": null,
+          "response_sha256": "0185452b3db022a544998c6ed0c4e74ff3c7bb61825cc4a12d4aea4a98af3108",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "answer rejected: invalid record: prose proof must quote supplied source evidence exactly"
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "planned_piers",
+          "http_status": 400,
+          "seconds": 0.9690000000045984,
+          "error": null,
+          "response_sha256": "7a3d47adc4521cd5bed91b610a1a272b1ba9e109172502ebff93fd35f3bbd8f6",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": "invalid record: question needs clarification: name the subject and requested fact, or specify fields in Advanced",
+            "planning_status": null,
+            "projection_exact": false
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "planned_followup",
+          "http_status": 200,
+          "seconds": 4.405999999995402,
+          "error": null,
+          "response_sha256": "c5ba2083f933cbdc15939e2f07c91347c006a886d3013615450c378f39696f8f",
+          "score": {
+            "correct": false,
+            "status": "insufficient_evidence",
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "selected": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "ranked_five": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              },
+              "assembled": {
+                "found": [
+                  0
+                ],
+                "complete": true
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": false
+            },
+            "timings_ms": {
+              "answer_model_calls": 1839.732693,
+              "answer_total": 2261.1499209999997,
+              "application_total": 4395.577983,
+              "assembly_and_model_tokenization": 336.3101,
+              "query_embedding_and_tokens": 17.047764,
+              "reranking_with_preparation": 67.961831,
+              "resolution_validation": 0.0053360000000000005,
+              "search_dense": 0.008732,
+              "search_filter_tokenize": 0.029865,
+              "search_fusion_dedup": 0.011586,
+              "search_keyword": 0.022518999999999997,
+              "search_total": 0.073084,
+              "validation_and_presentation": 0.0018729999999999999
+            },
+            "prompt_tokens": 793,
+            "error": null,
+            "planning_status": "ready",
+            "projection_exact": false
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": {
+              "reason": "The requested field is the maximum authorized service load in tonnes, but the evidence only provides the pier count (12) and does not include the maximum authorized service load for August 2031.",
+              "status": "insufficient_evidence"
+            },
+            "assessment_audit": {
+              "model": {
+                "artifact_sha256": "33e7a72cf5e6e2cfc2f2847075acc013d68bba023e35310cef86b5cf8fdca761",
+                "model": "mistralai/Ministral-3-8B-Instruct-2512-GGUF",
+                "revision": "0102285ad796bd99af90f58de616092e5630e970",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 64,
+                "prompt_tokens": 646,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 710
+              },
+              "input_tokens": 646,
+              "elapsed_seconds": "1.838133117002144"
+            }
+          },
+          "planning": {
+            "plan": {
+              "fields": [
+                {
+                  "description": "The maximum authorized service load of the accepted Norhaven Link route in tonnes, as reported for August 2031",
+                  "kind": "number",
+                  "name": "maximum_authorized_service_load_tonnes",
+                  "nullable": false
+                }
+              ],
+              "status": "ready"
+            },
+            "audit": {
+              "model": {
+                "artifact_sha256": "33e7a72cf5e6e2cfc2f2847075acc013d68bba023e35310cef86b5cf8fdca761",
+                "model": "mistralai/Ministral-3-8B-Instruct-2512-GGUF",
+                "revision": "0102285ad796bd99af90f58de616092e5630e970",
+                "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695;ctx4096;parallel1;reasoning-off;cpu-moe0;schema=35973718f9cd20bf65b50566aab73286a70df1573851b3c9fb69f8fd4b3d20c3"
+              },
+              "usage": {
+                "completion_tokens": 82,
+                "prompt_tokens": 572,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "total_tokens": 654
+              },
+              "input_tokens": 572,
+              "elapsed_seconds": "2.131106123000791"
+            }
+          },
+          "reviewed_correct": false
+        }
+      ],
+      "startup_seconds": 49.40600000000268,
+      "restart_seconds": 47.734000000004016,
+      "gained": [],
+      "lost": [
+        "pressure_revision",
+        "pdf_correction",
+        "planned_piers",
+        "planned_followup"
+      ],
+      "common_success_seconds": {
+        "baseline": {
+          "n": 2,
+          "median": 8.53099999999904,
+          "p95": 11.031000000002678
+        },
+        "candidate": {
+          "n": 2,
+          "median": 4.382999999997992,
+          "p95": 5.656999999999243
+        }
+      }
+    },
+    "phi4-mini-q4km": {
+      "correct": 0,
+      "reviewed_correct": 0,
+      "total": 6,
+      "http_errors": 0,
+      "preflight_blocked": 6,
+      "latency_seconds": null,
+      "peak_device_memory_mib": 3541.0,
+      "resources": {
+        "api": {
+          "peak_ram_mib": 4.574,
+          "samples": 8
+        },
+        "processor": {
+          "peak_ram_mib": 424.7,
+          "samples": 8
+        },
+        "llm": {
+          "peak_ram_mib": 2359.296,
+          "samples": 8
+        }
+      },
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 47, in <module>\n  File \"<string>\", line 44, in main\nValueError: constrained synthetic generation failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 47, in <module>\n  File \"<string>\", line 44, in main\nValueError: constrained synthetic generation failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 47, in <module>\n  File \"<string>\", line 44, in main\nValueError: constrained synthetic generation failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 47, in <module>\n  File \"<string>\", line 44, in main\nValueError: constrained synthetic generation failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "planned_piers",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 47, in <module>\n  File \"<string>\", line 44, in main\nValueError: constrained synthetic generation failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null,
+            "planning_status": null,
+            "projection_exact": false
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "planned_followup",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 47, in <module>\n  File \"<string>\", line 44, in main\nValueError: constrained synthetic generation failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null,
+            "planning_status": null,
+            "projection_exact": false
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        }
+      ],
+      "startup_seconds": 24.57800000000134,
+      "restart_seconds": null,
+      "gained": [],
+      "lost": [
+        "pressure_revision",
+        "long_exact_record",
+        "unknown_count",
+        "pdf_correction",
+        "planned_piers",
+        "planned_followup"
+      ],
+      "common_success_seconds": {
+        "baseline": null,
+        "candidate": null
+      }
+    },
+    "lfm25-12b-q4km": {
+      "correct": 0,
+      "reviewed_correct": 0,
+      "total": 6,
+      "http_errors": 0,
+      "preflight_blocked": 6,
+      "latency_seconds": null,
+      "peak_device_memory_mib": 1398.0,
+      "resources": {
+        "api": {
+          "peak_ram_mib": 4.172,
+          "samples": 6
+        },
+        "processor": {
+          "peak_ram_mib": 424.4,
+          "samples": 6
+        },
+        "llm": {
+          "peak_ram_mib": 927.0,
+          "samples": 6
+        }
+      },
+      "cases": [
+        {
+          "case": "pressure_revision",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 29, in <module>\n  File \"<string>\", line 25, in main\nValueError: synthetic warmup failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "long_exact_record",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 29, in <module>\n  File \"<string>\", line 25, in main\nValueError: synthetic warmup failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "unknown_count",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 29, in <module>\n  File \"<string>\", line 25, in main\nValueError: synthetic warmup failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "pdf_correction",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 29, in <module>\n  File \"<string>\", line 25, in main\nValueError: synthetic warmup failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "planned_piers",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 29, in <module>\n  File \"<string>\", line 25, in main\nValueError: synthetic warmup failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null,
+            "planning_status": null,
+            "projection_exact": false
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        },
+        {
+          "case": "planned_followup",
+          "http_status": 0,
+          "seconds": null,
+          "error": "Traceback (most recent call last):\n  File \"<string>\", line 29, in <module>\n  File \"<string>\", line 25, in main\nValueError: synthetic warmup failed\n",
+          "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "score": {
+            "correct": false,
+            "status": null,
+            "values_text": {},
+            "coverage": {
+              "raw": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "selected": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "ranked_five": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              },
+              "assembled": {
+                "found": [],
+                "complete": null,
+                "recorded": false
+              }
+            },
+            "citations": {
+              "found": [],
+              "complete": null,
+              "recorded": false
+            },
+            "timings_ms": {},
+            "prompt_tokens": null,
+            "error": null,
+            "planning_status": null,
+            "projection_exact": false
+          },
+          "generation": {
+            "model": null,
+            "usage": null,
+            "input_tokens": null,
+            "elapsed_seconds": null,
+            "assessment": null,
+            "assessment_audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "planning": {
+            "plan": null,
+            "audit": {
+              "model": null,
+              "usage": null,
+              "input_tokens": null,
+              "elapsed_seconds": null
+            }
+          },
+          "reviewed_correct": false
+        }
+      ],
+      "startup_seconds": 8.06199999999808,
+      "restart_seconds": 8.281000000002678,
+      "gained": [],
+      "lost": [
+        "pressure_revision",
+        "long_exact_record",
+        "unknown_count",
+        "pdf_correction",
+        "planned_piers",
+        "planned_followup"
+      ],
+      "common_success_seconds": {
+        "baseline": null,
+        "candidate": null
+      }
+    }
+  },
+  "execution_freeze_sha256": "a272b7eebe5748339294b1199ff068b240dbba53a85bcbc77008215f485b2cb0",
+  "source_archive_sha256": "824d41067cf0af3203eb92037c9dc11cc80389eff36becfb2dce7b7e106fa955",
+  "corpus_sha256": "91f5cf71977bda6a63743941c086dd1dbf047a133c9cecf8dad20a8903c06468",
+  "ingestion": [
+    {
+      "document": "aster-long",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "aster-long",
+        "failure_count": 0,
+        "job_id": "t34-aster-long",
+        "last_failure": null,
+        "receipt": {
+          "generation": 1,
+          "request_sha256": "7e99cb3f642c18f81097b2287020855edbc973ec3129fb268d49655ad7bfc01b"
+        },
+        "revision": "02622fbe1842ecfcd71eaa51bdaf8461d5c1f6f7246dce44c53906ce72a1d831",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 3.5780000000013388
+    },
+    {
+      "document": "cedar-audit",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "cedar-audit",
+        "failure_count": 0,
+        "job_id": "t34-cedar-audit",
+        "last_failure": null,
+        "pdf_diagnostics": {
+          "allow_partial": false,
+          "artifact_sha256": "a440a1acf513e8ff5c5be23cf35a6aaedcf92c4044105398b9dd169e3cabcbab",
+          "items": 11,
+          "next_action": "Review page warnings and extraction coverage; illustrations are not interpreted.",
+          "pages": [
+            {
+              "height": 841.8898,
+              "native_cells": 14,
+              "ocr_cells": 0,
+              "ocr_mean_confidence": null,
+              "page": 1,
+              "width": 595.2756
+            }
+          ],
+          "source_sha256": "d718f78196f0b4372e6b0e584f630e960194357c74af2f4d28bc00519d3427cd",
+          "status": "complete",
+          "warning_count": 0,
+          "warnings": [],
+          "warnings_truncated": false
+        },
+        "receipt": {
+          "generation": 2,
+          "request_sha256": "50268aab84e6d83c0a4c463108a387932b3a0e471bfd9dc838314fce4beec41b"
+        },
+        "revision": "aa625f3a9ba554b1a947857d40a75cb71b8df366f99905fc1d26e60662e73a63",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 11.530999999995402
+    },
+    {
+      "document": "distractor-audits",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "distractor-audits",
+        "failure_count": 0,
+        "job_id": "t34-distractor-audits",
+        "last_failure": null,
+        "receipt": {
+          "generation": 3,
+          "request_sha256": "381ded36a247795a01417e7f4b7f21cec17a9484cf2071d99680230ede9eb3b7"
+        },
+        "revision": "bd3d57bec827697709b3a6da837beb27df842312a95e0ca886d62bb6deb22bfb",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5309999999954016
+    },
+    {
+      "document": "distractor-lumen",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "distractor-lumen",
+        "failure_count": 0,
+        "job_id": "t34-distractor-lumen",
+        "last_failure": null,
+        "receipt": {
+          "generation": 4,
+          "request_sha256": "cdf01df8145d35ac4a06aa12089df3400a142653330f5ccc95cc6e5c1ce32e92"
+        },
+        "revision": "54d660b1e07883766ad769002effe2134a75bbeb5716e7348210e83e2d627b64",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5470000000059372
+    },
+    {
+      "document": "distractor-routes",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "distractor-routes",
+        "failure_count": 0,
+        "job_id": "t34-distractor-routes",
+        "last_failure": null,
+        "receipt": {
+          "generation": 5,
+          "request_sha256": "b519184f7b8e7090d328fae8a76a7eafcce434f2176fbb8679486a252f0e8a03"
+        },
+        "revision": "470308567f0d4a412edd7dba0839e977454e07768187611aaa34f9b5bfd05f9f",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5309999999954016
+    },
+    {
+      "document": "helio-certificate",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "helio-certificate",
+        "failure_count": 0,
+        "job_id": "t34-helio-certificate",
+        "last_failure": null,
+        "pdf_diagnostics": {
+          "allow_partial": false,
+          "artifact_sha256": "7ac434a0d2a2602bfd6ab440c0e7f5a4dbb36949c43d17ed4ac2b0d0708a3e5e",
+          "items": 11,
+          "next_action": "Review page warnings and extraction coverage; illustrations are not interpreted.",
+          "pages": [
+            {
+              "height": 841.8898,
+              "native_cells": 14,
+              "ocr_cells": 0,
+              "ocr_mean_confidence": null,
+              "page": 1,
+              "width": 595.2756
+            }
+          ],
+          "source_sha256": "7b50e5f44c2cf863369ee08e10188ee105e801efcf0aba3058838fddaa877fdc",
+          "status": "complete",
+          "warning_count": 0,
+          "warnings": [],
+          "warnings_truncated": false
+        },
+        "receipt": {
+          "generation": 6,
+          "request_sha256": "9c09548440efcafdb3ecfcfe69aae1482b6a34ab5c1ba92592cb8784be64616c"
+        },
+        "revision": "faa8cd552227e2f970ce94e977cf3066cd9bddb17cd0319a880f5b37c2bbb681",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 10.468000000000757
+    },
+    {
+      "document": "lumen-approved",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "lumen-approved",
+        "failure_count": 0,
+        "job_id": "t34-lumen-approved",
+        "last_failure": null,
+        "receipt": {
+          "generation": 7,
+          "request_sha256": "b39eafe278422eae8611aeb515e865f26f858aac32359baf7fee0afd24138cb1"
+        },
+        "revision": "1531a7dc89f210c6d549f182722747b67c127288be583a99c28b975474d1c9c3",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5469999999986612
+    },
+    {
+      "document": "norhaven-operations",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "norhaven-operations",
+        "failure_count": 0,
+        "job_id": "t34-norhaven-operations",
+        "last_failure": null,
+        "receipt": {
+          "generation": 8,
+          "request_sha256": "bf6b284f940c43b48de91af2bfd8bfd641cb8b4676ac4f10a8fa742bf28c0601"
+        },
+        "revision": "10449210b8287785eebf533f07d32878f1ec659fbc3f649dd7d1fda0fda7cb42",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5319999999992433
+    },
+    {
+      "document": "norhaven-structure",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "norhaven-structure",
+        "failure_count": 0,
+        "job_id": "t34-norhaven-structure",
+        "last_failure": null,
+        "receipt": {
+          "generation": 9,
+          "request_sha256": "01d5480fc144cfc9074a7aabe7f25d9e8a0b2fe93093dd8cd68b648e87cf305b"
+        },
+        "revision": "47a2bd8301e659afbeb9c726b96a1ae8bd6b915f4543242caef0adf81634c805",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5310000000026776
+    },
+    {
+      "document": "solace-unknown",
+      "committed": true,
+      "http_status": 200,
+      "job": {
+        "coordinator": {
+          "last_error": null,
+          "recovery": null,
+          "state": "running"
+        },
+        "document_id": "solace-unknown",
+        "failure_count": 0,
+        "job_id": "t34-solace-unknown",
+        "last_failure": null,
+        "receipt": {
+          "generation": 10,
+          "request_sha256": "c65f42430ff362a37a9fc495589409ccec114bbc82fdbba8a73f7de0c19f45f8"
+        },
+        "revision": "03d7c72de973fce8dd27d430d44d088bbe64bdd03d6c16e30b5ca110558d28d8",
+        "stage": "Committed",
+        "successful_stages": 4
+      },
+      "seconds": 0.5319999999992433
+    }
+  ],
+  "review_reference": "docs/reports/t32-source-review.md",
+  "normal_unchanged": true,
+  "normal_ready": true,
+  "reporting_addendum": "docs/t34-reporting-addendum.md",
+  "reporter_sha256": "84ceb3d1471cc746e0a35a5c9279cd6f1be805521a8a523236be645cd7001da3",
+  "dispatched_requests": 12,
+  "preflight_blocked_requests": 12,
+  "hardware": "NVIDIA GeForce RTX 4060, 8188 MiB, Windows / Docker Desktop Linux",
+  "preflight": {
+    "12b": {
+      "profile": "12b",
+      "input_tokens": 3300,
+      "template_tail": "ing padding padding padding padding padding padding<turn|>\n<|turn>model\n<|channel>thought\n<channel|>",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"color\": \"yellow\"}"
+            }
+          }
+        ],
+        "created": 1792118681,
+        "model": "vectornext-gemma4-12b",
+        "system_fingerprint": "b11617-14310190c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 12,
+          "prompt_tokens": 3300,
+          "total_tokens": 3312,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-m8zp0Nhe4D0fC524BjX01o7RTgjLjO5w",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 3300,
+          "prompt_ms": 3027.857,
+          "prompt_per_token_ms": 0.9175324242424242,
+          "prompt_per_second": 1089.8797400273527,
+          "predicted_n": 12,
+          "predicted_ms": 371.207,
+          "predicted_per_token_ms": 33.74609090909091,
+          "predicted_per_second": 29.633061876527115
+        }
+      },
+      "passed": true
+    },
+    "ministral3-8b-q4km": {
+      "profile": "ministral3-8b-q4km",
+      "input_tokens": 3300,
+      "template_tail": "dding padding padding padding padding padding padding padding padding padding padding padding[/INST]",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"color\": \"yellow\"\n}"
+            }
+          }
+        ],
+        "created": 1792118870,
+        "model": "vectornext-ministral3-8b-q4km",
+        "system_fingerprint": "b11617-14310190c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 14,
+          "prompt_tokens": 3300,
+          "total_tokens": 3314,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-7WLWmHBP6grsLfLTZtQeii6zrwdDKcwO",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 3300,
+          "prompt_ms": 1771.769,
+          "prompt_per_token_ms": 0.536899696969697,
+          "prompt_per_second": 1862.5452866598298,
+          "predicted_n": 14,
+          "predicted_ms": 326.106,
+          "predicted_per_token_ms": 25.085076923076922,
+          "predicted_per_second": 39.86433858929305
+        }
+      },
+      "passed": true
+    },
+    "phi4-mini-q4km": {
+      "profile": "phi4-mini-q4km",
+      "input_tokens": 3300,
+      "template_tail": " padding padding padding padding padding padding padding padding padding padding<|end|><|assistant|>",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n\n                    \"color\" :\"c\" }"
+            }
+          }
+        ],
+        "created": 1792118977,
+        "model": "vectornext-phi4-mini-q4km",
+        "system_fingerprint": "b11617-14310190c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 58,
+          "prompt_tokens": 3300,
+          "total_tokens": 3358,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-FCTKhLNLadyNKY0uy5w20U5BfHFXDyIa",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 3300,
+          "prompt_ms": 1009.944,
+          "prompt_per_token_ms": 0.30604363636363635,
+          "prompt_per_second": 3267.5079014281982,
+          "predicted_n": 58,
+          "predicted_ms": 1041.579,
+          "predicted_per_token_ms": 18.273315789473685,
+          "predicted_per_second": 54.72460562280922
+        }
+      },
+      "passed": false
+    },
+    "lfm25-12b-q4km": {
+      "profile": "lfm25-12b-q4km",
+      "input_tokens": 3300,
+      "template_tail": "ing padding padding padding padding padding padding padding padding<|im_end|>\n<|im_start|>assistant\n",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{ \"color\": \"yellow\"}"
+            }
+          }
+        ],
+        "created": 1792118991,
+        "model": "vectornext-lfm25-12b-q4km",
+        "system_fingerprint": "b11617-14310190c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 10,
+          "prompt_tokens": 3300,
+          "total_tokens": 3310,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-Es5HpVID8Ddui1fodP1X15aDCZ34IBiw",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 3300,
+          "prompt_ms": 319.829,
+          "prompt_per_token_ms": 0.09691787878787879,
+          "prompt_per_second": 10318.013688564826,
+          "predicted_n": 10,
+          "predicted_ms": 49.146,
+          "predicted_per_token_ms": 5.460666666666667,
+          "predicted_per_second": 183.12782322060798
+        }
+      },
+      "passed": true,
+      "application_warmup": "failed; raw draft not printed by the frozen warmup on failure"
+    }
+  },
+  "verification": {
+    "offline_tests_before_run": 42,
+    "reporting_tests": 3,
+    "normal_restored": true,
+    "captured_success_scoring_parity": 9,
+    "committed_documents": 10,
+    "committed_chunks": 49,
+    "frozen_execution_files_verified_at_completion": 109,
+    "measured_retries": 0
+  },
+  "execution_images": {
+    "vectornext-app:t28-12b": "sha256:3c858fc267b0346c0cb3beeb32ea39d86aac32a3b4d9d4efa4acde65c2c87b86",
+    "vectornext-app-processor:t34": "sha256:7ebb178c91430fe6157321911c764676cb7fe6ced0a08348844e2f9a32bd5686",
+    "vectornext-app-llm:t34": "sha256:032903ab708b6fdff16faa2c9789e6bb34096ca24474086f5eb2a381e1e510b2"
+  }
+}

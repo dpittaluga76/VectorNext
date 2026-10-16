@@ -1,6 +1,7 @@
 """Trusted local generation profiles, shared by workers and the GPU launcher."""
 import hashlib
 import json
+import math
 import os
 from pathlib import Path, PurePosixPath
 
@@ -17,6 +18,10 @@ def load(name=None):
         raise ValueError('unknown generation profile: ' + name)
     entry = catalog['profiles'][name]
     cache_types(entry)
+    template_options(entry)
+    answer_temperature(entry)
+    answer_adapter(entry)
+    planning_variant(entry)
     lock_path = (ROOT / entry['lock']).resolve()
     if not lock_path.is_relative_to(ROOT):
         raise ValueError('model lock escapes application root')
@@ -31,9 +36,30 @@ def cache_types(profile):
     kinds = (profile.get('cache_type_k'), profile.get('cache_type_v'))
     if kinds == (None, None):
         return None
-    if any(kind not in ('f16', 'q8_0') for kind in kinds):
-        raise ValueError('both KV cache types must be explicitly f16 or q8_0')
-    return kinds
+    raise ValueError('experimental KV cache overrides are no longer supported')
+
+
+def answer_temperature(profile):
+    value = profile.get('answer_temperature', 0)
+    if type(value) not in (int, float) or not math.isfinite(value) or not 0 <= value <= 2:
+        raise ValueError('answer temperature must be finite and between zero and two')
+    return value
+
+
+def answer_adapter(profile):
+    adapter = profile.get('answer_adapter')
+    if adapter not in (None, 'nuextract3-v1'):
+        raise ValueError('unsupported answer template adapter')
+    return adapter
+
+
+def planning_variant(profile):
+    variant = profile.get('planning_variant')
+    if variant not in (None, 'requested-facts-v1'):
+        raise ValueError('unsupported planning variant')
+    if variant is not None and answer_adapter(profile) != 'nuextract3-v1':
+        raise ValueError('requested-facts variant requires the NuExtract adapter')
+    return variant
 
 
 def model_path(profile, root=Path('/models')):
@@ -41,6 +67,17 @@ def model_path(profile, root=Path('/models')):
     if not path.is_relative_to(root.resolve()):
         raise ValueError('generation artifact escapes model directory')
     return path
+
+
+def template_options(profile):
+    options = profile.get('chat_template_kwargs')
+    if options is None:
+        return None
+    # Only the tested non-thinking mode is supported. No arbitrary template flags.
+    if (not isinstance(options, dict) or set(options) != {'enable_thinking'}
+            or options['enable_thinking'] is not False):
+        raise ValueError('template options must explicitly disable thinking')
+    return json.dumps(options, sort_keys=True, separators=(',', ':'))
 
 
 def verify(profile, root=Path('/models')):
@@ -66,6 +103,8 @@ def command(profile):
         args += ['--n-cpu-moe', str(profile['cpu_moe'])]
     if kinds := cache_types(profile):
         args += ['--cache-type-k', kinds[0], '--cache-type-v', kinds[1]]
+    if options := template_options(profile):
+        args += ['--chat-template-kwargs', options]
     return args + ['--parallel', '1', '--n-predict', '256', '--batch-size', '512',
                    '--ubatch-size', '128', '--threads', '4', '--flash-attn', 'on',
                    '--jinja', '--reasoning', 'off', '--no-context-shift', '--no-ui',
@@ -84,4 +123,13 @@ def runtime_identity(profile):
     identity = (profile['runtime'] + ';ctx4096;parallel1;reasoning-off;cpu-moe'
                 + str(profile['cpu_moe']))
     kinds = cache_types(profile)
-    return identity + (';cache-k=' + kinds[0] + ';cache-v=' + kinds[1] if kinds else '')
+    identity += (';cache-k=' + kinds[0] + ';cache-v=' + kinds[1] if kinds else '')
+    options = template_options(profile)
+    identity += (';chat-template-kwargs=' + options if options else '')
+    if 'answer_temperature' in profile:
+        identity += ';answer-temperature=' + str(answer_temperature(profile))
+    if adapter := answer_adapter(profile):
+        identity += ';answer-adapter=' + adapter
+    if variant := planning_variant(profile):
+        identity += ';planning-variant=' + variant
+    return identity

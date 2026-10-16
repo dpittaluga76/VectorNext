@@ -3,7 +3,7 @@ import { cleanup, render, screen, fireEvent } from '@testing-library/react'
 import 'fake-indexeddb/auto'
 import { AnswerCard } from './App'
 import { context } from './lib/history'
-import { load, save } from './lib/store'
+import { load, save, reserveTurn, releaseTurn } from './lib/store'
 import type { Answer, Conversation, Workspace } from './types'
 afterEach(cleanup)
 const literal = '9007199254740993.00000000000001'
@@ -32,6 +32,19 @@ const answer: Answer = {
   raw_report: `{"value":${literal}}`,
 }
 describe('browser integrity', () => {
+  it('atomically reserves one pending turn across tabs and recovers it after a stale save', async () => {
+    const state: Workspace = { version: 1, current: 'reserved-chat', theme: 'light', uploads: [],
+      conversations: [{ id: 'reserved-chat', created: 'now', scope: ['doc'], exchanges: [
+        { id: 'pending', job_id: 'reserved-job', question: 'Amount?', pending: true, mode: 'hybrid' },
+      ] }] }
+    await reserveTurn(state, 'reserved-chat')
+    await expect(reserveTurn(state, 'reserved-chat')).rejects.toThrow('unfinished answer')
+    await save({ ...state, conversations: [] })
+    expect((await load())?.conversations[0].exchanges[0].job_id).toBe('reserved-job')
+    await releaseTurn('reserved-job')
+    await reserveTurn(state, 'reserved-chat')
+    await releaseTurn('reserved-job')
+  })
   it('renders exact values and citation, with safe text', () => {
     const choose = vi.fn()
     render(<AnswerCard answer={answer} onEvidence={choose} />)

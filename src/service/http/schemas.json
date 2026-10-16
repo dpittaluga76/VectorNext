@@ -26,6 +26,9 @@
           "message"
         ],
         "additionalProperties": false
+      },
+      "answer_job": {
+        "description": "Recorded attempts and fallback metadata, when returned by a synchronous answer adapter."
       }
     },
     "required": [
@@ -473,6 +476,9 @@
       },
       "options": {
         "$ref": "#/components/schemas/AnswerOptions"
+      },
+      "mode": {
+        "$ref": "#/components/schemas/AnswerMode"
       }
     },
     "required": [
@@ -536,6 +542,9 @@
       },
       "options": {
         "$ref": "#/components/schemas/AnswerOptions"
+      },
+      "mode": {
+        "$ref": "#/components/schemas/AnswerMode"
       }
     },
     "required": [
@@ -810,6 +819,12 @@
           "type": "string",
           "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
         }
+      },
+      "answer_queue": {
+        "$ref": "#/components/schemas/AnswerJobs"
+      },
+      "default_answer_mode": {
+        "$ref": "#/components/schemas/AnswerMode"
       }
     },
     "required": [
@@ -1409,7 +1424,9 @@
       },
       "facet_queries": {
         "type": "array",
-        "items": { "type": "string" },
+        "items": {
+          "type": "string"
+        },
         "maxItems": 4
       },
       "selection_functions": {
@@ -1758,6 +1775,9 @@
       },
       "selection": {
         "description": "Arbitrary source or diagnostic JSON. Numeric values may exceed JavaScript precision; preserve the raw response text."
+      },
+      "answer_job": {
+        "description": "Recorded attempts and fallback metadata."
       }
     },
     "required": [
@@ -1783,5 +1803,353 @@
       "options"
     ],
     "additionalProperties": false
+  },
+  "AnswerMode": {
+    "type": "string",
+    "enum": [
+      "hybrid",
+      "gemma",
+      "nuextract"
+    ],
+    "default": "hybrid",
+    "description": "Hybrid accepts a validated supported NuExtract answer, otherwise tries Gemma once. Forced modes never fall back."
+  },
+  "AnswerSubmission": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "request_id",
+      "kind",
+      "payload"
+    ],
+    "properties": {
+      "request_id": {
+        "type": "string",
+        "minLength": 16,
+        "maxLength": 128,
+        "pattern": "^[A-Za-z0-9-]+$",
+        "description": "Stable client identity. Same contents reconcile; conflicting reuse is rejected."
+      },
+      "mode": {
+        "$ref": "#/components/schemas/AnswerMode"
+      },
+      "kind": {
+        "enum": [
+          "ui",
+          "structured"
+        ]
+      },
+      "payload": {
+        "description": "Question payload matching kind; answer mode belongs to the envelope."
+      }
+    },
+    "description": "At most 16 unfinished jobs; 15-minute next-attempt queue wait; retained history reserves up to 16 MiB per unfinished job within a 256 MiB quota. Clear terminal records explicitly.",
+    "oneOf": [
+      {
+        "properties": {
+          "kind": {
+            "const": "ui"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/UiQuestionPayload"
+          }
+        }
+      },
+      {
+        "properties": {
+          "kind": {
+            "const": "structured"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/QuestionPayload"
+          }
+        }
+      }
+    ]
+  },
+  "AnswerAttempt": {
+    "type": "object",
+    "required": [
+      "model",
+      "state",
+      "queue_ms",
+      "activation_ms",
+      "work_ms",
+      "identity",
+      "status_code",
+      "operations"
+    ],
+    "properties": {
+      "model": {
+        "enum": [
+          "gemma",
+          "nuextract"
+        ]
+      },
+      "state": {
+        "type": "string"
+      },
+      "started_ms": {
+        "type": "integer"
+      },
+      "finished_ms": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "queue_ms": {
+        "type": "integer"
+      },
+      "activation_ms": {
+        "type": "number"
+      },
+      "work_ms": {
+        "type": "number",
+        "description": "Attempt processing after activation; includes CPU retrieval and model calls, not queue/loading."
+      },
+      "identity": {
+        "description": "Recorded alias, pinned artifact hash and runtime identity."
+      },
+      "operations": {
+        "description": "Recorded operation timings; planner response remains opaque exact JSON text."
+      },
+      "status_code": {
+        "type": "integer"
+      },
+      "response_text": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Exact original response JSON. Do not parse and reserialize with floating-point numbers."
+      }
+    }
+  },
+  "AnswerJob": {
+    "type": "object",
+    "required": [
+      "request_id",
+      "mode",
+      "state",
+      "terminal"
+    ],
+    "properties": {
+      "request_id": {
+        "type": "string"
+      },
+      "state": {
+        "type": "string"
+      },
+      "kind": {
+        "type": "string"
+      },
+      "next_model": {
+        "type": "string"
+      },
+      "mode": {
+        "$ref": "#/components/schemas/AnswerMode"
+      },
+      "terminal": {
+        "type": "boolean"
+      },
+      "cancel_requested": {
+        "type": "boolean"
+      },
+      "created_ms": {
+        "type": "integer"
+      },
+      "updated_ms": {
+        "type": "integer"
+      },
+      "waiting_since_ms": {
+        "type": "integer"
+      },
+      "attempt_count": {
+        "type": "integer"
+      },
+      "total_ms": {
+        "type": "integer"
+      },
+      "status_code": {
+        "type": "integer"
+      },
+      "fallback_reason": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "error": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "attempts": {
+        "type": "array",
+        "maxItems": 2,
+        "items": {
+          "$ref": "#/components/schemas/AnswerAttempt"
+        }
+      },
+      "diagnostics_text": {
+        "type": "string",
+        "description": "Complete exact durable record for export."
+      },
+      "response_text": {
+        "type": "string",
+        "description": "Final exact response with both attempts in diagnostics; structured clients consume this text."
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UiAnswer"
+          },
+          {
+            "$ref": "#/components/schemas/Error"
+          }
+        ],
+        "description": "Browser-safe final projection, only present for UI jobs."
+      }
+    }
+  },
+  "AnswerJobs": {
+    "type": "object",
+    "properties": {
+      "jobs": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/AnswerJob"
+        }
+      },
+      "unfinished": {
+        "type": "integer"
+      },
+      "capacity": {
+        "const": 16
+      },
+      "quota_bytes": {
+        "const": 268435456
+      },
+      "retained_and_reserved_bytes": {
+        "type": "integer"
+      },
+      "ready": {
+        "type": "boolean"
+      },
+      "error": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  },
+  "EmptyObject": {
+    "type": "object",
+    "additionalProperties": false
+  },
+  "AnswerCleared": {
+    "type": "object",
+    "required": [
+      "cleared"
+    ],
+    "properties": {
+      "cleared": {
+        "const": true
+      }
+    }
+  },
+  "QuestionPayload": {
+    "type": "object",
+    "properties": {
+      "request": {
+        "$ref": "#/components/schemas/AskRequest"
+      },
+      "space_id": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "options": {
+        "$ref": "#/components/schemas/AnswerOptions"
+      }
+    },
+    "required": [
+      "request"
+    ],
+    "additionalProperties": false
+  },
+  "UiQuestionPayload": {
+    "type": "object",
+    "properties": {
+      "question": {
+        "type": "string",
+        "maxLength": 8192,
+        "description": "Maximum 8192 UTF-8 bytes; aggregate questions are unsupported."
+      },
+      "document_ids": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "maxItems": 400
+      },
+      "history": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Turn"
+        },
+        "default": [],
+        "maxItems": 8
+      },
+      "fields": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/FieldSpec"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "template": {
+        "anyOf": [
+          {
+            "type": "string",
+            "description": "Legacy PascalCase stage, including Committed. Saved failures require explicit retry."
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "prose": {
+        "type": "boolean",
+        "default": false
+      },
+      "options": {
+        "$ref": "#/components/schemas/AnswerOptions"
+      }
+    },
+    "required": [
+      "question",
+      "document_ids"
+    ],
+    "additionalProperties": false,
+    "description": "Without fields, local Gemma plans field definitions only. History is at most four complete user/assistant exchanges, 4096 UTF-8 bytes per turn. Explicit fields bypass planning."
   }
 }

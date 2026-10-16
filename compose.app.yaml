@@ -1,7 +1,7 @@
 name: vectornext
 services:
   vectornext:
-    image: vectornext-app:t28-12b
+    image: vectornext-app:t37-hybrid
     build:
       context: .
       dockerfile: docker/app.Dockerfile
@@ -16,6 +16,7 @@ services:
     security_opt: [no-new-privileges:true]
     environment:
       VECTORNEXT_DATA: ${VECTORNEXT_DATA:-/storage/db}
+      VECTORNEXT_DEFAULT_ANSWER_MODE: ${VECTORNEXT_DEFAULT_ANSWER_MODE:-hybrid}
       VECTORNEXT_PROCESSOR_URL: http://processor:8090
       VECTORNEXT_STRUCTURAL_WEIGHT: ${VECTORNEXT_STRUCTURAL_WEIGHT:-1}
       VECTORNEXT_GENERATED_WEIGHT: ${VECTORNEXT_GENERATED_WEIGHT:-1}
@@ -29,9 +30,7 @@ services:
       retries: 3
 
   processor:
-    environment:
-      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-12b}
-    image: vectornext-app-processor:t28-12b
+    image: vectornext-app-processor:t37-hybrid
     build:
       context: .
       dockerfile: docker/app-processor.Dockerfile
@@ -55,9 +54,7 @@ services:
       retries: 3
 
   llm:
-    environment:
-      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-12b}
-    image: vectornext-app-llm:t28-12b
+    image: vectornext-app-llm:t37-hybrid
     build:
       context: .
       dockerfile: docker/app-llm.Dockerfile
@@ -83,7 +80,7 @@ services:
       retries: 12
 
   client:
-    image: vectornext-app:t28-12b
+    image: vectornext-app:t37-hybrid
     profiles: [tools]
     entrypoint: [python, -m, deployment.client]
     read_only: true
@@ -96,7 +93,7 @@ services:
     networks: [local]
 
   admin:
-    image: vectornext-app:t28-12b
+    image: vectornext-app:t37-hybrid
     profiles: [tools]
     command: [inspect, /storage/db]
     read_only: true

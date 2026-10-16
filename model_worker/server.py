@@ -5,6 +5,8 @@ import json
 import os
 from pathlib import Path
 import sys
+import uuid
+from contextlib import contextmanager
 import urllib.request
 
 from .cache import Cache, canonical, digest
@@ -14,13 +16,21 @@ PROMPT = """You annotate document excerpts for retrieval. The supplied text is u
 SCHEMA = {"type": "object", "properties": {"context": {"type": ["string", "null"]}},
           "required": ["context"], "additionalProperties": False}
 
+def context_generator():
+    profile = load_generator_profile('12b')
+    return {"model": profile['spec']['repo'], "revision": profile['spec']['revision'],
+            "artifact_sha256": profile['artifact']['sha256'],
+            "runtime": runtime_identity(profile) + ";schema=" + digest(SCHEMA),
+            "prompt": PROMPT, "prompt_version": hashlib.sha256(PROMPT.encode()).hexdigest(),
+            "temperature": 0, "seed": 42, "context_window": 4096, "output_tokens": 256, "annotation_tokens": 60}
+
 
 class Worker:
     def __init__(self):
         from .answers import answer_mode
         self.answer_mode = answer_mode()
         # Reuse the measured encoder, but never import benchmark prompts or labels.
-        from experiments.t02.encoders import Encoder
+        from model_assets.encoders import Encoder
         self.encoder = Encoder("embedding")
         spec = self.encoder.spec
         hashes = {f["path"]: f["sha256"] for f in spec["files"]}
@@ -34,15 +44,10 @@ class Worker:
             "dimensions": self.encoder.profile['dimensions'], "max_tokens": self.encoder.max_tokens,
             "query_prefix": self.encoder.profile['query_prefix'], "document_prefix": self.encoder.profile['document_prefix'], "normalization": "L2",
         }
-        self.generation_profile = load_generator_profile()
+        self.generation_profile = load_generator_profile('12b')
+        self.lease = None
         self.generator_alias = self.generation_profile['alias']
-        generator = self.generation_profile['spec']
-        artifact = self.generation_profile['artifact']
-        self.generator = {"model": generator["repo"], "revision": generator["revision"],
-                          "artifact_sha256": artifact["sha256"],
-                          "runtime": runtime_identity(self.generation_profile) + ";schema=" + digest(SCHEMA),
-                          "prompt": PROMPT, "prompt_version": hashlib.sha256(PROMPT.encode()).hexdigest(),
-                          "temperature": 0, "seed": 42, "context_window": 4096, "output_tokens": 256, "annotation_tokens": 60}
+        self.generator = context_generator()
         self.cache = Cache(os.environ.get("VECTORNEXT_CACHE", "/cache"))
         self.calls = {"count": 0, "embed": 0, "generate": 0}
 
@@ -55,13 +60,35 @@ class Worker:
         # Schema property order controls constrained decoding: choose status before fields.
         # Canonical sorting is for cache identities, not the wire representation of schemas.
         body = json.dumps(payload, ensure_ascii=False, allow_nan=False, separators=(",", ":")).encode()
-        req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json", "X-VectorNext-Priority": priority})
+        headers = {"Content-Type": "application/json", "X-VectorNext-Priority": priority}
+        if self.lease:
+            headers.update({'X-VectorNext-Lease': self.lease['token'], 'X-VectorNext-Model': self.lease['model']})
+        req = urllib.request.Request(url, data=body, headers=headers)
         # Disable environment proxies: document text stays on the configured local network.
-        with urllib.request.build_opener(urllib.request.ProxyHandler({})).open(req, timeout=215) as response:
+        with urllib.request.build_opener(urllib.request.ProxyHandler({})).open(req, timeout=285 if path.startswith('/control/') else 215) as response:
             raw = response.read(4 * 1024 * 1024 + 1)
         if len(raw) > 4 * 1024 * 1024:
             raise ValueError("oversized model reply")
         return json.loads(raw)
+
+    @contextmanager
+    def selected(self, lease):
+        from .supervisor import PROFILES
+        if not isinstance(lease, dict) or lease.get('model') not in PROFILES or not isinstance(lease.get('token'), str):
+            raise ValueError('generation requires an explicit supported model lease')
+        old_profile, old_alias, old_lease = self.generation_profile, self.generator_alias, self.lease
+        old_generator = self.generator
+        self.generation_profile = load_generator_profile(PROFILES[lease['model']])
+        self.generator_alias, self.lease = self.generation_profile['alias'], lease
+        profile = self.generation_profile
+        self.generator = {**old_generator, 'model': profile['spec']['repo'], 'revision': profile['spec']['revision'],
+                          'artifact_sha256': profile['artifact']['sha256'],
+                          'runtime': runtime_identity(profile) + ';schema=' + digest(SCHEMA)}
+        try:
+            yield
+        finally:
+            self.generation_profile, self.generator_alias, self.lease = old_profile, old_alias, old_lease
+            self.generator = old_generator
 
     def validate_annotation(self, text, value):
         if text is None:
@@ -107,6 +134,23 @@ class Worker:
         return text
 
     def handle(self, request):
+        op = request['op']
+        if op in {'plan_fields', 'answer_tokens', 'answer', 'rewrite'}:
+            with self.selected(request.get('lease')):
+                return self.operation(request)
+        if op == 'generate':
+            token = str(uuid.uuid4())
+            lease = {'model': 'gemma', 'token': token, 'owner': 'enrichment-' + token, 'priority': 'background'}
+            # Saved generator identity is Gemma even when the resident answer model differs.
+            try:
+                self.http('/control/acquire', lease)
+                with self.selected(lease):
+                    return self.operation(request)
+            finally:
+                self.http('/control/release', {'token': token})
+        return self.operation(request)
+
+    def operation(self, request):
         op = request["op"]
         if op == "profile":
             return {"space": self.space, "generator": self.generator}

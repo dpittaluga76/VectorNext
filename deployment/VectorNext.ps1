@@ -3,24 +3,26 @@ param(
     [ValidateSet('Menu', 'Setup', 'Start', 'Rebuild', 'Stop', 'Status')]
     [string]$Action = 'Menu',
     [switch]$NoBrowser,
-    [ValidateSet('', '26b-offload22', '12b', '26b-gpu')]
-    [string]$ModelProfile = ''
+    [ValidateSet('', 'hybrid', 'gemma', 'nuextract')]
+    [string]$AnswerMode = ''
 )
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $appCompose = Join-Path $projectRoot 'compose.app.yaml'
 $appArguments = @('compose', '--project-name', 'vectornext', '--project-directory', $projectRoot, '-f', $appCompose)
-$profiles = Get-Content -LiteralPath (Join-Path $projectRoot 'model_worker/generator_profiles.json') -Raw | ConvertFrom-Json
-$profileState = Join-Path $projectRoot 'data/launcher/model-profile.txt'
-if (-not $ModelProfile -and $env:VECTORNEXT_GENERATOR_PROFILE) { $ModelProfile = $env:VECTORNEXT_GENERATOR_PROFILE }
-if (-not $ModelProfile -and (Test-Path -LiteralPath $profileState)) { $ModelProfile = (Get-Content -LiteralPath $profileState -Raw).Trim() }
-if ($ModelProfile) {
-    if ($ModelProfile -notin $profiles.profiles.PSObject.Properties.Name) { throw "Unknown model profile: $ModelProfile" }
-    $env:VECTORNEXT_GENERATOR_PROFILE = $ModelProfile
-    $appArguments += @('-f', (Join-Path $projectRoot 'compose.app.models.yaml'))
+$modeState = Join-Path $projectRoot 'data/launcher/answer-mode.txt'
+$legacyState = Join-Path $projectRoot 'data/launcher/model-profile.txt'
+if (-not $AnswerMode -and (Test-Path -LiteralPath $modeState)) { $AnswerMode = (Get-Content -LiteralPath $modeState -Raw).Trim() }
+if (-not $AnswerMode) {
+    $AnswerMode = 'hybrid'
+    if ((Test-Path -LiteralPath $legacyState) -or $env:VECTORNEXT_GENERATOR_PROFILE) {
+        Write-Host 'Upgrading legacy model selection to Hybrid: NuExtract first, with queued Gemma fallback. Both models are required.' -ForegroundColor Cyan
+    }
 }
-$selectedProfile = if ($ModelProfile) { $ModelProfile } else { $profiles.default }
-$selectedModelLock = $profiles.profiles.$selectedProfile.lock
+if ($AnswerMode -notin @('hybrid', 'gemma', 'nuextract')) { throw "Unsupported answer mode: $AnswerMode" }
+$env:VECTORNEXT_DEFAULT_ANSWER_MODE = $AnswerMode
+$env:VECTORNEXT_GENERATOR_PROFILE = $null
+$selectedModelLock = 'model_assets/setup.lock.json'
 
 function Invoke-Docker {
     param([string[]]$Arguments)
@@ -61,6 +63,14 @@ function Get-AppConfiguration {
 }
 function Start-Workspace {
     Check-Installed
+    # Check saved policies under the exclusive writer lock before replacing any service.
+    Invoke-Docker ($appArguments + @('stop', 'vectornext'))
+    try {
+        Invoke-Docker ($appArguments + @('run', '--rm', '--no-deps', '--pull', 'never', 'admin', 'check-generator', '/storage/db', '/app/generator-policy.json'))
+    } catch {
+        & docker @appArguments start vectornext
+        throw
+    }
     Write-Host 'Starting the installed application. No images or models will be downloaded.' -ForegroundColor Cyan
     Invoke-Docker ($appArguments + @('up', '-d', '--no-build', '--pull', 'never', 'vectornext', 'processor', 'llm'))
     $port = (Get-AppConfiguration).services.vectornext.ports[0].published
@@ -72,10 +82,9 @@ function Start-Workspace {
         Start-Sleep -Seconds 2
     }
     if (-not $available) { throw 'The interface did not start. Choose Status and inspect Docker Desktop logs for the vectornext service.' }
-    if ($ModelProfile) {
-        New-Item -ItemType Directory -Force -Path (Split-Path -Parent $profileState) | Out-Null
-        Set-Content -LiteralPath $profileState -Value $selectedProfile -Encoding ascii
-    }
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $modeState) | Out-Null
+    Set-Content -LiteralPath $modeState -Value $AnswerMode -Encoding ascii
+    Write-Host "Answer mode for new browser workspaces: $AnswerMode. Existing browser choices are preserved."
     Write-Host "Ready to browse: $address" -ForegroundColor Green
     if (-not $NoBrowser) { Start-Process $address }
 }
@@ -97,11 +106,8 @@ try {
             if ([IO.Path]::GetFullPath($configuredModels) -ne [IO.Path]::GetFullPath((Join-Path $projectRoot 'models'))) { throw 'Setup uses this repository models folder. Remove the custom VECTORNEXT_MODELS_DIR setting for Setup, or prepare that directory with the documented developer commands.' }
             Write-Host 'Step 1 of 4: Checking GPU access inside Docker.' -ForegroundColor Cyan
             Invoke-Docker @('compose', '--project-directory', $projectRoot, '-f', (Join-Path $projectRoot 'compose.models.yaml'), 'run', '--rm', '--no-deps', 'gpu-check')
-            Write-Host 'Step 2 of 4: Preparing the download tools and verifying local Gemma / embedding / reranking files. Existing valid files are reused.' -ForegroundColor Cyan
-            $modelsArguments = @('compose', '--project-directory', $projectRoot, '-f', (Join-Path $projectRoot 'compose.models.yaml'), '-f', (Join-Path $projectRoot 'compose.models.26b.yaml'))
-            if ($selectedProfile -eq '12b') {
-                $modelsArguments = @('compose', '--project-directory', $projectRoot, '-f', (Join-Path $projectRoot 'compose.models.yaml'), '-f', (Join-Path $projectRoot 'compose.models.12b.yaml'))
-            }
+            Write-Host 'Step 2 of 4: Preparing the download tools and verifying both Gemma and NuExtract / embedding / reranking files. Existing valid files are reused.' -ForegroundColor Cyan
+            $modelsArguments = @('compose', '--project-directory', $projectRoot, '-f', (Join-Path $projectRoot 'compose.models.yaml'))
             Invoke-Docker ($modelsArguments + @('build', 'model-download'))
             Invoke-Docker ($modelsArguments + @('run', '--rm', '--no-deps', 'model-download'))
             Write-Host 'Step 3 of 4: Preparing and verifying PDF / OCR assets.' -ForegroundColor Cyan

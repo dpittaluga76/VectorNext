@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "models": {
+    "generator": {
+      "repo": "numind/NuExtract3-GGUF",
+      "revision": "28a1aae6288c5d50bdf999ca2e572240966d669b",
+      "directory": "generator-nuextract3-q4km",
+      "files": [
+        {
+          "remote_path": "NuExtract3-Q4_K_M.gguf",
+          "path": "NuExtract3-Q4_K_M.gguf",
+          "size": 2783445984,
+          "sha256": "7ee3c0ee9e5699a4391624ae758487f583f73b3242aa4e73dc2bb33e508d703e"
+        }
+      ]
+    }
+  }
+}

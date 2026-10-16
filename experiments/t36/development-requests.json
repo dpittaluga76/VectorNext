@@ -1,0 +1,36 @@
+[
+  {
+    "id": "t35_known_count",
+    "input": {
+      "question": "How many piers does the accepted Norhaven Link route have in August 2031?",
+      "history": []
+    },
+    "expected": [
+      {
+        "kind": "integer",
+        "meaning": "pier"
+      }
+    ]
+  },
+  {
+    "id": "explicit_constraint_outputs",
+    "input": {
+      "question": "For the accepted Norhaven Link route, give its name, acceptance year and reported pier count.",
+      "history": []
+    },
+    "expected": [
+      {
+        "kind": "string",
+        "meaning": "name|route"
+      },
+      {
+        "kind": "integer",
+        "meaning": "year"
+      },
+      {
+        "kind": "integer",
+        "meaning": "pier"
+      }
+    ]
+  }
+]

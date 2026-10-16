@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "models": {
+    "generator": {
+      "repo": "mistralai/Ministral-3-8B-Instruct-2512-GGUF",
+      "revision": "0102285ad796bd99af90f58de616092e5630e970",
+      "directory": "generator-ministral3-8b-q4km",
+      "files": [
+        {
+          "remote_path": "Ministral-3-8B-Instruct-2512-Q4_K_M.gguf",
+          "path": "Ministral-3-8B-Instruct-2512-Q4_K_M.gguf",
+          "size": 5198911904,
+          "sha256": "33e7a72cf5e6e2cfc2f2847075acc013d68bba023e35310cef86b5cf8fdca761"
+        }
+      ]
+    }
+  }
+}

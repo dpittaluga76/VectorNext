@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: docker/ingestion.Dockerfile
-    image: vectornext-ingestion:t28-12b
+    image: vectornext-ingestion:t37-hybrid
     profiles: [tools]
     read_only: true
     init: true
@@ -17,25 +17,19 @@ services:
       - ingestion-data:/storage
       - ingestion-cache:/cache
     networks: [models-internal]
-    environment:
-      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-12b}
 
   llm:
-    extends:
-      file: compose.models.yaml
-      service: llm
+    build:
+      context: .
+      dockerfile: docker/app-llm.Dockerfile
+    image: vectornext-app-llm:t37-hybrid
     profiles: [generation]
-    entrypoint: [python, -m, model_worker.launch_llm]
-    working_dir: /app
-    environment:
-      VECTORNEXT_GENERATOR_PROFILE: ${VECTORNEXT_GENERATOR_PROFILE:-12b}
-    volumes:
-      - ./model_worker:/app/model_worker:ro
-      - ./experiments/t02:/app/experiments/t02:ro
-      - ./experiments/t27:/app/experiments/t27:ro
-    command: []
-    healthcheck:
-      retries: 300
+    gpus: all
+    init: true
+    read_only: true
+    tmpfs: [/tmp]
+    volumes: [./models:/models:ro]
+    networks: [models-internal]
 
 networks:
   models-internal:

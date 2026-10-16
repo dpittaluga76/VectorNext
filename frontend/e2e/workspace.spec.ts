@@ -1,6 +1,25 @@
 import { test, expect, type Page } from '@playwright/test'
 const exact = '9007199254740993.00000000000001'
 
+test('model availability, loaded model and failed answer queue are distinct', async ({ page }) => {
+  await backend(page)
+  await page.route('**/readyz', (r) => r.fulfill({ json: {
+    ready: false, answer_queue: { ready: false, unfinished: 1, capacity: 16, error: 'saved queue failure' },
+    processor: { capabilities: { embedding: true, reranking: true, pdf: true, generation: true },
+      generation: { scheduler: { models: { nuextract: true, gemma: true }, loaded_model: 'nuextract' } } },
+  } }))
+  await page.goto('/')
+  await expect(page.getByLabel('Model availability')).toContainText('NuExtract: available')
+  await expect(page.getByLabel('Model availability')).toContainText('Gemma: available')
+  await expect(page.getByLabel('Model availability')).toContainText('Loaded model: nuextract')
+  await expect(page.getByLabel('System readiness')).toContainText('Answer queue unavailable')
+  await expect(page.getByRole('alert')).toContainText('saved queue failure')
+  await page.getByLabel('Observations.json').check()
+  await page.getByLabel('Ask a question', { exact: true }).fill('Amount?')
+  await expect(page.getByRole('button', { name: 'Ask question', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Inspect', exact: true })).toBeEnabled()
+})
+
 test('clearing conversations keeps the document library', async ({ page }) => {
   await backend(page)
   await page.goto('/')
@@ -150,7 +169,7 @@ test('model outage keeps library and captured source inspection available', asyn
   await page.getByRole('button', { name: 'Inspect', exact: true }).click()
   await expect(page.locator('blockquote')).toContainText(exact)
 })
-async function backend(page: Page) {
+async function backend(page: Page, delayed = false) {
   let docs = [
     {
       document_id: 'doc-one',
@@ -163,6 +182,8 @@ async function backend(page: Page) {
     },
   ]
   const uploads: Record<string, object> = {}
+  const answerJobs: Record<string, { [key: string]: unknown }> = {}
+  const submissions: { request_id: string; mode: string }[] = []
   let uploadCount = 0
   const evidence = {
     id: 'E1',
@@ -190,7 +211,15 @@ async function backend(page: Page) {
   await page.route('**/v1/**', async (r) => {
     const path = new URL(r.request().url()).pathname
     const body = r.request().postData()
-    const data = body?.startsWith('{') ? JSON.parse(body) : {}
+    const envelope = body?.startsWith('{') ? JSON.parse(body) : {}
+    const data = path === '/v1/answer-jobs' ? envelope.payload : envelope
+    if (path === '/v1/answer-jobs' && r.request().method() === 'GET') return r.fulfill({ json: { jobs: Object.values(answerJobs) } })
+    if (path.startsWith('/v1/answer-jobs/')) {
+      const id = path.split('/')[3]
+      if (path.endsWith('/clear')) { delete answerJobs[id]; return r.fulfill({ json: { cleared: true } }) }
+      if (path.endsWith('/cancel') && answerJobs[id]) Object.assign(answerJobs[id], { state: 'cancelled', terminal: true, result: undefined })
+      return answerJobs[id] ? r.fulfill({ json: answerJobs[id] }) : r.fulfill({ status: 404, json: { error: { message: 'answer job not found' } } })
+    }
     if (path === '/v1/ui/library')
       return r.fulfill({ json: { documents: docs, jobs: [] } })
     if (path === '/v1/ui/upload-status')
@@ -233,9 +262,8 @@ async function backend(page: Page) {
       docs = docs.filter((d) => d.document_id !== data.document_id)
       return r.fulfill({ json: { removed: true } })
     }
-    if (path === '/v1/ui/ask')
-      return r.fulfill({
-        json: {
+    if (path === '/v1/answer-jobs') {
+      const result = {
           outcome: 'supported',
           fields: [
             {
@@ -262,15 +290,60 @@ async function backend(page: Page) {
               : {}),
           },
           raw_report: `{"value":${exact}}`,
-        },
-      })
+      }
+      submissions.push(envelope)
+      const job = { request_id: envelope.request_id, mode: envelope.mode, terminal: !delayed, state: delayed ? 'waiting_for_gemma' : 'completed', fallback_reason: delayed ? 'insufficient_evidence' : null, created_ms: Date.now(), updated_ms: Date.now(), status_code: 200, result: delayed ? undefined : result, attempts: [], diagnostics_text: result.raw_report }
+      answerJobs[envelope.request_id] = job
+      return r.fulfill({ status: 202, json: job })
+    }
     return r.fulfill({
       status: 404,
       json: { error: { message: 'Unknown mocked endpoint' } },
     })
   })
-  return { count: () => uploadCount }
+  return { count: () => uploadCount, submissions, jobs: answerJobs }
 }
+
+test('pending jobs recover after reload, remember mode, cancel and clear explicitly', async ({ page }) => {
+  const server = await backend(page, true)
+  await page.goto('/')
+  await page.getByLabel('Observations.json').check()
+  await page.getByLabel('Answer mode', { exact: true }).selectOption('nuextract')
+  await page.getByLabel('Ask a question', { exact: true }).fill('Amount?')
+  await page.getByRole('button', { name: 'Ask question', exact: true }).click()
+  await expect(page.getByText('Fallback: insufficient_evidence')).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Ask question', exact: true })).toBeDisabled()
+  await page.reload()
+  await expect(page.getByText('Fallback: insufficient_evidence')).toBeVisible()
+  await expect(page.getByLabel('Answer mode', { exact: true })).toHaveValue('nuextract')
+  expect(server.submissions).toHaveLength(1)
+  expect(server.submissions[0].mode).toBe('nuextract')
+  await page.getByRole('button', { name: 'Cancel answer', exact: true }).click()
+  await expect(page.locator('.answer-error')).toContainText('Job cancelled')
+  await page.getByRole('button', { name: 'Answer jobs', exact: true }).click()
+  await page.getByRole('button', { name: 'Inspect attempts', exact: true }).click()
+  const exportEvent = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Export exact diagnostics', exact: true }).click()
+  const stream = await (await exportEvent).createReadStream()
+  let text = ''; for await (const chunk of stream!) text += chunk.toString()
+  expect(text).toContain(exact)
+  await page.getByRole('button', { name: 'Clear record', exact: true }).click()
+  expect(Object.keys(server.jobs)).toHaveLength(0)
+})
+
+test('another conversation can queue while the first turn waits', async ({ page }) => {
+  const server = await backend(page, true)
+  await page.goto('/')
+  await page.getByLabel('Observations.json').check()
+  await page.getByLabel('Ask a question', { exact: true }).fill('First amount?')
+  await page.getByRole('button', { name: 'Ask question', exact: true }).click()
+  await expect(page.getByText('Fallback: insufficient_evidence')).toBeVisible()
+  await page.getByRole('button', { name: 'New', exact: true }).click()
+  await page.getByLabel('Ask a question', { exact: true }).fill('Second amount?')
+  await page.getByRole('button', { name: 'Ask question', exact: true }).click()
+  await expect.poll(() => server.submissions.length).toBe(2)
+  expect(new Set(server.submissions.map((s) => s.request_id)).size).toBe(2)
+})
 test('facet choice reaches API and recorded workflow survives reload', async ({
   page,
 }) => {
@@ -283,9 +356,9 @@ test('facet choice reaches API and recorded workflow survives reload', async ({
   await page
     .getByLabel('Ask a question', { exact: true })
     .fill('What is the amount?')
-  const request = page.waitForRequest((r) => r.url().endsWith('/v1/ui/ask'))
+  const request = page.waitForRequest((r) => r.url().endsWith('/v1/answer-jobs') && r.method() === 'POST')
   await page.getByRole('button', { name: 'Ask question', exact: true }).click()
-  expect((await request).postDataJSON().options.evidence_strategy).toBe(
+  expect((await request).postDataJSON().payload.options.evidence_strategy).toBe(
     'facet_coverage_v1',
   )
   await expect(page.getByText(exact, { exact: true })).toBeVisible()

@@ -65,12 +65,12 @@ class AnswerModelTests(unittest.TestCase):
             self.assertEqual(payload["max_tokens"], 768)
             return {"choices": [{"finish_reason": "stop", "message": {"content": json.dumps(answer)}}]}
         with patch.object(w, "http", side_effect=http) as mock:
-            for _ in range(2): self.assertEqual(w.handle({"op": "answer", "input": value})["answer"], answer)
+            for _ in range(2): self.assertEqual(w.handle({"op": "answer", "input": value, "lease":{"model":"gemma","token":"synthetic-test-lease"}})["answer"], answer)
             self.assertEqual(mock.call_count, 12)
             answer["fields"] = {"goals": None}
-            with self.assertRaises(jsonschema.ValidationError): w.handle({"op": "answer", "input": value})
+            with self.assertRaises(jsonschema.ValidationError): w.handle({"op": "answer", "input": value, "lease":{"model":"gemma","token":"synthetic-test-lease"}})
         with patch.object(w, "http", side_effect=[{"prompt": "chat"}, {"tokens": [1] * 3329}]):
-            with self.assertRaisesRegex(ValueError, "budget"): w.handle({"op": "answer", "input": value})
+            with self.assertRaisesRegex(ValueError, "budget"): w.handle({"op": "answer", "input": value, "lease":{"model":"gemma","token":"synthetic-test-lease"}})
 
     def test_wire_schema_keeps_status_before_dependent_fields(self):
         output_schema = schema(self.value()["fields"], self.value()["evidence"])
@@ -87,7 +87,7 @@ class AnswerModelTests(unittest.TestCase):
     def test_ambiguous_assessment_skips_extraction(self):
         with patch.object(self.worker, "http", side_effect=[{"prompt": "x"}, {"tokens": [1]},
                 {"choices": [{"finish_reason": "stop", "message": {"content": '{"status":"ambiguous","reason":"Two events fit."}'}}]}]) as http:
-            result = self.worker.handle({"op": "answer", "input": self.value()})
+            result = self.worker.handle({"op": "answer", "input": self.value(), "lease":{"model":"gemma","token":"synthetic-test-lease"}})
             self.assertEqual(result["answer"], {"status": "ambiguous", "fields": {}})
             self.assertEqual(http.call_count, 3)
 
@@ -112,7 +112,7 @@ class AnswerModelTests(unittest.TestCase):
         for returned, expected in ((exact, "draft"), ("9007199254740992.0", "rejected_missing_field_literals")):
             response = {"question": "What is the reading?", "answer": "Reading: " + returned}
             with patch("model_worker.answers.generate", return_value=(response, {})) as generate:
-                result = self.worker.handle({"op": "rewrite", "input": {"question": "What is the reading?", "field_literals": {"reading": exact}}})
+                result = self.worker.handle({"op": "rewrite", "lease":{"model":"gemma","token":"synthetic-test-lease"}, "input": {"question": "What is the reading?", "field_literals": {"reading": exact}}})
                 self.assertEqual(result["status"], expected)
                 prompt = json.loads(generate.call_args.args[1][1]["content"])
                 self.assertEqual(prompt["validated_field_literals"]["reading"], exact)

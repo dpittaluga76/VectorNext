@@ -240,11 +240,11 @@ class ClientTests(unittest.TestCase):
 
     def test_ask_preserves_request_and_response_numeric_literals(self):
         raw=b'{"answer":{"status":"insufficient_evidence","fields":{}},"precise":9007199254740993.00000000000001}'
-        class Response(io.BytesIO):status=200
+        class Response(io.BytesIO):status=202
         class Opener:
             def open(self,request,timeout):
                 self.seen=request.data
-                return Response(raw)
+                return Response(json.dumps({'terminal':True,'status_code':200,'response_text':raw.decode()}).encode())
         opener=Opener()
         with tempfile.TemporaryDirectory() as temp:
             path=Path(temp)/'ask.json'
@@ -257,11 +257,11 @@ class ClientTests(unittest.TestCase):
                 out=self.run_cli(['ask',str(path),'--evidence-strategy','coverage_v1'])
             self.assertEqual(out,raw+b'\n')
             self.assertIn(b'9007199254740993.00000000000001',opener.seen)
-            self.assertEqual(json.loads(opener.seen)['options'],{'evidence_strategy':'coverage_v1'})
+            self.assertEqual(json.loads(opener.seen)['payload']['options'],{'evidence_strategy':'coverage_v1'})
             with patch('urllib.request.build_opener',return_value=opener):
                 out=self.run_cli(['ask',str(path),'--evidence-strategy','facet_coverage_v1'])
             self.assertEqual(out,raw+b'\n')
-            self.assertEqual(json.loads(opener.seen)['options'],{'evidence_strategy':'facet_coverage_v1'})
+            self.assertEqual(json.loads(opener.seen)['payload']['options'],{'evidence_strategy':'facet_coverage_v1'})
 
 
 if __name__=='__main__':unittest.main()

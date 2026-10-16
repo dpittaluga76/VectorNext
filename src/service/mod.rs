@@ -1,4 +1,5 @@
 //! Shared database owner and short-write/long-processing application boundary.
+pub mod answer_jobs;
 mod coordinator;
 pub mod http;
 pub mod remote;
@@ -61,7 +62,7 @@ fn keyword() -> String {
 fn ten() -> usize {
     10
 }
-#[derive(Deserialize)]
+#[derive(Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Question {
     pub request: AskRequest,
@@ -84,6 +85,10 @@ pub struct Application {
     measured: Mutex<BTreeMap<String, (u64, f64)>>,
     structural_weight: f64,
     generated_weight: f64,
+    answer_store: Mutex<answer_jobs::Store>,
+    answer_started: AtomicBool,
+    answer_owner: String,
+    weak_self: std::sync::OnceLock<std::sync::Weak<Application>>,
 }
 fn lock<T>(value: &Mutex<T>) -> Result<std::sync::MutexGuard<'_, T>> {
     value
@@ -124,8 +129,16 @@ impl Application {
             generated_weight.is_finite() && (0.0..=10.0).contains(&generated_weight),
             "invalid generated keyword weight",
         )?;
-        Ok(Arc::new(Self {
-            db: Mutex::new(Database::open(path)?),
+        let mode =
+            std::env::var("VECTORNEXT_DEFAULT_ANSWER_MODE").unwrap_or_else(|_| "hybrid".into());
+        require(
+            matches!(mode.as_str(), "hybrid" | "gemma" | "nuextract"),
+            "unsupported default answer mode",
+        )?;
+        let db = Database::open(path)?;
+        let answer_store = answer_jobs::Store::open(path)?;
+        let app = Arc::new(Self {
+            db: Mutex::new(db),
             processor,
             indexes: Mutex::new(BTreeMap::new()),
             background: Mutex::new(()),
@@ -137,7 +150,13 @@ impl Application {
             measured: Mutex::new(BTreeMap::new()),
             structural_weight,
             generated_weight,
-        }))
+            answer_store: Mutex::new(answer_store),
+            answer_started: AtomicBool::new(false),
+            answer_owner: answer_jobs::identity(),
+            weak_self: std::sync::OnceLock::new(),
+        });
+        let _ = app.weak_self.set(Arc::downgrade(&app));
+        Ok(app)
     }
     fn measure(&self, name: &str, start: Instant) {
         if let Ok(mut values) = self.measured.lock() {
@@ -169,14 +188,17 @@ impl Application {
             .health()
             .unwrap_or_else(|e| json!({"error":e.to_string(),"capabilities":{}}));
         let capabilities = &processor["capabilities"];
+        let answer_queue = self.answer_jobs()?;
         let ready = storage["storage_ready"] == true
             && storage["coordinator"]["state"] == "running"
             && !self.stopping.load(Ordering::Relaxed)
+            && answer_queue["ready"] == true
             && ["embedding", "reranking", "pdf", "generation"]
                 .iter()
                 .all(|k| capabilities[*k] == true);
         Ok(
-            json!({"ready":ready,"storage":storage,"processor":processor,
+            json!({"ready":ready,"storage":storage,"processor":processor,"answer_queue":answer_queue,
+            "default_answer_mode":std::env::var("VECTORNEXT_DEFAULT_ANSWER_MODE").unwrap_or_else(|_|"hybrid".into()),
             "independent_operations":["document inspection","job inspection","keyword search","structured lookup without prose"]}),
         )
     }
@@ -198,6 +220,31 @@ impl Application {
         Ok(
             json!({"coordinator":self.coordinator_status()?,"jobs":lock(&self.db)?.ingestion_jobs()?.iter().map(job_summary).collect::<Vec<_>>()}),
         )
+    }
+    pub fn check_ingestion_generator(
+        &self,
+        expected: &crate::ingestion::context::GenerationConfig,
+    ) -> Result<()> {
+        for job in lock(&self.db)?.ingestion_jobs()? {
+            if job.stage != Stage::Committed {
+                if let Some(generator) = job
+                    .request
+                    .config
+                    .context
+                    .as_ref()
+                    .and_then(|c| c.generator.as_ref())
+                {
+                    require(
+                        generator == expected,
+                        &format!(
+                            "unfinished ingestion {} requires an unavailable generator; finish with its previous deployment before upgrading",
+                            job.request.job_id
+                        ),
+                    )?;
+                }
+            }
+        }
+        Ok(())
     }
     pub fn job(&self, id: &str) -> Result<Value> {
         let job = lock(&self.db)?
@@ -325,6 +372,13 @@ impl Application {
     }
     fn index(&self, id: Option<&str>) -> Result<(Arc<SearchIndex>, EmbeddingSpace)> {
         let snapshot = self.snapshot()?;
+        self.index_snapshot(snapshot, id)
+    }
+    fn index_snapshot(
+        &self,
+        snapshot: ReadSnapshot,
+        id: Option<&str>,
+    ) -> Result<(Arc<SearchIndex>, EmbeddingSpace)> {
         let space = if let Some(id) = id {
             snapshot.space(id)
         } else {
@@ -402,8 +456,20 @@ impl Application {
         Ok(json!({"generation":index.generation(),"space_id":space.id(),"hits":hits,"trace":trace}))
     }
     pub fn ask(&self, question: Question) -> Result<Value> {
+        self.answer_sync(
+            answer_jobs::Kind::Structured,
+            serde_json::to_value(question)?,
+            answer_jobs::Mode::Hybrid,
+        )
+    }
+    fn ask_attempt(
+        &self,
+        question: Question,
+        index: Arc<SearchIndex>,
+        space: EmbeddingSpace,
+        models: &RemoteModels,
+    ) -> Result<Value> {
         let started = Instant::now();
-        let (index, space) = self.index(question.space_id.as_deref())?;
         let index_ms = started.elapsed().as_secs_f64() * 1000.0;
         let mut report =
             if question.request.scope == Scope::StructuredLookup && !question.request.prose {
@@ -414,13 +480,11 @@ impl Application {
                     question.options,
                 )?
             } else {
-                let _interactive = busy(&self.interactive)?;
-                let models = RemoteModels::connect(self.processor.clone(), "interactive")?;
                 require(
                     models.space() == space,
                     "processor/index embedding spaces differ",
                 )?;
-                answers::ask_with_options(&index, &models, question.request, question.options)?
+                answers::ask_with_options(&index, models, question.request, question.options)?
             };
         report.timings_ms.insert("snapshot_index".into(), index_ms);
         report.timings_ms.insert(
@@ -510,6 +574,7 @@ impl Application {
         Ok(true)
     }
     pub fn start(self: &Arc<Self>) -> std::thread::JoinHandle<()> {
+        self.start_answers();
         self.start_coordinator(|app| app.step())
     }
     pub fn stop(&self) {
