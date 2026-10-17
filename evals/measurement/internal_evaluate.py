@@ -223,7 +223,14 @@ def select_evidence(case,evidence,coordinates,proof):
             attempts+=1
             if attempts>100000:return None,'oracle_selection_search_bound'
             refs=[r for i in indices for r in coordinates[i]]
-            if cover(required,refs):return [evidence[i] for i in indices],None
+            selected=[evidence[i] for i in indices]
+            value_present=True
+            if case['format']=='json':
+                value=proof['proof_sets'][0]['value']
+                index=value.get('row',value.get('paragraph'))
+                value_present=any(s['locator'].get('Json',{}).get('pointer')==f'/records/{index}'
+                                  for e in selected for s in e['sources'])
+            if value_present and cover(required,refs):return selected,None
     return None,'gold_evidence_not_reconstructable'
 
 
@@ -245,8 +252,20 @@ def prepare_oracles(root,package):
                 if case['expected']=='supported':
                     names=next((m for m in case['allowed_field_mappings'] if len(m)==len(case['roles'])),None)
                     if names is None:raise ValueError('No complete neutral oracle field mapping')
-                    entry['gold_fields']={name:{'kind':'string','nullable':False,
-                        'description':case['question'],'pointer':None} for name in names}
+                    entry['gold_fields']={}
+                    for name,role_id in names.items():
+                        role=next(r for r in case['roles'] if r['id']==role_id)
+                        if case['format']=='json':
+                            loc=proofs[case['case_id']]['proof_sets'][0]['value']
+                            location=('original table row '+str(loc['row'])+', column '+str(loc['col'])
+                                      if 'row' in loc else 'original paragraph '+str(loc['paragraph']))
+                        else:
+                            location='; '.join('reviewed-text UTF-8 bytes '+str(p['utf8_start'])+'..'+str(p['utf8_end'])
+                                               for p in role['proof_sets'][0])
+                        description='Requested fact '+role_id+'. Source location: '+location+'.'
+                        if len(description.encode('utf8'))>256:raise ValueError('Oracle location definition exceeds normal field bound')
+                        entry['gold_fields'][name]={'kind':'string','nullable':False,
+                                                   'description':description,'pointer':None}
                 else:entry['gold_fields']=None
         save(destination/(case['case_id']+'.json'),entry)
 

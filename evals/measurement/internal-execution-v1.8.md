@@ -49,12 +49,15 @@ are explicitly unavailable. Do not truncate to make an oracle fit.
 Exact source-order subset search stops at eight bundles or 100,000 subsets;
 failure to establish coverage within that bound is an unavailable oracle, not a
 claim that the source lacks evidence. The first frozen complete field mapping is
-used for the gold-field intervention; its descriptions contain only the question.
+used for the gold-field intervention; descriptions identify the fact role and
+reviewed source coordinates (table row/column or original UTF-8 intervals), never
+gold values or aliases. JSON coverage also requires the original value record,
+not merely a copy of that cell appearing in another record's context metadata.
 
 After strategies, run this evidence with the captured automatic ranked-five fields
 on NuExtract and Gemma; if planning produced no fields record unavailable. Also run
-neutral gold field names (`fact`, or the first frozen allowed mapping) with string
-types, original question as description and no answer values or pointer hints,
+gold field names from the first frozen allowed mapping with string
+types, source-coordinate descriptions and no answer values or fixed JSON pointers,
 when supported gold exists and the field definitions differ. These interventions
 must not be called a pure planning-cost comparison unless evidence is identical.
 Normal two-call operation, 3328 input tokens, 768 output tokens, temperatures and
