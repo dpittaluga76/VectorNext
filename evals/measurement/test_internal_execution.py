@@ -5,12 +5,21 @@ import unittest
 from unittest.mock import patch
 
 from .families import encoded, load, save
-from .internal_evaluate import range_covered, rpc_attempt, select_evidence, submit
+from .internal_evaluate import range_covered, rpc_attempt, select_evidence, submit, mounts_equal
 from .internal_results import original_correct, cluster_interval
 from .test_capture_projection import fixture
 
 
 class InternalExecutionTests(unittest.TestCase):
+    def test_mount_identity_ignores_order_but_not_permissions_or_paths(self):
+        mounts=[{'Destination':'/data','Source':'isolated','RW':True},
+                {'Destination':'/models','Source':'weights','RW':False}]
+        self.assertTrue(mounts_equal(mounts,list(reversed(mounts))))
+        changed=[dict(m) for m in mounts];changed[0]['Source']='normal-library'
+        self.assertFalse(mounts_equal(mounts,changed))
+        changed=[dict(m) for m in mounts];changed[1]['RW']=True
+        self.assertFalse(mounts_equal(mounts,changed))
+
     def test_uncertain_direct_call_is_not_replayed(self):
         with TemporaryDirectory() as folder:
             dest=Path(folder)/'attempt';dest.mkdir();save(dest/'started.json',{'attempted':True})

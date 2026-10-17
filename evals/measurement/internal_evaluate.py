@@ -20,6 +20,11 @@ API='http://127.0.0.1:8098'
 PROCESSOR='http://127.0.0.1:8099'
 
 
+def mounts_equal(actual,expected):
+    # Docker does not guarantee the order of Mounts in separate inspect calls.
+    return sorted(actual,key=lambda m:m['Destination'])==sorted(expected,key=lambda m:m['Destination'])
+
+
 def verified(root):
     freeze=load(root/'execution-freeze.json')
     if freeze['classification']!='internal_exposed_pilot' or freeze['independent_review']:
@@ -39,7 +44,7 @@ def verified(root):
     for observed,expected in zip(current,freeze['containers'].values()):
         if not observed['State']['Running'] or observed['Image']!=expected['image']:
             raise ValueError('Frozen container/image is no longer running')
-        if observed['Mounts']!=expected['mounts']:
+        if not mounts_equal(observed['Mounts'],expected['mounts']):
             raise ValueError('Frozen container mounts changed')
     return freeze,package
 
