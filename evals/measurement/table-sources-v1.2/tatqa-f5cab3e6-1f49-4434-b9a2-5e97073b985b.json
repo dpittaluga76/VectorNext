@@ -1,0 +1,155 @@
+{
+  "records": [
+    {
+      "row_index": 0,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "",
+        "December31,",
+        ""
+      ]
+    },
+    {
+      "row_index": 1,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "",
+        "2019",
+        "2018"
+      ]
+    },
+    {
+      "row_index": 2,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "Accrued payroll and employee benefits",
+        "$116.9",
+        "$105.9"
+      ]
+    },
+    {
+      "row_index": 3,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "Derivative liabilities",
+        "93.8",
+        "120.5"
+      ]
+    },
+    {
+      "row_index": 4,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "Current portion of operating lease liabilities",
+        "39.5",
+        "—"
+      ]
+    },
+    {
+      "row_index": 5,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "Tax-related accruals",
+        "30.8",
+        "38.4"
+      ]
+    },
+    {
+      "row_index": 6,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "Accrued legal and professional",
+        "28.7",
+        "10.9"
+      ]
+    },
+    {
+      "row_index": 7,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "Accrued marketing and advertising expenses",
+        "14.7",
+        "19.4"
+      ]
+    },
+    {
+      "row_index": 8,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "Accrued acquisition-related expenses and acquisition consideration payable",
+        "8.3",
+        "74.4"
+      ]
+    },
+    {
+      "row_index": 9,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "Accrued other",
+        "33.3",
+        "44.8"
+      ]
+    },
+    {
+      "row_index": 10,
+      "headers": [
+        "",
+        "December31,",
+        ""
+      ],
+      "cells": [
+        "",
+        "$366.0",
+        "$414.3"
+      ]
+    },
+    {
+      "paragraph_order": 1,
+      "text": "9. Accrued Expenses and Other Current Liabilities"
+    },
+    {
+      "paragraph_order": 2,
+      "text": "Accrued expenses and other current liabilities consisted of the following:"
+    }
+  ]
+}

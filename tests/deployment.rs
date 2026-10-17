@@ -358,7 +358,7 @@ impl FakeProcessor {
                 runtime: "test".into(),
                 prompt: prompt.into(),
                 prompt_version: format!("{:x}", Sha256::digest(prompt)),
-                temperature: 0,
+                temperature: 0.into(),
                 seed: 42,
                 context_window: 4096,
                 output_tokens: 256,

@@ -1,0 +1,46 @@
+{
+  "kind": "accepted_gold_offline_verification_not_execution_approval",
+  "date": "2026-10-17",
+  "measurement_tests_passed": 117,
+  "new_adjudication_tests": 13,
+  "verified_development_members": 116,
+  "prior_frozen_artifact_entries_verified": 90,
+  "d1_amendment_hash_verified": true,
+  "reproduced_generated_files": 9,
+  "exact_evidence_spans_verified": 9,
+  "unchanged_case_records": 114,
+  "unchanged_questions_sources_original_labels": 120,
+  "current_primary_derived_stress": [
+    101,
+    3,
+    16
+  ],
+  "primary_positive_negative": [
+    75,
+    26
+  ],
+  "remaining_pending_gold_activation_cases": [
+    107
+  ],
+  "model_calls": 0,
+  "sealed_opened": false,
+  "production_changed": false,
+  "new_containers": 0,
+  "custodian_receipt_received": false,
+  "commands": [
+    {
+      "command": "python -m unittest discover -s evals/measurement -t . -p 'test_*.py'",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m evals.measurement.build_gold_review --audit tmp/t39-internal-review/source-audit.json --proposal tmp/t39-v2-review-proposal-v2 --output tmp/t39-gold-review-v1.5-final",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check -- .gitattributes docs/architecture.md docs/plan.md docs/reviews/t39-review-decisions.md evals/measurement docs/reports/t39-gold-review-v1.5.md",
+      "exit_code": 0
+    }
+  ],
+  "local_markdown_targets_checked": 70,
+  "new_file_whitespace_check": true
+}

@@ -1,0 +1,317 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectornext.local/evals/typed-facts-v1.1.schema.json",
+  "title": "D4 source review candidate, not execution approval",
+  "type": "object",
+  "required": [
+    "status",
+    "approved_for_execution",
+    "cases"
+  ],
+  "properties": {
+    "status": {
+      "const": "source_review_candidate"
+    },
+    "approved_for_execution": {
+      "const": false
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    }
+  },
+  "$defs": {
+    "case": {
+      "type": "object",
+      "required": [
+        "number",
+        "case_id",
+        "question",
+        "document",
+        "document_sha256",
+        "source_text_sha256",
+        "format",
+        "tier",
+        "expected",
+        "pending_decisions",
+        "original_alternatives",
+        "original_expected",
+        "roles",
+        "allowed_field_mappings"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "case_id": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
+        },
+        "document": {
+          "type": "string"
+        },
+        "document_sha256": {
+          "type": "string"
+        },
+        "source_text_sha256": {
+          "type": "string"
+        },
+        "original_expected": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "format": {
+          "enum": [
+            "txt",
+            "pdf",
+            "json"
+          ]
+        },
+        "tier": {
+          "enum": [
+            "primary_direct_extraction",
+            "derived_inference",
+            "stress_adjudication"
+          ]
+        },
+        "expected": {
+          "enum": [
+            "supported",
+            "insufficient_evidence",
+            "ambiguous"
+          ]
+        },
+        "pending_decisions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "original_alternatives": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/role"
+          }
+        },
+        "allowed_field_mappings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "value_string",
+        "period",
+        "qualifier",
+        "question_target",
+        "source_type",
+        "scale",
+        "allowed_alternatives",
+        "derived_alternatives",
+        "imprecise_alternatives",
+        "format_diagnostic_remove_literals",
+        "proof_sets",
+        "derived_proof_sets"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "value_string": {
+          "type": "string"
+        },
+        "period": {
+          "type": "string"
+        },
+        "qualifier": {
+          "type": "string"
+        },
+        "question_target": {
+          "type": "string"
+        },
+        "source_type": {
+          "const": "string"
+        },
+        "scale": {
+          "type": "object",
+          "required": [
+            "stated",
+            "unit",
+            "source_context"
+          ],
+          "properties": {
+            "stated": {
+              "type": "string"
+            },
+            "unit": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source_context": {
+              "type": "array"
+            },
+            "upstream_annotation": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "allowed_alternatives": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "derived_alternatives": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imprecise_alternatives": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "format_diagnostic_remove_literals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "proof_sets": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/location"
+            }
+          }
+        },
+        "derived_proof_sets": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/location"
+            }
+          }
+        },
+        "members": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "aliases",
+              "proof_sets"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "aliases": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "proof_sets": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/$defs/location"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "unordered": {
+          "type": "boolean"
+        },
+        "separators": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "location": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "document_sha256",
+            "pointer"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "document_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "pointer": {
+              "type": "string",
+              "pattern": "^/"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "document_sha256",
+            "utf8_start",
+            "utf8_end"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "document_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "utf8_start": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "utf8_end": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -67,7 +67,7 @@ class Lane:
                     if b'\n' in response:
                         if not response.endswith(b'\n') or response.count(b'\n') != 1: raise ValueError('invalid CPU worker frame')
                         parsed = json.loads(response)
-                        if not isinstance(parsed, dict) or set(parsed) not in ({'result'}, {'error'}): raise ValueError('invalid CPU worker envelope')
+                        if not isinstance(parsed, dict) or set(parsed) - {'measurement'} not in ({'result'}, {'error'}): raise ValueError('invalid CPU worker envelope')
                         self.ready = True; self.error = None
                         return bytes(response)
         except Exception as error:

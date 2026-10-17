@@ -1,4 +1,10 @@
 import type { Conversation, Workspace } from '../types'
+// Upgrade future preferences without relabelling captured turns or queued jobs.
+export function migrateDefaults(state: Workspace): Workspace {
+  return state.default_policy === 'nuextract-v1' ? state : {
+    ...state, answer_mode: 'nuextract', default_policy: 'nuextract-v1',
+  }
+}
 export async function database(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     const r = indexedDB.open('vectornext-workspace', 1)

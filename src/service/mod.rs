@@ -130,7 +130,7 @@ impl Application {
             "invalid generated keyword weight",
         )?;
         let mode =
-            std::env::var("VECTORNEXT_DEFAULT_ANSWER_MODE").unwrap_or_else(|_| "hybrid".into());
+            std::env::var("VECTORNEXT_DEFAULT_ANSWER_MODE").unwrap_or_else(|_| "nuextract".into());
         require(
             matches!(mode.as_str(), "hybrid" | "gemma" | "nuextract"),
             "unsupported default answer mode",
@@ -198,7 +198,7 @@ impl Application {
                 .all(|k| capabilities[*k] == true);
         Ok(
             json!({"ready":ready,"storage":storage,"processor":processor,"answer_queue":answer_queue,
-            "default_answer_mode":std::env::var("VECTORNEXT_DEFAULT_ANSWER_MODE").unwrap_or_else(|_|"hybrid".into()),
+            "default_answer_mode":std::env::var("VECTORNEXT_DEFAULT_ANSWER_MODE").unwrap_or_else(|_|"nuextract".into()),
             "independent_operations":["document inspection","job inspection","keyword search","structured lookup without prose"]}),
         )
     }
@@ -225,6 +225,12 @@ impl Application {
         &self,
         expected: &crate::ingestion::context::GenerationConfig,
     ) -> Result<()> {
+        self.check_ingestion_generators(std::slice::from_ref(expected))
+    }
+    pub fn check_ingestion_generators(
+        &self,
+        expected: &[crate::ingestion::context::GenerationConfig],
+    ) -> Result<()> {
         for job in lock(&self.db)?.ingestion_jobs()? {
             if job.stage != Stage::Committed {
                 if let Some(generator) = job
@@ -235,7 +241,7 @@ impl Application {
                     .and_then(|c| c.generator.as_ref())
                 {
                     require(
-                        generator == expected,
+                        expected.contains(generator),
                         &format!(
                             "unfinished ingestion {} requires an unavailable generator; finish with its previous deployment before upgrading",
                             job.request.job_id

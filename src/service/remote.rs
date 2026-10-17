@@ -77,6 +77,9 @@ impl Client {
         )?)?)
     }
     pub fn rpc(&self, lane: &str, value: Value) -> Result<Value> {
+        self.rpc_measured(lane, value, &mut Value::Null)
+    }
+    fn rpc_measured(&self, lane: &str, value: Value, measurement: &mut Value) -> Result<Value> {
         let body = serde_json::to_vec(&value)?;
         require(body.len() <= 4 * 1024 * 1024, "model request exceeds 4 MiB")?;
         let seconds = if value["op"] == "answer" { 750 } else { 450 };
@@ -86,6 +89,7 @@ impl Client {
             seconds,
             4 * 1024 * 1024,
         )?)?;
+        *measurement = response.get("measurement").cloned().unwrap_or(Value::Null);
         if let Some(error) = response.get("error") {
             return Err(Error::Unavailable(format!("model operation: {error}")));
         }
@@ -132,12 +136,18 @@ impl RemoteModels {
             check()?;
         }
         let start = std::time::Instant::now();
-        let result = self
-            .client
-            .rpc(self.lane, json!({"op":op,"input":input,"lease":self.lease}));
+        let mut measurement = Value::Null;
+        let result = self.client.rpc_measured(
+            self.lane,
+            json!({"op":op,"input":input,"lease":self.lease}),
+            &mut measurement,
+        );
         if let Ok(mut operations) = self.operations.lock() {
             let mut record =
                 json!({"operation":op,"milliseconds":start.elapsed().as_secs_f64()*1000.0});
+            if !measurement.is_null() {
+                record["model_measurement"] = measurement;
+            }
             if op == "plan_fields" {
                 if let Ok(value) = &result {
                     record["response_text"] = json!(value.to_string());
@@ -168,7 +178,7 @@ impl Generator for RemoteModels {
     fn generate(&self, input: &ContextInput) -> Result<Option<String>> {
         require(
             input.space == self.profile.space
-                && input.config.generator.as_ref() == Some(&self.profile.generator),
+                && self.profile.supports(input.config.generator.as_ref()),
             "processor generation identity mismatch",
         )?;
         Ok(serde_json::from_value(

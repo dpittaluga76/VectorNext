@@ -1,0 +1,36 @@
+{
+  "kind": "D6_offline_verification_not_execution_approval",
+  "date": "2026-10-17",
+  "commands": [
+    {
+      "command": "python -m unittest discover -s evals/measurement -t .",
+      "exit_code": 0,
+      "tests_passed": 88,
+      "new_family_tests": 17
+    },
+    {
+      "command": "python -m evals.measurement.families build --audit tmp/t39-internal-review/source-audit.json --proposal tmp/t39-v2-review-proposal-v2 --output tmp/t39-d6-trace-v1.3-final",
+      "exit_code": 0,
+      "verified_development_members": 116
+    },
+    {
+      "command": "git diff --check -- docs/architecture.md docs/plan.md docs/reviews evals/measurement",
+      "exit_code": 0
+    }
+  ],
+  "prior_frozen_artifact_entries_verified": 72,
+  "local_markdown_targets_checked": 134,
+  "current_builder_registry_policy_ledger_handoff_hashes_verified": true,
+  "incomplete_receipt_template_rejected": true,
+  "sealed_content_opened": false,
+  "model_inference_calls": 0,
+  "new_containers": 0,
+  "actual_custodian_receipt_received": false,
+  "replacements_drawn": 0,
+  "primary_cases_traced": 102,
+  "established_primary_identities": 98,
+  "candidate_primary_identities": 4,
+  "established_primary_families": 57,
+  "cross_split_verified_primary_cases": 0,
+  "limit": "Synthetic receipt/outcome/reserve checks only; real custody, lineage reconciliation, successor integration and execution approval remain pending."
+}

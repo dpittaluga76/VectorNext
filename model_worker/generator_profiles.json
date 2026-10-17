@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "default": "12b",
+  "default": "nuextract3-requested-facts-v1",
   "runtime": "llama.cpp-b11617-14310190cd0a0c831fe949ac8cbedd8abdc90695",
   "profiles": {
     "12b": {

@@ -1,0 +1,58 @@
+{
+  "version": "t39-d6-custodian-receipt-v1.3",
+  "handoff_sha256": "7d163b5b13117cf89110a05807c5b42741a8c020bd490600f055036efa58204c",
+  "policy_hashes": {
+    "families-v1.3.md": "d0b4720560c73bddaafd7455702084c14d4dbcff01f75e59dce3e0ba61e58a7b",
+    "tiers-v1.1.md": "bce50482d0424a6716df8c36ac3c07acfab55301edcdcd29c874b759422f0a93",
+    "typed-facts-v1.1.md": "18df6126518757c8aec3df4ba18aa7a39681017ac2af8ea87d2d32d643dcf744",
+    "answer-format-v1.1.txt": "37706bf28d342f200ab1523590324fb3e5ed00d5e304074fd8fbd3ea64bf8f17",
+    "table-context-v1.2.md": "e1a3df71d66b1ba408fa7cf3aef3555b0ed6d849f1e291a5d0d05f86c977fddf"
+  },
+  "custodian": "Daniel Pittaluga / Architect",
+  "candidate_count": null,
+  "candidate_by_format": {
+    "txt": null,
+    "pdf": null,
+    "json": null
+  },
+  "confidence_counts": {
+    "A": null,
+    "B": null,
+    "C": null,
+    "U": null
+  },
+  "d3_counts": {
+    "primary": null,
+    "source_content_unavailable": null,
+    "question_incomplete": null,
+    "premise_or_entity_ambiguous": null,
+    "unit_or_format_ambiguous": null,
+    "scope_or_period_ambiguous": null,
+    "requires_derivation": null
+  },
+  "d4_records_checked": null,
+  "d5_tables_checked": null,
+  "primary_by_format_label": {
+    "txt": {
+      "supported": null,
+      "negative": null
+    },
+    "pdf": {
+      "supported": null,
+      "negative": null
+    },
+    "json": {
+      "supported": null,
+      "negative": null
+    }
+  },
+  "established_primary_family_count": null,
+  "colliding_development_families": null,
+  "unresolved_development_families": null,
+  "colliding_sealed_cases": null,
+  "colliding_sealed_families": null,
+  "source_only_screening": null,
+  "lineage_review_complete": null,
+  "private_audit_retained": null,
+  "model_outputs_used": null
+}

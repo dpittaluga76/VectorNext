@@ -154,7 +154,7 @@ def validate(path, body, priority, model_alias="vectornext-gemma4-26b-a4b", answ
         if (data.get("model") != model_alias or type(data.get("max_tokens")) is not int
                 or not 1 <= data["max_tokens"] <= limit or data.get("stream", False) is not False
                 or data.get("n", 1) != 1 or type(data.get("temperature")) not in (int, float)
-                or data.get("temperature") != (answer_temperature if priority == 'interactive' else 0)):
+                or data.get("temperature") != answer_temperature):
             raise Rejected("invalid model, output budget, streaming, sample count, or temperature")
         allowed = {"model", "messages", "temperature", "seed", "max_tokens", "cache_prompt", "reasoning", "response_format", "stream", "n"}
         if answer_adapter == 'nuextract3-v1':

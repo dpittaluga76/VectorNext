@@ -1,0 +1,147 @@
+{
+  "records": [
+    {
+      "row_index": 0,
+      "headers": [
+        "End-Use Market Data",
+        "Year Ended June 30,",
+        "Year Ended June 30,",
+        "Year Ended June 30,"
+      ],
+      "cells": [
+        "End-Use Market Data",
+        "Year Ended June 30,",
+        "Year Ended June 30,",
+        "Year Ended June 30,"
+      ]
+    },
+    {
+      "row_index": 1,
+      "headers": [
+        "End-Use Market Data",
+        "Year Ended June 30,",
+        "Year Ended June 30,",
+        "Year Ended June 30,"
+      ],
+      "cells": [
+        "($ in millions)",
+        "2019",
+        "2018",
+        "2017"
+      ]
+    },
+    {
+      "row_index": 2,
+      "headers": [
+        "End-Use Market Data",
+        "Year Ended June 30,",
+        "Year Ended June 30,",
+        "Year Ended June 30,"
+      ],
+      "cells": [
+        "Aerospace and Defense",
+        "$1,327.9",
+        "$1,182.3",
+        "$973.3"
+      ]
+    },
+    {
+      "row_index": 3,
+      "headers": [
+        "End-Use Market Data",
+        "Year Ended June 30,",
+        "Year Ended June 30,",
+        "Year Ended June 30,"
+      ],
+      "cells": [
+        "Medical",
+        "205.0",
+        "175.3",
+        "125.5"
+      ]
+    },
+    {
+      "row_index": 4,
+      "headers": [
+        "End-Use Market Data",
+        "Year Ended June 30,",
+        "Year Ended June 30,",
+        "Year Ended June 30,"
+      ],
+      "cells": [
+        "Energy",
+        "181.7",
+        "146.5",
+        "138.0"
+      ]
+    },
+    {
+      "row_index": 5,
+      "headers": [
+        "End-Use Market Data",
+        "Year Ended June 30,",
+        "Year Ended June 30,",
+        "Year Ended June 30,"
+      ],
+      "cells": [
+        "Transportation",
+        "157.7",
+        "157.0",
+        "143.9"
+      ]
+    },
+    {
+      "row_index": 6,
+      "headers": [
+        "End-Use Market Data",
+        "Year Ended June 30,",
+        "Year Ended June 30,",
+        "Year Ended June 30,"
+      ],
+      "cells": [
+        "Industrial and Consumer",
+        "371.5",
+        "364.9",
+        "298.2"
+      ]
+    },
+    {
+      "row_index": 7,
+      "headers": [
+        "End-Use Market Data",
+        "Year Ended June 30,",
+        "Year Ended June 30,",
+        "Year Ended June 30,"
+      ],
+      "cells": [
+        "Distribution",
+        "136.4",
+        "131.7",
+        "118.7"
+      ]
+    },
+    {
+      "row_index": 8,
+      "headers": [
+        "End-Use Market Data",
+        "Year Ended June 30,",
+        "Year Ended June 30,",
+        "Year Ended June 30,"
+      ],
+      "cells": [
+        "Total net sales",
+        "$2,380.2",
+        "$2,157.7",
+        "$1,797.6"
+      ]
+    },
+    {
+      "paragraph_order": 1,
+      "text": "Disaggregation of Revenue"
+    },
+    {
+      "paragraph_order": 2,
+      "text": "The Company operates in two business segments, Specialty Alloys Operations (“SAO”) and Performance Engineered Products (“PEP”). Revenue is disaggregated within these two business segments by diversified end-use markets and by geographical location. Comparative information of the Company’s overall revenues by end-use markets and geography for years ended June 30, 2019, 2018 and 2017 were as follows:"
+    }
+  ]
+}

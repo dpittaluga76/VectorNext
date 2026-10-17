@@ -56,3 +56,7 @@ docker compose run --rm -v "${PWD}:/workspace:ro" evals python -m unittest deplo
 ```
 
 They cover partial/failed jobs, revision mismatches, TXT/PDF/JSON details, source locations, ambiguity/abstention, exact numeric input/output, null versus the string `null`, safe Markdown rendering, offline replay, transport errors and refusal to overwrite captures. Invocation checks cover special-character quoting, old captures, recovered command provenance and code references for skipped/failed stages, including disabled reranking. See [T12 verification](reports/t12-workflow.md) for the fresh live demo and retained failure examples.
+
+## Observed generation timings
+
+New durable answer attempts retain versioned `model_measurement` records inside each operation, including normal worker failures. Planning, assessment, extraction and optional prose record preparation, inference and decoding/validation durations and observed input/output tokens. Missing observations stay unknown. Model calls are children of attempt work and Rust model-call stages; never add these durations together. Historical rescoring and per-request latency reports are described in the [measurement guide](../evals/measurement/README.md).

@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-16",
+  "checks": "read-only source/roster/evidence assertions; no model/runtime tests needed for review documents",
+  "development_members_verified": 116,
+  "qasper_raw_to_adapter_documents": 19,
+  "tatqa_raw_to_adapter_documents": 32,
+  "squad_source_question_contexts": 62,
+  "D3_evidence_bindings_verified": 44,
+  "prior_D2_frozen_artifacts_unchanged": 10,
+  "D3_exclusion_cases": 15,
+  "one_primary_reason_per_D3_case": true,
+  "unique_roster_cases": 120,
+  "tier_counts": {
+    "primary_direct_extraction": 102,
+    "derived_inference": 3,
+    "stress_adjudication": 15
+  },
+  "hypothetical_51_of_102_wilson_interval": [
+    0.4047444724091258,
+    0.5952555275908742
+  ],
+  "blind_screening": "explicitly waived, not performed",
+  "new_model_runs": 0,
+  "sealed_content_opened": false,
+  "replacement_candidates_inspected_or_drawn": 0,
+  "original_proposal_changed": false,
+  "historical_scores_changed": false,
+  "limitations": [
+    "Partial review artifact; semantic scorer/final proof mappings remain pending.",
+    "Original table-image payloads not acquired or inspected.",
+    "No whole-benchmark quota/family approval or independent validation is claimed."
+  ],
+  "retained_qasper_archive_image_pdf_payloads": 0
+}

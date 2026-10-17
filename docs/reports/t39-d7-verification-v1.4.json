@@ -1,0 +1,43 @@
+{
+  "kind": "D7_offline_verification_not_execution_approval",
+  "date": "2026-10-17",
+  "commands": [
+    {
+      "command": "python -m unittest discover -s evals/measurement -t . -p 'test_*.py'",
+      "exit_code": 0,
+      "tests_passed": 104,
+      "new_control_tests": 16
+    },
+    {
+      "command": "python -m evals.measurement.pilot_controls --audit tmp/t39-internal-review/source-audit.json --proposal tmp/t39-v2-review-proposal-v2 --output docs/reports/t39-d7-pilot-audit-v1.4.json",
+      "exit_code": 0,
+      "verified_development_members": 116
+    },
+    {
+      "command": "git diff --check -- README.md docs/architecture.md docs/plan.md docs/reviews evals/measurement",
+      "exit_code": 0
+    }
+  ],
+  "prior_review_manifests_verified": 5,
+  "prior_frozen_artifact_entries_verified": 82,
+  "d1_amendment_hash_verified": true,
+  "current_audit_policy_prompt_schema_code_hashes_verified": true,
+  "sealed_content_opened": false,
+  "model_inference_calls": 0,
+  "new_containers": 0,
+  "fixtures_regenerated": false,
+  "production_behavior_changed": false,
+  "control_runtime_integrated": false,
+  "closed_book_results_available": false,
+  "paired_development_questions": 0,
+  "excluded_pdf_cases": [
+    65,
+    79
+  ],
+  "limitations": [
+    "Gold/custody/successor integration and execution freeze remain pending.",
+    "Control helpers are offline; tests use synthetic outputs, not model quality evidence."
+  ],
+  "local_markdown_targets_checked": 104,
+  "mandatory_claims_identical_in_policy_headline_changelog": true
+}

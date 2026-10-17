@@ -1,0 +1,293 @@
+{
+  "kind": "D5_review_candidate_hash_record_not_execution_freeze",
+  "version": "1.2",
+  "adopted_local_date": "2026-10-16",
+  "verified_utc_date": "2026-10-17",
+  "approved_for_execution": false,
+  "independent_review_acceptance": false,
+  "sealed_content_opened": false,
+  "model_inference_calls": 0,
+  "new_containers": 0,
+  "production_behavior_changed": false,
+  "primary_metric": "D5 typed final value/format; grounding and joint correctness separate",
+  "primary_representation": "corrected v2; original v1 is ablation, declared before inference",
+  "base_proposal_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "predecessors": {
+    "docs/reports/t39-d2-review-freeze-v1.1.json": "14e2520ae24248dddc0db828c657c8a795bd574f4555d7a18a02495d56b18723",
+    "docs/reports/t39-d3-review-freeze-v1.1.json": "219a1e60bd9bd4d66b4c6dc9752ea38b5df4494f9fee80ba6151d886f703c36e",
+    "docs/reports/t39-d4-review-manifest-v1.1.json": "1a181b4157e10a4c0043e0ee33bfff2076712a262627642da6d5d614ea068fd6"
+  },
+  "artifacts": [
+    {
+      "path": "evals/measurement/table-context-v1.2.md",
+      "sha256": "e1a3df71d66b1ba408fa7cf3aef3555b0ed6d849f1e291a5d0d05f86c977fddf",
+      "bytes": 7435
+    },
+    {
+      "path": "evals/measurement/table-annotations-v1.2.json",
+      "sha256": "94ceb54b2ba55d725aca31ef4f27487edc0027b935c885a33fa588c43fbab074",
+      "bytes": 185619
+    },
+    {
+      "path": "evals/measurement/table-proof-readings-v1.2.json",
+      "sha256": "8a7e9fb3baafa19725e4963f2ec902d1b162b107c409dc4464d01a65f8431195",
+      "bytes": 1499
+    },
+    {
+      "path": "evals/measurement/table_adapter.py",
+      "sha256": "339164d382bee57003ab53e75996242a8359b0192f32851f25dc2350fcee3fa3",
+      "bytes": 11523
+    },
+    {
+      "path": "evals/measurement/table_grounding.py",
+      "sha256": "e9cbd9f38d04ff2f546630b0bf86c0ce440d149b4a688bc3d54d5632c30b6236",
+      "bytes": 5677
+    },
+    {
+      "path": "evals/measurement/build_table_candidate.py",
+      "sha256": "57d9c56f1bf0e7bb10c80193c60580c99c52f061c0bdfdb2f15d56f3f440fceb",
+      "bytes": 12610
+    },
+    {
+      "path": "evals/measurement/table_token_preflight.py",
+      "sha256": "da8a2b30c63a43be74bd40779e42fdaca7ad60fc21a6875bf2eb742aaa520c2c",
+      "bytes": 4417
+    },
+    {
+      "path": "evals/measurement/test_table_context.py",
+      "sha256": "5757d51b9695eb309fcdaaa8e8375339d7f89b80ecadaabd8b6a1b3346ce0c1a",
+      "bytes": 15146
+    },
+    {
+      "path": "docs/reports/t39-d5-coordinate-proofs-v1.2.json",
+      "sha256": "7a3ef23697f92c277fe0912e6dde5335f6f4223c2186632907d002289bb451aa",
+      "bytes": 87568
+    },
+    {
+      "path": "docs/reports/t39-d5-table-audit-v1.2.json",
+      "sha256": "e79f76f59fab9118cb976657b5c52f84477c2e8ccb54974b9ac0e05817d251b5",
+      "bytes": 50086
+    },
+    {
+      "path": "docs/reports/t39-d5-token-preflight-v1.2.json",
+      "sha256": "9dab619a1c4728618fae4d09b47cf7f832a9b6801eb6913c2f5c372dbe30c777",
+      "bytes": 241225
+    },
+    {
+      "path": "docs/reports/t39-d5-table-diff-v1.2.md",
+      "sha256": "89cf97fa9da7d543f98700b16819115f0581d12c6e91dc6fdd12ba61969a7eda",
+      "bytes": 95082
+    },
+    {
+      "path": "docs/reports/t39-d5-table-context-v1.2.md",
+      "sha256": "bd5f4ebdb2867859c6346494471538842e27d786c776268537ff88371b1fef90",
+      "bytes": 10106
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/README.md",
+      "sha256": "16167578605c171387498e84787f2a2d319b7aa752c1727a61555da85c2d64cb",
+      "bytes": 976
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/manifest.json",
+      "sha256": "21b858ca9c79185ba354b2967510ffad0fea234b579fded8a27a3fcfa579b14b",
+      "bytes": 8473
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-0a75d1da-9beb-4a61-b2f4-06cff98b755e.json",
+      "sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+      "bytes": 10338
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-0f04b820-97bc-4592-983b-00cfd0788011.json",
+      "sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+      "bytes": 4999
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-13bb283b-4b9c-42b9-9b02-f1b2e1a87abf.json",
+      "sha256": "d3c0c4ef2a7d848f402bb375ea149cf397d83da1d0115253f7462854ddb7ceb6",
+      "bytes": 6703
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-1f631856-89ba-471a-b65d-86801ec07401.json",
+      "sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+      "bytes": 2856
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-1fc1784c-38a0-49a2-a985-8c8a479f5f66.json",
+      "sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+      "bytes": 2415
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-26d46b77-411e-47aa-b650-5c84ef3e9e21.json",
+      "sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+      "bytes": 2603
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-2a704bb9-4bd3-4071-b8e6-212957b04ada.json",
+      "sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+      "bytes": 4145
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-2bc7fad1-056b-4298-bfca-5a33c970b1a0.json",
+      "sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+      "bytes": 5197
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-386352cf-f7e3-4148-920c-63bc57cf156b.json",
+      "sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+      "bytes": 3780
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-4145912c-86dc-434b-8990-1cfe78f298f5.json",
+      "sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+      "bytes": 2461
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-428d5e87-612b-468c-80f3-5b5298d589c8.json",
+      "sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+      "bytes": 3827
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-467f55db-152c-4219-97c6-5765f1ead0d9.json",
+      "sha256": "660244bf434b8d697f8d6774f0231b46e2ab928e55a58caf0adbc5b2335c2cd5",
+      "bytes": 3819
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-502dd70a-926b-49d7-b236-63855c98e740.json",
+      "sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+      "bytes": 4654
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-62425e9b-b7de-4d31-9565-1042ad9e4926.json",
+      "sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+      "bytes": 5728
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-6aa15859-a841-47eb-ad04-a441599cf05c.json",
+      "sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+      "bytes": 4753
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-736f65a8-7b6b-47bc-8c6a-3a2d641695bc.json",
+      "sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+      "bytes": 4257
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-861ad987-4b1b-40e0-bef3-1fbd25a33c6b.json",
+      "sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+      "bytes": 4658
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-89cf13a2-6d08-48be-a45d-2346422d5c38.json",
+      "sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+      "bytes": 3521
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-914fca09-058a-4409-85c0-7e399c857d4d.json",
+      "sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+      "bytes": 2379
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-9791f353-ce82-41be-a93d-915b8f52677b.json",
+      "sha256": "2181aec9f0a6a93f2e88ed85be4ac936206a97db1e6bf08e976b4b9f1d19d45d",
+      "bytes": 7839
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-a190aaec-d9e9-4555-a64b-e833f1db0843.json",
+      "sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+      "bytes": 2920
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-a7a7ede0-4575-4ace-8d5b-371db74ef3c1.json",
+      "sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+      "bytes": 2422
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-a961dd41-e5cb-40ce-876d-7c2f2c7dae96.json",
+      "sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+      "bytes": 4061
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7.json",
+      "sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+      "bytes": 2756
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-bee68d71-44ca-4177-a1c7-8c127f6f9203.json",
+      "sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+      "bytes": 3435
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-d7d65228-96c1-4890-951c-c3d7578f8031.json",
+      "sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+      "bytes": 2950
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-d873a0cf-2e57-46f3-b9a5-2596808ffa00.json",
+      "sha256": "fd8708831e34f639782a456a2ebc7d299e213a7fe333485c669b0560f6b63df2",
+      "bytes": 2892
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-e8877535-8ade-4ba3-aae2-cd4db2b5c59c.json",
+      "sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+      "bytes": 3454
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-eb122e2e-12b4-4e59-a018-7045192b021d.json",
+      "sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+      "bytes": 5679
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-ec8d8bf5-ff64-447b-8481-cc067a861a28.json",
+      "sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+      "bytes": 3217
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-f5cab3e6-1f49-4434-b9a2-5e97073b985b.json",
+      "sha256": "a7831e877dfd31f12b68208d29ddb06f286eeadbb4b98d3004c2ad8b83937a74",
+      "bytes": 2502
+    },
+    {
+      "path": "evals/measurement/table-sources-v1.2/tatqa-fd7e14ed-efb6-4992-bdc2-b5603d91f126.json",
+      "sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+      "bytes": 4772
+    }
+  ],
+  "verification": {
+    "command": "python -m unittest discover -s evals/measurement -t .",
+    "tests_passed": 71,
+    "D5_tests_passed": 24,
+    "exit_code": 0,
+    "prior_bound_artifacts_unchanged": 25,
+    "D1_adjudication_unchanged": true,
+    "original_development_members_unchanged": 116,
+    "deterministic_rebuild_matches": [
+      "proofs.json",
+      "audit.json",
+      "diff.md"
+    ],
+    "all_original_table_cells_preserved": 1224,
+    "all_original_table_rows_preserved": 339,
+    "tokenizer_preflight": "CPU only in existing processor; hashes and exact payload SHA in retained result",
+    "local_document_links_checked": 105,
+    "local_document_links_missing": 0,
+    "new_source_whitespace": "passed; an initial generated Markdown blank-label trailing space was fixed, prior candidate retained"
+  },
+  "remaining": [
+    "D6/D7 decisions",
+    "010/034/047/053/071/107 gold decisions",
+    "independent/custody and family/whole-benchmark quota checks",
+    "runtime format/scorer/capture integration, including subtree visibility and actual ingestion/answer budgets",
+    "single final execution freeze before strategy/oracle inference"
+  ],
+  "retained_intermediate_local_artifacts": [
+    "tmp/t39-d5-table-candidate-v1.2",
+    "tmp/t39-d5-token-preflight-v1.2.json",
+    "tmp/t39-d5-token-preflight-v1.2-clarified.json",
+    "tmp/t39-d5-token-preflight-v1.2-bound.json",
+    "tmp/t39-d5-reproduction-verified",
+    "tmp/t39-d5-pre-whitespace-check",
+    "tmp/t39-d5-final-reproduction"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "kind": "D3_review_policy_freeze_not_execution_approval",
+  "version": "1.1",
+  "date": "2026-10-16",
+  "approved_for_execution": false,
+  "independent_review_acceptance": false,
+  "base_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "previous_D2_review_freeze_sha256": "14e2520ae24248dddc0db828c657c8a795bd574f4555d7a18a02495d56b18723",
+  "artifacts": [
+    {
+      "path": "evals/measurement/tiers-v1.1.md",
+      "sha256": "bce50482d0424a6716df8c36ac3c07acfab55301edcdcd29c874b759422f0a93"
+    },
+    {
+      "path": "docs/reports/t39-d3-tiers-v1.1.json",
+      "sha256": "fca867a9596d8334cc0e96a0887b9dfc20e1026bcef58f7c8e6c29673703a861"
+    },
+    {
+      "path": "docs/reports/t39-d3-tiers-v1.1.md",
+      "sha256": "41dfaad097d997a61660e641bda590f5e95b09a55f0639cee5b84ca8d229d9eb"
+    },
+    {
+      "path": "docs/reports/t39-d3-verification-v1.1.json",
+      "sha256": "e46d6988c690b24e082c95d279c526fa8594a1227ad9bae67159af89481e70a3"
+    }
+  ],
+  "review_waiver": {
+    "status": "waived_by_user",
+    "date": "2026-10-16",
+    "quote": "let's skip that",
+    "scope": "proposed two-reviewer D3 screening pass",
+    "performed": false,
+    "current_review": "internal_non_blind",
+    "case_107_specific_gate": "not_attested_by_this_waiver"
+  },
+  "D3_case_numbers": [
+    11,
+    15,
+    17,
+    46,
+    62,
+    64,
+    65,
+    73,
+    76,
+    79,
+    82,
+    92,
+    99,
+    110,
+    111
+  ],
+  "development_tiers": {
+    "derived_inference": 3,
+    "primary_direct_extraction": 102,
+    "stress_adjudication": 15
+  },
+  "reserve_seed": "t39-d3-reserve-20261016-v1",
+  "replacement_registry_status": "not_prepared_or_inspected",
+  "replacement_draws": 0,
+  "model_runs": 0,
+  "sealed_content_opened": false,
+  "next_version_rule": "Preserve this review snapshot; new source/label/tier decisions require a successor. Execution still requires resolved mappings and custody/quota checks."
+}

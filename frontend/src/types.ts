@@ -99,4 +99,5 @@ export type Workspace = {
   uploads: Upload[]
   theme: 'light' | 'dark'
   answer_mode?: AnswerMode
+  default_policy?: 'nuextract-v1'
 }

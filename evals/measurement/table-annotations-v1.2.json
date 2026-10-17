@@ -1,0 +1,8852 @@
+{
+  "version": "1.2",
+  "date": "2026-10-16",
+  "status": "source_only_annotation_candidate",
+  "base_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "annotator": "Codex implementation agent",
+  "model_outputs_seen": false,
+  "questions_seen": true,
+  "independent_review": false,
+  "all_development_table_documents": 32,
+  "sealed_content_opened": false,
+  "rule": "Finite manually annotated scopes only; unknown tables/changed bytes/unannotated rows fail. No numeric-row, indentation or blank-cell heuristic.",
+  "tables": [
+    {
+      "table_id": "0a75d1da-9beb-4a61-b2f4-06cff98b755e",
+      "document": "tatqa-0a75d1da-9beb-4a61-b2f4-06cff98b755e.json",
+      "source_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+      "row_kinds": {
+        "3": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "9": "data",
+        "10": "data",
+        "11": "data",
+        "12": "data",
+        "13": "data",
+        "14": "data",
+        "15": "data",
+        "17": "data",
+        "18": "data",
+        "19": "data",
+        "20": "data",
+        "21": "data",
+        "22": "data",
+        "23": "data",
+        "24": "data",
+        "25": "data",
+        "0": "column_header",
+        "1": "column_header",
+        "2": "mixed_header",
+        "4": "group_header",
+        "16": "group_header"
+      },
+      "row_labels": {
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ],
+        "11": [
+          {
+            "row": 11,
+            "col": 0
+          }
+        ],
+        "12": [
+          {
+            "row": 12,
+            "col": 0
+          }
+        ],
+        "13": [
+          {
+            "row": 13,
+            "col": 0
+          }
+        ],
+        "14": [
+          {
+            "row": 14,
+            "col": 0
+          }
+        ],
+        "15": [
+          {
+            "row": 15,
+            "col": 0
+          }
+        ],
+        "17": [
+          {
+            "row": 17,
+            "col": 0
+          }
+        ],
+        "18": [
+          {
+            "row": 18,
+            "col": 0
+          }
+        ],
+        "19": [
+          {
+            "row": 19,
+            "col": 0
+          }
+        ],
+        "20": [
+          {
+            "row": 20,
+            "col": 0
+          }
+        ],
+        "21": [
+          {
+            "row": 21,
+            "col": 0
+          }
+        ],
+        "22": [
+          {
+            "row": 22,
+            "col": 0
+          }
+        ],
+        "23": [
+          {
+            "row": 23,
+            "col": 0
+          }
+        ],
+        "24": [
+          {
+            "row": 24,
+            "col": 0
+          }
+        ],
+        "25": [
+          {
+            "row": 25,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3
+            }
+          ],
+          "rows": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 3
+            }
+          ],
+          "rows": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 0
+            }
+          ],
+          "rows": [
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r011",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 4,
+              "col": 0
+            }
+          ],
+          "rows": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r012",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 16,
+              "col": 0
+            }
+          ],
+          "rows": [
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+      "document": "tatqa-0f04b820-97bc-4592-983b-00cfd0788011.json",
+      "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+      "row_kinds": {
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "9": "data",
+        "10": "data",
+        "11": "data",
+        "12": "data",
+        "13": "data",
+        "14": "data",
+        "0": "caption",
+        "1": "column_header",
+        "2": "column_header"
+      },
+      "row_labels": {
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ],
+        "11": [
+          {
+            "row": 11,
+            "col": 0
+          }
+        ],
+        "12": [
+          {
+            "row": 12,
+            "col": 0
+          }
+        ],
+        "13": [
+          {
+            "row": 13,
+            "col": 0
+          }
+        ],
+        "14": [
+          {
+            "row": 14,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "caption",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 0,
+              "utf8_start": 26,
+              "utf8_end": 29
+            }
+          ],
+          "rows": [
+            3
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 0,
+              "utf8_start": 27,
+              "utf8_end": 30
+            }
+          ],
+          "rows": [
+            4
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 5,
+              "col": 0,
+              "utf8_start": 21,
+              "utf8_end": 24
+            }
+          ],
+          "rows": [
+            5
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 6,
+              "col": 0,
+              "utf8_start": 8,
+              "utf8_end": 11
+            }
+          ],
+          "rows": [
+            6
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 7,
+              "col": 0,
+              "utf8_start": 13,
+              "utf8_end": 16
+            }
+          ],
+          "rows": [
+            7
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 8,
+              "col": 0,
+              "utf8_start": 29,
+              "utf8_end": 32
+            }
+          ],
+          "rows": [
+            8
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r011",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 9,
+              "col": 0,
+              "utf8_start": 34,
+              "utf8_end": 37
+            }
+          ],
+          "rows": [
+            9
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r012",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 10,
+              "col": 0,
+              "utf8_start": 39,
+              "utf8_end": 55
+            }
+          ],
+          "rows": [
+            10
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r013",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 11,
+              "col": 0,
+              "utf8_start": 41,
+              "utf8_end": 61
+            }
+          ],
+          "rows": [
+            11
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r014",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 12,
+              "col": 0,
+              "utf8_start": 27,
+              "utf8_end": 33
+            }
+          ],
+          "rows": [
+            12
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r015",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 14,
+              "col": 0,
+              "utf8_start": 28,
+              "utf8_end": 34
+            }
+          ],
+          "rows": [
+            14
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r016",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 13,
+              "col": 0,
+              "utf8_start": 40,
+              "utf8_end": 59
+            }
+          ],
+          "rows": [
+            13
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r017",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 4,
+              "col": 0
+            }
+          ],
+          "rows": [
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r018",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 8,
+              "col": 0
+            }
+          ],
+          "rows": [
+            9
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r019",
+          "kind": "qualifier",
+          "refs": [
+            {
+              "paragraph": 15,
+              "utf8_start": 6,
+              "utf8_end": 126
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "13bb283b-4b9c-42b9-9b02-f1b2e1a87abf",
+      "document": "tatqa-13bb283b-4b9c-42b9-9b02-f1b2e1a87abf.json",
+      "source_sha256": "d3c0c4ef2a7d848f402bb375ea149cf397d83da1d0115253f7462854ddb7ceb6",
+      "row_kinds": {
+        "1": "data",
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "9": "data",
+        "10": "data",
+        "11": "data",
+        "12": "data",
+        "13": "data",
+        "14": "data",
+        "15": "data",
+        "0": "mixed_header"
+      },
+      "row_labels": {
+        "1": [
+          {
+            "row": 1,
+            "col": 0
+          }
+        ],
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ],
+        "11": [
+          {
+            "row": 11,
+            "col": 0
+          }
+        ],
+        "12": [
+          {
+            "row": 12,
+            "col": 0
+          }
+        ],
+        "13": [
+          {
+            "row": 13,
+            "col": 0
+          }
+        ],
+        "14": [
+          {
+            "row": 14,
+            "col": 0
+          }
+        ],
+        "15": [
+          {
+            "row": 15,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            8,
+            10,
+            13,
+            14
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 0,
+              "utf8_start": 13,
+              "utf8_end": 16
+            }
+          ],
+          "rows": [
+            4
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 7,
+              "col": 0,
+              "utf8_start": 27,
+              "utf8_end": 30
+            }
+          ],
+          "rows": [
+            7
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 9,
+              "col": 0,
+              "utf8_start": 20,
+              "utf8_end": 23
+            }
+          ],
+          "rows": [
+            9
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 11,
+              "col": 0,
+              "utf8_start": 35,
+              "utf8_end": 42
+            }
+          ],
+          "rows": [
+            11
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 12,
+              "col": 0,
+              "utf8_start": 25,
+              "utf8_end": 32
+            }
+          ],
+          "rows": [
+            12
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r011",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 15,
+              "col": 0,
+              "utf8_start": 26,
+              "utf8_end": 33
+            }
+          ],
+          "rows": [
+            15
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "1f631856-89ba-471a-b65d-86801ec07401",
+      "document": "tatqa-1f631856-89ba-471a-b65d-86801ec07401.json",
+      "source_sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+      "row_kinds": {
+        "1": "data",
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "0": "column_header"
+      },
+      "row_labels": {
+        "1": [
+          {
+            "row": 1,
+            "col": 0
+          }
+        ],
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "caption",
+          "refs": [
+            {
+              "paragraph": 6,
+              "utf8_start": 0,
+              "utf8_end": 8
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "paragraph": 8,
+              "utf8_start": 34,
+              "utf8_end": 38
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "1fc1784c-38a0-49a2-a985-8c8a479f5f66",
+      "document": "tatqa-1fc1784c-38a0-49a2-a985-8c8a479f5f66.json",
+      "source_sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "0": "column_header",
+        "1": "mixed_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            3,
+            4
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 4
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            4
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            4
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 4
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            4
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 1,
+              "utf8_start": 2,
+              "utf8_end": 3
+            }
+          ],
+          "rows": [
+            3
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 2,
+              "utf8_start": 2,
+              "utf8_end": 3
+            }
+          ],
+          "rows": [
+            3
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r011",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 5,
+              "col": 1,
+              "utf8_start": 2,
+              "utf8_end": 3
+            }
+          ],
+          "rows": [
+            5
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r012",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 5,
+              "col": 2,
+              "utf8_start": 2,
+              "utf8_end": 3
+            }
+          ],
+          "rows": [
+            5
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "26d46b77-411e-47aa-b650-5c84ef3e9e21",
+      "document": "tatqa-26d46b77-411e-47aa-b650-5c84ef3e9e21.json",
+      "source_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "0": "mixed_header",
+        "1": "group_header",
+        "4": "group_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 4,
+              "col": 0
+            }
+          ],
+          "rows": [
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "qualifier",
+          "refs": [
+            {
+              "paragraph": 9,
+              "utf8_start": 161,
+              "utf8_end": 182
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "qualifier",
+          "refs": [
+            {
+              "paragraph": 10,
+              "utf8_start": 4,
+              "utf8_end": 37
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "2a704bb9-4bd3-4071-b8e6-212957b04ada",
+      "document": "tatqa-2a704bb9-4bd3-4071-b8e6-212957b04ada.json",
+      "source_sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+      "row_kinds": {
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "9": "data",
+        "10": "data",
+        "0": "column_header",
+        "1": "unit_header",
+        "2": "group_header"
+      },
+      "row_labels": {
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 0
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            8,
+            9
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            8,
+            9
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 7,
+              "col": 0
+            }
+          ],
+          "rows": [
+            7
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 10,
+              "col": 1,
+              "utf8_start": 4,
+              "utf8_end": 5
+            }
+          ],
+          "rows": [
+            10
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 10,
+              "col": 2,
+              "utf8_start": 4,
+              "utf8_end": 5
+            }
+          ],
+          "rows": [
+            10
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "2bc7fad1-056b-4298-bfca-5a33c970b1a0",
+      "document": "tatqa-2bc7fad1-056b-4298-bfca-5a33c970b1a0.json",
+      "source_sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+      "row_kinds": {
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "9": "data",
+        "10": "data",
+        "11": "data",
+        "12": "data",
+        "13": "data",
+        "14": "data",
+        "15": "data",
+        "16": "data",
+        "19": "data",
+        "20": "data",
+        "21": "data",
+        "22": "data",
+        "23": "data",
+        "0": "column_header",
+        "1": "column_header",
+        "2": "unit_header",
+        "3": "group_header",
+        "18": "group_header",
+        "17": "blank"
+      },
+      "row_labels": {
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ],
+        "11": [
+          {
+            "row": 11,
+            "col": 0
+          }
+        ],
+        "12": [
+          {
+            "row": 12,
+            "col": 0
+          }
+        ],
+        "13": [
+          {
+            "row": 13,
+            "col": 0
+          }
+        ],
+        "14": [
+          {
+            "row": 14,
+            "col": 0
+          }
+        ],
+        "15": [
+          {
+            "row": 15,
+            "col": 0
+          }
+        ],
+        "16": [
+          {
+            "row": 16,
+            "col": 0
+          }
+        ],
+        "19": [
+          {
+            "row": 19,
+            "col": 0
+          }
+        ],
+        "20": [
+          {
+            "row": 20,
+            "col": 0
+          }
+        ],
+        "21": [
+          {
+            "row": 21,
+            "col": 0
+          }
+        ],
+        "22": [
+          {
+            "row": 22,
+            "col": 0
+          }
+        ],
+        "23": [
+          {
+            "row": 23,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 3,
+              "col": 0
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 18,
+              "col": 0
+            }
+          ],
+          "rows": [
+            19,
+            20,
+            21,
+            22
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+      "document": "tatqa-386352cf-f7e3-4148-920c-63bc57cf156b.json",
+      "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+      "row_kinds": {
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "8": "data",
+        "9": "data",
+        "11": "data",
+        "0": "column_header",
+        "1": "column_header",
+        "2": "column_header",
+        "3": "group_header",
+        "7": "group_header",
+        "10": "group_header"
+      },
+      "row_labels": {
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "11": [
+          {
+            "row": 11,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 1
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 3
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 3,
+              "col": 0
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 7,
+              "col": 1
+            }
+          ],
+          "rows": [
+            8,
+            9,
+            11
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 10,
+              "col": 0
+            }
+          ],
+          "rows": [
+            11
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "4145912c-86dc-434b-8990-1cfe78f298f5",
+      "document": "tatqa-4145912c-86dc-434b-8990-1cfe78f298f5.json",
+      "source_sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "0": "unit_header",
+        "1": "column_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "428d5e87-612b-468c-80f3-5b5298d589c8",
+      "document": "tatqa-428d5e87-612b-468c-80f3-5b5298d589c8.json",
+      "source_sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "0": "column_header",
+        "1": "mixed_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 5
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 4
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            4,
+            5
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r007",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 6
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            6,
+            7
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            1,
+            2,
+            3,
+            4,
+            6
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 5,
+              "utf8_start": 3,
+              "utf8_end": 4
+            }
+          ],
+          "rows": [
+            2
+          ],
+          "columns": [
+            5
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 7,
+              "utf8_start": 4,
+              "utf8_end": 5
+            }
+          ],
+          "rows": [
+            2
+          ],
+          "columns": [
+            7
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r011",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 5,
+              "utf8_start": 3,
+              "utf8_end": 4
+            }
+          ],
+          "rows": [
+            3
+          ],
+          "columns": [
+            5
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r012",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 7,
+              "utf8_start": 4,
+              "utf8_end": 5
+            }
+          ],
+          "rows": [
+            3
+          ],
+          "columns": [
+            7
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r013",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 5,
+              "utf8_start": 2,
+              "utf8_end": 3
+            }
+          ],
+          "rows": [
+            4
+          ],
+          "columns": [
+            5
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r014",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 7,
+              "utf8_start": 4,
+              "utf8_end": 5
+            }
+          ],
+          "rows": [
+            4
+          ],
+          "columns": [
+            7
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "467f55db-152c-4219-97c6-5765f1ead0d9",
+      "document": "tatqa-467f55db-152c-4219-97c6-5765f1ead0d9.json",
+      "source_sha256": "660244bf434b8d697f8d6774f0231b46e2ab928e55a58caf0adbc5b2335c2cd5",
+      "row_kinds": {
+        "1": "data",
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "0": "column_header"
+      },
+      "row_labels": {
+        "1": [
+          {
+            "row": 1,
+            "col": 0
+          }
+        ],
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "unit",
+          "refs": [
+            {
+              "paragraph": 8,
+              "utf8_start": 97,
+              "utf8_end": 111
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+      "document": "tatqa-502dd70a-926b-49d7-b236-63855c98e740.json",
+      "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+      "row_kinds": {
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "0": "caption",
+        "1": "unit_header",
+        "2": "column_header"
+      },
+      "row_labels": {
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "caption",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 3
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 8,
+              "col": 0,
+              "utf8_start": 7,
+              "utf8_end": 35
+            }
+          ],
+          "rows": [
+            8
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "qualifier",
+          "refs": [
+            {
+              "paragraph": 13,
+              "utf8_start": 271,
+              "utf8_end": 330
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "qualifier",
+          "refs": [
+            {
+              "paragraph": 13,
+              "utf8_start": 335,
+              "utf8_end": 368
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "62425e9b-b7de-4d31-9565-1042ad9e4926",
+      "document": "tatqa-62425e9b-b7de-4d31-9565-1042ad9e4926.json",
+      "source_sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+      "row_kinds": {
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "9": "data",
+        "10": "data",
+        "11": "data",
+        "12": "data",
+        "13": "data",
+        "14": "data",
+        "15": "data",
+        "16": "data",
+        "17": "data",
+        "0": "column_header",
+        "1": "column_header",
+        "2": "unit_header"
+      },
+      "row_labels": {
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ],
+        "11": [
+          {
+            "row": 11,
+            "col": 0
+          }
+        ],
+        "12": [
+          {
+            "row": 12,
+            "col": 0
+          }
+        ],
+        "13": [
+          {
+            "row": 13,
+            "col": 0
+          }
+        ],
+        "14": [
+          {
+            "row": 14,
+            "col": 0
+          }
+        ],
+        "15": [
+          {
+            "row": 15,
+            "col": 0
+          }
+        ],
+        "16": [
+          {
+            "row": 16,
+            "col": 0
+          }
+        ],
+        "17": [
+          {
+            "row": 17,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 17,
+              "col": 1,
+              "utf8_start": 4,
+              "utf8_end": 5
+            }
+          ],
+          "rows": [
+            17
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 17,
+              "col": 2,
+              "utf8_start": 3,
+              "utf8_end": 4
+            }
+          ],
+          "rows": [
+            17
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 17,
+              "col": 3,
+              "utf8_start": 3,
+              "utf8_end": 4
+            }
+          ],
+          "rows": [
+            17
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "6aa15859-a841-47eb-ad04-a441599cf05c",
+      "document": "tatqa-6aa15859-a841-47eb-ad04-a441599cf05c.json",
+      "source_sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+      "row_kinds": {
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "7": "data",
+        "8": "data",
+        "9": "data",
+        "10": "data",
+        "11": "data",
+        "12": "data",
+        "13": "data",
+        "14": "data",
+        "0": "mixed_header",
+        "1": "caption",
+        "2": "group_header",
+        "6": "group_header"
+      },
+      "row_labels": {
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ],
+        "11": [
+          {
+            "row": 11,
+            "col": 0
+          }
+        ],
+        "12": [
+          {
+            "row": 12,
+            "col": 0
+          }
+        ],
+        "13": [
+          {
+            "row": 13,
+            "col": 0
+          }
+        ],
+        "14": [
+          {
+            "row": 14,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "caption",
+          "refs": [
+            {
+              "row": 1,
+              "col": 0
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 0
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 6,
+              "col": 0
+            }
+          ],
+          "rows": [
+            7,
+            8,
+            9
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "736f65a8-7b6b-47bc-8c6a-3a2d641695bc",
+      "document": "tatqa-736f65a8-7b6b-47bc-8c6a-3a2d641695bc.json",
+      "source_sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "0": "column_header",
+        "1": "unit_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 4
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            4
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 5
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            5
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 4
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            4
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r011",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 5
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            5
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r012",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 1,
+              "utf8_start": 1,
+              "utf8_end": 2
+            }
+          ],
+          "rows": [
+            2
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r013",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 2,
+              "utf8_start": 1,
+              "utf8_end": 2
+            }
+          ],
+          "rows": [
+            2
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r014",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 3,
+              "utf8_start": 3,
+              "utf8_end": 4
+            }
+          ],
+          "rows": [
+            2
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r015",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 4,
+              "utf8_start": 2,
+              "utf8_end": 3
+            }
+          ],
+          "rows": [
+            2
+          ],
+          "columns": [
+            4
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "861ad987-4b1b-40e0-bef3-1fbd25a33c6b",
+      "document": "tatqa-861ad987-4b1b-40e0-bef3-1fbd25a33c6b.json",
+      "source_sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "8": "data",
+        "9": "data",
+        "10": "data",
+        "11": "data",
+        "12": "data",
+        "0": "mixed_header",
+        "1": "group_header",
+        "7": "group_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ],
+        "11": [
+          {
+            "row": 11,
+            "col": 0
+          }
+        ],
+        "12": [
+          {
+            "row": 12,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 7,
+              "col": 0
+            }
+          ],
+          "rows": [
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1,
+              "utf8_start": 16,
+              "utf8_end": 29
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2,
+              "utf8_start": 20,
+              "utf8_end": 33
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+      "document": "tatqa-89cf13a2-6d08-48be-a45d-2346422d5c38.json",
+      "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "0": "column_header",
+        "1": "mixed_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "caption",
+          "refs": [
+            {
+              "row": 1,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 1,
+              "utf8_start": 4,
+              "utf8_end": 5
+            }
+          ],
+          "rows": [
+            3
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 2,
+              "utf8_start": 4,
+              "utf8_end": 5
+            }
+          ],
+          "rows": [
+            3
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 3,
+              "utf8_start": 4,
+              "utf8_end": 5
+            }
+          ],
+          "rows": [
+            3
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 1,
+              "utf8_start": 3,
+              "utf8_end": 4
+            }
+          ],
+          "rows": [
+            4
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 2,
+              "utf8_start": 3,
+              "utf8_end": 4
+            }
+          ],
+          "rows": [
+            4
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r011",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 3,
+              "utf8_start": 3,
+              "utf8_end": 4
+            }
+          ],
+          "rows": [
+            4
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r012",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 5,
+              "col": 0,
+              "utf8_start": 15,
+              "utf8_end": 23
+            }
+          ],
+          "rows": [
+            5
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r013",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 6,
+              "col": 1,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            6
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r014",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 6,
+              "col": 2,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r015",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 6,
+              "col": 3,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            6
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "914fca09-058a-4409-85c0-7e399c857d4d",
+      "document": "tatqa-914fca09-058a-4409-85c0-7e399c857d4d.json",
+      "source_sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "9": "data",
+        "10": "data",
+        "0": "column_header",
+        "1": "mixed_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "9791f353-ce82-41be-a93d-915b8f52677b",
+      "document": "tatqa-9791f353-ce82-41be-a93d-915b8f52677b.json",
+      "source_sha256": "2181aec9f0a6a93f2e88ed85be4ac936206a97db1e6bf08e976b4b9f1d19d45d",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "0": "unit_header",
+        "1": "column_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "a190aaec-d9e9-4555-a64b-e833f1db0843",
+      "document": "tatqa-a190aaec-d9e9-4555-a64b-e833f1db0843.json",
+      "source_sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "9": "data",
+        "0": "column_header",
+        "1": "column_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "paragraph": 12,
+              "utf8_start": 59,
+              "utf8_end": 82
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "a7a7ede0-4575-4ace-8d5b-371db74ef3c1",
+      "document": "tatqa-a7a7ede0-4575-4ace-8d5b-371db74ef3c1.json",
+      "source_sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "0": "column_header",
+        "1": "mixed_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "caption",
+          "refs": [
+            {
+              "row": 1,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "a961dd41-e5cb-40ce-876d-7c2f2c7dae96",
+      "document": "tatqa-a961dd41-e5cb-40ce-876d-7c2f2c7dae96.json",
+      "source_sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+      "row_kinds": {
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "10": "data",
+        "11": "data",
+        "0": "column_header",
+        "1": "mixed_header",
+        "2": "group_header",
+        "9": "group_header"
+      },
+      "row_labels": {
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ],
+        "11": [
+          {
+            "row": 11,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 0
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 9,
+              "col": 0
+            }
+          ],
+          "rows": [
+            10
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7",
+      "document": "tatqa-ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7.json",
+      "source_sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+      "row_kinds": {
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "0": "column_header",
+        "1": "column_header",
+        "2": "column_header",
+        "3": "column_header"
+      },
+      "row_labels": {
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 1
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 3,
+              "col": 1
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 3,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "bee68d71-44ca-4177-a1c7-8c127f6f9203",
+      "document": "tatqa-bee68d71-44ca-4177-a1c7-8c127f6f9203.json",
+      "source_sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+      "row_kinds": {
+        "1": "data",
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "0": "column_header"
+      },
+      "row_labels": {
+        "1": [
+          {
+            "row": 1,
+            "col": 0
+          }
+        ],
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "caption",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            1
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 2,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            2
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 2,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            3
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 2,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            4
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 5,
+              "col": 2,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            5
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "qualifier",
+          "refs": [
+            {
+              "paragraph": 7,
+              "utf8_start": 96,
+              "utf8_end": 143
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+      "document": "tatqa-d7d65228-96c1-4890-951c-c3d7578f8031.json",
+      "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "0": "mixed_header",
+        "1": "column_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            3,
+            4
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 4
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            4
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1,
+              "utf8_start": 27,
+              "utf8_end": 49
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3,
+              "utf8_start": 25,
+              "utf8_end": 35
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4
+          ],
+          "columns": [
+            3,
+            4
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "d873a0cf-2e57-46f3-b9a5-2596808ffa00",
+      "document": "tatqa-d873a0cf-2e57-46f3-b9a5-2596808ffa00.json",
+      "source_sha256": "fd8708831e34f639782a456a2ebc7d299e213a7fe333485c669b0560f6b63df2",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "0": "column_header",
+        "1": "unit_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+      "document": "tatqa-e8877535-8ade-4ba3-aae2-cd4db2b5c59c.json",
+      "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+      "row_kinds": {
+        "1": "data",
+        "2": "data",
+        "3": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "0": "column_header",
+        "4": "group_and_header"
+      },
+      "row_labels": {
+        "1": [
+          {
+            "row": 1,
+            "col": 0
+          }
+        ],
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 4
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3
+          ],
+          "columns": [
+            4
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 4,
+              "col": 1
+            }
+          ],
+          "rows": [
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 4,
+              "col": 2
+            }
+          ],
+          "rows": [
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 4,
+              "col": 0
+            }
+          ],
+          "rows": [
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1,
+              "utf8_start": 10,
+              "utf8_end": 13
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 4
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3
+          ],
+          "columns": [
+            4
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2,
+              "utf8_start": 8,
+              "utf8_end": 9
+            },
+            {
+              "paragraph": 10,
+              "utf8_start": 26,
+              "utf8_end": 33
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r011",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3,
+              "utf8_start": 8,
+              "utf8_end": 9
+            },
+            {
+              "paragraph": 10,
+              "utf8_start": 26,
+              "utf8_end": 33
+            }
+          ],
+          "rows": [
+            1,
+            2,
+            3
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r012",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 1,
+              "utf8_start": 8,
+              "utf8_end": 11
+            }
+          ],
+          "rows": [
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r013",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 2,
+              "utf8_start": 8,
+              "utf8_end": 11
+            }
+          ],
+          "rows": [
+            5,
+            6,
+            7
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "eb122e2e-12b4-4e59-a018-7045192b021d",
+      "document": "tatqa-eb122e2e-12b4-4e59-a018-7045192b021d.json",
+      "source_sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "7": "data",
+        "8": "data",
+        "0": "column_header",
+        "1": "column_header",
+        "6": "group_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 6,
+              "col": 0
+            }
+          ],
+          "rows": [
+            7,
+            8
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 1,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            2
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 2,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            2
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 2,
+              "col": 3,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            2
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 7,
+              "col": 1,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            7
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 7,
+              "col": 2,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            7
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r011",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 7,
+              "col": 3,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            7
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r012",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 8,
+              "col": 1,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            8
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r013",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 8,
+              "col": 2,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            8
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r014",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 8,
+              "col": 3,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ],
+          "rows": [
+            8
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "cell_symbol",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r015",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 0,
+              "utf8_start": 24,
+              "utf8_end": 30
+            }
+          ],
+          "rows": [
+            3
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r016",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 4,
+              "col": 0,
+              "utf8_start": 26,
+              "utf8_end": 32
+            }
+          ],
+          "rows": [
+            4
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r017",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 5,
+              "col": 0,
+              "utf8_start": 33,
+              "utf8_end": 39
+            }
+          ],
+          "rows": [
+            5
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "ec8d8bf5-ff64-447b-8481-cc067a861a28",
+      "document": "tatqa-ec8d8bf5-ff64-447b-8481-cc067a861a28.json",
+      "source_sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "0": "column_header",
+        "1": "mixed_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 3
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            3
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "caption",
+          "refs": [
+            {
+              "row": 0,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 1,
+              "col": 0
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "columns": [
+            1,
+            2,
+            3
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "f5cab3e6-1f49-4434-b9a2-5e97073b985b",
+      "document": "tatqa-f5cab3e6-1f49-4434-b9a2-5e97073b985b.json",
+      "source_sha256": "a7831e877dfd31f12b68208d29ddb06f286eeadbb4b98d3004c2ad8b83937a74",
+      "row_kinds": {
+        "2": "data",
+        "3": "data",
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "7": "data",
+        "8": "data",
+        "9": "data",
+        "10": "data",
+        "0": "column_header",
+        "1": "column_header"
+      },
+      "row_labels": {
+        "2": [
+          {
+            "row": 2,
+            "col": 0
+          }
+        ],
+        "3": [
+          {
+            "row": 3,
+            "col": 0
+          }
+        ],
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "7": [
+          {
+            "row": 7,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "10": [
+          {
+            "row": 10,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "from_span",
+          "note": "Explicit span assignment from flat table layout; physical merge geometry is unavailable."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    },
+    {
+      "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+      "document": "tatqa-fd7e14ed-efb6-4992-bdc2-b5603d91f126.json",
+      "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+      "row_kinds": {
+        "4": "data",
+        "5": "data",
+        "6": "data",
+        "8": "data",
+        "9": "data",
+        "11": "data",
+        "12": "data",
+        "13": "data",
+        "15": "data",
+        "16": "data",
+        "17": "data",
+        "0": "column_header",
+        "1": "column_header",
+        "2": "group_header",
+        "3": "group_header",
+        "7": "group_header",
+        "10": "group_header",
+        "14": "group_header"
+      },
+      "row_labels": {
+        "4": [
+          {
+            "row": 4,
+            "col": 0
+          }
+        ],
+        "5": [
+          {
+            "row": 5,
+            "col": 0
+          }
+        ],
+        "6": [
+          {
+            "row": 6,
+            "col": 0
+          }
+        ],
+        "8": [
+          {
+            "row": 8,
+            "col": 0
+          }
+        ],
+        "9": [
+          {
+            "row": 9,
+            "col": 0
+          }
+        ],
+        "11": [
+          {
+            "row": 11,
+            "col": 0
+          }
+        ],
+        "12": [
+          {
+            "row": 12,
+            "col": 0
+          }
+        ],
+        "13": [
+          {
+            "row": 13,
+            "col": 0
+          }
+        ],
+        "15": [
+          {
+            "row": 15,
+            "col": 0
+          }
+        ],
+        "16": [
+          {
+            "row": 16,
+            "col": 0
+          }
+        ],
+        "17": [
+          {
+            "row": 17,
+            "col": 0
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "r001",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 1
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r002",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 0,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r003",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 1
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17
+          ],
+          "columns": [
+            1
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r004",
+          "kind": "column_header",
+          "refs": [
+            {
+              "row": 1,
+              "col": 2
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17
+          ],
+          "columns": [
+            2
+          ],
+          "relation": "same_column",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r005",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 2,
+              "col": 0
+            },
+            {
+              "row": 3,
+              "col": 0
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r006",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 7,
+              "col": 0
+            }
+          ],
+          "rows": [
+            8,
+            9
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r007",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 10,
+              "col": 0
+            }
+          ],
+          "rows": [
+            11,
+            12,
+            13
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r008",
+          "kind": "group_header",
+          "refs": [
+            {
+              "row": 14,
+              "col": 0
+            }
+          ],
+          "rows": [
+            15,
+            16,
+            17
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r009",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 3,
+              "col": 0,
+              "utf8_start": 20,
+              "utf8_end": 22
+            }
+          ],
+          "rows": [
+            4,
+            5,
+            6
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r010",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 7,
+              "col": 0,
+              "utf8_start": 62,
+              "utf8_end": 78
+            }
+          ],
+          "rows": [
+            8,
+            9
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r011",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 10,
+              "col": 0,
+              "utf8_start": 26,
+              "utf8_end": 41
+            }
+          ],
+          "rows": [
+            11,
+            12,
+            13
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        },
+        {
+          "id": "r012",
+          "kind": "unit",
+          "refs": [
+            {
+              "row": 14,
+              "col": 0,
+              "utf8_start": 28,
+              "utf8_end": 43
+            }
+          ],
+          "rows": [
+            15,
+            16,
+            17
+          ],
+          "columns": [
+            1,
+            2
+          ],
+          "relation": "explicit_scope",
+          "note": "Source-only scope annotation; not a new quantitative fact."
+        }
+      ],
+      "structural_judgments_are_annotations": true,
+      "physical_merged_cells": "not_encoded_in_flat_source",
+      "author": "Codex implementation agent",
+      "independent_review": false,
+      "model_outputs_seen": false
+    }
+  ]
+}

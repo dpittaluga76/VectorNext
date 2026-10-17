@@ -1,0 +1,1075 @@
+{
+  "version": "t39-d6-custodian-input-v1.3",
+  "custodian": "Daniel Pittaluga / Architect",
+  "ledger_sha256": "23b76dae48c9b87b3d9d5b9991e318020e438b00b442b19836bf19a70cefb0a7",
+  "policy_hashes": {
+    "families-v1.3.md": "d0b4720560c73bddaafd7455702084c14d4dbcff01f75e59dce3e0ba61e58a7b",
+    "tiers-v1.1.md": "bce50482d0424a6716df8c36ac3c07acfab55301edcdcd29c874b759422f0a93",
+    "typed-facts-v1.1.md": "18df6126518757c8aec3df4ba18aa7a39681017ac2af8ea87d2d32d643dcf744",
+    "answer-format-v1.1.txt": "37706bf28d342f200ab1523590324fb3e5ed00d5e304074fd8fbd3ea64bf8f17",
+    "table-context-v1.2.md": "e1a3df71d66b1ba408fa7cf3aef3555b0ed6d849f1e291a5d0d05f86c977fddf",
+    "gold-review-v1.5.md": "0a1de68dd705ee68cd8fa889f4eba60f6e49a817e5bf070fb8aad75e6e63c5f9",
+    "gold-candidate-v1.5.json": "cd0d2baa064caa617edf1f85302f74cbb0e3c7be37b4734adba0e6f4451aebd9",
+    "pilot-scope-v1.4.md": "7716980262b4d6cb4c407bd21eddec96ba0f8e756b46378220719f020f706f26",
+    "closed-book-v1.4.txt": "88891827226de43f34e8e6a3faa900f0da84d7249c05d03fab7e9c65e0472777",
+    "closed-book-v1.4.schema.json": "00d8b6640d304dc10a67b34c7752ebf0c3f66998140b1472720bd12417919a16",
+    "gold-review-v1.6.md": "2e01b075a2f7d9edeb77647f2b92530df12cd4d42664e203a2470981b34b64b2",
+    "gold-candidate-v1.6.json": "c685a04c4553507015b3826ae6b41537390b594348c2f889c2dc896ff8d5d979"
+  },
+  "sealed_candidate_count": 60,
+  "exposure_cases": 120,
+  "unknown_exposure_cases": 5,
+  "families": [
+    {
+      "key": "article:wikipedia:1973_oil_crisis",
+      "type": "article",
+      "names_and_aliases": [
+        "1973_oil_crisis"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 2
+    },
+    {
+      "key": "article:wikipedia:Black_Death",
+      "type": "article",
+      "names_and_aliases": [
+        "Black_Death"
+      ],
+      "formats": [
+        "pdf"
+      ],
+      "confidence_counts": {
+        "B": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 1
+    },
+    {
+      "key": "article:wikipedia:Civil_disobedience",
+      "type": "article",
+      "names_and_aliases": [
+        "Civil_disobedience"
+      ],
+      "formats": [
+        "pdf",
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 3
+      },
+      "exposed_cases": 3,
+      "primary_cases": 2
+    },
+    {
+      "key": "article:wikipedia:Economic_inequality",
+      "type": "article",
+      "names_and_aliases": [
+        "Economic_inequality"
+      ],
+      "formats": [
+        "pdf",
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 4
+      },
+      "exposed_cases": 4,
+      "primary_cases": 4
+    },
+    {
+      "key": "article:wikipedia:Geology",
+      "type": "article",
+      "names_and_aliases": [
+        "Geology"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 2
+    },
+    {
+      "key": "article:wikipedia:Harvard_University",
+      "type": "article",
+      "names_and_aliases": [
+        "Harvard_University"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "article:wikipedia:Huguenot",
+      "type": "article",
+      "names_and_aliases": [
+        "Huguenot"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 3
+      },
+      "exposed_cases": 3,
+      "primary_cases": 3
+    },
+    {
+      "key": "article:wikipedia:Immune_system",
+      "type": "article",
+      "names_and_aliases": [
+        "Immune_system"
+      ],
+      "formats": [
+        "pdf",
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 5
+      },
+      "exposed_cases": 5,
+      "primary_cases": 5
+    },
+    {
+      "key": "article:wikipedia:Intergovernmental_Panel_on_Climate_Change",
+      "type": "article",
+      "names_and_aliases": [
+        "Intergovernmental_Panel_on_Climate_Change"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 0
+    },
+    {
+      "key": "article:wikipedia:Normans",
+      "type": "article",
+      "names_and_aliases": [
+        "Normans"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "article:wikipedia:Packet_switching",
+      "type": "article",
+      "names_and_aliases": [
+        "Packet_switching"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 4
+      },
+      "exposed_cases": 4,
+      "primary_cases": 2
+    },
+    {
+      "key": "article:wikipedia:Pharmacy",
+      "type": "article",
+      "names_and_aliases": [
+        "Pharmacy"
+      ],
+      "formats": [
+        "pdf",
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 3
+      },
+      "exposed_cases": 3,
+      "primary_cases": 3
+    },
+    {
+      "key": "article:wikipedia:Private_school",
+      "type": "article",
+      "names_and_aliases": [
+        "Private_school"
+      ],
+      "formats": [
+        "pdf"
+      ],
+      "confidence_counts": {
+        "B": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 2
+    },
+    {
+      "key": "article:wikipedia:Rhine",
+      "type": "article",
+      "names_and_aliases": [
+        "Rhine"
+      ],
+      "formats": [
+        "pdf",
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 5
+      },
+      "exposed_cases": 5,
+      "primary_cases": 5
+    },
+    {
+      "key": "article:wikipedia:Scottish_Parliament",
+      "type": "article",
+      "names_and_aliases": [
+        "Scottish_Parliament"
+      ],
+      "formats": [
+        "pdf",
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 4
+      },
+      "exposed_cases": 4,
+      "primary_cases": 3
+    },
+    {
+      "key": "article:wikipedia:Sky_(United_Kingdom)",
+      "type": "article",
+      "names_and_aliases": [
+        "Sky_(United_Kingdom)"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 2
+    },
+    {
+      "key": "article:wikipedia:Southern_California",
+      "type": "article",
+      "names_and_aliases": [
+        "Southern_California"
+      ],
+      "formats": [
+        "pdf",
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 4
+      },
+      "exposed_cases": 4,
+      "primary_cases": 4
+    },
+    {
+      "key": "article:wikipedia:Steam_engine",
+      "type": "article",
+      "names_and_aliases": [
+        "Steam_engine"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 3
+      },
+      "exposed_cases": 3,
+      "primary_cases": 2
+    },
+    {
+      "key": "article:wikipedia:University_of_Chicago",
+      "type": "article",
+      "names_and_aliases": [
+        "University_of_Chicago"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "article:wikipedia:Victoria_(Australia)",
+      "type": "article",
+      "names_and_aliases": [
+        "Victoria_(Australia)"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 2
+    },
+    {
+      "key": "article:wikipedia:Warsaw",
+      "type": "article",
+      "names_and_aliases": [
+        "Warsaw"
+      ],
+      "formats": [
+        "pdf",
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 4
+      },
+      "exposed_cases": 4,
+      "primary_cases": 2
+    },
+    {
+      "key": "article:wikipedia:Yuan_dynasty",
+      "type": "article",
+      "names_and_aliases": [
+        "Yuan_dynasty"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 4
+      },
+      "exposed_cases": 4,
+      "primary_cases": 4
+    },
+    {
+      "key": "company:au-national-storage-reit",
+      "type": "company",
+      "names_and_aliases": [
+        "National Storage REIT"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:au-nextdc",
+      "type": "company",
+      "names_and_aliases": [
+        "NEXTDC Limited"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:au-woolworths-group",
+      "type": "company",
+      "names_and_aliases": [
+        "Woolworths Custodian Pty Ltd",
+        "Woolworths Group Limited (Australia)"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "B": 2,
+        "C": 1
+      },
+      "exposed_cases": 3,
+      "primary_cases": 3
+    },
+    {
+      "key": "company:ca-cogeco",
+      "type": "company",
+      "names_and_aliases": [
+        "Cogeco Communications Inc.",
+        "Cogeco Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:gb-00470893",
+      "type": "company",
+      "names_and_aliases": [
+        "Spirent Communications plc"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:gb-sophos-group",
+      "type": "company",
+      "names_and_aliases": [
+        "Sophos Group plc"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:hkex-00700",
+      "type": "company",
+      "names_and_aliases": [
+        "Tencent Holdings Limited"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 4
+      },
+      "exposed_cases": 4,
+      "primary_cases": 4
+    },
+    {
+      "key": "company:ie-greencore",
+      "type": "company",
+      "names_and_aliases": [
+        "Greencore Group plc"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:in-tcs",
+      "type": "company",
+      "names_and_aliases": [
+        "TCS",
+        "Tata Consultancy Services"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 0
+    },
+    {
+      "key": "company:sec-1012100",
+      "type": "company",
+      "names_and_aliases": [
+        "Sealed Air Corporation"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "C": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-1033767",
+      "type": "company",
+      "names_and_aliases": [
+        "UMC",
+        "United Microelectronics Corporation"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "B": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 2
+    },
+    {
+      "key": "company:sec-1124804",
+      "type": "company",
+      "names_and_aliases": [
+        "Allscripts Healthcare Solutions Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-1158324",
+      "type": "company",
+      "names_and_aliases": [
+        "Cogent Communications Holdings Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-1274494",
+      "type": "company",
+      "names_and_aliases": [
+        "First Solar Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-1385157",
+      "type": "company",
+      "names_and_aliases": [
+        "TE Connectivity Ltd."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-1609711",
+      "type": "company",
+      "names_and_aliases": [
+        "GoDaddy Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-17843",
+      "type": "company",
+      "names_and_aliases": [
+        "Carpenter Technology Corporation"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 2
+    },
+    {
+      "key": "company:sec-23217",
+      "type": "company",
+      "names_and_aliases": [
+        "Conagra Brands Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-39020",
+      "type": "company",
+      "names_and_aliases": [
+        "Frequency Electronics Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-51143",
+      "type": "company",
+      "names_and_aliases": [
+        "IBM",
+        "International Business Machines Corporation"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-730255",
+      "type": "company",
+      "names_and_aliases": [
+        "CalAmp Corp."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "C": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 2
+    },
+    {
+      "key": "company:sec-796505",
+      "type": "company",
+      "names_and_aliases": [
+        "Clearfield Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-807882",
+      "type": "company",
+      "names_and_aliases": [
+        "Jack in the Box Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-849399",
+      "type": "company",
+      "names_and_aliases": [
+        "NortonLifeLock Inc.",
+        "NortonLifeLock Inc. / Symantec Corporation",
+        "Symantec Corporation"
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:sec-898293",
+      "type": "company",
+      "names_and_aliases": [
+        "Jabil Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:us-advanced-energy-industries",
+      "type": "company",
+      "names_and_aliases": [
+        "Advanced Energy Industries Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "A": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "company:us-leidos",
+      "type": "company",
+      "names_and_aliases": [
+        "Leidos Holdings Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "C": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 0
+    },
+    {
+      "key": "company:us-vmware",
+      "type": "company",
+      "names_and_aliases": [
+        "VMware Inc."
+      ],
+      "formats": [
+        "json"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 0
+    },
+    {
+      "key": "paper:arxiv:1612.08205",
+      "type": "paper",
+      "names_and_aliases": [
+        "1612.08205"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "paper:arxiv:1701.05574",
+      "type": "paper",
+      "names_and_aliases": [
+        "1701.05574"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 0
+    },
+    {
+      "key": "paper:arxiv:1709.05036",
+      "type": "paper",
+      "names_and_aliases": [
+        "1709.05036"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "paper:arxiv:1712.05608",
+      "type": "paper",
+      "names_and_aliases": [
+        "1712.05608"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 0
+    },
+    {
+      "key": "paper:arxiv:1802.08636",
+      "type": "paper",
+      "names_and_aliases": [
+        "1802.08636"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 0
+    },
+    {
+      "key": "paper:arxiv:1809.00530",
+      "type": "paper",
+      "names_and_aliases": [
+        "1809.00530"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 0
+    },
+    {
+      "key": "paper:arxiv:1810.12085",
+      "type": "paper",
+      "names_and_aliases": [
+        "1810.12085"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "paper:arxiv:1902.09666",
+      "type": "paper",
+      "names_and_aliases": [
+        "1902.09666"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 2
+    },
+    {
+      "key": "paper:arxiv:1903.07406",
+      "type": "paper",
+      "names_and_aliases": [
+        "1903.07406"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "paper:arxiv:1905.07791",
+      "type": "paper",
+      "names_and_aliases": [
+        "1905.07791"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "paper:arxiv:1906.07701",
+      "type": "paper",
+      "names_and_aliases": [
+        "1906.07701"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "paper:arxiv:1907.01468",
+      "type": "paper",
+      "names_and_aliases": [
+        "1907.01468"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 0
+    },
+    {
+      "key": "paper:arxiv:1909.00015",
+      "type": "paper",
+      "names_and_aliases": [
+        "1909.00015"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "paper:arxiv:1909.08970",
+      "type": "paper",
+      "names_and_aliases": [
+        "1909.08970"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 0
+    },
+    {
+      "key": "paper:arxiv:1909.13104",
+      "type": "paper",
+      "names_and_aliases": [
+        "1909.13104"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "paper:arxiv:1910.06592",
+      "type": "paper",
+      "names_and_aliases": [
+        "1910.06592"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "paper:arxiv:2002.01984",
+      "type": "paper",
+      "names_and_aliases": [
+        "2002.01984"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    },
+    {
+      "key": "paper:arxiv:2002.02070",
+      "type": "paper",
+      "names_and_aliases": [
+        "2002.02070"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 2
+      },
+      "exposed_cases": 2,
+      "primary_cases": 2
+    },
+    {
+      "key": "paper:arxiv:2003.11645",
+      "type": "paper",
+      "names_and_aliases": [
+        "2003.11645"
+      ],
+      "formats": [
+        "txt"
+      ],
+      "confidence_counts": {
+        "B": 1
+      },
+      "exposed_cases": 1,
+      "primary_cases": 1
+    }
+  ]
+}

@@ -13,6 +13,8 @@ use std::time::Instant;
 mod coverage;
 mod facets;
 mod final_selection;
+#[cfg(feature = "measurement")]
+pub mod measurement;
 mod numeric;
 
 pub const INPUT_TOKENS: usize = 3328;

@@ -1,0 +1,1018 @@
+{
+  "version": "1.5",
+  "date": "2026-10-17",
+  "user_acceptance": "recommendationa accepted",
+  "review_kind": "user_adjudication_after_internal_source_review",
+  "independent_review_acceptance": false,
+  "approved_for_execution": false,
+  "model_outputs_used": false,
+  "sealed_content_opened": false,
+  "decisions": [
+    {
+      "number": 10,
+      "case_id": "squad-572883a33acd2414000dfa7b",
+      "question": "Where in Central Asia did the Han Chinese move?",
+      "source_text_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+      "evidence": [
+        {
+          "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+          "utf8_start": 0,
+          "utf8_end": 309,
+          "quote": "At the same time the Mongols imported Central Asian Muslims to serve as administrators in China, the Mongols also sent Han Chinese and Khitans from China to serve as administrators over the Muslim population in Bukhara in Central Asia, using foreigners to curtail the power of the local peoples of both lands."
+        },
+        {
+          "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+          "utf8_start": 310,
+          "utf8_end": 453,
+          "quote": "Han Chinese were moved to Central Asian areas like Besh Baliq, Almaliq, and Samarqand by the Mongols where they worked as artisans and farmers."
+        }
+      ],
+      "status": "applied_to_candidate",
+      "before": {
+        "number": 10,
+        "case_id": "squad-572883a33acd2414000dfa7b",
+        "question": "Where in Central Asia did the Han Chinese move?",
+        "document": "squad-a652253c010b7743.txt",
+        "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+        "source_text_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [
+          "case 010 source adjudication"
+        ],
+        "original_alternatives": [
+          "Besh Baliq, Almaliq, and Samarqand",
+          "Bukhara"
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": "Besh Baliq, Almaliq, and Samarqand",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "preserve source wording",
+            "question_target": "text_span",
+            "allowed_alternatives": [
+              "Bukhara"
+            ],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+                  "utf8_start": 361,
+                  "utf8_end": 395
+                }
+              ],
+              [
+                {
+                  "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+                  "utf8_start": 361,
+                  "utf8_end": 395
+                }
+              ],
+              [
+                {
+                  "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+                  "utf8_start": 211,
+                  "utf8_end": 218
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      },
+      "after": {
+        "number": 10,
+        "case_id": "squad-572883a33acd2414000dfa7b",
+        "question": "Where in Central Asia did the Han Chinese move?",
+        "document": "squad-a652253c010b7743.txt",
+        "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+        "source_text_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [],
+        "original_alternatives": [
+          "Besh Baliq, Almaliq, and Samarqand",
+          "Bukhara"
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": "Bukhara, Besh Baliq, Almaliq and Samarqand",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "Complete set of four named destinations; order irrelevant.",
+            "question_target": "text_span",
+            "allowed_alternatives": [
+              "Almaliq, Besh Baliq, Bukhara and Samarqand",
+              "Almaliq, Besh Baliq, Bukhara, and Samarqand",
+              "Almaliq, Besh Baliq, Samarqand and Bukhara",
+              "Almaliq, Besh Baliq, Samarqand, and Bukhara",
+              "Almaliq, Bukhara, Besh Baliq and Samarqand",
+              "Almaliq, Bukhara, Besh Baliq, and Samarqand",
+              "Almaliq, Bukhara, Samarqand and Besh Baliq",
+              "Almaliq, Bukhara, Samarqand, and Besh Baliq",
+              "Almaliq, Samarqand, Besh Baliq and Bukhara",
+              "Almaliq, Samarqand, Besh Baliq, and Bukhara",
+              "Almaliq, Samarqand, Bukhara and Besh Baliq",
+              "Almaliq, Samarqand, Bukhara, and Besh Baliq",
+              "Besh Baliq, Almaliq, Bukhara and Samarqand",
+              "Besh Baliq, Almaliq, Bukhara, and Samarqand",
+              "Besh Baliq, Almaliq, Samarqand and Bukhara",
+              "Besh Baliq, Almaliq, Samarqand, and Bukhara",
+              "Besh Baliq, Bukhara, Almaliq and Samarqand",
+              "Besh Baliq, Bukhara, Almaliq, and Samarqand",
+              "Besh Baliq, Bukhara, Samarqand and Almaliq",
+              "Besh Baliq, Bukhara, Samarqand, and Almaliq",
+              "Besh Baliq, Samarqand, Almaliq and Bukhara",
+              "Besh Baliq, Samarqand, Almaliq, and Bukhara",
+              "Besh Baliq, Samarqand, Bukhara and Almaliq",
+              "Besh Baliq, Samarqand, Bukhara, and Almaliq",
+              "Bukhara, Almaliq, Besh Baliq and Samarqand",
+              "Bukhara, Almaliq, Besh Baliq, and Samarqand",
+              "Bukhara, Almaliq, Samarqand and Besh Baliq",
+              "Bukhara, Almaliq, Samarqand, and Besh Baliq",
+              "Bukhara, Besh Baliq, Almaliq, and Samarqand",
+              "Bukhara, Besh Baliq, Samarqand and Almaliq",
+              "Bukhara, Besh Baliq, Samarqand, and Almaliq",
+              "Bukhara, Samarqand, Almaliq and Besh Baliq",
+              "Bukhara, Samarqand, Almaliq, and Besh Baliq",
+              "Bukhara, Samarqand, Besh Baliq and Almaliq",
+              "Bukhara, Samarqand, Besh Baliq, and Almaliq",
+              "Samarqand, Almaliq, Besh Baliq and Bukhara",
+              "Samarqand, Almaliq, Besh Baliq, and Bukhara",
+              "Samarqand, Almaliq, Bukhara and Besh Baliq",
+              "Samarqand, Almaliq, Bukhara, and Besh Baliq",
+              "Samarqand, Besh Baliq, Almaliq and Bukhara",
+              "Samarqand, Besh Baliq, Almaliq, and Bukhara",
+              "Samarqand, Besh Baliq, Bukhara and Almaliq",
+              "Samarqand, Besh Baliq, Bukhara, and Almaliq",
+              "Samarqand, Bukhara, Almaliq and Besh Baliq",
+              "Samarqand, Bukhara, Almaliq, and Besh Baliq",
+              "Samarqand, Bukhara, Besh Baliq and Almaliq",
+              "Samarqand, Bukhara, Besh Baliq, and Almaliq"
+            ],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+                  "utf8_start": 0,
+                  "utf8_end": 309
+                },
+                {
+                  "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+                  "utf8_start": 310,
+                  "utf8_end": 453
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": [],
+            "unordered": true,
+            "separators": [
+              ",",
+              ", ",
+              " / ",
+              "; ",
+              " and "
+            ],
+            "members": [
+              {
+                "id": "place_1",
+                "aliases": [
+                  "Bukhara"
+                ],
+                "proof_sets": [
+                  [
+                    {
+                      "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+                      "utf8_start": 0,
+                      "utf8_end": 309
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "place_2",
+                "aliases": [
+                  "Besh Baliq"
+                ],
+                "proof_sets": [
+                  [
+                    {
+                      "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+                      "utf8_start": 310,
+                      "utf8_end": 453
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "place_3",
+                "aliases": [
+                  "Almaliq"
+                ],
+                "proof_sets": [
+                  [
+                    {
+                      "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+                      "utf8_start": 310,
+                      "utf8_end": 453
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "place_4",
+                "aliases": [
+                  "Samarqand"
+                ],
+                "proof_sets": [
+                  [
+                    {
+                      "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+                      "utf8_start": 310,
+                      "utf8_end": 453
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      }
+    },
+    {
+      "number": 34,
+      "case_id": "qasper-ff338921e34c15baf1eae0074938bf79ee65fdd2",
+      "question": "What was the baseline model?",
+      "source_text_sha256": "8b0de396c735a4a627f059419e2e52b7f7651ceaf3413b5cf8466afb23bcbcea",
+      "evidence": [
+        {
+          "document_sha256": "8b0de396c735a4a627f059419e2e52b7f7651ceaf3413b5cf8466afb23bcbcea",
+          "utf8_start": 25035,
+          "utf8_end": 25700,
+          "quote": "We started by answering always YES (in batch 2 and 3) to get the baseline performance. For batch 4 we used entailment. Our algorithm was very simple: Given a question we iterate through the candidate sentences and try to find any candidate sentence is contradicting the question (with confidence over 50%), if so 'No' is returned as answer, else 'Yes' is returned. In batch 4 this strategy produced better than the BioAsq baseline performance, and compared to our other systems, the use of entailment increased the performance by about 13% (macro F1 score). We used 'AllenNlp' BIBREF13 entailment library to find entailment of the candidate sentences with question."
+        }
+      ],
+      "status": "applied_to_candidate",
+      "before": {
+        "number": 34,
+        "case_id": "qasper-ff338921e34c15baf1eae0074938bf79ee65fdd2",
+        "question": "What was the baseline model?",
+        "document": "qasper-2002.01984.txt",
+        "document_sha256": "8b0de396c735a4a627f059419e2e52b7f7651ceaf3413b5cf8466afb23bcbcea",
+        "source_text_sha256": "8b0de396c735a4a627f059419e2e52b7f7651ceaf3413b5cf8466afb23bcbcea",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [
+          "case 034 source adjudication"
+        ],
+        "original_alternatives": [
+          "by answering always YES (in batch 2 and 3) "
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": "by answering always YES (in batch 2 and 3) ",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "preserve source wording",
+            "question_target": "text_span",
+            "allowed_alternatives": [],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "8b0de396c735a4a627f059419e2e52b7f7651ceaf3413b5cf8466afb23bcbcea",
+                  "utf8_start": 25035,
+                  "utf8_end": 25700
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      },
+      "after": {
+        "number": 34,
+        "case_id": "qasper-ff338921e34c15baf1eae0074938bf79ee65fdd2",
+        "question": "What was the baseline model?",
+        "document": "qasper-2002.01984.txt",
+        "document_sha256": "8b0de396c735a4a627f059419e2e52b7f7651ceaf3413b5cf8466afb23bcbcea",
+        "source_text_sha256": "8b0de396c735a4a627f059419e2e52b7f7651ceaf3413b5cf8466afb23bcbcea",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [],
+        "original_alternatives": [
+          "by answering always YES (in batch 2 and 3) "
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": "Always answer YES—the baseline used in batches 2 and 3.",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "batches 2 and 3",
+            "qualifier": "Always-YES baseline; not batch-4 entailment.",
+            "question_target": "text_span",
+            "allowed_alternatives": [
+              "by answering always YES (in batch 2 and 3) ",
+              "always YES (in batches 2 and 3)",
+              "always YES (in batch 2 and 3)"
+            ],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "8b0de396c735a4a627f059419e2e52b7f7651ceaf3413b5cf8466afb23bcbcea",
+                  "utf8_start": 25035,
+                  "utf8_end": 25700
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      }
+    },
+    {
+      "number": 47,
+      "case_id": "qasper-5913930ce597513299e4b630df5e5153f3618038",
+      "question": "How does their model improve interpretability compared to softmax transformers?",
+      "source_text_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+      "evidence": [
+        {
+          "document_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+          "utf8_start": 27060,
+          "utf8_end": 27204,
+          "quote": "In particular, we analyzed how the attention heads in the proposed adaptively sparse Transformer can specialize more and with higher confidence."
+        }
+      ],
+      "status": "applied_to_candidate",
+      "before": {
+        "number": 47,
+        "case_id": "qasper-5913930ce597513299e4b630df5e5153f3618038",
+        "question": "How does their model improve interpretability compared to softmax transformers?",
+        "document": "qasper-1909.00015.txt",
+        "document_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+        "source_text_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [
+          "case 047 source adjudication"
+        ],
+        "original_alternatives": [
+          "the attention heads in the proposed adaptively sparse Transformer can specialize more and with higher confidence",
+          "We introduce sparse attention into the Transformer architecture"
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": "the attention heads in the proposed adaptively sparse Transformer can specialize more and with higher confidence",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "preserve source wording",
+            "question_target": "text_span",
+            "allowed_alternatives": [
+              "We introduce sparse attention into the Transformer architecture"
+            ],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+                  "utf8_start": 27060,
+                  "utf8_end": 27449
+                }
+              ],
+              [
+                {
+                  "document_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+                  "utf8_start": 6188,
+                  "utf8_end": 6804
+                }
+              ],
+              [
+                {
+                  "document_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+                  "utf8_start": 3219,
+                  "utf8_end": 3358
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      },
+      "after": {
+        "number": 47,
+        "case_id": "qasper-5913930ce597513299e4b630df5e5153f3618038",
+        "question": "How does their model improve interpretability compared to softmax transformers?",
+        "document": "qasper-1909.00015.txt",
+        "document_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+        "source_text_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [],
+        "original_alternatives": [
+          "the attention heads in the proposed adaptively sparse Transformer can specialize more and with higher confidence",
+          "We introduce sparse attention into the Transformer architecture"
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": "the attention heads in the proposed adaptively sparse Transformer can specialize more and with higher confidence",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "preserve source wording",
+            "question_target": "text_span",
+            "allowed_alternatives": [],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+                  "utf8_start": 27060,
+                  "utf8_end": 27204
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      }
+    },
+    {
+      "number": 53,
+      "case_id": "qasper-a267d620af319b48e56c191aa4c433ea3870f6fb",
+      "question": "What are labels in car speak language dataset?",
+      "source_text_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+      "evidence": [
+        {
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 8485,
+          "utf8_end": 8537,
+          "quote": "We label each review vector with the car it reviews."
+        },
+        {
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 8538,
+          "utf8_end": 8655,
+          "quote": "We ignore the year of the car being reviewed and focus specifically on the model (i.e Acura ILX, not 2013 Acura ILX)."
+        }
+      ],
+      "status": "applied_to_candidate",
+      "before": {
+        "number": 53,
+        "case_id": "qasper-a267d620af319b48e56c191aa4c433ea3870f6fb",
+        "question": "What are labels in car speak language dataset?",
+        "document": "qasper-2002.02070.txt",
+        "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+        "source_text_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [
+          "case 053 source adjudication"
+        ],
+        "original_alternatives": [
+          "car ",
+          "the car"
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": "car ",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "preserve source wording",
+            "question_target": "text_span",
+            "allowed_alternatives": [
+              "the car"
+            ],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+                  "utf8_start": 6702,
+                  "utf8_end": 7187
+                }
+              ],
+              [
+                {
+                  "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+                  "utf8_start": 8363,
+                  "utf8_end": 8772
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      },
+      "after": {
+        "number": 53,
+        "case_id": "qasper-a267d620af319b48e56c191aa4c433ea3870f6fb",
+        "question": "What are labels in car speak language dataset?",
+        "document": "qasper-2002.02070.txt",
+        "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+        "source_text_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [],
+        "original_alternatives": [
+          "car ",
+          "the car"
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": "car model, ignoring the model year",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "Model identity without year; not manufacturer or an example vehicle.",
+            "question_target": "text_span",
+            "allowed_alternatives": [
+              "car model",
+              "model of the car",
+              "model",
+              "the model"
+            ],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+                  "utf8_start": 8485,
+                  "utf8_end": 8537
+                },
+                {
+                  "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+                  "utf8_start": 8538,
+                  "utf8_end": 8655
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      }
+    },
+    {
+      "number": 71,
+      "case_id": "squad-5728eef92ca10214002daab0",
+      "question": "What type of punishment is sometimes offered to civil disobedients?",
+      "source_text_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+      "evidence": [
+        {
+          "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+          "utf8_start": 0,
+          "utf8_end": 224,
+          "quote": "Sometimes the prosecution proposes a plea bargain to civil disobedients, as in the case of the Camden 28, in which the defendants were offered an opportunity to plead guilty to one misdemeanor count and receive no jail time."
+        }
+      ],
+      "status": "applied_to_candidate",
+      "before": {
+        "number": 71,
+        "case_id": "squad-5728eef92ca10214002daab0",
+        "question": "What type of punishment is sometimes offered to civil disobedients?",
+        "document": "squad-a0c037e30597c9f0.txt",
+        "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+        "source_text_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [
+          "case 071 source adjudication"
+        ],
+        "original_alternatives": [
+          "plea bargain",
+          "plead guilty to one misdemeanor count and receive no jail time"
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": "plea bargain",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "preserve source wording",
+            "question_target": "text_span",
+            "allowed_alternatives": [
+              "plead guilty to one misdemeanor count and receive no jail time"
+            ],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+                  "utf8_start": 37,
+                  "utf8_end": 49
+                }
+              ],
+              [
+                {
+                  "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+                  "utf8_start": 161,
+                  "utf8_end": 223
+                }
+              ],
+              [
+                {
+                  "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+                  "utf8_start": 37,
+                  "utf8_end": 49
+                }
+              ],
+              [
+                {
+                  "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+                  "utf8_start": 37,
+                  "utf8_end": 49
+                }
+              ],
+              [
+                {
+                  "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+                  "utf8_start": 37,
+                  "utf8_end": 49
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      },
+      "after": {
+        "number": 71,
+        "case_id": "squad-5728eef92ca10214002daab0",
+        "question": "What type of punishment is sometimes offered to civil disobedients?",
+        "document": "squad-a0c037e30597c9f0.txt",
+        "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+        "source_text_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+        "format": "txt",
+        "tier": "stress_adjudication",
+        "expected": "supported",
+        "pending_decisions": [],
+        "original_alternatives": [
+          "plea bargain",
+          "plead guilty to one misdemeanor count and receive no jail time"
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": "plea bargain",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "preserve source wording",
+            "question_target": "text_span",
+            "allowed_alternatives": [
+              "plead guilty to one misdemeanor count and receive no jail time"
+            ],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+                  "utf8_start": 37,
+                  "utf8_end": 49
+                }
+              ],
+              [
+                {
+                  "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+                  "utf8_start": 161,
+                  "utf8_end": 223
+                }
+              ],
+              [
+                {
+                  "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+                  "utf8_start": 37,
+                  "utf8_end": 49
+                }
+              ],
+              [
+                {
+                  "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+                  "utf8_start": 37,
+                  "utf8_end": 49
+                }
+              ],
+              [
+                {
+                  "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+                  "utf8_start": 37,
+                  "utf8_end": 49
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      }
+    },
+    {
+      "number": 107,
+      "case_id": "qasper-5a8cc8f80509ea77d8213ed28c5ead501c68c725",
+      "question": "What is the definition of offensive language?",
+      "source_text_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+      "evidence": [
+        {
+          "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+          "utf8_start": 5909,
+          "utf8_end": 6112,
+          "quote": "In the OLID dataset, we use a hierarchical annotation model split into three levels to distinguish between whether language is offensive or not (A), and type (B) and target (C) of the offensive language."
+        },
+        {
+          "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+          "utf8_start": 6415,
+          "utf8_end": 6672,
+          "quote": "Offensive (OFF): We label a post as offensive if it contains any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct. This category includes insults, threats, and posts containing profane language or swear words."
+        }
+      ],
+      "status": "accepted_direction_pending_activation_reviews",
+      "before": {
+        "number": 107,
+        "case_id": "qasper-5a8cc8f80509ea77d8213ed28c5ead501c68c725",
+        "question": "What is the definition of offensive language?",
+        "document": "qasper-1902.09666.txt",
+        "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+        "source_text_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [
+          "case 107 source adjudication"
+        ],
+        "original_alternatives": [
+          " Most prior work focuses on a different aspect of offensive language such as abusive language BIBREF0 , BIBREF1 , (cyber-)aggression BIBREF2 , (cyber-)bullying BIBREF3 , BIBREF4 , toxic comments INLINEFORM0 , hate speech BIBREF5 , BIBREF6 , BIBREF7 , BIBREF8 , BIBREF9 , BIBREF10 , and offensive language BIBREF11 . Prior work has focused on these aspects of offensive language in Twitter BIBREF3 , BIBREF7 , BIBREF8 , BIBREF11 , Wikipedia comments, and Facebook posts BIBREF2 ."
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": " Most prior work focuses on a different aspect of offensive language such as abusive language BIBREF0 , BIBREF1 , (cyber-)aggression BIBREF2 , (cyber-)bullying BIBREF3 , BIBREF4 , toxic comments INLINEFORM0 , hate speech BIBREF5 , BIBREF6 , BIBREF7 , BIBREF8 , BIBREF9 , BIBREF10 , and offensive language BIBREF11 . Prior work has focused on these aspects of offensive language in Twitter BIBREF3 , BIBREF7 , BIBREF8 , BIBREF11 , Wikipedia comments, and Facebook posts BIBREF2 .",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "preserve source wording",
+            "question_target": "text_span",
+            "allowed_alternatives": [],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+                  "utf8_start": 1114,
+                  "utf8_end": 2063
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      },
+      "after": {
+        "number": 107,
+        "case_id": "qasper-5a8cc8f80509ea77d8213ed28c5ead501c68c725",
+        "question": "What is the definition of offensive language?",
+        "document": "qasper-1902.09666.txt",
+        "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+        "source_text_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+        "format": "txt",
+        "tier": "primary_direct_extraction",
+        "expected": "supported",
+        "pending_decisions": [
+          "case 107 replacement activation awaits two independent source reviews"
+        ],
+        "original_alternatives": [
+          " Most prior work focuses on a different aspect of offensive language such as abusive language BIBREF0 , BIBREF1 , (cyber-)aggression BIBREF2 , (cyber-)bullying BIBREF3 , BIBREF4 , toxic comments INLINEFORM0 , hate speech BIBREF5 , BIBREF6 , BIBREF7 , BIBREF8 , BIBREF9 , BIBREF10 , and offensive language BIBREF11 . Prior work has focused on these aspects of offensive language in Twitter BIBREF3 , BIBREF7 , BIBREF8 , BIBREF11 , Wikipedia comments, and Facebook posts BIBREF2 ."
+        ],
+        "original_expected": "supported",
+        "roles": [
+          {
+            "id": "answer",
+            "value_string": " Most prior work focuses on a different aspect of offensive language such as abusive language BIBREF0 , BIBREF1 , (cyber-)aggression BIBREF2 , (cyber-)bullying BIBREF3 , BIBREF4 , toxic comments INLINEFORM0 , hate speech BIBREF5 , BIBREF6 , BIBREF7 , BIBREF8 , BIBREF9 , BIBREF10 , and offensive language BIBREF11 . Prior work has focused on these aspects of offensive language in Twitter BIBREF3 , BIBREF7 , BIBREF8 , BIBREF11 , Wikipedia comments, and Facebook posts BIBREF2 .",
+            "source_type": "string",
+            "scale": {
+              "stated": "not_applicable",
+              "unit": null,
+              "source_context": []
+            },
+            "period": "as stated in source/question; no new inference",
+            "qualifier": "preserve source wording",
+            "question_target": "text_span",
+            "allowed_alternatives": [],
+            "derived_alternatives": [],
+            "imprecise_alternatives": [],
+            "proof_sets": [
+              [
+                {
+                  "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+                  "utf8_start": 1114,
+                  "utf8_end": 2063
+                }
+              ]
+            ],
+            "derived_proof_sets": [],
+            "format_diagnostic_remove_literals": []
+          }
+        ],
+        "allowed_field_mappings": [
+          {
+            "answer": "answer"
+          },
+          {
+            "value": "answer"
+          }
+        ]
+      }
+    }
+  ],
+  "proposed_107_definition": "Offensive (OFF): We label a post as offensive if it contains any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct. This category includes insults, threats, and posts containing profane language or swear words.",
+  "case_107_activation": "pending_two_independent_source_reviews"
+}

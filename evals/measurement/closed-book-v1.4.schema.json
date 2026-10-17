@@ -1,0 +1,16 @@
+{
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {"status": {"type": "string", "enum": ["answer"]}, "answer": {"type": "string"}},
+      "required": ["status", "answer"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {"status": {"type": "string", "enum": ["abstain"]}, "answer": {"type": "null"}},
+      "required": ["status", "answer"],
+      "additionalProperties": false
+    }
+  ]
+}

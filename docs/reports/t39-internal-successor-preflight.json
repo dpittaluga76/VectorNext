@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-17",
+  "kind": "internal_successor_offline_preflight_not_execution_freeze",
+  "approved_for_execution": false,
+  "independent_review": false,
+  "blind_holdout": false,
+  "original_holdout_accessed": false,
+  "candidate_model_requests": 0,
+  "linux_offline_measurement_tests_passed": 172,
+  "new_successor_and_grounding_tests": 22,
+  "test_log_sha256": "9e81322f32624a0f0dd9a8f0253b8211ce593534fd7082b5af47d46feec038a3",
+  "review_manifest_sha256": "3959f30357599b5980187ada62d01597e01a21890cbcb2f321c796fd25c00675",
+  "private_package_manifest_sha256": "40edecc22f0a7212e8dd6f31aa9a1d3907f610b78e6b64e795b0947f859efb6e",
+  "private_package_files_reproduced": 591,
+  "counts": {
+    "development": {
+      "cases": 111,
+      "primary": 92,
+      "tiers": {
+        "primary_direct_extraction": 92,
+        "derived_inference": 3,
+        "stress_adjudication": 16
+      },
+      "documents": 105,
+      "exclusions": 9
+    },
+    "exposed_candidates": {
+      "cases": 60,
+      "primary": 55,
+      "tiers": {
+        "primary_direct_extraction": 55,
+        "derived_inference": 2,
+        "stress_adjudication": 3
+      },
+      "documents": 56,
+      "exclusions": 0
+    }
+  },
+  "retained_pipeline_grounding_replay": {
+    "captured_evidence_occurrences_verified": 75,
+    "distinct_records_verified": 10,
+    "capture_source": "retained unscored table pipeline preflight 02",
+    "new_model_calls": 0
+  },
+  "code_sha256": {
+    "evals/measurement/internal_successor.py": "c892b2c15cf98bcb47ad0a96735c7b4a00f9d006140aca9489cf8e22589ef03e",
+    "evals/measurement/test_internal_successor.py": "62c429e47b1740a12baabbb84946ba783039e13d8234e15cd9cfb185ada68600",
+    "evals/measurement/capture_grounding.py": "697066f7ac3164583ae0494398ab40b659b72d16b4e7a33a0d1aec9f9de68dfb",
+    "evals/measurement/test_capture_grounding.py": "2e79d67005b246bf758d3cba8a13bb01bbaea5c7c733c741faa4616d0a781fcb",
+    "evals/measurement/capture_projection.py": "053cab05b2f29b0e6a7ca5594d84f2da6e3ed1f57468643c7de6febab81828c4",
+    "evals/measurement/test_capture_projection.py": "553fdd3d04b70843a36e542c870e50ee75d88b6c6bc3f6e05d10a448a60e61e5"
+  },
+  "limitations": [
+    "No model evaluation or live runtime integration yet",
+    "Current package is internal/exposed, not independent",
+    "Broader source lineage is uncertified and primary n=147 misses target",
+    "Private package/review files are not published",
+    "Live ingestion-bound snapshot/runner/control integration and committed execution freeze remain required"
+  ],
+  "production_changed": false
+}

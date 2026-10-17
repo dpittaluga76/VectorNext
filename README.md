@@ -18,7 +18,7 @@ The **Axum + utoipa API**, CPU document processor and GPU generation service run
 | Original vector database | Store documents, chunks, typed attributes and vectors with atomic revisions, crash recovery, verified export/restore and offline compaction/GC. |
 | Hybrid retrieval | Combine exact cosine search, BM25, typed filters, reciprocal-rank fusion and CPU cross-encoder reranking. |
 | Source-linked answers | Ask ordinary questions or supply structured fields; inspect exact values, citations, JSON pointers and PDF page references. |
-| Local inference | Use Hybrid answering, force Gemma, or force NuExtract; only one model occupies the GPU at a time. |
+| Local inference | Use NuExtract by default, or explicitly select Gemma or Hybrid; only one model occupies the GPU at a time. |
 | Durable answer jobs | Queue questions, recover their status after reload, inspect attempts and export diagnostics. |
 | Browser, CLI and HTTP API | Use the same application through a React workspace, command-line client or locally documented API. |
 
@@ -81,9 +81,11 @@ See the [recorded demo](docs/reports/t11-readme-demo.json), [source attribution]
 
 | Mode | Behavior |
 | --- | --- |
-| **Hybrid — default** | Try NuExtract3 first. Accept a supported, validated answer; otherwise queue one Gemma attempt when the failure is eligible for fallback. |
+| **Hybrid** | Try NuExtract3 first. Accept a supported, validated answer; otherwise queue one Gemma attempt when the failure is eligible for fallback. |
 | **Gemma only** | Use Gemma 4 12B QAT Q4_0 without fallback. |
-| **NuExtract only** | Use NuExtract3 Q4_K_M with requested-facts-v1 without fallback. |
+| **NuExtract only — default** | Use NuExtract3 Q4_K_M with requested-facts-v1 without fallback. |
+
+NuExtract-only is the default for new work, including optional generated enrichment. On upgrade, the browser and launcher apply this preference once and show a notice; saved turns and jobs retain their original modes. Gemma and Hybrid can still be selected explicitly. Existing Gemma enrichment keeps its saved policy. See [verification and rollback, including fractional-temperature compatibility](docs/reports/t39-measurement.md).
 
 The browser remembers your choice and records it per question. Validation checks types and source support; it cannot guarantee semantic correctness. A model switch adds loading and queue time to inference latency. Invalid requests, stale sources, cancellation and admission failures do not trigger fallback.
 
@@ -211,6 +213,10 @@ Results belong to specific versions, datasets and hardware; they are not blanket
 | Answer integrity | [Automatic field planning](docs/reports/t26-planning.md) and [numeric proof validation](docs/reports/t15-numeric-proofs.md). |
 | API and browser | [Axum/OpenAPI verification](docs/reports/t19-axum.md), [workspace and launcher](docs/reports/t16-t18-local-app.md) and [reliability checks](docs/reports/t13-reliability.md). |
 
+Offline measurement can rescore retained captures without running models. See the [outcome matrix and stage-latency results](docs/reports/t39-measurement.md) and [measurement commands](evals/measurement/README.md). These observed regression sets do not establish general semantic accuracy.
+
+The [removal/compaction audit](docs/reports/t39-residue.md) confirms that historical ingestion jobs retain removed originals and retry receipts; removal is not erasure. The [measurement pilot](docs/reports/t39-d7-pilot-scope-v1.4.md) covers TXT prose QA, **PDF text ingestion (clean render)** and **structured-table QA (JSON)**. It validates the evaluation harness; it does not measure real-layout PDF or table extraction. Its TXT/PDF cases are unpaired, and question-only controls are planned. The [internal source review](docs/reports/t39-internal-review-v1.7.md) records corrected labels, known company overlaps and coverage limits. Its candidates are exposed, so it is not an independent holdout. Runtime integration and execution remain pending. Historical NASA/USGS results remain separate.
+
 ## Verification
 
 Rebuild test images after changing the corresponding sources. Core tests use supplied vectors and need no model service:
@@ -237,7 +243,7 @@ docker run --rm --network none --ipc=host vectornext-ui-test:t37 npm run e2e -- 
 Planner/profile checks use the built processor image:
 
 ```powershell
-docker run --rm --network none vectornext-app-processor:t37-hybrid /opt/model-env/bin/python -m unittest model_worker.test_planning model_worker.test_generator_profile -v
+docker run --rm --network none vectornext-app-processor:t39 /opt/model-env/bin/python -m unittest model_worker.test_planning model_worker.test_generator_profile model_worker.test_measurement -v
 ```
 
 Initial image builds may need network access. Fixture validation must not regenerate sources or gold labels. See [development commands](docs/development.md), [evaluation guidance](evals/README.md) and [contributor instructions](AGENTS.md). Current work is tracked in [the plan](docs/plan.md); completed work is in [the task archive](docs/tasks-done.md).

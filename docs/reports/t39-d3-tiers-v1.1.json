@@ -1,0 +1,3030 @@
+{
+  "version": "1.1",
+  "kind": "D3_pre_inference_tier_amendment_not_execution_approval",
+  "date": "2026-10-16",
+  "base_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "base_development_requests_sha256": "ecb190eb7a69f409aaf91890f71ae5d2e46d7c99e5811b32a9bca83f5d2f1428",
+  "base_development_labels_sha256": "9c68c78827da8a4055d24ed1d6707f965f1f2c18b10e645bfdb60e7ac4612e80",
+  "policy": {
+    "path": "evals/measurement/tiers-v1.1.md",
+    "sha256": "bce50482d0424a6716df8c36ac3c07acfab55301edcdcd29c874b759422f0a93"
+  },
+  "approved_for_execution": false,
+  "independent_review_acceptance": false,
+  "model_outputs_used": false,
+  "model_runs": 0,
+  "blind_screening": {
+    "status": "waived_by_user",
+    "date": "2026-10-16",
+    "quote": "let's skip that",
+    "scope": "proposed two-reviewer D3 screening pass",
+    "performed": false,
+    "current_review": "internal_non_blind",
+    "case_107_specific_gate": "not_attested_by_this_waiver"
+  },
+  "sealed_content_opened": false,
+  "replacements_drawn": 0,
+  "twins_created": 0,
+  "D3_case_count": 15,
+  "D3_reason_counts": {
+    "premise_or_entity_ambiguous": 3,
+    "question_incomplete": 2,
+    "requires_derivation": 1,
+    "scope_or_period_ambiguous": 6,
+    "source_content_unavailable": 2,
+    "unit_or_format_ambiguous": 1
+  },
+  "cases": [
+    {
+      "number": 11,
+      "case_id": "qasper-352bc6de5c5068c6c19062bad1b8f644919b1145",
+      "question": "Up to how many samples do they experiment with?",
+      "document": "qasper-1712.05608.txt",
+      "document_sha256": "6ed0794c8817f459f9a34752e096d0b9a1e60cfdc1f5415380d7b1736a52dbea",
+      "primary_reason": "scope_or_period_ambiguous",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "upstream_formula_placeholders"
+      ],
+      "finding": "Database population, experimental subset and training proportion are different requested quantities; the question does not select one.",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "The standard Berlin speech emotion database (EMO-DB) [18] consisting of 535 utterances corresponding to 7 different emotions is considered for the task of emotion classification. Each utterance is represented by a 19-dimensional feature vector obtained by using the feature selection algorithm from WEKA toolkit [19] on the 384-dimensional utterance level feature vector obtained using openSMILE toolkit [20]. For two class classification, we considered the two most confusing emotion pairs i.e., (Neutral,Sad) and (Anger, Happy). Data corresponding to Speech/Music classification (60 speech and 60 music samples) and Neutral/Sad classification (79 neutral and 62 sad utterances) is balanced whereas Anger/Happy classification task has data imbalance, with anger forming the majority class (127 samples) and happy forming the minority class (71 samples). Therefore, we show the performance of s2sL on both, balanced and imbalanced datasets.",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 8741,
+          "utf8_end": 9681
+        },
+        {
+          "kind": "text",
+          "quote": "All experimental results are validated using 5-fold cross validation (80% of data for training and 20% for testing in each fold). Further, to analyze the effectiveness of s2sL in low resource scenarios, different proportions of training data, within each fold, are considered to train the system. For this analysis, we considered 4 different proportions i.e., INLINEFORM0 , INLINEFORM1 , INLINEFORM2 and INLINEFORM3 of the training data to train the classifier. For instance, INLINEFORM4 means considering only half of the original training data to train the classifier, and INLINEFORM5 means considering the complete training data. 5-fold cross validation is considered for all data proportions. Accuracy (in %) is used as a performance measure for balanced data classification tasks (i.e., Speech/Music classification and Neutral/Sad emotion classification), whereas the more preferred INLINEFORM6 measure [21] is used as a measure for imbalanced data classification task (i.e., Anger/Happy emotion classification).",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 9683,
+          "utf8_end": 10700
+        }
+      ],
+      "original_expected": "supported",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 15,
+      "case_id": "qasper-bd419f4094186a5ce74ba6ac1622b24e29e553f4",
+      "question": "How well did the baseline perform?",
+      "document": "qasper-1909.08970.txt",
+      "document_sha256": "6bbc50fcc74369902cbde16ca3595353764f490e84b55752d570c26f25c2c831",
+      "primary_reason": "unit_or_format_ambiguous",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "baseline_scope",
+        "referenced_results_table_not_acquired"
+      ],
+      "finding": "The cited baseline gives 30.3% for sentences and bare 0.3 for paragraphs. Preserve the unit uncertainty; never infer 30%.",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "Table TABREF8 shows the results for the baseline models as well as the HUMAN measured performance on the task. The human performance provides an upper bound for the RUN task performance, while the simple baselines provide lower bounds. The best baseline model is NO-MOVE, reaching an accuracy of 30.3% on single sentences and 0.3 on complete paragraphs. For the HUMAN case, paragraph accuracy reaches above 80.",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 12525,
+          "utf8_end": 12935
+        }
+      ],
+      "original_expected": "supported",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 17,
+      "case_id": "qasper-5152b78f5dfee26f1b13f221c1405ffa9b9ba3a4",
+      "question": "What is their ROUGE score?",
+      "document": "qasper-1802.08636.txt",
+      "document_sha256": "d0014dc8396e673cc2c7409085ba217c407c2f4d2cf483fafbe1fd81b202388a",
+      "primary_reason": "source_content_unavailable",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "metric_scope",
+        "dataset_scope"
+      ],
+      "finding": "ROUGE table cells are not in the retained text package; metric variant and dataset are also unspecified.",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "Table 2: Results on the CNN and DailyMail test sets. We report ROUGE-1 (R1), ROUGE-2 (R2), and ROUGE-L (RL) F1 scores. Extractive systems are in the first block and abstractive systems in the second. Table cells are filled with — whenever results are not available. Models marked with ∗ are not directly comparable to ours as they are based on an anonymized version of the dataset.",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 20501,
+          "utf8_end": 20886
+        }
+      ],
+      "original_expected": "insufficient_evidence",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 46,
+      "case_id": "qasper-b46c0015a122ee5fb95c2a45691cb97f80de1bb6",
+      "question": "What is the architecture of the model?",
+      "document": "qasper-1809.00530.txt",
+      "document_sha256": "18dffe66b396e4b766dfc8c0b2bc228ee9e26696f4ac21bc3203b5c6dd13ff1d",
+      "primary_reason": "scope_or_period_ambiguous",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "upstream_formula_placeholders"
+      ],
+      "finding": "The labelled one-layer CNN is the feature encoder; the paper also specifies a fully connected softmax classifier, so whole architecture versus component is unresolved.",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "For the proposed model, we denote INLINEFORM0 parameterized by INLINEFORM1 as a neural-based feature encoder that maps documents from both domains to a shared feature space, and INLINEFORM2 parameterized by INLINEFORM3 as a fully connected layer with softmax activation serving as the sentiment classifier. We aim to learn feature representations that are domain-invariant and at the same time discriminative on both domains, thus we simultaneously consider three factors in our objective: (1) minimize the classification error on the labeled source examples; (2) minimize the domain discrepancy; and (3) leverage unlabeled data via semi-supervised learning.",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 8813,
+          "utf8_end": 9471
+        },
+        {
+          "kind": "text",
+          "quote": "We have left the feature encoder INLINEFORM0 unspecified, for which, a few options can be considered. In our implementation, we adopt a one-layer CNN structure from previous works BIBREF22 , BIBREF4 , as it has been demonstrated to work well for sentiment classification tasks. Given a review document INLINEFORM1 consisting of INLINEFORM2 words, we begin by associating each word with a continuous word embedding BIBREF23 INLINEFORM3 from an embedding matrix INLINEFORM4 , where INLINEFORM5 is the vocabulary size and INLINEFORM6 is the embedding dimension. INLINEFORM7 is jointly updated with other network parameters during training. Given a window of dense word embeddings INLINEFORM8 , the convolution layer first concatenates these vectors to form a vector INLINEFORM9 of length INLINEFORM10 and then the output vector is computed by Equation ( EQREF11 ): DISPLAYFORM0",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 16191,
+          "utf8_end": 17065
+        }
+      ],
+      "original_expected": "supported",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 62,
+      "case_id": "tatqa-e700aa58-2454-4af7-84fe-965254c07275",
+      "question": "What was the State income taxes, net of federal tax benefit in 2020?",
+      "document": "tatqa-62425e9b-b7de-4d31-9565-1042ad9e4926.json",
+      "document_sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+      "primary_reason": "scope_or_period_ambiguous",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "per_row_header_context"
+      ],
+      "finding": "The year-ended January 3, 2020 column and narrative fiscal 2019 terminology cannot establish a calendar-2020 amount.",
+      "evidence": [
+        {
+          "kind": "json",
+          "pointer": "/records/1/cells/1",
+          "source_type": "string",
+          "value_text": "January 3, 2020"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/4/cells/0",
+          "source_type": "string",
+          "value_text": "State income taxes, net of federal tax benefit"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/4/cells/1",
+          "source_type": "string",
+          "value_text": "22"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/19/text",
+          "source_type": "string",
+          "value_text": "The Company's effective tax rate for fiscal 2019 was favorably impacted primarily by excess tax benefits related to employee stock-based payment transactions and federal research tax credits, partially offset by an increase in valuation allowances arising from foreign withholding tax and an increase in taxes related to the sale of the commercial cybersecurity business."
+        }
+      ],
+      "original_expected": "supported",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 64,
+      "case_id": "tatqa-ec066127-4046-4b2f-9332-de14851c6868",
+      "question": "What was the expected term in 2019 in years?",
+      "document": "tatqa-89cf13a2-6d08-48be-a45d-2346422d5c38.json",
+      "document_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+      "primary_reason": "scope_or_period_ambiguous",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "per_row_header_context"
+      ],
+      "finding": "Bind 0.6 to year-ended January 31, 2020 and 0.8 to February 1, 2019. The supplied source does not name the first fiscal 2019.",
+      "evidence": [
+        {
+          "kind": "json",
+          "pointer": "/records/1/cells/0",
+          "source_type": "string",
+          "value_text": "VMware Employee Stock Purchase Plan"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/1/cells/1",
+          "source_type": "string",
+          "value_text": "January 31, 2020"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/1/cells/2",
+          "source_type": "string",
+          "value_text": "February 1, 2019"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/5/cells/0",
+          "source_type": "string",
+          "value_text": "Expected term (in years)"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/5/cells/1",
+          "source_type": "string",
+          "value_text": "0.6"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/5/cells/2",
+          "source_type": "string",
+          "value_text": "0.8"
+        }
+      ],
+      "original_expected": "supported",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 65,
+      "case_id": "squad-57338255d058e614000b5c10",
+      "question": "Who has elected the President of Warsaw since 1990?",
+      "document": "squad-c1dd7eef882a11ae.pdf",
+      "document_sha256": "ebb8677f840bc9006eae11f63da869bb5fafca5a4f312cffb1d815ab6c5f0399",
+      "primary_reason": "scope_or_period_ambiguous",
+      "tier": "stress_adjudication",
+      "secondary_tags": [],
+      "finding": "The source changes from City council since 1990 to all Warsaw citizens since 2002; a timeless single actor is incomplete.",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "The mayor of Warsaw is called President. Generally, in Poland, the mayors of bigger cities are called presidents – i.e. such cities, which have over 100,000 people or these, where already was president before 1990. The first Warsaw President was Jan Andrzej Menich (1695–1696). Between 1975 and 1990 the Warsaw Presidents was simultaneously the Warsaw Voivode. Since 1990 the President of Warsaw had been elected by the City council. In the years of 1994–1999 the mayor of the district Centrum automatically was designated as the President of Warsaw: the mayor of Centrum was elected by the district council of Centrum and the council was elected only by the Centrum residents. Since 2002 the President of Warsaw is elected by all of the citizens of Warsaw.",
+          "coordinate_system": "scoped source text UTF-8; not PDF binary offsets",
+          "utf8_start": 0,
+          "utf8_end": 763
+        }
+      ],
+      "original_expected": "supported",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 73,
+      "case_id": "qasper-975e60535724f4149c7488699a199ba2920a062c",
+      "question": "What background do they have?",
+      "document": "qasper-1907.01468.txt",
+      "document_sha256": "955d4100e91ef826362c6c32307c67cc452f884c045ed3d9821d71bd62ff92a5",
+      "primary_reason": "question_incomplete",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "unbound_referent"
+      ],
+      "finding": "Standalone they has no unique antecedent; authors, scholars and participants are discussed with no supplied conversation history.",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "Still, given our diversity of disciplinary backgrounds and research practices, we hope to capture a range of ideas and identify commonalities that will resonate for many.",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 510,
+          "utf8_end": 680
+        }
+      ],
+      "original_expected": "insufficient_evidence",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 76,
+      "case_id": "squad-5ad41b12604f3c001a4004fc",
+      "question": "What are engines using four expansion cylinders known as?",
+      "document": "squad-198dfa258b2e70a8.txt",
+      "document_sha256": "3c91050d11e7bf64fd4ca62f7dedea1d4bfbf339da5be4a455898c6807e8d955",
+      "primary_reason": "premise_or_entity_ambiguous",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "category_substitution"
+      ],
+      "finding": "The question substitutes four cylinders for four expansion stages; the source explicitly also describes a four-cylinder triple-expansion engine.",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "Such engines use either three or four expansion stages and are known as triple and quadruple expansion engines respectively.",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 180,
+          "utf8_end": 304
+        },
+        {
+          "kind": "text",
+          "quote": "This made the 4-cylinder triple-expansion engine popular with large passenger liners (such as the Olympic class), but this was ultimately replaced by the virtually vibration-free turbine engine.[citation needed]",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 1080,
+          "utf8_end": 1291
+        }
+      ],
+      "original_expected": "insufficient_evidence",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 79,
+      "case_id": "squad-5a2ecb43a83784001a7d248c",
+      "question": "In what year did the second wave of the plague hit the Netherlands?",
+      "document": "squad-a2bd00ba9ec7b403.pdf",
+      "document_sha256": "72cd327e78dedf9aa38bc87732dac35cc25c69445dc3f2429bb70e24bdd19c3f",
+      "primary_reason": "premise_or_entity_ambiguous",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "geographic_scope",
+        "hypothesis_qualifier"
+      ],
+      "finding": "The source links Low Countries spread from 1350 to a suggested second wave and possible southern-Netherlands reach; the question asserts a definitive Netherlands second-wave arrival.",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "Surveys of plague pit remains from the Dutch town of Bergen op Zoom showed the Y. pestis genotype responsible for the pandemic that spread through the Low Countries from 1350 differed from that found in Britain and France, implying Bergen op Zoom (and possibly other parts of the southern Netherlands) was not directly infected from England or France in 1349 and suggesting a second wave of plague, different from those in Britain and France, may have been carried to the Low Countries from Norway, the Hanseatic cities or another site.",
+          "coordinate_system": "scoped source text UTF-8; not PDF binary offsets",
+          "utf8_start": 687,
+          "utf8_end": 1223
+        }
+      ],
+      "original_expected": "insufficient_evidence",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 82,
+      "case_id": "tatqa-c3f4ec9b-2e21-42fd-950b-2e7b24e4b0b9",
+      "question": "What is the most expensive currency?",
+      "document": "tatqa-e8877535-8ade-4ba3-aae2-cd4db2b5c59c.json",
+      "document_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+      "primary_reason": "requires_derivation",
+      "tier": "derived_inference",
+      "secondary_tags": [
+        "comparison"
+      ],
+      "finding": "The three currency rows give common INR exchange rates. GBP is the maximum in both listed years; compare rates, not portfolio weights or revenue growth.",
+      "evidence": [
+        {
+          "kind": "json",
+          "pointer": "/records/0/cells/0",
+          "source_type": "string",
+          "value_text": "Currency"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/0/cells/2",
+          "source_type": "string",
+          "value_text": "FY 2019 `"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/0/cells/3",
+          "source_type": "string",
+          "value_text": "FY 2018 `"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/1/cells/0",
+          "source_type": "string",
+          "value_text": "USD"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/1/cells/2",
+          "source_type": "string",
+          "value_text": "70.07"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/1/cells/3",
+          "source_type": "string",
+          "value_text": "64.49"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/2/cells/0",
+          "source_type": "string",
+          "value_text": "GBP"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/2/cells/2",
+          "source_type": "string",
+          "value_text": "91.60"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/2/cells/3",
+          "source_type": "string",
+          "value_text": "86.05"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/3/cells/0",
+          "source_type": "string",
+          "value_text": "EUR"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/3/cells/2",
+          "source_type": "string",
+          "value_text": "80.82"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/3/cells/3",
+          "source_type": "string",
+          "value_text": "76.16"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/10/text",
+          "source_type": "string",
+          "value_text": "FY 2019 saw volatility in USD-INR, ranging from `64.90 and `74.10, and averaging at `70.07. There was also significant volatility in exchange rates of emerging markets’ currencies. Average currency exchange rates during FY 2019 for the three major currencies are given below:"
+        }
+      ],
+      "original_expected": "supported",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 92,
+      "case_id": "tatqa-69b61533-e155-408f-b189-5bb0ddfbc274",
+      "question": "What is the total gross emissions (Scope 1 and 2) for FY18?",
+      "document": "tatqa-502dd70a-926b-49d7-b236-63855c98e740.json",
+      "document_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+      "primary_reason": "scope_or_period_ambiguous",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "per_row_header_context",
+        "equal_valued_net_row_is_not_gross_proof"
+      ],
+      "finding": "FY18 has UK/Ireland and full-Group columns with different gross totals; the question omits geography.",
+      "evidence": [
+        {
+          "kind": "json",
+          "pointer": "/records/2/cells/2",
+          "source_type": "string",
+          "value_text": "FY18**"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/2/cells/3",
+          "source_type": "string",
+          "value_text": "FY18***"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/5/cells/0",
+          "source_type": "string",
+          "value_text": "Total gross emissions (Scope 1 and 2)"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/5/cells/2",
+          "source_type": "string",
+          "value_text": "98,725"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/5/cells/3",
+          "source_type": "string",
+          "value_text": "143,354"
+        },
+        {
+          "kind": "json",
+          "pointer": "/records/13/text",
+          "source_type": "string",
+          "value_text": "* Our GHG emissions have been calculated using the GHG Protocol Corporate Accounting and Reporting Standard, and emissions factors from DEFRA’s UK government GHG conversion factors for company reporting (where factors have not been provided directly by a supplier). ** UK & Ireland only – comparable with FY19 Group structure. *** Full Group including US business."
+        }
+      ],
+      "original_expected": "supported",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 99,
+      "case_id": "qasper-4e748cb2b5e74d905d9b24b53be6cfdf326e8054",
+      "question": "What traditional linguistics features did they use?",
+      "document": "qasper-1701.05574.txt",
+      "document_sha256": "e74c47e7f00f9659e85ba3028713c767da7f3660be672ef76c554f01c671b378",
+      "primary_reason": "source_content_unavailable",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "feature_granularity"
+      ],
+      "finding": "Some feature categories are stated, but the complete feature table is only an image reference/caption in the retained package. Do not mistake partial categories for a verified exhaustive list.",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "We describe the features used for sarcasm detection in Table . The features enlisted under lexical,implicit incongruity and explicit incongruity are borrowed from various literature (predominantly from joshi2015harnessing). These features are essential to separate sarcasm from other forms semantic incongruity in text (for example ambiguity arising from semantic ambiguity or from metaphors). Two additional textual features viz. readability and word count of the text are also taken under consideration. These features are used to reduce the effect of text hardness and text length on the eye-movement patterns.",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 14504,
+          "utf8_end": 15117
+        },
+        {
+          "kind": "text",
+          "quote": "Table 2: The complete set of features used in our system.",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 25353,
+          "utf8_end": 25410
+        }
+      ],
+      "original_expected": "insufficient_evidence",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 110,
+      "case_id": "squad-5a668b1df038b7001ab0bf8a",
+      "question": "Inter-network routing was what kind of system?",
+      "document": "squad-a2c1c2176d3c262a.txt",
+      "document_sha256": "aeb98d5feda0ab3efc8296ff3f73372e13a699fa97064d33bb575deef3451fe3",
+      "primary_reason": "premise_or_entity_ambiguous",
+      "tier": "stress_adjudication",
+      "secondary_tags": [
+        "part_whole_reference"
+      ],
+      "finding": "The text calls AppleTalk a plug-n-play system; inter-network routing is one configured function, so answering for that function by substituting the whole system is contested.",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "AppleTalk was a proprietary suite of networking protocols developed by Apple Inc. in 1985 for Apple Macintosh computers. It was the primary protocol used by Apple devices through the 1980s and 90s. AppleTalk included features that allowed local area networks to be established ad hoc without the requirement for a centralized router or server. The AppleTalk system automatically assigned addresses, updated the distributed namespace, and configured any required inter-network routing. It was a plug-n-play system.",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 0,
+          "utf8_end": 513
+        }
+      ],
+      "original_expected": "insufficient_evidence",
+      "new_gold_active": false,
+      "source_review_independent": false
+    },
+    {
+      "number": 111,
+      "case_id": "squad-57263677ec44d21400f3dc4c",
+      "question": "What delivery message was used ",
+      "document": "squad-ea95fc496ddc121e.txt",
+      "document_sha256": "a4008fb587348767c254824b7e5bb46aaec5eaa762404c37c3e9e2f52fc93eac",
+      "primary_reason": "question_incomplete",
+      "tier": "stress_adjudication",
+      "secondary_tags": [],
+      "finding": "The unfinished delivery-message question fails to distinguish the message unit (packets) from its delivery mechanism (store and forward).",
+      "evidence": [
+        {
+          "kind": "text",
+          "quote": "Baran developed the concept of distributed adaptive message block switching during his research at the RAND Corporation for the US Air Force into survivable communications networks, first presented to the Air Force in the summer of 1961 as briefing B-265, later published as RAND report P-2626 in 1962, and finally in report RM 3420 in 1964. Report P-2626 described a general architecture for a large-scale, distributed, survivable communications network. The work focuses on three key ideas: use of a decentralized network with multiple paths between any two points, dividing user messages into message blocks, later called packets, and delivery of these messages by store and forward switching.",
+          "coordinate_system": "original TXT UTF-8",
+          "utf8_start": 0,
+          "utf8_end": 696
+        }
+      ],
+      "original_expected": "supported",
+      "new_gold_active": false,
+      "source_review_independent": false
+    }
+  ],
+  "D1_reconciliation": [
+    {
+      "number": 4,
+      "case_id": "squad-5ad0440a77cf76001a686f4b",
+      "tier": "derived_inference",
+      "primary_reason": "requires_derivation",
+      "secondary_tags": [
+        "local_entailment"
+      ],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 67,
+      "case_id": "squad-5ad4f4d95b96ef001a10a793",
+      "tier": "stress_adjudication",
+      "primary_reason": "premise_or_entity_ambiguous",
+      "secondary_tags": [
+        "contested_entity_mapping"
+      ],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "ambiguous",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 88,
+      "case_id": "squad-5a3e3752378766001a0024f7",
+      "tier": "derived_inference",
+      "primary_reason": "requires_derivation",
+      "secondary_tags": [
+        "qualified_attributed_paraphrase"
+      ],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    }
+  ],
+  "development_roster": [
+    {
+      "number": 1,
+      "case_id": "qasper-06b5272774ec43ee5facfa7111033386f06cf448",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 2,
+      "case_id": "tatqa-e35b10e8-fe97-4cc4-b59e-cbeb0679f6c7",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 3,
+      "case_id": "squad-572fad30a23a5019007fc86e",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 4,
+      "case_id": "squad-5ad0440a77cf76001a686f4b",
+      "tier": "derived_inference",
+      "primary_reason": "requires_derivation",
+      "secondary_tags": [
+        "local_entailment"
+      ],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 5,
+      "case_id": "squad-5ad0457b77cf76001a686f6c",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 6,
+      "case_id": "squad-5ad03efa77cf76001a686edf",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 7,
+      "case_id": "squad-57286bb84b864d19001649c9",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 8,
+      "case_id": "squad-5728804b4b864d1900164a49",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 9,
+      "case_id": "squad-5ad408aa604f3c001a3fff01",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 10,
+      "case_id": "squad-572883a33acd2414000dfa7b",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": true,
+      "execution_approved": false
+    },
+    {
+      "number": 11,
+      "case_id": "qasper-352bc6de5c5068c6c19062bad1b8f644919b1145",
+      "tier": "stress_adjudication",
+      "primary_reason": "scope_or_period_ambiguous",
+      "secondary_tags": [
+        "upstream_formula_placeholders"
+      ],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 12,
+      "case_id": "tatqa-28233ece-7a01-47c5-b391-4212b0620940",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 13,
+      "case_id": "tatqa-b39b7bdd-0496-4131-a0e8-69b9f077eeda",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 14,
+      "case_id": "qasper-ef3567ce7301b28e34377e7b62c4ec9b496f00bf",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 15,
+      "case_id": "qasper-bd419f4094186a5ce74ba6ac1622b24e29e553f4",
+      "tier": "stress_adjudication",
+      "primary_reason": "unit_or_format_ambiguous",
+      "secondary_tags": [
+        "baseline_scope",
+        "referenced_results_table_not_acquired"
+      ],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 16,
+      "case_id": "squad-5a8225de31013a001a335262",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 17,
+      "case_id": "qasper-5152b78f5dfee26f1b13f221c1405ffa9b9ba3a4",
+      "tier": "stress_adjudication",
+      "primary_reason": "source_content_unavailable",
+      "secondary_tags": [
+        "metric_scope",
+        "dataset_scope"
+      ],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 18,
+      "case_id": "squad-5a592b593e1742001a15cfcd",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 19,
+      "case_id": "squad-5a58e3833e1742001a15ce82",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 20,
+      "case_id": "qasper-1e775cf30784e6b1c2b573294a82e145a3f959bb",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 21,
+      "case_id": "tatqa-c9126aa2-a8ec-4e6f-abe0-580a19217507",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 22,
+      "case_id": "tatqa-a1138b22-091e-4d69-b8dd-478496edb0c1",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 23,
+      "case_id": "tatqa-3c9733f1-459f-4025-8cf8-3ac0859687fa",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 24,
+      "case_id": "tatqa-9dcfc5c6-082a-495c-91b1-561d4262bc34",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 25,
+      "case_id": "tatqa-4ec6ff4d-d8ef-4cdd-aeab-df75b41f5c01",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 26,
+      "case_id": "squad-5a2c31abbfd06b001a5aea33",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 27,
+      "case_id": "squad-57097d63ed30961900e841fc",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 28,
+      "case_id": "tatqa-a8d02db2-d1ef-43e6-9207-8435b4ee609e",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 29,
+      "case_id": "tatqa-cf30adbb-c986-4b67-aa14-d0021d7a8f61",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 30,
+      "case_id": "tatqa-68ac2c86-8373-4134-960f-5d64427528ec",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 31,
+      "case_id": "squad-57261f9f271a42140099d4a9",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 32,
+      "case_id": "squad-57265526708984140094c2c0",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 33,
+      "case_id": "qasper-0101ebfbaba75fd47868ad0c796ac44ebc19c566",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 34,
+      "case_id": "qasper-ff338921e34c15baf1eae0074938bf79ee65fdd2",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": true,
+      "execution_approved": false
+    },
+    {
+      "number": 35,
+      "case_id": "squad-5ad4f11d5b96ef001a10a705",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 36,
+      "case_id": "squad-5ad4f3a25b96ef001a10a758",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 37,
+      "case_id": "squad-5ad4cd245b96ef001a10a111",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 38,
+      "case_id": "squad-5729f799af94a219006aa707",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 39,
+      "case_id": "squad-5728f6446aef0514001548e7",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 40,
+      "case_id": "tatqa-4f17ed1a-05b0-4a69-bcb7-40f42edd6d62",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 41,
+      "case_id": "tatqa-c6d15acd-4fd8-4419-a04e-c69487836f86",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 42,
+      "case_id": "squad-5acf9b1177cf76001a685444",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 43,
+      "case_id": "squad-5726dcbddd62a815002e9321",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 44,
+      "case_id": "squad-5726e313f1498d1400e8eeb5",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 45,
+      "case_id": "squad-5726f868dd62a815002e9686",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 46,
+      "case_id": "qasper-b46c0015a122ee5fb95c2a45691cb97f80de1bb6",
+      "tier": "stress_adjudication",
+      "primary_reason": "scope_or_period_ambiguous",
+      "secondary_tags": [
+        "upstream_formula_placeholders"
+      ],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 47,
+      "case_id": "qasper-5913930ce597513299e4b630df5e5153f3618038",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": true,
+      "execution_approved": false
+    },
+    {
+      "number": 48,
+      "case_id": "tatqa-04eb80f3-ec41-40c1-8413-9d70059a85ca",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 49,
+      "case_id": "tatqa-e5156247-2cf5-4242-8c82-0c19d8bb7cc9",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 50,
+      "case_id": "squad-5ad268cbd7d075001a429295",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 51,
+      "case_id": "squad-5ad25d49d7d075001a428eec",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 52,
+      "case_id": "squad-571099b2b654c5140001f9b7",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 53,
+      "case_id": "qasper-a267d620af319b48e56c191aa4c433ea3870f6fb",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": true,
+      "execution_approved": false
+    },
+    {
+      "number": 54,
+      "case_id": "qasper-899ed05c460bf2aa0aa65101cad1986d4f622652",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 55,
+      "case_id": "tatqa-28307c15-8d5d-44db-8a3f-67ad08ad6aac",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 56,
+      "case_id": "tatqa-c5036e83-ed8b-4267-89bc-2653be0e7ccc",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 57,
+      "case_id": "squad-56de3ebc4396321400ee26e6",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 58,
+      "case_id": "squad-5727ea45ff5b5019007d9870",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 59,
+      "case_id": "squad-572a1ba46aef05140015528f",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 60,
+      "case_id": "squad-5727ee372ca10214002d99ef",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 61,
+      "case_id": "squad-5727f2714b864d1900164072",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 62,
+      "case_id": "tatqa-e700aa58-2454-4af7-84fe-965254c07275",
+      "tier": "stress_adjudication",
+      "primary_reason": "scope_or_period_ambiguous",
+      "secondary_tags": [
+        "per_row_header_context"
+      ],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 63,
+      "case_id": "qasper-c571deefe93f0a41b60f9886db119947648e967c",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 64,
+      "case_id": "tatqa-ec066127-4046-4b2f-9332-de14851c6868",
+      "tier": "stress_adjudication",
+      "primary_reason": "scope_or_period_ambiguous",
+      "secondary_tags": [
+        "per_row_header_context"
+      ],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 65,
+      "case_id": "squad-57338255d058e614000b5c10",
+      "tier": "stress_adjudication",
+      "primary_reason": "scope_or_period_ambiguous",
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 66,
+      "case_id": "squad-5ad4f7235b96ef001a10a7df",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 67,
+      "case_id": "squad-5ad4f4d95b96ef001a10a793",
+      "tier": "stress_adjudication",
+      "primary_reason": "premise_or_entity_ambiguous",
+      "secondary_tags": [
+        "contested_entity_mapping"
+      ],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "ambiguous",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 68,
+      "case_id": "squad-5ad4f1365b96ef001a10a70f",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 69,
+      "case_id": "tatqa-7164d7c0-d541-4b7a-942d-a864348d4fbf",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 70,
+      "case_id": "squad-5a665002846392001a1e1ab5",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 71,
+      "case_id": "squad-5728eef92ca10214002daab0",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": true,
+      "execution_approved": false
+    },
+    {
+      "number": 72,
+      "case_id": "squad-5728284e3acd2414000df5cd",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 73,
+      "case_id": "qasper-975e60535724f4149c7488699a199ba2920a062c",
+      "tier": "stress_adjudication",
+      "primary_reason": "question_incomplete",
+      "secondary_tags": [
+        "unbound_referent"
+      ],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 74,
+      "case_id": "qasper-1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 75,
+      "case_id": "squad-5ad3c637604f3c001a3ff01b",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 76,
+      "case_id": "squad-5ad41b12604f3c001a4004fc",
+      "tier": "stress_adjudication",
+      "primary_reason": "premise_or_entity_ambiguous",
+      "secondary_tags": [
+        "category_substitution"
+      ],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 77,
+      "case_id": "squad-5ad3c637604f3c001a3ff018",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 78,
+      "case_id": "squad-5a2ed42fa83784001a7d24f8",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 79,
+      "case_id": "squad-5a2ecb43a83784001a7d248c",
+      "tier": "stress_adjudication",
+      "primary_reason": "premise_or_entity_ambiguous",
+      "secondary_tags": [
+        "geographic_scope",
+        "hypothesis_qualifier"
+      ],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 80,
+      "case_id": "tatqa-a084172d-f8e1-4ecf-bf6b-570967ddc466",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 81,
+      "case_id": "qasper-692c9c5d9ff9cd3e0ce8b5e4fa68dda9bd23dec1",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 82,
+      "case_id": "tatqa-c3f4ec9b-2e21-42fd-950b-2e7b24e4b0b9",
+      "tier": "derived_inference",
+      "primary_reason": "requires_derivation",
+      "secondary_tags": [
+        "comparison"
+      ],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 83,
+      "case_id": "qasper-1ed49a8c07ef0ac15cfa6b7decbde6604decbd5b",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 84,
+      "case_id": "squad-5a67dae18476ee001a58a73c",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 85,
+      "case_id": "squad-57274eca5951b619008f8802",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 86,
+      "case_id": "tatqa-2c542baf-9bb5-4f75-b1dc-4b79180885f5",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 87,
+      "case_id": "tatqa-05c03d2a-7d92-4973-8771-7d0c6547464a",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 88,
+      "case_id": "squad-5a3e3752378766001a0024f7",
+      "tier": "derived_inference",
+      "primary_reason": "requires_derivation",
+      "secondary_tags": [
+        "qualified_attributed_paraphrase"
+      ],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 89,
+      "case_id": "tatqa-66d3e594-1904-4cb1-9af1-bac17a8f273b",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 90,
+      "case_id": "tatqa-6407b020-fadc-42bd-8f02-9b80f3ccb742",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 91,
+      "case_id": "tatqa-3683a97f-66f4-4450-a978-4322b673b914",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 92,
+      "case_id": "tatqa-69b61533-e155-408f-b189-5bb0ddfbc274",
+      "tier": "stress_adjudication",
+      "primary_reason": "scope_or_period_ambiguous",
+      "secondary_tags": [
+        "per_row_header_context",
+        "equal_valued_net_row_is_not_gross_proof"
+      ],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 93,
+      "case_id": "squad-57060f3e75f01819005e7922",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 94,
+      "case_id": "squad-5ad0470477cf76001a686f80",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 95,
+      "case_id": "squad-570602fa52bb89140068979f",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 96,
+      "case_id": "squad-5ad044f077cf76001a686f5b",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 97,
+      "case_id": "squad-570d35b7b3d812140066d54d",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 98,
+      "case_id": "squad-570d29c2b3d812140066d4c0",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 99,
+      "case_id": "qasper-4e748cb2b5e74d905d9b24b53be6cfdf326e8054",
+      "tier": "stress_adjudication",
+      "primary_reason": "source_content_unavailable",
+      "secondary_tags": [
+        "feature_granularity"
+      ],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 100,
+      "case_id": "squad-5ad278add7d075001a429574",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 101,
+      "case_id": "squad-572ff5fcb2c2fd140056865a",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 102,
+      "case_id": "squad-5ad2bcdfd7d075001a42a0b1",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 103,
+      "case_id": "squad-57300580b2c2fd1400568751",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 104,
+      "case_id": "squad-572f5533a23a5019007fc55e",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "pdf",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 105,
+      "case_id": "tatqa-21e0abec-2256-4dd3-be8e-9329e4726546",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 106,
+      "case_id": "qasper-682e26262abba473412f68cbeb5f69aa3b9968d7",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 107,
+      "case_id": "qasper-5a8cc8f80509ea77d8213ed28c5ead501c68c725",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": true,
+      "execution_approved": false
+    },
+    {
+      "number": 108,
+      "case_id": "tatqa-f036c54e-3e90-4740-bf34-bf175c9c7a4a",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 109,
+      "case_id": "squad-5a55068b134fea001a0e180f",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 110,
+      "case_id": "squad-5a668b1df038b7001ab0bf8a",
+      "tier": "stress_adjudication",
+      "primary_reason": "premise_or_entity_ambiguous",
+      "secondary_tags": [
+        "part_whole_reference"
+      ],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 111,
+      "case_id": "squad-57263677ec44d21400f3dc4c",
+      "tier": "stress_adjudication",
+      "primary_reason": "question_incomplete",
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 112,
+      "case_id": "squad-5725d34089a1e219009abf51",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "squad",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 113,
+      "case_id": "tatqa-ca3c4add-5d49-4078-bc6f-7b38a842c06e",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 114,
+      "case_id": "tatqa-806247ca-aa73-4484-b2e6-d7221a64610f",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 115,
+      "case_id": "tatqa-5835d53d-8b8c-42eb-9b0b-8dd44502c222",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 116,
+      "case_id": "tatqa-cf9ea7bd-d26e-4ba9-a2a9-b1e1c73ec11c",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 117,
+      "case_id": "tatqa-6927b567-adcd-418d-bd67-e7de8542c658",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 118,
+      "case_id": "qasper-8e12b5c459fa963b3e549deadb864c244879fe82",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "qasper",
+      "format": "txt",
+      "structure": "prose",
+      "original_expected": "insufficient_evidence",
+      "D1_reviewed_expected": "insufficient_evidence",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 119,
+      "case_id": "tatqa-91f1a159-9a51-4a8d-ab24-a4b9a00d5c33",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    },
+    {
+      "number": 120,
+      "case_id": "tatqa-3264a669-9c5e-4821-b6f2-1f8002f47ffb",
+      "tier": "primary_direct_extraction",
+      "primary_reason": null,
+      "secondary_tags": [],
+      "source": "tatqa",
+      "format": "json",
+      "structure": "table",
+      "original_expected": "supported",
+      "D1_reviewed_expected": "supported",
+      "outstanding_specific_review": false,
+      "execution_approved": false
+    }
+  ],
+  "tier_counts": {
+    "derived_inference": {
+      "n": 3,
+      "format": {
+        "json": 1,
+        "txt": 2
+      },
+      "source": {
+        "squad": 2,
+        "tatqa": 1
+      },
+      "structure": {
+        "prose": 2,
+        "table": 1
+      },
+      "original_expected": {
+        "insufficient_evidence": 2,
+        "supported": 1
+      },
+      "D1_reviewed_expected": {
+        "supported": 3
+      },
+      "D2_numeric_answer_cases": 0,
+      "pending_specific_review_count": 0
+    },
+    "primary_direct_extraction": {
+      "n": 102,
+      "format": {
+        "json": 33,
+        "pdf": 17,
+        "txt": 52
+      },
+      "source": {
+        "qasper": 15,
+        "squad": 54,
+        "tatqa": 33
+      },
+      "structure": {
+        "prose": 69,
+        "table": 33
+      },
+      "original_expected": {
+        "insufficient_evidence": 28,
+        "supported": 74
+      },
+      "D1_reviewed_expected": {
+        "insufficient_evidence": 26,
+        "supported": 76
+      },
+      "D2_numeric_answer_cases": 45,
+      "pending_specific_review_count": 6
+    },
+    "stress_adjudication": {
+      "n": 15,
+      "format": {
+        "json": 3,
+        "pdf": 2,
+        "txt": 10
+      },
+      "source": {
+        "qasper": 6,
+        "squad": 6,
+        "tatqa": 3
+      },
+      "structure": {
+        "prose": 12,
+        "table": 3
+      },
+      "original_expected": {
+        "insufficient_evidence": 7,
+        "supported": 8
+      },
+      "D1_reviewed_expected": {
+        "ambiguous": 1,
+        "insufficient_evidence": 6,
+        "supported": 8
+      },
+      "D2_numeric_answer_cases": 6,
+      "pending_specific_review_count": 0
+    }
+  },
+  "original_v1": {
+    "n": 120,
+    "outcomes": {
+      "insufficient_evidence": 37,
+      "supported": 83
+    },
+    "format": {
+      "json": 37,
+      "pdf": 19,
+      "txt": 64
+    },
+    "scores": "not_available_no_benchmark_captures"
+  },
+  "all_primary_exclusions": {
+    "n": 18,
+    "format": {
+      "json": 4,
+      "pdf": 2,
+      "txt": 12
+    },
+    "source": {
+      "qasper": 6,
+      "squad": 8,
+      "tatqa": 4
+    },
+    "original_expected": {
+      "insufficient_evidence": 9,
+      "supported": 9
+    },
+    "D2_numeric_answer_cases": 6
+  },
+  "same_currency_comparison_082": {
+    "basis": "shared INR average exchange rates; original headers and paragraph retained",
+    "years": {
+      "2019": "GBP",
+      "2018": "GBP"
+    },
+    "comparison": "Decimal maximum over only USD/GBP/EUR rows in each year column",
+    "external_exchange_rates_used": false
+  },
+  "missing_table_checks": [
+    {
+      "number": 17,
+      "paper": "1802.08636",
+      "referenced_image": "9-Table2-1.png",
+      "caption": "Table 2: Results on the CNN and DailyMail test sets. We report ROUGE-1 (R1), ROUGE-2 (R2), and ROUGE-L (RL) F1 scores. Extractive systems are in the first block and abstractive systems in the second. Table cells are filled with — whenever results are not available. Models marked with ∗ are not directly comparable to ours as they are based on an anonymized version of the dataset.",
+      "origin": "unacquired_image_payload_in_upstream_dataset_package",
+      "raw_fields": [
+        "file",
+        "caption"
+      ],
+      "all_supplied_text_and_captions_preserved": true,
+      "original_publisher_image_inspected": false,
+      "adapter_dropped_supplied_cells": false,
+      "application_parsing_status": "not_run_for_this_proposal",
+      "repair": "Acquire the referenced asset or original publication under source terms; review a transcription and version the source. Recheck question scope before primary re-entry."
+    },
+    {
+      "number": 99,
+      "paper": "1701.05574",
+      "referenced_image": "6-Table2-1.png",
+      "caption": "Table 2: The complete set of features used in our system.",
+      "origin": "unacquired_image_payload_in_upstream_dataset_package",
+      "raw_fields": [
+        "file",
+        "caption"
+      ],
+      "all_supplied_text_and_captions_preserved": true,
+      "original_publisher_image_inspected": false,
+      "adapter_dropped_supplied_cells": false,
+      "application_parsing_status": "not_run_for_this_proposal",
+      "repair": "Acquire the referenced asset or original publication under source terms; review a transcription and version the source. Recheck question scope before primary re-entry."
+    }
+  ],
+  "source_integrity": {
+    "verified_development_members": 116,
+    "raw_sources": {
+      "qasper-dev.json": "2ae7ee62a65b1c4225791c70de80c2aad4e8998cf1fd4f09a53103db4f21af93",
+      "tatqa-dev.json": "8da095a819af6db3c14877c6df2d4d29960e41d1a63dd1fa853507bd2a616af5",
+      "squad-dev.json": "80a5225e94905956a6446d296ca1093975c4d3b3260f1d6c8f68bc2ab77182d8"
+    },
+    "qasper_documents_checked": 19,
+    "tatqa_documents_checked": 32,
+    "squad_development_questions_context_checked": 62,
+    "documents": [
+      {
+        "source": "qasper",
+        "document": "qasper-1612.08205.txt",
+        "selected_source_fields_sha256": "90f665704159e7c184cd0da0ed98fc86e79cf34e6376d5d9aa1ff429c4df2cec",
+        "document_sha256": "d64c578125080898aae9b3cdb7bd01ccea8faad8f6ed3bd195569a49d36c9c6c",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 15,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1701.05574.txt",
+        "selected_source_fields_sha256": "c0241ec1ecded94efd8037f238e1f6ef4e2ef32f56cd717ce042fb5248d76ab9",
+        "document_sha256": "e74c47e7f00f9659e85ba3028713c767da7f3660be672ef76c554f01c671b378",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 8,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1709.05036.txt",
+        "selected_source_fields_sha256": "c1d414bd7516dea5fe3cd163994c33a9040adf27016368a536cce60ce24dea7b",
+        "document_sha256": "1f4ac8cbe158d02fe6649cc96da4dd1fbf06aa8bc0f084cc727d5afd6e0a163a",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 9,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1712.05608.txt",
+        "selected_source_fields_sha256": "8b5352e6a4b1415ec13c077bcd61a4cf5d1cf79f3d5dfbba20115fcb85fb83e3",
+        "document_sha256": "6ed0794c8817f459f9a34752e096d0b9a1e60cfdc1f5415380d7b1736a52dbea",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 2,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1802.08636.txt",
+        "selected_source_fields_sha256": "7aeb9ee47006d69a5f3baf722569554219657f239522ae92b56f2c55b590c893",
+        "document_sha256": "d0014dc8396e673cc2c7409085ba217c407c2f4d2cf483fafbe1fd81b202388a",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 5,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1809.00530.txt",
+        "selected_source_fields_sha256": "92539fb37a6a221060e170596f2ddebed4aa67f0e5659def2ea8b2bdc3ab5d83",
+        "document_sha256": "18dffe66b396e4b766dfc8c0b2bc228ee9e26696f4ac21bc3203b5c6dd13ff1d",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 10,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1810.12085.txt",
+        "selected_source_fields_sha256": "fd36fa159c1605f0780a97c0fbb04eeb8882af32e62f77b72a7ea2487b5e5ea3",
+        "document_sha256": "7e31e062f38c9cb8fb3f810652b0b9d667d888de845a9dcdba93bf1af9eed96b",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 7,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1902.09666.txt",
+        "selected_source_fields_sha256": "9d8783587e2881bd7cb78c4a57c20c1026917efaea6689ab2e1b36452bb326a5",
+        "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 6,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1903.07406.txt",
+        "selected_source_fields_sha256": "d17229b8b8f10a2cafd2054445964a47108faebf6d66339226f9ec8d47239982",
+        "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 4,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1905.07791.txt",
+        "selected_source_fields_sha256": "b2dcdd5518354e7e6115637eb0caa35ede509679cab2d6f8f530768bcb346ecc",
+        "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 10,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1906.07701.txt",
+        "selected_source_fields_sha256": "b1712d92871f3dba788e8334f2ea953627e1be006a26ee144209e60fd6fc354f",
+        "document_sha256": "47ab0d17c1a599d75db8a3958e572d6d8def7846c90875f975699235dfdbe078",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 10,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1907.01468.txt",
+        "selected_source_fields_sha256": "5b28cd54066fabaf238cbcb7b87737ecc487b687d8582556bcc5c1894494e9ab",
+        "document_sha256": "955d4100e91ef826362c6c32307c67cc452f884c045ed3d9821d71bd62ff92a5",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 0,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1909.00015.txt",
+        "selected_source_fields_sha256": "ccb4e96519e1dc752ec853114d5109569124f5f38849b5049ba58f6b1577a83f",
+        "document_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 15,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1909.08970.txt",
+        "selected_source_fields_sha256": "916433aedbcc2b0221a3812dac4d99ff8ce3a670f3e397789528bb590b2d823e",
+        "document_sha256": "6bbc50fcc74369902cbde16ca3595353764f490e84b55752d570c26f25c2c831",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 6,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1909.13104.txt",
+        "selected_source_fields_sha256": "217fda071d13abaf93208603656fbb705c01e110894398fc6548a3e77e17f4bf",
+        "document_sha256": "5c944998ad899a2b0ddb2a00d67efb69b917d3defd7f03622cfd3bb0b2a930fc",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 4,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-1910.06592.txt",
+        "selected_source_fields_sha256": "38cb97b139341bac4aeb059c745c6a5b7b663d930078580bd7d1e1d6cf1f717b",
+        "document_sha256": "d00ad8022d5ce510cd1729418988d8974692987e8deca692dc3fb1e7dd50957d",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 4,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-2002.01984.txt",
+        "selected_source_fields_sha256": "e17e25c6bafe19bfe432abb1377c6d20c21b2e6caf59aa755c4e556ae926f9e3",
+        "document_sha256": "8b0de396c735a4a627f059419e2e52b7f7651ceaf3413b5cf8466afb23bcbcea",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 11,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-2002.02070.txt",
+        "selected_source_fields_sha256": "157e6ee722d4380a484fcefbf33e275c0d3207e9b156fd952411a9ddc36b0cfa",
+        "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 4,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "qasper",
+        "document": "qasper-2003.11645.txt",
+        "selected_source_fields_sha256": "faabf130c8171574f913961b747a2be00aeb2d0fb085e2731f17b1c4dd61ee22",
+        "document_sha256": "dcb01eaae2f66122bc0a74eaf90a42d1a9bfff6a9e22375387998e42b49d835b",
+        "complete_supplied_text_preserved": true,
+        "captions_preserved": 11,
+        "image_payloads_in_retained_record": false
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-386352cf-f7e3-4148-920c-63bc57cf156b.json",
+        "selected_source_fields_sha256": "04c263592a783db88e5b9a903a62e71027a0288bd7b9e351f56893fbb9ac7b18",
+        "document_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 12,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-13bb283b-4b9c-42b9-9b02-f1b2e1a87abf.json",
+        "selected_source_fields_sha256": "7937c36f2e267c7c2256f12929f793f763fb1450b2cb6c3994d22c3d61de8ddb",
+        "document_sha256": "d3c0c4ef2a7d848f402bb375ea149cf397d83da1d0115253f7462854ddb7ceb6",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 16,
+        "paragraphs": 12,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-4145912c-86dc-434b-8990-1cfe78f298f5.json",
+        "selected_source_fields_sha256": "1ae963e3a0c2a01c54f0b2dc8d8e0f5c9ec9a141383f78f7b9d550b328828ce3",
+        "document_sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 7,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-d873a0cf-2e57-46f3-b9a5-2596808ffa00.json",
+        "selected_source_fields_sha256": "fa770d3759b14a8369107de95478172d69db3076b4b5c97bbca6f893fda693cd",
+        "document_sha256": "fd8708831e34f639782a456a2ebc7d299e213a7fe333485c669b0560f6b63df2",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 7,
+        "paragraphs": 7,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-d7d65228-96c1-4890-951c-c3d7578f8031.json",
+        "selected_source_fields_sha256": "043f9380f7850460aa3b020f7989a9af89ab7ec997497841865fd823f4e59294",
+        "document_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 5,
+        "paragraphs": 2,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-a7a7ede0-4575-4ace-8d5b-371db74ef3c1.json",
+        "selected_source_fields_sha256": "b59e449b8621b8bf4437fbb6318ec4083cde8833aba794ce92c2ee5fed7c1f9d",
+        "document_sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 7,
+        "paragraphs": 2,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-914fca09-058a-4409-85c0-7e399c857d4d.json",
+        "selected_source_fields_sha256": "641b3a63e73758dfaf8e4d93ac7e7400e5f33933ee90f755ef2d001e2cc98714",
+        "document_sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 11,
+        "paragraphs": 2,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-62425e9b-b7de-4d31-9565-1042ad9e4926.json",
+        "selected_source_fields_sha256": "0c851e88dc7ad6cbc10e8fa27c4c9db2bda09059d613074c0a97149de56dfbc1",
+        "document_sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 18,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-428d5e87-612b-468c-80f3-5b5298d589c8.json",
+        "selected_source_fields_sha256": "ff1554ed4fd16277136c8b0d5409ccc3afbca343b5e7309578acc4dd2ae7a6ca",
+        "document_sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 5,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-a961dd41-e5cb-40ce-876d-7c2f2c7dae96.json",
+        "selected_source_fields_sha256": "b28ab99e093a12b45e7ab892790b25725dca965e00b697621bbeca8cdd603215",
+        "document_sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 12,
+        "paragraphs": 5,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-f5cab3e6-1f49-4434-b9a2-5e97073b985b.json",
+        "selected_source_fields_sha256": "c8e5e776abaea7468759fe966b5b1b9d0f80703ea0a2232b3b05999566b9a85b",
+        "document_sha256": "a7831e877dfd31f12b68208d29ddb06f286eeadbb4b98d3004c2ad8b83937a74",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 11,
+        "paragraphs": 2,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-502dd70a-926b-49d7-b236-63855c98e740.json",
+        "selected_source_fields_sha256": "2bf6c681bbf05bf457e21a5c1197bad36d0286b3309823db6b9ec1559ec7df59",
+        "document_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 9,
+        "paragraphs": 5,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-e8877535-8ade-4ba3-aae2-cd4db2b5c59c.json",
+        "selected_source_fields_sha256": "5eb896be07bb0fdc09f2ef601b642db707d2ce48865f46e60e88b355126f8f3f",
+        "document_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 8,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-0a75d1da-9beb-4a61-b2f4-06cff98b755e.json",
+        "selected_source_fields_sha256": "e0b87e33bc31933e7526373d045e8a77799cbffde1790bcefeab6e0f73474fc8",
+        "document_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 26,
+        "paragraphs": 6,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-fd7e14ed-efb6-4992-bdc2-b5603d91f126.json",
+        "selected_source_fields_sha256": "6d05a823e2c8f4936640294ae8b5ee4f1ea2e5520fa2088d75320315b75741fe",
+        "document_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 18,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-26d46b77-411e-47aa-b650-5c84ef3e9e21.json",
+        "selected_source_fields_sha256": "d7cb8c77eb642239584c244b5c128b613d7d818dc875d7961727fc19cef3d9ee",
+        "document_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 8,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-a190aaec-d9e9-4555-a64b-e833f1db0843.json",
+        "selected_source_fields_sha256": "a03e61fc2dfacca8b9426e2542fbbff83e451b441e361548529090ec3e91f473",
+        "document_sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 10,
+        "paragraphs": 3,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-1fc1784c-38a0-49a2-a985-8c8a479f5f66.json",
+        "selected_source_fields_sha256": "e0fe27bd64bde18f31225a3112680ade7e76db8527c3f3febb3aa0548c22eda3",
+        "document_sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 6,
+        "paragraphs": 2,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-89cf13a2-6d08-48be-a45d-2346422d5c38.json",
+        "selected_source_fields_sha256": "974d72d0b5ee84a2e8bd3ea2b8b8e5dcf0a8184c9b77d5cee753033c25b2fa27",
+        "document_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 7,
+        "paragraphs": 3,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-6aa15859-a841-47eb-ad04-a441599cf05c.json",
+        "selected_source_fields_sha256": "13ce235fbe9f88a0ecd376b6cd29b953b3d42a810a88e4eed32286a2038749ba",
+        "document_sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 15,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7.json",
+        "selected_source_fields_sha256": "89800d0b475e14599c8d8d18ae8d56cb785de03b42ee5ff776ea8d2112324499",
+        "document_sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 7,
+        "paragraphs": 3,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-9791f353-ce82-41be-a93d-915b8f52677b.json",
+        "selected_source_fields_sha256": "b1218fffa5a18f286c699b76651731a5f2c7194578a87516dc2cd502bfc6e889",
+        "document_sha256": "2181aec9f0a6a93f2e88ed85be4ac936206a97db1e6bf08e976b4b9f1d19d45d",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 8,
+        "paragraphs": 8,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-1f631856-89ba-471a-b65d-86801ec07401.json",
+        "selected_source_fields_sha256": "3ea04ff4caf55f74e48c1e8bcc18b2834b49476000348497e0e908a432362c33",
+        "document_sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 6,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-467f55db-152c-4219-97c6-5765f1ead0d9.json",
+        "selected_source_fields_sha256": "60a1808a9248ee5c1e0e636996a44da7470e71cdd16d4ecf25c59c9aba69e315",
+        "document_sha256": "660244bf434b8d697f8d6774f0231b46e2ab928e55a58caf0adbc5b2335c2cd5",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 7,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-2bc7fad1-056b-4298-bfca-5a33c970b1a0.json",
+        "selected_source_fields_sha256": "cf5162447b606d0a9c3fb55ca876e3643d64ffd2fdfcc058b5b92e1f6c12a9a6",
+        "document_sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 24,
+        "paragraphs": 2,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-736f65a8-7b6b-47bc-8c6a-3a2d641695bc.json",
+        "selected_source_fields_sha256": "b51a96edcd54ebd18568bf32be36a77636d4919bd850f186ede879a7bc2238ff",
+        "document_sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 6,
+        "paragraphs": 9,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-0f04b820-97bc-4592-983b-00cfd0788011.json",
+        "selected_source_fields_sha256": "dcf550a108b12d5f71a32f010bc687f7e17045881c7feeeefce7a43ef98ccfbc",
+        "document_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 15,
+        "paragraphs": 8,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-ec8d8bf5-ff64-447b-8481-cc067a861a28.json",
+        "selected_source_fields_sha256": "e54b05d33aad4bfb15665a0d152d62736202dc9879db2c576dca9f5d31490feb",
+        "document_sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 9,
+        "paragraphs": 2,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-861ad987-4b1b-40e0-bef3-1fbd25a33c6b.json",
+        "selected_source_fields_sha256": "80bc6c602f68238ee84bf557e37131dba5dada98469d2d59ac698c43c0e2b777",
+        "document_sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 13,
+        "paragraphs": 6,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-2a704bb9-4bd3-4071-b8e6-212957b04ada.json",
+        "selected_source_fields_sha256": "50831ad59f0e15b65e5186912f95022e6d7de7544680323cbc7910ac73f8ee06",
+        "document_sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 11,
+        "paragraphs": 7,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-eb122e2e-12b4-4e59-a018-7045192b021d.json",
+        "selected_source_fields_sha256": "c3dba57267c7b6ff4ea6f23a956359ef01e007c9227501bdbcbdc51e65d3dee8",
+        "document_sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 9,
+        "paragraphs": 6,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      },
+      {
+        "source": "tatqa",
+        "document": "tatqa-bee68d71-44ca-4177-a1c7-8c127f6f9203.json",
+        "selected_source_fields_sha256": "9d233ba17bc39f19959dc2f52202e2eece4eda4a8af901231cd81de295285b95",
+        "document_sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+        "all_cells_and_paragraphs_preserved": true,
+        "rows": 6,
+        "paragraphs": 4,
+        "per_row_header_rule": "first row only; D5 propagation limitation remains"
+      }
+    ],
+    "application_ingestion_run": false,
+    "pdf_roundtrip": "reuse previous source-audit verification; same development hashes; no new PDF extraction claim"
+  },
+  "scores": {
+    "primary": null,
+    "derived": null,
+    "stress_behaviors": null,
+    "original_v1": null
+  },
+  "limitations": [
+    "All denominators are provisional development-only membership; 60 sealed candidates remain unclassified here.",
+    "D4-D7, six specific primary review issues, source families and whole-benchmark quotas remain unresolved.",
+    "Missing table image payloads were not acquired or inspected; no claim that publisher tables lack answers.",
+    "No replacement registry exists; the primary shrinks instead of hand-picking easier additions.",
+    "The independent D3 screening pass was explicitly waived, not performed."
+  ]
+}

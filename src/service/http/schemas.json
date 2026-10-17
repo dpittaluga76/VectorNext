@@ -1811,7 +1811,7 @@
       "gemma",
       "nuextract"
     ],
-    "default": "hybrid",
+    "default": "nuextract",
     "description": "Hybrid accepts a validated supported NuExtract answer, otherwise tries Gemma once. Forced modes never fall back."
   },
   "AnswerSubmission": {

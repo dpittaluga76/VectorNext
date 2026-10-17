@@ -1,0 +1,90 @@
+{
+  "kind": "user_waived_level_a_activation_not_execution_freeze",
+  "version": "1.6",
+  "date": "2026-10-17",
+  "approved_for_execution": false,
+  "independent_review_acceptance": false,
+  "model_outputs_used": false,
+  "sealed_content_opened": false,
+  "model_calls": 0,
+  "predecessor": {
+    "path": "docs/reports/t39-gold-review-v1.5/manifest.json",
+    "sha256": "c4f4d028174f84fb8055f37326991b4d3ae46eda845c275aa30c14cc38303ecc"
+  },
+  "artifacts": [
+    {
+      "path": "evals/measurement/gold-review-v1.6.md",
+      "sha256": "2e01b075a2f7d9edeb77647f2b92530df12cd4d42664e203a2470981b34b64b2",
+      "bytes": 2803
+    },
+    {
+      "path": "evals/measurement/activate_level_a.py",
+      "sha256": "83f44295a9c91eca2eca2f3523e95014b732b0ba2aae76ca8cb750ac6df10028",
+      "bytes": 6786
+    },
+    {
+      "path": "evals/measurement/test_level_a.py",
+      "sha256": "de67a3efb1b31020a8c9adb232f120cfcf78efc8adc5e68d5aff6d691c94f107",
+      "bytes": 5734
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6.md",
+      "sha256": "2a048446abfa26149c4d54a36b238aaa8df6963b42933d5c26a4edd967c8252a",
+      "bytes": 3296
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6/adjudication.json",
+      "sha256": "b67735ab78ec3659baa368966b0baa962ebab09cc1164bb446f3c94ce3b3d2df",
+      "bytes": 7490
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6/build.json",
+      "sha256": "323907ab5c31d9bf43282e97f1c4f8dcb2008ff0e6f76956afea8ab120015c4a",
+      "bytes": 546
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6/collision-audit.json",
+      "sha256": "adfaef03a1fc9c4b8f287dc155686c1adb4e2ef90adeefe2dc17a45e9dc0e431",
+      "bytes": 684
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6/custodian-input.json",
+      "sha256": "359880f78c76d4a2c952b0b19aba7e89a0e8e84e11a68f1f97862e57aeb065c6",
+      "bytes": 21892
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6/custodian-receipt-template.json",
+      "sha256": "ecfa2d75e8892749d35db7bb7f6fb953866b92463a0823ddc34fbaa23204a5f7",
+      "bytes": 2461
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6/family-ledger.json",
+      "sha256": "23b76dae48c9b87b3d9d5b9991e318020e438b00b442b19836bf19a70cefb0a7",
+      "bytes": 219470
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6/gold.json",
+      "sha256": "c685a04c4553507015b3826ae6b41537390b594348c2f889c2dc896ff8d5d979",
+      "bytes": 241289
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6/pilot-audit.json",
+      "sha256": "0e0c4ea955e5bd6c3cca9399d34ac3d315e20f9d669d47e5eea467a43b424c22",
+      "bytes": 33363
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6/tiers.json",
+      "sha256": "09ef9ec2c491caf16c193f3eb2f63bea413bb255b5c7308b0b6a10b749b5dd18",
+      "bytes": 44653
+    },
+    {
+      "path": "docs/reports/t39-gold-review-v1.6/verification.json",
+      "sha256": "40a5d4607c9062dcb36e8f96f82ce550d2f196e321c73070a3b22827146c2b9a",
+      "bytes": 1209
+    }
+  ],
+  "activated_gold_replacement": [
+    107
+  ],
+  "pending_gold_cases": []
+}

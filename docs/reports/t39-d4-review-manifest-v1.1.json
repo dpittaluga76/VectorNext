@@ -1,0 +1,101 @@
+{
+  "kind": "D4_review_candidate_hash_record_not_execution_freeze",
+  "date": "2026-10-16",
+  "approved_for_execution": false,
+  "independent_review_acceptance": false,
+  "model_runs": 0,
+  "sealed_content_opened": false,
+  "original_labels_and_requests_changed": false,
+  "git_execution_freeze": "pending remaining decisions and runtime integration; no inference permitted by this artifact",
+  "base_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "predecessors": {
+    "docs\\reports\\t39-d1-adjudication-v1.1.json": "ad8c425e5ae85cbdaab8d4d28aadb62806c9ea9d1df93fd0668e63a461798f0f",
+    "docs\\reports\\t39-d2-adjudication-v1.1.json": "17438e54d38ddd84390bfe660d8d3c64f8eea3c06e6a007b5c696586a7f84c09",
+    "docs\\reports\\t39-d3-tiers-v1.1.json": "fca867a9596d8334cc0e96a0887b9dfc20e1026bcef58f7c8e6c29673703a861"
+  },
+  "artifacts": [
+    {
+      "path": "evals/measurement/typed-facts-v1.1.md",
+      "sha256": "18df6126518757c8aec3df4ba18aa7a39681017ac2af8ea87d2d32d643dcf744"
+    },
+    {
+      "path": "evals/measurement/answer-format-v1.1.txt",
+      "sha256": "37706bf28d342f200ab1523590324fb3e5ed00d5e304074fd8fbd3ea64bf8f17"
+    },
+    {
+      "path": "evals/measurement/typed-facts.schema.json",
+      "sha256": "73c21290775420e01fb93bb26d20b3cecadde26bdd3d642c29bd70517f2a7da3"
+    },
+    {
+      "path": "evals/measurement/typed_facts.py",
+      "sha256": "162d269aac8fd4cde37a30eeb2ac4628d06bfbd59b9cc7431ad9161be43bfe64"
+    },
+    {
+      "path": "evals/measurement/format_contract.py",
+      "sha256": "61497bf2f107ee3102389c37fac039af28e4dd9cf9d0584ba63f7f765b203ee0"
+    },
+    {
+      "path": "evals/measurement/build_typed_candidate.py",
+      "sha256": "812eb1122d8b2b326541c6d80abb7aea2f2894fc8f7a16b0eb4e1611182a0553"
+    },
+    {
+      "path": "evals/measurement/test_typed_facts.py",
+      "sha256": "2c1c2747211725d4404ee40043ca634177158e4eaa2c5ab4f227d48198ad64cc"
+    },
+    {
+      "path": "evals/measurement/audit_labels.py",
+      "sha256": "c8dd6e547e3857fb72a38cea01fd0d8f4ddd510551a52f660f7adbbbc69bf474"
+    },
+    {
+      "path": "docs/reports/t39-d4-gold-candidate-v1.1.json",
+      "sha256": "3605375fcbaaf3949aabb0068a80f7db34796af7342088726a1fc3a1a5a95bc0"
+    },
+    {
+      "path": "docs/reports/t39-d4-collision-audit-v1.1.json",
+      "sha256": "4381ac7371780169e1f8699d5e5a3bd91b1ee17db344c555f905336e2ef6bb74"
+    },
+    {
+      "path": "docs/reports/t39-d4-typed-facts-v1.1.md",
+      "sha256": "2c28982c741172fcfd932b1669c432bec201d4bd98c79544de0ebed2a41c2ae4"
+    }
+  ],
+  "verification": {
+    "unittest_command": "python -m unittest discover -s evals/measurement -t . -p \"test_*.py\"",
+    "unittest_count": 47,
+    "D4_test_count": 17,
+    "unittest_exit_code": 0,
+    "json_schema": "Draft 2020-12 checked and candidate validated",
+    "public_candidate_critical_invariants": "passed",
+    "source_bindings": {
+      "source_documents": 120,
+      "proof_locations": 217,
+      "table_value_bindings": 37,
+      "unit_period_context_bindings": 96
+    },
+    "original_development_members_verified": 116,
+    "accepted_strings_tested": 330,
+    "reproducible_candidate_and_audit_bytes": true,
+    "previous_review_artifact_hashes_verified": 14,
+    "D1_hash_and_policy_verified": true,
+    "local_links_checked": 83,
+    "git_diff_check_exit_code": 0,
+    "docker_or_gpu_runs": 0
+  },
+  "collision_summary": {
+    "table_question_cases": 37,
+    "table_cell_checks": 1432,
+    "findings": {
+      "outside_annotated_support_review_lead": 147,
+      "exact_wrong_location": 3
+    }
+  },
+  "limitations": [
+    "D5 table context/proof integration",
+    "D6 source families and custody",
+    "D7 coverage",
+    "final adaptation/field mapping approval",
+    "runtime format instruction integration",
+    "six specific case adjudications",
+    "single execution freeze"
+  ]
+}

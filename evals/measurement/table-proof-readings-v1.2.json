@@ -1,0 +1,51 @@
+{
+  "version": "1.2",
+  "date": "2026-10-16",
+  "review": "Source-only internal adjudication; no model outputs. No roster changes.",
+  "cases": {
+    "tatqa-ec066127-4046-4b2f-9332-de14851c6868": {
+      "note": "Both actual year-end columns remain explicit stress readings; no unsupported fiscal-year renaming.",
+      "stress_readings": [
+        {
+          "id": "year-ended-2020-01-31",
+          "row": 5,
+          "col": 1,
+          "value_string": "0.6"
+        },
+        {
+          "id": "year-ended-2019-02-01",
+          "row": 5,
+          "col": 2,
+          "value_string": "0.8"
+        }
+      ]
+    },
+    "tatqa-69b61533-e155-408f-b189-5bb0ddfbc274": {
+      "note": "Gross emissions, not equal-valued net row. UK/Ireland and full-Group geographies remain stress readings.",
+      "stress_readings": [
+        {
+          "id": "FY18-UK-Ireland",
+          "row": 5,
+          "col": 2,
+          "value_string": "98,725"
+        },
+        {
+          "id": "FY18-full-Group-including-US",
+          "row": 5,
+          "col": 3,
+          "value_string": "143,354"
+        }
+      ]
+    },
+    "tatqa-c3f4ec9b-2e21-42fd-950b-2e7b24e4b0b9": {
+      "note": "D4 alternatives each require all three currency rates for one year and the selected GBP label; source paragraph establishes INR context. Comparison remains derived.",
+      "additional_required": [
+        {
+          "paragraph": 10,
+          "utf8_start": 0,
+          "utf8_end": 277
+        }
+      ]
+    }
+  }
+}

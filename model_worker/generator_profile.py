@@ -7,6 +7,7 @@ from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = Path(__file__).with_name('generator_profiles.json')
+MODEL_PROFILES = {'gemma': '12b', 'nuextract': 'nuextract3-requested-facts-v1'}
 
 
 def load(name=None):

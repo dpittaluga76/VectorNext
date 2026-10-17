@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "sources": [
+    {"file":"squad-dev.json","url":"https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/dataset/dev-v2.0.json","sha256":"80a5225e94905956a6446d296ca1093975c4d3b3260f1d6c8f68bc2ab77182d8","bytes":4370528,"license":"CC-BY-SA-4.0","attribution":"Rajpurkar, Jia, Liang (2018); source Wikipedia contributors","terms":"https://rajpurkar.github.io/SQuAD-explorer/"},
+    {"file":"tatqa-dev.json","url":"https://raw.githubusercontent.com/NExTplusplus/TAT-QA/870accc41953dcde885aabeb963d94aabdc0fbc3/dataset_raw/tatqa_dataset_dev.json","sha256":"8da095a819af6db3c14877c6df2d4d29960e41d1a63dd1fa853507bd2a616af5","bytes":1637431,"license":"CC-BY-4.0","attribution":"Zhu et al. (2021), TAT-QA","terms":"https://huggingface.co/datasets/next-tat/TAT-QA/blob/main/README.md"},
+    {"file":"qasper.tgz","url":"https://qasper-dataset.s3.us-west-2.amazonaws.com/qasper-train-dev-v0.3.tgz","sha256":"a28fdf966db827bcee3d873107d6b6669864fb7ca8fbf73a192f5e39191bdb5a","bytes":10835856,"license":"CC-BY-4.0","attribution":"Dasigi et al. (2021), QASPER","terms":"https://huggingface.co/datasets/allenai/qasper/blob/main/README.md"},
+    {"file":"qasper-dev.json","archive":"qasper.tgz","member":"qasper-dev-v0.3.json","sha256":"2ae7ee62a65b1c4225791c70de80c2aad4e8998cf1fd4f09a53103db4f21af93","bytes":11398686}
+  ]
+}

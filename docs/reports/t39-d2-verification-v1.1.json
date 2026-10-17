@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-16",
+  "python_measurement_suite": {
+    "command": "python -m unittest discover -s evals/measurement -t . -v",
+    "passed": 30,
+    "failed": 0,
+    "execution": "host Python; standard-library tests; no network/model calls"
+  },
+  "development_members_verified": 116,
+  "d2_evidence_and_answer_spans_verified": 19,
+  "d1_amendment_sha256_unchanged": "ad8c425e5ae85cbdaab8d4d28aadb62806c9ea9d1df93fd0668e63a461798f0f",
+  "d1_policy_unchanged": true,
+  "numeric_policy_bound_cases": 51,
+  "original_alternatives_scanned": 111,
+  "d1_aliases_checked": 12,
+  "model_runs": 0,
+  "sealed_content_opened": false,
+  "production_validator_changed": false,
+  "source_proposal_or_historical_scores_changed": false,
+  "limitations": [
+    "Semantic scorer integration pending final D3-D7 and typed/proof mappings.",
+    "107 replacement requires two independent source reviews; implementation review is not independent.",
+    "No scores exist for this new proposal; original and amended scoring views are predeclared only."
+  ]
+}

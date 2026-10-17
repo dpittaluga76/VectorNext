@@ -1,0 +1,12 @@
+{
+  "version": "1.5",
+  "approved_for_execution": false,
+  "verified_development_members": 116,
+  "frozen_artifact_entries_verified": 90,
+  "predecessor_sha256": "65ddc1d1d3c76b5c0f83e74d4f46b572261e9840dd502ee72df38956aee418fb",
+  "source_audit_sha256": "f4c8aec6a2922e5e0b4a74bbdb0b14f6bc3e68f7a3b953e63aa87bd2fd299e59",
+  "builder_sha256": "466a2cfca91994faae8a4bf0e232576f3c90949983689ca2620686fe5665c4b9",
+  "policy_sha256": "0a1de68dd705ee68cd8fa889f4eba60f6e49a817e5bf070fb8aad75e6e63c5f9",
+  "model_calls": 0,
+  "sealed_opened": false
+}

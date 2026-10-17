@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import patch
 
 from .cache import Cache, canonical, digest
-from .server import Worker
+from .server import Worker, context_generator
 
 
 class CacheTests(unittest.TestCase):
@@ -48,7 +48,7 @@ class WorkerTests(unittest.TestCase):
     def mock_http(self, path, payload):
         if path == "/apply-template": return {"prompt": "rendered chat"}
         if path == "/tokenize": return {"tokens": [1] * 50}
-        self.assertEqual(payload["temperature"], 0)
+        self.assertEqual(payload["temperature"], self.worker.generator["temperature"])
         return {"choices": [{"finish_reason": "stop", "message": {"content": '{"context":"Pele in the Cup."}'}}]}
 
     def test_real_embedding_and_no_truncation(self):
@@ -80,15 +80,40 @@ class WorkerTests(unittest.TestCase):
         w = self.worker
         original = copy.deepcopy(w.generator)
         space = copy.deepcopy(w.space)
-        with w.selected({'model':'nuextract','token':'synthetic-lease-token'}):
+        with w.selected({'model':'gemma','token':'synthetic-lease-token'}):
             self.assertNotEqual(w.generator['artifact_sha256'], original['artifact_sha256'])
-            self.assertIn('requested-facts-v1',w.generator['runtime'])
+            self.assertEqual(w.generator, context_generator('12b'))
         self.assertEqual(w.generator,original)
         self.assertEqual(w.space,space)
         changed=copy.deepcopy(self.context())
         changed['config']['generator']['artifact_sha256']='b'*64
         with patch.object(w,'http') as http:
             with self.assertRaisesRegex(ValueError,'configuration mismatch'): w.generate(changed)
+            http.assert_not_called()
+
+    def test_new_nuextract_and_saved_gemma_enrichment_use_their_own_lease_and_template(self):
+        w = self.worker
+        default = copy.deepcopy(w.generator)
+        self.assertEqual(default, context_generator('nuextract3-requested-facts-v1'))
+        for model, profile in [('nuextract','nuextract3-requested-facts-v1'),('gemma','12b')]:
+            value = self.context()
+            value['evidence'] += ' saved identity test'
+            value['config']['generator'] = context_generator(profile)
+            def http(path, payload):
+                if path == '/control/acquire':
+                    self.assertEqual(payload['model'], model)
+                    self.assertEqual(payload['priority'], 'background')
+                    return {}
+                if path == '/control/release': return {}
+                if path in ('/apply-template','/v1/chat/completions'):
+                    self.assertEqual('chat_template_kwargs' in payload, model == 'nuextract')
+                return self.mock_http(path,payload)
+            with patch.object(w,'http',side_effect=http):
+                self.assertEqual(w.handle({'op':'generate','input':value}), 'Pele in the Cup.')
+            self.assertEqual(w.generator, default)
+        value['config']['generator']['runtime'] = 'unavailable'
+        with patch.object(w,'http') as http:
+            with self.assertRaisesRegex(ValueError,'not reassigned'):w.handle({'op':'generate','input':value})
             http.assert_not_called()
 
     def test_outage_overflow_and_bad_format_do_not_cache(self):

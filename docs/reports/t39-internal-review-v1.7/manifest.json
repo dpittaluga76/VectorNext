@@ -1,0 +1,59 @@
+{
+  "kind": "delegated_internal_review_hash_record_not_execution_freeze",
+  "version": "1.7",
+  "date": "2026-10-17",
+  "approved_for_execution": false,
+  "independent_review": false,
+  "blind_holdout": false,
+  "implementation_exposed_candidates": 60,
+  "candidate_model_requests": 0,
+  "original_holdout_accessed": false,
+  "predecessor": {
+    "path": "docs/reports/t39-gold-review-v1.6/manifest.json",
+    "sha256": "bd8a10a3545d249f3990a36bf1e698a7596993b307fcde62a5fb90a861dde929"
+  },
+  "proposal_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "private_bundle_manifest_sha256": "8db7fa883392e2a5a774916161c18a0c0e9ee05e67b86a03f7e1e3c487c4c28b",
+  "artifacts": [
+    {
+      "path": "evals/measurement/internal-custody-v1.7.md",
+      "sha256": "6b76547f33dcc2682fe1cb04761c7c0a33d2df63ae06f7071623a0856bcf4ea2",
+      "bytes": 3574
+    },
+    {
+      "path": "evals/measurement/internal_custody.py",
+      "sha256": "82514defc2fcfa1caa3cb7fa7ea114cc172a2ebf2593e2973ae2648c93ecaa54",
+      "bytes": 10230
+    },
+    {
+      "path": "evals/measurement/test_internal_custody.py",
+      "sha256": "ba1d1bafdd6c68a05812acf653f68df6b0800204b892429c8cc5816c235a3b28",
+      "bytes": 6039
+    },
+    {
+      "path": "docs/reports/t39-internal-review-v1.7.md",
+      "sha256": "412eb917eea367d0ddfdf9408474c674cab06234ae24dbc134fcf8afdbe5fb9b",
+      "bytes": 9343
+    },
+    {
+      "path": "docs/reports/t39-internal-review-v1.7/development-family-ledger.json",
+      "sha256": "52a49b9b35f1eaa14f554fe4661c83109bd7ab770da6ebfd106a8e9a446c7853",
+      "bytes": 220577
+    },
+    {
+      "path": "docs/reports/t39-internal-review-v1.7/development-overlay.json",
+      "sha256": "03eb02ad478b927b263b25f71477ffbf29de6b346ab8bbf06851da1413cb8b92",
+      "bytes": 10076
+    },
+    {
+      "path": "docs/reports/t39-internal-review-v1.7/receipt.json",
+      "sha256": "52665c06bdb80e81771f3b65b110ae35660d383b64039a4075aca657a67bcedf",
+      "bytes": 2663
+    },
+    {
+      "path": "docs/reports/t39-internal-review-v1.7/verification.json",
+      "sha256": "0fed3997dea8c28f182d69d0fbf9624031a5dff8e234bf249e767edcce1652ea",
+      "bytes": 2544
+    }
+  ]
+}

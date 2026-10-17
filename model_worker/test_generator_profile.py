@@ -15,7 +15,7 @@ from .scheduler import validate, Rejected
 class GeneratorProfileTests(unittest.TestCase):
     def test_only_two_supported_profiles_and_stable_gemma_identity(self):
         with patch.dict(os.environ, {}, clear=True):
-            self.assertEqual(profiles.load()['name'], '12b')
+            self.assertEqual(profiles.load()['name'], 'nuextract3-requested-facts-v1')
             with self.assertRaises(ValueError): profiles.load('26b-offload22')
 
     def test_legacy_identity_and_cpu_models_unchanged(self):

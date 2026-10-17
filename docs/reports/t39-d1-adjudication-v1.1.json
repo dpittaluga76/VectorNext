@@ -1,0 +1,616 @@
+{
+  "version": "1.1",
+  "artifact_kind": "partial_development_label_amendment",
+  "date": "2026-10-16",
+  "base_label_view": "original public labels v1, preserved inside the unapproved v2 review proposal",
+  "base_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "base_requests_sha256": "ecb190eb7a69f409aaf91890f71ae5d2e46d7c99e5811b32a9bca83f5d2f1428",
+  "base_labels_sha256": "9c68c78827da8a4055d24ed1d6707f965f1f2c18b10e645bfdb60e7ac4612e80",
+  "base_internal_review_sha256": "bda136bc38e46a56bbc41d0caf7b8b726765df38b51e7a5daabe08bfe4e0e9a7",
+  "policy": "evals/measurement/answerability-v1.1.md",
+  "policy_sha256": "1021f917edc2fbeed4079d33cfab00601103afb90ee89628278725ae461dfb1d",
+  "approved_for_execution": false,
+  "independent_review_acceptance": false,
+  "user_adjudicated_case_count": 5,
+  "negative_to_answerable_amendments": 4,
+  "negative_to_ambiguous_amendments": 1,
+  "unchanged_unresolved_case_count": 115,
+  "no_changes_to_original_source_labels_or_requests": true,
+  "sealed_content_opened": false,
+  "review_trigger": "Complete development screening before benchmark inference, not model disagreement.",
+  "screened_original_outcomes": {
+    "supported": 83,
+    "insufficient_evidence": 37
+  },
+  "cases": [
+    {
+      "number": 4,
+      "case_id": "squad-5ad0440a77cf76001a686f4b",
+      "question": "Which job does not require that the member be a citizen of the UK?",
+      "document": "development/documents/squad-43f328b69db49d2e.txt",
+      "document_sha256": "1c7faebb317f0204acbe7dc29fd2a0485558974e592b85d53d495bfd21592427",
+      "original_label": "unanswerable",
+      "original_expected_outcome": "insufficient_evidence",
+      "reviewed_label": "answerable",
+      "reviewed_expected_outcome": "supported",
+      "derivation": "inference_required",
+      "gold": {
+        "type": "string",
+        "value_text": "MSP"
+      },
+      "accepted_aliases": [
+        {
+          "type": "string",
+          "value_text": "MSP"
+        },
+        {
+          "type": "string",
+          "value_text": "MSPs"
+        }
+      ],
+      "alias_rule": "Explicit alternatives for the requested fact only, paired with valid source proof; no general substring, entity-repair or fuzzy-number matching.",
+      "source_answer_spans": [
+        {
+          "role": "answer_alias",
+          "quote": "MSP",
+          "utf8_byte_start": 73,
+          "utf8_byte_end": 76,
+          "unicode_codepoint_start": 73,
+          "unicode_codepoint_end": 76
+        },
+        {
+          "role": "answer_alias",
+          "quote": "MSPs",
+          "utf8_byte_start": 579,
+          "utf8_byte_end": 583,
+          "unicode_codepoint_start": 579,
+          "unicode_codepoint_end": 583
+        }
+      ],
+      "evidence": [
+        {
+          "role": "role",
+          "quote": "As in the House of Commons, a number of qualifications apply to being an MSP.",
+          "utf8_byte_start": 0,
+          "utf8_byte_end": 77,
+          "unicode_codepoint_start": 0,
+          "unicode_codepoint_end": 77
+        },
+        {
+          "role": "eligibility",
+          "quote": "Specifically, members must be over the age of 18 and must be a citizen of the United Kingdom, the Republic of Ireland, one of the countries in the Commonwealth of Nations, a citizen of a British overseas territory, or a European Union citizen resident in the UK.",
+          "utf8_byte_start": 205,
+          "utf8_byte_end": 467,
+          "unicode_codepoint_start": 205,
+          "unicode_codepoint_end": 467
+        }
+      ],
+      "semantic_rule": "Enumerated non-UK alternatives entail that UK citizenship is not individually required for the MSP role. Disqualified jobs are distractors, not alternative gold answers.",
+      "score_views": {
+        "original_public_v1": "unanswerable",
+        "reviewed_v1_1": "answerable",
+        "strict_extractive": "excluded_tagged_stratum",
+        "inference_attribution_allowed": "eligible"
+      },
+      "original_annotation_rationale": {
+        "status": "not_supplied",
+        "reason": null,
+        "plausible_answer_distractors": [
+          {
+            "text": "MSP",
+            "answer_start": 73
+          }
+        ],
+        "interpretation": "These are original distractor annotations, not an explanation of annotator intent."
+      },
+      "review_history": [
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "internal screening",
+          "date": "2026-10-16",
+          "independent": false,
+          "model_outputs_seen": false,
+          "decision": "Relabel supported with the MSP qualification passage, subject to Daniel confirming this reading."
+        },
+        {
+          "reviewer": "Daniel Pittaluga / Architect",
+          "role": "user adjudication",
+          "date": "2026-10-16",
+          "independence_attested": false,
+          "blind_to_internal_recommendation": false,
+          "decision": "Approve as inferred, not strict extraction; use MSP with the eligibility sentence.",
+          "source": "user D1 response in this chat"
+        },
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "source-condition verification",
+          "date": "2026-10-16",
+          "independent": false,
+          "decision": "Both sentences occur verbatim in the hashed scoped source. The negative requirement is entailed, not literally stated."
+        }
+      ],
+      "two_independent_blinded_reviews": false,
+      "context_check": {
+        "corpus_bytes": "verified",
+        "retrieved_context": "not_available_benchmark_not_run",
+        "offset_convention": "zero-based half-open; UTF-8 bytes and Unicode code points explicitly labelled"
+      }
+    },
+    {
+      "number": 67,
+      "case_id": "squad-5ad4f4d95b96ef001a10a793",
+      "question": "How many members are on the Miasta City Council?",
+      "document": "development/documents/squad-2489f62cd003d65a.txt",
+      "document_sha256": "1ccdc3ecc98f2ce8281960f061b48c4e568a881f46f589eec7f333b13afb85de",
+      "original_label": "unanswerable",
+      "original_expected_outcome": "insufficient_evidence",
+      "reviewed_label": "ambiguous",
+      "reviewed_expected_outcome": "ambiguous",
+      "derivation": "entity_ambiguity",
+      "gold": null,
+      "accepted_aliases": [],
+      "alias_rule": "Explicit alternatives for the requested fact only, paired with valid source proof; no general substring, entity-repair or fuzzy-number matching.",
+      "source_answer_spans": [],
+      "evidence": [
+        {
+          "role": "entity_and_count",
+          "quote": "Legislative power in Warsaw is vested in a unicameral Warsaw City Council (Rada Miasta), which comprises 60 members.",
+          "utf8_byte_start": 0,
+          "utf8_byte_end": 116,
+          "unicode_codepoint_start": 0,
+          "unicode_codepoint_end": 116
+        }
+      ],
+      "semantic_rule": "The source names Warsaw City Council (Rada Miasta), not Miasta City Council. A lenient token-based entity repair gives 60, but that repair is not automatically permitted.",
+      "score_views": {
+        "original_public_v1": "unanswerable",
+        "reviewed_v1_1": "ambiguous_separate",
+        "strict_extractive": "excluded_tagged_stratum",
+        "inference_attribution_allowed": "ambiguous_separate"
+      },
+      "original_annotation_rationale": {
+        "status": "not_supplied",
+        "reason": null,
+        "plausible_answer_distractors": [
+          {
+            "text": "60",
+            "answer_start": 105
+          }
+        ],
+        "interpretation": "These are original distractor annotations, not an explanation of annotator intent."
+      },
+      "review_history": [
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "internal screening",
+          "date": "2026-10-16",
+          "independent": false,
+          "model_outputs_seen": false,
+          "decision": "Relabel supported with 60, subject to confirming the council-name interpretation."
+        },
+        {
+          "reviewer": "Daniel Pittaluga / Architect",
+          "role": "user adjudication",
+          "date": "2026-10-16",
+          "independence_attested": false,
+          "blind_to_internal_recommendation": false,
+          "decision": "Ambiguous bucket; retain the original unanswerable label in the strict public-label view. Do not silently flip.",
+          "source": "user D1 response in this chat"
+        },
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "source-condition verification",
+          "date": "2026-10-16",
+          "independent": false,
+          "decision": "The question/source name mismatch is present in the exact bytes. No translation or external entity dictionary was used to change the label."
+        }
+      ],
+      "two_independent_blinded_reviews": false,
+      "context_check": {
+        "corpus_bytes": "verified",
+        "retrieved_context": "not_available_benchmark_not_run",
+        "offset_convention": "zero-based half-open; UTF-8 bytes and Unicode code points explicitly labelled"
+      },
+      "lenient_diagnostic_only": {
+        "gold": {
+          "type": "integer",
+          "value_text": "60"
+        },
+        "surface_forms": [
+          "60",
+          "60 members"
+        ],
+        "primary_gold": false,
+        "requires": "An explicit lenient Warsaw-alias policy, absent from strict scoring."
+      }
+    },
+    {
+      "number": 74,
+      "case_id": "qasper-1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "question": "What features are used?",
+      "document": "development/documents/qasper-1903.07406.txt",
+      "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+      "original_label": "unanswerable",
+      "original_expected_outcome": "insufficient_evidence",
+      "reviewed_label": "answerable",
+      "reviewed_expected_outcome": "supported",
+      "derivation": "literal_extraction",
+      "gold": {
+        "type": "string",
+        "value_text": "TF-IDF features"
+      },
+      "accepted_aliases": [
+        {
+          "type": "string",
+          "value_text": "TF-IDF features"
+        },
+        {
+          "type": "string",
+          "value_text": "TF-IDF"
+        },
+        {
+          "type": "string",
+          "value_text": "TF-IDF feature vectors"
+        },
+        {
+          "type": "string",
+          "value_text": "Term Frequency-Inverse Document Frequency"
+        },
+        {
+          "type": "string",
+          "value_text": "TFIDF"
+        }
+      ],
+      "alias_rule": "Explicit alternatives for the requested fact only, paired with valid source proof; no general substring, entity-repair or fuzzy-number matching.",
+      "source_answer_spans": [
+        {
+          "role": "answer_alias",
+          "quote": "TF-IDF features",
+          "utf8_byte_start": 852,
+          "utf8_byte_end": 867,
+          "unicode_codepoint_start": 852,
+          "unicode_codepoint_end": 867
+        },
+        {
+          "role": "answer_alias",
+          "quote": "TF-IDF",
+          "utf8_byte_start": 52,
+          "utf8_byte_end": 58,
+          "unicode_codepoint_start": 52,
+          "unicode_codepoint_end": 58
+        },
+        {
+          "role": "answer_alias",
+          "quote": "TF-IDF feature vectors",
+          "utf8_byte_start": 1486,
+          "utf8_byte_end": 1508,
+          "unicode_codepoint_start": 1486,
+          "unicode_codepoint_end": 1508
+        },
+        {
+          "role": "answer_alias",
+          "quote": "Term Frequency-Inverse Document Frequency",
+          "utf8_byte_start": 10469,
+          "utf8_byte_end": 10510,
+          "unicode_codepoint_start": 10451,
+          "unicode_codepoint_end": 10492
+        },
+        {
+          "role": "answer_alias",
+          "quote": "TFIDF",
+          "utf8_byte_start": 16365,
+          "utf8_byte_end": 16370,
+          "unicode_codepoint_start": 16341,
+          "unicode_codepoint_end": 16346
+        }
+      ],
+      "evidence": [
+        {
+          "role": "classification",
+          "quote": "We performed experiments by extracting the TF-IDF features from the reports and classifying them using three different methods---SVM, XGBoost, and Logistic Regression.",
+          "utf8_byte_start": 809,
+          "utf8_byte_end": 976,
+          "unicode_codepoint_start": 809,
+          "unicode_codepoint_end": 976
+        },
+        {
+          "role": "token_preparation",
+          "quote": "We then analyzed the reports to find common bigrams, such as “lung parenchyma”, “microscopic examination”, “lymph node” etc. We joined the biagrams with a hyphen, converting them into a single word.",
+          "utf8_byte_start": 9990,
+          "utf8_byte_end": 10200,
+          "unicode_codepoint_start": 9984,
+          "unicode_codepoint_end": 10182
+        },
+        {
+          "role": "task_separation",
+          "quote": "In this study, we performed two different series of experiments: i) evaluating the performance of TF-IDF features and various machine learning classifiers on the task of predicting primary diagnosis from the text content of a given report, and ii) using TF-IDF and LDA techniques to highlight the important keywords within a report.",
+          "utf8_byte_start": 12939,
+          "utf8_byte_end": 13271,
+          "unicode_codepoint_start": 12919,
+          "unicode_codepoint_end": 13251
+        }
+      ],
+      "semantic_rule": "Gold describes the feature representation used for classification. Word and joined-bigram token preparation is part of that representation; LDA is used for a distinct visualization task. Extra asserted facts require proof, not automatic acceptance.",
+      "score_views": {
+        "original_public_v1": "unanswerable",
+        "reviewed_v1_1": "answerable",
+        "strict_extractive": "eligible",
+        "inference_attribution_allowed": "eligible"
+      },
+      "original_annotation_rationale": {
+        "status": "not_supplied",
+        "reason": null
+      },
+      "review_history": [
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "internal screening",
+          "date": "2026-10-16",
+          "independent": false,
+          "model_outputs_seen": false,
+          "decision": "Relabel supported with TF-IDF features and the feature-extraction method passage."
+        },
+        {
+          "reviewer": "Daniel Pittaluga / Architect",
+          "role": "user adjudication",
+          "date": "2026-10-16",
+          "independence_attested": false,
+          "blind_to_internal_recommendation": false,
+          "decision": "Approve after checking whether other features make TF-IDF incomplete.",
+          "source": "user D1 response in this chat"
+        },
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "source-condition verification",
+          "date": "2026-10-16",
+          "independent": false,
+          "decision": "The complete supplied paper describes TF-IDF classification inputs. Bigrams are joined in preprocessing. LDA groups extracted keywords for visualization; no additional metadata/embedding feature channel is stated for the classifier."
+        }
+      ],
+      "two_independent_blinded_reviews": false,
+      "context_check": {
+        "corpus_bytes": "verified",
+        "retrieved_context": "not_available_benchmark_not_run",
+        "offset_convention": "zero-based half-open; UTF-8 bytes and Unicode code points explicitly labelled"
+      }
+    },
+    {
+      "number": 88,
+      "case_id": "squad-5a3e3752378766001a0024f7",
+      "question": "Who has said that climate models are uncertain?",
+      "document": "development/documents/squad-cdeffc5b021044b2.txt",
+      "document_sha256": "dea705fdf75f529664435816398522b553e31b0965a1287f3375c31a630e304e",
+      "original_label": "unanswerable",
+      "original_expected_outcome": "insufficient_evidence",
+      "reviewed_label": "answerable",
+      "reviewed_expected_outcome": "supported",
+      "derivation": "attributed_paraphrase",
+      "gold": {
+        "type": "string",
+        "value_text": "Richard Lindzen"
+      },
+      "accepted_aliases": [
+        {
+          "type": "string",
+          "value_text": "Richard Lindzen"
+        },
+        {
+          "type": "string",
+          "value_text": "Lindzen"
+        }
+      ],
+      "alias_rule": "Explicit alternatives for the requested fact only, paired with valid source proof; no general substring, entity-repair or fuzzy-number matching.",
+      "source_answer_spans": [
+        {
+          "role": "answer_alias",
+          "quote": "Richard Lindzen",
+          "utf8_byte_start": 12,
+          "utf8_byte_end": 27,
+          "unicode_codepoint_start": 12,
+          "unicode_codepoint_end": 27
+        },
+        {
+          "role": "answer_alias",
+          "quote": "Lindzen",
+          "utf8_byte_start": 20,
+          "utf8_byte_end": 27,
+          "unicode_codepoint_start": 20,
+          "unicode_codepoint_end": 27
+        }
+      ],
+      "evidence": [
+        {
+          "role": "speaker",
+          "quote": "IPCC author Richard Lindzen has made a number of criticisms of the TAR.",
+          "utf8_byte_start": 0,
+          "utf8_byte_end": 71,
+          "unicode_codepoint_start": 0,
+          "unicode_codepoint_end": 71
+        },
+        {
+          "role": "attributed_claim",
+          "quote": "For example, Lindzen states that the SPM understates the uncertainty associated with climate models.",
+          "utf8_byte_start": 208,
+          "utf8_byte_end": 308,
+          "unicode_codepoint_start": 208,
+          "unicode_codepoint_end": 308
+        },
+        {
+          "role": "other_named_person",
+          "quote": "John Houghton, who was a co-chair of TAR WGI, has responded to Lindzen's criticisms of the SPM. Houghton has stressed that the SPM is agreed upon by delegates from many of the world's governments, and that any changes to the SPM must be supported by scientific evidence.",
+          "utf8_byte_start": 309,
+          "utf8_byte_end": 579,
+          "unicode_codepoint_start": 309,
+          "unicode_codepoint_end": 579
+        }
+      ],
+      "semantic_rule": "The passage attributes an uncertainty-understatement criticism to Lindzen. This permits identifying the speaker of that qualified uncertainty claim; it is not a verbatim quote that models are uncertain and is not a claim about scientific truth.",
+      "score_views": {
+        "original_public_v1": "unanswerable",
+        "reviewed_v1_1": "answerable",
+        "strict_extractive": "excluded_tagged_stratum",
+        "inference_attribution_allowed": "eligible"
+      },
+      "original_annotation_rationale": {
+        "status": "not_supplied",
+        "reason": null,
+        "plausible_answer_distractors": [
+          {
+            "text": "Lindzen",
+            "answer_start": 221
+          }
+        ],
+        "interpretation": "These are original distractor annotations, not an explanation of annotator intent."
+      },
+      "review_history": [
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "internal screening",
+          "date": "2026-10-16",
+          "independent": false,
+          "model_outputs_seen": false,
+          "decision": "Relabel supported with the attributed speaker; this reviews source entailment, not climate-model truth."
+        },
+        {
+          "reviewer": "Daniel Pittaluga / Architect",
+          "role": "user adjudication",
+          "date": "2026-10-16",
+          "independence_attested": false,
+          "blind_to_internal_recommendation": false,
+          "decision": "Approve with an attribution rule and a check for adjacent claims or additional speakers.",
+          "source": "user D1 response in this chat"
+        },
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "source-condition verification",
+          "date": "2026-10-16",
+          "independent": false,
+          "decision": "The exact statement concerns understated uncertainty. Houghton is named but is not attributed this claim. The accepted speaker set is therefore Lindzen under the stated interpretation."
+        }
+      ],
+      "two_independent_blinded_reviews": false,
+      "context_check": {
+        "corpus_bytes": "verified",
+        "retrieved_context": "not_available_benchmark_not_run",
+        "offset_convention": "zero-based half-open; UTF-8 bytes and Unicode code points explicitly labelled"
+      }
+    },
+    {
+      "number": 109,
+      "case_id": "squad-5a55068b134fea001a0e180f",
+      "question": "How is information charged differently for Circuit Switching?",
+      "document": "development/documents/squad-b432d2704c4cc56e.txt",
+      "document_sha256": "9ef6e305a45e267b0ca488bc0108dedf4d653b1ec1d52109c09fadd0cce50299",
+      "original_label": "unanswerable",
+      "original_expected_outcome": "insufficient_evidence",
+      "reviewed_label": "answerable",
+      "reviewed_expected_outcome": "supported",
+      "derivation": "literal_extraction",
+      "gold": {
+        "type": "string",
+        "value_text": "fee per unit of connection time"
+      },
+      "accepted_aliases": [
+        {
+          "type": "string",
+          "value_text": "fee per unit of connection time"
+        },
+        {
+          "type": "string",
+          "value_text": "per unit of connection time"
+        },
+        {
+          "type": "string",
+          "value_text": "connection time"
+        }
+      ],
+      "alias_rule": "Explicit alternatives for the requested fact only, paired with valid source proof; no general substring, entity-repair or fuzzy-number matching.",
+      "source_answer_spans": [
+        {
+          "role": "answer_alias",
+          "quote": "fee per unit of connection time",
+          "utf8_byte_start": 363,
+          "utf8_byte_end": 394,
+          "unicode_codepoint_start": 363,
+          "unicode_codepoint_end": 394
+        },
+        {
+          "role": "answer_alias",
+          "quote": "per unit of connection time",
+          "utf8_byte_start": 367,
+          "utf8_byte_end": 394,
+          "unicode_codepoint_start": 367,
+          "unicode_codepoint_end": 394
+        },
+        {
+          "role": "answer_alias",
+          "quote": "connection time",
+          "utf8_byte_start": 379,
+          "utf8_byte_end": 394,
+          "unicode_codepoint_start": 379,
+          "unicode_codepoint_end": 394
+        }
+      ],
+      "evidence": [
+        {
+          "role": "charging_contrast",
+          "quote": "In cases of billable services, such as cellular communication services, circuit switching is characterized by a fee per unit of connection time, even when no data is transferred, while packet switching may be characterized by a fee per unit of information transmitted, such as characters, packets, or messages.",
+          "utf8_byte_start": 251,
+          "utf8_byte_end": 561,
+          "unicode_codepoint_start": 251,
+          "unicode_codepoint_end": 561
+        }
+      ],
+      "semantic_rule": "The requested fact is the circuit-switching charging basis. A response assigning information-volume charging to circuit switching is incorrect even if it cites the same passage.",
+      "score_views": {
+        "original_public_v1": "unanswerable",
+        "reviewed_v1_1": "answerable",
+        "strict_extractive": "eligible",
+        "inference_attribution_allowed": "eligible"
+      },
+      "original_annotation_rationale": {
+        "status": "not_supplied",
+        "reason": null,
+        "plausible_answer_distractors": [
+          {
+            "text": "fee per unit of connection time",
+            "answer_start": 363
+          }
+        ],
+        "interpretation": "These are original distractor annotations, not an explanation of annotator intent."
+      },
+      "review_history": [
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "internal screening",
+          "date": "2026-10-16",
+          "independent": false,
+          "model_outputs_seen": false,
+          "decision": "Relabel supported with the connection-time charging rule and the contrast passage."
+        },
+        {
+          "reviewer": "Daniel Pittaluga / Architect",
+          "role": "user adjudication",
+          "date": "2026-10-16",
+          "independence_attested": false,
+          "blind_to_internal_recommendation": false,
+          "decision": "Approve: the connection-time versus transmitted-information contrast is explicit.",
+          "source": "user D1 response in this chat"
+        },
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "source-condition verification",
+          "date": "2026-10-16",
+          "independent": false,
+          "decision": "The charging basis and contrast are present in the exact scoped passage."
+        }
+      ],
+      "two_independent_blinded_reviews": false,
+      "context_check": {
+        "corpus_bytes": "verified",
+        "retrieved_context": "not_available_benchmark_not_run",
+        "offset_convention": "zero-based half-open; UTF-8 bytes and Unicode code points explicitly labelled"
+      }
+    }
+  ]
+}

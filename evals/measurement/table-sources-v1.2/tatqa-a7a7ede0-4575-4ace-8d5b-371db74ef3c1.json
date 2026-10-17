@@ -1,0 +1,103 @@
+{
+  "records": [
+    {
+      "row_index": 0,
+      "headers": [
+        "",
+        "Year-ended 31 March 2019",
+        "Year-ended 31 March 2018 Restated See note 2"
+      ],
+      "cells": [
+        "",
+        "Year-ended 31 March 2019",
+        "Year-ended 31 March 2018 Restated See note 2"
+      ]
+    },
+    {
+      "row_index": 1,
+      "headers": [
+        "",
+        "Year-ended 31 March 2019",
+        "Year-ended 31 March 2018 Restated See note 2"
+      ],
+      "cells": [
+        "Revenue from external customers by country",
+        "$M",
+        "$M"
+      ]
+    },
+    {
+      "row_index": 2,
+      "headers": [
+        "",
+        "Year-ended 31 March 2019",
+        "Year-ended 31 March 2018 Restated See note 2"
+      ],
+      "cells": [
+        "UK",
+        "83.2",
+        "73.5"
+      ]
+    },
+    {
+      "row_index": 3,
+      "headers": [
+        "",
+        "Year-ended 31 March 2019",
+        "Year-ended 31 March 2018 Restated See note 2"
+      ],
+      "cells": [
+        "USA",
+        "222.2",
+        "199.0"
+      ]
+    },
+    {
+      "row_index": 4,
+      "headers": [
+        "",
+        "Year-ended 31 March 2019",
+        "Year-ended 31 March 2018 Restated See note 2"
+      ],
+      "cells": [
+        "Germany",
+        "143.5",
+        "128.4"
+      ]
+    },
+    {
+      "row_index": 5,
+      "headers": [
+        "",
+        "Year-ended 31 March 2019",
+        "Year-ended 31 March 2018 Restated See note 2"
+      ],
+      "cells": [
+        "Other countries",
+        "261.7",
+        "238.1"
+      ]
+    },
+    {
+      "row_index": 6,
+      "headers": [
+        "",
+        "Year-ended 31 March 2019",
+        "Year-ended 31 March 2018 Restated See note 2"
+      ],
+      "cells": [
+        "Total revenue from external customers by country",
+        "710.6",
+        "639.0"
+      ]
+    },
+    {
+      "paragraph_order": 1,
+      "text": "6 Segment Information continued"
+    },
+    {
+      "paragraph_order": 2,
+      "text": "The Group’s revenue is diversified across its entire end customer base and no single end user accounted for greater than 10 per cent of the Group’s revenue in either 2018 or 2019. In 2019 two distributors accounted for 15 per cent each, and one distributor for 11 per cent of Group billings which were attributable to all segments of the Group (2018: three distributors accounted for 15 per cent, 14 per cent and 12 per cent each)."
+    }
+  ]
+}

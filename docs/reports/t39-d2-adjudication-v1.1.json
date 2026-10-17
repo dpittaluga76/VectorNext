@@ -1,0 +1,516 @@
+{
+  "version": "1.1",
+  "artifact_kind": "partial_development_label_amendment",
+  "decision_group": "D2",
+  "date": "2026-10-16",
+  "approved_for_execution": false,
+  "independent_review_acceptance": false,
+  "base_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "base_requests_sha256": "ecb190eb7a69f409aaf91890f71ae5d2e46d7c99e5811b32a9bca83f5d2f1428",
+  "base_labels_sha256": "9c68c78827da8a4055d24ed1d6707f965f1f2c18b10e645bfdb60e7ac4612e80",
+  "base_internal_review_sha256": "bda136bc38e46a56bbc41d0caf7b8b726765df38b51e7a5daabe08bfe4e0e9a7",
+  "d1_amendment_sha256": "ad8c425e5ae85cbdaab8d4d28aadb62806c9ea9d1df93fd0668e63a461798f0f",
+  "policy": "evals/measurement/numeric-scoring-v1.1.md",
+  "policy_sha256": "80b8817ba2c05c21895932597594007cbe7cc6ed428f16244a324aabe4c9a5a7",
+  "sealed_content_opened": false,
+  "model_runs_performed": 0,
+  "original_proposal_and_scores_changed": false,
+  "cases": [
+    {
+      "number": 31,
+      "case_id": "squad-57261f9f271a42140099d4a9",
+      "question": "What is one of the reason that US production has been held responsible for recessions and lower economic growth?",
+      "document": "development/documents/squad-b6860aac55af75d7.txt",
+      "document_sha256": "03cb2784f170548bcb7d5bac5f52461bd00a24b18ac95bd094e47c9bdf136670",
+      "original_expected": "supported",
+      "original_alternatives": [
+        "distribution and price disruptions",
+        "reduced productivity"
+      ],
+      "status": "user_approved_source_conditions_verified",
+      "eligible_for_successor_adaptation": true,
+      "discovery": "internal_source_review_before_benchmark_inference",
+      "model_disagreement_used": false,
+      "original_annotation_rationale": "not_supplied",
+      "review_history": [
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "initial internal source review",
+          "independent": false
+        },
+        {
+          "reviewer": "Daniel Pittaluga / Architect",
+          "role": "conditional D2 adjudication from review table",
+          "independence_attested": false,
+          "source_text_seen_at_decision": false
+        },
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "subsequent exact-source verification",
+          "independent": false
+        }
+      ],
+      "retrieved_context_check": "not_available_no_benchmark_inference",
+      "change_types": [
+        "alternative_removed"
+      ],
+      "removed": [
+        "reduced productivity"
+      ],
+      "approved_literal_answers": [
+        "distribution and price disruptions",
+        "production, distribution and price disruptions",
+        "price disruptions"
+      ],
+      "semantic_cause_set": [
+        "production disruptions",
+        "distribution disruptions",
+        "price disruptions"
+      ],
+      "rule": "The question asks for ONE cause. The coordinated source subject covers production, distribution and price disruptions; reduced productivity is an effect. Retain the original distribution/price answer and the complete cause phrase. A single cause may satisfy the question; restored shared-head paraphrases need the explicit D4 mapping, not substring matching.",
+      "evidence": [
+        {
+          "role": "support",
+          "quote": "In the US production, distribution and price disruptions \"have been held responsible for recessions, periods of excessive inflation, reduced productivity, and lower economic growth.\"",
+          "utf8_byte_start": 395,
+          "utf8_byte_end": 577,
+          "unicode_codepoint_start": 395,
+          "unicode_codepoint_end": 577
+        }
+      ],
+      "answer_spans": [
+        {
+          "role": "answer",
+          "quote": "distribution and price disruptions",
+          "utf8_byte_start": 417,
+          "utf8_byte_end": 451,
+          "unicode_codepoint_start": 417,
+          "unicode_codepoint_end": 451
+        },
+        {
+          "role": "answer",
+          "quote": "production, distribution and price disruptions",
+          "utf8_byte_start": 405,
+          "utf8_byte_end": 451,
+          "unicode_codepoint_start": 405,
+          "unicode_codepoint_end": 451
+        },
+        {
+          "role": "answer",
+          "quote": "price disruptions",
+          "utf8_byte_start": 434,
+          "utf8_byte_end": 451,
+          "unicode_codepoint_start": 434,
+          "unicode_codepoint_end": 451
+        }
+      ]
+    },
+    {
+      "number": 72,
+      "case_id": "squad-5728284e3acd2414000df5cd",
+      "question": "What was Joseph Haas arrested for?",
+      "document": "development/documents/squad-4567ab556bfdf34c.txt",
+      "document_sha256": "fd93028701526b473dbe93cb4ded11a23207c124c84b16733c2ee2e9b442c706",
+      "original_expected": "supported",
+      "original_alternatives": [
+        "sending an email to the Lebanon, New Hampshire city councilors",
+        "sending an email",
+        "sending an email to the Lebanon"
+      ],
+      "status": "user_approved_source_conditions_verified",
+      "eligible_for_successor_adaptation": true,
+      "discovery": "internal_source_review_before_benchmark_inference",
+      "model_disagreement_used": false,
+      "original_annotation_rationale": "not_supplied",
+      "review_history": [
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "initial internal source review",
+          "independent": false
+        },
+        {
+          "reviewer": "Daniel Pittaluga / Architect",
+          "role": "conditional D2 adjudication from review table",
+          "independence_attested": false,
+          "source_text_seen_at_decision": false
+        },
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "subsequent exact-source verification",
+          "independent": false
+        }
+      ],
+      "retrieved_context_check": "not_available_no_benchmark_inference",
+      "change_types": [
+        "alternative_removed"
+      ],
+      "removed": [
+        "sending an email to the Lebanon, New Hampshire city councilors",
+        "sending an email",
+        "sending an email to the Lebanon"
+      ],
+      "approved_literal_answers": [
+        "allegedly sending an email to the Lebanon, New Hampshire city councilors stating, \"Wise up or die.\""
+      ],
+      "rule": "Replace clipped/underqualified alternatives with the complete alleged conduct, including recipients and threat wording. The allegation qualifier must remain explicit in the answer or an approved allegation field; do not assert that the email was sent as an established fact. Field mappings remain subject to D4.",
+      "evidence": [
+        {
+          "role": "support",
+          "quote": "For example, Joseph Haas was arrested for allegedly sending an email to the Lebanon, New Hampshire city councilors stating, \"Wise up or die.\"",
+          "utf8_byte_start": 461,
+          "utf8_byte_end": 602,
+          "unicode_codepoint_start": 461,
+          "unicode_codepoint_end": 602
+        }
+      ],
+      "answer_spans": [
+        {
+          "role": "answer",
+          "quote": "allegedly sending an email to the Lebanon, New Hampshire city councilors stating, \"Wise up or die.\"",
+          "utf8_byte_start": 503,
+          "utf8_byte_end": 602,
+          "unicode_codepoint_start": 503,
+          "unicode_codepoint_end": 602
+        }
+      ]
+    },
+    {
+      "number": 81,
+      "case_id": "qasper-692c9c5d9ff9cd3e0ce8b5e4fa68dda9bd23dec1",
+      "question": "How many users do they look at?",
+      "document": "development/documents/qasper-1612.08205.txt",
+      "document_sha256": "d64c578125080898aae9b3cdb7bd01ccea8faad8f6ed3bd195569a49d36c9c6c",
+      "original_expected": "supported",
+      "original_alternatives": [
+        "22,880 users",
+        "20,000"
+      ],
+      "status": "user_approved_source_conditions_verified",
+      "eligible_for_successor_adaptation": true,
+      "discovery": "internal_source_review_before_benchmark_inference",
+      "model_disagreement_used": false,
+      "original_annotation_rationale": "not_supplied",
+      "review_history": [
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "initial internal source review",
+          "independent": false
+        },
+        {
+          "reviewer": "Daniel Pittaluga / Architect",
+          "role": "conditional D2 adjudication from review table",
+          "independence_attested": false,
+          "source_text_seen_at_decision": false
+        },
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "subsequent exact-source verification",
+          "independent": false
+        }
+      ],
+      "retrieved_context_check": "not_available_no_benchmark_inference",
+      "change_types": [
+        "alternative_removed",
+        "scoring_rule_added"
+      ],
+      "removed": [
+        "20,000"
+      ],
+      "approved_literal_answers": [
+        "22,880 users"
+      ],
+      "faithful_aliases": [
+        "22,880",
+        "22880",
+        "22,880 users",
+        "22880 users"
+      ],
+      "imprecise_aliases": [
+        "more than 20,000",
+        "more than 20,000 blog users",
+        "more than 20,000 users",
+        "more than 20000",
+        "more than 20000 blog users",
+        "more than 20000 users",
+        "over 20,000",
+        "over 20,000 blog users",
+        "over 20,000 users",
+        "over 20000",
+        "over 20000 blog users",
+        "over 20000 users"
+      ],
+      "wrong_examples": [
+        "20,000",
+        "20,000 users",
+        "20000"
+      ],
+      "rule": "Same final Blogger industry dataset, summarized approximately in the introduction and specified exactly in Dataset. No different dated snapshot is given. The subsequent split is consistent with 22,880 total users. A qualified lower bound is diagnostic partial support, not primary correctness.",
+      "evidence": [
+        {
+          "role": "support",
+          "quote": "The resulting dataset consists of 22,880 users, 41,094 blogs, and 561,003 posts.",
+          "utf8_byte_start": 10795,
+          "utf8_byte_end": 10875,
+          "unicode_codepoint_start": 10791,
+          "unicode_codepoint_end": 10871
+        },
+        {
+          "role": "support",
+          "quote": "First, we build a large, industry-annotated dataset that contains over 20,000 blog users.",
+          "utf8_byte_start": 2803,
+          "utf8_byte_end": 2892,
+          "unicode_codepoint_start": 2799,
+          "unicode_codepoint_end": 2888
+        },
+        {
+          "role": "support",
+          "quote": "The sizes of these sets are 17,880, 2,500, and 2,500 users, respectively, with users randomly assigned to these sets.",
+          "utf8_byte_start": 11075,
+          "utf8_byte_end": 11192,
+          "unicode_codepoint_start": 11071,
+          "unicode_codepoint_end": 11188
+        }
+      ],
+      "answer_spans": [
+        {
+          "role": "answer",
+          "quote": "22,880 users",
+          "utf8_byte_start": 10829,
+          "utf8_byte_end": 10841,
+          "unicode_codepoint_start": 10825,
+          "unicode_codepoint_end": 10837
+        },
+        {
+          "role": "imprecise_source",
+          "quote": "over 20,000 blog users",
+          "utf8_byte_start": 2869,
+          "utf8_byte_end": 2891,
+          "unicode_codepoint_start": 2865,
+          "unicode_codepoint_end": 2887
+        }
+      ]
+    },
+    {
+      "number": 97,
+      "case_id": "squad-570d35b7b3d812140066d54d",
+      "question": "How high are Victoria's alpine regions?",
+      "document": "development/documents/squad-68b5149b27e1f7aa.txt",
+      "document_sha256": "ca0f7b7018127b2736fe74e8ea343545834b32796fc74beb48cde30324c80067",
+      "original_expected": "supported",
+      "original_alternatives": [
+        "2,000 m",
+        "almost 2,000 m"
+      ],
+      "status": "user_approved_source_conditions_verified",
+      "eligible_for_successor_adaptation": true,
+      "discovery": "internal_source_review_before_benchmark_inference",
+      "model_disagreement_used": false,
+      "original_annotation_rationale": "not_supplied",
+      "review_history": [
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "initial internal source review",
+          "independent": false
+        },
+        {
+          "reviewer": "Daniel Pittaluga / Architect",
+          "role": "conditional D2 adjudication from review table",
+          "independence_attested": false,
+          "source_text_seen_at_decision": false
+        },
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "subsequent exact-source verification",
+          "independent": false
+        }
+      ],
+      "retrieved_context_check": "not_available_no_benchmark_inference",
+      "change_types": [
+        "scoring_rule_added"
+      ],
+      "removed": [
+        "2,000 m"
+      ],
+      "approved_literal_answers": [
+        "almost 2,000 m"
+      ],
+      "faithful_aliases": [
+        "almost 2,000 m",
+        "almost 2,000 metres",
+        "almost 2,000 meters",
+        "almost 2000 m",
+        "almost 2000 metres",
+        "almost 2000 meters",
+        "nearly 2,000 m",
+        "nearly 2,000 metres",
+        "nearly 2,000 meters",
+        "nearly 2000 m",
+        "nearly 2000 metres",
+        "nearly 2000 meters",
+        "just under 2,000 m",
+        "just under 2,000 metres",
+        "just under 2,000 meters",
+        "just under 2000 m",
+        "just under 2000 metres",
+        "just under 2000 meters"
+      ],
+      "imprecise_aliases": [
+        "about 2,000 m",
+        "about 2,000 metres",
+        "about 2,000 meters",
+        "about 2000 m",
+        "about 2000 metres",
+        "about 2000 meters"
+      ],
+      "wrong_examples": [
+        "2,000 m",
+        "exactly 2,000 m",
+        "over 2,000 m",
+        "average height of 2,000 m"
+      ],
+      "rule": "The quantity is the regional upper extent of alpine areas. Preserve the below-bound approximation. About is separately imprecise, not full credit. Mount Bogong's 1,986 m is a different, explicitly named peak quantity.",
+      "evidence": [
+        {
+          "role": "support",
+          "quote": "the snow-covered Victorian alpine areas which rise to almost 2,000 m (6,600 ft), with Mount Bogong the highest peak at 1,986 m (6,516 ft).",
+          "utf8_byte_start": 158,
+          "utf8_byte_end": 296,
+          "unicode_codepoint_start": 158,
+          "unicode_codepoint_end": 296
+        }
+      ],
+      "answer_spans": [
+        {
+          "role": "answer",
+          "quote": "almost 2,000 m",
+          "utf8_byte_start": 212,
+          "utf8_byte_end": 226,
+          "unicode_codepoint_start": 212,
+          "unicode_codepoint_end": 226
+        }
+      ]
+    },
+    {
+      "number": 107,
+      "case_id": "qasper-5a8cc8f80509ea77d8213ed28c5ead501c68c725",
+      "question": "What is the definition of offensive language?",
+      "document": "development/documents/qasper-1902.09666.txt",
+      "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+      "original_expected": "supported",
+      "original_alternatives": [
+        " Most prior work focuses on a different aspect of offensive language such as abusive language BIBREF0 , BIBREF1 , (cyber-)aggression BIBREF2 , (cyber-)bullying BIBREF3 , BIBREF4 , toxic comments INLINEFORM0 , hate speech BIBREF5 , BIBREF6 , BIBREF7 , BIBREF8 , BIBREF9 , BIBREF10 , and offensive language BIBREF11 . Prior work has focused on these aspects of offensive language in Twitter BIBREF3 , BIBREF7 , BIBREF8 , BIBREF11 , Wikipedia comments, and Facebook posts BIBREF2 ."
+      ],
+      "status": "pending_two_independent_reviews",
+      "eligible_for_successor_adaptation": false,
+      "discovery": "internal_source_review_before_benchmark_inference",
+      "model_disagreement_used": false,
+      "original_annotation_rationale": "not_supplied",
+      "review_history": [
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "initial internal source review",
+          "independent": false
+        },
+        {
+          "reviewer": "Daniel Pittaluga / Architect",
+          "role": "conditional D2 adjudication from review table",
+          "independence_attested": false,
+          "source_text_seen_at_decision": false
+        },
+        {
+          "reviewer": "Codex implementation agent",
+          "role": "subsequent exact-source verification",
+          "independent": false
+        }
+      ],
+      "retrieved_context_check": "not_available_no_benchmark_inference",
+      "change_types": [
+        "gold_replaced"
+      ],
+      "removed": [],
+      "approved_literal_answers": [],
+      "proposed_gold": "Offensive (OFF): We label a post as offensive if it contains any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct. This category includes insults, threats, and posts containing profane language or swear words.",
+      "rule": "Source checks support Level A: the question asks for the general definition; the paper says We label and explicitly separates Level A from type/target Levels B/C. Two independent source reviews must approve the replacement and rubric before activation. No active replacement is made by this artifact.",
+      "evidence": [
+        {
+          "role": "support",
+          "quote": "In the OLID dataset, we use a hierarchical annotation model split into three levels to distinguish between whether language is offensive or not (A), and type (B) and target (C) of the offensive language.",
+          "utf8_byte_start": 5909,
+          "utf8_byte_end": 6112,
+          "unicode_codepoint_start": 5909,
+          "unicode_codepoint_end": 6112
+        },
+        {
+          "role": "support",
+          "quote": "Level A discriminates between offensive (OFF) and non-offensive (NOT) tweets.",
+          "utf8_byte_start": 6264,
+          "utf8_byte_end": 6341,
+          "unicode_codepoint_start": 6264,
+          "unicode_codepoint_end": 6341
+        },
+        {
+          "role": "support",
+          "quote": "Offensive (OFF): We label a post as offensive if it contains any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct. This category includes insults, threats, and posts containing profane language or swear words.",
+          "utf8_byte_start": 6415,
+          "utf8_byte_end": 6672,
+          "unicode_codepoint_start": 6415,
+          "unicode_codepoint_end": 6672
+        },
+        {
+          "role": "support",
+          "quote": "Level B categorizes the type of offense and two labels are used: targeted (TIN) and untargeted (INT) insults and threats.",
+          "utf8_byte_start": 6721,
+          "utf8_byte_end": 6842,
+          "unicode_codepoint_start": 6721,
+          "unicode_codepoint_end": 6842
+        },
+        {
+          "role": "support",
+          "quote": "Level C categorizes the targets of insults and threats as individual (IND), group (GRP), and other (OTH).",
+          "utf8_byte_start": 7171,
+          "utf8_byte_end": 7276,
+          "unicode_codepoint_start": 7171,
+          "unicode_codepoint_end": 7276
+        }
+      ],
+      "answer_spans": [
+        {
+          "role": "proposed_answer_not_active",
+          "quote": "Offensive (OFF): We label a post as offensive if it contains any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct. This category includes insults, threats, and posts containing profane language or swear words.",
+          "utf8_byte_start": 6415,
+          "utf8_byte_end": 6672,
+          "unicode_codepoint_start": 6415,
+          "unicode_codepoint_end": 6672
+        }
+      ],
+      "rubric": {
+        "method": "independent_human_semantic_rubric_no_llm_judge",
+        "required": [
+          "Identify this paper's Level A operational definition, rather than presenting a universal definition.",
+          "Include non-acceptable/profane language OR targeted offense as alternative sufficient branches; do not require both.",
+          "Preserve that targeted offense can be veiled or direct."
+        ],
+        "optional_examples": [
+          "insults",
+          "threats",
+          "profane language",
+          "swear words"
+        ],
+        "disqualifying": [
+          "Require an identified target for every offensive post, thereby excluding untargeted profanity.",
+          "Restrict the definition to hate speech, a protected group, or Level B/C categories.",
+          "Substitute a literature survey or invent unsupported definitional restrictions."
+        ],
+        "report": "Record each required element, contradictions and source support separately. Exact match is auxiliary only. Manual disagreements remain unresolved until adjudicated.",
+        "status": "candidate_pending_two_independent_reviews"
+      }
+    }
+  ],
+  "reporting_views": [
+    "original_public_v1",
+    "D1_only",
+    "D2_only",
+    "combined_reviewed_v1_1"
+  ],
+  "score_status": "no_captures_for_this_proposal; future semantic scorer integration pending; historical scores unchanged"
+}

@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: docker/ingestion.Dockerfile
-    image: vectornext-ingestion:t37-hybrid
+    image: vectornext-ingestion:t39
     profiles: [tools]
     read_only: true
     init: true
@@ -22,7 +22,7 @@ services:
     build:
       context: .
       dockerfile: docker/app-llm.Dockerfile
-    image: vectornext-app-llm:t37-hybrid
+    image: vectornext-app-llm:t39
     profiles: [generation]
     gpus: all
     init: true

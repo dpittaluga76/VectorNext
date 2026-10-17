@@ -137,7 +137,7 @@ impl Processor {
                                 let prompt = "synthetic HTTP compatibility fixture";
                                 json!({"space":encoder.space(),"generator":GenerationConfig{
                                     model:"synthetic".into(), revision:"v1".into(),artifact_sha256:"a".repeat(64),runtime:"test".into(),
-                                    prompt:prompt.into(),prompt_version:format!("{:x}",Sha256::digest(prompt)),temperature:0,seed:42,
+                                    prompt:prompt.into(),prompt_version:format!("{:x}",Sha256::digest(prompt)),temperature:0.into(),seed:42,
                                     context_window:4096,output_tokens:256,annotation_tokens:60}})
                             }
                             "count" => json!(encoder.count_tokens(input.as_str().unwrap()).unwrap()),

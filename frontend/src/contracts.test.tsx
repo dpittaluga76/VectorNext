@@ -3,7 +3,7 @@ import { cleanup, render, screen, fireEvent } from '@testing-library/react'
 import 'fake-indexeddb/auto'
 import { AnswerCard } from './App'
 import { context } from './lib/history'
-import { load, save, reserveTurn, releaseTurn } from './lib/store'
+import { load, save, reserveTurn, releaseTurn, migrateDefaults } from './lib/store'
 import type { Answer, Conversation, Workspace } from './types'
 afterEach(cleanup)
 const literal = '9007199254740993.00000000000001'
@@ -32,6 +32,19 @@ const answer: Answer = {
   raw_report: `{"value":${literal}}`,
 }
 describe('browser integrity', () => {
+  it('migrates only the future mode preference once, preserving saved jobs and exact history', () => {
+    const state: Workspace = { version: 1, current: 'chat', theme: 'light', uploads: [], answer_mode: 'hybrid',
+      conversations: [{ id: 'chat', created: 'now', scope: ['doc'], exchanges: [
+        { id: 'old', question: 'Amount?', answer, mode: 'gemma' },
+        { id: 'pending', question: 'Again?', pending: true, job_id: 'job', mode: 'hybrid' },
+      ] }] }
+    const migrated = migrateDefaults(state)
+    expect(migrated.answer_mode).toBe('nuextract')
+    expect(migrated.conversations).toBe(state.conversations)
+    expect(migrated.conversations[0].exchanges[0].answer?.raw_report).toContain(literal)
+    const explicit: Workspace = { ...migrated, answer_mode: 'gemma' }
+    expect(migrateDefaults(explicit)).toBe(explicit)
+  })
   it('atomically reserves one pending turn across tabs and recovers it after a stale save', async () => {
     const state: Workspace = { version: 1, current: 'reserved-chat', theme: 'light', uploads: [],
       conversations: [{ id: 'reserved-chat', created: 'now', scope: ['doc'], exchanges: [

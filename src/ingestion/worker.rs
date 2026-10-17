@@ -11,6 +11,13 @@ use std::{
 pub struct ModelProfile {
     pub space: EmbeddingSpace,
     pub generator: GenerationConfig,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub supported_generators: Vec<GenerationConfig>,
+}
+impl ModelProfile {
+    pub fn supports(&self, generator: Option<&GenerationConfig>) -> bool {
+        generator.is_some_and(|g| g == &self.generator || self.supported_generators.contains(g))
+    }
 }
 struct Process {
     child: Child,
@@ -152,7 +159,7 @@ impl Generator for ModelWorker {
     fn generate(&self, input: &ContextInput) -> Result<Option<String>> {
         require(
             input.space == self.profile.space
-                && input.config.generator.as_ref() == Some(&self.profile.generator),
+                && self.profile.supports(input.config.generator.as_ref()),
             "worker generation identity mismatch",
         )?;
         Ok(serde_json::from_value(Self::call_process(

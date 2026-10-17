@@ -17,3 +17,13 @@ experiments/t28/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,c
 frontend/e2e/pointers-live.spec.ts -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # T32 hashes bind exact fixture and request bytes, including original line endings.
 experiments/t32/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Measurement review manifests bind original bytes across Windows/Linux checkouts.
+evals/measurement/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/reports/t39-* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/reports/t39-gold-review-v1.5/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/reviews/t39-case-107-independent-review.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/reviews/t39-additional-alternative-review.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/reports/t39-gold-review-v1.6/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/reports/t39-internal-review-v1.7/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Preserve this frozen source-diff report's existing trailing blank line.
+docs/reports/t39-d5-table-diff-v1.2.md -text whitespace=blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol

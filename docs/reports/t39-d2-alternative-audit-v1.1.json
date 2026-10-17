@@ -1,0 +1,3817 @@
+{
+  "kind": "development_alternative_lint_not_label_approval",
+  "approved_for_execution": false,
+  "sealed_content_opened": false,
+  "summary": {
+    "development_cases": 120,
+    "original_supported_cases": 83,
+    "accepted_alternatives": 111,
+    "numeric_cases": 49,
+    "flagged_cases": 21,
+    "flags_by_kind": {
+      "alternatives_have_different_numeric_tokens": 8,
+      "shorter_than_another_accepted_alternative": 21,
+      "source_has_immediate_qualifier": 6
+    }
+  },
+  "limitations": [
+    "Substring presence, qualifier adjacency and numeric differences do not establish semantic correctness.",
+    "Short spans and answers ending inside sentences are often legitimate; flags are not rejection rules.",
+    "PDF source_text is the reviewed transcription, not a PDF byte-offset coordinate system.",
+    "SQuAD support is its full scoped paragraph; TAT-QA matches may include wrong-scope duplicate cells.",
+    "Cause/effect, definitions, quantity roles, dates, units and spelled-out numbers need manual review.",
+    "No labels or captured model scores are modified. Sealed records are excluded."
+  ],
+  "cases": [
+    {
+      "number": 1,
+      "case_id": "qasper-06b5272774ec43ee5facfa7111033386f06cf448",
+      "question": "Is an instance a sentence or an IE tuple?",
+      "source": "qasper",
+      "document": "qasper-1905.07791.txt",
+      "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "sentence",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 67
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 2,
+      "case_id": "tatqa-e35b10e8-fe97-4cc4-b59e-cbeb0679f6c7",
+      "question": "What is the Balance at the beginning of the fiscal year for 2019?",
+      "source": "tatqa",
+      "document": "tatqa-467f55db-152c-4219-97c6-5765f1ead0d9.json",
+      "document_sha256": "660244bf434b8d697f8d6774f0231b46e2ab928e55a58caf0adbc5b2335c2cd5",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$1,264",
+          "numeric_tokens": [
+            "1,264"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 2
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 3,
+      "case_id": "squad-572fad30a23a5019007fc86e",
+      "question": "What campaigh did the Scottish National Party (SNP) run?",
+      "source": "squad",
+      "document": "squad-ef3af99f07329145.pdf",
+      "document_sha256": "683e848261be3c12b81569efebd6343ef46d450b63ddfb3ddc36f7d816741d02",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "\"It's Scotland's oil\"",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "It's Scotland's oil",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Quotation marks only; no semantic correction."
+    },
+    {
+      "number": 4,
+      "case_id": "squad-5ad0440a77cf76001a686f4b",
+      "question": "Which job does not require that the member be a citizen of the UK?",
+      "source": "squad",
+      "document": "squad-43f328b69db49d2e.txt",
+      "document_sha256": "1c7faebb317f0204acbe7dc29fd2a0485558974e592b85d53d495bfd21592427",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 5,
+      "case_id": "squad-5ad0457b77cf76001a686f6c",
+      "question": "Who was victorious in the 2005 UK election?",
+      "source": "squad",
+      "document": "squad-9c2728e22ef91614.txt",
+      "document_sha256": "0b0c060c48f85197bf26e8fe7a9135f1de267f3c76fb0f2a8b61b88bdb83897d",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 6,
+      "case_id": "squad-5ad03efa77cf76001a686edf",
+      "question": "What is submitted to only part of Parliament for a full debate?",
+      "source": "squad",
+      "document": "squad-bca12f290efce13a.txt",
+      "document_sha256": "4857e3047000dadc16bfb2d7c84b52b10f8e6992770db9d16c52203a42a603e2",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 7,
+      "case_id": "squad-57286bb84b864d19001649c9",
+      "question": "What does 'Pax Mongolica' mean?",
+      "source": "squad",
+      "document": "squad-a37eb37f16db9bfd.txt",
+      "document_sha256": "a5fefe6a1644e52e96bd506e3743f7ad30207658dcc66d08f4606b777d0aebb6",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "Mongol peace",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 8,
+      "case_id": "squad-5728804b4b864d1900164a49",
+      "question": "What type of math was advanced during the Yuan?",
+      "source": "squad",
+      "document": "squad-6ce3a9a523954641.txt",
+      "document_sha256": "f9d0ba77dd8dff4446935bfec391a5986633d68d8bdf2319ad27e1fd5890d87c",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "polynomial algebra",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 9,
+      "case_id": "squad-5ad408aa604f3c001a3fff01",
+      "question": " Who was the third of Kublai's Chinese advisers?",
+      "source": "squad",
+      "document": "squad-ee3292e64a07a87e.txt",
+      "document_sha256": "bf6091255163527aa530767e07219aa72506bc6cb126b8e4167dcc9934db0548",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 10,
+      "case_id": "squad-572883a33acd2414000dfa7b",
+      "question": "Where in Central Asia did the Han Chinese move?",
+      "source": "squad",
+      "document": "squad-a652253c010b7743.txt",
+      "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "Besh Baliq, Almaliq, and Samarqand",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "Bukhara",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 11,
+      "case_id": "qasper-352bc6de5c5068c6c19062bad1b8f644919b1145",
+      "question": "Up to how many samples do they experiment with?",
+      "source": "qasper",
+      "document": "qasper-1712.05608.txt",
+      "document_sha256": "6ed0794c8817f459f9a34752e096d0b9a1e60cfdc1f5415380d7b1736a52dbea",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "535",
+          "numeric_tokens": [
+            "535"
+          ],
+          "flags": [
+            "alternatives_have_different_numeric_tokens"
+          ],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "we considered 4 different proportions i.e., INLINEFORM0 , INLINEFORM1 , INLINEFORM2 and INLINEFORM3 of the training data to train the classifier",
+          "numeric_tokens": [
+            "4"
+          ],
+          "flags": [
+            "alternatives_have_different_numeric_tokens"
+          ],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Different quantities (535 samples vs four proportions); already pending D3."
+    },
+    {
+      "number": 12,
+      "case_id": "tatqa-28233ece-7a01-47c5-b391-4212b0620940",
+      "question": "How much was the total energy consumption (MWh) for the year ended 31 December 2018?",
+      "source": "tatqa",
+      "document": "tatqa-0f04b820-97bc-4592-983b-00cfd0788011.json",
+      "document_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "167,488.48",
+          "numeric_tokens": [
+            "167,488.48"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 13,
+      "case_id": "tatqa-b39b7bdd-0496-4131-a0e8-69b9f077eeda",
+      "question": "How much was the direct energy consumption (MWh) for the year ended 31 December 2019?",
+      "source": "tatqa",
+      "document": "tatqa-0f04b820-97bc-4592-983b-00cfd0788011.json",
+      "document_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "19,144.17",
+          "numeric_tokens": [
+            "19,144.17"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 14,
+      "case_id": "qasper-ef3567ce7301b28e34377e7b62c4ec9b496f00bf",
+      "question": "What Named Entity Recognition dataset is used?",
+      "source": "qasper",
+      "document": "qasper-2003.11645.txt",
+      "document_sha256": "dcb01eaae2f66122bc0a74eaf90a42d1a9bfff6a9e22375387998e42b49d835b",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "Groningen Meaning Bank",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            1
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "Groningen Meaning Bank (GMB)",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Expanded dataset acronym is a D4 alias decision; no new numeric issue."
+    },
+    {
+      "number": 15,
+      "case_id": "qasper-bd419f4094186a5ce74ba6ac1622b24e29e553f4",
+      "question": "How well did the baseline perform?",
+      "source": "qasper",
+      "document": "qasper-1909.08970.txt",
+      "document_sha256": "6bbc50fcc74369902cbde16ca3595353764f490e84b55752d570c26f25c2c831",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "accuracy of 30.3% on single sentences and 0.3 on complete paragraphs",
+          "numeric_tokens": [
+            "30.3",
+            "0.3"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 16,
+      "case_id": "squad-5a8225de31013a001a335262",
+      "question": "What was erected in South Africa by Duke Kent-Brown to protest Harvard?",
+      "source": "squad",
+      "document": "squad-81c1660e581ab23a.txt",
+      "document_sha256": "781a0469e96a630984364360256ef446a9a4f8ad14eb5552f82e6f2b813a457a",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 17,
+      "case_id": "qasper-5152b78f5dfee26f1b13f221c1405ffa9b9ba3a4",
+      "question": "What is their ROUGE score?",
+      "source": "qasper",
+      "document": "qasper-1802.08636.txt",
+      "document_sha256": "d0014dc8396e673cc2c7409085ba217c407c2f4d2cf483fafbe1fd81b202388a",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 18,
+      "case_id": "squad-5a592b593e1742001a15cfcd",
+      "question": "What helps scientists to date fossils?",
+      "source": "squad",
+      "document": "squad-ab258f89565a1a3c.txt",
+      "document_sha256": "3b25729dedd14dc1875957be2bee80801b54dcf03df63728e1bc796da721e86b",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 19,
+      "case_id": "squad-5a58e3833e1742001a15ce82",
+      "question": "What is the largest eon?",
+      "source": "squad",
+      "document": "squad-82a92c34d4dd107f.txt",
+      "document_sha256": "36480f9ea6f7a385ac0f0d884f56e7f8ddc4af7f2b466bc2f55f70e5d2e107ae",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 20,
+      "case_id": "qasper-1e775cf30784e6b1c2b573294a82e145a3f959bb",
+      "question": "What language(s) is/are represented in the dataset?",
+      "source": "qasper",
+      "document": "qasper-1909.13104.txt",
+      "document_sha256": "5c944998ad899a2b0ddb2a00d67efb69b917d3defd7f03622cfd3bb0b2a930fc",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "english",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 2
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 21,
+      "case_id": "tatqa-c9126aa2-a8ec-4e6f-abe0-580a19217507",
+      "question": "What is the amount of net deferred tax assets in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-2bc7fad1-056b-4298-bfca-5a33c970b1a0.json",
+      "document_sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$ 2,620",
+          "numeric_tokens": [
+            "2,620"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 22,
+      "case_id": "tatqa-a1138b22-091e-4d69-b8dd-478496edb0c1",
+      "question": "What is the total allowance for credit losses in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-4145912c-86dc-434b-8990-1cfe78f298f5.json",
+      "document_sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "221",
+          "numeric_tokens": [
+            "221"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 23,
+      "case_id": "tatqa-3c9733f1-459f-4025-8cf8-3ac0859687fa",
+      "question": "What was the Accrued compensation and benefits in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-914fca09-058a-4409-85c0-7e399c857d4d.json",
+      "document_sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$71.2",
+          "numeric_tokens": [
+            "71.2"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 24,
+      "case_id": "tatqa-9dcfc5c6-082a-495c-91b1-561d4262bc34",
+      "question": "What was the Software delivery, support and maintenance revenue in 2018?",
+      "source": "tatqa",
+      "document": "tatqa-6aa15859-a841-47eb-ad04-a441599cf05c.json",
+      "document_sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$9,441",
+          "numeric_tokens": [
+            "9,441"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 25,
+      "case_id": "tatqa-4ec6ff4d-d8ef-4cdd-aeab-df75b41f5c01",
+      "question": "What is the change (%) for order intake between 2018 and 2019?",
+      "source": "tatqa",
+      "document": "tatqa-13bb283b-4b9c-42b9-9b02-f1b2e1a87abf.json",
+      "document_sha256": "d3c0c4ef2a7d848f402bb375ea149cf397d83da1d0115253f7462854ddb7ceb6",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "13.2",
+          "numeric_tokens": [
+            "13.2"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 26,
+      "case_id": "squad-5a2c31abbfd06b001a5aea33",
+      "question": "What is the name of Sky Q's dial-up router?",
+      "source": "squad",
+      "document": "squad-32c8c64e4e569336.txt",
+      "document_sha256": "2892ce1ee90d7e758e8bd4b12fd7bebc4276caad2f0d0af29d0444e47b6a4a05",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 27,
+      "case_id": "squad-57097d63ed30961900e841fc",
+      "question": "What were the annual carriage fees for the channels?",
+      "source": "squad",
+      "document": "squad-0077902f7f05312f.txt",
+      "document_sha256": "b2f898736ced32b61db0cde936335f49239327adee65e1a41c575fc7d1f644c5",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "£30m",
+          "numeric_tokens": [
+            "30"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 28,
+      "case_id": "tatqa-a8d02db2-d1ef-43e6-9207-8435b4ee609e",
+      "question": "What was the cash dividend per share in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-d7d65228-96c1-4890-951c-c3d7578f8031.json",
+      "document_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$0.75",
+          "numeric_tokens": [
+            "0.75"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 29,
+      "case_id": "tatqa-cf30adbb-c986-4b67-aa14-d0021d7a8f61",
+      "question": "What was the legal reserve amount in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-d7d65228-96c1-4890-951c-c3d7578f8031.json",
+      "document_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$963,947",
+          "numeric_tokens": [
+            "963,947"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 30,
+      "case_id": "tatqa-68ac2c86-8373-4134-960f-5d64427528ec",
+      "question": "What is the outstanding number of rights at end of period in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-d873a0cf-2e57-46f3-b9a5-2596808ffa00.json",
+      "document_sha256": "fd8708831e34f639782a456a2ebc7d299e213a7fe333485c669b0560f6b63df2",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "13,477,758",
+          "numeric_tokens": [
+            "13,477,758"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 31,
+      "case_id": "squad-57261f9f271a42140099d4a9",
+      "question": "What is one of the reason that US production has been held responsible for recessions and lower economic growth?",
+      "source": "squad",
+      "document": "squad-b6860aac55af75d7.txt",
+      "document_sha256": "03cb2784f170548bcb7d5bac5f52461bd00a24b18ac95bd094e47c9bdf136670",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "distribution and price disruptions",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "reduced productivity",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 32,
+      "case_id": "squad-57265526708984140094c2c0",
+      "question": "When did the Shah kingdom start to collapse?",
+      "source": "squad",
+      "document": "squad-ee2a02b38678e2eb.txt",
+      "document_sha256": "76cdbeb9d90ace35573e2882ad7c0def58ed2e97998e9484cfd8431a288d76df",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "January 1979",
+          "numeric_tokens": [
+            "1979"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "1979",
+          "numeric_tokens": [
+            "1979"
+          ],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 4
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "January 1979 versus 1979 is date granularity, not a different year. Preserve existing aliases pending D4 granularity mapping."
+    },
+    {
+      "number": 33,
+      "case_id": "qasper-0101ebfbaba75fd47868ad0c796ac44ebc19c566",
+      "question": "How do they split text to obtain sentence levels?",
+      "source": "qasper",
+      "document": "qasper-1709.05036.txt",
+      "document_sha256": "1f4ac8cbe158d02fe6649cc96da4dd1fbf06aa8bc0f084cc727d5afd6e0a163a",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 34,
+      "case_id": "qasper-ff338921e34c15baf1eae0074938bf79ee65fdd2",
+      "question": "What was the baseline model?",
+      "source": "qasper",
+      "document": "qasper-2002.01984.txt",
+      "document_sha256": "8b0de396c735a4a627f059419e2e52b7f7651ceaf3413b5cf8466afb23bcbcea",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "by answering always YES (in batch 2 and 3) ",
+          "numeric_tokens": [
+            "2",
+            "3"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 35,
+      "case_id": "squad-5ad4f11d5b96ef001a10a705",
+      "question": "What did Jerne develop on the basis of CST?",
+      "source": "squad",
+      "document": "squad-e3a7b9d2f1a7b31e.pdf",
+      "document_sha256": "3e5f7b0095b5f0812ff64bf103e971a3164dd7893c37f427bc8491c729932231",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 36,
+      "case_id": "squad-5ad4f3a25b96ef001a10a758",
+      "question": "What kind of immune response do smaller drugs provoke?",
+      "source": "squad",
+      "document": "squad-44ebe5773da00b47.txt",
+      "document_sha256": "7a450d7d1f943d4cd023d7a9a5f3b23b7186f75e0c1eed291a5a400addca2d3a",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 37,
+      "case_id": "squad-5ad4cd245b96ef001a10a111",
+      "question": "What areas are dendritic cells not found in?",
+      "source": "squad",
+      "document": "squad-ed047e88d80fa5bd.txt",
+      "document_sha256": "835545721185c45eb240b5885c89523078762308bf812877fa20ea8badd1dcce",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 38,
+      "case_id": "squad-5729f799af94a219006aa707",
+      "question": "When B cells and T cells begin to replicate, what do some of their offspring cells become?",
+      "source": "squad",
+      "document": "squad-42018b26c4a11c20.pdf",
+      "document_sha256": "8da9cbc82a2525a33745e1fed31cfd67c55a83ca926acc11fd9509be14ade394",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "long-lived memory cells",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 39,
+      "case_id": "squad-5728f6446aef0514001548e7",
+      "question": "What is the first line of defense against pathogens that prevents them from entering an organism?",
+      "source": "squad",
+      "document": "squad-31a037951075cb19.pdf",
+      "document_sha256": "c39484254a44df317654ec50b3bf05c0957966a51522d6db42349e4f876c1f57",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "physical barriers",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 40,
+      "case_id": "tatqa-4f17ed1a-05b0-4a69-bcb7-40f42edd6d62",
+      "question": "What is the Aerospace and Defense value in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-ec8d8bf5-ff64-447b-8481-cc067a861a28.json",
+      "document_sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$1,327.9",
+          "numeric_tokens": [
+            "1,327.9"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 41,
+      "case_id": "tatqa-c6d15acd-4fd8-4419-a04e-c69487836f86",
+      "question": "What was the amount of non-USD denominated current monetary assets as at 31 December 2019?",
+      "source": "tatqa",
+      "document": "tatqa-861ad987-4b1b-40e0-bef3-1fbd25a33c6b.json",
+      "document_sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "2,899",
+          "numeric_tokens": [
+            "2,899"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 42,
+      "case_id": "squad-5acf9b1177cf76001a685444",
+      "question": "What gave way to the Chicago school of psychology?",
+      "source": "squad",
+      "document": "squad-e42463470d45f2b8.txt",
+      "document_sha256": "2fd2db7f9ebb0764f0702a549c4f477adbd55ed996cfd70886abb1c7a8ed9560",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 43,
+      "case_id": "squad-5726dcbddd62a815002e9321",
+      "question": "In which two codes were the roles of pharmacists codified?",
+      "source": "squad",
+      "document": "squad-139bdf37d5cd5800.pdf",
+      "document_sha256": "2ae548b296f2c9359a32b1d42365c532bc314172d937818ff91055f46cd88515",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "the Taihō Code (701) and re-stated in the Yōrō Code (718)",
+          "numeric_tokens": [
+            "701",
+            "718"
+          ],
+          "flags": [
+            "alternatives_have_different_numeric_tokens"
+          ],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "Taihō Code (701) and re-stated in the Yōrō Code",
+          "numeric_tokens": [
+            "701"
+          ],
+          "flags": [
+            "shorter_than_another_accepted_alternative",
+            "alternatives_have_different_numeric_tokens"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Both alternatives name both codes. Optional code years must be supported but are not the requested two code names; no numeric-value conflict."
+    },
+    {
+      "number": 44,
+      "case_id": "squad-5726e313f1498d1400e8eeb5",
+      "question": "What is one factor that increases the importance of the pharmacy performing at a high level?",
+      "source": "squad",
+      "document": "squad-c121895695ae7caa.txt",
+      "document_sha256": "a18c9573d677ad16634bd00da5e9087c5513180b5f0f4dc369059d2355f3d2d6",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "The high cost of medications and drug-related technology",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "high cost of medications",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            0,
+            2
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 2,
+          "text": "high cost of medications and drug-related technology",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Question asks for one factor. Medication cost is a source-backed factor; shorter answer is not inherently clipped."
+    },
+    {
+      "number": 45,
+      "case_id": "squad-5726f868dd62a815002e9686",
+      "question": "What is included in Medication Therapy Management?",
+      "source": "squad",
+      "document": "squad-d9c71e28ba362ca6.txt",
+      "document_sha256": "7b09b48eb2457b9e9876081bdc2b44c1ed9bdd845ee1824d2cae03ccd3b16fbb",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "clinical services that pharmacists can provide for their patients",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            1
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "the clinical services that pharmacists can provide for their patients",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Leading article only; no semantic correction."
+    },
+    {
+      "number": 46,
+      "case_id": "qasper-b46c0015a122ee5fb95c2a45691cb97f80de1bb6",
+      "question": "What is the architecture of the model?",
+      "source": "qasper",
+      "document": "qasper-1809.00530.txt",
+      "document_sha256": "18dffe66b396e4b766dfc8c0b2bc228ee9e26696f4ac21bc3203b5c6dd13ff1d",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "one-layer CNN structure from previous works BIBREF22 , BIBREF4",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": " one-layer CNN",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "One-layer describes the encoder, not necessarily the whole model; already pending D3. Spelled-out numeric item added manually."
+    },
+    {
+      "number": 47,
+      "case_id": "qasper-5913930ce597513299e4b630df5e5153f3618038",
+      "question": "How does their model improve interpretability compared to softmax transformers?",
+      "source": "qasper",
+      "document": "qasper-1909.00015.txt",
+      "document_sha256": "45d8f14a0aec099cf331e08c35a3930e910a4d250b5cda1c3a771d3ec049d369",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "the attention heads in the proposed adaptively sparse Transformer can specialize more and with higher confidence",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "We introduce sparse attention into the Transformer architecture",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 48,
+      "case_id": "tatqa-04eb80f3-ec41-40c1-8413-9d70059a85ca",
+      "question": "What is total basic earnings per share (cents per share)  for 2019?",
+      "source": "tatqa",
+      "document": "tatqa-fd7e14ed-efb6-4992-bdc2-b5603d91f126.json",
+      "document_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "206.2",
+          "numeric_tokens": [
+            "206.2"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 49,
+      "case_id": "tatqa-e5156247-2cf5-4242-8c82-0c19d8bb7cc9",
+      "question": "What is the value of the total diluted earnings per share (cents per share) in 2018?",
+      "source": "tatqa",
+      "document": "tatqa-fd7e14ed-efb6-4992-bdc2-b5603d91f126.json",
+      "document_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "132.3",
+          "numeric_tokens": [
+            "132.3"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 50,
+      "case_id": "squad-5ad268cbd7d075001a429295",
+      "question": "How many clergymen were there in the Dutch Republic before the influx of Huguenots?",
+      "source": "squad",
+      "document": "squad-fbec9ce93de55b9f.txt",
+      "document_sha256": "45a0b4e5e93112c3796f5644ea9a736bcd8a141fdef37358e59af981df454813",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 51,
+      "case_id": "squad-5ad25d49d7d075001a428eec",
+      "question": "In what year did the Wars of Religion start?",
+      "source": "squad",
+      "document": "squad-179862b2ad4b47d0.txt",
+      "document_sha256": "9867017bbd82b6ead270fd4186419e6e4523be5168798139a5848593a87e9cb4",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 52,
+      "case_id": "squad-571099b2b654c5140001f9b7",
+      "question": "What other Northern European cities had Huguenot congregations?",
+      "source": "squad",
+      "document": "squad-915ce843b1fb08a6.txt",
+      "document_sha256": "465f3a788653969dc5843bdf05150f974f547770065e89d57e06c202b8273776",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "Fredericia (Denmark), Berlin, Stockholm, Hamburg, Frankfurt, Helsinki, and Emden",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 53,
+      "case_id": "qasper-a267d620af319b48e56c191aa4c433ea3870f6fb",
+      "question": "What are labels in car speak language dataset?",
+      "source": "qasper",
+      "document": "qasper-2002.02070.txt",
+      "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "car ",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative",
+            "source_has_immediate_qualifier"
+          ],
+          "containing_alternative_indices": [
+            1
+          ],
+          "immediate_source_qualifiers": [
+            "about"
+          ],
+          "scoped_text_occurrences": 96
+        },
+        {
+          "index": 1,
+          "text": "the car",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 16
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "About is a preposition in unrelated occurrences, not an approximation qualifier. Separate manual label-specificity concern below."
+    },
+    {
+      "number": 54,
+      "case_id": "qasper-899ed05c460bf2aa0aa65101cad1986d4f622652",
+      "question": "How big is dataset of car-speak language?",
+      "source": "qasper",
+      "document": "qasper-2002.02070.txt",
+      "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$3,209$ reviews ",
+          "numeric_tokens": [
+            "3,209"
+          ],
+          "flags": [
+            "shorter_than_another_accepted_alternative",
+            "alternatives_have_different_numeric_tokens"
+          ],
+          "containing_alternative_indices": [
+            1
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "$3,209$ reviews about 553 different cars from 49 different car manufacturers",
+          "numeric_tokens": [
+            "3,209",
+            "553",
+            "49"
+          ],
+          "flags": [
+            "alternatives_have_different_numeric_tokens"
+          ],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "3,209 reviews is the requested size. 553 cars and 49 manufacturers are additional source-backed facts, not conflicting review counts; D4 still resolves TeX delimiters and quantity roles."
+    },
+    {
+      "number": 55,
+      "case_id": "tatqa-28307c15-8d5d-44db-8a3f-67ad08ad6aac",
+      "question": "What is the loss allowance provision for current receivables?",
+      "source": "tatqa",
+      "document": "tatqa-736f65a8-7b6b-47bc-8c6a-3a2d641695bc.json",
+      "document_sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "238",
+          "numeric_tokens": [
+            "238"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 56,
+      "case_id": "tatqa-c5036e83-ed8b-4267-89bc-2653be0e7ccc",
+      "question": "What is the revised Total liabilities as of December 31, 2019?",
+      "source": "tatqa",
+      "document": "tatqa-0a75d1da-9beb-4a61-b2f4-06cff98b755e.json",
+      "document_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$ 100.1",
+          "numeric_tokens": [
+            "100.1"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 57,
+      "case_id": "squad-56de3ebc4396321400ee26e6",
+      "question": "When did the Siege of Antioch take place?",
+      "source": "squad",
+      "document": "squad-69aa6fac50ae847a.txt",
+      "document_sha256": "d6b793bb23a351b7418793d96d8e3094c74522cf35f731653c539571da8529f6",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "1097",
+          "numeric_tokens": [
+            "1097"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 58,
+      "case_id": "squad-5727ea45ff5b5019007d9870",
+      "question": "When less workers are required, what happens to the job market?",
+      "source": "squad",
+      "document": "squad-09d84dd8321f05fb.txt",
+      "document_sha256": "c510ffd948b62d2e66c69cbbad6f3aaf252b777869459bb4bd91bd314d3c61c9",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "increasing unemployment",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 59,
+      "case_id": "squad-572a1ba46aef05140015528f",
+      "question": "How is unregistered property held in informal form?",
+      "source": "squad",
+      "document": "squad-7b8d60ddd2eec197.txt",
+      "document_sha256": "aa95ca2f8cb345761597dedb47b8dc46be2773412d98ec4f473e747ae7e16b2a",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "through various associations and other arrangements",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "through various associations",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Shorter alternative names a supported mechanism, but the full phrase also says other arrangements. Preserve current alternatives; D4 should freeze whether one mechanism suffices rather than treating prefix matching as proof."
+    },
+    {
+      "number": 60,
+      "case_id": "squad-5727ee372ca10214002d99ef",
+      "question": "What type of motivators are achievement and self determination considered?",
+      "source": "squad",
+      "document": "squad-5de0b56f6924c07a.pdf",
+      "document_sha256": "42ddcf0784a783649ba3abe32721b92d3c4e98f7a851efbea4a9d00d6783c153",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "pull",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            1
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "\"pull\"",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Quotation marks only; no semantic correction."
+    },
+    {
+      "number": 61,
+      "case_id": "squad-5727f2714b864d1900164072",
+      "question": "When did the high school education movement occur?",
+      "source": "squad",
+      "document": "squad-4c3950a5a604804c.pdf",
+      "document_sha256": "339dc189b7f09d96b08fa2bf8b5b3c5f35d3de0eec146067b135f50839961c53",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "1910–1940",
+          "numeric_tokens": [
+            "1910",
+            "1940"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 62,
+      "case_id": "tatqa-e700aa58-2454-4af7-84fe-965254c07275",
+      "question": "What was the State income taxes, net of federal tax benefit in 2020?",
+      "source": "tatqa",
+      "document": "tatqa-62425e9b-b7de-4d31-9565-1042ad9e4926.json",
+      "document_sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "22",
+          "numeric_tokens": [
+            "22"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 2
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 63,
+      "case_id": "qasper-c571deefe93f0a41b60f9886db119947648e967c",
+      "question": "what datasets were used?",
+      "source": "qasper",
+      "document": "qasper-1810.12085.txt",
+      "document_sha256": "7e31e062f38c9cb8fb3f810652b0b9d667d888de845a9dcdba93bf1af9eed96b",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "MIMIC-III",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 64,
+      "case_id": "tatqa-ec066127-4046-4b2f-9332-de14851c6868",
+      "question": "What was the expected term in 2019 in years?",
+      "source": "tatqa",
+      "document": "tatqa-89cf13a2-6d08-48be-a45d-2346422d5c38.json",
+      "document_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "0.6",
+          "numeric_tokens": [
+            "0.6"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 65,
+      "case_id": "squad-57338255d058e614000b5c10",
+      "question": "Who has elected the President of Warsaw since 1990?",
+      "source": "squad",
+      "document": "squad-c1dd7eef882a11ae.pdf",
+      "document_sha256": "ebb8677f840bc9006eae11f63da869bb5fafca5a4f312cffb1d815ab6c5f0399",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "the City council",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "City council",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Leading article is harmless; temporal election-scope concern remains pending D3."
+    },
+    {
+      "number": 66,
+      "case_id": "squad-5ad4f7235b96ef001a10a7df",
+      "question": "How many companies were listed on the WSE on April 2009?",
+      "source": "squad",
+      "document": "squad-499e51a8d7601d4d.txt",
+      "document_sha256": "492c00fb2c1b273fd0498cf2f1114aeba433fd8ffdf8443cd27726649c6e9bf7",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 67,
+      "case_id": "squad-5ad4f4d95b96ef001a10a793",
+      "question": "How many members are on the Miasta City Council?",
+      "source": "squad",
+      "document": "squad-2489f62cd003d65a.txt",
+      "document_sha256": "1ccdc3ecc98f2ce8281960f061b48c4e568a881f46f589eec7f333b13afb85de",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 68,
+      "case_id": "squad-5ad4f1365b96ef001a10a70f",
+      "question": "What is most of Poland's modern growth based on?",
+      "source": "squad",
+      "document": "squad-0e41150199a0db05.txt",
+      "document_sha256": "c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 69,
+      "case_id": "tatqa-7164d7c0-d541-4b7a-942d-a864348d4fbf",
+      "question": "What was the total net sales in fiscal year 2018?",
+      "source": "tatqa",
+      "document": "tatqa-9791f353-ce82-41be-a93d-915b8f52677b.json",
+      "document_sha256": "2181aec9f0a6a93f2e88ed85be4ac936206a97db1e6bf08e976b4b9f1d19d45d",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$7,938.3",
+          "numeric_tokens": [
+            "7,938.3"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 70,
+      "case_id": "squad-5a665002846392001a1e1ab5",
+      "question": "How many citizens conflict in a constitutional impasse?",
+      "source": "squad",
+      "document": "squad-21781ba465154865.pdf",
+      "document_sha256": "f3f0d15fb357a7a96e836d0d39243b8905f2dfe6406570b6e9f3256715fe98c4",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 71,
+      "case_id": "squad-5728eef92ca10214002daab0",
+      "question": "What type of punishment is sometimes offered to civil disobedients?",
+      "source": "squad",
+      "document": "squad-a0c037e30597c9f0.txt",
+      "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "plea bargain",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 2
+        },
+        {
+          "index": 1,
+          "text": "plead guilty to one misdemeanor count and receive no jail time",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 72,
+      "case_id": "squad-5728284e3acd2414000df5cd",
+      "question": "What was Joseph Haas arrested for?",
+      "source": "squad",
+      "document": "squad-4567ab556bfdf34c.txt",
+      "document_sha256": "fd93028701526b473dbe93cb4ded11a23207c124c84b16733c2ee2e9b442c706",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "sending an email to the Lebanon, New Hampshire city councilors",
+          "numeric_tokens": [],
+          "flags": [
+            "source_has_immediate_qualifier"
+          ],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [
+            "allegedly"
+          ],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "sending an email",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative",
+            "source_has_immediate_qualifier"
+          ],
+          "containing_alternative_indices": [
+            0,
+            2
+          ],
+          "immediate_source_qualifiers": [
+            "allegedly"
+          ],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 2,
+          "text": "sending an email to the Lebanon",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative",
+            "source_has_immediate_qualifier"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [
+            "allegedly"
+          ],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Confirmed D2 clipped/underqualified alternatives; amended complete alleged conduct recorded."
+    },
+    {
+      "number": 73,
+      "case_id": "qasper-975e60535724f4149c7488699a199ba2920a062c",
+      "question": "What background do they have?",
+      "source": "qasper",
+      "document": "qasper-1907.01468.txt",
+      "document_sha256": "955d4100e91ef826362c6c32307c67cc452f884c045ed3d9821d71bd62ff92a5",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 74,
+      "case_id": "qasper-1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "question": "What features are used?",
+      "source": "qasper",
+      "document": "qasper-1903.07406.txt",
+      "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 75,
+      "case_id": "squad-5ad3c637604f3c001a3ff01b",
+      "question": "Who conceptualized the vacuum?",
+      "source": "squad",
+      "document": "squad-8bd1d95ef62a972e.txt",
+      "document_sha256": "e506629a68c63a7cf4a1fa5216ccd76592f2355601e104882cf833dd45804915",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 76,
+      "case_id": "squad-5ad41b12604f3c001a4004fc",
+      "question": "What are engines using four expansion cylinders known as?",
+      "source": "squad",
+      "document": "squad-198dfa258b2e70a8.txt",
+      "document_sha256": "3c91050d11e7bf64fd4ca62f7dedea1d4bfbf339da5be4a455898c6807e8d955",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 77,
+      "case_id": "squad-5ad3c637604f3c001a3ff018",
+      "question": "Who was the inventor of the vacuum?",
+      "source": "squad",
+      "document": "squad-8bd1d95ef62a972e.txt",
+      "document_sha256": "e506629a68c63a7cf4a1fa5216ccd76592f2355601e104882cf833dd45804915",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 78,
+      "case_id": "squad-5a2ed42fa83784001a7d24f8",
+      "question": "What was one of the allies of Russia in the Great Northern War?",
+      "source": "squad",
+      "document": "squad-ce9e0a1d8795ef35.pdf",
+      "document_sha256": "67c608247425b552a0a823a793c4b6f4f8691b6537049b9ed47bb467552bb218",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 79,
+      "case_id": "squad-5a2ecb43a83784001a7d248c",
+      "question": "In what year did the second wave of the plague hit the Netherlands?",
+      "source": "squad",
+      "document": "squad-a2bd00ba9ec7b403.pdf",
+      "document_sha256": "72cd327e78dedf9aa38bc87732dac35cc25c69445dc3f2429bb70e24bdd19c3f",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 80,
+      "case_id": "tatqa-a084172d-f8e1-4ecf-bf6b-570967ddc466",
+      "question": "What is the basic earnings per share in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-eb122e2e-12b4-4e59-a018-7045192b021d.json",
+      "document_sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$0.34",
+          "numeric_tokens": [
+            "0.34"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 2
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 81,
+      "case_id": "qasper-692c9c5d9ff9cd3e0ce8b5e4fa68dda9bd23dec1",
+      "question": "How many users do they look at?",
+      "source": "qasper",
+      "document": "qasper-1612.08205.txt",
+      "document_sha256": "d64c578125080898aae9b3cdb7bd01ccea8faad8f6ed3bd195569a49d36c9c6c",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "22,880 users",
+          "numeric_tokens": [
+            "22,880"
+          ],
+          "flags": [
+            "alternatives_have_different_numeric_tokens"
+          ],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "20,000",
+          "numeric_tokens": [
+            "20,000"
+          ],
+          "flags": [
+            "source_has_immediate_qualifier",
+            "alternatives_have_different_numeric_tokens"
+          ],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [
+            "over"
+          ],
+          "scoped_text_occurrences": 2
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Confirmed D2 exact/lower-bound distinction; three tiers recorded."
+    },
+    {
+      "number": 82,
+      "case_id": "tatqa-c3f4ec9b-2e21-42fd-950b-2e7b24e4b0b9",
+      "question": "What is the most expensive currency?",
+      "source": "tatqa",
+      "document": "tatqa-e8877535-8ade-4ba3-aae2-cd4db2b5c59c.json",
+      "document_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "GBP",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 83,
+      "case_id": "qasper-1ed49a8c07ef0ac15cfa6b7decbde6604decbd5b",
+      "question": "What dataset does this approach achieve state of the art results on?",
+      "source": "qasper",
+      "document": "qasper-1906.07701.txt",
+      "document_sha256": "47ab0d17c1a599d75db8a3958e572d6d8def7846c90875f975699235dfdbe078",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "the English-German dataset",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 84,
+      "case_id": "squad-5a67dae18476ee001a58a73c",
+      "question": "Numbers of what race of students increased in public schools before 1954?",
+      "source": "squad",
+      "document": "squad-3b9fd4f9d91ccedd.pdf",
+      "document_sha256": "e6d9d22957d8b96ccb6a391584ced0cfccc8c7e0440de4b76ac7c66d5a3322bc",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 85,
+      "case_id": "squad-57274eca5951b619008f8802",
+      "question": "What religion's schools were integrated into New Zealand public schools between 1979 and 1984?",
+      "source": "squad",
+      "document": "squad-6eb87fe456a14ef9.pdf",
+      "document_sha256": "ed9175d12240e1a70966fc381217f6d659e816a1b9774ee9e4b2aa5b718d4e4e",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "Catholic",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 86,
+      "case_id": "tatqa-2c542baf-9bb5-4f75-b1dc-4b79180885f5",
+      "question": "What was the amount of domestic-state income tax net operating loss carryforwards?",
+      "source": "tatqa",
+      "document": "tatqa-26d46b77-411e-47aa-b650-5c84ef3e9e21.json",
+      "document_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "$57,299",
+          "numeric_tokens": [
+            "57,299"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 87,
+      "case_id": "tatqa-05c03d2a-7d92-4973-8771-7d0c6547464a",
+      "question": "What was the percentage increase in modules sales from 2018 to 2019?",
+      "source": "tatqa",
+      "document": "tatqa-428d5e87-612b-468c-80f3-5b5298d589c8.json",
+      "document_sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "191%",
+          "numeric_tokens": [
+            "191"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 88,
+      "case_id": "squad-5a3e3752378766001a0024f7",
+      "question": "Who has said that climate models are uncertain?",
+      "source": "squad",
+      "document": "squad-cdeffc5b021044b2.txt",
+      "document_sha256": "dea705fdf75f529664435816398522b553e31b0965a1287f3375c31a630e304e",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 89,
+      "case_id": "tatqa-66d3e594-1904-4cb1-9af1-bac17a8f273b",
+      "question": "What was the Deferred income tax assets as reported?",
+      "source": "tatqa",
+      "document": "tatqa-386352cf-f7e3-4148-920c-63bc57cf156b.json",
+      "document_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "22,626",
+          "numeric_tokens": [
+            "22,626"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 90,
+      "case_id": "tatqa-6407b020-fadc-42bd-8f02-9b80f3ccb742",
+      "question": "What was the Deferred income tax assets without the adoption of ASC 606?",
+      "source": "tatqa",
+      "document": "tatqa-386352cf-f7e3-4148-920c-63bc57cf156b.json",
+      "document_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "22,094",
+          "numeric_tokens": [
+            "22,094"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 91,
+      "case_id": "tatqa-3683a97f-66f4-4450-a978-4322b673b914",
+      "question": "What is the total gross emissions (Scope 1 and 2) for FY19?",
+      "source": "tatqa",
+      "document": "tatqa-502dd70a-926b-49d7-b236-63855c98e740.json",
+      "document_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "87,128",
+          "numeric_tokens": [
+            "87,128"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 92,
+      "case_id": "tatqa-69b61533-e155-408f-b189-5bb0ddfbc274",
+      "question": "What is the total gross emissions (Scope 1 and 2) for FY18?",
+      "source": "tatqa",
+      "document": "tatqa-502dd70a-926b-49d7-b236-63855c98e740.json",
+      "document_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "98,725",
+          "numeric_tokens": [
+            "98,725"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 2
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 93,
+      "case_id": "squad-57060f3e75f01819005e7922",
+      "question": "What is the central business district of San Diego?",
+      "source": "squad",
+      "document": "squad-060932fadc9072cb.txt",
+      "document_sha256": "5edf6aded128ebbbf800aac0b81c39c677b7387bf981608b76f5b3f572854f2e",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "Downtown San Diego",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "Downtown",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Downtown is the source-defined local referent; not an unrelated incomplete entity name."
+    },
+    {
+      "number": 94,
+      "case_id": "squad-5ad0470477cf76001a686f80",
+      "question": "What business districts are within the downtown Los Angeles area?",
+      "source": "squad",
+      "document": "squad-78e2032ab94dbf4d.pdf",
+      "document_sha256": "dbe70d1aa13cee1457f9360821c763a0c52a442824f44295bf27cd32025c9753",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 95,
+      "case_id": "squad-570602fa52bb89140068979f",
+      "question": "Outside of national recognition, what other kind of recognition do some of the cities get?",
+      "source": "squad",
+      "document": "squad-71e7a86adce7a926.pdf",
+      "document_sha256": "c9de57eb07b634b89fdfdf0874200c0cef8c5b0b8b824392973b038b4f89a17f",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "global",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 96,
+      "case_id": "squad-5ad044f077cf76001a686f5b",
+      "question": "Where is southern Hollywood located?",
+      "source": "squad",
+      "document": "squad-6abcd017b1b06d18.txt",
+      "document_sha256": "b75e5803fbb4f060c696351025c35bd5542acc3855a593521033151e4d0d2c14",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 97,
+      "case_id": "squad-570d35b7b3d812140066d54d",
+      "question": "How high are Victoria's alpine regions?",
+      "source": "squad",
+      "document": "squad-68b5149b27e1f7aa.txt",
+      "document_sha256": "ca0f7b7018127b2736fe74e8ea343545834b32796fc74beb48cde30324c80067",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "2,000 m",
+          "numeric_tokens": [
+            "2,000"
+          ],
+          "flags": [
+            "shorter_than_another_accepted_alternative",
+            "source_has_immediate_qualifier"
+          ],
+          "containing_alternative_indices": [
+            1
+          ],
+          "immediate_source_qualifiers": [
+            "almost"
+          ],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "almost 2,000 m",
+          "numeric_tokens": [
+            "2,000"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Confirmed D2 loss of almost; directed approximation rule recorded."
+    },
+    {
+      "number": 98,
+      "case_id": "squad-570d29c2b3d812140066d4c0",
+      "question": "How many Victorians are Buddhist?",
+      "source": "squad",
+      "document": "squad-b2997b6dde54dea0.txt",
+      "document_sha256": "b8f79857343da03dc1c7c2a5e15e3350bb97060531e8db3a546fadb1276486cb",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "168,637",
+          "numeric_tokens": [
+            "168,637"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 99,
+      "case_id": "qasper-4e748cb2b5e74d905d9b24b53be6cfdf326e8054",
+      "question": "What traditional linguistics features did they use?",
+      "source": "qasper",
+      "document": "qasper-1701.05574.txt",
+      "document_sha256": "e74c47e7f00f9659e85ba3028713c767da7f3660be672ef76c554f01c671b378",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 100,
+      "case_id": "squad-5ad278add7d075001a429574",
+      "question": "What caused the Lower Rhine region to be changed significantly?",
+      "source": "squad",
+      "document": "squad-3189a540bdec08df.pdf",
+      "document_sha256": "ad102f25f025fd0a0038d05677f6ccc84f05bfc062f66c4100b6e69813aa2764",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 101,
+      "case_id": "squad-572ff5fcb2c2fd140056865a",
+      "question": "What is the translation of the old north branch of rhe Rhine?",
+      "source": "squad",
+      "document": "squad-e5854bf4b5f3221a.pdf",
+      "document_sha256": "db3e65a1726b316e5e034e44ca418351aeb93d26f2fd35255a13f9ee0a0a695e",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "Bent Rhine",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 102,
+      "case_id": "squad-5ad2bcdfd7d075001a42a0b1",
+      "question": "When was the authoritative Brockhaus Enzyklopädie written?",
+      "source": "squad",
+      "document": "squad-7547b30c70047374.pdf",
+      "document_sha256": "c947263c855dc6c7e42827b3ef22cf76bf7c9b872ae437260eb2cc13aa74cc75",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 103,
+      "case_id": "squad-57300580b2c2fd1400568751",
+      "question": "When did embankment of the major Rhine distributaries take palce?",
+      "source": "squad",
+      "document": "squad-4956613ff1542f17.txt",
+      "document_sha256": "8e983a2167b912359aa8e1110455d27a279e9b3baaac76337616f57b19396e19",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "11–13th century",
+          "numeric_tokens": [
+            "11",
+            "13"
+          ],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            1
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "11–13th century AD",
+          "numeric_tokens": [
+            "11",
+            "13"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Both retain the full 11–13th-century range; the era is supplied by the same source. No new endpoint correction."
+    },
+    {
+      "number": 104,
+      "case_id": "squad-572f5533a23a5019007fc55e",
+      "question": "What river is larger than the Rhine?",
+      "source": "squad",
+      "document": "squad-5369731244f42e8a.pdf",
+      "document_sha256": "13a7d340ab8f97d95d30370be1fd57afc59f5fdcf7ff5118ccb6322a3c5f127a",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "Danube",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            1
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "the Danube",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Leading article only; no semantic correction."
+    },
+    {
+      "number": 105,
+      "case_id": "tatqa-21e0abec-2256-4dd3-be8e-9329e4726546",
+      "question": "What is the 2018 carrying amount of interest rate swaps?",
+      "source": "tatqa",
+      "document": "tatqa-2a704bb9-4bd3-4071-b8e6-212957b04ada.json",
+      "document_sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "1,663",
+          "numeric_tokens": [
+            "1,663"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 106,
+      "case_id": "qasper-682e26262abba473412f68cbeb5f69aa3b9968d7",
+      "question": "What are the differences between this dataset and pre-existing ones?",
+      "source": "qasper",
+      "document": "qasper-1902.09666.txt",
+      "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "no prior work has explored the target of the offensive language",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 107,
+      "case_id": "qasper-5a8cc8f80509ea77d8213ed28c5ead501c68c725",
+      "question": "What is the definition of offensive language?",
+      "source": "qasper",
+      "document": "qasper-1902.09666.txt",
+      "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": " Most prior work focuses on a different aspect of offensive language such as abusive language BIBREF0 , BIBREF1 , (cyber-)aggression BIBREF2 , (cyber-)bullying BIBREF3 , BIBREF4 , toxic comments INLINEFORM0 , hate speech BIBREF5 , BIBREF6 , BIBREF7 , BIBREF8 , BIBREF9 , BIBREF10 , and offensive language BIBREF11 . Prior work has focused on these aspects of offensive language in Twitter BIBREF3 , BIBREF7 , BIBREF8 , BIBREF11 , Wikipedia comments, and Facebook posts BIBREF2 .",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 108,
+      "case_id": "tatqa-f036c54e-3e90-4740-bf34-bf175c9c7a4a",
+      "question": "What is the operating margin for fiscal 2018?",
+      "source": "tatqa",
+      "document": "tatqa-1fc1784c-38a0-49a2-a985-8c8a479f5f66.json",
+      "document_sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "49%",
+          "numeric_tokens": [
+            "49"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 109,
+      "case_id": "squad-5a55068b134fea001a0e180f",
+      "question": "How is information charged differently for Circuit Switching?",
+      "source": "squad",
+      "document": "squad-b432d2704c4cc56e.txt",
+      "document_sha256": "9ef6e305a45e267b0ca488bc0108dedf4d653b1ec1d52109c09fadd0cce50299",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 110,
+      "case_id": "squad-5a668b1df038b7001ab0bf8a",
+      "question": "Inter-network routing was what kind of system?",
+      "source": "squad",
+      "document": "squad-a2c1c2176d3c262a.txt",
+      "document_sha256": "aeb98d5feda0ab3efc8296ff3f73372e13a699fa97064d33bb575deef3451fe3",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 111,
+      "case_id": "squad-57263677ec44d21400f3dc4c",
+      "question": "What delivery message was used ",
+      "source": "squad",
+      "document": "squad-ea95fc496ddc121e.txt",
+      "document_sha256": "a4008fb587348767c254824b7e5bb46aaec5eaa762404c37c3e9e2f52fc93eac",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "by store and forward switching",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "packets",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 2,
+          "text": "store and forward switching",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "Method versus packets and incomplete question; already pending D3."
+    },
+    {
+      "number": 112,
+      "case_id": "squad-5725d34089a1e219009abf51",
+      "question": "What did Distributed Adaptive Message Block Switching do",
+      "source": "squad",
+      "document": "squad-f1963d48dea24904.txt",
+      "document_sha256": "dfc62fde23936e1ea3cab0f6a04aa5f4eb4ce3a3a1c3c79813ebfd4a6fbee7b8",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "provide a fault-tolerant, efficient routing method for telecommunication messages",
+          "numeric_tokens": [],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        },
+        {
+          "index": 1,
+          "text": "fault-tolerant, efficient routing method",
+          "numeric_tokens": [],
+          "flags": [
+            "shorter_than_another_accepted_alternative"
+          ],
+          "containing_alternative_indices": [
+            0
+          ],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true,
+      "manual_flag_triage": "The shorter phrase retains both fault tolerance and efficiency; both refer to the same routing function. No new correction."
+    },
+    {
+      "number": 113,
+      "case_id": "tatqa-ca3c4add-5d49-4078-bc6f-7b38a842c06e",
+      "question": "What was the issued DSU in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-1f631856-89ba-471a-b65d-86801ec07401.json",
+      "document_sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "11,328",
+          "numeric_tokens": [
+            "11,328"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 114,
+      "case_id": "tatqa-806247ca-aa73-4484-b2e6-d7221a64610f",
+      "question": "What is the current trade receivables in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-a961dd41-e5cb-40ce-876d-7c2f2c7dae96.json",
+      "document_sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "3,770",
+          "numeric_tokens": [
+            "3,770"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 115,
+      "case_id": "tatqa-5835d53d-8b8c-42eb-9b0b-8dd44502c222",
+      "question": "What is the Revenue from UK in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-a7a7ede0-4575-4ace-8d5b-371db74ef3c1.json",
+      "document_sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "83.2",
+          "numeric_tokens": [
+            "83.2"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 116,
+      "case_id": "tatqa-cf9ea7bd-d26e-4ba9-a2a9-b1e1c73ec11c",
+      "question": "How much was the derivative liabilities as at December 31, 2018?",
+      "source": "tatqa",
+      "document": "tatqa-f5cab3e6-1f49-4434-b9a2-5e97073b985b.json",
+      "document_sha256": "a7831e877dfd31f12b68208d29ddb06f286eeadbb4b98d3004c2ad8b83937a74",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "120.5",
+          "numeric_tokens": [
+            "120.5"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 117,
+      "case_id": "tatqa-6927b567-adcd-418d-bd67-e7de8542c658",
+      "question": "What is the number of ground leases expiring between fiscal year 2020 - 2024?",
+      "source": "tatqa",
+      "document": "tatqa-ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7.json",
+      "document_sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "381",
+          "numeric_tokens": [
+            "381"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 118,
+      "case_id": "qasper-8e12b5c459fa963b3e549deadb864c244879fe82",
+      "question": "How many layers does their model have?",
+      "source": "qasper",
+      "document": "qasper-1910.06592.txt",
+      "document_sha256": "d00ad8022d5ce510cd1729418988d8974692987e8deca692dc3fb1e7dd50957d",
+      "original_outcome": "insufficient_evidence",
+      "alternatives": [],
+      "numeric_policy": null,
+      "numeric_binding_status": null,
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 119,
+      "case_id": "tatqa-91f1a159-9a51-4a8d-ab24-a4b9a00d5c33",
+      "question": "What was the percentage of sales represented by gross profit in 2018?",
+      "source": "tatqa",
+      "document": "tatqa-a190aaec-d9e9-4555-a64b-e833f1db0843.json",
+      "document_sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "50.9",
+          "numeric_tokens": [
+            "50.9"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    },
+    {
+      "number": 120,
+      "case_id": "tatqa-3264a669-9c5e-4821-b6f2-1f8002f47ffb",
+      "question": "What is the number of non-vested shares granted in 2019?",
+      "source": "tatqa",
+      "document": "tatqa-bee68d71-44ca-4177-a1c7-8c127f6f9203.json",
+      "document_sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+      "original_outcome": "supported",
+      "alternatives": [
+        {
+          "index": 0,
+          "text": "473,550",
+          "numeric_tokens": [
+            "473,550"
+          ],
+          "flags": [],
+          "containing_alternative_indices": [],
+          "immediate_source_qualifiers": [],
+          "scoped_text_occurrences": 1
+        }
+      ],
+      "numeric_policy": "numeric-scoring-v1.1",
+      "numeric_binding_status": "requires_semantic_quantity_and_scope_review",
+      "manual_semantic_review_required": true
+    }
+  ],
+  "input": {
+    "source_audit_sha256": "f4c8aec6a2922e5e0b4a74bbdb0b14f6bc3e68f7a3b953e63aa87bd2fd299e59",
+    "proposal_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+    "verified_development_members": 116,
+    "scanner_sha256": "c8dd6e547e3857fb72a38cea01fd0d8f4ddd510551a52f660f7adbbbc69bf474"
+  },
+  "policy": {
+    "path": "evals/measurement/numeric-scoring-v1.1.md",
+    "sha256": "80b8817ba2c05c21895932597594007cbe7cc6ed428f16244a324aabe4c9a5a7"
+  },
+  "numeric_policy_bindings": [
+    {
+      "number": 2,
+      "case_id": "tatqa-e35b10e8-fe97-4cc4-b59e-cbeb0679f6c7",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the Balance at the beginning of the fiscal year for 2019?",
+      "original_alternatives": [
+        "$1,264"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "thousand",
+      "production_validator_changed": false
+    },
+    {
+      "number": 11,
+      "case_id": "qasper-352bc6de5c5068c6c19062bad1b8f644919b1145",
+      "policy": "numeric-scoring-v1.1",
+      "question": "Up to how many samples do they experiment with?",
+      "original_alternatives": [
+        "535",
+        "we considered 4 different proportions i.e., INLINEFORM0 , INLINEFORM1 , INLINEFORM2 and INLINEFORM3 of the training data to train the classifier"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Unresolved maximum sample count versus number of proportions (D3).",
+      "pending": "D3 scope plus D4/D5 mappings",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 12,
+      "case_id": "tatqa-28233ece-7a01-47c5-b391-4212b0620940",
+      "policy": "numeric-scoring-v1.1",
+      "question": "How much was the total energy consumption (MWh) for the year ended 31 December 2018?",
+      "original_alternatives": [
+        "167,488.48"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 13,
+      "case_id": "tatqa-b39b7bdd-0496-4131-a0e8-69b9f077eeda",
+      "policy": "numeric-scoring-v1.1",
+      "question": "How much was the direct energy consumption (MWh) for the year ended 31 December 2019?",
+      "original_alternatives": [
+        "19,144.17"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 15,
+      "case_id": "qasper-bd419f4094186a5ce74ba6ac1622b24e29e553f4",
+      "policy": "numeric-scoring-v1.1",
+      "question": "How well did the baseline perform?",
+      "original_alternatives": [
+        "accuracy of 30.3% on single sentences and 0.3 on complete paragraphs"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Accuracy units/granularity unresolved: 30.3% versus 0.3 on different text units (D3).",
+      "pending": "D3 scope plus D4/D5 mappings",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 21,
+      "case_id": "tatqa-c9126aa2-a8ec-4e6f-abe0-580a19217507",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the amount of net deferred tax assets in 2019?",
+      "original_alternatives": [
+        "$ 2,620"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "million",
+      "production_validator_changed": false
+    },
+    {
+      "number": 22,
+      "case_id": "tatqa-a1138b22-091e-4d69-b8dd-478496edb0c1",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the total allowance for credit losses in 2019?",
+      "original_alternatives": [
+        "221"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "million",
+      "production_validator_changed": false
+    },
+    {
+      "number": 23,
+      "case_id": "tatqa-3c9733f1-459f-4025-8cf8-3ac0859687fa",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the Accrued compensation and benefits in 2019?",
+      "original_alternatives": [
+        "$71.2"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "million",
+      "production_validator_changed": false
+    },
+    {
+      "number": 24,
+      "case_id": "tatqa-9dcfc5c6-082a-495c-91b1-561d4262bc34",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the Software delivery, support and maintenance revenue in 2018?",
+      "original_alternatives": [
+        "$9,441"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "thousand",
+      "production_validator_changed": false
+    },
+    {
+      "number": 25,
+      "case_id": "tatqa-4ec6ff4d-d8ef-4cdd-aeab-df75b41f5c01",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the change (%) for order intake between 2018 and 2019?",
+      "original_alternatives": [
+        "13.2"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "percent",
+      "production_validator_changed": false
+    },
+    {
+      "number": 27,
+      "case_id": "squad-57097d63ed30961900e841fc",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What were the annual carriage fees for the channels?",
+      "original_alternatives": [
+        "£30m"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Annual channel carriage fee, GBP 30 million; preserve £30m spelling/scale until D4 mappings.",
+      "pending": "D4 field/alias mapping",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 28,
+      "case_id": "tatqa-a8d02db2-d1ef-43e6-9207-8435b4ee609e",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the cash dividend per share in 2019?",
+      "original_alternatives": [
+        "$0.75"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 29,
+      "case_id": "tatqa-cf30adbb-c986-4b67-aa14-d0021d7a8f61",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the legal reserve amount in 2019?",
+      "original_alternatives": [
+        "$963,947"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 30,
+      "case_id": "tatqa-68ac2c86-8373-4134-960f-5d64427528ec",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the outstanding number of rights at end of period in 2019?",
+      "original_alternatives": [
+        "13,477,758"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 32,
+      "case_id": "squad-57265526708984140094c2c0",
+      "policy": "numeric-scoring-v1.1",
+      "question": "When did the Shah kingdom start to collapse?",
+      "original_alternatives": [
+        "January 1979",
+        "1979"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Collapse timing; January 1979 and year-only 1979 are existing aliases, with granularity explicit in D4.",
+      "pending": "D4 field/alias mapping",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 34,
+      "case_id": "qasper-ff338921e34c15baf1eae0074938bf79ee65fdd2",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the baseline model?",
+      "original_alternatives": [
+        "by answering always YES (in batch 2 and 3) "
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Batch 2/3 identifiers qualify the baseline; baseline-phase scope is a new review lead, not an approved change.",
+      "pending": "new baseline-phase review plus D4",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 40,
+      "case_id": "tatqa-4f17ed1a-05b0-4a69-bcb7-40f42edd6d62",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the Aerospace and Defense value in 2019?",
+      "original_alternatives": [
+        "$1,327.9"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "million",
+      "production_validator_changed": false
+    },
+    {
+      "number": 41,
+      "case_id": "tatqa-c6d15acd-4fd8-4419-a04e-c69487836f86",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the amount of non-USD denominated current monetary assets as at 31 December 2019?",
+      "original_alternatives": [
+        "2,899"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "million",
+      "production_validator_changed": false
+    },
+    {
+      "number": 43,
+      "case_id": "squad-5726dcbddd62a815002e9321",
+      "policy": "numeric-scoring-v1.1",
+      "question": "In which two codes were the roles of pharmacists codified?",
+      "original_alternatives": [
+        "the Taihō Code (701) and re-stated in the Yōrō Code (718)",
+        "Taihō Code (701) and re-stated in the Yōrō Code"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Years qualify code identities; requested facts are both code names, not numeric quantities.",
+      "pending": "D4 field/alias mapping",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 46,
+      "case_id": "qasper-b46c0015a122ee5fb95c2a45691cb97f80de1bb6",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the architecture of the model?",
+      "original_alternatives": [
+        "one-layer CNN structure from previous works BIBREF22 , BIBREF4",
+        " one-layer CNN"
+      ],
+      "detected_by": "manual_spelled_out_number_review",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "One-layer is spelled out; encoder versus full architecture scope remains D3-pending.",
+      "pending": "D3 scope plus D4/D5 mappings",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 48,
+      "case_id": "tatqa-04eb80f3-ec41-40c1-8413-9d70059a85ca",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is total basic earnings per share (cents per share)  for 2019?",
+      "original_alternatives": [
+        "206.2"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 49,
+      "case_id": "tatqa-e5156247-2cf5-4242-8c82-0c19d8bb7cc9",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the value of the total diluted earnings per share (cents per share) in 2018?",
+      "original_alternatives": [
+        "132.3"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 54,
+      "case_id": "qasper-899ed05c460bf2aa0aa65101cad1986d4f622652",
+      "policy": "numeric-scoring-v1.1",
+      "question": "How big is dataset of car-speak language?",
+      "original_alternatives": [
+        "$3,209$ reviews ",
+        "$3,209$ reviews about 553 different cars from 49 different car manufacturers"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Review count 3,209; optional cars 553/manufacturers 49 must retain separate roles; TeX dollars are not currency.",
+      "pending": "D4 field/alias mapping",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 55,
+      "case_id": "tatqa-28307c15-8d5d-44db-8a3f-67ad08ad6aac",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the loss allowance provision for current receivables?",
+      "original_alternatives": [
+        "238"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "thousand",
+      "production_validator_changed": false
+    },
+    {
+      "number": 56,
+      "case_id": "tatqa-c5036e83-ed8b-4267-89bc-2653be0e7ccc",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the revised Total liabilities as of December 31, 2019?",
+      "original_alternatives": [
+        "$ 100.1"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "million",
+      "production_validator_changed": false
+    },
+    {
+      "number": 57,
+      "case_id": "squad-56de3ebc4396321400ee26e6",
+      "policy": "numeric-scoring-v1.1",
+      "question": "When did the Siege of Antioch take place?",
+      "original_alternatives": [
+        "1097"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Siege year 1097; preserve event and source year.",
+      "pending": "D4 field/alias mapping",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 61,
+      "case_id": "squad-5727f2714b864d1900164072",
+      "policy": "numeric-scoring-v1.1",
+      "question": "When did the high school education movement occur?",
+      "original_alternatives": [
+        "1910–1940"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Education movement range 1910–1940; both endpoints required.",
+      "pending": "D4 field/alias mapping",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 62,
+      "case_id": "tatqa-e700aa58-2454-4af7-84fe-965254c07275",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the State income taxes, net of federal tax benefit in 2020?",
+      "original_alternatives": [
+        "22"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D3 scope plus D4/D5 mappings",
+      "scale_from_source_annotation": "million",
+      "production_validator_changed": false
+    },
+    {
+      "number": 64,
+      "case_id": "tatqa-ec066127-4046-4b2f-9332-de14851c6868",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the expected term in 2019 in years?",
+      "original_alternatives": [
+        "0.6"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D3 scope plus D4/D5 mappings",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 69,
+      "case_id": "tatqa-7164d7c0-d541-4b7a-942d-a864348d4fbf",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the total net sales in fiscal year 2018?",
+      "original_alternatives": [
+        "$7,938.3"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "million",
+      "production_validator_changed": false
+    },
+    {
+      "number": 71,
+      "case_id": "squad-5728eef92ca10214002daab0",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What type of punishment is sometimes offered to civil disobedients?",
+      "original_alternatives": [
+        "plea bargain",
+        "plead guilty to one misdemeanor count and receive no jail time"
+      ],
+      "detected_by": "manual_spelled_out_number_review",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "One misdemeanor count is part of the offered plea terms; no jail time is a negative condition, not permission to invent a numeric sentence. Punishment/plea-bargain wording is a pending review lead.",
+      "pending": "new punishment-premise review plus D4",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 80,
+      "case_id": "tatqa-a084172d-f8e1-4ecf-bf6b-570967ddc466",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the basic earnings per share in 2019?",
+      "original_alternatives": [
+        "$0.34"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 81,
+      "case_id": "qasper-692c9c5d9ff9cd3e0ce8b5e4fa68dda9bd23dec1",
+      "policy": "numeric-scoring-v1.1",
+      "question": "How many users do they look at?",
+      "original_alternatives": [
+        "22,880 users",
+        "20,000"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Total Blogger user count: faithful 22,880; imprecise over 20,000; wrong bare 20,000.",
+      "pending": "D4 field/alias mapping; D2 semantic tier approved",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 86,
+      "case_id": "tatqa-2c542baf-9bb5-4f75-b1dc-4b79180885f5",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the amount of domestic-state income tax net operating loss carryforwards?",
+      "original_alternatives": [
+        "$57,299"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "thousand",
+      "production_validator_changed": false
+    },
+    {
+      "number": 87,
+      "case_id": "tatqa-05c03d2a-7d92-4973-8771-7d0c6547464a",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the percentage increase in modules sales from 2018 to 2019?",
+      "original_alternatives": [
+        "191%"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 89,
+      "case_id": "tatqa-66d3e594-1904-4cb1-9af1-bac17a8f273b",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the Deferred income tax assets as reported?",
+      "original_alternatives": [
+        "22,626"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "thousand",
+      "production_validator_changed": false
+    },
+    {
+      "number": 90,
+      "case_id": "tatqa-6407b020-fadc-42bd-8f02-9b80f3ccb742",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the Deferred income tax assets without the adoption of ASC 606?",
+      "original_alternatives": [
+        "22,094"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "thousand",
+      "production_validator_changed": false
+    },
+    {
+      "number": 91,
+      "case_id": "tatqa-3683a97f-66f4-4450-a978-4322b673b914",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the total gross emissions (Scope 1 and 2) for FY19?",
+      "original_alternatives": [
+        "87,128"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 92,
+      "case_id": "tatqa-69b61533-e155-408f-b189-5bb0ddfbc274",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the total gross emissions (Scope 1 and 2) for FY18?",
+      "original_alternatives": [
+        "98,725"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D3 scope plus D4/D5 mappings",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 97,
+      "case_id": "squad-570d35b7b3d812140066d54d",
+      "policy": "numeric-scoring-v1.1",
+      "question": "How high are Victoria's alpine regions?",
+      "original_alternatives": [
+        "2,000 m",
+        "almost 2,000 m"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Regional upper extent almost 2,000 m; preserve direction; about is imprecise only.",
+      "pending": "D4 field/alias mapping; D2 semantic tier approved",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 98,
+      "case_id": "squad-570d29c2b3d812140066d4c0",
+      "policy": "numeric-scoring-v1.1",
+      "question": "How many Victorians are Buddhist?",
+      "original_alternatives": [
+        "168,637"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Buddhist membership 168,637 as of the source's most recent census; do not claim a present-day count.",
+      "pending": "D4 field/alias mapping",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 103,
+      "case_id": "squad-57300580b2c2fd1400568751",
+      "policy": "numeric-scoring-v1.1",
+      "question": "When did embankment of the major Rhine distributaries take palce?",
+      "original_alternatives": [
+        "11–13th century",
+        "11–13th century AD"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "source text",
+      "quantity_and_precision_rule": "Embankment in 11–13th century AD; preserve both endpoints and era context.",
+      "pending": "D4 field/alias mapping",
+      "scale_from_source_annotation": null,
+      "production_validator_changed": false
+    },
+    {
+      "number": 105,
+      "case_id": "tatqa-21e0abec-2256-4dd3-be8e-9329e4726546",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the 2018 carrying amount of interest rate swaps?",
+      "original_alternatives": [
+        "1,663"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "million",
+      "production_validator_changed": false
+    },
+    {
+      "number": 108,
+      "case_id": "tatqa-f036c54e-3e90-4740-bf34-bf175c9c7a4a",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the operating margin for fiscal 2018?",
+      "original_alternatives": [
+        "49%"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 113,
+      "case_id": "tatqa-ca3c4add-5d49-4078-bc6f-7b38a842c06e",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the issued DSU in 2019?",
+      "original_alternatives": [
+        "11,328"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 114,
+      "case_id": "tatqa-806247ca-aa73-4484-b2e6-d7221a64610f",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the current trade receivables in 2019?",
+      "original_alternatives": [
+        "3,770"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "thousand",
+      "production_validator_changed": false
+    },
+    {
+      "number": 115,
+      "case_id": "tatqa-5835d53d-8b8c-42eb-9b0b-8dd44502c222",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the Revenue from UK in 2019?",
+      "original_alternatives": [
+        "83.2"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "million",
+      "production_validator_changed": false
+    },
+    {
+      "number": 116,
+      "case_id": "tatqa-cf9ea7bd-d26e-4ba9-a2a9-b1e1c73ec11c",
+      "policy": "numeric-scoring-v1.1",
+      "question": "How much was the derivative liabilities as at December 31, 2018?",
+      "original_alternatives": [
+        "120.5"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 117,
+      "case_id": "tatqa-6927b567-adcd-418d-bd67-e7de8542c658",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the number of ground leases expiring between fiscal year 2020 - 2024?",
+      "original_alternatives": [
+        "381"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    },
+    {
+      "number": 119,
+      "case_id": "tatqa-91f1a159-9a51-4a8d-ab24-a4b9a00d5c33",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What was the percentage of sales represented by gross profit in 2018?",
+      "original_alternatives": [
+        "50.9"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "percent",
+      "production_validator_changed": false
+    },
+    {
+      "number": 120,
+      "case_id": "tatqa-3264a669-9c5e-4821-b6f2-1f8002f47ffb",
+      "policy": "numeric-scoring-v1.1",
+      "question": "What is the number of non-vested shares granted in 2019?",
+      "original_alternatives": [
+        "473,550"
+      ],
+      "detected_by": "numeric_literal_scan",
+      "source_type": "JSON string",
+      "quantity_and_precision_rule": "Exact original table cell for the question's quantity/year. Preserve string spelling, currency/percent markers, column units and source scale; no implicit numeric conversion.",
+      "pending": "D4/D5 typed table proof mapping",
+      "scale_from_source_annotation": "",
+      "production_validator_changed": false
+    }
+  ],
+  "manual_numeric_word_review": {
+    "additional_case_numbers": [
+      46,
+      71
+    ],
+    "total_policy_bound_cases": 51,
+    "method": "Read every original accepted alternative, including spelled-out quantities and numbers serving as identifiers; ignore BIBREF/INLINEFORM placeholder IDs."
+  },
+  "d1_supplement": [
+    {
+      "number": 4,
+      "case_id": "squad-5ad0440a77cf76001a686f4b",
+      "aliases_checked": [
+        "MSP",
+        "MSPs"
+      ],
+      "numeric": false,
+      "status": "source spans already verified in immutable D1 amendment; no D2 correction"
+    },
+    {
+      "number": 74,
+      "case_id": "qasper-1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "aliases_checked": [
+        "TF-IDF features",
+        "TF-IDF",
+        "TF-IDF feature vectors",
+        "Term Frequency-Inverse Document Frequency",
+        "TFIDF"
+      ],
+      "numeric": false,
+      "status": "source spans already verified in immutable D1 amendment; no D2 correction"
+    },
+    {
+      "number": 88,
+      "case_id": "squad-5a3e3752378766001a0024f7",
+      "aliases_checked": [
+        "Richard Lindzen",
+        "Lindzen"
+      ],
+      "numeric": false,
+      "status": "source spans already verified in immutable D1 amendment; no D2 correction"
+    },
+    {
+      "number": 109,
+      "case_id": "squad-5a55068b134fea001a0e180f",
+      "aliases_checked": [
+        "fee per unit of connection time",
+        "per unit of connection time",
+        "connection time"
+      ],
+      "numeric": false,
+      "status": "source spans already verified in immutable D1 amendment; no D2 correction"
+    }
+  ],
+  "new_manual_review_leads": [
+    {
+      "number": 10,
+      "case_id": "squad-572883a33acd2414000dfa7b",
+      "category": "Answer-set completeness",
+      "question": "Where in Central Asia did the Han Chinese move?",
+      "concern": "The source describes administrators sent to Bukhara and artisans/farmers moved to Besh Baliq, Almaliq and Samarqand. The question does not specify a role or ask for only one location. Decide whether either subset is sufficient or a set is required.",
+      "status": "pending_not_a_label_change",
+      "discovery": "source_review_before_inference"
+    },
+    {
+      "number": 34,
+      "case_id": "qasper-ff338921e34c15baf1eae0074938bf79ee65fdd2",
+      "category": "Baseline phase",
+      "question": "What was the baseline model?",
+      "concern": "The annotated evidence describes always-YES for batches 2/3 and entailment for batch 4. The question does not specify a batch. Decide which baseline/phase is requested before changing the gold.",
+      "status": "pending_not_a_label_change",
+      "discovery": "source_review_before_inference"
+    },
+    {
+      "number": 47,
+      "case_id": "qasper-5913930ce597513299e4b630df5e5153f3618038",
+      "category": "Mechanism completeness",
+      "question": "How does their model improve interpretability compared to softmax transformers?",
+      "concern": "Sparse attention is the method and specialization/confidence the reported benefit. Decide whether the short method-only alternative adequately answers how interpretability improves or needs the explicit mechanism.",
+      "status": "pending_not_a_label_change",
+      "discovery": "source_review_before_inference"
+    },
+    {
+      "number": 53,
+      "case_id": "qasper-a267d620af319b48e56c191aa4c433ea3870f6fb",
+      "category": "Label specificity",
+      "question": "What are labels in car speak language dataset?",
+      "concern": "The paper says labels identify the car model, ignoring its year. Decide whether bare car is a sufficient categorical label or too underspecified; do not confuse model, manufacturer and individual vehicle.",
+      "status": "pending_not_a_label_change",
+      "discovery": "source_review_before_inference"
+    },
+    {
+      "number": 71,
+      "case_id": "squad-5728eef92ca10214002daab0",
+      "category": "Question premise",
+      "question": "What type of punishment is sometimes offered to civil disobedients?",
+      "concern": "A plea bargain is the described agreement and no jail time its offered outcome. The question calls this a type of punishment. Decide whether to retain that colloquial reading or flag the wording.",
+      "status": "pending_not_a_label_change",
+      "discovery": "source_review_before_inference"
+    }
+  ],
+  "semantic_audit_limits": "Read all original questions/alternatives, triaged all flags against source, and checked additional completeness/premise cases. This is internal review, not exhaustive independent certification. Both 031 and 107 pass literal evidence checks despite semantic problems."
+}

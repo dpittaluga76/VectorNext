@@ -15,7 +15,7 @@ Follow the user's current request. These instructions do not independently autho
 - Use the architecture as the implementation reference. Explicit user instructions can revise it; update the design before changing confirmed requirements or contracts. Resolve routine details within the requested scope.
 - Build our own storage, similarity search, keyword index and query behavior. General-purpose parsing, numerical, serialization and model-runtime libraries are allowed.
 - Keep the three-service deployment local and containerized. The API alone owns durable storage; the processor has no database mount; only the generation service uses the GPU. Parsing and inference stay outside database transactions and mutex-held work.
-- Target one RTX 4060 with 8 GB VRAM. Only pinned Gemma 4 12B and repaired NuExtract3 are supported generators. Hybrid is the default; forced modes use one model. Hold a lease for a complete attempt and stop/reap the old backend before switching.
+- Target one RTX 4060 with 8 GB VRAM. Only pinned Gemma 4 12B and repaired NuExtract3 are supported generators. NuExtract-only is the default; Hybrid and Gemma remain explicit options. Hold a lease for a complete attempt and stop/reap the old backend before switching.
 - Preserve two-call answering, f16 KV, MiniLM, structural ingestion and ranked 30/20/5 defaults unless the user authorizes a change. Never silently reassign saved generation policies or relabel embedding spaces.
 - Use the [README configuration guide](README.md#compose-files) and [operations guide](docs/development.md). Routine Start must not build/download; Stop targets only the normal VectorNext project and preserves volumes. Historical experiment deployments require their recorded source environment.
 

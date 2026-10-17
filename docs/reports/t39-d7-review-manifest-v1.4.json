@@ -1,0 +1,64 @@
+{
+  "kind": "D7_review_candidate_hash_record_not_execution_freeze",
+  "version": "1.4",
+  "date": "2026-10-17",
+  "approved_for_execution": false,
+  "independent_review_acceptance": false,
+  "sealed_content_opened": false,
+  "model_inference_calls": 0,
+  "predecessors": {
+    "docs/reports/t39-d2-review-freeze-v1.1.json": "14e2520ae24248dddc0db828c657c8a795bd574f4555d7a18a02495d56b18723",
+    "docs/reports/t39-d3-review-freeze-v1.1.json": "219a1e60bd9bd4d66b4c6dc9752ea38b5df4494f9fee80ba6151d886f703c36e",
+    "docs/reports/t39-d4-review-manifest-v1.1.json": "1a181b4157e10a4c0043e0ee33bfff2076712a262627642da6d5d614ea068fd6",
+    "docs/reports/t39-d5-review-manifest-v1.2.json": "f34c07dfc6d103699df9ac66147e6162eb33b7fc1ef593b62b302a2fcb7c27c9",
+    "docs/reports/t39-d6-review-manifest-v1.3.json": "815e8247ddbdb5dc09d48b4902b2c467c6ff1e28c5b3b3fe0c279b97df3d6cb1"
+  },
+  "artifacts": [
+    {
+      "path": "evals/measurement/pilot-scope-v1.4.md",
+      "sha256": "7716980262b4d6cb4c407bd21eddec96ba0f8e756b46378220719f020f706f26",
+      "bytes": 11280
+    },
+    {
+      "path": "evals/measurement/closed-book-v1.4.txt",
+      "sha256": "88891827226de43f34e8e6a3faa900f0da84d7249c05d03fab7e9c65e0472777",
+      "bytes": 521
+    },
+    {
+      "path": "evals/measurement/closed-book-v1.4.schema.json",
+      "sha256": "00d8b6640d304dc10a67b34c7752ebf0c3f66998140b1472720bd12417919a16",
+      "bytes": 449
+    },
+    {
+      "path": "evals/measurement/pilot_controls.py",
+      "sha256": "7a052dbe1aa32fc986aaad56e20aff8cd7e0a244d724b093cbea6ffaeeaf7ab0",
+      "bytes": 10108
+    },
+    {
+      "path": "evals/measurement/test_pilot_controls.py",
+      "sha256": "bbbfd3d605c2014156e1a553b59a74a9c9590e33ab1de79a014a858904bc5ead",
+      "bytes": 7885
+    },
+    {
+      "path": "docs/reports/t39-d7-pilot-audit-v1.4.json",
+      "sha256": "a0a91c168eaf16e50c5ad5ad4c61dba3780f3b9439de382794c273a8d430a9ea",
+      "bytes": 34404
+    },
+    {
+      "path": "docs/reports/t39-d7-pilot-scope-v1.4.md",
+      "sha256": "48ab85e5f05ca6ad205f67fc67445a5482e9cf22a7f4b9d3971199b3ee414a8d",
+      "bytes": 8472
+    },
+    {
+      "path": "docs/reports/t39-d7-verification-v1.4.json",
+      "sha256": "097fb47eda94bd1a91d5f36c7cfa03f0165ae36e51d44829a6695a0403818a82",
+      "bytes": 1539
+    }
+  ],
+  "remaining": [
+    "Resolve six gold decisions and four candidate primary family identities.",
+    "Receive actual custodian screening/reconciliation and recompute final quotas.",
+    "Integrate D4/D5/D7 prompts, scorers, native templates, coordinate captures and question-only controls in the final frozen runner.",
+    "Verify actual oversized-table splitting and budgets; run only after final execution freeze."
+  ]
+}

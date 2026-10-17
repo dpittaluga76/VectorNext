@@ -6,6 +6,25 @@ rust-version = "1.87"
 license-file = "LICENSE"
 description = "VectorNext's local document and vector storage core"
 
+[features]
+# Offline evaluation helpers only; never enabled by the production Docker build.
+measurement = []
+
+[[example]]
+name = "measurement_evidence"
+path = "examples/measurement_evidence.rs"
+required-features = ["measurement"]
+
+[[example]]
+name = "measurement_candidate"
+path = "examples/measurement_candidate.rs"
+required-features = ["measurement"]
+
+[[example]]
+name = "measurement_table_preflight"
+path = "examples/measurement_table_preflight.rs"
+required-features = ["measurement"]
+
 [dependencies]
 axum = { version = "=0.8.9", default-features = false, features = ["http1", "tokio"] }
 base64 = "=0.22.1"

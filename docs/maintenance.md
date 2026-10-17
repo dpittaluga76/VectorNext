@@ -4,7 +4,7 @@ VectorNext can reclaim obsolete journal payloads and unreferenced blobs without 
 
 ## Before maintenance
 
-- Build the API/admin image from the current checkout. The API/client/admin use `vectornext-app:t38`; processor and generator remain `:t37-hybrid`. Building does not restart the running app.
+- Build the API/admin image from the current checkout. Compose selects the current application images; building does not restart the running app.
 - Stop the API before inspection or compaction. Both commands require its exclusive writer lock. Pause other tools that open this database, and keep it stopped throughout maintenance.
 - Keep a verified backup on another destination. Database export includes ingestion history but excludes the sibling answer-job store; preserve that separately if needed. See [backup and restore](development.md#run-the-integrated-local-application).
 - Use a Linux Docker volume with room for a separate compacted copy. Maintenance requires same-filesystem hard links and atomic directory exchange; it fails rather than using sequential renames. A database mounted directly as a filesystem root cannot be exchanged; the normal `/storage/db` subdirectory is supported.

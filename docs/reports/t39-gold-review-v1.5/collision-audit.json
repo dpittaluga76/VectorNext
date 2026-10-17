@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-17",
+  "approved_for_execution": false,
+  "scope": "Four revised gold roles only; unchanged tables/cases retain their earlier collision audits.",
+  "method": "finite primary/derived/imprecise aliases vs all cells and whole-token text occurrences under the whitespace floor; wrong locations never added to proofs",
+  "limitation": "Literal occurrence audit detects candidate collisions, not every semantic paraphrase or wrong fact within an annotated paragraph. Negative cases have no positive aliases to compare.",
+  "cases": [
+    {
+      "number": 10,
+      "format": "txt",
+      "checked": 1230,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "answer",
+          "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+          "utf8_start": 982,
+          "utf8_end": 991,
+          "value_string": "Samarqand",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "55bbfa9052d82fc2074807e0795fc8957a358974ef289c3f0e19e4e8dbb35f85",
+          "utf8_start": 1122,
+          "utf8_end": 1131,
+          "value_string": "Samarqand",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "format": "txt",
+      "checked": 46254,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 47,
+      "format": "txt",
+      "checked": 38516,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 53,
+      "format": "txt",
+      "checked": 10710,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5909,
+          "utf8_end": 5918,
+          "value_string": "car model",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 1870,
+          "utf8_end": 1875,
+          "value_string": "model",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 1882,
+          "utf8_end": 1887,
+          "value_string": "model",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 1929,
+          "utf8_end": 1934,
+          "value_string": "model",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2185,
+          "utf8_end": 2190,
+          "value_string": "model",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2195,
+          "utf8_end": 2200,
+          "value_string": "model",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5209,
+          "utf8_end": 5214,
+          "value_string": "model",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5913,
+          "utf8_end": 5918,
+          "value_string": "model",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 8687,
+          "utf8_end": 8692,
+          "value_string": "model",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        }
+      ]
+    }
+  ]
+}

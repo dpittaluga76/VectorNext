@@ -3,6 +3,16 @@ use vectornext::{
     Database, Error, Result, backup, maintenance,
     service::{Application, http, remote::Client},
 };
+fn check_generators(app: &Application, bytes: &[u8]) -> Result<()> {
+    // Avoid an untagged serde content buffer: exact-number JSON must be
+    // deserialized by serde_json itself, including fractional temperatures.
+    let value: serde_json::Value = serde_json::from_slice(bytes)?;
+    if value.is_array() {
+        app.check_ingestion_generators(&serde_json::from_value::<Vec<_>>(value)?)
+    } else {
+        app.check_ingestion_generator(&serde_json::from_value(value)?)
+    }
+}
 fn run() -> Result<()> {
     let args: Vec<_> = env::args().skip(1).collect();
     match args.first().map(String::as_str) {
@@ -26,7 +36,7 @@ fn run() -> Result<()> {
                 weight,
             )?;
             let policy = std::fs::read("/app/generator-policy.json")?;
-            app.check_ingestion_generator(&serde_json::from_slice(&policy)?)?;
+            check_generators(&app, &policy)?;
             let _worker = app.start();
             http::serve(app, &address)
         }
@@ -58,7 +68,7 @@ fn run() -> Result<()> {
         }
         Some("check-generator") if args.len() == 3 => {
             let app = Application::open(Path::new(&args[1]), Client::new("http://unused".into()))?;
-            app.check_ingestion_generator(&serde_json::from_slice(&std::fs::read(&args[2])?)?)?;
+            check_generators(&app, &std::fs::read(&args[2])?)?;
             println!("{{\"compatible\":true}}");
             Ok(())
         }

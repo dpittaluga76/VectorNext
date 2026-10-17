@@ -1,0 +1,75 @@
+{
+  "kind": "D6_review_candidate_hash_record_not_execution_freeze",
+  "version": "1.3",
+  "date": "2026-10-17",
+  "approved_for_execution": false,
+  "independent_review_acceptance": false,
+  "sealed_content_opened": false,
+  "model_inference_calls": 0,
+  "predecessors": {
+    "docs/reports/t39-d2-review-freeze-v1.1.json": "14e2520ae24248dddc0db828c657c8a795bd574f4555d7a18a02495d56b18723",
+    "docs/reports/t39-d3-review-freeze-v1.1.json": "219a1e60bd9bd4d66b4c6dc9752ea38b5df4494f9fee80ba6151d886f703c36e",
+    "docs/reports/t39-d4-review-manifest-v1.1.json": "1a181b4157e10a4c0043e0ee33bfff2076712a262627642da6d5d614ea068fd6",
+    "docs/reports/t39-d5-review-manifest-v1.2.json": "f34c07dfc6d103699df9ac66147e6162eb33b7fc1ef593b62b302a2fcb7c27c9"
+  },
+  "artifacts": [
+    {
+      "path": "evals/measurement/families-v1.3.md",
+      "sha256": "d0b4720560c73bddaafd7455702084c14d4dbcff01f75e59dce3e0ba61e58a7b",
+      "bytes": 10104
+    },
+    {
+      "path": "evals/measurement/families.py",
+      "sha256": "32ef990fd1452bca390827a3a33b5fd2b0c23c94f13c08ff2353953b4c531f80",
+      "bytes": 22632
+    },
+    {
+      "path": "evals/measurement/test_families.py",
+      "sha256": "bae1397907902e1b4f2a527a5435465e91d7d1c5f81aaeaf61187ee0e785cd82",
+      "bytes": 13061
+    },
+    {
+      "path": "evals/measurement/table-families-v1.3.json",
+      "sha256": "0813052707c48387ecde405224f94fd057bf1d8218ecfeee7cfcc8acc3354e28",
+      "bytes": 13900
+    },
+    {
+      "path": "docs/reports/t39-d6-family-ledger-v1.3.json",
+      "sha256": "8452726f230fe21e3f55e8c10d6d796af0d04e4212216ee5b6a08eda6ad5dd77",
+      "bytes": 218165
+    },
+    {
+      "path": "docs/reports/t39-d6-families-v1.3.md",
+      "sha256": "31df6852a9008835d9940d7508b33ef749a03e65490d83ebb53b146375f7632a",
+      "bytes": 21237
+    },
+    {
+      "path": "docs/reports/t39-d6-verification-v1.3.json",
+      "sha256": "5d038780868549f6927c19086dc0c2b2ec6629877aa135b72a855cf78132f7c4",
+      "bytes": 1398
+    },
+    {
+      "path": "docs/reviews/t39-d6-custodian-input-v1.3.json",
+      "sha256": "7d163b5b13117cf89110a05807c5b42741a8c020bd490600f055036efa58204c",
+      "bytes": 21207
+    },
+    {
+      "path": "docs/reviews/t39-d6-custodian-receipt-template-v1.3.json",
+      "sha256": "fa31c3e94fd153dfd8435d3af6d4a588bc410d9617744f36eb6912c44c393ca6",
+      "bytes": 1776
+    },
+    {
+      "path": "docs/reviews/t39-d6-custodian-handoff-v1.3.md",
+      "sha256": "c87926477d29ef8ebde7b6ea63eba98c654367198a903d5668a2f7c0edd5363a",
+      "bytes": 5600
+    }
+  ],
+  "remaining": [
+    "four candidate primary source traces and relevant lineage",
+    "actual aggregate custodian receipt/equal sealed screening",
+    "D7",
+    "gold 010/034/047/053/071/107",
+    "successor/runtime integration and final quotas",
+    "final committed execution freeze"
+  ]
+}

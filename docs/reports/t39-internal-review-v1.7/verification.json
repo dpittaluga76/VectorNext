@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-17",
+  "kind": "internal_source_review_verification_not_model_evaluation",
+  "linux_measurement_tests_passed": 150,
+  "new_internal_receipt_tests_passed": 12,
+  "docker_network": "none",
+  "temporary_container": "--rm",
+  "processor_image": "sha256:fe04b07d2dc5c32440499699699d5d24fa03d8757d8677a6c7d4c4cbb78c6fb9",
+  "test_log_sha256": "7d8ef19b7a6e60766c3e2cab0b817c6ba0611f5291356d1cdbf0c4196fd128a0",
+  "prior_frozen_artifact_entries_verified": 118,
+  "original_proposal_members_verified": 178,
+  "proposal_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "reproduced_byte_identically": [
+    "receipt.json",
+    "development-overlay.json"
+  ],
+  "private_audit_sha256": "d93bdf146a3d3dd346ec42298b9b36ffc74b74605040510df625bc230189daee",
+  "private_bundle_manifest_sha256": "8db7fa883392e2a5a774916161c18a0c0e9ee05e67b86a03f7e1e3c487c4c28b",
+  "private_bundle_file_count": 255,
+  "private_gold_structural_validation": "passed",
+  "synthetic_fact_and_proof_checks": {
+    "allowed_values": 71,
+    "field_mappings": 135,
+    "numeric_type_rejections": 71,
+    "wrong_value_rejections": 71,
+    "coordinate_proofs": 23,
+    "wrong_coordinate_rejections": 23,
+    "source_spans": 31,
+    "tables": 20
+  },
+  "candidate_pdf_visual_review": {
+    "cases": 11,
+    "documents": 10,
+    "pages": 10,
+    "result": "clean source renders visually checked; no clipping or missing paragraphs observed"
+  },
+  "candidate_financial_source_visual_review_pages": 13,
+  "candidate_pdf_pairing": {
+    "primary_pdf_cases": 9,
+    "primary_txt_cases": 23,
+    "identical_txt_pdf_primary_source_texts": 0,
+    "paired_question_ids": 0,
+    "scope": "Exact supplied source text hashes; no paired format effect is available."
+  },
+  "overlap_scan": {
+    "development_cases": 120,
+    "candidate_cases": 60,
+    "exact_document_matches": 0,
+    "literal_prose_40_token_matches": 0,
+    "development_alias_mentions": 0,
+    "scope": "Literal source leads only; not a lineage independence certificate"
+  },
+  "public_projection_check": "No candidate IDs, questions, document hashes or candidate-only family keys in current review outputs/docs",
+  "private_audit_and_gold_git_ignored": true,
+  "new_candidate_model_requests": 0,
+  "original_holdout_accessed": false,
+  "implementation_exposed_candidates": 60,
+  "independent_review": false,
+  "production_configuration_or_data_changed": false,
+  "rust_and_gpu_tests": "Not rerun for source-review-only changes; prior verification retained separately"
+}

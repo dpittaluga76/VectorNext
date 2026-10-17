@@ -1,0 +1,111 @@
+{
+  "records": [
+    {
+      "row_index": 0,
+      "headers": [
+        "($ in millions)",
+        "",
+        ""
+      ],
+      "cells": [
+        "($ in millions)",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 1,
+      "headers": [
+        "($ in millions)",
+        "",
+        ""
+      ],
+      "cells": [
+        "At December 31:",
+        "2019",
+        "2018"
+      ]
+    },
+    {
+      "row_index": 2,
+      "headers": [
+        "($ in millions)",
+        "",
+        ""
+      ],
+      "cells": [
+        "Recorded investment (1)",
+        "$22,446",
+        "$31,182"
+      ]
+    },
+    {
+      "row_index": 3,
+      "headers": [
+        "($ in millions)",
+        "",
+        ""
+      ],
+      "cells": [
+        "Specific allowance for credit losses",
+        "177",
+        "220"
+      ]
+    },
+    {
+      "row_index": 4,
+      "headers": [
+        "($ in millions)",
+        "",
+        ""
+      ],
+      "cells": [
+        "Unallocated allowance for credit losses",
+        "45",
+        "72"
+      ]
+    },
+    {
+      "row_index": 5,
+      "headers": [
+        "($ in millions)",
+        "",
+        ""
+      ],
+      "cells": [
+        "Total allowance for credit losses",
+        "221",
+        "292"
+      ]
+    },
+    {
+      "row_index": 6,
+      "headers": [
+        "($ in millions)",
+        "",
+        ""
+      ],
+      "cells": [
+        "Net financing receivables",
+        "$22,224",
+        "$30,890"
+      ]
+    },
+    {
+      "paragraph_order": 1,
+      "text": "Global Financing Receivables and Allowances"
+    },
+    {
+      "paragraph_order": 2,
+      "text": "The following table presents external Global Financing receivables excluding residual values, the allowance for credit losses and immaterial miscellaneous receivables:"
+    },
+    {
+      "paragraph_order": 3,
+      "text": "(1) Includes deferred initial direct costs which are eliminated in IBM’s consolidated results."
+    },
+    {
+      "paragraph_order": 4,
+      "text": "The percentage of Global Financing receivables reserved was 1.0 percent at December 31, 2019, compared to 0.9 percent at December 31, 2018. The decline in the allowance for credit losses was driven by write-offs of $64 million, primarily of receivables previously reserved, and net releases of $7 million as a result of lower average asset balances in client and commercial financing. See note K, “Financing Receivables,” for additional information."
+    }
+  ]
+}

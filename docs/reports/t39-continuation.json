@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "date": "2026-10-16",
+  "status": "awaiting_independent_review_not_complete",
+  "reviewer": "Daniel Pittaluga / Architect",
+  "approved": false,
+  "custody_transferred": false,
+  "new_model_requests": 0,
+  "proposal": {
+    "manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+    "archive_sha256": "78dc66294c4ebf6e75beda6012e39e477a90c2d8c731da996c71233aca59979e",
+    "counts": {
+      "development": {
+        "questions": 120,
+        "families": 73,
+        "negative": 37,
+        "formats": {
+          "txt": 64,
+          "json": 37,
+          "pdf": 19
+        },
+        "tables": 37,
+        "documents": 112,
+        "pdf_pages": 19
+      },
+      "sealed": {
+        "questions": 60,
+        "families": 40,
+        "negative": 13,
+        "formats": {
+          "json": 23,
+          "txt": 26,
+          "pdf": 11
+        },
+        "tables": 23,
+        "documents": 56,
+        "pdf_pages": 10
+      }
+    },
+    "files_verified": 178
+  },
+  "verification": {
+    "rust_main_passed": 180,
+    "rust_intentionally_ignored": 2,
+    "measurement_python_passed": 24,
+    "workflow_python_passed": 27,
+    "format": "passed",
+    "clippy_default_and_measurement": "passed",
+    "pdf_text_roundtrips": 29,
+    "development_pdf_pages_visually_reviewed": 19,
+    "sealed_pdf_pages_visually_reviewed_by_implementation_agent": 0,
+    "exact_decimal_cli": "passed",
+    "local_markdown_links": "8 files; no broken local links",
+    "normal_readiness": "HTTP 200; default_answer_mode nuextract; three services healthy",
+    "task_verification_containers_remaining": 0
+  },
+  "logs": {
+    "tmp/t39/continuation-rust.log": "394a94540ae8673d02ef83d9f9b467c83937593cb12f105893cf2a42fad620f2",
+    "tmp/t39/continuation-clippy.log": "75c72c33b4dddd66ca28c30bd43f63055db0b0bbe20570e44e6185d396a03091",
+    "tmp/t39/continuation-clippy-default.log": "f7762efb499381e34dfa3e00a7ba3fee7f083e8f7ca764b82c1f6fc5f6d3edd9",
+    "tmp/t39/continuation-python-final.log": "ba4471999fc8ea8b376209adc32e7b0a6a87c760ab872a547196de20fe090cdc",
+    "tmp/t39/continuation-python-docker.log": "580666c21c6d1b1b987d11912e59853448597d20b65747294ad1238445f6f642",
+    "tmp/t39/continuation-workflow.log": "0dd5ac5800caa485d87103d22bc5c31ebcac5d3b10ec8c7ed15948ec31931503"
+  },
+  "implementation": {
+    "evals/measurement/attribution.py": "6be5ed8c641c8d207122e767df672f0a7bd7f1bec8d4bcb812967d0efddf82ee",
+    "evals/measurement/auxiliary.py": "fffef058b356775759ac6f03e475129459f5b05ecdfcde2d2fe53ec167dc1c5c",
+    "evals/measurement/gate.py": "b5a391a35b6f491eafc2f2f22f983f5657f3fb8d9490aaad93651c9ce756e44c",
+    "evals/measurement/metrics.py": "f4402e2834ff54d571e076d7260c17a7ca99c1fe6820f1d27e51ab01f13a464f",
+    "evals/measurement/oracle.py": "89ed5277db56b532627a8db7542fa2305ba4212427d931bf5a87aba7834bca7c",
+    "evals/measurement/prepare_review.py": "d5473a9e60e730040e623021b757018f853521b85e93f5428e1a951c300860ca",
+    "evals/measurement/rescore.py": "1336b74cad8bb873b7606a9f88b5bb108daacc1f960779d4f5cd9a8b9cfe7e4b",
+    "evals/measurement/review.py": "9bdd977f255a170062bd140bcc53a565969102db01e78df92dd853bc97332e81",
+    "evals/measurement/run_benchmark.py": "89ab8117b5e623b0a2b313b95290e510abda5098977ede5b323b5f6f2bb15a86",
+    "evals/measurement/test_attribution.py": "45f503e422c2812d2bf0fd10c952335c2e7eae4c92dab8306d9681cf05ac886b",
+    "evals/measurement/test_benchmark.py": "741c105a349649fd37f851208fa8cf606d979b39402535c2c6eca8424b13c38e",
+    "evals/measurement/test_gate.py": "8aaa40c1f0f63c8afd6692afbd9f9ae1bc24e81dc433ddddc3598291ed8c860f",
+    "evals/measurement/test_measurement.py": "4e13c58b63bee1db13cb235ca5c8f4614813da3d6fdce282580fdc35117902fc",
+    "evals/measurement/test_oracle.py": "80457c5938061d2e4f7cc06c06c7fcd9c727560b2c4bce1c7dd22b43b0e0d994",
+    "evals/measurement/test_prepare_review.py": "dca79d8d22b75c9b368618f09e71547333d7b935fc3555736bcc4463699caa04",
+    "evals/measurement/test_review.py": "b3a5109370e147bff1c6d49babb7a3cd3c6c2578b5d861ff43404aadd821200e",
+    "evals/measurement/__init__.py": "d3def56d5d78484436be8b2d9818bade9eb86de3d5499daf2fe0503d6d09424c",
+    "Cargo.toml": "c00ab02efb6366a19edc61d729e92e4275de9e285605bae4b5a971c410393675",
+    "src/answers.rs": "b4c6940de5cf38293c282ebe6ee797fb6c02ac5b5356b3c390e7634d171a3362",
+    "src/answers/measurement.rs": "c0957cd6833a773671d4824eef4e67e4d96efb0980438d03e261c097886fcf70",
+    "examples/measurement_candidate.rs": "14d23c569817b760e5f7cf8e43fba7b43c915c3d25151fe35deed97550b48c58",
+    "tests/measurement_residue.rs": "401096a86db9e2ae59c4c1952d479a44352148fc976835b13cbd4846484bec82",
+    "deployment/client.py": "b9ff458807bcddb1282c69d4f1fab245b20a8a4bc140cd9855c84d42a512b516",
+    "evals/measurement/protocol.md": "b1bc1b45e6d21ef8615caacabd103ef825102f19be44fdb8e6d5b3df13643db6",
+    "evals/measurement/public-sources.json": "908362abef9193a1b797c443c33c27f71db72414be1407d024d2fa47a3eba1cb"
+  },
+  "residue_report_sha256": "4ec1574277a3e72fcbf79e6a8713b4fe6185b300080afe96d72be4341fd6dc2f"
+}

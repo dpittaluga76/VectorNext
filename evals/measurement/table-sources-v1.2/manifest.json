@@ -1,0 +1,204 @@
+{
+  "version": "1.2",
+  "date": "2026-10-16",
+  "split": "development",
+  "sealed_content_opened": false,
+  "source": "Zhu et al. (2021), TAT-QA, CC-BY-4.0",
+  "source_lock": "../public-sources.json",
+  "raw_source_sha256": "8da095a819af6db3c14877c6df2d4d29960e41d1a63dd1fa853507bd2a616af5",
+  "transformation": "Exact copies of the 32 previously adapted development table documents: all source cells/paragraphs retained, v1 repeated first-row headers unchanged. No questions or labels added. Original publisher layout/merge geometry and report families not verified.",
+  "files": [
+    {
+      "path": "tatqa-0a75d1da-9beb-4a61-b2f4-06cff98b755e.json",
+      "sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+      "bytes": 10338,
+      "table_id": "0a75d1da-9beb-4a61-b2f4-06cff98b755e"
+    },
+    {
+      "path": "tatqa-0f04b820-97bc-4592-983b-00cfd0788011.json",
+      "sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+      "bytes": 4999,
+      "table_id": "0f04b820-97bc-4592-983b-00cfd0788011"
+    },
+    {
+      "path": "tatqa-13bb283b-4b9c-42b9-9b02-f1b2e1a87abf.json",
+      "sha256": "d3c0c4ef2a7d848f402bb375ea149cf397d83da1d0115253f7462854ddb7ceb6",
+      "bytes": 6703,
+      "table_id": "13bb283b-4b9c-42b9-9b02-f1b2e1a87abf"
+    },
+    {
+      "path": "tatqa-1f631856-89ba-471a-b65d-86801ec07401.json",
+      "sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+      "bytes": 2856,
+      "table_id": "1f631856-89ba-471a-b65d-86801ec07401"
+    },
+    {
+      "path": "tatqa-1fc1784c-38a0-49a2-a985-8c8a479f5f66.json",
+      "sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+      "bytes": 2415,
+      "table_id": "1fc1784c-38a0-49a2-a985-8c8a479f5f66"
+    },
+    {
+      "path": "tatqa-26d46b77-411e-47aa-b650-5c84ef3e9e21.json",
+      "sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+      "bytes": 2603,
+      "table_id": "26d46b77-411e-47aa-b650-5c84ef3e9e21"
+    },
+    {
+      "path": "tatqa-2a704bb9-4bd3-4071-b8e6-212957b04ada.json",
+      "sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+      "bytes": 4145,
+      "table_id": "2a704bb9-4bd3-4071-b8e6-212957b04ada"
+    },
+    {
+      "path": "tatqa-2bc7fad1-056b-4298-bfca-5a33c970b1a0.json",
+      "sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+      "bytes": 5197,
+      "table_id": "2bc7fad1-056b-4298-bfca-5a33c970b1a0"
+    },
+    {
+      "path": "tatqa-386352cf-f7e3-4148-920c-63bc57cf156b.json",
+      "sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+      "bytes": 3780,
+      "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b"
+    },
+    {
+      "path": "tatqa-4145912c-86dc-434b-8990-1cfe78f298f5.json",
+      "sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+      "bytes": 2461,
+      "table_id": "4145912c-86dc-434b-8990-1cfe78f298f5"
+    },
+    {
+      "path": "tatqa-428d5e87-612b-468c-80f3-5b5298d589c8.json",
+      "sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+      "bytes": 3827,
+      "table_id": "428d5e87-612b-468c-80f3-5b5298d589c8"
+    },
+    {
+      "path": "tatqa-467f55db-152c-4219-97c6-5765f1ead0d9.json",
+      "sha256": "660244bf434b8d697f8d6774f0231b46e2ab928e55a58caf0adbc5b2335c2cd5",
+      "bytes": 3819,
+      "table_id": "467f55db-152c-4219-97c6-5765f1ead0d9"
+    },
+    {
+      "path": "tatqa-502dd70a-926b-49d7-b236-63855c98e740.json",
+      "sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+      "bytes": 4654,
+      "table_id": "502dd70a-926b-49d7-b236-63855c98e740"
+    },
+    {
+      "path": "tatqa-62425e9b-b7de-4d31-9565-1042ad9e4926.json",
+      "sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+      "bytes": 5728,
+      "table_id": "62425e9b-b7de-4d31-9565-1042ad9e4926"
+    },
+    {
+      "path": "tatqa-6aa15859-a841-47eb-ad04-a441599cf05c.json",
+      "sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+      "bytes": 4753,
+      "table_id": "6aa15859-a841-47eb-ad04-a441599cf05c"
+    },
+    {
+      "path": "tatqa-736f65a8-7b6b-47bc-8c6a-3a2d641695bc.json",
+      "sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+      "bytes": 4257,
+      "table_id": "736f65a8-7b6b-47bc-8c6a-3a2d641695bc"
+    },
+    {
+      "path": "tatqa-861ad987-4b1b-40e0-bef3-1fbd25a33c6b.json",
+      "sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+      "bytes": 4658,
+      "table_id": "861ad987-4b1b-40e0-bef3-1fbd25a33c6b"
+    },
+    {
+      "path": "tatqa-89cf13a2-6d08-48be-a45d-2346422d5c38.json",
+      "sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+      "bytes": 3521,
+      "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38"
+    },
+    {
+      "path": "tatqa-914fca09-058a-4409-85c0-7e399c857d4d.json",
+      "sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+      "bytes": 2379,
+      "table_id": "914fca09-058a-4409-85c0-7e399c857d4d"
+    },
+    {
+      "path": "tatqa-9791f353-ce82-41be-a93d-915b8f52677b.json",
+      "sha256": "2181aec9f0a6a93f2e88ed85be4ac936206a97db1e6bf08e976b4b9f1d19d45d",
+      "bytes": 7839,
+      "table_id": "9791f353-ce82-41be-a93d-915b8f52677b"
+    },
+    {
+      "path": "tatqa-a190aaec-d9e9-4555-a64b-e833f1db0843.json",
+      "sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+      "bytes": 2920,
+      "table_id": "a190aaec-d9e9-4555-a64b-e833f1db0843"
+    },
+    {
+      "path": "tatqa-a7a7ede0-4575-4ace-8d5b-371db74ef3c1.json",
+      "sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+      "bytes": 2422,
+      "table_id": "a7a7ede0-4575-4ace-8d5b-371db74ef3c1"
+    },
+    {
+      "path": "tatqa-a961dd41-e5cb-40ce-876d-7c2f2c7dae96.json",
+      "sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+      "bytes": 4061,
+      "table_id": "a961dd41-e5cb-40ce-876d-7c2f2c7dae96"
+    },
+    {
+      "path": "tatqa-ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7.json",
+      "sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+      "bytes": 2756,
+      "table_id": "ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7"
+    },
+    {
+      "path": "tatqa-bee68d71-44ca-4177-a1c7-8c127f6f9203.json",
+      "sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+      "bytes": 3435,
+      "table_id": "bee68d71-44ca-4177-a1c7-8c127f6f9203"
+    },
+    {
+      "path": "tatqa-d7d65228-96c1-4890-951c-c3d7578f8031.json",
+      "sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+      "bytes": 2950,
+      "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031"
+    },
+    {
+      "path": "tatqa-d873a0cf-2e57-46f3-b9a5-2596808ffa00.json",
+      "sha256": "fd8708831e34f639782a456a2ebc7d299e213a7fe333485c669b0560f6b63df2",
+      "bytes": 2892,
+      "table_id": "d873a0cf-2e57-46f3-b9a5-2596808ffa00"
+    },
+    {
+      "path": "tatqa-e8877535-8ade-4ba3-aae2-cd4db2b5c59c.json",
+      "sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+      "bytes": 3454,
+      "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c"
+    },
+    {
+      "path": "tatqa-eb122e2e-12b4-4e59-a018-7045192b021d.json",
+      "sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+      "bytes": 5679,
+      "table_id": "eb122e2e-12b4-4e59-a018-7045192b021d"
+    },
+    {
+      "path": "tatqa-ec8d8bf5-ff64-447b-8481-cc067a861a28.json",
+      "sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+      "bytes": 3217,
+      "table_id": "ec8d8bf5-ff64-447b-8481-cc067a861a28"
+    },
+    {
+      "path": "tatqa-f5cab3e6-1f49-4434-b9a2-5e97073b985b.json",
+      "sha256": "a7831e877dfd31f12b68208d29ddb06f286eeadbb4b98d3004c2ad8b83937a74",
+      "bytes": 2502,
+      "table_id": "f5cab3e6-1f49-4434-b9a2-5e97073b985b"
+    },
+    {
+      "path": "tatqa-fd7e14ed-efb6-4992-bdc2-b5603d91f126.json",
+      "sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+      "bytes": 4772,
+      "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126"
+    }
+  ]
+}

@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/dialog'
 import { api, ApiError } from './lib/api'
 import { bytes, context } from './lib/history'
-import { download, load, save, reserveTurn, releaseTurn } from './lib/store'
+import { download, load, save, reserveTurn, releaseTurn, migrateDefaults } from './lib/store'
 import { reconcile, transfer } from './lib/uploads'
 import type {
   Answer,
@@ -48,6 +48,7 @@ function initial(): Workspace {
   const chat = newChat([])
   return {
     version: 1,
+    default_policy: 'nuextract-v1',
     conversations: [chat],
     current: chat.id,
     uploads: [],
@@ -71,6 +72,7 @@ export default function App() {
   const current = useRef(workspace)
   current.current = workspace
   const [loaded, setLoaded] = useState(false),
+    [defaultNotice, setDefaultNotice] = useState(false),
     [storageError, setStorageError] = useState(''),
     [error, setError] = useState('')
   const [library, setLibrary] = useState<Library>({ documents: [], jobs: [] }),
@@ -137,9 +139,10 @@ export default function App() {
     let live = true
     load()
       .then((saved) => {
-        if (live && saved?.version === 1)
+        if (live && saved?.version === 1) {
+          setDefaultNotice(saved.default_policy !== 'nuextract-v1')
           setWorkspace({
-            ...saved,
+            ...migrateDefaults(saved),
             conversations: saved.conversations.map((c) => ({
               ...c,
               exchanges: c.exchanges.map((e) =>
@@ -164,6 +167,7 @@ export default function App() {
                 : u,
             ),
           })
+        }
       })
       .catch((e) => live && setStorageError(message(e)))
       .finally(() => live && setLoaded(true))
@@ -433,7 +437,7 @@ export default function App() {
       if (strategy === 'facet_coverage_v1' && (primary > 5 || rerank > 20 || (fields && Object.keys(fields).length > 4)))
         throw new Error('Facet coverage supports up to 4 fields, 20 candidates to rerank and 5 passages.')
       const id = crypto.randomUUID(), text = question, chatId = chat.id
-      const submission: AnswerSubmission = { request_id: id, mode: workspace.answer_mode ?? 'hybrid', kind: 'ui',
+      const submission: AnswerSubmission = { request_id: id, mode: workspace.answer_mode ?? 'nuextract', kind: 'ui',
         payload: { question: text, document_ids: chat.scope, history: turns, fields, template: template || undefined, prose,
           options: { candidates, rerank_limit: rerank, primary_limit: primary, evidence_strategy: strategy } } }
       askLock.current.add(chatId)
@@ -577,6 +581,7 @@ export default function App() {
           {readiness.storage.coordinator.last_error}
         </div>
       )}
+      {defaultNotice && <div role="status" className="notice">New questions now default to NuExtract only. Existing turns keep their original modes. You can still select Gemma or Hybrid. <button onClick={() => setDefaultNotice(false)}>Dismiss</button></div>}
       {storageError && (
         <div role="alert" className="notice error">
           Browser storage is unavailable: {storageError}. This session may not
@@ -955,7 +960,7 @@ export default function App() {
               {readiness?.processor?.generation?.scheduler?.loading_model && ` · Loading ${readiness.processor.generation.scheduler.loading_model}`}
               </small>
             </div>
-            <label>Answer mode <select aria-label="Answer mode" value={workspace.answer_mode ?? 'hybrid'}
+            <label>Answer mode <select aria-label="Answer mode" value={workspace.answer_mode ?? 'nuextract'}
               onChange={(e) => setWorkspace((w) => ({ ...w, answer_mode: e.target.value as AnswerMode }))}>
               <option value="hybrid">Hybrid — NuExtract, then Gemma if needed</option>
               <option value="gemma">Gemma only</option><option value="nuextract">NuExtract only</option>

@@ -8,7 +8,7 @@ The synchronous application/processor contracts stay behind bounded blocking exe
 
 All POST requests require `X-VectorNext-Client: 1` and a bounded Content-Length. JSON bodies use `application/json` and are limited to 64 KiB. A browser Origin must exactly match the request's loopback Host (`localhost` or `127.0.0.1`, including the port); unrelated, null and cross-site browser origins are rejected. No wildcard CORS is enabled. CLI requests without browser headers continue to work on the existing routes. This is local single-user operation, without public authentication.
 
-T37 adds [durable answer jobs and execution modes](answer-jobs.md). The browser submits stable IDs to `/v1/answer-jobs` and polls them across reloads; synchronous ask routes remain compatibility adapters. Hybrid is the default, with forced Gemma/NuExtract modes. Model availability, the loaded model and answer-queue readiness are separate indicators. Exact attempts, revision bindings, cancellation and explicit clearing follow that contract.
+T37 adds [durable answer jobs and execution modes](answer-jobs.md). The browser submits stable IDs to `/v1/answer-jobs` and polls them across reloads; synchronous ask routes remain compatibility adapters. NuExtract-only is the default, with explicit Gemma and Hybrid modes. Model availability, the loaded model and answer-queue readiness are separate indicators. Exact attempts, revision bindings, cancellation and explicit clearing follow that contract.
 
 ## Additive endpoints
 

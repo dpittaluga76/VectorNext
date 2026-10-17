@@ -15,9 +15,9 @@ const WAIT_MS: u64 = 15 * 60 * 1000;
 #[derive(Clone, Copy, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "lowercase")]
 pub enum Mode {
-    #[default]
     Hybrid,
     Gemma,
+    #[default]
     Nuextract,
 }
 impl Mode {
@@ -1044,7 +1044,7 @@ mod tests {
                                     runtime: "fixture".into(),
                                     prompt: prompt.into(),
                                     prompt_version: crate::sha256(prompt.as_bytes()),
-                                    temperature: 0,
+                                    temperature: 0.into(),
                                     seed: 42,
                                     context_window: 4096,
                                     output_tokens: 256,
@@ -1102,7 +1102,9 @@ mod tests {
                         })();
                         match result {
                             Ok(result) => json!({"result":result}),
-                            Err(error) => json!({"error":error.to_string()}),
+                            Err(error) => {
+                                json!({"error":error.to_string(),"measurement":{"version":1,"calls":[{"stage":"extraction","state":"failed","elapsed_ms":12.0,"input_tokens":100}]}})
+                            }
                         }
                     };
                     request
@@ -1290,6 +1292,26 @@ mod tests {
     }
 
     #[test]
+    fn default_mode_and_failed_measurements_survive_durable_jobs() {
+        assert_eq!(Mode::default(), Mode::Nuextract);
+        let fixture = Fixture::new("outage");
+        let job = fixture.run(Mode::default());
+        assert_eq!(job["attempt_count"], 1);
+        assert_eq!(job["mode"], "nuextract");
+        let observed = job["attempts"][0]["operations"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|op| op["operation"] == "answer")
+            .unwrap();
+        assert_eq!(observed["model_measurement"]["calls"][0]["state"], "failed");
+        assert_eq!(
+            observed["model_measurement"]["calls"][0]["elapsed_ms"],
+            12.0
+        );
+    }
+
+    #[test]
     fn removed_ingestion_generator_refuses_upgrade_without_rewriting_saved_policy() {
         let fixture = Fixture::new("supported");
         let profile = RemoteModels::connect(fixture.app.processor.clone(), "interactive")
@@ -1318,6 +1340,20 @@ mod tests {
             .unwrap();
         let mut removed = profile.generator;
         removed.runtime = "different-removed-runtime".into();
+        fixture
+            .app
+            .check_ingestion_generators(&[
+                removed.clone(),
+                request
+                    .config
+                    .context
+                    .as_ref()
+                    .unwrap()
+                    .generator
+                    .clone()
+                    .unwrap(),
+            ])
+            .unwrap();
         assert!(
             fixture
                 .app

@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-17",
+  "approved_for_execution": false,
+  "scope": "Case 107 only; prior collision audits retained unchanged.",
+  "method": "finite primary/derived/imprecise aliases vs all cells and whole-token text occurrences under the whitespace floor; wrong locations never added to proofs",
+  "limitation": "Literal occurrence audit detects candidate collisions, not every semantic paraphrase or wrong fact within an annotated paragraph. Negative cases have no positive aliases to compare.",
+  "cases": [
+    {
+      "number": 107,
+      "format": "txt",
+      "checked": 16717,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    }
+  ]
+}

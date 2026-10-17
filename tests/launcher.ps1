@@ -1,7 +1,7 @@
 # Contract checks with Docker/HTTP/model-file metadata stubs. No services or models are touched.
 $ErrorActionPreference = 'Stop'
 $repository = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$testRoot = Join-Path $repository ('data/t37/launcher-' + [guid]::NewGuid().ToString('N'))
+$testRoot = Join-Path $repository ('data/t39/launcher-' + [guid]::NewGuid().ToString('N'))
 $mockModels = Join-Path $testRoot 'models'
 $mockSizes = @{}
 $calls = [System.Collections.Generic.List[object]]::new()
@@ -64,8 +64,9 @@ try {
     $legacy = Join-Path $testRoot 'data/launcher/model-profile.txt'
     New-Item -ItemType Directory -Force -Path (Split-Path -Parent $legacy) | Out-Null
     Set-Content -LiteralPath $legacy -Value '26b-offload22'
+    Set-Content -LiteralPath (Join-Path (Split-Path $legacy) 'answer-mode.txt') -Value 'hybrid'
     Run-Action 'Start'
-    Assert-Contract ($env:VECTORNEXT_DEFAULT_ANSWER_MODE -eq 'hybrid') 'Legacy selection did not migrate to Hybrid'
+    Assert-Contract ($env:VECTORNEXT_DEFAULT_ANSWER_MODE -eq 'nuextract') 'Legacy selection did not migrate to NuExtract'
     Assert-Contract (@($checkedModels | Where-Object { $_ -like '*generator-12b*' }).Count -gt 0) 'Start did not check Gemma'
     Assert-Contract (@($checkedModels | Where-Object { $_ -like '*nuextract*' }).Count -gt 0) 'Start did not check NuExtract'
     Assert-Contract (@($calls | Where-Object { $_ -contains 'build' -or (($_ -contains 'run') -and ($_ -notcontains 'check-generator')) }).Count -eq 0) 'Start built/downloaded models'
@@ -82,7 +83,7 @@ try {
     Run-Action 'Stop'
     Assert-Contract (@($calls | Where-Object { $_ -contains 'stop' -and $_ -contains 'vectornext' -and $_ -contains 'processor' -and $_ -contains 'llm' }).Count -eq 1) 'Stop must target only normal services'
     Assert-Contract (@($calls | Where-Object { $_ -contains 'down' -or $_ -contains '-v' }).Count -eq 0) 'Stop deleted state'
-    Write-Host 'T37 launcher contracts passed.' -ForegroundColor Green
+    Write-Host 'Launcher default migration contracts passed.' -ForegroundColor Green
 } finally {
     $env:VECTORNEXT_DEFAULT_ANSWER_MODE = $previousProfile
 }

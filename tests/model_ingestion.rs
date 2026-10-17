@@ -15,11 +15,38 @@ fn generation() -> GenerationConfig {
         runtime: "test-v1".into(),
         prompt: "test prompt".into(),
         prompt_version: format!("{:x}", Sha256::digest(b"test prompt")),
-        temperature: 0,
+        temperature: 0.into(),
         seed: 42,
         context_window: 4096,
         output_tokens: 256,
         annotation_tokens: 60,
+    }
+}
+#[test]
+fn exact_temperature_extension_preserves_old_policies_and_rejects_unsupported_values() {
+    let old = generation();
+    let raw = serde_json::to_string(&old).unwrap();
+    assert!(raw.contains("\"temperature\":0,"));
+    let restored: GenerationConfig = serde_json::from_str(&raw).unwrap();
+    assert_eq!(serde_json::to_string(&restored).unwrap(), raw);
+    let fractional = raw.replace("\"temperature\":0,", "\"temperature\":0.2,");
+    let new: GenerationConfig = serde_json::from_str(&fractional).unwrap();
+    assert_eq!(serde_json::to_string(&new).unwrap(), fractional);
+    let space = TestEncoder::default().space();
+    ContextConfig::new(Policy::Generated, Some(old))
+        .validate(&space)
+        .unwrap();
+    ContextConfig::new(Policy::Generated, Some(new.clone()))
+        .validate(&space)
+        .unwrap();
+    for temperature in ["-0.2", "0.3", "1"] {
+        let mut invalid = new.clone();
+        invalid.temperature = temperature.parse().unwrap();
+        assert!(
+            ContextConfig::new(Policy::Generated, Some(invalid))
+                .validate(&space)
+                .is_err()
+        );
     }
 }
 struct Gen {

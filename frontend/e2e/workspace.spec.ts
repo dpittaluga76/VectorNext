@@ -308,6 +308,7 @@ test('pending jobs recover after reload, remember mode, cancel and clear explici
   const server = await backend(page, true)
   await page.goto('/')
   await page.getByLabel('Observations.json').check()
+  await expect(page.getByLabel('Answer mode', { exact: true })).toHaveValue('nuextract')
   await page.getByLabel('Answer mode', { exact: true }).selectOption('nuextract')
   await page.getByLabel('Ask a question', { exact: true }).fill('Amount?')
   await page.getByRole('button', { name: 'Ask question', exact: true }).click()
@@ -328,7 +329,7 @@ test('pending jobs recover after reload, remember mode, cancel and clear explici
   let text = ''; for await (const chunk of stream!) text += chunk.toString()
   expect(text).toContain(exact)
   await page.getByRole('button', { name: 'Clear record', exact: true }).click()
-  expect(Object.keys(server.jobs)).toHaveLength(0)
+  await expect.poll(() => Object.keys(server.jobs)).toHaveLength(0)
 })
 
 test('another conversation can queue while the first turn waits', async ({ page }) => {

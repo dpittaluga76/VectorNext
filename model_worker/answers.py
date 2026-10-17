@@ -128,26 +128,40 @@ def count_prompt(worker, msgs, output_schema=None):
 
 
 def generate(worker, msgs, output_schema, prompt, output_tokens=OUTPUT_TOKENS):
+    from .measurement import generation
+    stage = ('assessment' if prompt == ASSESS_PROMPT else 'extraction' if prompt == PROMPT
+             else 'prose' if prompt == REWRITE_PROMPT else 'planning')
+    with generation(worker, stage) as observed:
+        return _generate(worker, msgs, output_schema, prompt, output_tokens, observed)
+
+
+def _generate(worker, msgs, output_schema, prompt, output_tokens, observed):
+    from .measurement import phase
     started = time.monotonic()
     profile = getattr(worker, 'generation_profile', {})
     temperature = answer_temperature(profile)
     options = template_options(profile, output_schema)
-    tokens = count_prompt(worker, msgs, output_schema)
+    with phase(observed, 'preparation'):
+        tokens = count_prompt(worker, msgs, output_schema)
+    observed['input_tokens'] = tokens
     if tokens > INPUT_TOKENS:
         raise ValueError("answer prompt exceeds reserved context budget")
     inference_started = time.monotonic()
-    response = worker.http("/v1/chat/completions", {
+    with phase(observed, 'inference'):
+        response = worker.http("/v1/chat/completions", {
         "model": worker.generator_alias, "messages": msgs, "temperature": temperature, "seed": 42,
         "max_tokens": output_tokens, "cache_prompt": False, "reasoning": "off",
         "response_format": {"type": "json_schema", "json_schema": {"name": "answer", "strict": True, "schema": output_schema}},
         **options,
     }, priority="interactive")
     inference_seconds = time.monotonic() - inference_started
-    choice = response["choices"][0]
-    if choice.get("finish_reason") != "stop":
-        raise ValueError("answer generation did not finish normally")
-    result = json.loads(choice["message"]["content"])
-    jsonschema.Draft202012Validator(output_schema).validate(result)
+    observed['output_tokens'] = (response.get('usage') or {}).get('completion_tokens')
+    with phase(observed, 'decode_validation'):
+        choice = response["choices"][0]
+        if choice.get("finish_reason") != "stop":
+            raise ValueError("answer generation did not finish normally")
+        result = json.loads(choice["message"]["content"])
+        jsonschema.Draft202012Validator(output_schema).validate(result)
     worker.calls["answer"] = worker.calls.get("answer", 0) + 1
     return result, {"model": {k: worker.generator[k] for k in ("model", "revision", "artifact_sha256", "runtime")},
                     "prompt_sha256": digest(prompt), "request_sha256": digest({'messages': msgs, **options} if options else msgs),

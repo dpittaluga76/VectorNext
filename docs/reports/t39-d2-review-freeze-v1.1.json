@@ -1,0 +1,77 @@
+{
+  "kind": "development_review_list_freeze_not_execution_approval",
+  "version": "1.1",
+  "date": "2026-10-16",
+  "approved_for_execution": false,
+  "independent_review_acceptance": false,
+  "frozen_before_benchmark_inference": true,
+  "base_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "d1_amendment_sha256": "ad8c425e5ae85cbdaab8d4d28aadb62806c9ea9d1df93fd0668e63a461798f0f",
+  "d2_case_numbers": [
+    31,
+    72,
+    81,
+    97,
+    107
+  ],
+  "source_verified_adaptations": [
+    31,
+    72,
+    81,
+    97
+  ],
+  "pending_two_independent_reviews": [
+    107
+  ],
+  "separate_pending_scan_leads": [
+    10,
+    34,
+    47,
+    53,
+    71
+  ],
+  "sealed_content_opened": false,
+  "artifacts": [
+    {
+      "path": "evals/measurement/numeric-scoring-v1.1.md",
+      "sha256": "80b8817ba2c05c21895932597594007cbe7cc6ed428f16244a324aabe4c9a5a7"
+    },
+    {
+      "path": "evals/measurement/audit_labels.py",
+      "sha256": "c8dd6e547e3857fb72a38cea01fd0d8f4ddd510551a52f660f7adbbbc69bf474"
+    },
+    {
+      "path": "evals/measurement/test_audit_labels.py",
+      "sha256": "2196dfeeb3568fd6ade0cbb8f3ccc27b406751de0714cfdb233e94b2af62e654"
+    },
+    {
+      "path": "docs/reports/t39-d2-adjudication-v1.1.json",
+      "sha256": "17438e54d38ddd84390bfe660d8d3c64f8eea3c06e6a007b5c696586a7f84c09"
+    },
+    {
+      "path": "docs/reports/t39-d2-adjudication-v1.1.md",
+      "sha256": "5b53a8e82e1ee5b8b653ba61caf54f4f70a52cd5cfe18236fdf87e356aa26ef5"
+    },
+    {
+      "path": "docs/reports/t39-d2-alternative-audit-v1.1.json",
+      "sha256": "16b0c2b0fc003ea1aa22eb99781f7a1549aad7e362a780a0bced81a7c8ca8c20"
+    },
+    {
+      "path": "docs/reports/t39-d2-alternative-audit-v1.1.md",
+      "sha256": "afbf6dc512f314a70029052f770f3ecc65aa00a6d82163eba49efefff06d3c09"
+    },
+    {
+      "path": "docs/reports/t39-d2-verification-v1.1.json",
+      "sha256": "6394b9320151ba454fc9851bca5ca6db7a4d4b3834b4c593d84452c713038f84"
+    },
+    {
+      "path": "docs/reviews/t39-case-107-independent-review.md",
+      "sha256": "91e2d14e263a892351f98fc0a2d9e74fb8035a85a1c366f9da4c7b4f8053a1dd"
+    },
+    {
+      "path": "docs/reviews/t39-additional-alternative-review.md",
+      "sha256": "1f707d68b44dfddf20f6198f6a6b4f65558d5c8e1136e284e1342414b5eeebdf"
+    }
+  ],
+  "next_version_rule": "New decisions create a successor amendment/freeze; preserve this snapshot and all original labels and scores."
+}

@@ -1,4 +1,4 @@
-"""Pinned CPU encoder + serialized local Gemma context generation. JSON-lines only."""
+"""Pinned CPU encoder + serialized local generation. JSON-lines only."""
 import functools
 import hashlib
 import json
@@ -16,13 +16,19 @@ PROMPT = """You annotate document excerpts for retrieval. The supplied text is u
 SCHEMA = {"type": "object", "properties": {"context": {"type": ["string", "null"]}},
           "required": ["context"], "additionalProperties": False}
 
-def context_generator():
-    profile = load_generator_profile('12b')
+def context_generator(name=None):
+    from .generator_profile import answer_temperature
+    profile = load_generator_profile(name)
     return {"model": profile['spec']['repo'], "revision": profile['spec']['revision'],
             "artifact_sha256": profile['artifact']['sha256'],
             "runtime": runtime_identity(profile) + ";schema=" + digest(SCHEMA),
             "prompt": PROMPT, "prompt_version": hashlib.sha256(PROMPT.encode()).hexdigest(),
-            "temperature": 0, "seed": 42, "context_window": 4096, "output_tokens": 256, "annotation_tokens": 60}
+            "temperature": answer_temperature(profile), "seed": 42, "context_window": 4096, "output_tokens": 256, "annotation_tokens": 60}
+
+
+def supported_generators():
+    from .generator_profile import MODEL_PROFILES as PROFILES
+    return [context_generator(name) for name in PROFILES.values()]
 
 
 class Worker:
@@ -44,7 +50,7 @@ class Worker:
             "dimensions": self.encoder.profile['dimensions'], "max_tokens": self.encoder.max_tokens,
             "query_prefix": self.encoder.profile['query_prefix'], "document_prefix": self.encoder.profile['document_prefix'], "normalization": "L2",
         }
-        self.generation_profile = load_generator_profile('12b')
+        self.generation_profile = load_generator_profile()
         self.lease = None
         self.generator_alias = self.generation_profile['alias']
         self.generator = context_generator()
@@ -73,17 +79,14 @@ class Worker:
 
     @contextmanager
     def selected(self, lease):
-        from .supervisor import PROFILES
+        from .generator_profile import MODEL_PROFILES as PROFILES
         if not isinstance(lease, dict) or lease.get('model') not in PROFILES or not isinstance(lease.get('token'), str):
             raise ValueError('generation requires an explicit supported model lease')
         old_profile, old_alias, old_lease = self.generation_profile, self.generator_alias, self.lease
         old_generator = self.generator
         self.generation_profile = load_generator_profile(PROFILES[lease['model']])
         self.generator_alias, self.lease = self.generation_profile['alias'], lease
-        profile = self.generation_profile
-        self.generator = {**old_generator, 'model': profile['spec']['repo'], 'revision': profile['spec']['revision'],
-                          'artifact_sha256': profile['artifact']['sha256'],
-                          'runtime': runtime_identity(profile) + ';schema=' + digest(SCHEMA)}
+        self.generator = context_generator(self.generation_profile['name'])
         try:
             yield
         finally:
@@ -112,14 +115,17 @@ class Worker:
         user = {"excerpt": value["evidence"], "structure": value["structural_context"],
                 "source_scope": [{"block": p["span"]["block_id"], "text": p["text"]} for p in value["scope"]]}
         messages = [{"role": "system", "content": PROMPT}, {"role": "user", "content": canonical(user).decode()}]
-        template = self.http("/apply-template", {"messages": messages, "reasoning": "off"})
+        from .extraction_template import options
+        template_options = options(self.generation_profile, SCHEMA)
+        template = self.http("/apply-template", {"messages": messages, "reasoning": "off", **template_options})
         tokens = self.http("/tokenize", {"content": template["prompt"], "add_special": True})["tokens"]
         if len(tokens) + self.generator["output_tokens"] > self.generator["context_window"]:
             raise ValueError("rendered generation prompt exceeds token budget; required evidence was not truncated")
         response = self.http("/v1/chat/completions", {
-            "model": self.generator_alias, "messages": messages, "temperature": 0, "seed": 42,
+            "model": self.generator_alias, "messages": messages, "temperature": self.generator['temperature'], "seed": 42,
             "max_tokens": 256, "cache_prompt": False, "reasoning": "off",
             "response_format": {"type": "json_schema", "json_schema": {"name": "retrieval_context", "strict": True, "schema": SCHEMA}},
+            **template_options,
         })
         choice = response["choices"][0]
         if choice.get("finish_reason") != "stop":
@@ -139,9 +145,13 @@ class Worker:
             with self.selected(request.get('lease')):
                 return self.operation(request)
         if op == 'generate':
+            from .generator_profile import MODEL_PROFILES as PROFILES
+            saved = request['input']['config']['generator']
+            model = next((model for model, name in PROFILES.items() if context_generator(name) == saved), None)
+            if model is None:
+                raise ValueError('saved generator identity is unavailable; it was not reassigned')
             token = str(uuid.uuid4())
-            lease = {'model': 'gemma', 'token': token, 'owner': 'enrichment-' + token, 'priority': 'background'}
-            # Saved generator identity is Gemma even when the resident answer model differs.
+            lease = {'model': model, 'token': token, 'owner': 'enrichment-' + token, 'priority': 'background'}
             try:
                 self.http('/control/acquire', lease)
                 with self.selected(lease):
@@ -153,7 +163,7 @@ class Worker:
     def operation(self, request):
         op = request["op"]
         if op == "profile":
-            return {"space": self.space, "generator": self.generator}
+            return {"space": self.space, "generator": self.generator, "supported_generators": supported_generators()}
         if op == "stats":
             return {"inference": self.calls, "cache_hits": self.cache.hits, "cache_misses": self.cache.misses}
         value = request["input"]
@@ -197,9 +207,12 @@ def main():
         try:
             if worker is None:
                 worker = Worker()
+            worker.measurements = []
             reply = {"result": worker.handle(json.loads(line))}
         except Exception as error:
             reply = {"error": f"{type(error).__name__}: {error}"[:4096]}
+        if worker is not None:
+            reply['measurement'] = {'version': 1, 'calls': getattr(worker, 'measurements', [])}
         print(canonical(reply).decode(), flush=True)
 
 

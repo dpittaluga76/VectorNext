@@ -51,7 +51,7 @@ class Client:
             time.sleep(.5)
         raise TimeoutError('job wait expired; the durable job remains available')
 
-    def answer(self, payload_text, mode='hybrid', request_id=None):
+    def answer(self, payload_text, mode='nuextract', request_id=None):
         request_id = request_id or str(uuid.uuid4())
         if not 16 <= len(request_id) <= 128 or not all(c.isascii() and (c.isalnum() or c == '-') for c in request_id):
             raise ValueError('invalid answer request ID')
@@ -100,7 +100,7 @@ def main():
     s=sub.add_parser('search'); s.add_argument('text'); s.add_argument('--mode',choices=['keyword','hybrid'],default='hybrid'); s.add_argument('--space-id'); s.add_argument('--limit',type=int,default=10)
     workflow_options(s)
     s=sub.add_parser('ask'); s.add_argument('request',type=Path); s.add_argument('--space-id')
-    s.add_argument('--answer-mode', choices=['hybrid','gemma','nuextract'], default='hybrid')
+    s.add_argument('--answer-mode', choices=['hybrid','gemma','nuextract'], default='nuextract')
     s.add_argument('--request-id', help='retain/reuse this identity to reconcile an interrupted submission')
     s.add_argument('--evidence-strategy', choices=['ranked', 'coverage_v1', 'facet_coverage_v1'], help='opt-in field/facet coverage; ranked is the default')
     workflow_options(s)
@@ -205,7 +205,7 @@ def execute(a,client):
         raw=a.request.read_text(encoding='utf-8-sig'); json.loads(raw)
         options = ',"options":'+json.dumps({'evidence_strategy':a.evidence_strategy}) if getattr(a,'evidence_strategy',None) else ''
         payload='{"request":'+raw+',"space_id":'+json.dumps(a.space_id)+options+'}'
-        status,result=client.answer(payload,getattr(a,'answer_mode','hybrid'),getattr(a,'request_id',None))
+        status,result=client.answer(payload,getattr(a,'answer_mode','nuextract'),getattr(a,'request_id',None))
     return status,result
 
 if __name__ == '__main__': main()

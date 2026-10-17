@@ -6,7 +6,7 @@ import time
 from .generator_profile import load, verify, command, runtime_identity, answer_temperature, answer_adapter
 from .scheduler import Scheduler, Rejected, BackendUncertain, backend_request, validate
 
-PROFILES = {'gemma': '12b', 'nuextract': 'nuextract3-requested-facts-v1'}
+from .generator_profile import MODEL_PROFILES as PROFILES
 
 
 class Supervisor:

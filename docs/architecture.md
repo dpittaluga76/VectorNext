@@ -88,9 +88,9 @@ The application uses a 180-token chunk target and no TXT overlap. The current Mi
 | --- | --- |
 | `plain` | Evidence text. |
 | `structural` (default) | Evidence plus available headings, table labels, captions or JSON record/field structure. |
-| `generated` | Structural input plus a separate local Gemma annotation for eligible prose/list chunks; explicit JSON, tables and headings are skipped. |
+| `generated` | Structural input plus a separate local annotation (NuExtract by default) for eligible prose/list chunks; explicit JSON, tables and headings are skipped. |
 
-Generated context reserves 64 embedding tokens. Scope uses complete parsed text within 8,000 bytes when possible, otherwise exact chunk spans, mandatory structural sources and complete nearby blocks; rendered model tokens are checked before inference. Generation may abstain. Persist scope/input digests, prompt, artifact/runtime/settings and annotation separately; source links establish supplied context, not entailment. Optional enrichment keeps its saved Gemma identity regardless of answer mode. New identities do not silently reassign unfinished jobs.
+Generated context reserves 64 embedding tokens. Scope uses complete parsed text within 8,000 bytes when possible, otherwise exact chunk spans, mandatory structural sources and complete nearby blocks; rendered model tokens are checked before inference. Generation may abstain. Persist scope/input digests, prompt, artifact/runtime/settings and annotation separately; source links establish supplied context, not entailment. Optional enrichment keeps its saved generator identity regardless of answer mode, including existing Gemma jobs. New identities do not silently reassign unfinished jobs.
 
 Structural fields remain stored under every policy for source expansion. Keyword weights are independent of the embedding policy: fully plain retrieval also requires structural/generated keyword weights of zero. [Ingestion](ingestion.md) · [PDF/OCR](pdf-ingestion.md) · [Context and model identities](model-ingestion.md).
 
@@ -126,9 +126,9 @@ Rust owns routing after final validation; the CPU worker does not decide fallbac
 
 | Mode | Behavior |
 | --- | --- |
-| `hybrid` (default) | Try repaired NuExtract3; accept only supported, validated facts; queue at most one Gemma attempt for an eligible unsuccessful result. |
+| `hybrid` | Try repaired NuExtract3; accept only supported, validated facts; queue at most one Gemma attempt for an eligible unsuccessful result. |
 | `gemma` | Gemma only, no model fallback. |
-| `nuextract` | NuExtract3 only, no model fallback. |
+| `nuextract` (default) | NuExtract3 only, no model fallback. |
 
 Eligible fallback includes model declines, ambiguity, insufficient evidence, malformed outputs, rejected proofs and model failures. Invalid requests, deterministic pre-inference unsupported operations, stale bindings, cancellation and admission failures finish directly. Gemma receives original inputs and independently plans automatic fields; explicit fields remain unchanged. Rejected NuExtract output never becomes Gemma evidence or conversation history. Return Gemma's validated outcome, including legitimate negatives; there is no third attempt. A plausible semantic mistake that passes validation can still avoid fallback.
 
@@ -149,8 +149,8 @@ Cancellation immediately ends queued work and prevents further stages after an a
 | --- | --- | --- |
 | Embedding | `all-MiniLM-L6-v2` | CPU FP32 ONNX; 384 dimensions, masked mean/L2, no query/document prefixes, 256-token input cap. |
 | Reranking | `ms-marco-MiniLM-L6-v2` | CPU FP32 ONNX; 512-token question/passage pair cap, raw relevance logits. |
-| General generation / enrichment | Gemma 4 12B QAT Q4_0, profile `12b` | Answer temperature 0; saved enrichment identity remains Gemma. |
-| First Hybrid attempt / forced specialist | NuExtract3 Q4_K_M, profile `nuextract3-requested-facts-v1` | Native template adapter, requested-facts planner, answer temperature 0.2. |
+| Explicit Gemma / Hybrid fallback / retained enrichment | Gemma 4 12B QAT Q4_0, profile `12b` | Temperature 0; existing saved enrichment identities remain valid. |
+| Default generation and new optional enrichment | NuExtract3 Q4_K_M, profile `nuextract3-requested-facts-v1` | Native template adapter, requested-facts planner, temperature 0.2. |
 
 Supported artifacts and checksum-verified downloads live in [model_assets](../model_assets/); the [generator profile catalog](../model_worker/generator_profiles.json) binds artifact, alias and runtime identity. The two generator profiles use pinned llama.cpp b11617/CUDA 12.8, 4,096 context tokens, one inference slot, f16 KV, seed 42, disabled reasoning and `cache_prompt: false`. Two-call answering and existing operation/output budgets remain authoritative. Experimental CPU profiles have distinct spaces and do not change application defaults; alternative generator experiments are not runtime choices.
 
@@ -188,8 +188,121 @@ Workflow reports and the browser's explanation view use recorded processing data
 
 Keep queue, activation, attempt work, inference and total user-visible latency separate; missing audits mean unknown inference time, not zero. Storage, ingestion coordinator, model and answer-queue readiness are distinct from liveness. [Workflow reporting](workflow-debugging.md) · [Recovery](reliability.md) · [Operations and backup commands](development.md).
 
+## Measurement foundation
+
+Gold review uses versioned successors, preserving D1–D7, original labels and source
+bytes. The accepted six-case changes and case 107's explicitly waived Level A
+activation are recorded in [v1.5](reports/t39-gold-review-v1.5.md) and
+[v1.6](reports/t39-gold-review-v1.6.md). They are internal source review and user
+adjudication, not independent approval. Recompute family summaries and control
+rosters from the current successor plus its whole-family exclusion overlay.
+
+On 2026-10-17 the user delegated the remaining sealed-candidate screening and
+family-collision check to the implementation assistant ("you will have to do that
+part"). The current T39 continuation therefore uses an explicitly internal review
+for these 60 candidates, not an independent custodian attestation. Preserve the
+original package and record access/exposure in a new audit. Keep questions, labels
+and detailed review artifacts private; publish aggregate findings and affected
+development families. Any candidate inspected by the implementation assistant is
+exposed and cannot support a blind-holdout claim. Continue the same source-only
+D3-D5 screening and D6 family rules; never manufacture an independent receipt.
+This delegation applies only to the T39 candidate package, not the original unused
+holdout or unrelated private data. Report the resulting pilot's independence and
+quota limitations before any measured run; no default promotion follows from it.
+
+The [internal v1.7 review](reports/t39-internal-review-v1.7.md) records 55 primary,
+two derived and three stress candidates. Four established company collisions
+exclude nine development questions through a separate overlay, leaving 92 primary,
+three derived and sixteen stress development cases. The combined primary count is
+147, below the 150-question target, with no blind holdout remaining in this pilot.
+Unresolved corporate lineage/republication stays uncertified. The new receipt is
+a distinct internal type; the independent-custodian validator remains unchanged.
+Keep candidate content private and bind the complete private audit by hash. A
+separate committed successor/runtime freeze must integrate the actual typed
+scorer, source coordinates and question-only controls before measured requests.
+
+D7 limits this pilot to benchmark-harness validation and bounded source-grounded
+strategy diagnostics. The current tracks are **TXT prose QA**, **PDF text ingestion
+(clean render)** and **structured-table QA (JSON)**. Clean rendered paragraphs do
+not exercise original page layouts, OCR or table extraction. Only matched questions
+over the same source paragraphs can estimate a TXT/PDF ingestion effect; report
+unpaired format scores as descriptive strata and an unavailable paired gap explicitly.
+Keep source-quality exclusions separate from ingestion failures. The pilot cannot
+support enterprise-document or broad PDF claims; its exact claim limits and
+conditional, separately scored real-layout probe are in the
+[D7 scope/control contract](../evals/measurement/pilot-scope-v1.4.md).
+
+Before retrieval runs, execute one question-only closed-book diagnostic for every
+finally admitted primary case and each evaluated model, under frozen prompts,
+schema, model identity and scoring lists. It receives no sources, history or gold
+field hints. Report all primary items and the subset without positive closed-book
+gold matches, retaining source-relative negatives and exposing missing/failed
+controls. Closed-book matching measures answer availability without the supplied
+source, not proven memorization; nonmatching does not establish uncontaminated
+data. The same fixed mask applies to every retrieval strategy for a model. Sealed
+controls remain custodian-private with aggregate reporting. These controls do not
+change production answering or its validation. NASA/USGS historical scores retain
+their original questions/gold and separate denominators; no fresh extension joins
+this pilot. Final execution remains gated by D1–D6 review and runtime integration.
+
+D6 uses company/filer lineage, not annual-report identity, as the conservative
+financial source family; company plus fiscal year remains a secondary diagnostic
+key. Article/paper identity and their derivatives unify nonfinancial TXT/PDF cases.
+Trace every provisional primary case using development material and public
+sources only, recording provenance confidence and unresolved aliases/ownership.
+Never equate missing name matches with independent families. Report established,
+candidate and unknown provenance separately, with family cluster-size distributions
+and family-resampled intervals. The designated reviewer (now internal under the explicit delegation) privately applies the same D3 defects,
+D4 typed scoring requirements and D5 source-context/proof checks to sealed items.
+Only aggregate screening/provenance/quota counts and colliding development family
+keys return; no sealed IDs, questions, content, aliases or per-item hashes. Move
+colliding development families to diagnostics, never move sealed items into
+development. Unknown provenance remains uncertified. Freeze a development-only,
+noncolliding reserve inventory and format/label/size strata before deterministic
+draws, or report the smaller set and shortfalls. Recompute all quotas and clusters
+after screening/collisions. One final execution freeze follows D1–D5, family tracing,
+custodian reconciliation and replacements; earlier review hashes are preserved.
+[Family and custodian policy](../evals/measurement/families-v1.3.md).
+
+D5 supersedes D4's proof-dependent benchmark primary score: typed value/format correctness is primary, evidence grounding and joint value-plus-grounding correctness are separate reported axes. A correct value from the wrong cell is explicitly recorded as correct-answer/wrong-evidence; production validation remains unchanged and rejected drafts never become primary answers. Preserve D4's frozen scorer/artifacts as a prior definition. Table-context repair and proof identity are separate evaluation components. Use a versioned, source-only annotation registry for every development table, explicitly classifying caption/header/group rows, span-derived header mappings, finite group scope and unit scope. The generic adapter applies only declared mappings, never guesses a header or extends a scope through blanks/indentation. Original cells stay exact; derived structural relations are tagged, referenced and kept distinct from literal facts. Unspecified units stay unspecified. Coordinate proofs include value and disambiguating source cells, with separately reviewed alternatives. Corrected representation is the predeclared primary and v1 the ablation; context serialized into row records changes retrieval input, so report proof-cell/context recall at k separately from answers. Header paths remain structured strings with refs; freeze their renderer, D4 instruction and scorer together. Automatic planning continues to see only the original question/history, not table annotations. D3 membership changes require source-only predeclared resolution rules, never model outcomes; 092 remains stress and 002/080 primary. [Table-context and grounding policy](../evals/measurement/table-context-v1.2.md).
+
+The reviewed benchmark's typed-fact contract uses string-valued direct extraction, exact source-location proofs and per-case alternatives. Freeze the output-format instruction with the scorer: preserve table cell spelling, units, qualifiers and placeholders; JSON answers still use source pointers and Rust materialization. Only NFC and trim/collapse of ASCII whitespace and NBSP apply globally. Explicit per-case aliases handle all other spelling, field mappings and set parsing. Exact scale conversions belong to a separate derived view, and approximations remain diagnostics. Never infer a cell's unit from an unrelated column or from a dataset annotation alone. Collision scans cover every table cell and text occurrence; equal values under different roles require different proofs. Unlisted answers fail primary scoring and enter a separate, initially unreviewed sensitivity queue. Diagnostic formatting rules never award correctness. This is an evaluation contract, not a production prompt or validator change. A field-only oracle must reuse the automatic arm's evidence to estimate planning cost; a gold-evidence oracle changes retrieval/selection too. Apply D1–D3 before producing the reviewed candidate, retain unresolved cases, and create one execution freeze only after remaining review gates pass. [Typed-fact scoring contract](../evals/measurement/typed-facts-v1.1.md).
+
+Evaluation format integration stays outside the production worker entry point.
+A dedicated measurement worker wraps the existing planning/assessment/extraction
+operations with the same frozen D4 instruction before both native-template token
+counting and generation. Audit the effective messages and schema, reject non-string
+plans without coercion, and retain two-call answering. A separate question-only
+operation uses D7's frozen prompt/schema, no evidence or gold-derived fields, and
+one bounded call. Its failed or malformed controls remain unknown. These helpers
+are installed only in an isolated, frozen evaluation process; normal API routes,
+production images, prompts and inference budgets are unchanged. Runtime capture
+must distinguish original wire bytes from decoded transport observations.
+
+Internal review of development candidates may check source fidelity, proposed labels and capability fit, and prepare a concise decision document for the user. Keep that review separate from independent approval: it neither signs the independent-review attestation nor opens sealed questions or labels. Preserve the original proposal and record suggested corrections in a separate review artifact.
+
+Benchmark answerability is relative to the complete scoped source supplied for a question, without outside knowledge; unambiguous source-grounded aliases and explicitly tagged local entailments may be accepted, while unresolved entity/premise readings are ambiguous. Keep literal extraction, inference-required and attributed-claim cases distinguishable. Original labels and versioned adjudications are separate scoring views over the same captures. Corpus answerability must not be replaced with a negative label when retrieval omits required evidence: record retrieved-context sufficiency separately, using captured bytes and provenance. Case corrections record source hashes, half-open evidence offsets, exact gold types/aliases, reviewer decisions and known versus unknown annotation rationale. Internal screening and a user's adjudication do not establish two independent blinded reviews. [Current adjudication policy](../evals/measurement/answerability-v1.1.md).
+
+A versioned, offline measurement layer operates over immutable captures. Historical fixtures, scorers, captures and scores are never rewritten. Outcome reporting separates answered-correct, answered-wrong, abstained-correct and abstained-missed from system errors, unscorable captures, incorrect negative decisions and unsupported answers. Exact typed values and annotated source support are distinct axes. A gold-matching rejected draft is a diagnostic, not automatically a validator false rejection; absent or truncated drafts remain unobservable. Report denominators and capture completeness explicitly. Per-arm Wilson intervals describe distinct questions; repeated models/strategies/cache passes are not independent samples. Future comparative gates use paired cases and document/source-family grouping.
+
+Development label review separates answerability amendments (D1) from tightened alternatives, precision rules and gold replacements (D2). Numeric scoring distinguishes faithful answers, source-supported but imprecise answers, and wrong claims; approximation direction, units, quantity, entity and time scope must survive. Imprecise answers remain separate diagnostics, not full-credit successes. Apply the policy to every numeric development item without opening sealed labels or silently resolving pending scope/type decisions. Run a reproducible development-only scan of all accepted alternatives for clipping, qualifier loss, numeric differences and evidence mismatch; flags are review leads, not automatic corrections. Freeze each amendment list before inference, retain original-label scoring, and record the user's explicit waiver when activating case 107's Level A definition replacement in v1.6. The earlier two-reviewer requirement remains visible in its immutable historical record. [Numeric review policy](../evals/measurement/numeric-scoring-v1.1.md).
+
+The development benchmark separates primary direct extraction (including clean negative cases), derived/inference, and stress/adjudication views before inference. Assign one primary exclusion reason per non-primary case, retaining secondary tags and the upstream source-versus-adapter loss diagnosis; stress behaviors (recognizing ambiguity, explicit assumptions, conditional source-backed answers) are reported separately from factual accuracy. Preserve original questions and original-label scores. D1 entailment/attribution and entity-ambiguity decisions follow the same taxonomy. Do not cherry-pick replacements: freeze a reserve registry, seed and matching strata before inspecting candidates, otherwise retain a smaller primary set and report coverage losses. The user waived the proposed two-reviewer D3 screening pass; mark this review internal and non-blind, without fabricating independent approval. The separate case-107 review requirement was subsequently waived explicitly. Neither waiver attests sealed custody, source-family separation or independent review. [Tier/exclusion and reserve policy](../evals/measurement/tiers-v1.1.md).
+
+Stage measurements reuse existing audits and add only missing observations. Per-request/attempt reporting includes planning, query encoding, candidate retrieval, reranking, evidence assembly/tokenization, assessment, extraction, validation, queueing, activation and observed overhead; tokens are counts, not durations. Nested timings must not be summed, failure/skip/unrecorded states remain distinct, and missing values never become zero. Separate resident NuExtract, explicit Gemma, Hybrid fallback and queue-loaded operation. New observational diagnostics must not alter prompts, model budgets, retrieval or answer validation.
+
+The benchmark uses 150–300 independently labelled questions, 25–30% unanswerable/ambiguous, and at least 30% sealed by document/source family. The user selected existing public human annotations, with an independent reviewer approving adaptations and holding sealed labels. Public availability does not make previously inspected questions a fresh holdout. Format and content structure are separate strata; unsupported arithmetic/aggregation belongs to a separate capability track. Independent annotation/adjudication and sealed-label custody remain prerequisites for an independent benchmark claim. The explicit 2026-10-17 delegation permits internal candidate screening, with exposed-case and independence limitations recorded instead of asserting those prerequisites were met. Keep the original holdout untouched. Freeze protocol and decision rules before measured runs; retain failures and permit an inconclusive result with no strategy change. [Benchmark protocol](../evals/measurement/protocol.md) defines the gate, review handoff and execution prerequisites.
+
+Evaluation-only oracle tooling supplies reviewer-approved evidence directly to the existing processor answering operation under a complete model lease. It preserves the actual token limit, two-call assessment/extraction, model settings and original question. Compare a single captured candidate with validation enabled and disabled; the disabled branch is diagnostic data, never an application answer. Both branches retain Rust's exact JSON materialization; source-null abstention and mechanical rejection are reported separately. No public bypass endpoint or production validator switch is added. Gold evidence and optional gold field definitions isolate ingestion, planning, candidate retrieval, selection, assessment, extraction and validation without claiming every failure has one cause. Unavailable observations and unresolved materialization stay unobservable. A CPU-only residue audit runs real ingestion/replacement/removal and offline compaction in isolated storage, inventorying bytes, jobs, receipts and revision reservations under the existing retention policy.
+
+The running user-selected default is NuExtract for new answer submissions, planning, optional prose and new optional generated enrichment. Hybrid/Gemma remain explicit choices; structural ingestion remains the ingestion default. Defaults are consistent across API, CLI, browser, launcher and model tools. A visible one-time preference migration applies the new default to future work; captured turns and durable jobs retain their saved modes. Existing Gemma enrichment jobs continue with their exact saved identity and model. Default changes are user preferences, not benchmark promotion claims.
+
+Enrichment configuration accepts the supported temperatures `0` and `0.2` as exact JSON numbers. The previous integer-zero representation remains byte-for-byte stable when serializing existing policies and retry identities. The worker matches the complete saved generator configuration to its supported profile before acquiring a lease; accepting fractional configuration does not authorize arbitrary temperatures, profile substitution or policy rewriting. This extends the accepted configuration values without changing existing storage records.
+
 ## Current limits and change discipline
 
 The implementation is local and single-user. Remote authentication/hosting, multi-user isolation, token streaming, integrated PDF highlighting, chart understanding, corpus aggregation, approximate/incremental indexes, online compaction, history expiry, replication and distributed storage are outside the current implementation. Broader OCR/language support, context-generation usefulness and semantic answer reliability remain limited; see [plan.md](plan.md) for proposed work rather than treating proposals as architecture.
 
 Any change to these contracts must be explicit and reflected here before implementation. Evaluation separates source fidelity, candidate/final evidence coverage, answer correctness/support, negative outcomes, stage/total latency, resources and recovery. Preserve frozen sources, labels, manifests, captures, failures and source-review exceptions; the original holdout remains unused. Do not promote experimental models or retrieval settings solely because they are available. Record completed experiments and dated decisions in [tasks-done.md](tasks-done.md), with detailed evidence in `docs/reports/`.
+
+The authorized internal runtime follows [execution amendment v1.8](../evals/measurement/internal-execution-v1.8.md): frozen isolated ingestion, exact durable-job captures, controls for both supported models, NuExtract strategy comparisons and separate oracle/validator diagnostics. Exposed candidates cannot establish independent generalization or promote a default. NuExtract and ranked-five remain selected.

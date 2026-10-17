@@ -1,0 +1,152 @@
+{
+  "version": "1.6",
+  "date": "2026-10-17",
+  "user_instruction": "Ok, skip the two-reviewer requirement for 107, apply the Level A definition, and continue with T39.",
+  "review_kind": "user_waiver_after_internal_source_review",
+  "independent_review_acceptance": false,
+  "approved_for_execution": false,
+  "model_outputs_used": false,
+  "sealed_content_opened": false,
+  "waived_requirement": "two independent source reviews for case 107",
+  "case_107_activation": "applied_to_candidate",
+  "evidence": [
+    {
+      "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+      "utf8_start": 5909,
+      "utf8_end": 6112,
+      "quote": "In the OLID dataset, we use a hierarchical annotation model split into three levels to distinguish between whether language is offensive or not (A), and type (B) and target (C) of the offensive language."
+    },
+    {
+      "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+      "utf8_start": 6264,
+      "utf8_end": 6341,
+      "quote": "Level A discriminates between offensive (OFF) and non-offensive (NOT) tweets."
+    },
+    {
+      "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+      "utf8_start": 6415,
+      "utf8_end": 6672,
+      "quote": "Offensive (OFF): We label a post as offensive if it contains any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct. This category includes insults, threats, and posts containing profane language or swear words."
+    }
+  ],
+  "before": {
+    "number": 107,
+    "case_id": "qasper-5a8cc8f80509ea77d8213ed28c5ead501c68c725",
+    "question": "What is the definition of offensive language?",
+    "document": "qasper-1902.09666.txt",
+    "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+    "source_text_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+    "format": "txt",
+    "tier": "primary_direct_extraction",
+    "expected": "supported",
+    "pending_decisions": [
+      "case 107 replacement activation awaits two independent source reviews"
+    ],
+    "original_alternatives": [
+      " Most prior work focuses on a different aspect of offensive language such as abusive language BIBREF0 , BIBREF1 , (cyber-)aggression BIBREF2 , (cyber-)bullying BIBREF3 , BIBREF4 , toxic comments INLINEFORM0 , hate speech BIBREF5 , BIBREF6 , BIBREF7 , BIBREF8 , BIBREF9 , BIBREF10 , and offensive language BIBREF11 . Prior work has focused on these aspects of offensive language in Twitter BIBREF3 , BIBREF7 , BIBREF8 , BIBREF11 , Wikipedia comments, and Facebook posts BIBREF2 ."
+    ],
+    "original_expected": "supported",
+    "roles": [
+      {
+        "id": "answer",
+        "value_string": " Most prior work focuses on a different aspect of offensive language such as abusive language BIBREF0 , BIBREF1 , (cyber-)aggression BIBREF2 , (cyber-)bullying BIBREF3 , BIBREF4 , toxic comments INLINEFORM0 , hate speech BIBREF5 , BIBREF6 , BIBREF7 , BIBREF8 , BIBREF9 , BIBREF10 , and offensive language BIBREF11 . Prior work has focused on these aspects of offensive language in Twitter BIBREF3 , BIBREF7 , BIBREF8 , BIBREF11 , Wikipedia comments, and Facebook posts BIBREF2 .",
+        "source_type": "string",
+        "scale": {
+          "stated": "not_applicable",
+          "unit": null,
+          "source_context": []
+        },
+        "period": "as stated in source/question; no new inference",
+        "qualifier": "preserve source wording",
+        "question_target": "text_span",
+        "allowed_alternatives": [],
+        "derived_alternatives": [],
+        "imprecise_alternatives": [],
+        "proof_sets": [
+          [
+            {
+              "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+              "utf8_start": 1114,
+              "utf8_end": 2063
+            }
+          ]
+        ],
+        "derived_proof_sets": [],
+        "format_diagnostic_remove_literals": []
+      }
+    ],
+    "allowed_field_mappings": [
+      {
+        "answer": "answer"
+      },
+      {
+        "value": "answer"
+      }
+    ]
+  },
+  "after": {
+    "number": 107,
+    "case_id": "qasper-5a8cc8f80509ea77d8213ed28c5ead501c68c725",
+    "question": "What is the definition of offensive language?",
+    "document": "qasper-1902.09666.txt",
+    "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+    "source_text_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+    "format": "txt",
+    "tier": "primary_direct_extraction",
+    "expected": "supported",
+    "pending_decisions": [],
+    "original_alternatives": [
+      " Most prior work focuses on a different aspect of offensive language such as abusive language BIBREF0 , BIBREF1 , (cyber-)aggression BIBREF2 , (cyber-)bullying BIBREF3 , BIBREF4 , toxic comments INLINEFORM0 , hate speech BIBREF5 , BIBREF6 , BIBREF7 , BIBREF8 , BIBREF9 , BIBREF10 , and offensive language BIBREF11 . Prior work has focused on these aspects of offensive language in Twitter BIBREF3 , BIBREF7 , BIBREF8 , BIBREF11 , Wikipedia comments, and Facebook posts BIBREF2 ."
+    ],
+    "original_expected": "supported",
+    "roles": [
+      {
+        "id": "answer",
+        "value_string": "any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct",
+        "source_type": "string",
+        "scale": {
+          "stated": "not_applicable",
+          "unit": null,
+          "source_context": []
+        },
+        "period": "as stated in source/question; no new inference",
+        "qualifier": "Level A: profanity/non-acceptable language OR a targeted offense, veiled or direct.",
+        "question_target": "text_span",
+        "allowed_alternatives": [
+          "Offensive (OFF): We label a post as offensive if it contains any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct.",
+          "Offensive (OFF): We label a post as offensive if it contains any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct. This category includes insults, threats, and posts containing profane language or swear words.",
+          "We label a post as offensive if it contains any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct.",
+          "We label a post as offensive if it contains any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct. This category includes insults, threats, and posts containing profane language or swear words.",
+          "any form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct."
+        ],
+        "derived_alternatives": [],
+        "imprecise_alternatives": [],
+        "proof_sets": [
+          [
+            {
+              "document_sha256": "8b40b29eabc1d84c3a09a9512910aac0ae394df97d6552bd8e30c9f31261a7f2",
+              "utf8_start": 6415,
+              "utf8_end": 6672
+            }
+          ]
+        ],
+        "derived_proof_sets": [],
+        "format_diagnostic_remove_literals": []
+      }
+    ],
+    "allowed_field_mappings": [
+      {
+        "answer": "answer"
+      },
+      {
+        "value": "answer"
+      },
+      {
+        "definition": "answer"
+      },
+      {
+        "offensive_language_definition": "answer"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2321 @@
+{
+  "version": "1.2",
+  "approved_for_execution": false,
+  "D4_gold_sha256": "3605375fcbaaf3949aabb0068a80f7db34796af7342088726a1fc3a1a5a95bc0",
+  "annotation_sha256": "94ceb54b2ba55d725aca31ef4f27487edc0027b935c885a33fa588c43fbab074",
+  "reading_adjudications_sha256": "8a7e9fb3baafa19725e4963f2ec902d1b162b107c409dc4464d01a65f8431195",
+  "cases": [
+    {
+      "number": 2,
+      "case_id": "tatqa-e35b10e8-fe97-4cc4-b59e-cbeb0679f6c7",
+      "document": "tatqa-467f55db-152c-4219-97c6-5765f1ead0d9.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "opening_balance",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "467f55db-152c-4219-97c6-5765f1ead0d9",
+            "source_sha256": "660244bf434b8d697f8d6774f0231b46e2ab928e55a58caf0adbc5b2335c2cd5",
+            "row": 1,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "467f55db-152c-4219-97c6-5765f1ead0d9",
+              "source_sha256": "660244bf434b8d697f8d6774f0231b46e2ab928e55a58caf0adbc5b2335c2cd5",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "467f55db-152c-4219-97c6-5765f1ead0d9",
+              "source_sha256": "660244bf434b8d697f8d6774f0231b46e2ab928e55a58caf0adbc5b2335c2cd5",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "467f55db-152c-4219-97c6-5765f1ead0d9",
+              "source_sha256": "660244bf434b8d697f8d6774f0231b46e2ab928e55a58caf0adbc5b2335c2cd5",
+              "row": 1,
+              "col": 0
+            },
+            {
+              "table_id": "467f55db-152c-4219-97c6-5765f1ead0d9",
+              "source_sha256": "660244bf434b8d697f8d6774f0231b46e2ab928e55a58caf0adbc5b2335c2cd5",
+              "paragraph": 8,
+              "utf8_start": 97,
+              "utf8_end": 111
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 12,
+      "case_id": "tatqa-28233ece-7a01-47c5-b391-4212b0620940",
+      "document": "tatqa-0f04b820-97bc-4592-983b-00cfd0788011.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "total_energy_consumption",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+            "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+            "row": 3,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 3,
+              "col": 2
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 0,
+              "col": 0
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 2,
+              "col": 2
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 3,
+              "col": 0
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 3,
+              "col": 0,
+              "utf8_start": 26,
+              "utf8_end": 29
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "paragraph": 15,
+              "utf8_start": 6,
+              "utf8_end": 126
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 13,
+      "case_id": "tatqa-b39b7bdd-0496-4131-a0e8-69b9f077eeda",
+      "document": "tatqa-0f04b820-97bc-4592-983b-00cfd0788011.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "direct_energy_consumption",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+            "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+            "row": 4,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 4,
+              "col": 1
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 0,
+              "col": 0
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 2,
+              "col": 1
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 4,
+              "col": 0
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "row": 4,
+              "col": 0,
+              "utf8_start": 27,
+              "utf8_end": 30
+            },
+            {
+              "table_id": "0f04b820-97bc-4592-983b-00cfd0788011",
+              "source_sha256": "bedaa88f5494a0b42c0f2598bfaa3ce9c310adaee2ef8c826d9b48f094b0bcaa",
+              "paragraph": 15,
+              "utf8_start": 6,
+              "utf8_end": 126
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 21,
+      "case_id": "tatqa-c9126aa2-a8ec-4e6f-abe0-580a19217507",
+      "document": "tatqa-2bc7fad1-056b-4298-bfca-5a33c970b1a0.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "net_deferred_tax_assets",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "2bc7fad1-056b-4298-bfca-5a33c970b1a0",
+            "source_sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+            "row": 23,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "2bc7fad1-056b-4298-bfca-5a33c970b1a0",
+              "source_sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+              "row": 23,
+              "col": 1
+            },
+            {
+              "table_id": "2bc7fad1-056b-4298-bfca-5a33c970b1a0",
+              "source_sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "2bc7fad1-056b-4298-bfca-5a33c970b1a0",
+              "source_sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "2bc7fad1-056b-4298-bfca-5a33c970b1a0",
+              "source_sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+              "row": 23,
+              "col": 0
+            },
+            {
+              "table_id": "2bc7fad1-056b-4298-bfca-5a33c970b1a0",
+              "source_sha256": "2e1e93e6747ecf8ece15aa3145765c350f8b5a65e88ab87b540ee8db76f72a8a",
+              "row": 2,
+              "col": 2
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 22,
+      "case_id": "tatqa-a1138b22-091e-4d69-b8dd-478496edb0c1",
+      "document": "tatqa-4145912c-86dc-434b-8990-1cfe78f298f5.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "allowance_for_credit_losses",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "4145912c-86dc-434b-8990-1cfe78f298f5",
+            "source_sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+            "row": 5,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "4145912c-86dc-434b-8990-1cfe78f298f5",
+              "source_sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+              "row": 5,
+              "col": 1
+            },
+            {
+              "table_id": "4145912c-86dc-434b-8990-1cfe78f298f5",
+              "source_sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+              "row": 1,
+              "col": 0
+            },
+            {
+              "table_id": "4145912c-86dc-434b-8990-1cfe78f298f5",
+              "source_sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "4145912c-86dc-434b-8990-1cfe78f298f5",
+              "source_sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+              "row": 5,
+              "col": 0
+            },
+            {
+              "table_id": "4145912c-86dc-434b-8990-1cfe78f298f5",
+              "source_sha256": "eef793efeed8c4856cfa5b1b902281b173d7e4a2e313d7b94fb59dc265413ae3",
+              "row": 0,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 23,
+      "case_id": "tatqa-3c9733f1-459f-4025-8cf8-3ac0859687fa",
+      "document": "tatqa-914fca09-058a-4409-85c0-7e399c857d4d.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "accrued_compensation_and_benefits",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "914fca09-058a-4409-85c0-7e399c857d4d",
+            "source_sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+            "row": 2,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "914fca09-058a-4409-85c0-7e399c857d4d",
+              "source_sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+              "row": 2,
+              "col": 1
+            },
+            {
+              "table_id": "914fca09-058a-4409-85c0-7e399c857d4d",
+              "source_sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "914fca09-058a-4409-85c0-7e399c857d4d",
+              "source_sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "914fca09-058a-4409-85c0-7e399c857d4d",
+              "source_sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "914fca09-058a-4409-85c0-7e399c857d4d",
+              "source_sha256": "2a1116948624ff6bb12e0f2a9de01a5ad5b4b90329d662ddcc04ecc1900d81d6",
+              "row": 1,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 24,
+      "case_id": "tatqa-9dcfc5c6-082a-495c-91b1-561d4262bc34",
+      "document": "tatqa-6aa15859-a841-47eb-ad04-a441599cf05c.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "software_revenue",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "6aa15859-a841-47eb-ad04-a441599cf05c",
+            "source_sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+            "row": 3,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "6aa15859-a841-47eb-ad04-a441599cf05c",
+              "source_sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+              "row": 3,
+              "col": 1
+            },
+            {
+              "table_id": "6aa15859-a841-47eb-ad04-a441599cf05c",
+              "source_sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+              "row": 1,
+              "col": 0
+            },
+            {
+              "table_id": "6aa15859-a841-47eb-ad04-a441599cf05c",
+              "source_sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "6aa15859-a841-47eb-ad04-a441599cf05c",
+              "source_sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "6aa15859-a841-47eb-ad04-a441599cf05c",
+              "source_sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+              "row": 3,
+              "col": 0
+            },
+            {
+              "table_id": "6aa15859-a841-47eb-ad04-a441599cf05c",
+              "source_sha256": "21b6c0af009ba9b566e3f31cf7c72383b96ebceae910e6151f81cb8e60bdeaaa",
+              "row": 0,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 25,
+      "case_id": "tatqa-4ec6ff4d-d8ef-4cdd-aeab-df75b41f5c01",
+      "document": "tatqa-13bb283b-4b9c-42b9-9b02-f1b2e1a87abf.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "order_intake_change",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "13bb283b-4b9c-42b9-9b02-f1b2e1a87abf",
+            "source_sha256": "d3c0c4ef2a7d848f402bb375ea149cf397d83da1d0115253f7462854ddb7ceb6",
+            "row": 1,
+            "col": 3
+          },
+          "required": [
+            {
+              "table_id": "13bb283b-4b9c-42b9-9b02-f1b2e1a87abf",
+              "source_sha256": "d3c0c4ef2a7d848f402bb375ea149cf397d83da1d0115253f7462854ddb7ceb6",
+              "row": 1,
+              "col": 3
+            },
+            {
+              "table_id": "13bb283b-4b9c-42b9-9b02-f1b2e1a87abf",
+              "source_sha256": "d3c0c4ef2a7d848f402bb375ea149cf397d83da1d0115253f7462854ddb7ceb6",
+              "row": 0,
+              "col": 3
+            },
+            {
+              "table_id": "13bb283b-4b9c-42b9-9b02-f1b2e1a87abf",
+              "source_sha256": "d3c0c4ef2a7d848f402bb375ea149cf397d83da1d0115253f7462854ddb7ceb6",
+              "row": 1,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 28,
+      "case_id": "tatqa-a8d02db2-d1ef-43e6-9207-8435b4ee609e",
+      "document": "tatqa-d7d65228-96c1-4890-951c-c3d7578f8031.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "cash_dividend_per_share",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+            "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+            "row": 4,
+            "col": 4
+          },
+          "required": [
+            {
+              "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+              "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+              "row": 4,
+              "col": 4
+            },
+            {
+              "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+              "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+              "row": 0,
+              "col": 3
+            },
+            {
+              "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+              "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+              "row": 1,
+              "col": 4
+            },
+            {
+              "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+              "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+              "row": 4,
+              "col": 0
+            },
+            {
+              "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+              "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+              "row": 0,
+              "col": 3,
+              "utf8_start": 25,
+              "utf8_end": 35
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 29,
+      "case_id": "tatqa-cf30adbb-c986-4b67-aa14-d0021d7a8f61",
+      "document": "tatqa-d7d65228-96c1-4890-951c-c3d7578f8031.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "legal_reserve",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+            "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+            "row": 2,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+              "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+              "row": 2,
+              "col": 2
+            },
+            {
+              "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+              "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+              "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+              "row": 1,
+              "col": 2
+            },
+            {
+              "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+              "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "d7d65228-96c1-4890-951c-c3d7578f8031",
+              "source_sha256": "717164681913d42b247fc31a2067bb87b8ef72707fa579ea9fadb56fb66709ec",
+              "row": 0,
+              "col": 1,
+              "utf8_start": 27,
+              "utf8_end": 49
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 30,
+      "case_id": "tatqa-68ac2c86-8373-4134-960f-5d64427528ec",
+      "document": "tatqa-d873a0cf-2e57-46f3-b9a5-2596808ffa00.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "outstanding_rights",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "d873a0cf-2e57-46f3-b9a5-2596808ffa00",
+            "source_sha256": "fd8708831e34f639782a456a2ebc7d299e213a7fe333485c669b0560f6b63df2",
+            "row": 6,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "d873a0cf-2e57-46f3-b9a5-2596808ffa00",
+              "source_sha256": "fd8708831e34f639782a456a2ebc7d299e213a7fe333485c669b0560f6b63df2",
+              "row": 6,
+              "col": 1
+            },
+            {
+              "table_id": "d873a0cf-2e57-46f3-b9a5-2596808ffa00",
+              "source_sha256": "fd8708831e34f639782a456a2ebc7d299e213a7fe333485c669b0560f6b63df2",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "d873a0cf-2e57-46f3-b9a5-2596808ffa00",
+              "source_sha256": "fd8708831e34f639782a456a2ebc7d299e213a7fe333485c669b0560f6b63df2",
+              "row": 6,
+              "col": 0
+            },
+            {
+              "table_id": "d873a0cf-2e57-46f3-b9a5-2596808ffa00",
+              "source_sha256": "fd8708831e34f639782a456a2ebc7d299e213a7fe333485c669b0560f6b63df2",
+              "row": 1,
+              "col": 1
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 40,
+      "case_id": "tatqa-4f17ed1a-05b0-4a69-bcb7-40f42edd6d62",
+      "document": "tatqa-ec8d8bf5-ff64-447b-8481-cc067a861a28.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "aerospace_and_defense",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "ec8d8bf5-ff64-447b-8481-cc067a861a28",
+            "source_sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+            "row": 2,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "ec8d8bf5-ff64-447b-8481-cc067a861a28",
+              "source_sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+              "row": 2,
+              "col": 1
+            },
+            {
+              "table_id": "ec8d8bf5-ff64-447b-8481-cc067a861a28",
+              "source_sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+              "row": 0,
+              "col": 0
+            },
+            {
+              "table_id": "ec8d8bf5-ff64-447b-8481-cc067a861a28",
+              "source_sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "ec8d8bf5-ff64-447b-8481-cc067a861a28",
+              "source_sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "ec8d8bf5-ff64-447b-8481-cc067a861a28",
+              "source_sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "ec8d8bf5-ff64-447b-8481-cc067a861a28",
+              "source_sha256": "0582f5397b31f189fed408a9edd3acd3b751176a52ddbd6252975f522e1275bc",
+              "row": 1,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 41,
+      "case_id": "tatqa-c6d15acd-4fd8-4419-a04e-c69487836f86",
+      "document": "tatqa-861ad987-4b1b-40e0-bef3-1fbd25a33c6b.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "non_usd_current_monetary_assets",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "861ad987-4b1b-40e0-bef3-1fbd25a33c6b",
+            "source_sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+            "row": 2,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "861ad987-4b1b-40e0-bef3-1fbd25a33c6b",
+              "source_sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+              "row": 2,
+              "col": 2
+            },
+            {
+              "table_id": "861ad987-4b1b-40e0-bef3-1fbd25a33c6b",
+              "source_sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "861ad987-4b1b-40e0-bef3-1fbd25a33c6b",
+              "source_sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+              "row": 1,
+              "col": 0
+            },
+            {
+              "table_id": "861ad987-4b1b-40e0-bef3-1fbd25a33c6b",
+              "source_sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "861ad987-4b1b-40e0-bef3-1fbd25a33c6b",
+              "source_sha256": "d456ebda2af18b60f00728dbf0913c2ae0e88ae89092a7d1b3e78e0468206cf1",
+              "row": 0,
+              "col": 2,
+              "utf8_start": 20,
+              "utf8_end": 33
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 48,
+      "case_id": "tatqa-04eb80f3-ec41-40c1-8413-9d70059a85ca",
+      "document": "tatqa-fd7e14ed-efb6-4992-bdc2-b5603d91f126.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "total_basic_eps",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+            "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+            "row": 13,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+              "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+              "row": 13,
+              "col": 1
+            },
+            {
+              "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+              "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+              "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+              "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+              "row": 10,
+              "col": 0
+            },
+            {
+              "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+              "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+              "row": 10,
+              "col": 0,
+              "utf8_start": 26,
+              "utf8_end": 41
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 49,
+      "case_id": "tatqa-e5156247-2cf5-4242-8c82-0c19d8bb7cc9",
+      "document": "tatqa-fd7e14ed-efb6-4992-bdc2-b5603d91f126.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "total_diluted_eps",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+            "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+            "row": 17,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+              "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+              "row": 17,
+              "col": 2
+            },
+            {
+              "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+              "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+              "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+              "row": 1,
+              "col": 2
+            },
+            {
+              "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+              "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+              "row": 14,
+              "col": 0
+            },
+            {
+              "table_id": "fd7e14ed-efb6-4992-bdc2-b5603d91f126",
+              "source_sha256": "6555fc36560b7365aada1af9ca15cdf6d88a1b9f57d0365816c8c2350f9a6b7a",
+              "row": 14,
+              "col": 0,
+              "utf8_start": 28,
+              "utf8_end": 43
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 55,
+      "case_id": "tatqa-28307c15-8d5d-44db-8a3f-67ad08ad6aac",
+      "document": "tatqa-736f65a8-7b6b-47bc-8c6a-3a2d641695bc.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "current_loss_allowance",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "736f65a8-7b6b-47bc-8c6a-3a2d641695bc",
+            "source_sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+            "row": 4,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "736f65a8-7b6b-47bc-8c6a-3a2d641695bc",
+              "source_sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+              "row": 4,
+              "col": 1
+            },
+            {
+              "table_id": "736f65a8-7b6b-47bc-8c6a-3a2d641695bc",
+              "source_sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+              "row": 0,
+              "col": 0
+            },
+            {
+              "table_id": "736f65a8-7b6b-47bc-8c6a-3a2d641695bc",
+              "source_sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "736f65a8-7b6b-47bc-8c6a-3a2d641695bc",
+              "source_sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+              "row": 4,
+              "col": 0
+            },
+            {
+              "table_id": "736f65a8-7b6b-47bc-8c6a-3a2d641695bc",
+              "source_sha256": "24a8df47539141ba58393c72585b11e74402cd545c8d4fc25d0671faac08071c",
+              "row": 1,
+              "col": 1
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 56,
+      "case_id": "tatqa-c5036e83-ed8b-4267-89bc-2653be0e7ccc",
+      "document": "tatqa-0a75d1da-9beb-4a61-b2f4-06cff98b755e.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "total_liabilities",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "0a75d1da-9beb-4a61-b2f4-06cff98b755e",
+            "source_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+            "row": 25,
+            "col": 3
+          },
+          "required": [
+            {
+              "table_id": "0a75d1da-9beb-4a61-b2f4-06cff98b755e",
+              "source_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+              "row": 25,
+              "col": 3
+            },
+            {
+              "table_id": "0a75d1da-9beb-4a61-b2f4-06cff98b755e",
+              "source_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+              "row": 0,
+              "col": 3
+            },
+            {
+              "table_id": "0a75d1da-9beb-4a61-b2f4-06cff98b755e",
+              "source_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+              "row": 1,
+              "col": 3
+            },
+            {
+              "table_id": "0a75d1da-9beb-4a61-b2f4-06cff98b755e",
+              "source_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+              "row": 2,
+              "col": 3
+            },
+            {
+              "table_id": "0a75d1da-9beb-4a61-b2f4-06cff98b755e",
+              "source_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+              "row": 16,
+              "col": 0
+            },
+            {
+              "table_id": "0a75d1da-9beb-4a61-b2f4-06cff98b755e",
+              "source_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+              "row": 25,
+              "col": 0
+            },
+            {
+              "table_id": "0a75d1da-9beb-4a61-b2f4-06cff98b755e",
+              "source_sha256": "0067096d3219b59d52abf52e4261af6d8f6a456912caf5dfbfcbc3f9c2c4159c",
+              "row": 2,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 62,
+      "case_id": "tatqa-e700aa58-2454-4af7-84fe-965254c07275",
+      "document": "tatqa-62425e9b-b7de-4d31-9565-1042ad9e4926.json",
+      "tier": "stress_adjudication",
+      "role_id": "state_income_taxes",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "62425e9b-b7de-4d31-9565-1042ad9e4926",
+            "source_sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+            "row": 4,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "62425e9b-b7de-4d31-9565-1042ad9e4926",
+              "source_sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+              "row": 4,
+              "col": 1
+            },
+            {
+              "table_id": "62425e9b-b7de-4d31-9565-1042ad9e4926",
+              "source_sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "62425e9b-b7de-4d31-9565-1042ad9e4926",
+              "source_sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "62425e9b-b7de-4d31-9565-1042ad9e4926",
+              "source_sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+              "row": 4,
+              "col": 0
+            },
+            {
+              "table_id": "62425e9b-b7de-4d31-9565-1042ad9e4926",
+              "source_sha256": "4dee519f8f5ff283230c92a307f117fcc3d7161b6c85340211312ec92014c0d6",
+              "row": 2,
+              "col": 2
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 64,
+      "case_id": "tatqa-ec066127-4046-4b2f-9332-de14851c6868",
+      "document": "tatqa-89cf13a2-6d08-48be-a45d-2346422d5c38.json",
+      "tier": "stress_adjudication",
+      "role_id": "expected_term",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+            "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+            "row": 5,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+              "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+              "row": 5,
+              "col": 1
+            },
+            {
+              "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+              "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+              "row": 1,
+              "col": 0
+            },
+            {
+              "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+              "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+              "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+              "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+              "row": 5,
+              "col": 0
+            },
+            {
+              "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+              "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+              "row": 5,
+              "col": 0,
+              "utf8_start": 15,
+              "utf8_end": 23
+            }
+          ]
+        }
+      ],
+      "stress_readings": [
+        {
+          "id": "year-ended-2020-01-31",
+          "row": 5,
+          "col": 1,
+          "value_string": "0.6",
+          "proof_sets": [
+            {
+              "value": {
+                "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                "row": 5,
+                "col": 1
+              },
+              "required": [
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 5,
+                  "col": 1
+                },
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 1,
+                  "col": 0
+                },
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 0,
+                  "col": 2
+                },
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 1,
+                  "col": 1
+                },
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 5,
+                  "col": 0
+                },
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 5,
+                  "col": 0,
+                  "utf8_start": 15,
+                  "utf8_end": 23
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "year-ended-2019-02-01",
+          "row": 5,
+          "col": 2,
+          "value_string": "0.8",
+          "proof_sets": [
+            {
+              "value": {
+                "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                "row": 5,
+                "col": 2
+              },
+              "required": [
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 5,
+                  "col": 2
+                },
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 1,
+                  "col": 0
+                },
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 0,
+                  "col": 2
+                },
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 1,
+                  "col": 2
+                },
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 5,
+                  "col": 0
+                },
+                {
+                  "table_id": "89cf13a2-6d08-48be-a45d-2346422d5c38",
+                  "source_sha256": "9570d40cf21d56d21cc03b76dacadef8ab68d7c83130ac386deae26eff53234f",
+                  "row": 5,
+                  "col": 0,
+                  "utf8_start": 15,
+                  "utf8_end": 23
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_note": "Both actual year-end columns remain explicit stress readings; no unsupported fiscal-year renaming."
+    },
+    {
+      "number": 69,
+      "case_id": "tatqa-7164d7c0-d541-4b7a-942d-a864348d4fbf",
+      "document": "tatqa-9791f353-ce82-41be-a93d-915b8f52677b.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "total_net_sales",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "9791f353-ce82-41be-a93d-915b8f52677b",
+            "source_sha256": "2181aec9f0a6a93f2e88ed85be4ac936206a97db1e6bf08e976b4b9f1d19d45d",
+            "row": 7,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "9791f353-ce82-41be-a93d-915b8f52677b",
+              "source_sha256": "2181aec9f0a6a93f2e88ed85be4ac936206a97db1e6bf08e976b4b9f1d19d45d",
+              "row": 7,
+              "col": 2
+            },
+            {
+              "table_id": "9791f353-ce82-41be-a93d-915b8f52677b",
+              "source_sha256": "2181aec9f0a6a93f2e88ed85be4ac936206a97db1e6bf08e976b4b9f1d19d45d",
+              "row": 1,
+              "col": 2
+            },
+            {
+              "table_id": "9791f353-ce82-41be-a93d-915b8f52677b",
+              "source_sha256": "2181aec9f0a6a93f2e88ed85be4ac936206a97db1e6bf08e976b4b9f1d19d45d",
+              "row": 7,
+              "col": 0
+            },
+            {
+              "table_id": "9791f353-ce82-41be-a93d-915b8f52677b",
+              "source_sha256": "2181aec9f0a6a93f2e88ed85be4ac936206a97db1e6bf08e976b4b9f1d19d45d",
+              "row": 0,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 80,
+      "case_id": "tatqa-a084172d-f8e1-4ecf-bf6b-570967ddc466",
+      "document": "tatqa-eb122e2e-12b4-4e59-a018-7045192b021d.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "basic_eps",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "eb122e2e-12b4-4e59-a018-7045192b021d",
+            "source_sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+            "row": 7,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "eb122e2e-12b4-4e59-a018-7045192b021d",
+              "source_sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+              "row": 7,
+              "col": 1
+            },
+            {
+              "table_id": "eb122e2e-12b4-4e59-a018-7045192b021d",
+              "source_sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "eb122e2e-12b4-4e59-a018-7045192b021d",
+              "source_sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "eb122e2e-12b4-4e59-a018-7045192b021d",
+              "source_sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+              "row": 6,
+              "col": 0
+            },
+            {
+              "table_id": "eb122e2e-12b4-4e59-a018-7045192b021d",
+              "source_sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+              "row": 7,
+              "col": 0
+            },
+            {
+              "table_id": "eb122e2e-12b4-4e59-a018-7045192b021d",
+              "source_sha256": "58f9e54f14ed6bef4acf27346180d29a19cf67e86d40795a10f48d51c4e2f340",
+              "row": 7,
+              "col": 1,
+              "utf8_start": 0,
+              "utf8_end": 1
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 82,
+      "case_id": "tatqa-c3f4ec9b-2e21-42fd-950b-2e7b24e4b0b9",
+      "document": "tatqa-e8877535-8ade-4ba3-aae2-cd4db2b5c59c.json",
+      "tier": "derived_inference",
+      "role_id": "currency",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+            "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+            "row": 2,
+            "col": 0
+          },
+          "required": [
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 1,
+              "col": 2
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 1,
+              "col": 0
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 0,
+              "col": 2,
+              "utf8_start": 8,
+              "utf8_end": 9
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "paragraph": 10,
+              "utf8_start": 26,
+              "utf8_end": 33
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 2,
+              "col": 2
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 3,
+              "col": 2
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 3,
+              "col": 0
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "paragraph": 10,
+              "utf8_start": 0,
+              "utf8_end": 277
+            }
+          ]
+        },
+        {
+          "value": {
+            "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+            "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+            "row": 2,
+            "col": 0
+          },
+          "required": [
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 1,
+              "col": 3
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 0,
+              "col": 3
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 1,
+              "col": 0
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 0,
+              "col": 3,
+              "utf8_start": 8,
+              "utf8_end": 9
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "paragraph": 10,
+              "utf8_start": 26,
+              "utf8_end": 33
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 2,
+              "col": 3
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 3,
+              "col": 3
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "row": 3,
+              "col": 0
+            },
+            {
+              "table_id": "e8877535-8ade-4ba3-aae2-cd4db2b5c59c",
+              "source_sha256": "1ce4903e2a0a636a27b0896a3056af7fd8f8baeaded08a48691cecef29175c87",
+              "paragraph": 10,
+              "utf8_start": 0,
+              "utf8_end": 277
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 alternatives each require all three currency rates for one year and the selected GBP label; source paragraph establishes INR context. Comparison remains derived."
+    },
+    {
+      "number": 86,
+      "case_id": "tatqa-2c542baf-9bb5-4f75-b1dc-4b79180885f5",
+      "document": "tatqa-26d46b77-411e-47aa-b650-5c84ef3e9e21.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "domestic_state_loss_carryforwards",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "26d46b77-411e-47aa-b650-5c84ef3e9e21",
+            "source_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+            "row": 2,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "26d46b77-411e-47aa-b650-5c84ef3e9e21",
+              "source_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+              "row": 2,
+              "col": 2
+            },
+            {
+              "table_id": "26d46b77-411e-47aa-b650-5c84ef3e9e21",
+              "source_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "26d46b77-411e-47aa-b650-5c84ef3e9e21",
+              "source_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+              "row": 1,
+              "col": 0
+            },
+            {
+              "table_id": "26d46b77-411e-47aa-b650-5c84ef3e9e21",
+              "source_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "26d46b77-411e-47aa-b650-5c84ef3e9e21",
+              "source_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+              "row": 0,
+              "col": 0
+            },
+            {
+              "table_id": "26d46b77-411e-47aa-b650-5c84ef3e9e21",
+              "source_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+              "paragraph": 9,
+              "utf8_start": 161,
+              "utf8_end": 182
+            },
+            {
+              "table_id": "26d46b77-411e-47aa-b650-5c84ef3e9e21",
+              "source_sha256": "1d4cb552e69ab3179c6bfb9b300fd48e50659d120ab4dbf2b820f192f87aa269",
+              "paragraph": 10,
+              "utf8_start": 4,
+              "utf8_end": 37
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 87,
+      "case_id": "tatqa-05c03d2a-7d92-4973-8771-7d0c6547464a",
+      "document": "tatqa-428d5e87-612b-468c-80f3-5b5298d589c8.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "module_sales_increase",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "428d5e87-612b-468c-80f3-5b5298d589c8",
+            "source_sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+            "row": 2,
+            "col": 5
+          },
+          "required": [
+            {
+              "table_id": "428d5e87-612b-468c-80f3-5b5298d589c8",
+              "source_sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+              "row": 2,
+              "col": 5
+            },
+            {
+              "table_id": "428d5e87-612b-468c-80f3-5b5298d589c8",
+              "source_sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+              "row": 0,
+              "col": 5
+            },
+            {
+              "table_id": "428d5e87-612b-468c-80f3-5b5298d589c8",
+              "source_sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+              "row": 1,
+              "col": 4
+            },
+            {
+              "table_id": "428d5e87-612b-468c-80f3-5b5298d589c8",
+              "source_sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "428d5e87-612b-468c-80f3-5b5298d589c8",
+              "source_sha256": "7b9af9eb480578760323ad7b53fd9a7415e39d57679d3888abf45a90c6fea9ce",
+              "row": 2,
+              "col": 5,
+              "utf8_start": 3,
+              "utf8_end": 4
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 89,
+      "case_id": "tatqa-66d3e594-1904-4cb1-9af1-bac17a8f273b",
+      "document": "tatqa-386352cf-f7e3-4148-920c-63bc57cf156b.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "deferred_tax_assets_as_reported",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+            "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+            "row": 5,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 5,
+              "col": 1
+            },
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 2,
+              "col": 1
+            },
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 3,
+              "col": 0
+            },
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 5,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 90,
+      "case_id": "tatqa-6407b020-fadc-42bd-8f02-9b80f3ccb742",
+      "document": "tatqa-386352cf-f7e3-4148-920c-63bc57cf156b.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "deferred_tax_assets_without_asc606",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+            "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+            "row": 5,
+            "col": 3
+          },
+          "required": [
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 5,
+              "col": 3
+            },
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 1,
+              "col": 3
+            },
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 2,
+              "col": 3
+            },
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 3,
+              "col": 0
+            },
+            {
+              "table_id": "386352cf-f7e3-4148-920c-63bc57cf156b",
+              "source_sha256": "5f4928c58cffb28cdbaf465334f89f30ded9f59f7c08610542f17c821f02e116",
+              "row": 5,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 91,
+      "case_id": "tatqa-3683a97f-66f4-4450-a978-4322b673b914",
+      "document": "tatqa-502dd70a-926b-49d7-b236-63855c98e740.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "gross_emissions",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+            "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+            "row": 5,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "row": 5,
+              "col": 1
+            },
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "row": 0,
+              "col": 0
+            },
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "row": 2,
+              "col": 1
+            },
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "row": 5,
+              "col": 0
+            },
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "row": 1,
+              "col": 2
+            },
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "paragraph": 13,
+              "utf8_start": 271,
+              "utf8_end": 330
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 92,
+      "case_id": "tatqa-69b61533-e155-408f-b189-5bb0ddfbc274",
+      "document": "tatqa-502dd70a-926b-49d7-b236-63855c98e740.json",
+      "tier": "stress_adjudication",
+      "role_id": "gross_emissions",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+            "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+            "row": 5,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "row": 5,
+              "col": 2
+            },
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "row": 0,
+              "col": 0
+            },
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "row": 2,
+              "col": 2
+            },
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "row": 5,
+              "col": 0
+            },
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "row": 1,
+              "col": 2
+            },
+            {
+              "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+              "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+              "paragraph": 13,
+              "utf8_start": 271,
+              "utf8_end": 330
+            }
+          ]
+        }
+      ],
+      "stress_readings": [
+        {
+          "id": "FY18-UK-Ireland",
+          "row": 5,
+          "col": 2,
+          "value_string": "98,725",
+          "proof_sets": [
+            {
+              "value": {
+                "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                "row": 5,
+                "col": 2
+              },
+              "required": [
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "row": 5,
+                  "col": 2
+                },
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "row": 0,
+                  "col": 0
+                },
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "row": 2,
+                  "col": 2
+                },
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "row": 5,
+                  "col": 0
+                },
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "row": 1,
+                  "col": 2
+                },
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "paragraph": 13,
+                  "utf8_start": 271,
+                  "utf8_end": 330
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "FY18-full-Group-including-US",
+          "row": 5,
+          "col": 3,
+          "value_string": "143,354",
+          "proof_sets": [
+            {
+              "value": {
+                "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                "row": 5,
+                "col": 3
+              },
+              "required": [
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "row": 5,
+                  "col": 3
+                },
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "row": 0,
+                  "col": 0
+                },
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "row": 2,
+                  "col": 3
+                },
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "row": 5,
+                  "col": 0
+                },
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "row": 1,
+                  "col": 2
+                },
+                {
+                  "table_id": "502dd70a-926b-49d7-b236-63855c98e740",
+                  "source_sha256": "6958382196b6336d5873b7ec53826d29d0652c6b6f6e88f13cbb74b6283ac48b",
+                  "paragraph": 13,
+                  "utf8_start": 335,
+                  "utf8_end": 368
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "review_note": "Gross emissions, not equal-valued net row. UK/Ireland and full-Group geographies remain stress readings."
+    },
+    {
+      "number": 105,
+      "case_id": "tatqa-21e0abec-2256-4dd3-be8e-9329e4726546",
+      "document": "tatqa-2a704bb9-4bd3-4071-b8e6-212957b04ada.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "interest_rate_swap_carrying_amount",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "2a704bb9-4bd3-4071-b8e6-212957b04ada",
+            "source_sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+            "row": 3,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "2a704bb9-4bd3-4071-b8e6-212957b04ada",
+              "source_sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+              "row": 3,
+              "col": 2
+            },
+            {
+              "table_id": "2a704bb9-4bd3-4071-b8e6-212957b04ada",
+              "source_sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "2a704bb9-4bd3-4071-b8e6-212957b04ada",
+              "source_sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "2a704bb9-4bd3-4071-b8e6-212957b04ada",
+              "source_sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+              "row": 3,
+              "col": 0
+            },
+            {
+              "table_id": "2a704bb9-4bd3-4071-b8e6-212957b04ada",
+              "source_sha256": "dc3088fe19629e0ffe617c0c53961e3eb799c7cdf897b807d2d095c7523892bb",
+              "row": 1,
+              "col": 2
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 108,
+      "case_id": "tatqa-f036c54e-3e90-4740-bf34-bf175c9c7a4a",
+      "document": "tatqa-1fc1784c-38a0-49a2-a985-8c8a479f5f66.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "operating_margin",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "1fc1784c-38a0-49a2-a985-8c8a479f5f66",
+            "source_sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+            "row": 5,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "1fc1784c-38a0-49a2-a985-8c8a479f5f66",
+              "source_sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+              "row": 5,
+              "col": 1
+            },
+            {
+              "table_id": "1fc1784c-38a0-49a2-a985-8c8a479f5f66",
+              "source_sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "1fc1784c-38a0-49a2-a985-8c8a479f5f66",
+              "source_sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+              "row": 1,
+              "col": 1
+            },
+            {
+              "table_id": "1fc1784c-38a0-49a2-a985-8c8a479f5f66",
+              "source_sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+              "row": 5,
+              "col": 0
+            },
+            {
+              "table_id": "1fc1784c-38a0-49a2-a985-8c8a479f5f66",
+              "source_sha256": "8d51f22ebd2ba685066b6ac0a9c5f08e1230c43337204568b1cf2960150304cd",
+              "row": 5,
+              "col": 1,
+              "utf8_start": 2,
+              "utf8_end": 3
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 113,
+      "case_id": "tatqa-ca3c4add-5d49-4078-bc6f-7b38a842c06e",
+      "document": "tatqa-1f631856-89ba-471a-b65d-86801ec07401.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "issued_dsu",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "1f631856-89ba-471a-b65d-86801ec07401",
+            "source_sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+            "row": 2,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "1f631856-89ba-471a-b65d-86801ec07401",
+              "source_sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+              "row": 2,
+              "col": 1
+            },
+            {
+              "table_id": "1f631856-89ba-471a-b65d-86801ec07401",
+              "source_sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+              "paragraph": 6,
+              "utf8_start": 0,
+              "utf8_end": 8
+            },
+            {
+              "table_id": "1f631856-89ba-471a-b65d-86801ec07401",
+              "source_sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+              "row": 0,
+              "col": 0
+            },
+            {
+              "table_id": "1f631856-89ba-471a-b65d-86801ec07401",
+              "source_sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "1f631856-89ba-471a-b65d-86801ec07401",
+              "source_sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "1f631856-89ba-471a-b65d-86801ec07401",
+              "source_sha256": "a45e70ea8fbf59aa1ea3b53cafbb188d66b930a09134e7b3c9951e4493fa312d",
+              "paragraph": 8,
+              "utf8_start": 34,
+              "utf8_end": 38
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 114,
+      "case_id": "tatqa-806247ca-aa73-4484-b2e6-d7221a64610f",
+      "document": "tatqa-a961dd41-e5cb-40ce-876d-7c2f2c7dae96.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "current_trade_receivables",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "a961dd41-e5cb-40ce-876d-7c2f2c7dae96",
+            "source_sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+            "row": 3,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "a961dd41-e5cb-40ce-876d-7c2f2c7dae96",
+              "source_sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+              "row": 3,
+              "col": 2
+            },
+            {
+              "table_id": "a961dd41-e5cb-40ce-876d-7c2f2c7dae96",
+              "source_sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "a961dd41-e5cb-40ce-876d-7c2f2c7dae96",
+              "source_sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "a961dd41-e5cb-40ce-876d-7c2f2c7dae96",
+              "source_sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+              "row": 3,
+              "col": 0
+            },
+            {
+              "table_id": "a961dd41-e5cb-40ce-876d-7c2f2c7dae96",
+              "source_sha256": "20fa7e39dd4422690111a7c31f0d9f8fce0e387f46f4b5c95655ae9b996fbf11",
+              "row": 1,
+              "col": 2
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 115,
+      "case_id": "tatqa-5835d53d-8b8c-42eb-9b0b-8dd44502c222",
+      "document": "tatqa-a7a7ede0-4575-4ace-8d5b-371db74ef3c1.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "uk_revenue",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "a7a7ede0-4575-4ace-8d5b-371db74ef3c1",
+            "source_sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+            "row": 2,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "a7a7ede0-4575-4ace-8d5b-371db74ef3c1",
+              "source_sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+              "row": 2,
+              "col": 1
+            },
+            {
+              "table_id": "a7a7ede0-4575-4ace-8d5b-371db74ef3c1",
+              "source_sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+              "row": 1,
+              "col": 0
+            },
+            {
+              "table_id": "a7a7ede0-4575-4ace-8d5b-371db74ef3c1",
+              "source_sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "a7a7ede0-4575-4ace-8d5b-371db74ef3c1",
+              "source_sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "a7a7ede0-4575-4ace-8d5b-371db74ef3c1",
+              "source_sha256": "f40db4ad0c85dc576dcf72c41728388da71970f46b150d048b23d96c178c64aa",
+              "row": 1,
+              "col": 1
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 116,
+      "case_id": "tatqa-cf9ea7bd-d26e-4ba9-a2a9-b1e1c73ec11c",
+      "document": "tatqa-f5cab3e6-1f49-4434-b9a2-5e97073b985b.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "derivative_liabilities",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "f5cab3e6-1f49-4434-b9a2-5e97073b985b",
+            "source_sha256": "a7831e877dfd31f12b68208d29ddb06f286eeadbb4b98d3004c2ad8b83937a74",
+            "row": 3,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "f5cab3e6-1f49-4434-b9a2-5e97073b985b",
+              "source_sha256": "a7831e877dfd31f12b68208d29ddb06f286eeadbb4b98d3004c2ad8b83937a74",
+              "row": 3,
+              "col": 2
+            },
+            {
+              "table_id": "f5cab3e6-1f49-4434-b9a2-5e97073b985b",
+              "source_sha256": "a7831e877dfd31f12b68208d29ddb06f286eeadbb4b98d3004c2ad8b83937a74",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "f5cab3e6-1f49-4434-b9a2-5e97073b985b",
+              "source_sha256": "a7831e877dfd31f12b68208d29ddb06f286eeadbb4b98d3004c2ad8b83937a74",
+              "row": 1,
+              "col": 2
+            },
+            {
+              "table_id": "f5cab3e6-1f49-4434-b9a2-5e97073b985b",
+              "source_sha256": "a7831e877dfd31f12b68208d29ddb06f286eeadbb4b98d3004c2ad8b83937a74",
+              "row": 3,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 117,
+      "case_id": "tatqa-6927b567-adcd-418d-bd67-e7de8542c658",
+      "document": "tatqa-ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "ground_leases",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7",
+            "source_sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+            "row": 4,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7",
+              "source_sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+              "row": 4,
+              "col": 1
+            },
+            {
+              "table_id": "ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7",
+              "source_sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+              "row": 0,
+              "col": 2
+            },
+            {
+              "table_id": "ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7",
+              "source_sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+              "row": 2,
+              "col": 1
+            },
+            {
+              "table_id": "ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7",
+              "source_sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+              "row": 3,
+              "col": 1
+            },
+            {
+              "table_id": "ae44e24d-3fb5-4eff-95e1-ec8fc530c1d7",
+              "source_sha256": "52f8e246ff8e9bac7d15752c24151c8791c336a9f62d8b7fbea2f8fe58f6b8d5",
+              "row": 4,
+              "col": 0
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 119,
+      "case_id": "tatqa-91f1a159-9a51-4a8d-ab24-a4b9a00d5c33",
+      "document": "tatqa-a190aaec-d9e9-4555-a64b-e833f1db0843.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "gross_profit_sales_percentage",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "a190aaec-d9e9-4555-a64b-e833f1db0843",
+            "source_sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+            "row": 3,
+            "col": 2
+          },
+          "required": [
+            {
+              "table_id": "a190aaec-d9e9-4555-a64b-e833f1db0843",
+              "source_sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+              "row": 3,
+              "col": 2
+            },
+            {
+              "table_id": "a190aaec-d9e9-4555-a64b-e833f1db0843",
+              "source_sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "a190aaec-d9e9-4555-a64b-e833f1db0843",
+              "source_sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+              "row": 1,
+              "col": 2
+            },
+            {
+              "table_id": "a190aaec-d9e9-4555-a64b-e833f1db0843",
+              "source_sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+              "row": 3,
+              "col": 0
+            },
+            {
+              "table_id": "a190aaec-d9e9-4555-a64b-e833f1db0843",
+              "source_sha256": "0cf0ec59cbf5ed664aff5fdf9e6651be34d0ce4ccd3656ade19a088128f87aa4",
+              "paragraph": 12,
+              "utf8_start": 59,
+              "utf8_end": 82
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    },
+    {
+      "number": 120,
+      "case_id": "tatqa-3264a669-9c5e-4821-b6f2-1f8002f47ffb",
+      "document": "tatqa-bee68d71-44ca-4177-a1c7-8c127f6f9203.json",
+      "tier": "primary_direct_extraction",
+      "role_id": "granted_nonvested_shares",
+      "proof_sets": [
+        {
+          "value": {
+            "table_id": "bee68d71-44ca-4177-a1c7-8c127f6f9203",
+            "source_sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+            "row": 2,
+            "col": 1
+          },
+          "required": [
+            {
+              "table_id": "bee68d71-44ca-4177-a1c7-8c127f6f9203",
+              "source_sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+              "row": 2,
+              "col": 1
+            },
+            {
+              "table_id": "bee68d71-44ca-4177-a1c7-8c127f6f9203",
+              "source_sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+              "row": 0,
+              "col": 0
+            },
+            {
+              "table_id": "bee68d71-44ca-4177-a1c7-8c127f6f9203",
+              "source_sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+              "row": 0,
+              "col": 1
+            },
+            {
+              "table_id": "bee68d71-44ca-4177-a1c7-8c127f6f9203",
+              "source_sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+              "row": 2,
+              "col": 0
+            },
+            {
+              "table_id": "bee68d71-44ca-4177-a1c7-8c127f6f9203",
+              "source_sha256": "859a0dac2d00e5183847c877082c08420e8d48e038ce4fb0c2d3d23cc63fdf31",
+              "paragraph": 7,
+              "utf8_start": 96,
+              "utf8_end": 143
+            }
+          ]
+        }
+      ],
+      "stress_readings": [],
+      "review_note": "D4 source-selected value locations expanded by generic D5 context annotations."
+    }
+  ]
+}

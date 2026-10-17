@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-17",
+  "measurement_tests": 126,
+  "new_activation_tests": 9,
+  "verified_development_members": 116,
+  "previous_frozen_artifact_entries": 104,
+  "unchanged_case_records": 119,
+  "unchanged_original_questions_source_hashes_labels_and_tiers": 120,
+  "reproduced_files": {
+    "adjudication.json": "b67735ab78ec3659baa368966b0baa962ebab09cc1164bb446f3c94ce3b3d2df",
+    "build.json": "323907ab5c31d9bf43282e97f1c4f8dcb2008ff0e6f76956afea8ab120015c4a",
+    "collision-audit.json": "adfaef03a1fc9c4b8f287dc155686c1adb4e2ef90adeefe2dc17a45e9dc0e431",
+    "custodian-input.json": "359880f78c76d4a2c952b0b19aba7e89a0e8e84e11a68f1f97862e57aeb065c6",
+    "custodian-receipt-template.json": "ecfa2d75e8892749d35db7bb7f6fb953866b92463a0823ddc34fbaa23204a5f7",
+    "family-ledger.json": "23b76dae48c9b87b3d9d5b9991e318020e438b00b442b19836bf19a70cefb0a7",
+    "gold.json": "c685a04c4553507015b3826ae6b41537390b594348c2f889c2dc896ff8d5d979",
+    "pilot-audit.json": "0e0c4ea955e5bd6c3cca9399d34ac3d315e20f9d669d47e5eea467a43b424c22",
+    "tiers.json": "09ef9ec2c491caf16c193f3eb2f63bea413bb255b5c7308b0b6a10b749b5dd18"
+  },
+  "source_collision_count": 0,
+  "model_calls": 0,
+  "sealed_opened": false
+}

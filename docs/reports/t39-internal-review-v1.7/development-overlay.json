@@ -1,0 +1,314 @@
+{
+  "version": "t39-internal-development-overlay-v1.7",
+  "receipt_sha256": "52665c06bdb80e81771f3b65b110ae35660d383b64039a4075aca657a67bcedf",
+  "development_ledger_sha256": "52a49b9b35f1eaa14f554fe4661c83109bd7ab770da6ebfd106a8e9a446c7853",
+  "original_development_cases": 120,
+  "colliding_development_families": [
+    "company:au-woolworths-group",
+    "company:hkex-00700",
+    "company:sec-1012100",
+    "company:sec-849399"
+  ],
+  "excluded_development": [
+    {
+      "case_id": "tatqa-28233ece-7a01-47c5-b391-4212b0620940",
+      "number": 12,
+      "family_key": "company:hkex-00700",
+      "prior_tier": "primary_direct_extraction",
+      "original_label": "supported",
+      "reason": "family_collision"
+    },
+    {
+      "case_id": "tatqa-b39b7bdd-0496-4131-a0e8-69b9f077eeda",
+      "number": 13,
+      "family_key": "company:hkex-00700",
+      "prior_tier": "primary_direct_extraction",
+      "original_label": "supported",
+      "reason": "family_collision"
+    },
+    {
+      "case_id": "tatqa-68ac2c86-8373-4134-960f-5d64427528ec",
+      "number": 30,
+      "family_key": "company:au-woolworths-group",
+      "prior_tier": "primary_direct_extraction",
+      "original_label": "supported",
+      "reason": "family_collision"
+    },
+    {
+      "case_id": "tatqa-c6d15acd-4fd8-4419-a04e-c69487836f86",
+      "number": 41,
+      "family_key": "company:hkex-00700",
+      "prior_tier": "primary_direct_extraction",
+      "original_label": "supported",
+      "reason": "family_collision"
+    },
+    {
+      "case_id": "tatqa-04eb80f3-ec41-40c1-8413-9d70059a85ca",
+      "number": 48,
+      "family_key": "company:au-woolworths-group",
+      "prior_tier": "primary_direct_extraction",
+      "original_label": "supported",
+      "reason": "family_collision"
+    },
+    {
+      "case_id": "tatqa-e5156247-2cf5-4242-8c82-0c19d8bb7cc9",
+      "number": 49,
+      "family_key": "company:au-woolworths-group",
+      "prior_tier": "primary_direct_extraction",
+      "original_label": "supported",
+      "reason": "family_collision"
+    },
+    {
+      "case_id": "tatqa-c5036e83-ed8b-4267-89bc-2653be0e7ccc",
+      "number": 56,
+      "family_key": "company:sec-1012100",
+      "prior_tier": "primary_direct_extraction",
+      "original_label": "supported",
+      "reason": "family_collision"
+    },
+    {
+      "case_id": "tatqa-21e0abec-2256-4dd3-be8e-9329e4726546",
+      "number": 105,
+      "family_key": "company:hkex-00700",
+      "prior_tier": "primary_direct_extraction",
+      "original_label": "supported",
+      "reason": "family_collision"
+    },
+    {
+      "case_id": "tatqa-f036c54e-3e90-4740-bf34-bf175c9c7a4a",
+      "number": 108,
+      "family_key": "company:sec-849399",
+      "prior_tier": "primary_direct_extraction",
+      "original_label": "supported",
+      "reason": "family_collision"
+    }
+  ],
+  "primary_losses": {
+    "txt": {
+      "supported": 0,
+      "negative": 0
+    },
+    "pdf": {
+      "supported": 0,
+      "negative": 0
+    },
+    "json": {
+      "supported": 9,
+      "negative": 0
+    }
+  },
+  "remaining": {
+    "all_exposed_cases": 111,
+    "primary_cases": 92,
+    "primary_by_format_label": {
+      "txt": {
+        "supported": 32,
+        "negative": 19
+      },
+      "pdf": {
+        "supported": 10,
+        "negative": 7
+      },
+      "json": {
+        "supported": 24,
+        "negative": 0
+      }
+    },
+    "primary_confidence": {
+      "A": 22,
+      "B": 70
+    },
+    "exposed_confidence": {
+      "A": 23,
+      "B": 87,
+      "C": 1
+    },
+    "primary_clusters": {
+      "cases": 92,
+      "established_cases": 92,
+      "candidate_or_unknown_cases": 0,
+      "families": 55,
+      "largest_cluster": 5,
+      "size_distribution": {
+        "1": 33,
+        "2": 14,
+        "3": 3,
+        "4": 3,
+        "5": 2
+      },
+      "memberships": {
+        "article:wikipedia:1973_oil_crisis": 2,
+        "article:wikipedia:Black_Death": 1,
+        "article:wikipedia:Civil_disobedience": 2,
+        "article:wikipedia:Economic_inequality": 4,
+        "article:wikipedia:Geology": 2,
+        "article:wikipedia:Harvard_University": 1,
+        "article:wikipedia:Huguenot": 3,
+        "article:wikipedia:Immune_system": 5,
+        "article:wikipedia:Normans": 1,
+        "article:wikipedia:Packet_switching": 2,
+        "article:wikipedia:Pharmacy": 3,
+        "article:wikipedia:Private_school": 2,
+        "article:wikipedia:Rhine": 5,
+        "article:wikipedia:Scottish_Parliament": 3,
+        "article:wikipedia:Sky_(United_Kingdom)": 2,
+        "article:wikipedia:Southern_California": 4,
+        "article:wikipedia:Steam_engine": 2,
+        "article:wikipedia:University_of_Chicago": 1,
+        "article:wikipedia:Victoria_(Australia)": 2,
+        "article:wikipedia:Warsaw": 2,
+        "article:wikipedia:Yuan_dynasty": 4,
+        "company:au-national-storage-reit": 1,
+        "company:au-nextdc": 1,
+        "company:ca-cogeco": 1,
+        "company:gb-00470893": 1,
+        "company:gb-sophos-group": 1,
+        "company:ie-greencore": 1,
+        "company:sec-1033767": 2,
+        "company:sec-1124804": 1,
+        "company:sec-1158324": 1,
+        "company:sec-1274494": 1,
+        "company:sec-1385157": 1,
+        "company:sec-1609711": 1,
+        "company:sec-17843": 2,
+        "company:sec-23217": 1,
+        "company:sec-39020": 1,
+        "company:sec-51143": 1,
+        "company:sec-730255": 2,
+        "company:sec-796505": 1,
+        "company:sec-807882": 1,
+        "company:sec-898293": 1,
+        "company:us-advanced-energy-industries": 1,
+        "paper:arxiv:1612.08205": 1,
+        "paper:arxiv:1709.05036": 1,
+        "paper:arxiv:1810.12085": 1,
+        "paper:arxiv:1902.09666": 2,
+        "paper:arxiv:1903.07406": 1,
+        "paper:arxiv:1905.07791": 1,
+        "paper:arxiv:1906.07701": 1,
+        "paper:arxiv:1909.00015": 1,
+        "paper:arxiv:1909.13104": 1,
+        "paper:arxiv:1910.06592": 1,
+        "paper:arxiv:2002.01984": 1,
+        "paper:arxiv:2002.02070": 2,
+        "paper:arxiv:2003.11645": 1
+      }
+    },
+    "primary_clusters_by_format": {
+      "txt": {
+        "cases": 51,
+        "established_cases": 51,
+        "candidate_or_unknown_cases": 0,
+        "families": 32,
+        "largest_cluster": 4,
+        "size_distribution": {
+          "1": 16,
+          "2": 14,
+          "3": 1,
+          "4": 1
+        },
+        "memberships": {
+          "article:wikipedia:1973_oil_crisis": 2,
+          "article:wikipedia:Civil_disobedience": 1,
+          "article:wikipedia:Economic_inequality": 2,
+          "article:wikipedia:Geology": 2,
+          "article:wikipedia:Harvard_University": 1,
+          "article:wikipedia:Huguenot": 3,
+          "article:wikipedia:Immune_system": 2,
+          "article:wikipedia:Normans": 1,
+          "article:wikipedia:Packet_switching": 2,
+          "article:wikipedia:Pharmacy": 2,
+          "article:wikipedia:Rhine": 1,
+          "article:wikipedia:Scottish_Parliament": 2,
+          "article:wikipedia:Sky_(United_Kingdom)": 2,
+          "article:wikipedia:Southern_California": 2,
+          "article:wikipedia:Steam_engine": 2,
+          "article:wikipedia:University_of_Chicago": 1,
+          "article:wikipedia:Victoria_(Australia)": 2,
+          "article:wikipedia:Warsaw": 2,
+          "article:wikipedia:Yuan_dynasty": 4,
+          "paper:arxiv:1612.08205": 1,
+          "paper:arxiv:1709.05036": 1,
+          "paper:arxiv:1810.12085": 1,
+          "paper:arxiv:1902.09666": 2,
+          "paper:arxiv:1903.07406": 1,
+          "paper:arxiv:1905.07791": 1,
+          "paper:arxiv:1906.07701": 1,
+          "paper:arxiv:1909.00015": 1,
+          "paper:arxiv:1909.13104": 1,
+          "paper:arxiv:1910.06592": 1,
+          "paper:arxiv:2002.01984": 1,
+          "paper:arxiv:2002.02070": 2,
+          "paper:arxiv:2003.11645": 1
+        }
+      },
+      "pdf": {
+        "cases": 17,
+        "established_cases": 17,
+        "candidate_or_unknown_cases": 0,
+        "families": 9,
+        "largest_cluster": 4,
+        "size_distribution": {
+          "1": 4,
+          "2": 3,
+          "3": 1,
+          "4": 1
+        },
+        "memberships": {
+          "article:wikipedia:Black_Death": 1,
+          "article:wikipedia:Civil_disobedience": 1,
+          "article:wikipedia:Economic_inequality": 2,
+          "article:wikipedia:Immune_system": 3,
+          "article:wikipedia:Pharmacy": 1,
+          "article:wikipedia:Private_school": 2,
+          "article:wikipedia:Rhine": 4,
+          "article:wikipedia:Scottish_Parliament": 1,
+          "article:wikipedia:Southern_California": 2
+        }
+      },
+      "json": {
+        "cases": 24,
+        "established_cases": 24,
+        "candidate_or_unknown_cases": 0,
+        "families": 21,
+        "largest_cluster": 2,
+        "size_distribution": {
+          "1": 18,
+          "2": 3
+        },
+        "memberships": {
+          "company:au-national-storage-reit": 1,
+          "company:au-nextdc": 1,
+          "company:ca-cogeco": 1,
+          "company:gb-00470893": 1,
+          "company:gb-sophos-group": 1,
+          "company:ie-greencore": 1,
+          "company:sec-1033767": 2,
+          "company:sec-1124804": 1,
+          "company:sec-1158324": 1,
+          "company:sec-1274494": 1,
+          "company:sec-1385157": 1,
+          "company:sec-1609711": 1,
+          "company:sec-17843": 2,
+          "company:sec-23217": 1,
+          "company:sec-39020": 1,
+          "company:sec-51143": 1,
+          "company:sec-730255": 2,
+          "company:sec-796505": 1,
+          "company:sec-807882": 1,
+          "company:sec-898293": 1,
+          "company:us-advanced-energy-industries": 1
+        }
+      }
+    },
+    "cross_split_verified_cases": 0,
+    "custodian_status": "delegated_internal_review_complete",
+    "collisions": 4,
+    "replacements_drawn": 0
+  },
+  "remaining_primary_with_unresolved_lineage": 24,
+  "certified_primary_cases": 0,
+  "claim": "Known identity collisions removed; broader lineage separation remains uncertified. Internal exposed pilot only.",
+  "replacements_drawn": 0,
+  "source_gold_bytes_changed": false
+}

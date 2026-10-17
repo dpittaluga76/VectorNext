@@ -19,7 +19,7 @@ pub struct GenerationConfig {
     pub runtime: String,
     pub prompt: String,
     pub prompt_version: String,
-    pub temperature: u32,
+    pub temperature: serde_json::Number,
     pub seed: u64,
     pub context_window: usize,
     pub output_tokens: usize,
@@ -65,7 +65,8 @@ impl ContextConfig {
                     && !g.runtime.is_empty()
                     && !g.prompt.is_empty()
                     && g.prompt_version == sha256(g.prompt.as_bytes())
-                    && g.temperature == 0
+                    && (g.temperature == serde_json::Number::from(0)
+                        || g.temperature == serde_json::Number::from_f64(0.2).unwrap())
                     && g.context_window == 4096
                     && g.output_tokens == 256
                     && g.annotation_tokens == 60

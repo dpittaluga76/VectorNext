@@ -1,0 +1,156 @@
+{
+  "records": [
+    {
+      "row_index": 0,
+      "headers": [
+        "Currency",
+        "Weightage (%)",
+        "FY 2019 `",
+        "FY 2018 `",
+        "% Change YoY"
+      ],
+      "cells": [
+        "Currency",
+        "Weightage (%)",
+        "FY 2019 `",
+        "FY 2018 `",
+        "% Change YoY"
+      ]
+    },
+    {
+      "row_index": 1,
+      "headers": [
+        "Currency",
+        "Weightage (%)",
+        "FY 2019 `",
+        "FY 2018 `",
+        "% Change YoY"
+      ],
+      "cells": [
+        "USD",
+        "53.6",
+        "70.07",
+        "64.49",
+        "8.7"
+      ]
+    },
+    {
+      "row_index": 2,
+      "headers": [
+        "Currency",
+        "Weightage (%)",
+        "FY 2019 `",
+        "FY 2018 `",
+        "% Change YoY"
+      ],
+      "cells": [
+        "GBP",
+        "13.9",
+        "91.60",
+        "86.05",
+        "6.5"
+      ]
+    },
+    {
+      "row_index": 3,
+      "headers": [
+        "Currency",
+        "Weightage (%)",
+        "FY 2019 `",
+        "FY 2018 `",
+        "% Change YoY"
+      ],
+      "cells": [
+        "EUR",
+        "10.1",
+        "80.82",
+        "76.16",
+        "6.1"
+      ]
+    },
+    {
+      "row_index": 4,
+      "headers": [
+        "Currency",
+        "Weightage (%)",
+        "FY 2019 `",
+        "FY 2018 `",
+        "% Change YoY"
+      ],
+      "cells": [
+        "Breakup of revenue growth",
+        "FY 2019 (%)",
+        "FY 2018 (%)",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 5,
+      "headers": [
+        "Currency",
+        "Weightage (%)",
+        "FY 2019 `",
+        "FY 2018 `",
+        "% Change YoY"
+      ],
+      "cells": [
+        "Business growth",
+        "11.4",
+        "6.7",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 6,
+      "headers": [
+        "Currency",
+        "Weightage (%)",
+        "FY 2019 `",
+        "FY 2018 `",
+        "% Change YoY"
+      ],
+      "cells": [
+        "Impact of exchange rate",
+        "7.6",
+        "(2.3)",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 7,
+      "headers": [
+        "Currency",
+        "Weightage (%)",
+        "FY 2019 `",
+        "FY 2018 `",
+        "% Change YoY"
+      ],
+      "cells": [
+        "Total growth",
+        "19.0",
+        "4.4",
+        "",
+        ""
+      ]
+    },
+    {
+      "paragraph_order": 1,
+      "text": "a. Analysis of revenue growth"
+    },
+    {
+      "paragraph_order": 2,
+      "text": "On a reported basis, TCS’ revenue grew 19% in FY 2019, compared to 4.4% in the prior year. This was largely an outcome of greater demand for our services and solutions during the year, driven by expanding participation in our customers’ growth and transformation initiatives. In addition, there was some benefit from the movement in currency exchange rates."
+    },
+    {
+      "paragraph_order": 3,
+      "text": "FY 2019 saw volatility in USD-INR, ranging from `64.90 and `74.10, and averaging at `70.07. There was also significant volatility in exchange rates of emerging markets’ currencies. Average currency exchange rates during FY 2019 for the three major currencies are given below:"
+    },
+    {
+      "paragraph_order": 4,
+      "text": "Movements in currency exchange rates through the year resulted in a positive impact of 7.6% on the reported revenue. The constant currency revenue growth for the year, which is the reported revenue growth stripped of the currency impact, was 11.4%."
+    }
+  ]
+}

@@ -1,0 +1,2324 @@
+{
+  "date": "2026-10-16",
+  "approved_for_execution": false,
+  "scope": "all 120 development cases; all 37 table cases and 83 text/PDF cases",
+  "method": "finite primary/derived/imprecise aliases vs all cells and whole-token text occurrences under the whitespace floor; wrong locations never added to proofs",
+  "limitation": "Literal occurrence audit detects candidate collisions, not every semantic paraphrase or wrong fact within an annotated paragraph. Negative cases have no positive aliases to compare.",
+  "cases": [
+    {
+      "number": 1,
+      "format": "txt",
+      "checked": 31335,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 4700,
+          "utf8_end": 4708,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 4733,
+          "utf8_end": 4741,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 8488,
+          "utf8_end": 8496,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 8655,
+          "utf8_end": 8663,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 9276,
+          "utf8_end": 9284,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 9365,
+          "utf8_end": 9373,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 9529,
+          "utf8_end": 9537,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 11291,
+          "utf8_end": 11299,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 12046,
+          "utf8_end": 12054,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 13718,
+          "utf8_end": 13726,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 13759,
+          "utf8_end": 13767,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 14226,
+          "utf8_end": 14234,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 14785,
+          "utf8_end": 14793,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 14865,
+          "utf8_end": 14873,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 15921,
+          "utf8_end": 15929,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 18009,
+          "utf8_end": 18017,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 20014,
+          "utf8_end": 20022,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 20153,
+          "utf8_end": 20161,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 20536,
+          "utf8_end": 20544,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 29331,
+          "utf8_end": 29339,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "instance",
+          "document_sha256": "c99bdd323d98bdf2a1150e456b739162418b9bcf586594010a46b1a3dbd0a7d6",
+          "utf8_start": 30533,
+          "utf8_end": 30541,
+          "value_string": "sentence",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "format": "json",
+      "checked": 21,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "opening_balance",
+          "location": "/records/6/cells/2",
+          "value_string": "$1,264",
+          "kind": "exact_wrong_location",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "format": "pdf",
+      "checked": 588,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 4,
+      "format": "txt",
+      "checked": 836,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "job",
+          "document_sha256": "1c7faebb317f0204acbe7dc29fd2a0485558974e592b85d53d495bfd21592427",
+          "utf8_start": 579,
+          "utf8_end": 583,
+          "value_string": "MSPs",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 6,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 7,
+      "format": "txt",
+      "checked": 840,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 8,
+      "format": "txt",
+      "checked": 578,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 9,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 10,
+      "format": "txt",
+      "checked": 1230,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 11,
+      "format": "txt",
+      "checked": 17635,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 12,
+      "format": "json",
+      "checked": 45,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 13,
+      "format": "json",
+      "checked": 45,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 14,
+      "format": "txt",
+      "checked": 17253,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 15,
+      "format": "txt",
+      "checked": 16735,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 16,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 17,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 18,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 19,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 20,
+      "format": "txt",
+      "checked": 19465,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 21,
+      "format": "json",
+      "checked": 72,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 22,
+      "format": "json",
+      "checked": 21,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 23,
+      "format": "json",
+      "checked": 33,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 24,
+      "format": "json",
+      "checked": 45,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 25,
+      "format": "json",
+      "checked": 64,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 26,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 27,
+      "format": "txt",
+      "checked": 559,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 28,
+      "format": "json",
+      "checked": 25,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 29,
+      "format": "json",
+      "checked": 25,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 30,
+      "format": "json",
+      "checked": 21,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 31,
+      "format": "txt",
+      "checked": 577,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 32,
+      "format": "txt",
+      "checked": 1744,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "date",
+          "document_sha256": "76cdbeb9d90ace35573e2882ad7c0def58ed2e97998e9484cfd8431a288d76df",
+          "utf8_start": 512,
+          "utf8_end": 516,
+          "value_string": "1979",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "date",
+          "document_sha256": "76cdbeb9d90ace35573e2882ad7c0def58ed2e97998e9484cfd8431a288d76df",
+          "utf8_start": 889,
+          "utf8_end": 893,
+          "value_string": "1979",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 34,
+      "format": "txt",
+      "checked": 46254,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 35,
+      "format": "pdf",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 36,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 37,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 38,
+      "format": "pdf",
+      "checked": 567,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 39,
+      "format": "pdf",
+      "checked": 900,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 40,
+      "format": "json",
+      "checked": 36,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 41,
+      "format": "json",
+      "checked": 39,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 42,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 43,
+      "format": "pdf",
+      "checked": 765,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 44,
+      "format": "txt",
+      "checked": 1024,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 45,
+      "format": "txt",
+      "checked": 671,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 46,
+      "format": "txt",
+      "checked": 36122,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 47,
+      "format": "txt",
+      "checked": 38516,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 48,
+      "format": "json",
+      "checked": 54,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 49,
+      "format": "json",
+      "checked": 54,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 50,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 51,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 52,
+      "format": "txt",
+      "checked": 561,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 53,
+      "format": "txt",
+      "checked": 10710,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 81,
+          "utf8_end": 84,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 151,
+          "utf8_end": 154,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 190,
+          "utf8_end": 193,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 260,
+          "utf8_end": 263,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 389,
+          "utf8_end": 392,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 397,
+          "utf8_end": 400,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 459,
+          "utf8_end": 462,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 511,
+          "utf8_end": 514,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 569,
+          "utf8_end": 572,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 648,
+          "utf8_end": 651,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 697,
+          "utf8_end": 700,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 767,
+          "utf8_end": 770,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 826,
+          "utf8_end": 829,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 910,
+          "utf8_end": 913,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 994,
+          "utf8_end": 997,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 1137,
+          "utf8_end": 1140,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 1425,
+          "utf8_end": 1428,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 1711,
+          "utf8_end": 1714,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 1959,
+          "utf8_end": 1962,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2082,
+          "utf8_end": 2085,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2115,
+          "utf8_end": 2118,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2235,
+          "utf8_end": 2238,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2258,
+          "utf8_end": 2261,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2418,
+          "utf8_end": 2421,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2565,
+          "utf8_end": 2568,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2834,
+          "utf8_end": 2837,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2993,
+          "utf8_end": 2996,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 3070,
+          "utf8_end": 3073,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 3326,
+          "utf8_end": 3329,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 3599,
+          "utf8_end": 3602,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 3740,
+          "utf8_end": 3743,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 3803,
+          "utf8_end": 3806,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 3834,
+          "utf8_end": 3837,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 3942,
+          "utf8_end": 3945,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 3971,
+          "utf8_end": 3974,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4032,
+          "utf8_end": 4035,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4183,
+          "utf8_end": 4186,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4210,
+          "utf8_end": 4213,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4314,
+          "utf8_end": 4317,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4350,
+          "utf8_end": 4353,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4490,
+          "utf8_end": 4493,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4539,
+          "utf8_end": 4542,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4692,
+          "utf8_end": 4695,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4820,
+          "utf8_end": 4823,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4853,
+          "utf8_end": 4856,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5179,
+          "utf8_end": 5182,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5311,
+          "utf8_end": 5314,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5422,
+          "utf8_end": 5425,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5451,
+          "utf8_end": 5454,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5464,
+          "utf8_end": 5467,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5531,
+          "utf8_end": 5534,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5649,
+          "utf8_end": 5652,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5722,
+          "utf8_end": 5725,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5742,
+          "utf8_end": 5745,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5807,
+          "utf8_end": 5810,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5858,
+          "utf8_end": 5861,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5885,
+          "utf8_end": 5888,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5909,
+          "utf8_end": 5912,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 6045,
+          "utf8_end": 6048,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 6629,
+          "utf8_end": 6632,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 7278,
+          "utf8_end": 7281,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 7305,
+          "utf8_end": 7308,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 7830,
+          "utf8_end": 7833,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 8167,
+          "utf8_end": 8170,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 8210,
+          "utf8_end": 8213,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 8882,
+          "utf8_end": 8885,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 9528,
+          "utf8_end": 9531,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 9560,
+          "utf8_end": 9563,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 9624,
+          "utf8_end": 9627,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 9685,
+          "utf8_end": 9688,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 9715,
+          "utf8_end": 9718,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 9756,
+          "utf8_end": 9759,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 9919,
+          "utf8_end": 9922,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 10246,
+          "utf8_end": 10249,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 10478,
+          "utf8_end": 10481,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 10589,
+          "utf8_end": 10592,
+          "value_string": "car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 77,
+          "utf8_end": 84,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 186,
+          "utf8_end": 193,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 693,
+          "utf8_end": 700,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 1955,
+          "utf8_end": 1962,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2111,
+          "utf8_end": 2118,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 2989,
+          "utf8_end": 2996,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 3322,
+          "utf8_end": 3329,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4179,
+          "utf8_end": 4186,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4206,
+          "utf8_end": 4213,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 4346,
+          "utf8_end": 4353,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5527,
+          "utf8_end": 5534,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 5738,
+          "utf8_end": 5745,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "answer",
+          "document_sha256": "af7a772e957a12d20bc406f9c33e264815864c757229720464dd23fcb30b8a4d",
+          "utf8_start": 8163,
+          "utf8_end": 8170,
+          "value_string": "the car",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 54,
+      "format": "txt",
+      "checked": 10710,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 55,
+      "format": "json",
+      "checked": 36,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 56,
+      "format": "json",
+      "checked": 104,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 57,
+      "format": "txt",
+      "checked": 514,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 58,
+      "format": "txt",
+      "checked": 687,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 59,
+      "format": "txt",
+      "checked": 614,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 60,
+      "format": "pdf",
+      "checked": 740,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 61,
+      "format": "pdf",
+      "checked": 1066,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 62,
+      "format": "json",
+      "checked": 72,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 63,
+      "format": "txt",
+      "checked": 21682,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 64,
+      "format": "json",
+      "checked": 28,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 65,
+      "format": "pdf",
+      "checked": 763,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 66,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 67,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 68,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 69,
+      "format": "json",
+      "checked": 32,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 70,
+      "format": "pdf",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 71,
+      "format": "txt",
+      "checked": 696,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "answer",
+          "document_sha256": "829e809f79e6cd89a4bf8d645fa85c1b0bf92b9d6362547ad071e708ecc99593",
+          "utf8_start": 323,
+          "utf8_end": 335,
+          "value_string": "plea bargain",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 72,
+      "format": "txt",
+      "checked": 602,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 73,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 74,
+      "format": "txt",
+      "checked": 16509,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 52,
+          "utf8_end": 58,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 1486,
+          "utf8_end": 1492,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 1581,
+          "utf8_end": 1587,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 5900,
+          "utf8_end": 5906,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 6080,
+          "utf8_end": 6086,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 10434,
+          "utf8_end": 10440,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 10451,
+          "utf8_end": 10457,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 10590,
+          "utf8_end": 10596,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 10836,
+          "utf8_end": 10842,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 11778,
+          "utf8_end": 11784,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 13037,
+          "utf8_end": 13043,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 13193,
+          "utf8_end": 13199,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 13352,
+          "utf8_end": 13358,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 13387,
+          "utf8_end": 13393,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 13823,
+          "utf8_end": 13829,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 14998,
+          "utf8_end": 15004,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 15291,
+          "utf8_end": 15297,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 15791,
+          "utf8_end": 15797,
+          "value_string": "TF-IDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 1486,
+          "utf8_end": 1508,
+          "value_string": "TF-IDF feature vectors",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 5900,
+          "utf8_end": 5922,
+          "value_string": "TF-IDF feature vectors",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 6080,
+          "utf8_end": 6095,
+          "value_string": "TF-IDF features",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 10434,
+          "utf8_end": 10449,
+          "value_string": "TF-IDF features",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 13037,
+          "utf8_end": 13052,
+          "value_string": "TF-IDF features",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 13352,
+          "utf8_end": 13367,
+          "value_string": "TF-IDF features",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 13387,
+          "utf8_end": 13402,
+          "value_string": "TF-IDF features",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 15791,
+          "utf8_end": 15806,
+          "value_string": "TF-IDF features",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 16365,
+          "utf8_end": 16370,
+          "value_string": "TFIDF",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "feature_representation",
+          "document_sha256": "821fa95e87e824603c4a6ad91e4b1386fee65ac1279ccaffa4cb8d53f8879f56",
+          "utf8_start": 10469,
+          "utf8_end": 10510,
+          "value_string": "Term Frequency-Inverse Document Frequency",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 75,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 76,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 77,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 78,
+      "format": "pdf",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 79,
+      "format": "pdf",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 80,
+      "format": "json",
+      "checked": 36,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "basic_eps",
+          "location": "/records/8/cells/1",
+          "value_string": "$0.34",
+          "kind": "exact_wrong_location",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 81,
+      "format": "txt",
+      "checked": 29340,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "user_count",
+          "document_sha256": "d64c578125080898aae9b3cdb7bd01ccea8faad8f6ed3bd195569a49d36c9c6c",
+          "utf8_start": 2869,
+          "utf8_end": 2880,
+          "value_string": "over 20,000",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "user_count",
+          "document_sha256": "d64c578125080898aae9b3cdb7bd01ccea8faad8f6ed3bd195569a49d36c9c6c",
+          "utf8_start": 26477,
+          "utf8_end": 26488,
+          "value_string": "over 20,000",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "user_count",
+          "document_sha256": "d64c578125080898aae9b3cdb7bd01ccea8faad8f6ed3bd195569a49d36c9c6c",
+          "utf8_start": 2869,
+          "utf8_end": 2891,
+          "value_string": "over 20,000 blog users",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        },
+        {
+          "role": "user_count",
+          "document_sha256": "d64c578125080898aae9b3cdb7bd01ccea8faad8f6ed3bd195569a49d36c9c6c",
+          "utf8_start": 26477,
+          "utf8_end": 26499,
+          "value_string": "over 20,000 blog users",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 82,
+      "format": "json",
+      "checked": 40,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 83,
+      "format": "txt",
+      "checked": 14502,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 84,
+      "format": "pdf",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 85,
+      "format": "pdf",
+      "checked": 1049,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 86,
+      "format": "json",
+      "checked": 24,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 87,
+      "format": "json",
+      "checked": 40,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 88,
+      "format": "txt",
+      "checked": 579,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "speaker",
+          "document_sha256": "dea705fdf75f529664435816398522b553e31b0965a1287f3375c31a630e304e",
+          "utf8_start": 94,
+          "utf8_end": 101,
+          "value_string": "Lindzen",
+          "kind": "outside_annotated_support_review_lead",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 89,
+      "format": "json",
+      "checked": 48,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 90,
+      "format": "json",
+      "checked": 48,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 91,
+      "format": "json",
+      "checked": 36,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 92,
+      "format": "json",
+      "checked": 36,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": [
+        {
+          "role": "gross_emissions",
+          "location": "/records/7/cells/2",
+          "value_string": "98,725",
+          "kind": "exact_wrong_location",
+          "primary_proof_accepts": false
+        }
+      ]
+    },
+    {
+      "number": 93,
+      "format": "txt",
+      "checked": 327,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 94,
+      "format": "pdf",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 95,
+      "format": "pdf",
+      "checked": 478,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 96,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 97,
+      "format": "txt",
+      "checked": 878,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 98,
+      "format": "txt",
+      "checked": 553,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 99,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 100,
+      "format": "pdf",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 101,
+      "format": "pdf",
+      "checked": 825,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 102,
+      "format": "pdf",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 103,
+      "format": "txt",
+      "checked": 962,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 104,
+      "format": "pdf",
+      "checked": 669,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 105,
+      "format": "json",
+      "checked": 33,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 106,
+      "format": "txt",
+      "checked": 16717,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 107,
+      "format": "txt",
+      "checked": 16717,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 108,
+      "format": "json",
+      "checked": 30,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 109,
+      "format": "txt",
+      "checked": 561,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 110,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 111,
+      "format": "txt",
+      "checked": 696,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 112,
+      "format": "txt",
+      "checked": 949,
+      "unit": "source_bytes",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 113,
+      "format": "json",
+      "checked": 18,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 114,
+      "format": "json",
+      "checked": 48,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 115,
+      "format": "json",
+      "checked": 21,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 116,
+      "format": "json",
+      "checked": 33,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 117,
+      "format": "json",
+      "checked": 21,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 118,
+      "format": "txt",
+      "checked": 0,
+      "unit": "source_bytes",
+      "has_gold_roles": false,
+      "collisions": []
+    },
+    {
+      "number": 119,
+      "format": "json",
+      "checked": 30,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    },
+    {
+      "number": 120,
+      "format": "json",
+      "checked": 18,
+      "unit": "table_cells",
+      "has_gold_roles": true,
+      "collisions": []
+    }
+  ]
+}

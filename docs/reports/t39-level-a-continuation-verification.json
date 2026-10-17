@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-17",
+  "measurement_tests_linux": 138,
+  "measurement_tests_host_passed": 126,
+  "host_skipped_linux_module": 1,
+  "rust_top_level_passes": 180,
+  "rust_subprocess_helpers_ignored_in_parent": 2,
+  "fmt": "passed",
+  "clippy": "passed",
+  "code_sha256": {
+    "evals/measurement/evaluation_worker.py": "aa85777cbbc6d41e7c74fe911ae03a15e2282e6fbddf5ead11564d197e8167ae",
+    "evals/measurement/evaluation_processor.py": "02dc5813a286c8452c8efa8d8fd13a29272d8f3db1c113c38215a190b2b9efba",
+    "evals/measurement/test_evaluation_worker.py": "1ab00790a163c9d21084a07c0bd167163f63f09cab0b23275320f7c8307f1e5a",
+    "evals/measurement/formatted_budget_preflight.py": "577794e8599be58bc0d73b3e83931d6d01cb8872298db7b11878b0cddd2c6678",
+    "evals/measurement/table_pipeline_preflight.py": "7edb094fd6afc7945fdf6ac59503d44a36b381787b502b6cac2776541f257448",
+    "evals/measurement/table_preflight_report.py": "5b9a6ea78b420d97a97602026a6aefbb0d84785e70c302c691e7eb08cf440ace",
+    "examples/measurement_table_preflight.rs": "e3679173fb23dcfb77e7ffcadb4d875bd5e8784985efb0b61fdad488a66c05bc"
+  },
+  "test_log_sha256": {
+    "tmp\\t39-level-a-core-checks.log": "3d88a0b92d2a1e594f86167db83620e1de1356636c203cfd4393ee6f0c54046d",
+    "tmp\\t39-level-a-python-checks-03.log": "46a26b4b886c531dab32ccd7856bcb0c806327c7a471af2c25903441e6c2b83b"
+  },
+  "historical_gold_manifest_sha256": "bd8a10a3545d249f3990a36bf1e698a7596993b307fcde62a5fb90a861dde929",
+  "benchmark_answers_generated": 0,
+  "sealed_access": false,
+  "production_configuration_changed": false
+}

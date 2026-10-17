@@ -11,12 +11,14 @@ $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $appCompose = Join-Path $projectRoot 'compose.app.yaml'
 $appArguments = @('compose', '--project-name', 'vectornext', '--project-directory', $projectRoot, '-f', $appCompose)
 $modeState = Join-Path $projectRoot 'data/launcher/answer-mode.txt'
-$legacyState = Join-Path $projectRoot 'data/launcher/model-profile.txt'
-if (-not $AnswerMode -and (Test-Path -LiteralPath $modeState)) { $AnswerMode = (Get-Content -LiteralPath $modeState -Raw).Trim() }
+$defaultState = Join-Path $projectRoot 'data/launcher/default-policy.txt'
+$defaultPolicy = 'nuextract-v1'
+$currentDefault = (Test-Path -LiteralPath $defaultState) -and (Get-Content -LiteralPath $defaultState -Raw).Trim() -eq $defaultPolicy
+if (-not $AnswerMode -and $currentDefault -and (Test-Path -LiteralPath $modeState)) { $AnswerMode = (Get-Content -LiteralPath $modeState -Raw).Trim() }
 if (-not $AnswerMode) {
-    $AnswerMode = 'hybrid'
-    if ((Test-Path -LiteralPath $legacyState) -or $env:VECTORNEXT_GENERATOR_PROFILE) {
-        Write-Host 'Upgrading legacy model selection to Hybrid: NuExtract first, with queued Gemma fallback. Both models are required.' -ForegroundColor Cyan
+    $AnswerMode = 'nuextract'
+    if (-not $currentDefault) {
+        Write-Host 'New default: NuExtract only. Existing jobs keep their saved modes. Gemma and Hybrid remain explicit choices.' -ForegroundColor Cyan
     }
 }
 if ($AnswerMode -notin @('hybrid', 'gemma', 'nuextract')) { throw "Unsupported answer mode: $AnswerMode" }
@@ -84,6 +86,7 @@ function Start-Workspace {
     if (-not $available) { throw 'The interface did not start. Choose Status and inspect Docker Desktop logs for the vectornext service.' }
     New-Item -ItemType Directory -Force -Path (Split-Path -Parent $modeState) | Out-Null
     Set-Content -LiteralPath $modeState -Value $AnswerMode -Encoding ascii
+    Set-Content -LiteralPath $defaultState -Value $defaultPolicy -Encoding ascii
     Write-Host "Answer mode for new browser workspaces: $AnswerMode. Existing browser choices are preserved."
     Write-Host "Ready to browse: $address" -ForegroundColor Green
     if (-not $NoBrowser) { Start-Process $address }

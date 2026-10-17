@@ -62,6 +62,14 @@ class SupervisorTests(unittest.TestCase):
         self.assertIsNone(self.manager.child)
         self.assertIsNone(self.manager.lease)
         self.assertEqual(len(self.children),1)
+    def test_background_uses_selected_temperature_without_changing_saved_gemma(self):
+        for model, temperature in [('nuextract',.2),('gemma',0)]:
+            lease = self.lease(model, 'background-' + model, 'background')
+            body = {'model':load(PROFILES[model])['alias'],'max_tokens':256,'temperature':temperature}
+            self.manager.submit('/v1/chat/completions',json.dumps(body),'background',lease['token'],model)
+            with self.assertRaises(Rejected):
+                self.manager.submit('/v1/chat/completions',json.dumps({**body,'temperature':1}),'background',lease['token'],model)
+            self.manager.release(lease)
     def test_artifact_failure_never_spawns_a_backend(self):
         self.manager.verifier = lambda _: (_ for _ in ()).throw(ValueError('corrupt artifact'))
         with self.assertRaisesRegex(ValueError,'corrupt'): self.lease()

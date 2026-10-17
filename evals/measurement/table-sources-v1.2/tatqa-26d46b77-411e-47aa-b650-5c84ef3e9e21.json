@@ -1,0 +1,124 @@
+{
+  "records": [
+    {
+      "row_index": 0,
+      "headers": [
+        "(dollars in thousands)",
+        "Last Fiscal Year of Expiration",
+        "Amount"
+      ],
+      "cells": [
+        "(dollars in thousands)",
+        "Last Fiscal Year of Expiration",
+        "Amount"
+      ]
+    },
+    {
+      "row_index": 1,
+      "headers": [
+        "(dollars in thousands)",
+        "Last Fiscal Year of Expiration",
+        "Amount"
+      ],
+      "cells": [
+        "Income tax net operating loss carryforwards:(1)",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 2,
+      "headers": [
+        "(dollars in thousands)",
+        "Last Fiscal Year of Expiration",
+        "Amount"
+      ],
+      "cells": [
+        "Domestic–state",
+        "2039",
+        "$57,299"
+      ]
+    },
+    {
+      "row_index": 3,
+      "headers": [
+        "(dollars in thousands)",
+        "Last Fiscal Year of Expiration",
+        "Amount"
+      ],
+      "cells": [
+        "Foreign",
+        "2039 or indefinite",
+        "$565,609"
+      ]
+    },
+    {
+      "row_index": 4,
+      "headers": [
+        "(dollars in thousands)",
+        "Last Fiscal Year of Expiration",
+        "Amount"
+      ],
+      "cells": [
+        "Tax credit carryforwards:(1)",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 5,
+      "headers": [
+        "(dollars in thousands)",
+        "Last Fiscal Year of Expiration",
+        "Amount"
+      ],
+      "cells": [
+        "Domestic–federal",
+        "2029",
+        "$39,784"
+      ]
+    },
+    {
+      "row_index": 6,
+      "headers": [
+        "(dollars in thousands)",
+        "Last Fiscal Year of Expiration",
+        "Amount"
+      ],
+      "cells": [
+        "Domestic–state",
+        "2027",
+        "$3,313"
+      ]
+    },
+    {
+      "row_index": 7,
+      "headers": [
+        "(dollars in thousands)",
+        "Last Fiscal Year of Expiration",
+        "Amount"
+      ],
+      "cells": [
+        "Foreign(2)",
+        "2027 or indefinite",
+        "$15,345"
+      ]
+    },
+    {
+      "paragraph_order": 1,
+      "text": "Tax Carryforwards"
+    },
+    {
+      "paragraph_order": 2,
+      "text": "The amount and expiration dates of income tax net operating loss carryforwards and tax credit carryforwards, which are available to reduce future taxes, if any, as of August 31, 2019 are as follows:"
+    },
+    {
+      "paragraph_order": 3,
+      "text": "(1) Net of unrecognized tax benefits."
+    },
+    {
+      "paragraph_order": 4,
+      "text": "(2) Calculated based on the deferral method and includes foreign investment tax credits"
+    }
+  ]
+}

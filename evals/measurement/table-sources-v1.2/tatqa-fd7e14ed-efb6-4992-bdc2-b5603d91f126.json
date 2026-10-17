@@ -1,0 +1,254 @@
+{
+  "records": [
+    {
+      "row_index": 0,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "",
+        "2019",
+        "2018"
+      ]
+    },
+    {
+      "row_index": 1,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "",
+        "53 WEEKS",
+        "52 WEEKS"
+      ]
+    },
+    {
+      "row_index": 2,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Profit for the period attributable to equity holders of the parent entity used in",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 3,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "earnings per share ($M)",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 4,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Continuing operations",
+        "1,493",
+        "1,605"
+      ]
+    },
+    {
+      "row_index": 5,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Discontinued operations",
+        "1,200",
+        "119"
+      ]
+    },
+    {
+      "row_index": 6,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "",
+        "2,693",
+        "1,724"
+      ]
+    },
+    {
+      "row_index": 7,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Weighted average number of shares used in earnings per share (shares, millions) (1)",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 8,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Basic earnings per share",
+        "1,305.7",
+        "1,300.5"
+      ]
+    },
+    {
+      "row_index": 9,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Diluted earnings per share (2)",
+        "1,313.7",
+        "1,303.9"
+      ]
+    },
+    {
+      "row_index": 10,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Basic earnings per share (cents per share) (1)",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 11,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Continuing operations",
+        "114.3",
+        "123.4"
+      ]
+    },
+    {
+      "row_index": 12,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Discontinued operations",
+        "91.9",
+        "9.2"
+      ]
+    },
+    {
+      "row_index": 13,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "",
+        "206.2",
+        "132.6"
+      ]
+    },
+    {
+      "row_index": 14,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Diluted earnings per share (cents per share) (1,2)",
+        "",
+        ""
+      ]
+    },
+    {
+      "row_index": 15,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Continuing operations",
+        "113.6",
+        "123.1"
+      ]
+    },
+    {
+      "row_index": 16,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "Discontinued operations",
+        "91.3",
+        "9.2"
+      ]
+    },
+    {
+      "row_index": 17,
+      "headers": [
+        "",
+        "2019",
+        "2018"
+      ],
+      "cells": [
+        "",
+        "204.9",
+        "132.3"
+      ]
+    },
+    {
+      "paragraph_order": 1,
+      "text": "Earnings per share presents the amount of profit generated for the reporting period attributable to shareholders divided by the weighted average number of shares on issue. The potential for any share rights issued by the Group to dilute existing shareholders’ ownership when the share rights are exercised are also presented."
+    },
+    {
+      "paragraph_order": 2,
+      "text": "(1) Weighted average number of shares has been adjusted to remove shares held in trust by Woolworths Custodian Pty Ltd (as trustee of various employee share trusts)"
+    },
+    {
+      "paragraph_order": 3,
+      "text": "(2) Includes 8.0 million (2018: 3.4 million) shares deemed to be issued for no consideration in respect of employee performance rights."
+    },
+    {
+      "paragraph_order": 4,
+      "text": "In 2019, the weighted average number of ordinary shares used in the calculation of EPS included the effect of the off-market share buy-back that was completed on 27 May 2019, resulting in 58.7 million ordinary shares being cancelled. Refer to Note 4.3 for further details on the share buy-back."
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "version": "t39-internal-custody-v1.7",
+  "proposal_manifest_sha256": "3e3a1c37fd3a9d3e216eaaebcf0d41dc9adad718f24a9d2fa6c6a77cb33452b1",
+  "development_ledger_sha256": "52a49b9b35f1eaa14f554fe4661c83109bd7ab770da6ebfd106a8e9a446c7853",
+  "private_audit_sha256": "d93bdf146a3d3dd346ec42298b9b36ffc74b74605040510df625bc230189daee",
+  "review_kind": "delegated_internal_source_review",
+  "independent_review": false,
+  "blind_holdout": false,
+  "implementation_exposed_candidates": 60,
+  "candidate_model_outputs_used": false,
+  "original_holdout_accessed": false,
+  "approved_for_execution": false,
+  "candidate_count": 60,
+  "candidate_by_format": {
+    "txt": 26,
+    "pdf": 11,
+    "json": 23
+  },
+  "confidence_counts": {
+    "A": 23,
+    "B": 37,
+    "C": 0,
+    "U": 0
+  },
+  "d3_counts": {
+    "primary": 55,
+    "source_content_unavailable": 0,
+    "question_incomplete": 0,
+    "premise_or_entity_ambiguous": 2,
+    "unit_or_format_ambiguous": 1,
+    "scope_or_period_ambiguous": 0,
+    "requires_derivation": 2
+  },
+  "d4_records_checked": 60,
+  "d5_table_cases_checked": 23,
+  "d5_distinct_tables_checked": 20,
+  "primary_by_format_label": {
+    "txt": {
+      "supported": 15,
+      "negative": 8
+    },
+    "pdf": {
+      "supported": 5,
+      "negative": 4
+    },
+    "json": {
+      "supported": 23,
+      "negative": 0
+    }
+  },
+  "established_primary_family_count": 34,
+  "primary_cluster_sizes": {
+    "1": 22,
+    "2": 6,
+    "3": 4,
+    "4": 1,
+    "5": 1
+  },
+  "colliding_development_families": [
+    "company:au-woolworths-group",
+    "company:hkex-00700",
+    "company:sec-1012100",
+    "company:sec-849399"
+  ],
+  "colliding_candidate_cases": 5,
+  "colliding_candidate_families": 4,
+  "unresolved_candidate_lineage_cases": 18,
+  "unresolved_development_families": [
+    "company:au-national-storage-reit",
+    "company:au-nextdc",
+    "company:ca-cogeco",
+    "company:gb-00470893",
+    "company:gb-sophos-group",
+    "company:ie-greencore",
+    "company:in-tcs",
+    "company:sec-1033767",
+    "company:sec-1124804",
+    "company:sec-1158324",
+    "company:sec-1274494",
+    "company:sec-1385157",
+    "company:sec-1609711",
+    "company:sec-17843",
+    "company:sec-23217",
+    "company:sec-39020",
+    "company:sec-51143",
+    "company:sec-730255",
+    "company:sec-796505",
+    "company:sec-807882",
+    "company:sec-898293",
+    "company:us-advanced-energy-industries",
+    "company:us-leidos",
+    "company:us-vmware"
+  ],
+  "whole_split_separation_verified": false,
+  "source_screening_complete": true,
+  "lineage_review_complete": false,
+  "policy_sha256": "6b76547f33dcc2682fe1cb04761c7c0a33d2df63ae06f7071623a0856bcf4ea2"
+}
