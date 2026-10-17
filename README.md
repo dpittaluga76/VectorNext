@@ -215,7 +215,9 @@ Results belong to specific versions, datasets and hardware; they are not blanket
 
 Offline measurement can rescore retained captures without running models. See the [outcome matrix and stage-latency results](docs/reports/t39-measurement.md) and [measurement commands](evals/measurement/README.md). These observed regression sets do not establish general semantic accuracy.
 
-The [removal/compaction audit](docs/reports/t39-residue.md) confirms that historical ingestion jobs retain removed originals and retry receipts; removal is not erasure. The [measurement pilot](docs/reports/t39-d7-pilot-scope-v1.4.md) covers TXT prose QA, **PDF text ingestion (clean render)** and **structured-table QA (JSON)**. It validates the evaluation harness; it does not measure real-layout PDF or table extraction. Its TXT/PDF cases are unpaired, and question-only controls are planned. The [internal source review](docs/reports/t39-internal-review-v1.7.md) records corrected labels, known company overlaps and coverage limits. Its candidates are exposed, so it is not an independent holdout. Runtime integration and execution remain pending. Historical NASA/USGS results remain separate.
+The [removal/compaction audit](docs/reports/t39-residue.md) confirms that historical ingestion jobs retain removed originals and retry receipts; removal is not erasure.
+
+The completed [measurement pilot](docs/reports/t39-internal-results/README.md) reports strategy comparisons, stage timings, question-only controls and oracle/validator diagnostics. Its frozen string/field-name contract produces many failures, so read the [interpretation and limits](docs/reports/t39-internal-results/findings.md) before treating the scores as general accuracy. NuExtract and ranked-five remain selected. The pilot uses clean-render PDFs and JSON tables, exposed candidates and an undersized primary set; it does not establish independent quality, original-layout PDF handling or table extraction. Historical NASA/USGS results remain separate.
 
 ## Verification
 

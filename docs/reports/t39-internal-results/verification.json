@@ -1,0 +1,31 @@
+{
+  "classification": "completed_internal_exposed_pilot",
+  "independent_benchmark_criteria_passed": false,
+  "execution_freeze_sha256": "ea1afed4e58682acc325fe7a9a5910c75fe1d3deac6e9cc9472cb7f2ce69b0cb",
+  "private_capture_manifest_sha256": "cd69a83c51f7984cc1ba1717cb27627b31a3661cdb8974601469470df9695aea",
+  "retained_private_files": 70172,
+  "public_result_files": {
+    "diagnostics-v1.json": "94512d23391ec83852c464f9439ebcde9e10a1d1a69c8e7d39a26b332fc33b15",
+    "findings.md": "519379b01735c02b8ee24b8d9671f633fc5b9fb9dee287ddfa74faf347a53068",
+    "README.md": "2aaf6ae9a9989c0d362d2876049cf7404c51c13e0cf3dbca359ff23ce4cec4ca",
+    "results.json": "5e6dc04e8e80d8c0af8ed2f86c4965b5b1ff8230e7299c8552e493f88a4a350f"
+  },
+  "diagnostic_source_sha256": "34bc5792e98d87524397cdece20a2bfe2f24d0ebfdee75be32b5caf656790843",
+  "test_logs": {
+    "tmp/t39-runtime-python-frozen.log": "7e3d07bfd211b8b215eab22d493e1923755428200d76419f19db80f15e4d519a",
+    "tmp/t39-final-diagnostics-tests.log": "6d707a7473cc582da725ea22cf8dc8f7044e91e750760ec3780362ee21ea60f1",
+    "tmp/t39-runtime-core.log": "839556b48282c95503d347de95d00d552fd001a439f5c93966d2fdee6aabf567",
+    "tmp/t39-runtime-core-followup.log": "1818515e9e252df99e3f39dc4092027acf2dee1e206a5c08e37b471eaab2d20f"
+  },
+  "frozen_tests_passed": 181,
+  "final_offline_checks_passed": 22,
+  "historical_inputs_unchanged_at_execution_end": true,
+  "default_model": "nuextract",
+  "default_strategy": "ranked_30_20_5",
+  "normal_app_restored": true,
+  "library_jobs_history_identical": true,
+  "evaluation_containers_removed": true,
+  "evaluation_volumes_preserved": true,
+  "original_holdout_used": false,
+  "model_failed_attempts_retried": false
+}

@@ -1,11 +1,212 @@
 # VectorNext completed tasks and history
 
-Archived: 2026-10-16 (UTC).
+Last updated: 2026-10-17 (UTC).
 Current tracker: [plan.md](plan.md). Design reference: [architecture.md](architecture.md).
 
 This archive preserves completed-task definitions, verification results, decisions and session handoffs from the former build plan, [historical AGENTS.md notes](#historical-agentsmd-handoff), [historical architecture notes](#historical-architecture-handoff) and [historical README results](#historical-readme-results). Detailed reports and frozen evaluation artifacts remain at their existing paths.
 
 The statuses, next steps, work queue and session-maintenance instructions below are historical snapshots. Use [the active tracker](plan.md) for current priorities and task-maintenance rules; an archived proposal does not authorize new work. Add future completed-task records here with their completion date, results, limitations and report links.
+
+## T39 — Measurement foundation and NuExtract defaults
+
+Status: **complete under the user-authorized internal-pilot scope (2026-10-17)**.
+Depends on T37 diagnostics/jobs and T38 retention. The original independent/blind
+benchmark acceptance was not achieved: review was explicitly delegated internally,
+all 60 candidates are exposed, comprehensive lineage is uncertified and primary
+n=147 is below the original 150 minimum and prospective 520-item requirement.
+This is an honest negative/inconclusive completion, not a claim those gates passed.
+No external review receipt is awaited and no automatic follow-up run is scheduled.
+
+| Item | Completion and retained limits |
+| --- | --- |
+| E0.1 Outcome matrix | Offline rescore of 1,548 historical requests / 93 groups, with distinct error/unscorable outcomes, Wilson intervals and rejected-gold diagnostics. Historical scores and labels unchanged. |
+| E0.2 Stage latency | Recorded planning/search/rerank/assembly/assessment/extraction/validation, queue/load/work and tokens; historical and fresh tables distinguish nested timing, failures and missing observations. |
+| NuExtract defaults | API, CLI, browser, launcher and new optional enrichment default to NuExtract; explicit Gemma/Hybrid and saved job/policy identities retained. Original library/history preserved. |
+| E0.3 Reviewed benchmark | Original 180-case proposal preserved; internal successor has 92 development and 55 exposed primary cases, with derived/stress/collision views separate. Frozen original and revised labels, typed scoring, table context/proofs, family overlays and controls integrated. Independent/blind/minimum-size acceptance not claimed. |
+| E0.4 Oracle ablations | Both supported models' source-bound evidence/field interventions; exact Rust materialization and validator on/off comparisons of the same candidates. Unavailable cases, four Gemma generation failures and unadjudicated proofs retained. |
+| E0.5 Gates | NuExtract five/two/facet comparisons and original-table ablation completed. No candidate qualifies; defaults unchanged. Format/mapping failures materially limit accuracy interpretation. |
+| E0.6 Residue audit | Isolated ingest/replace/remove/compact retained both originals/jobs, three receipts and two revision reservations; reclaimed one unreferenced blob. Removal is not erasure. |
+
+Fresh execution accounts for 421 planned answer outcomes, 294 question-only
+controls and 444 oracle positions (236 attempted, 208 explicitly unavailable).
+Ranked-five/two/facet strict development scores are **17/92, 16/92, 18/92**;
+ranked-five exposed score is **6/55**. These totals include correct abstentions
+and strict field/type contracts, not just semantic fact correctness. Gold-field
+oracles yield 29 NuExtract and 40 Gemma correct primary answers among 62 attempted
+primary interventions, retaining failures; this is not an end-to-end model ranking.
+The original holdout was not used. No prompts, labels or models were tuned.
+
+Verification: 181 frozen offline measurement checks; Rust main suite, measurement
+helpers, format/Clippy; 22 final offline diagnostic/coordinate/recovery checks.
+The first all-target invocation hit a three-second HTTP-test startup bound; its
+unchanged focused rerun passed and both logs remain. Earlier default activation
+also passed 71 HTTP contracts, 54 OpenAPI schemas, Python/launcher checks, seven
+components and thirteen offline browser scenarios. Isolated source-linked
+synthetic answering passed. All three normal services are healthy with NuExtract
+loaded; library, ingestion jobs and six historical answer-job summaries compare
+exactly before/after. Temporary services/networks removed, data/cache volumes,
+images, weights, raw failures and prior rollback backup retained.
+
+[Full results and limitations](reports/t39-internal-results/README.md) ·
+[Interpretation, timing and restoration](reports/t39-internal-results/findings.md) ·
+[Offline historical measurement/default migration](reports/t39-measurement.md) ·
+[Residue audit](reports/t39-residue.md) ·
+[Execution freeze](reports/t39-runtime-execution-freeze.json) ·
+[Runtime/recovery guide](../evals/measurement/internal-runtime-guide.md).
+
+The post-run diagnostic supplement separates known format/request refusals from
+infrastructure and makes unresolved source alignment unknown. It preserves the
+original attribution, scores and gates. Sensitivity and stress-behavior review
+remain explicitly unreviewed; no fabricated independent validator judgment.
+
+Local retained execution: `tmp/t39-execution-20261017/`. Source freeze commit:
+`2e8fea1b1d0d65b44a847ba6a5d4797c5d5d22b7`; receipt committed at `60e9ae8`.
+These local commits were made before inference to satisfy the freeze protocol;
+no GitHub push was performed during this continuation.
+
+### Historical active-task checkpoint
+
+The following checkpoint preceded the completed evaluation above. Its pending
+wording is historical, not an outstanding request to the user.
+
+#### T39 — Measurement foundation and NuExtract defaults
+
+Status: **Frozen internal evaluation is running; T39 remains active.** Runtime integration is complete and the [execution freeze is committed](reports/t39-runtime-execution-freeze.json). All 147 NuExtract question-only controls completed; development strategy comparisons are running. The normal generator is temporarily stopped for exclusive evaluation GPU ownership; normal document browsing remains available. The runner restores the existing NuExtract generator on exit. The older original holdout is untouched.
+
+The user delegated candidate screening, so all 60 candidates are exposed. Four confirmed company overlaps exclude nine development table questions. Primary rosters remain **92 development + 55 exposed candidates = 147**; derived/stress/collision diagnostics are separate. Comprehensive lineage is uncertified; independent/blind and original minimum-size acceptance have not passed. [Review and limits](reports/t39-internal-review-v1.7.md).
+
+The successor's 591 files reproduce; **181 offline Linux measurement tests pass**. Ingestion committed 184 of 186 source representations; two admission failures remain in all applicable denominators. All 111 development oracle definitions are accounted for: 91 ready, 16 stress/not defined, two ingestion failures and two unreconstructable proof sets. The freeze binds 232 source files and 1,412 runtime inputs. Synthetic controls, two-call extraction and an ordinary source-linked UI question passed. [Integration verification](reports/t39-runtime-integration.md) and [execution rules](../evals/measurement/internal-execution-v1.8.md). NuExtract/ranked-five defaults are unchanged. Depends on T37 diagnostics/jobs and T38 retention; [design](architecture.md#measurement-foundation).
+
+The user accepted the six remaining recommendations. Applied 010/034/047/053 in a new gold candidate and moved 071 to stress: **101 primary, 3 derived/inference, 16 stress**, with original v1 n=120 preserved. Case 107's Level A definition is active under the explicit user waiver; no independent-review attestation is claimed. The v1.7 whole-family overlay supersedes those provisional counts; sources and historical freezes are unchanged. [Current gold activation](reports/t39-gold-review-v1.6.md) · [Earlier gold review](reports/t39-gold-review-v1.5.md) · [D1](reports/t39-d1-adjudication-v1.1.md) · [D2](reports/t39-d2-adjudication-v1.1.md) · [D3 tiers](reports/t39-d3-tiers-v1.1.md) · [D4 typed facts](reports/t39-d4-typed-facts-v1.1.md) · [D5 context/proofs](reports/t39-d5-table-context-v1.2.md) · [D6 families](reports/t39-d6-families-v1.3.md) · [D7 scope/controls](reports/t39-d7-pilot-scope-v1.4.md) · [Answer sheet](reviews/t39-review-decisions.md).
+
+| Item | Scope and acceptance | Status |
+| --- | --- | --- |
+| E0.1 Outcome matrix | Offline adapters inventory/rescore available historical raw captures, including the 16/28-question suites, without inference or source/label changes. Preserve legacy scores separately; exact values/support, four outcomes, errors/unscorable cases and rejected-gold diagnostics; Wilson intervals over distinct questions per arm/pass, explicit missing-capture denominators. | Complete; scope/limits in report |
+| E0.2 Stage latency | Reuse and complete recorded stage/model audits; report per-request/attempt queue/load/work, planning/retrieval/rerank/assembly/assess/extract/validation, input/output tokens and unknown overhead without double counting. Produce current-mode and historical tables; include failures and distinguish missing/skipped. | Complete; scope/limits in report |
+| Defaults | NuExtract-only for new API/CLI/browser/launcher submissions and NuExtract for new optional enrichment/model tools. Keep explicit Gemma/Hybrid and exact saved modes/policies; visible one-time preference migration. Verify native annotation adapter and old Gemma compatibility; structural ingestion remains default. | Complete; scope/limits in report |
+| E0.3 Benchmark v2 | 150–300 questions, 25–30% negatives/ambiguity, at least 30% sealed by source family; public human labels, independently reviewed adaptations/custody, exact typed scoring and hashed inputs. | Original 180 preserved; development 92 primary / 3 derived / 16 stress / 9 collision diagnostics, candidates 55 / 2 / 3. Internal review and known collisions recorded; no blind/independent claim, full lineage uncertified, primary count 3 below target. Runtime integration/freeze pending |
+| E0.4 Oracle ablations | Gold evidence and optional gold field definitions; identical captured candidate for validator comparison; preserve JSON materialization. Attribute ingestion/planning/retrieval/selection/assessment/extraction/validation, allowing multiple causes. | Capture, Rust comparison, attribution and isolated format/control worker tested; real controls/ablations pending internal-successor integration and final freeze |
+| E0.5 Decision gate | Predeclare margin, D5 typed-value primary metric plus separate grounding/joint metrics and harmful-answer ceiling, paired/grouped comparison, sample-size adequacy and inconclusive outcome before measurements. Compare strategies in current NuExtract mode. | Protocol/statistics, successor builder and scorer/coordinate projections tested; live runner/control integration and committed freeze pending. Pilot cannot establish predeclared non-inferiority; retain ranked-five |
+| E0.6 Residue audit | Isolated ingest/replace/remove before/after compaction; explain retained blobs/jobs/receipts and captured diagnostics under preserve-history-v1, separating search removal from erasure. | Complete: both originals/jobs, 3 receipts and 2 revision reservations retained; 1 unreferenced blob reclaimed. [Audit](reports/t39-residue.md) |
+
+Verification: deterministic scorer/statistics/adapter tests, recorded latency reconciliation, exact numeric preservation, missing/malformed captures and failures, historical capture hash checks; relevant Rust/Python/HTTP/UI/launcher checks for defaults/instrumentation. Use isolated storage and one reusable test container at a time. No historical inference reruns, prompt tuning, new dataset acquisition or sealed holdout use for E0.1/E0.2. Any required live default smoke is bounded and separate from quality scoring. Record results/limits before completing each item; T39 stays active until its remaining approved work is complete.
+
+Progress: E0.1/E0.2 and defaults verified; [results](reports/t39-measurement.md), [outcome matrix](reports/t39-outcomes.md). Retained narrower planner/retrieval/functional tracks are separate from full-answer denominators; pre-evaluation smoke records without comparable labels and normal-library captures are excluded. The live follow-up abstention is an observed limitation, not tuned away. No independent benchmark has run.
+
+
+### Historical measurement architecture checkpoint
+
+#### Measurement foundation
+
+Gold review uses versioned successors, preserving D1–D7, original labels and source
+bytes. The accepted six-case changes and case 107's explicitly waived Level A
+activation are recorded in [v1.5](reports/t39-gold-review-v1.5.md) and
+[v1.6](reports/t39-gold-review-v1.6.md). They are internal source review and user
+adjudication, not independent approval. Recompute family summaries and control
+rosters from the current successor plus its whole-family exclusion overlay.
+
+On 2026-10-17 the user delegated the remaining sealed-candidate screening and
+family-collision check to the implementation assistant ("you will have to do that
+part"). The current T39 continuation therefore uses an explicitly internal review
+for these 60 candidates, not an independent custodian attestation. Preserve the
+original package and record access/exposure in a new audit. Keep questions, labels
+and detailed review artifacts private; publish aggregate findings and affected
+development families. Any candidate inspected by the implementation assistant is
+exposed and cannot support a blind-holdout claim. Continue the same source-only
+D3-D5 screening and D6 family rules; never manufacture an independent receipt.
+This delegation applies only to the T39 candidate package, not the original unused
+holdout or unrelated private data. Report the resulting pilot's independence and
+quota limitations before any measured run; no default promotion follows from it.
+
+The [internal v1.7 review](reports/t39-internal-review-v1.7.md) records 55 primary,
+two derived and three stress candidates. Four established company collisions
+exclude nine development questions through a separate overlay, leaving 92 primary,
+three derived and sixteen stress development cases. The combined primary count is
+147, below the 150-question target, with no blind holdout remaining in this pilot.
+Unresolved corporate lineage/republication stays uncertified. The new receipt is
+a distinct internal type; the independent-custodian validator remains unchanged.
+Keep candidate content private and bind the complete private audit by hash. A
+separate committed successor/runtime freeze must integrate the actual typed
+scorer, source coordinates and question-only controls before measured requests.
+
+D7 limits this pilot to benchmark-harness validation and bounded source-grounded
+strategy diagnostics. The current tracks are **TXT prose QA**, **PDF text ingestion
+(clean render)** and **structured-table QA (JSON)**. Clean rendered paragraphs do
+not exercise original page layouts, OCR or table extraction. Only matched questions
+over the same source paragraphs can estimate a TXT/PDF ingestion effect; report
+unpaired format scores as descriptive strata and an unavailable paired gap explicitly.
+Keep source-quality exclusions separate from ingestion failures. The pilot cannot
+support enterprise-document or broad PDF claims; its exact claim limits and
+conditional, separately scored real-layout probe are in the
+[D7 scope/control contract](../evals/measurement/pilot-scope-v1.4.md).
+
+Before retrieval runs, execute one question-only closed-book diagnostic for every
+finally admitted primary case and each evaluated model, under frozen prompts,
+schema, model identity and scoring lists. It receives no sources, history or gold
+field hints. Report all primary items and the subset without positive closed-book
+gold matches, retaining source-relative negatives and exposing missing/failed
+controls. Closed-book matching measures answer availability without the supplied
+source, not proven memorization; nonmatching does not establish uncontaminated
+data. The same fixed mask applies to every retrieval strategy for a model. Sealed
+controls remain custodian-private with aggregate reporting. These controls do not
+change production answering or its validation. NASA/USGS historical scores retain
+their original questions/gold and separate denominators; no fresh extension joins
+this pilot. Final execution remains gated by D1–D6 review and runtime integration.
+
+D6 uses company/filer lineage, not annual-report identity, as the conservative
+financial source family; company plus fiscal year remains a secondary diagnostic
+key. Article/paper identity and their derivatives unify nonfinancial TXT/PDF cases.
+Trace every provisional primary case using development material and public
+sources only, recording provenance confidence and unresolved aliases/ownership.
+Never equate missing name matches with independent families. Report established,
+candidate and unknown provenance separately, with family cluster-size distributions
+and family-resampled intervals. The designated reviewer (now internal under the explicit delegation) privately applies the same D3 defects,
+D4 typed scoring requirements and D5 source-context/proof checks to sealed items.
+Only aggregate screening/provenance/quota counts and colliding development family
+keys return; no sealed IDs, questions, content, aliases or per-item hashes. Move
+colliding development families to diagnostics, never move sealed items into
+development. Unknown provenance remains uncertified. Freeze a development-only,
+noncolliding reserve inventory and format/label/size strata before deterministic
+draws, or report the smaller set and shortfalls. Recompute all quotas and clusters
+after screening/collisions. One final execution freeze follows D1–D5, family tracing,
+custodian reconciliation and replacements; earlier review hashes are preserved.
+[Family and custodian policy](../evals/measurement/families-v1.3.md).
+
+D5 supersedes D4's proof-dependent benchmark primary score: typed value/format correctness is primary, evidence grounding and joint value-plus-grounding correctness are separate reported axes. A correct value from the wrong cell is explicitly recorded as correct-answer/wrong-evidence; production validation remains unchanged and rejected drafts never become primary answers. Preserve D4's frozen scorer/artifacts as a prior definition. Table-context repair and proof identity are separate evaluation components. Use a versioned, source-only annotation registry for every development table, explicitly classifying caption/header/group rows, span-derived header mappings, finite group scope and unit scope. The generic adapter applies only declared mappings, never guesses a header or extends a scope through blanks/indentation. Original cells stay exact; derived structural relations are tagged, referenced and kept distinct from literal facts. Unspecified units stay unspecified. Coordinate proofs include value and disambiguating source cells, with separately reviewed alternatives. Corrected representation is the predeclared primary and v1 the ablation; context serialized into row records changes retrieval input, so report proof-cell/context recall at k separately from answers. Header paths remain structured strings with refs; freeze their renderer, D4 instruction and scorer together. Automatic planning continues to see only the original question/history, not table annotations. D3 membership changes require source-only predeclared resolution rules, never model outcomes; 092 remains stress and 002/080 primary. [Table-context and grounding policy](../evals/measurement/table-context-v1.2.md).
+
+The reviewed benchmark's typed-fact contract uses string-valued direct extraction, exact source-location proofs and per-case alternatives. Freeze the output-format instruction with the scorer: preserve table cell spelling, units, qualifiers and placeholders; JSON answers still use source pointers and Rust materialization. Only NFC and trim/collapse of ASCII whitespace and NBSP apply globally. Explicit per-case aliases handle all other spelling, field mappings and set parsing. Exact scale conversions belong to a separate derived view, and approximations remain diagnostics. Never infer a cell's unit from an unrelated column or from a dataset annotation alone. Collision scans cover every table cell and text occurrence; equal values under different roles require different proofs. Unlisted answers fail primary scoring and enter a separate, initially unreviewed sensitivity queue. Diagnostic formatting rules never award correctness. This is an evaluation contract, not a production prompt or validator change. A field-only oracle must reuse the automatic arm's evidence to estimate planning cost; a gold-evidence oracle changes retrieval/selection too. Apply D1–D3 before producing the reviewed candidate, retain unresolved cases, and create one execution freeze only after remaining review gates pass. [Typed-fact scoring contract](../evals/measurement/typed-facts-v1.1.md).
+
+Evaluation format integration stays outside the production worker entry point.
+A dedicated measurement worker wraps the existing planning/assessment/extraction
+operations with the same frozen D4 instruction before both native-template token
+counting and generation. Audit the effective messages and schema, reject non-string
+plans without coercion, and retain two-call answering. A separate question-only
+operation uses D7's frozen prompt/schema, no evidence or gold-derived fields, and
+one bounded call. Its failed or malformed controls remain unknown. These helpers
+are installed only in an isolated, frozen evaluation process; normal API routes,
+production images, prompts and inference budgets are unchanged. Runtime capture
+must distinguish original wire bytes from decoded transport observations.
+
+Internal review of development candidates may check source fidelity, proposed labels and capability fit, and prepare a concise decision document for the user. Keep that review separate from independent approval: it neither signs the independent-review attestation nor opens sealed questions or labels. Preserve the original proposal and record suggested corrections in a separate review artifact.
+
+Benchmark answerability is relative to the complete scoped source supplied for a question, without outside knowledge; unambiguous source-grounded aliases and explicitly tagged local entailments may be accepted, while unresolved entity/premise readings are ambiguous. Keep literal extraction, inference-required and attributed-claim cases distinguishable. Original labels and versioned adjudications are separate scoring views over the same captures. Corpus answerability must not be replaced with a negative label when retrieval omits required evidence: record retrieved-context sufficiency separately, using captured bytes and provenance. Case corrections record source hashes, half-open evidence offsets, exact gold types/aliases, reviewer decisions and known versus unknown annotation rationale. Internal screening and a user's adjudication do not establish two independent blinded reviews. [Current adjudication policy](../evals/measurement/answerability-v1.1.md).
+
+A versioned, offline measurement layer operates over immutable captures. Historical fixtures, scorers, captures and scores are never rewritten. Outcome reporting separates answered-correct, answered-wrong, abstained-correct and abstained-missed from system errors, unscorable captures, incorrect negative decisions and unsupported answers. Exact typed values and annotated source support are distinct axes. A gold-matching rejected draft is a diagnostic, not automatically a validator false rejection; absent or truncated drafts remain unobservable. Report denominators and capture completeness explicitly. Per-arm Wilson intervals describe distinct questions; repeated models/strategies/cache passes are not independent samples. Future comparative gates use paired cases and document/source-family grouping.
+
+Development label review separates answerability amendments (D1) from tightened alternatives, precision rules and gold replacements (D2). Numeric scoring distinguishes faithful answers, source-supported but imprecise answers, and wrong claims; approximation direction, units, quantity, entity and time scope must survive. Imprecise answers remain separate diagnostics, not full-credit successes. Apply the policy to every numeric development item without opening sealed labels or silently resolving pending scope/type decisions. Run a reproducible development-only scan of all accepted alternatives for clipping, qualifier loss, numeric differences and evidence mismatch; flags are review leads, not automatic corrections. Freeze each amendment list before inference, retain original-label scoring, and record the user's explicit waiver when activating case 107's Level A definition replacement in v1.6. The earlier two-reviewer requirement remains visible in its immutable historical record. [Numeric review policy](../evals/measurement/numeric-scoring-v1.1.md).
+
+The development benchmark separates primary direct extraction (including clean negative cases), derived/inference, and stress/adjudication views before inference. Assign one primary exclusion reason per non-primary case, retaining secondary tags and the upstream source-versus-adapter loss diagnosis; stress behaviors (recognizing ambiguity, explicit assumptions, conditional source-backed answers) are reported separately from factual accuracy. Preserve original questions and original-label scores. D1 entailment/attribution and entity-ambiguity decisions follow the same taxonomy. Do not cherry-pick replacements: freeze a reserve registry, seed and matching strata before inspecting candidates, otherwise retain a smaller primary set and report coverage losses. The user waived the proposed two-reviewer D3 screening pass; mark this review internal and non-blind, without fabricating independent approval. The separate case-107 review requirement was subsequently waived explicitly. Neither waiver attests sealed custody, source-family separation or independent review. [Tier/exclusion and reserve policy](../evals/measurement/tiers-v1.1.md).
+
+Stage measurements reuse existing audits and add only missing observations. Per-request/attempt reporting includes planning, query encoding, candidate retrieval, reranking, evidence assembly/tokenization, assessment, extraction, validation, queueing, activation and observed overhead; tokens are counts, not durations. Nested timings must not be summed, failure/skip/unrecorded states remain distinct, and missing values never become zero. Separate resident NuExtract, explicit Gemma, Hybrid fallback and queue-loaded operation. New observational diagnostics must not alter prompts, model budgets, retrieval or answer validation.
+
+The benchmark uses 150–300 independently labelled questions, 25–30% unanswerable/ambiguous, and at least 30% sealed by document/source family. The user selected existing public human annotations, with an independent reviewer approving adaptations and holding sealed labels. Public availability does not make previously inspected questions a fresh holdout. Format and content structure are separate strata; unsupported arithmetic/aggregation belongs to a separate capability track. Independent annotation/adjudication and sealed-label custody remain prerequisites for an independent benchmark claim. The explicit 2026-10-17 delegation permits internal candidate screening, with exposed-case and independence limitations recorded instead of asserting those prerequisites were met. Keep the original holdout untouched. Freeze protocol and decision rules before measured runs; retain failures and permit an inconclusive result with no strategy change. [Benchmark protocol](../evals/measurement/protocol.md) defines the gate, review handoff and execution prerequisites.
+
+Evaluation-only oracle tooling supplies reviewer-approved evidence directly to the existing processor answering operation under a complete model lease. It preserves the actual token limit, two-call assessment/extraction, model settings and original question. Compare a single captured candidate with validation enabled and disabled; the disabled branch is diagnostic data, never an application answer. Both branches retain Rust's exact JSON materialization; source-null abstention and mechanical rejection are reported separately. No public bypass endpoint or production validator switch is added. Gold evidence and optional gold field definitions isolate ingestion, planning, candidate retrieval, selection, assessment, extraction and validation without claiming every failure has one cause. Unavailable observations and unresolved materialization stay unobservable. A CPU-only residue audit runs real ingestion/replacement/removal and offline compaction in isolated storage, inventorying bytes, jobs, receipts and revision reservations under the existing retention policy.
+
+The running user-selected default is NuExtract for new answer submissions, planning, optional prose and new optional generated enrichment. Hybrid/Gemma remain explicit choices; structural ingestion remains the ingestion default. Defaults are consistent across API, CLI, browser, launcher and model tools. A visible one-time preference migration applies the new default to future work; captured turns and durable jobs retain their saved modes. Existing Gemma enrichment jobs continue with their exact saved identity and model. Default changes are user preferences, not benchmark promotion claims.
+
+Enrichment configuration accepts the supported temperatures `0` and `0.2` as exact JSON numbers. The previous integer-zero representation remains byte-for-byte stable when serializing existing policies and retry identities. The worker matches the complete saved generator configuration to its supported profile before acquiring a lease; accepting fractional configuration does not authorize arbitrary temperatures, profile substitution or policy rewriting. This extends the accepted configuration values without changing existing storage records.
+
 
 ## T38 — Safe offline compaction and garbage collection
 

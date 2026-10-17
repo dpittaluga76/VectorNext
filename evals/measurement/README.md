@@ -4,6 +4,21 @@ This tool reads retained captures and labels. It never starts models, downloads 
 
 This describes `rescore.py`. The separate benchmark/oracle tools below can call models only when explicitly invoked with reviewed inputs and an execution freeze.
 
+## Completed internal execution
+
+The [internal results](../../docs/reports/t39-internal-results/README.md) include
+421 planned answer outcomes, both models' question-only controls and oracle
+interventions. Read the [format and attribution limitations](../../docs/reports/t39-internal-results/findings.md).
+NuExtract and ranked-five remain selected. The 147 primary items are exposed and
+undersized; the older independent-custody gates were not bypassed or certified.
+
+Use the [runtime/recovery guide](internal-runtime-guide.md) and committed
+[execution receipt](../../docs/reports/t39-runtime-execution-freeze.json).
+Measured code is frozen at `2e8fea1b1d0d65b44a847ba6a5d4797c5d5d22b7`;
+reproduction uses that source/image environment and retained private artifacts.
+The post-run `internal_supplement.py` only separates diagnostic error categories
+and source-alignment unknowns. It does not change the frozen primary scorer/gates.
+
 ## Benchmark v2 tools
 
 The [v1.7 internal review](../../docs/reports/t39-internal-review-v1.7.md) completes
@@ -16,8 +31,8 @@ explicit in the report. The older original holdout remains unused.
 
 Development gold comes from [v1.6](../../docs/reports/t39-gold-review-v1.6.md),
 including 107 under the user's waiver, with v1.7's exclusion overlay applied before
-building final rosters. Earlier commands reproduce historical snapshots. Final
-runtime/scorer/coordinate integration and a committed execution freeze remain pending.
+building final rosters. Earlier commands reproduce historical snapshots. Runtime/scorer/coordinate integration and the committed execution freeze are
+complete; the internal results above supersede these historical review checkpoints.
 
 ```powershell
 python -m evals.measurement.activate_level_a --audit tmp/t39-internal-review/source-audit.json --proposal tmp/t39-v2-review-proposal-v2 --output tmp/t39-gold-review-reproduction
@@ -31,8 +46,8 @@ output must be a new directory. It performs no inference or sealed reads.
 
 The original 180-question proposal is preserved and is not an execution freeze.
 Source screening and confirmed-collision reconciliation are complete internally;
-corpus ingestion, final scorer/control integration, execution freeze and measurements
-remain prerequisites. No new benchmark/oracle inference has run. NuExtract/ranked-five
+ingestion, scorer/control integration and frozen internal measurements are complete.
+The original independent approval criteria remain unmet. NuExtract/ranked-five
 defaults are unchanged. This harness pilot uses TXT prose QA, **PDF text ingestion
 (clean render)** and **structured-table QA (JSON)**; it makes no broad PDF/table-extraction
 claim. [Coverage limits](../../docs/reports/t39-d7-pilot-scope-v1.4.md).
@@ -42,7 +57,7 @@ claim. [Coverage limits](../../docs/reports/t39-d7-pilot-scope-v1.4.md).
 - `review.py`: checks a named independent approval, exact manifest/file identities, complete case coverage, typed/support review, strata and custody attestation. Hashes do not prove independence or secure files.
 - `internal_custody.py`: separately validates delegated, exposed source-review records and publishes only aggregate counts/public development collision keys. Its receipt cannot satisfy `review.py` or the old independent runner gate. See [v1.7 commands and limitations](../../docs/reports/t39-internal-review-v1.7.md).
 - `internal_successor.py`: builds the reviewed private package without inference, preserving original/corrected source representations and reviewed-text coordinates. `capture_grounding.py` / `capture_projection.py` connect captured records/block spans to the frozen scorer and keep rejected drafts separate. [Reproduction, checks and remaining integration](../../docs/reports/t39-internal-successor-preflight.md).
-- `evaluation_processor.py` / `evaluation_worker.py`: isolated evaluation entry points; the same frozen D4 instruction reaches planning, assessment and extraction before native template counting/generation. D7 question-only control accepts no source/gold hints. Raw RPC frames and explicitly decoded transport observations are retained in new per-process capture directories. Normal Compose/worker behavior is unchanged. Final runner/freeze/coordinate-scoring integration is still pending; these are not a bypass for custody gates.
+- `evaluation_processor.py` / `evaluation_worker.py`: isolated evaluation entry points; the same frozen D4 instruction reaches planning, assessment and extraction before native template counting/generation. D7 question-only control accepts no source/gold hints. Raw RPC frames and explicitly decoded transport observations are retained in new per-process capture directories. Normal Compose/worker behavior is unchanged. The `internal_*` runner integrates these components under the exposed-pilot amendment; this is not a bypass for the old independent custody gates.
 - `table_pipeline_preflight.py`, `table_preflight_report.py`, `formatted_budget_preflight.py`: unscored real ingestion/reranking and native token checks for the nine flagged rows. [Results, limits and reproduction](../../docs/reports/t39-table-pipeline-preflight.md). No answer generation.
 - `run_benchmark.py`: current API durable-job capture, family-based arm rotation, frozen image/code/input checks, revision binding, retained ingestion failures and polling-only uncertain-outcome recovery. Requires a separate isolated deployment/ingestion freeze; no model setup or automatic resubmission.
 - `oracle.py`: one reviewed development evidence/field intervention with the existing two-call processor operation and full model lease. Saves original bytes before invoking a model, checks the existing token budget and preserves errors. Does not disable production validation or retry.
@@ -112,7 +127,7 @@ Use a new output filename. Only development member paths are permitted. Source m
 
 ## D4 typed-fact candidate
 
-[The D4 report](../../docs/reports/t39-d4-typed-facts-v1.1.md) incorporates D1–D3 with a [format instruction](answer-format-v1.1.txt), [scorer](typed_facts.py), per-case alternatives, exact proofs and primary/derived/stress views. Run `python -m unittest evals.measurement.test_typed_facts` for synthetic checks. The [contract](typed-facts-v1.1.md) separates source strings, exact conversions and imprecision. D5 below supersedes its joint primary definition; the frozen D4 scorer remains unchanged. Later v1.6/v1.7 records resolve gold and internally reconcile known collisions; runtime format/proof/control integration remains pending. The candidate is not execution approval.
+[The D4 report](../../docs/reports/t39-d4-typed-facts-v1.1.md) incorporates D1–D3 with a [format instruction](answer-format-v1.1.txt), [scorer](typed_facts.py), per-case alternatives, exact proofs and primary/derived/stress views. Run `python -m unittest evals.measurement.test_typed_facts` for synthetic checks. The [contract](typed-facts-v1.1.md) separates source strings, exact conversions and imprecision. D5 below supersedes its joint primary definition; the frozen D4 scorer remains unchanged. Later v1.6/v1.7 records resolve gold and internally reconcile known collisions; runtime format/proof/control integration is complete in the separate internal execution. This historical candidate alone is not execution approval.
 
 ## D5 table-context candidate
 
@@ -133,8 +148,8 @@ python -m unittest evals.measurement.test_table_context
 
 Outputs must be new. Only committed development sources are consumed. Nine rows
 exceed MiniLM's whole-record budget and require actual subtree/capture integration
-checks. Later v1.6/v1.7 records resolve gold and known collisions; full lineage certification, runtime prompt/scorer/capture
-integration and the execution freeze remain unfulfilled. No benchmark has run.
+checks. Later v1.6/v1.7 records resolve gold and known collisions; full lineage certification remains unfulfilled. Runtime prompt/scorer/capture
+integration and the internal execution are complete, with that limitation retained.
 
 ## Source-family tracing and custodian receipt
 
@@ -157,10 +172,10 @@ Use the [private custodian procedure](../../docs/reviews/t39-d6-custodian-handof
 for equal D3-D5 screening, alias/lineage checks and an aggregate-only response.
 `families check-receipt` validates that response and creates a development
 exclusion/count overlay; it does not rewrite gold or certify that private review
-happened. No completed receipt exists yet. Family bootstrap and reserve ordering
-helpers are tested with synthetic inputs; no new benchmark outcomes or replacement
-draws exist. The prior reviewer/runner must be integrated with this successor
-before the final committed execution freeze.
+happened. No independent receipt is claimed. The separately typed internal receipt and
+whole-family overlay were frozen before the completed internal run. No replacement
+reserve was drawn. Family bootstrap results are published with the exposed-pilot
+limitations rather than an independent claim.
 
 ## Pilot scope and question-only controls
 
@@ -177,7 +192,7 @@ python -m unittest evals.measurement.test_pilot_controls -v
 
 The offline audit verifies retained development bytes, writes a new output only,
 and never reads sealed content or calls a model. The fixed instruction/schema and
-matching helpers are ready for integration, not an inference runner. Final execution
-must capture one control per primary case/model before retrieval runs and report
-all/adjusted primary scores without treating failed controls as nonmatches.
+matching helpers are integrated in `internal_evaluate.py`. The completed run
+retains one control per primary case/model and all/adjusted primary scores without
+treating failed controls as nonmatches; each model's controls precede its oracle work.
 [Audit and verification](../../docs/reports/t39-d7-pilot-scope-v1.4.md).

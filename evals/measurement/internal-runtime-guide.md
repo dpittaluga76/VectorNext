@@ -55,3 +55,24 @@ preflight CPU captures remain preserved.
 Changing source, inputs or runtime invalidates the freeze. A defect discovered
 after measured work requires an explicit successor/amendment and preserves all
 prior attempts; never edit a frozen scorer or retry failures into successes.
+
+## Published run and offline diagnostic supplement
+
+The completed [internal report](../../docs/reports/t39-internal-results/README.md)
+uses execution source `2e8fea1b1d0d65b44a847ba6a5d4797c5d5d22b7` and its committed
+receipt. Reproduce the measured runner from that source environment; later
+reporting changes do not authorize resuming with different frozen bytes.
+The normal NuExtract app was restored and the isolated containers removed.
+Named evaluation volumes, images and private captures were retained.
+
+After the frozen scores/attribution exist, the separate diagnostic amendment can
+be run without models:
+
+```powershell
+python -m evals.measurement.internal_supplement --root RUN --package PACKAGE --output NEW_DIAGNOSTICS.json
+```
+
+It separates known request/format refusals from infrastructure and changes
+incomplete prose coverage to unknown when alignment is unresolved. Original
+attribution and primary scores stay untouched; public candidate output is
+aggregate-only. The report lists the amendment and its verification explicitly.
