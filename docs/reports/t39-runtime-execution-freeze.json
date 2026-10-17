@@ -1,0 +1,46 @@
+{
+  "classification": "internal_exposed_pilot",
+  "independent_review": false,
+  "blind_holdout": false,
+  "frozen_before_measured_requests": true,
+  "source_commit": "2e8fea1b1d0d65b44a847ba6a5d4797c5d5d22b7",
+  "execution_freeze_sha256": "ea1afed4e58682acc325fe7a9a5910c75fe1d3deac6e9cc9472cb7f2ce69b0cb",
+  "package_sha256": "40edecc22f0a7212e8dd6f31aa9a1d3907f610b78e6b64e795b0947f859efb6e",
+  "source_files": 232,
+  "runtime_input_files": 1412,
+  "images": {
+    "api": "sha256:d581191d1e7e749540bab15613757617525d6d0392061225064de3d8b1e9b0af",
+    "processor": "sha256:fe04b07d2dc5c32440499699699d5d24fa03d8757d8677a6c7d4c4cbb78c6fb9",
+    "llm": "sha256:4b99138b2cd49aff8684ff6f3a261f6eaec75d06ca4e9d94c5e75d746a0d97c3"
+  },
+  "ingestion": {
+    "committed": 184,
+    "ingestion_failed": 2
+  },
+  "oracle_inputs": {
+    "ready": 91,
+    "stress_oracle_not_defined": 16,
+    "ingestion_failed": 2,
+    "gold_evidence_not_reconstructable": 2
+  },
+  "primary_counts": {
+    "development": 92,
+    "exposed_candidates": 55
+  },
+  "defaults": {
+    "model": "nuextract",
+    "strategy": "ranked_30_20_5"
+  },
+  "limitations": [
+    "147 primary, below original 150 floor and prospective 520 sealed requirement",
+    "all candidates exposed by delegated internal review",
+    "comprehensive lineage uncertified"
+  ],
+  "verification": {
+    "linux_measurement_tests": 181,
+    "synthetic_control": "passed",
+    "synthetic_two_call": "supported",
+    "ordinary_ui_question": "NuExtract default, supported, source-linked",
+    "preflight_failures_retained": 3
+  }
+}
